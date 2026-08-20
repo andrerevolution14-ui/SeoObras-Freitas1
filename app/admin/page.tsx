@@ -27,7 +27,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const auth = sessionStorage.getItem("jorge_auth");
+      const auth = localStorage.getItem("jorge_auth");
       if (auth === "true") {
         setIsAuthenticated(true);
         fetchLeads();
@@ -76,7 +76,7 @@ export default function AdminPage() {
 
   const handleLogout = () => {
     if (typeof window !== "undefined") {
-      sessionStorage.removeItem("jorge_auth");
+      localStorage.removeItem("jorge_auth");
     }
     router.push("/login");
   };

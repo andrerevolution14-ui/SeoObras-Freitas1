@@ -20,7 +20,7 @@ export default function LoginPage() {
     setTimeout(() => {
       if (username.trim().toLowerCase() === "jorge" && password.trim().toLowerCase() === "matilde") {
         if (typeof window !== "undefined") {
-          sessionStorage.setItem("jorge_auth", "true");
+          localStorage.setItem("jorge_auth", "true");
           window.location.href = "/admin";
         }
       } else {
