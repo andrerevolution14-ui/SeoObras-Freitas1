@@ -18,11 +18,11 @@ export default function LoginPage() {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      if (username.trim() === "Jorge" && password === "Matilde") {
+      if (username.trim().toLowerCase() === "jorge" && password.trim().toLowerCase() === "matilde") {
         if (typeof window !== "undefined") {
           sessionStorage.setItem("jorge_auth", "true");
+          window.location.href = "/admin";
         }
-        router.push("/admin");
       } else {
         setError("Utilizador ou palavra-passe incorretos.");
         setIsSubmitting(false);

@@ -15,7 +15,7 @@ export function MobileCtaBar() {
 
   return (
     <>
-      <div style={{ height: "64px", display: "none" }} className="mobile-cta-spacer" />
+      <div style={{ height: "80px", display: "none" }} className="mobile-cta-spacer" />
 
       <div className="mobile-cta-bar" style={{ background: "#022c22", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
         <a

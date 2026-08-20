@@ -121,6 +121,7 @@ export function Header() {
               { href: "/areas-atuacao/esgueira", label: "Áreas de Atuação em Aveiro" },
               { href: "/blog", label: "Blog & Guia de Obras em Aveiro" },
               { href: "/sobre", label: "Sobre o Jorge Freitas" },
+              { href: "/login", label: "Área de Trabalho (Login)" },
             ].map((item) => (
               <Link
                 key={item.href}
