@@ -20,7 +20,7 @@ export default function LoginPage() {
     setTimeout(() => {
       if (username.trim().toLowerCase() === "jorge" && password.trim().toLowerCase() === "matilde") {
         if (typeof window !== "undefined") {
-          localStorage.setItem("jorge_auth", "true");
+          document.cookie = "jorge_auth=true; path=/; max-age=31536000; SameSite=Strict";
           window.location.href = "/admin";
         }
       } else {

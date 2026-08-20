@@ -27,8 +27,8 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const auth = localStorage.getItem("jorge_auth");
-      if (auth === "true") {
+      const auth = document.cookie.includes("jorge_auth=true");
+      if (auth) {
         setIsAuthenticated(true);
         fetchLeads();
       } else {
@@ -76,7 +76,7 @@ export default function AdminPage() {
 
   const handleLogout = () => {
     if (typeof window !== "undefined") {
-      localStorage.removeItem("jorge_auth");
+      document.cookie = "jorge_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
     router.push("/login");
   };
