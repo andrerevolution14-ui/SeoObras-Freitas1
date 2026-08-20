@@ -12,8 +12,15 @@ export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleLogin(e as any);
+    }
+  };
+
+  const handleLogin = (e?: React.FormEvent | React.MouseEvent) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (isSubmitting) return;
     setError("");
     setIsSubmitting(true);
 
@@ -21,7 +28,7 @@ export default function LoginPage() {
       if (username.trim().toLowerCase() === "jorge" && password.trim().toLowerCase() === "matilde") {
         if (typeof window !== "undefined") {
           document.cookie = "jorge_auth=true; path=/; max-age=31536000; SameSite=Strict";
-          window.location.href = "/admin";
+          window.location.href = "/admin?t=" + Date.now();
         }
       } else {
         setError("Utilizador ou palavra-passe incorretos.");
@@ -87,7 +94,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
           <div>
             <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#334155", marginBottom: "0.375rem" }}>
               Utilizador
@@ -109,6 +116,7 @@ export default function LoginPage() {
                 placeholder="Nome de utilizador"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                onKeyDown={handleKeyDown}
                 className="form-input"
                 style={{ paddingLeft: "2.5rem" }}
                 required
@@ -137,6 +145,7 @@ export default function LoginPage() {
                 placeholder="Palavra-passe"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyDown}
                 className="form-input"
                 style={{ paddingLeft: "2.5rem" }}
                 required
@@ -145,7 +154,8 @@ export default function LoginPage() {
           </div>
 
           <button
-            type="submit"
+            type="button"
+            onClick={handleLogin}
             id="login-submit-btn"
             disabled={isSubmitting}
             className="btn-primary"
@@ -154,7 +164,7 @@ export default function LoginPage() {
             {isSubmitting ? "A autenticar..." : "Entrar na Área de Trabalho"}
             <ArrowRight size={16} />
           </button>
-        </form>
+        </div>
 
         <div style={{ marginTop: "1.5rem", textAlign: "center", borderTop: "1px solid #f1f5f9", paddingTop: "1rem" }}>
           <Link href="/" style={{ fontSize: "0.8125rem", color: "#64748b", textDecoration: "none", fontWeight: 600 }}>

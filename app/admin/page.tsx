@@ -109,76 +109,32 @@ export default function AdminPage() {
   const contactedCount = leads.filter((l) => l.contacted).length;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f8fafc", paddingBottom: "4rem" }}>
+    <div className="min-h-screen bg-slate-50 pb-16">
       {/* Admin Top Navigation */}
-      <header
-        style={{
-          background: "#022c22",
-          borderBottom: "1px solid rgba(255,255,255,0.1)",
-          padding: "1rem 1.5rem",
-          position: "sticky",
-          top: 0,
-          zIndex: 40,
-        }}
-      >
-        <div
-          className="section-container"
-          style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <img
-              src="/logo1s.png"
-              alt="Freitas Renovações LDA"
-              style={{ height: "36px", width: "auto", objectFit: "contain" }}
-            />
+      <header className="bg-emerald-950 border-b border-white/10 sticky top-0 z-40 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img src="/logo1s.png" alt="Freitas Renovações LDA" className="h-9 w-auto object-contain" />
             <div>
-              <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.0625rem" }}>
-                Área de Trabalho
-              </div>
-              <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.75rem" }}>
-                Gestão de Contactos & Orçamentos
-              </div>
+              <div className="text-white font-extrabold text-lg leading-tight">Área de Trabalho</div>
+              <div className="text-white/60 text-xs">Gestão de Contactos & Orçamentos</div>
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <div className="flex items-center gap-3 w-full sm:w-auto justify-center">
             <button
               onClick={fetchLeads}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.375rem",
-                background: "rgba(255,255,255,0.08)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "#ffffff",
-                padding: "0.5rem 0.875rem",
-                borderRadius: "0.375rem",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/10 border border-white/15 text-white py-2 px-4 rounded-md text-sm font-semibold hover:bg-white/20 transition-colors"
             >
-              <RefreshCw size={14} />
+              <RefreshCw size={16} />
               <span>Atualizar</span>
             </button>
 
             <button
               onClick={handleLogout}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.375rem",
-                background: "rgba(239, 68, 68, 0.15)",
-                border: "1px solid rgba(239, 68, 68, 0.3)",
-                color: "#fca5a5",
-                padding: "0.5rem 0.875rem",
-                borderRadius: "0.375rem",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-red-500/15 border border-red-500/30 text-red-300 py-2 px-4 rounded-md text-sm font-semibold hover:bg-red-500/25 transition-colors"
             >
-              <LogOut size={14} />
+              <LogOut size={16} />
               <span>Sair</span>
             </button>
           </div>
@@ -186,49 +142,29 @@ export default function AdminPage() {
       </header>
 
       {/* Main Workspace Content */}
-      <div className="section-container" style={{ paddingTop: "2rem" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
         {/* Stats Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: "1rem",
-            marginBottom: "1.75rem",
-          }}
-        >
-          <div style={{ background: "#ffffff", padding: "1.25rem", borderRadius: "0.5rem", border: "1.5px solid #e2e8f0" }}>
-            <div style={{ fontSize: "0.75rem", color: "#64748b", fontWeight: 700, textTransform: "uppercase" }}>Total de Pedidos</div>
-            <div style={{ fontSize: "2rem", fontWeight: 900, color: "#022c22", marginTop: "0.25rem" }}>{totalCount}</div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm">
+            <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Total de Pedidos</div>
+            <div className="text-3xl font-black text-emerald-950 mt-1">{totalCount}</div>
           </div>
 
-          <div style={{ background: "#ffffff", padding: "1.25rem", borderRadius: "0.5rem", border: "1.5px solid #fde68a" }}>
-            <div style={{ fontSize: "0.75rem", color: "#d97706", fontWeight: 700, textTransform: "uppercase" }}>Pendentes de Contacto</div>
-            <div style={{ fontSize: "2rem", fontWeight: 900, color: "#d97706", marginTop: "0.25rem" }}>{pendingCount}</div>
+          <div className="bg-white p-5 rounded-lg border border-amber-200 shadow-sm">
+            <div className="text-xs text-amber-600 font-bold uppercase tracking-wider">Pendentes de Contacto</div>
+            <div className="text-3xl font-black text-amber-600 mt-1">{pendingCount}</div>
           </div>
 
-          <div style={{ background: "#ffffff", padding: "1.25rem", borderRadius: "0.5rem", border: "1.5px solid #bbf7d0" }}>
-            <div style={{ fontSize: "0.75rem", color: "#15803d", fontWeight: 700, textTransform: "uppercase" }}>Já Contactados</div>
-            <div style={{ fontSize: "2rem", fontWeight: 900, color: "#16a34a", marginTop: "0.25rem" }}>{contactedCount}</div>
+          <div className="bg-white p-5 rounded-lg border border-green-200 shadow-sm">
+            <div className="text-xs text-green-700 font-bold uppercase tracking-wider">Já Contactados</div>
+            <div className="text-3xl font-black text-green-600 mt-1">{contactedCount}</div>
           </div>
         </div>
 
         {/* Filter & Search Bar */}
-        <div
-          style={{
-            background: "#ffffff",
-            padding: "1rem 1.25rem",
-            borderRadius: "0.5rem",
-            border: "1.5px solid #e2e8f0",
-            marginBottom: "1.5rem",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "1rem",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="bg-white p-4 sm:p-5 rounded-lg border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
           {/* Status Tabs */}
-          <div style={{ display: "flex", gap: "0.375rem" }}>
+          <div className="flex flex-wrap gap-2">
             {[
               { id: "all", label: `Todos (${totalCount})` },
               { id: "pending", label: `Pendentes (${pendingCount})` },
@@ -237,16 +173,11 @@ export default function AdminPage() {
               <button
                 key={tab.id}
                 onClick={() => setFilterStatus(tab.id as any)}
-                style={{
-                  padding: "0.5rem 0.875rem",
-                  borderRadius: "0.375rem",
-                  fontSize: "0.8125rem",
-                  fontWeight: 700,
-                  border: filterStatus === tab.id ? "1.5px solid #f59e0b" : "1.5px solid #cbd5e1",
-                  background: filterStatus === tab.id ? "rgba(251, 191, 36, 0.12)" : "#ffffff",
-                  color: filterStatus === tab.id ? "#022c22" : "#475569",
-                  cursor: "pointer",
-                }}
+                className={`flex-1 sm:flex-none px-4 py-2 rounded-md text-sm font-bold border transition-colors ${
+                  filterStatus === tab.id
+                    ? "border-amber-500 bg-amber-500/10 text-emerald-950"
+                    : "border-slate-300 bg-white text-slate-600 hover:border-slate-400"
+                }`}
               >
                 {tab.label}
               </button>
@@ -254,47 +185,33 @@ export default function AdminPage() {
           </div>
 
           {/* Search Input */}
-          <div style={{ position: "relative", minWidth: "220px", flex: 1, maxWidth: "320px" }}>
-            <Search
-              size={15}
-              style={{ position: "absolute", left: "0.75rem", top: "50%", transform: "translateY(-50%)", color: "#94a3b8" }}
-            />
+          <div className="relative w-full md:max-w-xs">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Pesquisar por nome, telefone..."
+              placeholder="Pesquisar..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="form-input"
-              style={{ paddingLeft: "2.25rem", fontSize: "0.8125rem" }}
+              className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-md text-sm focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20"
             />
           </div>
         </div>
 
         {/* Lead Cards List */}
         {loading ? (
-          <div style={{ textAlign: "center", padding: "3rem 0", color: "#64748b" }}>
+          <div className="text-center py-12 text-slate-500">
             Carregando pedidos...
           </div>
         ) : filteredLeads.length === 0 ? (
-          <div
-            style={{
-              background: "#ffffff",
-              padding: "3rem 1.5rem",
-              borderRadius: "0.5rem",
-              border: "1.5px solid #e2e8f0",
-              textAlign: "center",
-            }}
-          >
-            <FileText size={36} style={{ color: "#cbd5e1", margin: "0 auto 0.75rem" }} />
-            <h3 style={{ fontWeight: 700, color: "#022c22", marginBottom: "0.25rem" }}>
-              Nenhum pedido encontrado
-            </h3>
-            <p style={{ color: "#64748b", fontSize: "0.875rem" }}>
+          <div className="bg-white py-12 px-6 rounded-lg border border-slate-200 text-center shadow-sm">
+            <FileText size={48} className="text-slate-300 mx-auto mb-4" />
+            <h3 className="font-bold text-emerald-950 text-lg mb-2">Nenhum pedido encontrado</h3>
+            <p className="text-slate-500 text-sm max-w-md mx-auto">
               Quando os clientes preencherem o formulário no site, os pedidos aparecerão aqui por ordem de entrada.
             </p>
           </div>
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div className="flex flex-col gap-4">
             {filteredLeads.map((lead) => {
               const serviceObj = SERVICES.find((s) => s.slug === lead.service);
               const parishObj = PARISHES.find((p) => p.slug === lead.parish);
@@ -309,47 +226,28 @@ export default function AdminPage() {
               return (
                 <div
                   key={lead.id}
-                  style={{
-                    background: "#ffffff",
-                    border: `1.5px solid ${lead.contacted ? "#e2e8f0" : "#f59e0b"}`,
-                    borderRadius: "0.5rem",
-                    padding: "1.25rem 1.5rem",
-                    boxShadow: lead.contacted ? "none" : "0 4px 15px rgba(245, 158, 11, 0.12)",
-                    transition: "all 0.2s ease",
-                  }}
+                  className={`bg-white rounded-lg p-5 sm:p-6 transition-all border-2 ${
+                    lead.contacted
+                      ? "border-slate-200"
+                      : "border-amber-500 shadow-[0_4px_15px_rgba(245,158,11,0.12)]"
+                  }`}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      justifyContent: "space-between",
-                      alignItems: "flex-start",
-                      gap: "1rem",
-                    }}
-                  >
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                     {/* Customer Header */}
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.375rem" }}>
-                        <h3 style={{ fontWeight: 800, fontSize: "1.125rem", color: "#022c22" }}>
+                    <div className="w-full sm:w-auto">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2">
+                        <h3 className="font-extrabold text-xl text-emerald-950">
                           {lead.name}
                         </h3>
 
                         <button
                           type="button"
                           onClick={() => toggleContacted(lead.id, lead.contacted)}
-                          style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "0.375rem",
-                            padding: "0.25rem 0.625rem",
-                            borderRadius: "0.25rem",
-                            fontSize: "0.75rem",
-                            fontWeight: 700,
-                            border: "none",
-                            cursor: "pointer",
-                            background: lead.contacted ? "rgba(34, 197, 94, 0.12)" : "rgba(251, 191, 36, 0.18)",
-                            color: lead.contacted ? "#15803d" : "#d97706",
-                          }}
+                          className={`inline-flex items-center self-start gap-1.5 px-3 py-1 rounded text-xs font-bold transition-colors ${
+                            lead.contacted
+                              ? "bg-green-100 text-green-700 hover:bg-green-200"
+                              : "bg-amber-100 text-amber-700 hover:bg-amber-200"
+                          }`}
                         >
                           {lead.contacted ? (
                             <>
@@ -365,12 +263,12 @@ export default function AdminPage() {
                         </button>
                       </div>
 
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", color: "#64748b", fontSize: "0.8125rem" }}>
-                        <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                          <Clock size={13} /> {formattedDate}
+                      <div className="flex flex-wrap gap-3 text-slate-500 text-sm">
+                        <span className="flex items-center gap-1.5">
+                          <Clock size={14} /> {formattedDate}
                         </span>
-                        <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                          <MapPin size={13} style={{ color: "#f59e0b" }} /> {parishObj ? parishObj.name : lead.parish}
+                        <span className="flex items-center gap-1.5">
+                          <MapPin size={14} className="text-amber-500" /> {parishObj ? parishObj.name : lead.parish}
                         </span>
                       </div>
                     </div>
@@ -378,39 +276,29 @@ export default function AdminPage() {
                     {/* Quick Call Action */}
                     <a
                       href={`tel:${lead.phone}`}
-                      className="btn-primary"
-                      style={{ padding: "0.5rem 1rem", fontSize: "0.875rem" }}
+                      className="w-full sm:w-auto btn-primary flex items-center justify-center py-2.5 px-5 text-sm"
                     >
-                      <Phone size={15} />
+                      <Phone size={16} />
                       <span>Ligar ({lead.phone})</span>
                     </a>
                   </div>
 
                   {/* Details Grid */}
-                  <div
-                    style={{
-                      marginTop: "1rem",
-                      paddingTop: "1rem",
-                      borderTop: "1px solid #f1f5f9",
-                      display: "grid",
-                      gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                      gap: "0.875rem",
-                    }}
-                  >
+                  <div className="mt-5 pt-5 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <span style={{ fontSize: "0.6875rem", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase" }}>
+                      <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1">
                         Serviço Pretendido
                       </span>
-                      <div style={{ fontWeight: 700, color: "#022c22", fontSize: "0.9375rem" }}>
+                      <div className="font-bold text-emerald-950 text-base">
                         {serviceObj ? serviceObj.title : lead.service}
                       </div>
                     </div>
 
                     <div>
-                      <span style={{ fontSize: "0.6875rem", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase" }}>
+                      <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1">
                         Urgência Escolhida
                       </span>
-                      <div style={{ fontWeight: 700, color: "#022c22", fontSize: "0.9375rem" }}>
+                      <div className="font-bold text-emerald-950 text-base">
                         {lead.urgency === "emergency" && "🔴 Urgência / Imediato"}
                         {lead.urgency === "this-week" && "🟡 Esta Semana"}
                         {lead.urgency === "planned" && "🟢 Planeado para Breve"}
@@ -421,11 +309,11 @@ export default function AdminPage() {
 
                   {/* Description */}
                   {lead.description && (
-                    <div style={{ marginTop: "0.875rem", background: "#f8fafc", padding: "0.75rem 1rem", borderRadius: "0.375rem", border: "1px solid #e2e8f0" }}>
-                      <span style={{ fontSize: "0.6875rem", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", display: "block", marginBottom: "0.25rem" }}>
+                    <div className="mt-4 bg-slate-50 p-4 rounded-md border border-slate-200">
+                      <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-2">
                         Descrição do Cliente
                       </span>
-                      <p style={{ color: "#334155", fontSize: "0.875rem", lineHeight: 1.5 }}>
+                      <p className="text-slate-700 text-sm leading-relaxed whitespace-pre-wrap">
                         {lead.description}
                       </p>
                     </div>
