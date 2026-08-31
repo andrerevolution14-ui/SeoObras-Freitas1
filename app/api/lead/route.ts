@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = "force-dynamic";
 
 const LeadSchema = z.object({
   service: z.string().min(1, "Serviço obrigatório"),
@@ -63,15 +63,20 @@ export async function POST(request: NextRequest) {
 
     console.log("📥 Nova Lead Recebida:", { ...lead, id: leadId, createdAt });
 
-    // Send email via Resend SDK
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
-    const toEmail = process.env.LEAD_EMAIL_TO || "Freitasrenovacoes@gmail.com";
+    // Send email via Resend SDK safely
+    const apiKey = process.env.RESEND_API_KEY;
+    let emailSent = false;
 
-    const { data, error } = await resend.emails.send({
-      from: `Freitas Renovações <${fromEmail}>`,
-      to: [toEmail],
-      subject: `🏠 Novo Pedido: ${lead.service} em ${lead.parish} — ${lead.name}`,
-      html: `
+    if (apiKey) {
+      const resend = new Resend(apiKey);
+      const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+      const toEmail = process.env.LEAD_EMAIL_TO || "Freitasrenovacoes@gmail.com";
+
+      const { data, error } = await resend.emails.send({
+        from: `Freitas Renovações <${fromEmail}>`,
+        to: [toEmail],
+        subject: `🏠 Novo Pedido: ${lead.service} em ${lead.parish} — ${lead.name}`,
+        html: `
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -156,17 +161,21 @@ export async function POST(request: NextRequest) {
   </table>
 </body>
 </html>
-      `,
-    });
+        `,
+      });
 
-    if (error) {
-      console.error("⚠️ Erro Resend ao enviar email:", error);
+      if (error) {
+        console.error("⚠️ Erro Resend ao enviar email:", error);
+      } else {
+        console.log("✅ Email de lead enviado com sucesso via Resend:", data);
+        emailSent = true;
+      }
     } else {
-      console.log("✅ Email de lead enviado com sucesso via Resend:", data);
+      console.warn("⚠️ RESEND_API_KEY não encontrada nas variáveis de ambiente.");
     }
 
     return NextResponse.json(
-      { success: true, message: "Pedido recebido com sucesso!", leadId, emailSent: !error },
+      { success: true, message: "Pedido recebido com sucesso!", leadId, emailSent },
       { status: 200 }
     );
   } catch (error) {
