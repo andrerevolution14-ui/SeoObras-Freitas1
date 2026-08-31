@@ -26,7 +26,7 @@ export function TrustBar() {
     <div
       className="trust-bar"
       style={{
-        background: "#022c22",
+        background: "#071a3a",
         borderTop: "1px solid rgba(255,255,255,0.08)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
         padding: "0.875rem 0",

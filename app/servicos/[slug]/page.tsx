@@ -80,7 +80,7 @@ export default async function ServicePage({ params }: Props) {
       {/* Hero */}
       <section
         style={{
-          background: "linear-gradient(135deg, #022c22 0%, #064e3b 100%)",
+          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
           padding: "7.5rem 0 4rem",
           position: "relative",
           overflow: "hidden",
@@ -213,7 +213,7 @@ export default async function ServicePage({ params }: Props) {
           <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
             {seo.faq.map((item, i) => (
               <div key={i} style={{ padding: "1.25rem", background: "#f8fafc", border: "1.5px solid #e2e8f0", borderRadius: "0.375rem" }}>
-                <h3 style={{ fontWeight: 800, color: "#022c22", marginBottom: "0.5rem", fontSize: "0.9375rem" }}>
+                <h3 style={{ fontWeight: 800, color: "#071a3a", marginBottom: "0.5rem", fontSize: "0.9375rem" }}>
                   {item.question}
                 </h3>
                 <p style={{ color: "#475569", lineHeight: 1.6, fontSize: "0.875rem" }}>{item.answer}</p>

@@ -148,7 +148,7 @@ export function HeroMultiStepForm() {
         >
           <CheckCircle size={32} color="#ffffff" />
         </div>
-        <h3 style={{ color: "#022c22", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
+        <h3 style={{ color: "#071a3a", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
           Pedido Recebido com Sucesso!
         </h3>
         <p style={{ color: "#475569", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
@@ -189,7 +189,7 @@ export function HeroMultiStepForm() {
       {/* Form Header */}
       <div
         style={{
-          background: "#022c22",
+          background: "#071a3a",
           padding: "1.25rem 1.5rem 1rem",
         }}
       >
@@ -272,7 +272,7 @@ export function HeroMultiStepForm() {
                         style={{
                           fontWeight: 700,
                           fontSize: "0.8125rem",
-                          color: isSelected ? "#022c22" : "#334155",
+                          color: isSelected ? "#071a3a" : "#334155",
                         }}
                       >
                         {service.shortTitle}
@@ -309,7 +309,7 @@ export function HeroMultiStepForm() {
                     >
                       <span style={{ fontSize: "1.25rem" }}>{opt.emoji}</span>
                       <div style={{ flex: 1 }}>
-                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#022c22" }}>
+                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#071a3a" }}>
                           {opt.label}
                         </div>
                         <div style={{ fontSize: "0.75rem", color: "#64748b" }}>

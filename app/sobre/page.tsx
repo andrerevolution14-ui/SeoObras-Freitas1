@@ -48,7 +48,7 @@ export default function SobrePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #022c22, #064e3b)", padding: "7.5rem 0 4rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
@@ -76,13 +76,13 @@ export default function SobrePage() {
                   width: "100%",
                   aspectRatio: "1",
                   borderRadius: "0.5rem",
-                  background: "linear-gradient(135deg, #022c22 0%, #064e3b 100%)",
+                  background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: "1rem",
                   border: "3px solid #fbbf24",
-                  boxShadow: "0 10px 30px rgba(2, 44, 34, 0.15)",
+                  boxShadow: "0 10px 30px rgba(7, 26, 58, 0.15)",
                 }}
               >
                 <div style={{ textAlign: "center" }}>
@@ -115,7 +115,7 @@ export default function SobrePage() {
                     <span style={{ color: "#d97706" }}>{c.icon}</span>
                     <div>
                       <div style={{ fontSize: "0.6875rem", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>{c.label}</div>
-                      <div style={{ fontSize: "0.875rem", fontWeight: 800, color: "#022c22" }}>{c.value}</div>
+                      <div style={{ fontSize: "0.875rem", fontWeight: 800, color: "#071a3a" }}>{c.value}</div>
                     </div>
                   </div>
                 ))}
@@ -124,18 +124,18 @@ export default function SobrePage() {
 
             {/* Bio */}
             <div>
-              <h2 style={{ fontSize: "1.875rem", fontWeight: 800, color: "#022c22", marginBottom: "1.25rem" }}>
+              <h2 style={{ fontSize: "1.875rem", fontWeight: 800, color: "#071a3a", marginBottom: "1.25rem" }}>
                 {CONTRACTOR_INFO.contractorName} — {CONTRACTOR_INFO.jobTitle}
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem", color: "#475569", fontSize: "0.9375rem", lineHeight: 1.7, marginBottom: "1.75rem" }}>
                 <p>
-                  O Jorge Freitas é o empreiteiro responsável pela <strong style={{ color: "#022c22" }}>Freitas Renovações LDA</strong> em Aveiro. A sua dedicação à transparência, rigor na execução e política de <strong style={{ color: "#022c22" }}>preços justos</strong> transformou a empresa numa referência de confiança na região.
+                  O Jorge Freitas é o empreiteiro responsável pela <strong style={{ color: "#071a3a" }}>Freitas Renovações LDA</strong> em Aveiro. A sua dedicação à transparência, rigor na execução e política de <strong style={{ color: "#071a3a" }}>preços justos</strong> transformou a empresa numa referência de confiança na região.
                 </p>
                 <p>
                   Jorge Freitas acompanha pessoalmente as obras, garantindo que os materiais aplicados cumprem os padrões de exigência e que a comunicação com o cliente é clara do início ao fim.
                 </p>
                 <p>
-                  A <strong style={{ color: "#022c22" }}>Freitas Renovações LDA</strong> é uma empresa devidamente licenciada com Alvará de Construção Válido e seguro de responsabilidade civil para execução de obras de construção e remodelação em Portugal.
+                  A <strong style={{ color: "#071a3a" }}>Freitas Renovações LDA</strong> é uma empresa devidamente licenciada com Alvará de Construção Válido e seguro de responsabilidade civil para execução de obras de construção e remodelação em Portugal.
                 </p>
               </div>
 
@@ -156,7 +156,7 @@ export default function SobrePage() {
                     }}
                   >
                     <span style={{ color: "#d97706", marginBottom: "0.375rem", display: "block" }}>{item.icon}</span>
-                    <div style={{ fontWeight: 700, color: "#022c22", fontSize: "0.875rem", marginBottom: "0.2rem" }}>{item.title}</div>
+                    <div style={{ fontWeight: 700, color: "#071a3a", fontSize: "0.875rem", marginBottom: "0.2rem" }}>{item.title}</div>
                     <div style={{ fontSize: "0.8125rem", color: "#64748b", lineHeight: 1.5 }}>{item.desc}</div>
                   </div>
                 ))}
@@ -180,7 +180,7 @@ export default function SobrePage() {
       <section
         id="localizacao"
         className="section-padding"
-        style={{ background: "linear-gradient(135deg, #022c22, #064e3b)" }}
+        style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)" }}
       >
         <div className="section-container" style={{ maxWidth: "760px" }}>
           <p className="section-eyebrow" style={{ color: "#fbbf24" }}>Localização Real</p>
@@ -218,10 +218,10 @@ export default function SobrePage() {
       {/* CTA */}
       <section style={{ background: "linear-gradient(135deg, #fbbf24, #f59e0b)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#022c22", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#071a3a", marginBottom: "0.75rem" }}>
             Pronto para solicitar o seu orçamento?
           </h2>
-          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#022c22", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#071a3a", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
             Pedir Orçamento Grátis e Transparente
             <ArrowRight size={16} />
           </Link>

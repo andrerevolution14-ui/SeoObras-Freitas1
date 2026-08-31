@@ -42,7 +42,7 @@ export function RealProjectsGallery() {
               }}
             >
               {/* Project Image */}
-              <div style={{ position: "relative", height: "230px", width: "100%", overflow: "hidden", background: "#022c22" }}>
+              <div style={{ position: "relative", height: "230px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
                 <img
                   src={project.image}
                   alt={project.title}
@@ -60,7 +60,7 @@ export function RealProjectsGallery() {
                     position: "absolute",
                     top: "0.75rem",
                     left: "0.75rem",
-                    background: "rgba(2, 44, 34, 0.9)",
+                    background: "rgba(7, 26, 58, 0.9)",
                     color: "#fbbf24",
                     fontSize: "0.6875rem",
                     fontWeight: 800,
@@ -80,7 +80,7 @@ export function RealProjectsGallery() {
                     top: "0.75rem",
                     right: "0.75rem",
                     background: "rgba(245, 158, 11, 0.95)",
-                    color: "#022c22",
+                    color: "#071a3a",
                     fontSize: "0.6875rem",
                     fontWeight: 900,
                     padding: "0.25rem 0.625rem",
@@ -119,7 +119,7 @@ export function RealProjectsGallery() {
               {/* Content Body */}
               <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                 <div>
-                  <h3 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#022c22", marginBottom: "0.375rem" }}>
+                  <h3 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#071a3a", marginBottom: "0.375rem" }}>
                     {project.title}
                   </h3>
 

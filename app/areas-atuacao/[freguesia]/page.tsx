@@ -77,7 +77,7 @@ export default async function ParishPage({ params }: Props) {
       {/* Hero */}
       <section
         style={{
-          background: "linear-gradient(135deg, #022c22 0%, #064e3b 100%)",
+          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
           padding: "7.5rem 0 4rem",
           position: "relative",
           overflow: "hidden",
@@ -173,7 +173,7 @@ export default async function ParishPage({ params }: Props) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1.25rem" }}>
             {SERVICES.map((service) => (
               <Link key={service.slug} href={`/servicos/${service.slug}`} className="service-card">
-                <h3 style={{ fontWeight: 800, color: "#022c22", marginBottom: "0.375rem" }}>
+                <h3 style={{ fontWeight: 800, color: "#071a3a", marginBottom: "0.375rem" }}>
                   {service.title} em {parish.name}
                 </h3>
                 <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.5, marginBottom: "0.875rem" }}>

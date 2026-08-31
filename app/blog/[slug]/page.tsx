@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #022c22, #064e3b)", padding: "7.5rem 0 4rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container" style={{ maxWidth: "840px" }}>
           {/* Breadcrumb */}
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: Props) {
               style={{ width: "70px", height: "70px", borderRadius: "50%", objectFit: "cover", border: "2px solid #f59e0b", flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontWeight: 800, color: "#022c22", fontSize: "1.0625rem" }}>
+              <div style={{ fontWeight: 800, color: "#071a3a", fontSize: "1.0625rem" }}>
                 Artigo verificado por {CONTRACTOR_INFO.contractorName}
               </div>
               <div style={{ fontSize: "0.8125rem", color: "#64748b", margin: "0.25rem 0 0.5rem" }}>
@@ -173,8 +173,8 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
 
           {/* Internal Silo Links */}
-          <div style={{ marginTop: "2.5rem", padding: "1.5rem", background: "rgba(2, 44, 34, 0.04)", border: "1px solid rgba(2, 44, 34, 0.1)", borderRadius: "0.5rem" }}>
-            <h3 style={{ fontWeight: 800, color: "#022c22", fontSize: "1rem", marginBottom: "0.75rem" }}>
+          <div style={{ marginTop: "2.5rem", padding: "1.5rem", background: "rgba(7, 26, 58, 0.04)", border: "1px solid rgba(7, 26, 58, 0.1)", borderRadius: "0.5rem" }}>
+            <h3 style={{ fontWeight: 800, color: "#071a3a", fontSize: "1rem", marginBottom: "0.75rem" }}>
               Serviços Relacionados em Aveiro:
             </h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div
             style={{
               marginTop: "3rem",
-              background: "linear-gradient(135deg, #022c22, #064e3b)",
+              background: "linear-gradient(135deg, #071a3a, #0f2d5e)",
               borderRadius: "0.5rem",
               padding: "2rem",
               color: "#ffffff",

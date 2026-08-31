@@ -14,7 +14,7 @@ export default function BlogIndexPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #022c22, #064e3b)", padding: "7.5rem 0 4rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
@@ -49,7 +49,7 @@ export default function BlogIndexPage() {
                 }}
               >
                 {/* Image Header */}
-                <div style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#022c22" }}>
+                <div style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
                   <img
                     src={post.image}
                     alt={post.title}
@@ -60,7 +60,7 @@ export default function BlogIndexPage() {
                       position: "absolute",
                       top: "0.75rem",
                       left: "0.75rem",
-                      background: "rgba(2, 44, 34, 0.9)",
+                      background: "rgba(7, 26, 58, 0.9)",
                       color: "#fbbf24",
                       fontSize: "0.6875rem",
                       fontWeight: 800,
@@ -84,7 +84,7 @@ export default function BlogIndexPage() {
                       </span>
                     </div>
 
-                    <h2 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#022c22", marginBottom: "0.5rem", lineHeight: 1.35 }}>
+                    <h2 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#071a3a", marginBottom: "0.5rem", lineHeight: 1.35 }}>
                       <Link href={`/blog/${post.slug}`} style={{ color: "inherit", textDecoration: "none" }}>
                         {post.title}
                       </Link>
@@ -122,13 +122,13 @@ export default function BlogIndexPage() {
       {/* CTA */}
       <section style={{ background: "linear-gradient(135deg, #fbbf24, #f59e0b)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#022c22", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#071a3a", marginBottom: "0.75rem" }}>
             Tem dúvidas sobre a sua obra em Aveiro?
           </h2>
-          <p style={{ color: "#022c22", fontSize: "1rem", marginBottom: "1.5rem", opacity: 0.9 }}>
+          <p style={{ color: "#071a3a", fontSize: "1rem", marginBottom: "1.5rem", opacity: 0.9 }}>
             Fale diretamente com o Empreiteiro Jorge Freitas e receba um orçamento gratuito com preço justo.
           </p>
-          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#022c22", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#071a3a", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
             Solicitar Orçamento Grátis
             <ArrowRight size={16} />
           </Link>

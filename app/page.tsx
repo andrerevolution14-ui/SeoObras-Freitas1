@@ -246,7 +246,7 @@ export default function HomePage() {
       <section
         className="section-padding"
         style={{
-          background: "linear-gradient(135deg, #022c22 0%, #064e3b 100%)",
+          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
           overflow: "hidden",
           position: "relative",
         }}
@@ -397,14 +397,14 @@ export default function HomePage() {
             style={{
               fontSize: "clamp(1.625rem, 3.2vw, 2.25rem)",
               fontWeight: 900,
-              color: "#022c22",
+              color: "#071a3a",
               marginBottom: "0.75rem",
               letterSpacing: "-0.01em",
             }}
           >
             Pronto para remodelar com preço justo?
           </h2>
-          <p style={{ color: "rgba(2, 44, 34, 0.85)", fontSize: "1rem", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
+          <p style={{ color: "rgba(7, 26, 58, 0.85)", fontSize: "1rem", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
             Peça um orçamento gratuito hoje. A equipa do Jorge Freitas responde no prazo máximo de 12 horas.
           </p>
 
@@ -416,14 +416,14 @@ export default function HomePage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "#022c22",
+                background: "#071a3a",
                 color: "#ffffff",
                 fontWeight: 800,
                 padding: "0.875rem 1.75rem",
                 borderRadius: "0.375rem",
                 fontSize: "1rem",
                 textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(2, 44, 34, 0.3)",
+                boxShadow: "0 4px 20px rgba(7, 26, 58, 0.3)",
               }}
             >
               <Phone size={18} />
@@ -437,14 +437,14 @@ export default function HomePage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "rgba(2, 44, 34, 0.12)",
-                color: "#022c22",
+                background: "rgba(7, 26, 58, 0.12)",
+                color: "#071a3a",
                 fontWeight: 800,
                 padding: "0.875rem 1.75rem",
                 borderRadius: "0.375rem",
                 fontSize: "1rem",
                 textDecoration: "none",
-                border: "2px solid rgba(2, 44, 34, 0.3)",
+                border: "2px solid rgba(7, 26, 58, 0.3)",
               }}
             >
               <span>Pedir Orçamento Online</span>

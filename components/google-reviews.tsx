@@ -58,7 +58,7 @@ export function GoogleReviews() {
               ))}
             </div>
             <div>
-              <span style={{ fontWeight: 800, fontSize: "1.125rem", color: "#022c22" }}>4.9</span>
+              <span style={{ fontWeight: 800, fontSize: "1.125rem", color: "#071a3a" }}>4.9</span>
               <span style={{ color: "#64748b", fontSize: "0.875rem" }}> / 5 · 48 avaliações reais no Google</span>
             </div>
           </div>
@@ -95,7 +95,7 @@ export function GoogleReviews() {
                     {review.name.charAt(0)}
                   </div>
                   <div>
-                    <div style={{ fontWeight: 800, fontSize: "0.9375rem", color: "#022c22" }}>
+                    <div style={{ fontWeight: 800, fontSize: "0.9375rem", color: "#071a3a" }}>
                       {review.name}
                     </div>
                     <div style={{ fontSize: "0.75rem", color: "#64748b" }}>
@@ -136,8 +136,8 @@ export function GoogleReviews() {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  background: "rgba(2, 44, 34, 0.06)",
-                  color: "#022c22",
+                  background: "rgba(7, 26, 58, 0.06)",
+                  color: "#071a3a",
                   fontSize: "0.75rem",
                   fontWeight: 700,
                   padding: "0.2rem 0.625rem",
@@ -182,7 +182,7 @@ export function GoogleReviews() {
 
 function getAvatarColor(name: string): string {
   const colors = [
-    "#022c22, #065f46",
+    "#071a3a, #1a3f7a",
     "#7c3aed, #5b21b6",
     "#0369a1, #0284c7",
     "#047857, #059669",
