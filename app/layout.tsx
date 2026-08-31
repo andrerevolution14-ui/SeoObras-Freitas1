@@ -6,7 +6,13 @@ import { Footer } from "@/components/footer";
 import { MobileCtaBar } from "@/components/mobile-cta-bar";
 import { CONTRACTOR_INFO, SERVICES, PARISHES } from "@/lib/constants";
 
-const inter = Inter({ subsets: ["latin"] });
+// Load Inter via next/font — zero layout shift, self-hosted, no external request
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: {
@@ -31,6 +37,16 @@ export const metadata: Metadata = {
   formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL("https://freitasrenovacoes.pt"),
   alternates: { canonical: "/" },
+  // Favicon via metadata API (Next.js 13+)
+  icons: {
+    icon: [
+      { url: "/logo1s.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo1s.png", type: "image/png" },
+    ],
+    shortcut: "/logo1s.png",
+  },
   openGraph: {
     type: "website",
     locale: "pt_PT",
@@ -99,6 +115,11 @@ const globalJsonLd = {
       },
       telephone: CONTRACTOR_INFO.phone,
       email: CONTRACTOR_INFO.email,
+      // Google Business Profile URL — verified Place ID
+      sameAs: [
+        "https://maps.app.goo.gl/FreitasRenovacoes",
+        "https://www.google.com/maps/place/?q=place_id:ChIJbnyBD_bGxkYRiViYJrwZFsE",
+      ],
       areaServed: PARISHES.map((p) => ({
         "@type": "City",
         name: p.name,
@@ -162,33 +183,19 @@ const globalJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-PT">
+    <html lang="pt-PT" className={inter.variable}>
       <head>
-        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.OneSignalDeferred = window.OneSignalDeferred || [];
-              OneSignalDeferred.push(async function(OneSignal) {
-                await OneSignal.init({
-                  appId: "94e1159f-de9f-4f5c-a4d1-ba714cb14dd5",
-                });
-              });
-            `,
-          }}
-        />
+        {/* DNS prefetch for performance */}
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className={`${inter.className} bg-slate-50 text-slate-700 antialiased`}>
+      <body className={`${inter.className} antialiased`}>
         <Header />
         <main>{children}</main>
         <Footer />

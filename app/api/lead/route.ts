@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import fs from "fs";
-import path from "path";
+import { Resend } from "resend";
 
 const LeadSchema = z.object({
   service: z.string().min(1, "Serviço obrigatório"),
@@ -25,37 +24,15 @@ export interface StoredLead {
   contactedAt?: string;
 }
 
-const DATA_FILE = path.join(process.cwd(), "leads.json");
+// Urgency label map
+const URGENCY_LABELS: Record<string, string> = {
+  urgente: "🚨 URGENTE (hoje/amanhã)",
+  "esta-semana": "⚡ Esta semana",
+  "este-mes": "📅 Este mês",
+  "sem-pressa": "🕐 Sem pressa",
+};
 
-function getLeads(): StoredLead[] {
-  try {
-    if (fs.existsSync(DATA_FILE)) {
-      const data = fs.readFileSync(DATA_FILE, "utf-8");
-      return JSON.parse(data);
-    }
-  } catch (err) {
-    console.error("Error reading leads file:", err);
-  }
-  return [];
-}
-
-function saveLeads(leads: StoredLead[]) {
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(leads, null, 2), "utf-8");
-  } catch (err) {
-    console.error("Error writing leads file:", err);
-  }
-}
-
-// GET — Retrieve all leads for Jorge's Workspace
-export async function GET() {
-  const leads = getLeads();
-  // Sort newest first
-  leads.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  return NextResponse.json({ leads });
-}
-
-// POST — New lead submission
+// POST — New lead submission → sends email via Resend
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -78,27 +55,123 @@ export async function POST(request: NextRequest) {
     }
 
     const lead = result.data;
-    const leads = getLeads();
+    const leadId = `lead_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+    const createdAt = new Date().toLocaleString("pt-PT", { timeZone: "Europe/Lisbon" });
+    const urgencyLabel = URGENCY_LABELS[lead.urgency] || lead.urgency;
 
-    const newLead: StoredLead = {
-      id: `lead_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`,
-      createdAt: new Date().toISOString(),
-      service: lead.service,
-      urgency: lead.urgency,
-      parish: lead.parish,
-      name: lead.name,
-      phone: lead.phone,
-      description: lead.description,
-      contacted: false,
-    };
+    console.log("📥 Nova Lead Recebida:", { ...lead, id: leadId, createdAt });
 
-    leads.push(newLead);
-    saveLeads(leads);
+    // Send email via Resend (only if API key is configured)
+    const apiKey = process.env.RESEND_API_KEY;
+    if (apiKey && apiKey !== "re_placeholder") {
+      try {
+        const resend = new Resend(apiKey);
+        const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+        const toEmail = process.env.LEAD_EMAIL_TO || "Freitasrenovacoes@gmail.com";
 
-    console.log("📥 Nova Lead Registada no Sistema:", newLead);
+        await resend.emails.send({
+          from: `Freitas Renovações — Novo Pedido <${fromEmail}>`,
+          to: [toEmail],
+          subject: `🏠 Novo Pedido: ${lead.service} em ${lead.parish} — ${lead.name}`,
+          html: `
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#071a3a,#0f2d5e);padding:28px 32px;">
+            <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:800;">🏠 Novo Pedido de Orçamento</h1>
+            <p style="margin:6px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">Freitas Renovações LDA — ${createdAt}</p>
+          </td>
+        </tr>
+        <!-- Alert badge -->
+        <tr>
+          <td style="padding:20px 32px 0;">
+            <div style="background:#fef3c7;border:1.5px solid #f59e0b;border-radius:8px;padding:12px 16px;display:inline-block;">
+              <span style="color:#92400e;font-weight:700;font-size:14px;">${urgencyLabel}</span>
+            </div>
+          </td>
+        </tr>
+        <!-- Details grid -->
+        <tr>
+          <td style="padding:20px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                  <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Cliente</span>
+                  <div style="color:#0f172a;font-size:16px;font-weight:700;margin-top:4px;">${lead.name}</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                  <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Telefone</span>
+                  <div style="margin-top:4px;">
+                    <a href="tel:${lead.phone}" style="color:#0f2d5e;font-size:20px;font-weight:800;text-decoration:none;">${lead.phone}</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                  <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Serviço</span>
+                  <div style="color:#0f172a;font-size:15px;font-weight:600;margin-top:4px;">${lead.service}</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                  <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Localização</span>
+                  <div style="color:#0f172a;font-size:15px;font-weight:600;margin-top:4px;">${lead.parish}</div>
+                </td>
+              </tr>
+              ${lead.description ? `
+              <tr>
+                <td style="padding:10px 0;">
+                  <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Descrição</span>
+                  <div style="color:#334155;font-size:14px;line-height:1.6;margin-top:4px;background:#f8fafc;border-radius:6px;padding:10px 12px;">${lead.description}</div>
+                </td>
+              </tr>` : ""}
+            </table>
+          </td>
+        </tr>
+        <!-- CTA -->
+        <tr>
+          <td style="padding:0 32px 28px;">
+            <a href="tel:${lead.phone}" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#071a3a;font-size:15px;font-weight:800;text-decoration:none;padding:14px 28px;border-radius:8px;">
+              📞 Ligar Agora para ${lead.name}
+            </a>
+          </td>
+        </tr>
+        <!-- Footer -->
+        <tr>
+          <td style="background:#f8fafc;padding:16px 32px;border-top:1px solid #e2e8f0;">
+            <p style="margin:0;color:#94a3b8;font-size:12px;">ID: ${leadId} · Freitas Renovações LDA · freitasrenovacoes.pt</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+          `,
+        });
+
+        console.log("✅ Email de lead enviado com sucesso via Resend");
+      } catch (emailError) {
+        console.error("⚠️ Erro ao enviar email via Resend:", emailError);
+        // Don't fail the request if email fails — the lead was received
+      }
+    } else {
+      console.log("ℹ️ RESEND_API_KEY não configurada — email não enviado (configura no Vercel)");
+    }
 
     return NextResponse.json(
-      { success: true, message: "Pedido recebido com sucesso!", lead: newLead },
+      { success: true, message: "Pedido recebido com sucesso!", leadId },
       { status: 200 }
     );
   } catch (error) {
@@ -110,31 +183,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH — Toggle lead contacted status
-export async function PATCH(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { id, contacted } = body;
-
-    if (!id) {
-      return NextResponse.json({ error: "ID de lead não fornecido" }, { status: 400 });
-    }
-
-    const leads = getLeads();
-    const index = leads.findIndex((l) => l.id === id);
-
-    if (index === -1) {
-      return NextResponse.json({ error: "Lead não encontrada" }, { status: 404 });
-    }
-
-    leads[index].contacted = !!contacted;
-    leads[index].contactedAt = contacted ? new Date().toISOString() : undefined;
-
-    saveLeads(leads);
-
-    return NextResponse.json({ success: true, lead: leads[index] });
-  } catch (error) {
-    console.error("PATCH lead error:", error);
-    return NextResponse.json({ error: "Erro ao atualizar lead" }, { status: 500 });
-  }
+// GET — not used in production (no persistent store), returns empty for compatibility
+export async function GET() {
+  return NextResponse.json({ leads: [], message: "Use email integration via Resend. Ver .env.example" });
 }

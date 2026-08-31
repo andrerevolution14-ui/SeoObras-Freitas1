@@ -17,7 +17,7 @@ export function MobileCtaBar() {
     <>
       <div style={{ height: "80px", display: "none" }} className="mobile-cta-spacer" />
 
-      <div className="mobile-cta-bar" style={{ background: "#022c22", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+      <div className="mobile-cta-bar" style={{ background: "#071a3a", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
         <a
           href={`tel:${CONTRACTOR_INFO.phone}`}
           id="mobile-cta-call"
@@ -54,7 +54,7 @@ export function MobileCtaBar() {
             gap: "0.5rem",
             background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
             border: "none",
-            color: "#022c22",
+            color: "#071a3a",
             fontWeight: 900,
             fontSize: "0.875rem",
             borderRadius: "0.375rem",

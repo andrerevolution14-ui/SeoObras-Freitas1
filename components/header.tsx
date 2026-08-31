@@ -27,8 +27,8 @@ export function Header() {
         zIndex: 50,
         transition: "all 0.3s ease",
         background: isScrolled
-          ? "rgba(2, 44, 34, 0.98)"
-          : "rgba(2, 44, 34, 0.92)",
+          ? "rgba(7, 26, 58, 0.98)"
+          : "rgba(7, 26, 58, 0.92)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
@@ -109,7 +109,7 @@ export function Header() {
       {isMobileMenuOpen && (
         <div
           style={{
-            background: "#022c22",
+            background: "#071a3a",
             borderTop: "1px solid rgba(255,255,255,0.08)",
             padding: "1rem 1.25rem 1.25rem",
           }}
@@ -121,7 +121,6 @@ export function Header() {
               { href: "/areas-atuacao/esgueira", label: "Áreas de Atuação em Aveiro" },
               { href: "/blog", label: "Blog & Guia de Obras em Aveiro" },
               { href: "/sobre", label: "Sobre o Jorge Freitas" },
-              { href: "/login", label: "Área de Trabalho (Login)" },
             ].map((item) => (
               <Link
                 key={item.href}

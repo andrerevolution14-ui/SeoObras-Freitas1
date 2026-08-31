@@ -1,14 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, ArrowRight, Shield, UserCheck } from "lucide-react";
-import { CONTRACTOR_INFO, SERVICES, PARISHES } from "@/lib/constants";
+import { Phone, Mail, MapPin, ArrowRight, Shield, UserCheck, ExternalLink, Star } from "lucide-react";
+import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // Google Business Profile — Place ID extraído do URL fornecido
+  // URL original: https://www.google.com/maps/place/Freitas+Renovações/@40.679534,-8.7662379,...
+  // Place ID: ChIJbnyBD_bGxkYRiViYJrwZFsE
+  const GOOGLE_MAPS_EMBED =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47652.34!2d-8.7662379!3d40.679534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6cc6ccf60f817c6f%3A0xc11699bc26385889!2sFreitas+Renova%C3%A7%C3%B5es!5e0!3m2!1spt-PT!2spt!4v1725096000000!5m2!1spt-PT!2spt";
+  const GOOGLE_MAPS_LINK =
+    "https://www.google.com/maps/place/Freitas+Renova%C3%A7%C3%B5es/@40.679534,-8.7662379,10z/data=!3m1!4b1!4m6!3m5!1s0x6cc6ccf60f817c6f:0xc11699bc26385889!8m2!3d40.679482!4d-8.4366004!16s%2Fg%2F11zx1bcp3x";
+
   return (
-    <footer className="footer" style={{ paddingTop: "3.5rem", background: "#022c22" }}>
+    <footer className="footer" style={{ paddingTop: "3.5rem", background: "#071a3a" }}>
       <div className="section-container">
         {/* Top Section */}
         <div
@@ -38,6 +46,32 @@ export function Footer() {
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", lineHeight: 1.65, marginBottom: "1rem" }}>
               Empresa de obras, remodelações e reparações em Aveiro. Empreiteiro responsável: Jorge Freitas.
             </p>
+
+            {/* Google Rating Badge */}
+            <a
+              href={GOOGLE_MAPS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "rgba(251, 191, 36, 0.1)",
+                border: "1px solid rgba(251, 191, 36, 0.35)",
+                borderRadius: "0.375rem",
+                padding: "0.5rem 0.875rem",
+                marginBottom: "1rem",
+                color: "#fbbf24",
+                fontSize: "0.8125rem",
+                fontWeight: 700,
+                textDecoration: "none",
+                transition: "background 0.2s",
+              }}
+            >
+              <Star size={13} fill="#fbbf24" />
+              <span>4.9 no Google Business</span>
+              <ExternalLink size={11} style={{ opacity: 0.7 }} />
+            </a>
 
             {/* 100% NAP Synchronization */}
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
@@ -81,24 +115,24 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Google Maps Interactive Embed */}
+          {/* Google Maps Embed — Localização Real */}
           <div>
             <h4 style={{ color: "#ffffff", fontWeight: 700, marginBottom: "0.875rem", fontSize: "0.8125rem", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-              Localização em Aveiro (GBP)
+              Localização Google Business
             </h4>
             <div
               style={{
-                borderRadius: "0.375rem",
+                borderRadius: "0.5rem",
                 overflow: "hidden",
                 border: "1px solid rgba(255,255,255,0.15)",
                 height: "180px",
                 width: "100%",
-                background: "#064e3b",
+                background: "#0f2d5e",
               }}
             >
               <iframe
-                title="Localização Freitas Renovações LDA Aveiro"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.543!2d-8.640135!3d40.647487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDM4JzUxLjAiTiA4wrAzOCcyNC41Ilc!5e0!3m2!1spt-PT!2spt!4v1700000000000!5m2!1spt-PT!2spt"
+                title="Freitas Renovações — Google Business Profile Aveiro"
+                src={GOOGLE_MAPS_EMBED}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -107,6 +141,24 @@ export function Footer() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <a
+              href={GOOGLE_MAPS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.375rem",
+                marginTop: "0.625rem",
+                color: "rgba(255,255,255,0.6)",
+                fontSize: "0.75rem",
+                textDecoration: "none",
+                transition: "color 0.2s",
+              }}
+            >
+              <ExternalLink size={11} />
+              Ver no Google Maps
+            </a>
           </div>
 
           {/* Services */}
@@ -130,7 +182,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Links & Blog & Admin */}
+          {/* Links Úteis */}
           <div>
             <h4 style={{ color: "#ffffff", fontWeight: 700, marginBottom: "0.875rem", fontSize: "0.8125rem", letterSpacing: "0.06em", textTransform: "uppercase" }}>
               Informação & Guia SEO
@@ -152,27 +204,26 @@ export function Footer() {
               ))}
             </ul>
 
+            {/* Contacto direto por email */}
             <div style={{ marginTop: "1.25rem", paddingTop: "0.875rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              <Link
-                href="/login"
-                id="footer-jorge-login"
+              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.5rem" }}>
+                Contacto Email
+              </p>
+              <a
+                href={`mailto:${CONTRACTOR_INFO.email}`}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  background: "rgba(251, 191, 36, 0.12)",
-                  border: "1px solid rgba(251, 191, 36, 0.3)",
                   color: "#fbbf24",
-                  padding: "0.5rem 0.875rem",
-                  borderRadius: "0.375rem",
-                  fontSize: "0.8125rem",
+                  fontSize: "0.875rem",
                   fontWeight: 700,
                   textDecoration: "none",
                 }}
               >
-                <UserCheck size={15} />
-                <span>Área de Trabalho</span>
-              </Link>
+                <Mail size={14} />
+                {CONTRACTOR_INFO.email}
+              </a>
             </div>
           </div>
         </div>
@@ -192,7 +243,7 @@ export function Footer() {
         >
           <p>© {currentYear} {CONTRACTOR_INFO.companyName}. Todos os direitos reservados.</p>
           <p style={{ color: "rgba(255,255,255,0.4)" }}>
-            Rua Magistério Primário, 3800-212 Aveiro (GPS: 40.647487, -8.640135)
+            {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} Aveiro (GPS: {CONTRACTOR_INFO.geo.latitude}, {CONTRACTOR_INFO.geo.longitude})
           </p>
         </div>
       </div>

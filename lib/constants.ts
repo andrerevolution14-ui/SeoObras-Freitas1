@@ -10,7 +10,7 @@ export const CONTRACTOR_INFO = {
   jobTitle: "Empreiteiro Geral",
   phone: "+351 961 455 997",
   phoneDisplay: "961 455 997",
-  email: "geral@freitasrenovacoes.pt",
+  email: "Freitasrenovacoes@gmail.com",
   website: "https://freitasrenovacoes.pt",
   address: {
     street: "R. Magistério Primário",

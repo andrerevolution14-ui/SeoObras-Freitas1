@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #064e3b;
-  --color-primary-dark: #022c22;
-  --color-primary-light: #065f46;
+  --color-primary: #0f2d5e;
+  --color-primary-dark: #071a3a;
+  --color-primary-light: #1a3f7a;
   --color-gold: #f59e0b;
   --color-gold-bright: #fbbf24;
   --color-gold-dark: #d97706;
@@ -48,7 +48,7 @@ body {
 /* Selection */
 ::selection {
   background: var(--color-gold);
-  color: #022c22;
+  color: #071a3a;
 }
 
 /* Gold gradient text */
@@ -86,7 +86,7 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(2, 44, 34, 0.08);
+  box-shadow: 0 12px 30px rgba(7, 26, 58, 0.08);
   border-color: #f59e0b;
 }
 
@@ -97,7 +97,7 @@ body {
   justify-content: center;
   gap: 0.5rem;
   background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #022c22;
+  color: #071a3a;
   font-weight: 800;
   padding: 0.75rem 1.5rem;
   border-radius: 0.375rem;
@@ -155,13 +155,13 @@ body {
   border: 1.5px solid #cbd5e1;
   border-radius: 0.375rem;
   font-size: 0.9375rem;
-  color: #022c22;
+  color: #071a3a;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
 }
 .form-input:focus {
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+  border-color: #0f2d5e;
+  box-shadow: 0 0 0 3px rgba(15, 45, 94, 0.15);
 }
 .form-input::placeholder {
   color: #94a3b8;
@@ -170,7 +170,7 @@ body {
 /* Progress bar */
 .progress-bar {
   height: 4px;
-  background: #064e3b;
+  background: #0f2d5e;
   border-radius: 2px;
   overflow: hidden;
 }
@@ -220,7 +220,7 @@ body {
   border: none;
   cursor: pointer;
   font-weight: 700;
-  color: #022c22;
+  color: #071a3a;
   font-size: 0.9375rem;
 }
 .accordion-content {
@@ -240,7 +240,7 @@ body {
 }
 .testimonial-card:hover {
   border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 8px 25px rgba(2, 44, 34, 0.06);
+  box-shadow: 0 8px 25px rgba(7, 26, 58, 0.06);
 }
 
 /* Section titles */
@@ -255,7 +255,7 @@ body {
 .section-title {
   font-size: clamp(1.75rem, 3.5vw, 2.375rem);
   font-weight: 800;
-  color: #022c22;
+  color: #071a3a;
   line-height: 1.2;
   margin-bottom: 0.875rem;
   letter-spacing: -0.01em;
@@ -267,9 +267,9 @@ body {
   line-height: 1.65;
 }
 
-/* Hero section — Forest Green gradient */
+/* Hero section — Navy Blue gradient */
 .hero-section {
-  background: linear-gradient(150deg, #022c22 0%, #064e3b 50%, #022c22 100%);
+  background: linear-gradient(150deg, #071a3a 0%, #0f2d5e 45%, #1a3f7a 100%);
   position: relative;
   overflow: hidden;
   padding: 6.5rem 0 4rem;
@@ -278,7 +278,7 @@ body {
 .hero-grid-pattern {
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.04;
   background-image: 
     linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
@@ -306,13 +306,13 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  background: linear-gradient(90deg, #0f2d5e, #1a3f7a);
   transform: scaleX(0);
   transition: transform 0.2s ease;
 }
 .service-card:hover {
-  border-color: #f59e0b;
-  box-shadow: 0 10px 30px rgba(2, 44, 34, 0.08);
+  border-color: #0f2d5e;
+  box-shadow: 0 10px 30px rgba(7, 26, 58, 0.1);
   transform: translateY(-2px);
 }
 .service-card:hover::before {
@@ -330,13 +330,13 @@ body {
   margin-bottom: 0.875rem;
 }
 .icon-wrapper-navy {
-  background: #022c22;
+  background: #0f2d5e;
   color: #fbbf24;
 }
 
 /* Trust bar */
 .trust-bar {
-  background: #022c22;
+  background: #071a3a;
   border-top: 1px solid rgba(255,255,255,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
@@ -364,7 +364,7 @@ body {
 
 /* Footer */
 .footer {
-  background: #022c22;
+  background: #071a3a;
   color: rgba(255,255,255,0.75);
 }
 .footer-link {
@@ -384,7 +384,7 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  background: #022c22;
+  background: #071a3a;
   border-top: 1px solid rgba(255,255,255,0.12);
   padding: 0.625rem 0.875rem;
   display: flex;
