@@ -40,12 +40,12 @@ export const metadata: Metadata = {
   // Favicon via metadata API (Next.js 13+)
   icons: {
     icon: [
-      { url: "/logo1s.png", type: "image/png" },
+      { url: "/favicon.png", type: "image/png" },
     ],
     apple: [
-      { url: "/logo1s.png", type: "image/png" },
+      { url: "/favicon.png", type: "image/png" },
     ],
-    shortcut: "/logo1s.png",
+    shortcut: "/favicon.png",
   },
   openGraph: {
     type: "website",

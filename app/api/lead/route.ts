@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const LeadSchema = z.object({
   service: z.string().min(1, "Serviço obrigatório"),
   urgency: z.string().min(1, "Urgência obrigatória"),
@@ -55,25 +57,21 @@ export async function POST(request: NextRequest) {
     }
 
     const lead = result.data;
-    const leadId = `lead_${Date.now()}_${Math.random().toString(36).substr(2, 4)}`;
+    const leadId = `lead_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const createdAt = new Date().toLocaleString("pt-PT", { timeZone: "Europe/Lisbon" });
     const urgencyLabel = URGENCY_LABELS[lead.urgency] || lead.urgency;
 
     console.log("📥 Nova Lead Recebida:", { ...lead, id: leadId, createdAt });
 
-    // Send email via Resend (only if API key is configured)
-    const apiKey = process.env.RESEND_API_KEY;
-    if (apiKey && apiKey !== "re_placeholder") {
-      try {
-        const resend = new Resend(apiKey);
-        const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
-        const toEmail = process.env.LEAD_EMAIL_TO || "Freitasrenovacoes@gmail.com";
+    // Send email via Resend SDK
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+    const toEmail = process.env.LEAD_EMAIL_TO || "Freitasrenovacoes@gmail.com";
 
-        await resend.emails.send({
-          from: `Freitas Renovações — Novo Pedido <${fromEmail}>`,
-          to: [toEmail],
-          subject: `🏠 Novo Pedido: ${lead.service} em ${lead.parish} — ${lead.name}`,
-          html: `
+    const { data, error } = await resend.emails.send({
+      from: `Freitas Renovações <${fromEmail}>`,
+      to: [toEmail],
+      subject: `🏠 Novo Pedido: ${lead.service} em ${lead.parish} — ${lead.name}`,
+      html: `
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -158,20 +156,17 @@ export async function POST(request: NextRequest) {
   </table>
 </body>
 </html>
-          `,
-        });
+      `,
+    });
 
-        console.log("✅ Email de lead enviado com sucesso via Resend");
-      } catch (emailError) {
-        console.error("⚠️ Erro ao enviar email via Resend:", emailError);
-        // Don't fail the request if email fails — the lead was received
-      }
+    if (error) {
+      console.error("⚠️ Erro Resend ao enviar email:", error);
     } else {
-      console.log("ℹ️ RESEND_API_KEY não configurada — email não enviado (configura no Vercel)");
+      console.log("✅ Email de lead enviado com sucesso via Resend:", data);
     }
 
     return NextResponse.json(
-      { success: true, message: "Pedido recebido com sucesso!", leadId },
+      { success: true, message: "Pedido recebido com sucesso!", leadId, emailSent: !error },
       { status: 200 }
     );
   } catch (error) {
@@ -183,7 +178,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET — not used in production (no persistent store), returns empty for compatibility
+// GET — compatibility endpoint
 export async function GET() {
-  return NextResponse.json({ leads: [], message: "Use email integration via Resend. Ver .env.example" });
+  return NextResponse.json({ message: "API de pedidos ativa." });
 }
