@@ -11,12 +11,14 @@ import {
   Layers,
   MapPin,
   Phone,
+  Mail,
   ArrowRight,
   ArrowLeft,
   CheckCircle,
   Upload,
   User,
   AlertTriangle,
+  Loader2,
 } from "lucide-react";
 import { SERVICES, PARISHES, URGENCY_OPTIONS, CONTRACTOR_INFO } from "@/lib/constants";
 
@@ -35,6 +37,7 @@ interface FormData {
   parish: string;
   name: string;
   phone: string;
+  email: string;
   description: string;
   photo: File | null;
 }
@@ -45,6 +48,7 @@ const initialFormData: FormData = {
   parish: "",
   name: "",
   phone: "",
+  email: "",
   description: "",
   photo: null,
 };
@@ -69,6 +73,8 @@ export function HeroMultiStepForm() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedCustomer, setSubmittedCustomer] = useState<{ name: string; phone: string }>({ name: "", phone: "" });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -92,20 +98,39 @@ export function HeroMultiStepForm() {
     }
 
     setIsSubmitting(true);
-    try {
-      const body = new FormData();
-      body.append("service", formData.service);
-      body.append("urgency", formData.urgency);
-      body.append("parish", formData.parish);
-      body.append("name", formData.name);
-      body.append("phone", formData.phone);
-      body.append("description", formData.description);
-      if (formData.photo) body.append("photo", formData.photo);
+    setErrorMessage(null);
 
-      const res = await fetch("/api/lead", { method: "POST", body });
-      if (res.ok) setIsSubmitted(true);
+    try {
+      const payload = {
+        nome: formData.name.trim(),
+        telefone: formData.phone.trim(),
+        email: formData.email.trim(),
+        localidade: formData.parish,
+        servico: formData.service,
+        mensagem: formData.description.trim(),
+      };
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSubmittedCustomer({ name: formData.name, phone: formData.phone });
+        setIsSubmitted(true);
+        setFormData(initialFormData);
+        setErrors({});
+      } else {
+        setErrorMessage(data.error || "Ocorreu um erro ao enviar o pedido. Por favor tente novamente.");
+      }
     } catch (err) {
       console.error("Erro na submissão:", err);
+      setErrorMessage("Erro de ligação ao servidor. Por favor verifique a sua ligação ou contacte por telefone.");
     } finally {
       setIsSubmitting(false);
     }
@@ -152,8 +177,8 @@ export function HeroMultiStepForm() {
           Pedido Recebido com Sucesso!
         </h3>
         <p style={{ color: "#475569", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
-          Obrigado, <strong>{formData.name}</strong>! O Jorge Freitas irá analisar o seu pedido e entrará em contacto para o número{" "}
-          <strong>{formData.phone}</strong>.
+          Obrigado, <strong>{submittedCustomer.name || "estimado cliente"}</strong>! O Jorge Freitas recebeu a sua solicitação diretamente no Telegram e entrará em contacto para o número{" "}
+          <strong>{submittedCustomer.phone}</strong>.
         </p>
         <div
           style={{
@@ -165,7 +190,7 @@ export function HeroMultiStepForm() {
           }}
         >
           <p style={{ color: "#d97706", fontSize: "0.8125rem", fontWeight: 700 }}>
-            🔔 Resposta garantida até 12 horas com orçamento transparente e preço justo.
+            🔔 Notificação enviada em tempo real. Resposta garantida até 12 horas com orçamento transparente e preço justo.
           </p>
         </div>
         <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>
