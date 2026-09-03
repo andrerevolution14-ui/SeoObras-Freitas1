@@ -213,6 +213,7 @@ export function HeroMultiStepForm() {
     >
       {/* Form Header */}
       <div
+        className="hero-form-header"
         style={{
           background: "#071a3a",
           padding: "1.25rem 1.5rem 1rem",
@@ -252,7 +253,7 @@ export function HeroMultiStepForm() {
       </div>
 
       {/* Form Body */}
-      <div style={{ padding: "1.25rem 1.5rem", minHeight: "260px", position: "relative", overflow: "hidden" }}>
+      <div className="hero-form-body" style={{ padding: "1.25rem 1.5rem", minHeight: "260px", position: "relative", overflow: "hidden" }}>
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={step}
@@ -265,7 +266,7 @@ export function HeroMultiStepForm() {
           >
             {/* STEP 1: Service selection */}
             {step === 1 && (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.625rem" }}>
+              <div className="form-service-grid">
                 {SERVICES.map((service) => {
                   const isSelected = formData.service === service.slug;
                   return (
@@ -456,7 +457,7 @@ export function HeroMultiStepForm() {
                     <input
                       id="form-phone"
                       type="tel"
-                      placeholder="Contacto telefónico (ex: 961 455 997) *"
+                      placeholder="Telefone (ex: 961 455 997) *"
                       value={formData.phone}
                       onChange={(e) => {
                         setFormData((d) => ({ ...d, phone: e.target.value }));
@@ -522,6 +523,7 @@ export function HeroMultiStepForm() {
 
       {/* Form Navigation */}
       <div
+        className="hero-form-footer"
         style={{
           padding: "1rem 1.5rem 1.25rem",
           borderTop: "1px solid #e2e8f0",

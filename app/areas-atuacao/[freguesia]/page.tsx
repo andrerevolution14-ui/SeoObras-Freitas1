@@ -23,12 +23,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
-    alternates: { canonical: `/areas-atuacao/${freguesia}` },
+    alternates: { canonical: `https://freitasrenovacoes.pt/areas-atuacao/${freguesia}` },
     openGraph: {
       title: seo.title,
       description: seo.description,
       url: `https://freitasrenovacoes.pt/areas-atuacao/${freguesia}`,
       type: "website",
+      images: [
+        {
+          url: "https://freitasrenovacoes.pt/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `Obras em ${parish?.name ?? freguesia}, Aveiro — Freitas Renovações LDA`,
+        },
+      ],
     },
   };
 }
@@ -73,6 +81,15 @@ export default async function ParishPage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: "https://freitasrenovacoes.pt/" },
+          { "@type": "ListItem", position: 2, name: "Áreas de Atuação", item: "https://freitasrenovacoes.pt/areas-atuacao" },
+          { "@type": "ListItem", position: 3, name: parish.name, item: `https://freitasrenovacoes.pt/areas-atuacao/${freguesia}` },
+        ],
+      }) }} />
 
       {/* Hero */}
       <section

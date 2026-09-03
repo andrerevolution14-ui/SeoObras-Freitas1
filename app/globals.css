@@ -416,3 +416,43 @@ body {
     padding: 5.5rem 0 3rem;
   }
 }
+
+/* ── Mobile Form Fixes ─────────────────────────────────────── */
+/* Prevent iOS auto-zoom on input focus (requires font-size >= 16px) */
+@media (max-width: 768px) {
+  .form-input {
+    font-size: 16px !important;
+  }
+
+  /* Form container padding tighter on small screens */
+  .hero-form-header {
+    padding: 1rem 1rem 0.875rem !important;
+  }
+
+  .hero-form-body {
+    padding: 1rem !important;
+    min-height: auto !important;
+  }
+
+  .hero-form-footer {
+    padding: 0.875rem 1rem 1rem !important;
+  }
+}
+
+/* Step 1 service selector: 2-col on most screens, 1-col on very small */
+.form-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+}
+
+@media (max-width: 380px) {
+  .form-service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure form body content doesn't clip on mobile */
+.hero-form-body-inner {
+  overflow: visible;
+}

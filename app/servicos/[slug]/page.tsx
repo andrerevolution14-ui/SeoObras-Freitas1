@@ -23,12 +23,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
-    alternates: { canonical: `/servicos/${slug}` },
+    alternates: { canonical: `https://freitasrenovacoes.pt/servicos/${slug}` },
     openGraph: {
       title: seo.title,
       description: seo.description,
       url: `https://freitasrenovacoes.pt/servicos/${slug}`,
       type: "website",
+      images: [
+        {
+          url: "https://freitasrenovacoes.pt/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${service.title} em Aveiro — Freitas Renovações LDA`,
+        },
+      ],
     },
   };
 }
@@ -76,6 +84,15 @@ export default async function ServicePage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: "https://freitasrenovacoes.pt/" },
+          { "@type": "ListItem", position: 2, name: "Serviços", item: "https://freitasrenovacoes.pt/servicos" },
+          { "@type": "ListItem", position: 3, name: service.title, item: `https://freitasrenovacoes.pt/servicos/${slug}` },
+        ],
+      }) }} />
 
       {/* Hero */}
       <section
