@@ -71,24 +71,40 @@ export default function SobrePage() {
           <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: "3.5rem", alignItems: "start" }} className="about-profile-grid">
             {/* Avatar & Cards */}
             <div>
+              {/* Card Institucional da Empresa */}
               <div
                 style={{
                   width: "100%",
-                  aspectRatio: "1",
                   borderRadius: "0.5rem",
-                  background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
+                  padding: "2rem 1.5rem",
+                  marginBottom: "1rem",
+                  border: "1.5px solid #fbbf24",
+                  boxShadow: "0 10px 30px rgba(7, 26, 58, 0.15)",
+                  background: "linear-gradient(135deg, #071a3a, #0f2d5e)",
+                  textAlign: "center",
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  marginBottom: "1rem",
-                  border: "3px solid #fbbf24",
-                  boxShadow: "0 10px 30px rgba(7, 26, 58, 0.15)",
+                  gap: "0.75rem",
                 }}
               >
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "4.5rem", marginBottom: "0.25rem" }}>👷</div>
-                  <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "1.125rem" }}>Jorge Freitas</div>
-                  <div style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.8125rem" }}>Empreiteiro Responsável</div>
+                <img
+                  src="/logo1s.png"
+                  alt="Freitas Renovações LDA — Empreiteiro Aveiro"
+                  style={{
+                    height: "64px",
+                    width: "auto",
+                    objectFit: "contain",
+                    display: "block",
+                  }}
+                />
+                <div>
+                  <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.125rem" }}>Freitas Renovações LDA</div>
+                  <div style={{ color: "#fbbf24", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.05em" }}>EMPREITEIRO EM AVEIRO</div>
+                </div>
+                <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.75)", marginTop: "0.25rem" }}>
+                  Alvará IMPIC Válido · Seguro de Obras
                 </div>
               </div>
 

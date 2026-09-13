@@ -131,7 +131,11 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="section-container" style={{ maxWidth: "840px" }}>
           {/* Main Image */}
           <div style={{ borderRadius: "0.5rem", overflow: "hidden", marginBottom: "2.5rem", border: "1.5px solid #e2e8f0", maxHeight: "400px" }}>
-            <img src={post.image} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <img
+              src={post.image}
+              alt={`${post.title} — Guia de obras e remodelações em Aveiro por Jorge Freitas`}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
           </div>
 
           {/* Article Body */}
@@ -156,7 +160,7 @@ export default async function BlogPostPage({ params }: Props) {
           >
             <img
               src="/jorge-freitas.jpg"
-              alt="Jorge Freitas"
+              alt="Empreiteiro Jorge Freitas — Autor e especialista técnico de construção civil e remodelações em Aveiro"
               style={{ width: "70px", height: "70px", borderRadius: "50%", objectFit: "cover", border: "2px solid #f59e0b", flexShrink: 0 }}
             />
             <div>

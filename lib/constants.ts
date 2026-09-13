@@ -180,48 +180,63 @@ export interface RealProject {
   hasBeforeAfter: boolean;
   beforeImage?: string;
   description: string;
+  altText: string;
+  areaM2?: number;
+  realPrice?: number;
 }
 
 export const REAL_PROJECTS: RealProject[] = [
   {
     id: "p1",
-    title: "Remodelação Completa de Moradia",
+    title: "Remodelação Completa de Moradia T3",
     service: "Remodelação Geral",
     parish: "Esgueira, Aveiro",
     year: "2025",
     image: "/moradia1.jpg",
     hasBeforeAfter: false,
-    description: "Remodelação integral de espaços interiores, renovação de pisos, tectos falsos e pintura geral.",
+    areaM2: 130,
+    realPrice: 42000,
+    altText: "Remodelação completa de moradia T3 em Esgueira Aveiro pelo Empreiteiro Jorge Freitas",
+    description: "Remodelação integral de espaços interiores, renovação de pisos, tectos falsos com isolamento acústico e pintura geral.",
   },
   {
     id: "p2",
-    title: "Limpeza e Manutenção de Telhado",
+    title: "Limpeza e Impermeabilização de Telhado",
     service: "Infiltrações & Telhados",
     parish: "Aradas, Aveiro",
     year: "2024",
     image: "/LimpezaT1.jpg",
     hasBeforeAfter: false,
-    description: "Lavagem de alta pressão de cobertura, remoção de musgos e impermeabilização protetora.",
+    areaM2: 120,
+    realPrice: 2350,
+    altText: "Limpeza profunda e impermeabilização de cobertura de moradia em Aradas Aveiro",
+    description: "Lavagem de alta pressão de cobertura, remoção de musgos da ria e impermeabilização protetora com tela elastomérica.",
   },
   {
     id: "p3",
-    title: "Capoto + Pintura de Fachada",
+    title: "Capoto ETICS + Pintura de Fachada",
     service: "Pintura & Capoto",
     parish: "Glória e Vera Cruz, Aveiro",
     year: "2026",
     image: "/capoto SEM Before.avif",
     hasBeforeAfter: false,
-    description: "Aplicação do sistema ETICS/Capoto para isolamento térmico exterior com pintura final de alta resistência.",
+    areaM2: 160,
+    realPrice: 7200,
+    altText: "Aplicação de sistema ETICS Capoto para isolamento térmico exterior em Glória e Vera Cruz Aveiro",
+    description: "Aplicação do sistema ETICS/Capoto para isolamento térmico exterior com pintura final acrílica de alta resistência à humidade.",
   },
   {
     id: "p4",
-    title: "Instalação Elétrica Completa",
+    title: "Instalação Elétrica Completa e Quadro",
     service: "Eletricidade",
     parish: "São Bernardo, Aveiro",
     year: "2023",
     image: "/eletrica1.jfif",
     hasBeforeAfter: false,
-    description: "Renovação integral da rede elétrica, montagem de novo quadro elétrico, iluminação LED e tomadas.",
+    areaM2: 95,
+    realPrice: 4500,
+    altText: "Instalação elétrica certificada com montagem de novo quadro elétrico em São Bernardo Aveiro",
+    description: "Renovação integral da rede elétrica, montagem de novo quadro elétrico com disjuntores diferenciais e iluminação LED.",
   },
 ];
 

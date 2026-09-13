@@ -45,7 +45,7 @@ export function RealProjectsGallery() {
               <div style={{ position: "relative", height: "230px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={project.altText || `${project.title} em ${project.parish} Aveiro`}
                   style={{
                     width: "100%",
                     height: "100%",

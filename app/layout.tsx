@@ -241,14 +241,48 @@ const globalJsonLd = {
       description: "Empresa de obras e remodelações em Aveiro — Freitas Renovações LDA",
       inLanguage: "pt-PT",
       publisher: { "@id": "https://www.grupofreitasrenovacoes.pt/#organization" },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://www.grupofreitasrenovacoes.pt/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
+    },
+    {
+      "@type": "HowTo",
+      name: "Como Remodelar uma Casa de Banho em Aveiro — Passos Essenciais",
+      description: "Guia técnico passo a passo para remodelar a casa de banho em Aveiro com preços justos, desde a demolição à vistoria final.",
+      estimatedCost: {
+        "@type": "MonetaryAmount",
+        currency: "EUR",
+        value: "3450",
       },
+      step: [
+        {
+          "@type": "HowToStep",
+          name: "Diagnóstico e Medições",
+          text: "Medir área útil, verificar prumadas e inspecionar canos antigos de ferro ou chumbo.",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Seleção de Materiais e Loiças",
+          text: "Escolher base de duche plana, torneiras economizadoras e cerâmica porcelânica retificada.",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Demolição e Preparação Segura",
+          text: "Remover banheira antiga, resguardos e azulejos com transporte a vazadouro licenciado em Aveiro.",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Canalização Multicamada e Impermeabilização",
+          text: "Instalar tubagens PEX/Multicamada sem uniões no chão e aplicar membrana líquida impermeabilizante armada.",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Assentamento de Cerâmica e Acabamentos",
+          text: "Colocar revestimentos com cimento-cola C2TE e betume hidrófugo resistente ao clima húmido de Aveiro.",
+        },
+        {
+          "@type": "HowToStep",
+          name: "Montagem de Equipamentos e Vistoria Final",
+          text: "Instalação de resguardo em vidro temperado 8mm, sanita compacta e entrega da garantia contratual.",
+        },
+      ],
     },
   ],
 };

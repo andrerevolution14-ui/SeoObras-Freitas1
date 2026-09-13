@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, MessageCircle, ArrowRight, CheckCircle, Clock, Shield, Star } from "lucide-react";
 import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
+import { CostCalculator } from "@/components/cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Pedir Orçamento Gratuito em Aveiro | Freitas Renovações LDA",
+  title: "Pedir Orçamento Gratuito & Calculadora de Obras em Aveiro | Freitas Renovações LDA",
   description:
-    "Peça orçamento gratuito para obras e remodelações em Aveiro. Resposta em menos de 12 horas. Empresa licenciada IMPIC, empreiteiro Jorge Freitas. Sem compromisso.",
+    "Calcule o seu orçamento online ou peça proposta gratuita para obras e remodelações em Aveiro. Resposta em < 12h. Empreiteiro Jorge Freitas. Sem compromisso.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/orcamento" },
   openGraph: {
     title: "Pedir Orçamento Gratuito em Aveiro | Freitas Renovações LDA",
     description:
-      "Orçamento gratuito, detalhado e sem compromisso. Resposta em menos de 12h. ⭐ 4.9/5 no Google.",
+      "Calculadora de obras e orçamento gratuito, detalhado e sem compromisso. Resposta em menos de 12h. ⭐ 4.9/5 no Google.",
     url: "https://www.grupofreitasrenovacoes.pt/orcamento",
     type: "website",
   },
@@ -20,9 +21,9 @@ export const metadata: Metadata = {
 const orcamentoJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Pedido de Orçamento — Freitas Renovações LDA",
+  name: "Pedido de Orçamento e Calculadora — Freitas Renovações LDA",
   url: "https://www.grupofreitasrenovacoes.pt/orcamento",
-  description: "Formulário de contacto para pedir orçamento gratuito de obras e remodelações em Aveiro",
+  description: "Calculadora interativa e formulário de contacto para pedir orçamento gratuito de obras e remodelações em Aveiro",
   mainEntity: {
     "@type": "HomeAndConstructionBusiness",
     name: CONTRACTOR_INFO.companyName,
@@ -50,14 +51,19 @@ export default function OrcamentoPage() {
           </nav>
           <p className="section-eyebrow">Gratuito &amp; Sem Compromisso</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
-            Peça o Seu Orçamento Gratuito
+            Calculadora &amp; Pedido de Orçamento Gratuito em Aveiro
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "560px", lineHeight: 1.65 }}>
-            Descreva o trabalho que precisa. O empreiteiro Jorge Freitas responde pessoalmente
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "600px", lineHeight: 1.65 }}>
+            Simule o custo da sua obra na calculadora abaixo ou contacte diretamente. O empreiteiro Jorge Freitas responde pessoalmente
             em menos de 12 horas com um orçamento detalhado e preço justo.
           </p>
         </div>
       </section>
+
+      {/* Interactive Calculator Section */}
+      <div style={{ background: "#f8fafc", padding: "3rem 0 1rem" }}>
+        <CostCalculator idPrefix="orcamento-page-calc" embedded={false} />
+      </div>
 
       {/* Trust Strip */}
       <section style={{ background: "#ffffff", borderBottom: "1px solid #e2e8f0", padding: "1.25rem 0" }}>
@@ -81,7 +87,7 @@ export default function OrcamentoPage() {
       {/* Main Content */}
       <section className="section-padding" style={{ background: "#f8fafc" }}>
         <div className="section-container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }} id="orcamento-grid">
 
             {/* Left: Contact Options */}
             <div>

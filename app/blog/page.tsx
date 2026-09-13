@@ -52,7 +52,7 @@ export default function BlogIndexPage() {
                 <div style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
                   <img
                     src={post.image}
-                    alt={post.title}
+                    alt={`${post.title} — Artigo de remodelações em Aveiro por Jorge Freitas`}
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
                   <div

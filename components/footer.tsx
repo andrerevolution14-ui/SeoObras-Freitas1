@@ -33,7 +33,7 @@ export function Footer() {
             <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.875rem" }}>
               <img
                 src="/logo1s.png"
-                alt="Freitas Renovações LDA"
+                alt="Logótipo oficial da Freitas Renovações LDA — Empreiteiro em Aveiro"
                 style={{ height: "42px", width: "auto", objectFit: "contain" }}
               />
               <div>
@@ -189,19 +189,36 @@ export function Footer() {
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
-                { href: "/blog", label: "Blog & Artigos de Obras" },
-                { href: "/sobre", label: "Sobre o Jorge Freitas" },
-                { href: "/projetos", label: "Projetos Realizados" },
-                { href: "/#faq", label: "Perguntas Frequentes" },
-                { href: "/#hero-form", label: "Pedir Orçamento Grátis" },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="footer-link" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+                { href: "/orcamento", label: "Calculadora de Orçamento" },
+                { href: "/precos-reais", label: "Preços Reais de Obras" },
+                { href: "/precos-m2", label: "Tabela Preços Médios por m²" },
+                { href: "/planificador", label: "Planificador Passo a Passo" },
+                { href: "/verdemont", label: "Projeto Verdemont (Destaque)" },
+                { href: "/projetos", label: "Portfólio de Projetos" },
+                { href: "/blog/como-poupar-dinheiro-em-renovacoes-aveiro", label: "Como Poupar em Obras" },
+                { href: "/blog/melhores-ideias-renovacao-low-cost-aveiro", label: "Ideias Low-Cost Aveiro" },
+                { href: "/blog", label: "Blog & Todos os Guias" },
+                { href: "/sobre", label: "Sobre Nós" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="footer-link" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
                     <ArrowRight size={12} style={{ color: "#fbbf24", flexShrink: 0 }} />
-                    {item.label}
+                    {link.label}
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="http://www.verdemont.eu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-link"
+                  style={{ display: "flex", alignItems: "center", gap: "0.375rem", color: "#fbbf24" }}
+                >
+                  <ExternalLink size={12} style={{ color: "#fbbf24", flexShrink: 0 }} />
+                  <span>Projeto Verdemont (www.verdemont.eu)</span>
+                </a>
+              </li>
             </ul>
 
             {/* Contacto direto por email */}

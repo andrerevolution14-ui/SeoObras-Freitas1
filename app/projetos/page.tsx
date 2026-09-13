@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, MapPin, Calendar, CheckCircle } from "lucide-react";
-import { REAL_PROJECTS } from "@/lib/constants";
+import { ArrowRight, MapPin, Calendar, CheckCircle, Euro, Maximize2 } from "lucide-react";
+import { REAL_PROJECTS, CONTRACTOR_INFO } from "@/lib/constants";
+import { PastProjectsPricing } from "@/components/past-projects-pricing";
+import { VerdemontShowcase } from "@/components/verdemont-showcase";
 
 export const metadata: Metadata = {
-  title: "Projetos Realizados em Aveiro (2022-2026) | Freitas Renovações LDA",
+  title: "Obras Realizadas em Aveiro e Preços Reais (2022-2026) | Freitas Renovações LDA",
   description:
-    "Galeria de obras e remodelações efetuadas pela Freitas Renovações LDA em Aveiro. Veja os resultados reais das nossas intervenções entre 2022 e 2026.",
-  alternates: { canonical: "/projetos" },
+    "Veja obras passadas e preços reais de remodelações em Aveiro (ex: casa de banho 20m², cozinha, T2, capoto). Compare com o seu projeto. Jorge Freitas. ⭐ 4.9/5 Google.",
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/projetos" },
 };
 
 export default function ProjetosPage() {
@@ -19,22 +21,37 @@ export default function ProjetosPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Projetos</span>
+            <span style={{ color: "#fbbf24" }}>Projetos & Preços Reais</span>
           </nav>
-          <p className="section-eyebrow">Portfolio de Trabalhos</p>
+          <p className="section-eyebrow">Portfolio de Trabalhos em Aveiro</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
-            Projetos Realizados em Aveiro (2022–2026)
+            Obras Realizadas e Preços Reais em Aveiro (2022–2026)
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "560px", lineHeight: 1.65 }}>
-            Trabalhos reais, resultados de excelência. Conheça algumas das intervenções executadas pela equipa de Jorge Freitas em Aveiro.
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "620px", lineHeight: 1.65 }}>
+            Trabalhos reais com preços reais transparentes. Compare as dimensões do seu espaço (m²) e o tipo de acabamento com intervenções já concluídas pela equipa do Jorge Freitas em Aveiro.
           </p>
         </div>
       </section>
 
-      {/* Portfolio Grid for the 4 Real Projects */}
-      <section className="section-padding" style={{ background: "#f8fafc" }}>
+      {/* Featured Verdemont Project */}
+      <VerdemontShowcase />
+
+      {/* Detailed Past Projects with Real Prices (Interactive filterable gallery) */}
+      <PastProjectsPricing />
+
+      {/* Additional Historical Projects */}
+      <section className="section-padding" style={{ background: "#f8fafc", borderTop: "1px solid #e2e8f0" }}>
         <div className="section-container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+            <h2 className="section-title">
+              Outras Obras Concluídas pela Equipa em Aveiro
+            </h2>
+            <p className="section-subtitle" style={{ margin: "0 auto" }}>
+              Mais de 100 intervenções realizadas com supervisão presencial e garantia formalizada.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
             {REAL_PROJECTS.map((item) => (
               <div
                 key={item.id}
@@ -49,11 +66,11 @@ export default function ProjetosPage() {
                 }}
                 className="card-hover"
               >
-                {/* Real Image Container */}
-                <div style={{ position: "relative", height: "240px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
+                {/* Real Image Container with proper Alt Text */}
+                <div style={{ position: "relative", height: "220px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.altText || `${item.title} em ${item.parish} Aveiro`}
                     style={{
                       width: "100%",
                       height: "100%",
@@ -76,25 +93,23 @@ export default function ProjetosPage() {
                     {item.service}
                   </div>
 
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "0.75rem",
-                      right: "0.75rem",
-                      background: "rgba(245, 158, 11, 0.95)",
-                      color: "#071a3a",
-                      fontSize: "0.6875rem",
-                      fontWeight: 900,
-                      padding: "0.25rem 0.625rem",
-                      borderRadius: "0.25rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.25rem",
-                    }}
-                  >
-                    <Calendar size={12} />
-                    {item.year}
-                  </div>
+                  {item.realPrice && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "0.75rem",
+                        right: "0.75rem",
+                        background: "#22c55e",
+                        color: "#ffffff",
+                        fontSize: "0.75rem",
+                        fontWeight: 900,
+                        padding: "0.25rem 0.625rem",
+                        borderRadius: "0.25rem",
+                      }}
+                    >
+                      {item.realPrice.toLocaleString("pt-PT")}€
+                    </div>
+                  )}
                 </div>
 
                 <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
@@ -105,6 +120,12 @@ export default function ProjetosPage() {
                     <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", color: "#64748b", fontSize: "0.8125rem", marginBottom: "0.75rem" }}>
                       <MapPin size={13} style={{ color: "#f59e0b" }} />
                       <span>{item.parish}</span>
+                      {item.areaM2 && (
+                        <>
+                          <span>•</span>
+                          <span>{item.areaM2} m²</span>
+                        </>
+                      )}
                     </div>
                     <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.6 }}>
                       {item.description}
@@ -113,7 +134,7 @@ export default function ProjetosPage() {
 
                   <div style={{ marginTop: "1.25rem", paddingTop: "0.875rem", borderTop: "1px solid #f1f5f9" }}>
                     <Link
-                      href="/#hero-form"
+                      href="/#calculadora-orcamento"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -124,7 +145,7 @@ export default function ProjetosPage() {
                         textDecoration: "none",
                       }}
                     >
-                      <span>Solicitar orçamento para obra idêntica</span>
+                      <span>Simular orçamento para obra similar</span>
                       <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -135,16 +156,28 @@ export default function ProjetosPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Final CTA */}
       <section style={{ background: "linear-gradient(135deg, #fbbf24, #f59e0b)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
           <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#071a3a", marginBottom: "0.75rem" }}>
-            Quer ver a sua casa transformada com preço justo?
+            Quer ver a sua casa em Aveiro transformada com preço justo?
           </h2>
-          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#071a3a", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
-            Pedir Orçamento Gratuito
-            <ArrowRight size={16} />
-          </Link>
+          <p style={{ color: "rgba(7, 26, 58, 0.85)", fontSize: "1rem", marginBottom: "1.75rem", maxWidth: "480px", margin: "0 auto 1.75rem" }}>
+            Peça hoje um orçamento gratuito e sem compromisso. Resposta em menos de 12 horas.
+          </p>
+          <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/orcamento" className="btn-primary" style={{ display: "inline-flex", background: "#071a3a", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+              Pedir Orçamento Gratuito
+              <ArrowRight size={16} />
+            </Link>
+            <a
+              href={`tel:${CONTRACTOR_INFO.phone}`}
+              className="btn-secondary"
+              style={{ background: "rgba(7, 26, 58, 0.1)", color: "#071a3a", border: "2px solid rgba(7, 26, 58, 0.25)" }}
+            >
+              Ligar {CONTRACTOR_INFO.phoneDisplay}
+            </a>
+          </div>
         </div>
       </section>
     </>
