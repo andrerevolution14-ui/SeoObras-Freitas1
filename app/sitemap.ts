@@ -3,11 +3,14 @@ import { SERVICES, PARISHES } from "@/lib/constants";
 import { BLOG_POSTS } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://freitasrenovacoes.pt";
+  const baseUrl = "https://www.grupofreitasrenovacoes.pt";
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
+    { url: `${baseUrl}/servicos`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
+    { url: `${baseUrl}/areas-atuacao`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/orcamento`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/sobre`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/projetos`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

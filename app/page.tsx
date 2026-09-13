@@ -20,9 +20,9 @@ const aggregateRatingJsonLd = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
   name: CONTRACTOR_INFO.companyName,
-  image: "https://freitasrenovacoes.pt/logo.png",
+  image: "https://www.grupofreitasrenovacoes.pt/logo.png",
   telephone: CONTRACTOR_INFO.phone,
-  url: "https://freitasrenovacoes.pt",
+  url: "https://www.grupofreitasrenovacoes.pt",
   address: {
     "@type": "PostalAddress",
     streetAddress: CONTRACTOR_INFO.address.street,

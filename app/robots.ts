@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/privacidade", "/termos"],
       },
     ],
-    sitemap: "https://freitasrenovacoes.pt/sitemap.xml",
-    host: "https://freitasrenovacoes.pt",
+    sitemap: "https://www.grupofreitasrenovacoes.pt/sitemap.xml",
+    host: "https://www.grupofreitasrenovacoes.pt",
   };
 }

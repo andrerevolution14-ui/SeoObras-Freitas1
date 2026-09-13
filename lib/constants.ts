@@ -11,7 +11,7 @@ export const CONTRACTOR_INFO = {
   phone: "+351 961 455 997",
   phoneDisplay: "961 455 997",
   email: "Freitasrenovacoes@gmail.com",
-  website: "https://freitasrenovacoes.pt",
+  website: "https://www.grupofreitasrenovacoes.pt",
   address: {
     street: "R. Magistério Primário",
     city: "Aveiro",

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.metaDescription,
-      url: `https://freitasrenovacoes.pt/blog/${slug}`,
+      url: `https://www.grupofreitasrenovacoes.pt/blog/${slug}`,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -58,19 +58,19 @@ export default async function BlogPostPage({ params }: Props) {
       name: CONTRACTOR_INFO.companyName,
       logo: {
         "@type": "ImageObject",
-        url: "https://freitasrenovacoes.pt/logo.png",
+        url: "https://www.grupofreitasrenovacoes.pt/logo.png",
       },
     },
-    mainEntityOfPage: `https://freitasrenovacoes.pt/blog/${slug}`,
+    mainEntityOfPage: `https://www.grupofreitasrenovacoes.pt/blog/${slug}`,
   };
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Início", item: "https://freitasrenovacoes.pt" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://freitasrenovacoes.pt/blog" },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://freitasrenovacoes.pt/blog/${slug}` },
+      { "@type": "ListItem", position: 1, name: "Início", item: "https://www.grupofreitasrenovacoes.pt" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.grupofreitasrenovacoes.pt/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://www.grupofreitasrenovacoes.pt/blog/${slug}` },
     ],
   };
 

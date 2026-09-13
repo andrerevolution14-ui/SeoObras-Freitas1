@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     "jorge freitas empreiteiro",
     "obras remodelações aveiro preço justo",
   ],
-  authors: [{ name: "Jorge Freitas", url: "https://freitasrenovacoes.pt" }],
+  authors: [{ name: "Jorge Freitas", url: "https://www.grupofreitasrenovacoes.pt" }],
   creator: "Freitas Renovações LDA",
   publisher: "Freitas Renovações LDA",
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL("https://freitasrenovacoes.pt"),
+  metadataBase: new URL("https://www.grupofreitasrenovacoes.pt"),
   alternates: {
-    canonical: "https://freitasrenovacoes.pt/",
-    languages: { "pt-PT": "https://freitasrenovacoes.pt/" },
+    canonical: "https://www.grupofreitasrenovacoes.pt/",
+    languages: { "pt-PT": "https://www.grupofreitasrenovacoes.pt/" },
   },
   category: "construction",
   // Favicon via metadata API (Next.js 13+)
@@ -60,14 +60,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_PT",
-    url: "https://freitasrenovacoes.pt",
+    url: "https://www.grupofreitasrenovacoes.pt",
     siteName: "Freitas Renovações LDA",
     title: "Freitas Renovações LDA | Obras e Remodelações em Aveiro",
     description:
       "Empresa licenciada de obras, remodelações e reparações em Aveiro. ⭐ 4.9/5 Google · +100 obras · Empreiteiro Jorge Freitas · Preços Justos · Orçamento Grátis",
     images: [
       {
-        url: "https://freitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Freitas Renovações LDA — Obras e Remodelações em Aveiro",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Freitas Renovações LDA | Obras em Aveiro",
     description: "Empresa licenciada de obras e remodelações em Aveiro. ⭐ 4.9/5 Google · Orçamento gratuito · Preços Justos.",
-    images: ["https://freitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -94,19 +94,19 @@ const globalJsonLd = {
   "@graph": [
     {
       "@type": "HomeAndConstructionBusiness",
-      "@id": "https://freitasrenovacoes.pt/#organization",
+      "@id": "https://www.grupofreitasrenovacoes.pt/#organization",
       name: CONTRACTOR_INFO.companyName,
       legalName: CONTRACTOR_INFO.companyName,
       url: CONTRACTOR_INFO.website,
       logo: {
         "@type": "ImageObject",
-        url: "https://freitasrenovacoes.pt/logo.png",
+        url: "https://www.grupofreitasrenovacoes.pt/logo.png",
         width: 200,
         height: 60,
       },
       image: {
         "@type": "ImageObject",
-        url: "https://freitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
       },
@@ -114,10 +114,10 @@ const globalJsonLd = {
         "Empresa de obras, remodelações e reparações em Aveiro, Portugal. Licenciada IMPIC. Empreiteiro Jorge Freitas. Preços justos e orçamento transparente.",
       founder: {
         "@type": "Person",
-        "@id": "https://freitasrenovacoes.pt/#jorge-freitas",
+        "@id": "https://www.grupofreitasrenovacoes.pt/#jorge-freitas",
         name: CONTRACTOR_INFO.contractorName,
         jobTitle: CONTRACTOR_INFO.jobTitle,
-        worksFor: { "@id": "https://freitasrenovacoes.pt/#organization" },
+        worksFor: { "@id": "https://www.grupofreitasrenovacoes.pt/#organization" },
       },
       address: {
         "@type": "PostalAddress",
@@ -175,8 +175,8 @@ const globalJsonLd = {
             "@type": "Service",
             name: s.title,
             description: s.description,
-            url: `https://freitasrenovacoes.pt/servicos/${s.slug}`,
-            provider: { "@id": "https://freitasrenovacoes.pt/#organization" },
+            url: `https://www.grupofreitasrenovacoes.pt/servicos/${s.slug}`,
+            provider: { "@id": "https://www.grupofreitasrenovacoes.pt/#organization" },
           },
         })),
       },
@@ -233,17 +233,17 @@ const globalJsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://freitasrenovacoes.pt/#website",
-      url: "https://freitasrenovacoes.pt",
+      "@id": "https://www.grupofreitasrenovacoes.pt/#website",
+      url: "https://www.grupofreitasrenovacoes.pt",
       name: CONTRACTOR_INFO.companyName,
       description: "Empresa de obras e remodelações em Aveiro — Freitas Renovações LDA",
       inLanguage: "pt-PT",
-      publisher: { "@id": "https://freitasrenovacoes.pt/#organization" },
+      publisher: { "@id": "https://www.grupofreitasrenovacoes.pt/#organization" },
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: "https://freitasrenovacoes.pt/search?q={search_term_string}",
+          urlTemplate: "https://www.grupofreitasrenovacoes.pt/search?q={search_term_string}",
         },
         "query-input": "required name=search_term_string",
       },
@@ -268,8 +268,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="ICBM" content={`${CONTRACTOR_INFO.geo.latitude}, ${CONTRACTOR_INFO.geo.longitude}`} />
 
         {/* hreflang — signal language/region to Google */}
-        <link rel="alternate" hrefLang="pt-PT" href="https://freitasrenovacoes.pt/" />
-        <link rel="alternate" hrefLang="x-default" href="https://freitasrenovacoes.pt/" />
+        <link rel="alternate" hrefLang="pt-PT" href="https://www.grupofreitasrenovacoes.pt/" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.grupofreitasrenovacoes.pt/" />
 
         {/* Schema.org JSON-LD */}
         <script

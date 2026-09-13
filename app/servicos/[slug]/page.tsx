@@ -23,15 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
-    alternates: { canonical: `https://freitasrenovacoes.pt/servicos/${slug}` },
+    alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}` },
     openGraph: {
       title: seo.title,
       description: seo.description,
-      url: `https://freitasrenovacoes.pt/servicos/${slug}`,
+      url: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}`,
       type: "website",
       images: [
         {
-          url: "https://freitasrenovacoes.pt/og-image.jpg",
+          url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
           width: 1200,
           height: 630,
           alt: `${service.title} em Aveiro — Freitas Renovações LDA`,
@@ -88,9 +88,9 @@ export default async function ServicePage({ params }: Props) {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: "https://freitasrenovacoes.pt/" },
-          { "@type": "ListItem", position: 2, name: "Serviços", item: "https://freitasrenovacoes.pt/servicos" },
-          { "@type": "ListItem", position: 3, name: service.title, item: `https://freitasrenovacoes.pt/servicos/${slug}` },
+          { "@type": "ListItem", position: 1, name: "Início", item: "https://www.grupofreitasrenovacoes.pt/" },
+          { "@type": "ListItem", position: 2, name: "Serviços", item: "https://www.grupofreitasrenovacoes.pt/servicos" },
+          { "@type": "ListItem", position: 3, name: service.title, item: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}` },
         ],
       }) }} />
 

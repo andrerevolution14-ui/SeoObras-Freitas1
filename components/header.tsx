@@ -66,11 +66,12 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav style={{ display: "flex", alignItems: "center", gap: "1.75rem" }} className="hidden-mobile">
-          <Link href="/servicos/remodelacao-geral" className="nav-link">Serviços</Link>
+          <Link href="/servicos" className="nav-link">Serviços</Link>
           <Link href="/projetos" className="nav-link">Projetos</Link>
-          <Link href="/areas-atuacao/esgueira" className="nav-link">Áreas</Link>
+          <Link href="/areas-atuacao" className="nav-link">Áreas</Link>
           <Link href="/blog" className="nav-link">Blog & Guia Obras</Link>
           <Link href="/sobre" className="nav-link">Sobre Nós</Link>
+          <Link href="/orcamento" className="nav-link" style={{ color: "#fbbf24", fontWeight: 800 }}>Orçamento</Link>
         </nav>
 
         {/* Phone CTA Button */}
@@ -116,11 +117,12 @@ export function Header() {
         >
           <nav style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
             {[
-              { href: "/servicos/remodelacao-geral", label: "Serviços de Obras" },
+              { href: "/servicos", label: "Serviços de Obras" },
               { href: "/projetos", label: "Projetos Realizados" },
-              { href: "/areas-atuacao/esgueira", label: "Áreas de Atuação em Aveiro" },
+              { href: "/areas-atuacao", label: "Áreas de Atuação em Aveiro" },
               { href: "/blog", label: "Blog & Guia de Obras em Aveiro" },
               { href: "/sobre", label: "Sobre o Jorge Freitas" },
+              { href: "/orcamento", label: "Pedir Orçamento Gratuito" },
             ].map((item) => (
               <Link
                 key={item.href}
