@@ -47,15 +47,17 @@ export const metadata: Metadata = {
     languages: { "pt-PT": "https://www.grupofreitasrenovacoes.pt/" },
   },
   category: "construction",
-  // Favicon via metadata API (Next.js 13+)
+  // Favicon & Touch Icons
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/favicon.png",
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     type: "website",
