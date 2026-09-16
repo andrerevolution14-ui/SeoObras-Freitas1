@@ -18,17 +18,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
 
+  const imageUrl = post.image.startsWith("http")
+    ? post.image
+    : `https://www.grupofreitasrenovacoes.pt${post.image}`;
+
   return {
     title: `${post.title} | Freitas Renovações Aveiro`,
     description: post.metaDescription,
-    alternates: { canonical: `/blog/${slug}` },
+    keywords: [
+      post.title.toLowerCase(),
+      post.category.toLowerCase(),
+      `${post.category.toLowerCase()} aveiro`,
+      "obras aveiro",
+      "remodelações aveiro",
+      "freitas renovações lda",
+    ],
+    alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/blog/${slug}` },
     openGraph: {
       title: post.title,
       description: post.metaDescription,
       url: `https://www.grupofreitasrenovacoes.pt/blog/${slug}`,
       type: "article",
+      locale: "pt_PT",
       publishedTime: post.date,
       authors: [post.author],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${post.title} — Freitas Renovações LDA`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.metaDescription,
+      images: [imageUrl],
     },
   };
 }
@@ -38,12 +65,18 @@ export default async function BlogPostPage({ params }: Props) {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) notFound();
 
+  const imageUrl = post.image.startsWith("http")
+    ? post.image
+    : `https://www.grupofreitasrenovacoes.pt${post.image}`;
+
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
     datePublished: post.date,
+    image: [imageUrl],
+    inLanguage: "pt-PT",
     author: {
       "@type": "Person",
       name: post.author,

@@ -15,6 +15,7 @@ import {
   MapPin,
   ShieldCheck,
   MessageCircle,
+  CreditCard,
 } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
@@ -84,6 +85,14 @@ export function Header() {
       icon: <Building2 size={18} style={{ color: "#34d399" }} />,
       badge: "Destaque",
       badgeColor: "#34d399",
+    },
+    {
+      title: "Crédito para Obras",
+      desc: "Intermediação parceira 100% gratuita para financiar remodelações",
+      href: "/credito-obras",
+      icon: <CreditCard size={18} style={{ color: "#10b981" }} />,
+      badge: "100% Grátis",
+      badgeColor: "#10b981",
     },
   ];
 

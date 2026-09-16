@@ -446,29 +446,68 @@ export const TRUST_BADGES = [
   },
   {
     id: "tb3",
+    icon: "CreditCard",
+    label: "Crédito Obras 100% Grátis",
+    sublabel: "Intermediação Parceira",
+  },
+  {
+    id: "tb4",
     icon: "User",
     label: "Jorge Freitas",
     sublabel: "Supervisão Direta",
   },
   {
-    id: "tb4",
+    id: "tb5",
     icon: "CheckCircle",
     label: "+100 Obras Concluídas",
     sublabel: "Em Aveiro e Arredores",
   },
   {
-    id: "tb5",
+    id: "tb6",
     icon: "Clock",
     label: "Resposta até 12h",
     sublabel: "Atendimento Rápido",
   },
   {
-    id: "tb6",
+    id: "tb7",
     icon: "FileText",
     label: "Preços Justos",
     sublabel: "Orçamento Transparente",
   },
 ];
+
+// ============================================================
+// CREDIT INTERMEDIATION PARTNER INFO
+// ============================================================
+export const CREDIT_PARTNER_INFO = {
+  title: "Apoio a Crédito e Financiamento para Obras",
+  serviceName: "Intermediação de Crédito para Obras e Remodelações",
+  shortBadge: "100% Gratuito para o Cliente",
+  summary:
+    "Dispomos de serviço parceiro de intermediação de crédito devidamente registado e autorizado pelo Banco de Portugal, especializado em soluções de financiamento para obras, remodelações e melhoria energética de habitações.",
+  advantages: [
+    {
+      title: "100% Gratuito (0€ de Comissão)",
+      desc: "O serviço de intermediação de crédito não tem qualquer custo para o cliente. Não cobramos honorários de consultoria.",
+    },
+    {
+      title: "Comparação em Vários Bancos",
+      desc: "Negociação com os principais bancos e instituições financeiras em Portugal para garantir a taxa de juro mais baixa e as melhores condições.",
+    },
+    {
+      title: "Soluções Específicas para Obras",
+      desc: "Crédito pessoal para remodelações de curto/médio prazo (cozinhas, WCs, telhados) ou reforço hipotecário para grandes remodelações de moradias.",
+    },
+    {
+      title: "Sem Burocracia & Resposta em 24-48h",
+      desc: "Acompanhamento integral desde a recolha documental até à aprovação e libertação do capital para início da obra.",
+    },
+    {
+      title: "Prazos Flexíveis",
+      desc: "Mensalidades ajustadas ao seu rendimento com prazos de 12 a 84/120 meses para crédito pessoal ou prazos alargados em crédito habitação.",
+    },
+  ],
+};
 
 // ============================================================
 // FAQ DATA
@@ -482,30 +521,36 @@ export const FAQ_ITEMS = [
   },
   {
     id: "faq2",
+    question: "Ajudam com crédito ou financiamento para pagar a obra?",
+    answer:
+      "Sim! Oferecemos um serviço de intermediação de crédito parceiro 100% gratuito para os nossos clientes. Através de intermediários de crédito registados no Banco de Portugal, analisamos o seu processo, comparamos as melhores propostas bancárias do mercado e ajudamos a aprovar o financiamento para a sua obra (remodelação total, cozinha, casa de banho, capoto ou telhado) com a mensalidade e taxas mais vantajosas, sem qualquer encargo extra para si.",
+  },
+  {
+    id: "faq3",
     question: "Qual é o tempo de resposta aos pedidos de orçamento?",
     answer:
       "Garantimos uma resposta rápida a todos os contactos, com retorno no prazo máximo de 12 horas.",
   },
   {
-    id: "faq3",
+    id: "faq4",
     question: "O orçamento é gratuito e sem compromisso?",
     answer:
       "Sim, totalmente! O orçamento é sempre gratuito, detalhado e com preços justos e transparentes.",
   },
   {
-    id: "faq4",
+    id: "faq5",
     question: "Quais as áreas de atuação da Freitas Renovações?",
     answer:
       "Trabalhamos em todo o município de Aveiro, incluindo Glória e Vera Cruz, Esgueira, Aradas, Cácia, São Bernardo, Santa Joana, Oliveirinha e freguesias circundantes.",
   },
   {
-    id: "faq5",
+    id: "faq6",
     question: "Os trabalhos têm garantia?",
     answer:
       "Sim, todos os nossos trabalhos têm garantia formalizada por escrito. A duração varia consoante o tipo de obra executada.",
   },
   {
-    id: "faq6",
+    id: "faq7",
     question: "Como garantem preços justos em cada obra?",
     answer:
       "Apresentamos orçamentos discriminados por materiais e mão de obra, sem margens inflacionadas nem custos surpresa.",

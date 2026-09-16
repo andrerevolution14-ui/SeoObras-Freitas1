@@ -190,6 +190,7 @@ export function Footer() {
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
                 { href: "/orcamento", label: "Calculadora de Orçamento" },
+                { href: "/credito-obras", label: "Crédito para Obras (100% Grátis)" },
                 { href: "/precos-reais", label: "Preços Reais de Obras" },
                 { href: "/precos-m2", label: "Tabela Preços Médios por m²" },
                 { href: "/planificador", label: "Planificador Passo a Passo" },

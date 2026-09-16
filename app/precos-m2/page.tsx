@@ -8,12 +8,101 @@ export const metadata: Metadata = {
   title: "Preços Médios por m² em Aveiro — Tabela de Remodelação 2026 | Freitas Renovações",
   description:
     "Consulte a tabela oficial de preços médios por m² para remodelação de casas de banho, cozinhas, capoto e pintura em Aveiro. Preços baratos, transparentes e sem surpresas.",
-  alternates: { canonical: "/precos-m2" },
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/precos-m2" },
+  keywords: [
+    "preco m2 obras aveiro",
+    "preco m2 remodelacao aveiro",
+    "quanto custa remodelar casa aveiro",
+    "tabela precos obras aveiro",
+    "preco capoto m2 aveiro",
+    "preco pintura m2 aveiro",
+    "preco canalizacao casa de banho aveiro",
+    "obras low cost aveiro",
+    "freitas renovacoes precos",
+  ],
+  openGraph: {
+    title: "Preços Médios por m² em Aveiro — Tabela 2026 | Freitas Renovações",
+    description:
+      "Tabela atualizada de preços de remodelação por m² em Aveiro: casas de banho, cozinhas, capoto e pintura. Sem custos ocultos.",
+    url: "https://www.grupofreitasrenovacoes.pt/precos-m2",
+    type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tabela de Preços Médios por m2 em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Preços Médios por m² em Aveiro — Tabela 2026 | Freitas Renovações",
+    description: "Consulte custos de remodelação por m² em Aveiro com preços honestos.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+  },
+};
+
+const precosM2JsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Quanto custa remodelar uma casa de banho em Aveiro?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Uma remodelação completa de casa de banho em Aveiro custa tipicamente entre 2.800€ e 4.500€, dependendo dos m², loiças e canalização.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Qual é o preço do capoto (ETICS) por m² em Aveiro?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "O preço médio de aplicação de capoto EPS/Lã de Rocha em Aveiro varia entre 38€ e 55€ por m², incluindo andaimes, cola, rede e barramento final.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Quanto custa a pintura de interiores por m² em Aveiro?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A pintura de interiores com reparação de fissuras e tinta anti-humidade custa entre 7€ e 14€ por m² em Aveiro.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Preços por m²",
+          item: "https://www.grupofreitasrenovacoes.pt/precos-m2",
+        },
+      ],
+    },
+  ],
 };
 
 export default function PrecosM2Page() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(precosM2JsonLd) }}
+      />
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">

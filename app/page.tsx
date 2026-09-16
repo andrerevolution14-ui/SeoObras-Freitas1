@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Star, Shield, Clock, ArrowRight, CheckCircle } from "lucide-react";
+import { Phone, MapPin, Star, Shield, Clock, ArrowRight, CheckCircle, CreditCard } from "lucide-react";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 import { TrustBar } from "@/components/trust-bar";
 import { ServiceGrid } from "@/components/service-grid";
@@ -12,36 +12,99 @@ export const metadata: Metadata = {
   title: "Freitas Renovações LDA | Obras e Remodelações em Aveiro",
   description:
     "Empresa licenciada de obras, remodelações e reparações em Aveiro. Empreiteiro Jorge Freitas. ⭐ 4.9/5 Google · +100 obras · Preços Justos · Orçamento gratuito · Resposta até 12h.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt" },
+  keywords: [
+    "obras aveiro",
+    "remodelações aveiro",
+    "empreiteiro aveiro",
+    "remodelação de casas de banho aveiro",
+    "remodelação de cozinhas aveiro",
+    "capoto aveiro",
+    "isolamento térmico aveiro",
+    "pintura de interiores e exteriores aveiro",
+    "reparação de telhados aveiro",
+    "canalizador aveiro",
+    "eletricista aveiro",
+    "empresa de construção aveiro",
+    "obras baratas aveiro",
+    "preços obras aveiro",
+    "freitas renovações lda",
+    "jorge freitas empreiteiro",
+  ],
+  openGraph: {
+    title: "Freitas Renovações LDA | Obras e Remodelações em Aveiro",
+    description:
+      "Empresa licenciada de obras, remodelações e reparações em Aveiro. Empreiteiro Jorge Freitas. ⭐ 4.9/5 Google · +100 obras · Preços Justos · Orçamento gratuito.",
+    url: "https://www.grupofreitasrenovacoes.pt",
+    siteName: "Freitas Renovações LDA",
+    type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Freitas Renovações LDA — Obras e Remodelações em Aveiro",
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Freitas Renovações LDA | Obras e Remodelações em Aveiro",
+    description:
+      "Empresa licenciada de obras em Aveiro. Orçamento gratuito e resposta em menos de 12h. Preços justos.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+  },
 };
 
-// AggregateRating JSON-LD schema for yellow stars in Google search results
-const aggregateRatingJsonLd = {
+// Enhanced JSON-LD Schema: LocalBusiness + BreadcrumbList
+const homeJsonLd = {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  name: CONTRACTOR_INFO.companyName,
-  image: "https://www.grupofreitasrenovacoes.pt/logo.png",
-  telephone: CONTRACTOR_INFO.phone,
-  url: "https://www.grupofreitasrenovacoes.pt",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: CONTRACTOR_INFO.address.street,
-    postalCode: CONTRACTOR_INFO.address.postalCode,
-    addressLocality: "Aveiro",
-    addressCountry: "PT",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: CONTRACTOR_INFO.geo.latitude,
-    longitude: CONTRACTOR_INFO.geo.longitude,
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "48",
-    bestRating: "5",
-    worstRating: "1",
-  },
+  "@graph": [
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://www.grupofreitasrenovacoes.pt/#organization",
+      name: CONTRACTOR_INFO.companyName,
+      image: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+      logo: "https://www.grupofreitasrenovacoes.pt/logo.png",
+      telephone: CONTRACTOR_INFO.phone,
+      email: CONTRACTOR_INFO.email,
+      url: "https://www.grupofreitasrenovacoes.pt",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: CONTRACTOR_INFO.address.street,
+        postalCode: CONTRACTOR_INFO.address.postalCode,
+        addressLocality: "Aveiro",
+        addressRegion: "Aveiro",
+        addressCountry: "PT",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: CONTRACTOR_INFO.geo.latitude,
+        longitude: CONTRACTOR_INFO.geo.longitude,
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "48",
+        bestRating: "5",
+        worstRating: "1",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://www.grupofreitasrenovacoes.pt",
+        },
+      ],
+    },
+  ],
 };
 
 export default function HomePage() {
@@ -49,7 +112,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
 
       {/* ── 1. HERO & LEAD GENERATOR ─────────────────────── */}
@@ -125,6 +188,7 @@ export default function HomePage() {
                 {[
                   { emoji: "⭐", text: "4.9/5 no Google" },
                   { emoji: "🛡️", text: "Empresa Licenciada" },
+                  { emoji: "💳", text: "Crédito Obras 100% Grátis" },
                   { emoji: "⚡", text: "Resposta até 12h" },
                   { emoji: "💶", text: "Preços Justos" },
                 ].map((badge) => (
@@ -377,6 +441,154 @@ export default function HomePage() {
         <style>{`
           @media (max-width: 900px) {
             .about-grid { grid-template-columns: 1fr !important; gap: 2.25rem !important; }
+          }
+        `}</style>
+      </section>
+
+      {/* ── 6.5. CRÉDITO & FINANCIAMENTO PARA OBRAS (100% GRÁTIS) ── */}
+      <section
+        className="section-padding"
+        style={{
+          background: "#ffffff",
+          borderTop: "1px solid #e2e8f0",
+          borderBottom: "1px solid #e2e8f0",
+        }}
+      >
+        <div className="section-container">
+          <div
+            style={{
+              background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
+              borderRadius: "1rem",
+              padding: "2.5rem 2rem",
+              color: "#ffffff",
+              display: "grid",
+              gridTemplateColumns: "1.3fr 0.7fr",
+              gap: "2.5rem",
+              alignItems: "center",
+              boxShadow: "0 10px 30px rgba(7, 26, 58, 0.15)",
+              border: "1.5px solid rgba(251, 191, 36, 0.3)",
+            }}
+            className="credit-highlight-box"
+          >
+            <div>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  background: "rgba(16, 185, 129, 0.2)",
+                  border: "1px solid rgba(16, 185, 129, 0.4)",
+                  color: "#34d399",
+                  borderRadius: "2rem",
+                  padding: "0.3rem 0.875rem",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  marginBottom: "1rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                <CreditCard size={14} />
+                Condição Especial da Oferta · 100% Gratuito
+              </div>
+
+              <h2
+                style={{
+                  fontSize: "clamp(1.5rem, 2.8vw, 2.1rem)",
+                  fontWeight: 900,
+                  lineHeight: 1.2,
+                  marginBottom: "1rem",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Precisa de Financiamento para a Sua Obra?{" "}
+                <span className="text-gradient-gold">Nós Ajudamos.</span>
+              </h2>
+
+              <p
+                style={{
+                  color: "rgba(255,255,255,0.8)",
+                  fontSize: "0.9375rem",
+                  lineHeight: 1.65,
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Para além da garantia de qualidade e preços justos nas suas remodelações, dispomos de um
+                <strong> serviço parceiro de intermediação de crédito 100% gratuito</strong>, devidamente
+                autorizado pelo Banco de Portugal. Comparamos propostas em mais de 10 bancos para garantir
+                a taxa mais baixa do mercado e prestações à sua medida.
+              </p>
+
+              <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                <a
+                  href="/credito-obras"
+                  className="btn-primary"
+                  id="home-credit-learn-btn"
+                  style={{ fontSize: "0.875rem", padding: "0.75rem 1.25rem" }}
+                >
+                  <span>Saber Mais Sobre Crédito Obras</span>
+                  <ArrowRight size={15} />
+                </a>
+
+                <a
+                  href={`tel:${CONTRACTOR_INFO.phone}`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "#ffffff",
+                    fontWeight: 700,
+                    padding: "0.75rem 1.25rem",
+                    borderRadius: "0.375rem",
+                    fontSize: "0.875rem",
+                    textDecoration: "none",
+                  }}
+                  id="home-credit-call-btn"
+                >
+                  <Phone size={15} style={{ color: "#fbbf24" }} />
+                  <span>{CONTRACTOR_INFO.phoneDisplay}</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Benefits List */}
+            <div
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "0.75rem",
+                padding: "1.5rem",
+              }}
+            >
+              <div style={{ fontWeight: 800, color: "#fbbf24", fontSize: "0.9375rem", marginBottom: "0.875rem" }}>
+                Vantagens do Financiamento:
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                {[
+                  "Custo Zero: 0€ de comissões para si",
+                  "Resposta rápida entre 24h e 48h",
+                  "Prazos flexíveis de 12 a 120 meses",
+                  "Financiamento até 100% do valor da obra",
+                  "Intermediários vinculados Banco de Portugal",
+                ].map((item) => (
+                  <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.9)" }}>
+                    <CheckCircle size={15} style={{ color: "#34d399", flexShrink: 0, marginTop: "2px" }} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <style>{`
+          @media (max-width: 850px) {
+            .credit-highlight-box {
+              grid-template-columns: 1fr !important;
+              gap: 1.75rem !important;
+              padding: 1.75rem 1.25rem !important;
+            }
           }
         `}</style>
       </section>

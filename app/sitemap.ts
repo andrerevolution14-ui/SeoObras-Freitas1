@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/servicos`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
     { url: `${baseUrl}/areas-atuacao`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/orcamento`, lastModified: now, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${baseUrl}/credito-obras`, lastModified: now, changeFrequency: "weekly", priority: 0.95 },
     { url: `${baseUrl}/precos-reais`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/precos-m2`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/planificador`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },

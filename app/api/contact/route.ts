@@ -28,6 +28,7 @@ export async function POST(request: NextRequest) {
         servico: formData.get("servico") || formData.get("service"),
         urgencia: formData.get("urgencia") || formData.get("urgency"),
         mensagem: formData.get("mensagem") || formData.get("description"),
+        ajudaCredito: formData.get("ajudaCredito") || formData.get("credito"),
       };
     } else {
       try {
@@ -44,6 +45,7 @@ export async function POST(request: NextRequest) {
     const rawServico = (rawBody.servico || rawBody.service || "").toString().trim();
     const rawUrgencia = (rawBody.urgencia || rawBody.urgency || "").toString().trim();
     const mensagem = (rawBody.mensagem || rawBody.description || "").toString().trim();
+    const ajudaCredito = (rawBody.ajudaCredito || rawBody.credito || "").toString().trim();
 
     // Validação dos campos obrigatórios
     if (!nome || nome.length < 2) {
@@ -80,6 +82,10 @@ export async function POST(request: NextRequest) {
 
     if (urgenciaLabel) {
       telegramMessage += `⚡ <b>Urgência:</b> ${escapeHtml(urgenciaLabel)}\n`;
+    }
+
+    if (ajudaCredito && ajudaCredito !== "Não") {
+      telegramMessage += `💶 <b>Intermediação Crédito:</b> ${escapeHtml(ajudaCredito)}\n`;
     }
 
     telegramMessage += `\n📝 <b>Mensagem:</b>\n${mensagem ? escapeHtml(mensagem) : "Sem mensagem adicional"}`;
@@ -136,6 +142,7 @@ export async function POST(request: NextRequest) {
             <p><strong>Localidade:</strong> ${escapeHtml(localidadeName)}</p>
             <p><strong>Serviço:</strong> ${escapeHtml(servicoTitle)}</p>
             ${urgenciaLabel ? `<p><strong>Urgência:</strong> ${escapeHtml(urgenciaLabel)}</p>` : ""}
+            ${ajudaCredito && ajudaCredito !== "Não" ? `<p><strong>Intermediação de Crédito:</strong> <span style="color:#16a34a; font-weight:bold;">${escapeHtml(ajudaCredito)}</span></p>` : ""}
             <p><strong>Mensagem:</strong> ${mensagem ? escapeHtml(mensagem) : "Sem mensagem adicional"}</p>
           `,
         });

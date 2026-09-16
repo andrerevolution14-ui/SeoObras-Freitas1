@@ -9,28 +9,73 @@ export const metadata: Metadata = {
   description:
     "Calcule o seu orçamento online ou peça proposta gratuita para obras e remodelações em Aveiro. Resposta em < 12h. Empreiteiro Jorge Freitas. Sem compromisso.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/orcamento" },
+  keywords: [
+    "orcamento obras aveiro",
+    "pedir orcamento remodelacao aveiro",
+    "calculadora obras aveiro",
+    "preco remodelacao casa aveiro",
+    "orcamento gratis obras aveiro",
+    "jorge freitas orcamento",
+    "freitas renovacoes orcamento",
+  ],
   openGraph: {
     title: "Pedir Orçamento Gratuito em Aveiro | Freitas Renovações LDA",
     description:
       "Calculadora de obras e orçamento gratuito, detalhado e sem compromisso. Resposta em menos de 12h. ⭐ 4.9/5 no Google.",
     url: "https://www.grupofreitasrenovacoes.pt/orcamento",
     type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pedir Orçamento de Obras em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pedir Orçamento Gratuito em Aveiro | Freitas Renovações LDA",
+    description: "Simule na calculadora ou peça orçamento gratuito com resposta em <12h.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };
 
 const orcamentoJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ContactPage",
-  name: "Pedido de Orçamento e Calculadora — Freitas Renovações LDA",
-  url: "https://www.grupofreitasrenovacoes.pt/orcamento",
-  description: "Calculadora interativa e formulário de contacto para pedir orçamento gratuito de obras e remodelações em Aveiro",
-  mainEntity: {
-    "@type": "HomeAndConstructionBusiness",
-    name: CONTRACTOR_INFO.companyName,
-    telephone: CONTRACTOR_INFO.phone,
-    email: CONTRACTOR_INFO.email,
-    url: CONTRACTOR_INFO.website,
-  },
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      name: "Pedido de Orçamento e Calculadora — Freitas Renovações LDA",
+      url: "https://www.grupofreitasrenovacoes.pt/orcamento",
+      description: "Calculadora interativa e formulário de contacto para pedir orçamento gratuito de obras e remodelações em Aveiro",
+      mainEntity: {
+        "@type": "HomeAndConstructionBusiness",
+        name: CONTRACTOR_INFO.companyName,
+        telephone: CONTRACTOR_INFO.phone,
+        email: CONTRACTOR_INFO.email,
+        url: CONTRACTOR_INFO.website,
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Orçamento",
+          item: "https://www.grupofreitasrenovacoes.pt/orcamento",
+        },
+      ],
+    },
+  ],
 };
 
 export default function OrcamentoPage() {

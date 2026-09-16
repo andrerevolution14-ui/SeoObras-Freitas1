@@ -8,12 +8,94 @@ export const metadata: Metadata = {
   title: "Obras Realizadas e Preços Reais em Aveiro | Freitas Renovações",
   description:
     "Veja exemplos de obras concluídas em Aveiro com custos reais discriminados, prazo de execução e especificações técnicas. Remodelação de casas de banho, cozinhas e apartamentos.",
-  alternates: { canonical: "/precos-reais" },
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/precos-reais" },
+  keywords: [
+    "precos reais obras aveiro",
+    "exemplos de obras concluidas aveiro",
+    "custos remodelacao aveiro",
+    "obras com fotos e precos aveiro",
+    "remodelacao moradia aveiro precos",
+    "freitas renovacoes projetos precos",
+  ],
+  openGraph: {
+    title: "Obras Realizadas e Preços Reais em Aveiro | Freitas Renovações",
+    description:
+      "Exemplos de remodelações entregues em Aveiro com preços reais discriminados e prazos cumpridos. Transparência garantida.",
+    url: "https://www.grupofreitasrenovacoes.pt/precos-reais",
+    type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Obras Realizadas com Preços Reais em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Obras Realizadas e Preços Reais em Aveiro | Freitas Renovações",
+    description: "Casos de estudo reais de obras em Aveiro com custos transparentes.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+  },
+};
+
+const precosReaisJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Obras Realizadas e Preços Reais em Aveiro",
+      description: "Portfólio de projetos concluídos com especificações técnicas e valores finais.",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Remodelação Casa de Banho Completa 20m² em Esgueira",
+          description: "Substituição de canalização, impermeabilização, loiças suspensas e resguardo de duche.",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Remodelação Cozinha Moderna em Aradas",
+          description: "Mobiliário termolaminado, bancada em quartzo e nova instalação elétrica.",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Isolamento Capoto Térmico 160m² em São Bernardo",
+          description: "Aplicação de EPS 80mm com acabamento acrílico impermeável.",
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Preços Reais",
+          item: "https://www.grupofreitasrenovacoes.pt/precos-reais",
+        },
+      ],
+    },
+  ],
 };
 
 export default function PrecosReaisPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(precosReaisJsonLd) }}
+      />
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">

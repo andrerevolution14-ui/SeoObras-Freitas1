@@ -23,12 +23,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
+    keywords: [
+      `obras ${parish.name.toLowerCase()} aveiro`,
+      `remodelações ${parish.name.toLowerCase()}`,
+      `empreiteiro ${parish.name.toLowerCase()}`,
+      `canalizador ${parish.name.toLowerCase()}`,
+      `pintura ${parish.name.toLowerCase()}`,
+      `reparações ${parish.name.toLowerCase()}`,
+      "obras aveiro",
+      "freitas renovações lda",
+    ],
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}` },
     openGraph: {
       title: seo.title,
       description: seo.description,
       url: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}`,
       type: "website",
+      locale: "pt_PT",
       images: [
         {
           url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
@@ -37,6 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           alt: `Obras em ${parish?.name ?? freguesia}, Aveiro — Freitas Renovações LDA`,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
     },
   };
 }

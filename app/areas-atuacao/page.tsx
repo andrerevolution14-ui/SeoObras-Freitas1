@@ -6,29 +6,75 @@ import { PARISHES, CONTRACTOR_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Áreas de Atuação em Aveiro | Freitas Renovações LDA",
   description:
-    "Obras e remodelações em todas as freguesias de Aveiro: Esgueira, Aradas, Cácia, São Bernardo, Glória e Vera Cruz e muito mais. Empresa licenciada. Orçamento gratuito.",
+    "Obras e remodelações em todas as freguesias de Aveiro: Esgueira, Aradas, Cacia, São Bernardo, Glória e Vera Cruz e muito mais. Empresa licenciada. Orçamento gratuito.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/areas-atuacao" },
+  keywords: [
+    "obras aveiro freguesias",
+    "obras em esgueira aveiro",
+    "obras em aradas aveiro",
+    "obras em cacia aveiro",
+    "remodelacoes gloria e vera cruz aveiro",
+    "obras sao bernardo aveiro",
+    "empreiteiro aveiro e arredores",
+    "construcao civil aveiro concelho",
+  ],
   openGraph: {
     title: "Áreas de Atuação em Aveiro | Freitas Renovações LDA",
     description:
       "Cobrimos todas as freguesias do município de Aveiro. Empreiteiro licenciado, preços justos, orçamento gratuito.",
     url: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
     type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Áreas de Atuação de Obras e Remodelações em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Áreas de Atuação em Aveiro | Freitas Renovações LDA",
+    description: "Obras em todas as freguesias de Aveiro num raio de 30km. Resposta em < 12h.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };
 
 const areasJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Áreas de Atuação — Freitas Renovações LDA em Aveiro",
-  url: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
-  numberOfItems: PARISHES.length,
-  itemListElement: PARISHES.map((p, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    url: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${p.slug}`,
-    name: p.fullName,
-  })),
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Áreas de Atuação — Freitas Renovações LDA em Aveiro",
+      url: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
+      numberOfItems: PARISHES.length,
+      itemListElement: PARISHES.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${p.slug}`,
+        name: p.fullName,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Áreas de Atuação",
+          item: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
+        },
+      ],
+    },
+  ],
 };
 
 export default function AreasAtuacaoPage() {

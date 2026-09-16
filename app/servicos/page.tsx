@@ -8,12 +8,39 @@ export const metadata: Metadata = {
   description:
     "Remodelação geral, canalização, eletricidade, telhados, pintura e isolamentos em Aveiro. Empresa licenciada IMPIC. Orçamento gratuito. Resposta em menos de 12h.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/servicos" },
+  keywords: [
+    "serviços de obras aveiro",
+    "remodelação geral aveiro",
+    "canalizador aveiro",
+    "eletricista aveiro",
+    "reparação de telhados aveiro",
+    "pintura de interiores aveiro",
+    "capoto e isolamento térmico aveiro",
+    "remodelação de casas de banho aveiro",
+    "remodelação de cozinhas aveiro",
+    "empresa de renovações aveiro",
+  ],
   openGraph: {
     title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
     description:
       "Remodelação geral, canalização, eletricidade, telhados, pintura e isolamentos em Aveiro. Orçamento gratuito. ⭐ 4.9/5 no Google.",
     url: "https://www.grupofreitasrenovacoes.pt/servicos",
     type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Serviços de Obras e Remodelações em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
+    description: "Remodelações, canalização, eletricidade, telhados e pintura em Aveiro. Resposta em <12h.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };
 
@@ -28,16 +55,38 @@ const iconMap: Record<string, React.ReactNode> = {
 
 const servicesJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Serviços de Obras e Remodelações — Freitas Renovações LDA",
-  url: "https://www.grupofreitasrenovacoes.pt/servicos",
-  numberOfItems: SERVICES.length,
-  itemListElement: SERVICES.map((s, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    url: `https://www.grupofreitasrenovacoes.pt/servicos/${s.slug}`,
-    name: s.title,
-  })),
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Serviços de Obras e Remodelações — Freitas Renovações LDA",
+      url: "https://www.grupofreitasrenovacoes.pt/servicos",
+      numberOfItems: SERVICES.length,
+      itemListElement: SERVICES.map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `https://www.grupofreitasrenovacoes.pt/servicos/${s.slug}`,
+        name: s.title,
+        description: s.description,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Serviços",
+          item: "https://www.grupofreitasrenovacoes.pt/servicos",
+        },
+      ],
+    },
+  ],
 };
 
 export default function ServicosPage() {

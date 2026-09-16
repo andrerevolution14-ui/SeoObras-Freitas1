@@ -1,6 +1,6 @@
 "use client";
 
-import { ShieldCheck, Star, User, CheckCircle, Clock, FileText } from "lucide-react";
+import { ShieldCheck, Star, User, CheckCircle, Clock, FileText, CreditCard } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -10,11 +10,13 @@ const iconMap: Record<string, React.ReactNode> = {
   CheckCircle: <CheckCircle size={20} />,
   Clock: <Clock size={20} />,
   FileText: <FileText size={20} />,
+  CreditCard: <CreditCard size={20} />,
 };
 
 const badges = [
   { icon: "ShieldCheck", label: "Alvará de Construção Válido", sublabel: "Empresa Licenciada" },
   { icon: "Star", label: `${CONTRACTOR_INFO.googleRating}/5 no Google`, sublabel: `+${CONTRACTOR_INFO.reviewCount} Avaliações Reais` },
+  { icon: "CreditCard", label: "Crédito Obras 100% Grátis", sublabel: "Intermediação Parceira" },
   { icon: "User", label: CONTRACTOR_INFO.contractorName, sublabel: "Supervisão Direta" },
   { icon: "CheckCircle", label: `+${CONTRACTOR_INFO.projectsCompleted} Obras Concluídas`, sublabel: "Em Aveiro e Arredores" },
   { icon: "Clock", label: "Resposta até 12h", sublabel: "Atendimento Rápido" },

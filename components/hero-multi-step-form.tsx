@@ -39,6 +39,7 @@ interface FormData {
   phone: string;
   email: string;
   description: string;
+  needsCredit: boolean;
   photo: File | null;
 }
 
@@ -50,6 +51,7 @@ const initialFormData: FormData = {
   phone: "",
   email: "",
   description: "",
+  needsCredit: false,
   photo: null,
 };
 
@@ -108,6 +110,7 @@ export function HeroMultiStepForm() {
         localidade: formData.parish,
         servico: formData.service,
         mensagem: formData.description.trim(),
+        ajudaCredito: formData.needsCredit ? "Sim (Solicita Intermediação 100% Gratuita)" : "Não",
       };
 
       const res = await fetch("/api/contact", {
@@ -515,6 +518,38 @@ export function HeroMultiStepForm() {
                     }
                   }}
                 />
+
+                {/* Opção de Apoio a Crédito / Financiamento */}
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "0.625rem",
+                    background: formData.needsCredit ? "rgba(16, 185, 129, 0.08)" : "rgba(251, 191, 36, 0.08)",
+                    border: formData.needsCredit ? "1.5px solid #10b981" : "1px solid rgba(251, 191, 36, 0.35)",
+                    borderRadius: "0.375rem",
+                    padding: "0.625rem 0.75rem",
+                    cursor: "pointer",
+                    userSelect: "none",
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    id="form-needs-credit"
+                    checked={formData.needsCredit}
+                    onChange={(e) => setFormData((d) => ({ ...d, needsCredit: e.target.checked }))}
+                    style={{ marginTop: "2px", accentColor: "#10b981", width: "16px", height: "16px", cursor: "pointer" }}
+                  />
+                  <div style={{ fontSize: "0.75rem", color: "#1e293b", lineHeight: 1.45 }}>
+                    <span style={{ fontWeight: 700, color: "#071a3a", display: "block" }}>
+                      💶 Precisa de Crédito para a Obra? (100% Grátis)
+                    </span>
+                    <span style={{ color: "#64748b" }}>
+                      Simular financiamento com o nosso parceiro de intermediação autorizado. Sem custos nem compromisso.
+                    </span>
+                  </div>
+                </label>
               </div>
             )}
           </motion.div>

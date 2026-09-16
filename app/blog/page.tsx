@@ -7,12 +7,87 @@ export const metadata: Metadata = {
   title: "Blog & Guia de Obras em Aveiro | Freitas Renovações LDA",
   description:
     "Artigos, guias de preços, legislação e dicas úteis sobre obras, remodelações, infiltrações e licenças no concelho de Aveiro. Pela equipa de Jorge Freitas.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/blog" },
+  keywords: [
+    "blog obras aveiro",
+    "guia remodelacoes aveiro",
+    "artigos construcao aveiro",
+    "quanto custa obra aveiro blog",
+    "licencas obras camara de aveiro",
+    "infiltracoes telhados aveiro dicas",
+    "freitas renovacoes blog",
+  ],
+  openGraph: {
+    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações LDA",
+    description:
+      "Artigos técnicos, guias de preços, conselhos de manutenção e legislação sobre obras em Aveiro por Jorge Freitas.",
+    url: "https://www.grupofreitasrenovacoes.pt/blog",
+    type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blog de Obras e Remodelações em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações LDA",
+    description: "Guias práticos de remodelação, preços e dicas de obras em Aveiro.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+  },
+};
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      name: "Blog & Guia de Obras em Aveiro",
+      url: "https://www.grupofreitasrenovacoes.pt/blog",
+      description: "Artigos e guias especializados de obras e remodelações no concelho de Aveiro.",
+      blogPost: BLOG_POSTS.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.metaDescription,
+        url: `https://www.grupofreitasrenovacoes.pt/blog/${post.slug}`,
+        datePublished: post.date,
+        author: {
+          "@type": "Person",
+          name: post.author,
+        },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: "https://www.grupofreitasrenovacoes.pt/blog",
+        },
+      ],
+    },
+  ],
 };
 
 export default function BlogIndexPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container">

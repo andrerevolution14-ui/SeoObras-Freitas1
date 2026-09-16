@@ -10,11 +10,80 @@ export const metadata: Metadata = {
   description:
     "Veja obras passadas e preços reais de remodelações em Aveiro (ex: casa de banho 20m², cozinha, T2, capoto). Compare com o seu projeto. Jorge Freitas. ⭐ 4.9/5 Google.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/projetos" },
+  keywords: [
+    "projetos de obras aveiro",
+    "portfolio remodelacoes aveiro",
+    "fotos de obras aveiro",
+    "obras concluidas aveiro",
+    "remodelacoes residenciais aveiro",
+    "jorge freitas obras concluidas",
+    "freitas renovacoes projetos",
+  ],
+  openGraph: {
+    title: "Obras Realizadas em Aveiro e Preços Reais | Freitas Renovações LDA",
+    description:
+      "Portfolio com dezenas de obras concluídas em Aveiro. Fotos reais, custos transparentes e padrões de excelência.",
+    url: "https://www.grupofreitasrenovacoes.pt/projetos",
+    type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Projetos de Obras Realizadas em Aveiro — Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Obras Realizadas em Aveiro | Freitas Renovações LDA",
+    description: "Conheça o portfólio de remodelações e obras em Aveiro com preços reais.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+  },
+};
+
+const projetosJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Projetos e Obras Concluídas em Aveiro — Freitas Renovações LDA",
+      description: "Catálogo de trabalhos de remodelação, isolamentos e reabilitação em Aveiro.",
+      itemListElement: REAL_PROJECTS.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.title,
+        description: `${item.service} em ${item.parish}, Aveiro. Concluído em ${item.year}.`,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projetos",
+          item: "https://www.grupofreitasrenovacoes.pt/projetos",
+        },
+      ],
+    },
+  ],
 };
 
 export default function ProjetosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projetosJsonLd) }}
+      />
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container">

@@ -7,45 +7,102 @@ export const metadata: Metadata = {
   title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações LDA",
   description:
     "Conheça Jorge Freitas, empreiteiro responsável da Freitas Renovações LDA em Aveiro. Alvará de construção válido, +100 obras concluídas e preços justos.",
-  alternates: { canonical: "/sobre" },
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/sobre" },
+  keywords: [
+    "jorge freitas empreiteiro",
+    "freitas renovacoes lda sobre",
+    "empreiteiro licenciado aveiro",
+    "empresa construcao aveiro alvara",
+    "obras aveiro equipa",
+    "construcao civil aveiro experiencia",
+  ],
+  openGraph: {
+    title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações LDA",
+    description:
+      "Conheça Jorge Freitas e a equipa da Freitas Renovações LDA. Empresa licenciada IMPIC, +100 obras entregues em Aveiro com preços justos.",
+    url: "https://www.grupofreitasrenovacoes.pt/sobre",
+    type: "profile",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Empreiteiro Jorge Freitas — Freitas Renovações LDA em Aveiro",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações LDA",
+    description: "Empreiteiro licenciado em Aveiro. Mais de 100 obras com garantia formal.",
+    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+  },
 };
 
-const personJsonLd = {
+const sobreJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: CONTRACTOR_INFO.contractorName,
-  jobTitle: CONTRACTOR_INFO.jobTitle,
-  worksFor: {
-    "@type": "HomeAndConstructionBusiness",
-    name: CONTRACTOR_INFO.companyName,
-    url: CONTRACTOR_INFO.website,
-  },
-  knowsAbout: [
-    "Construção Civil",
-    "Remodelações Residenciais",
-    "Canalização",
-    "Instalações Elétricas",
-    "Impermeabilização",
-    "Isolamentos",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      name: "Sobre a Freitas Renovações LDA e Empreiteiro Jorge Freitas",
+      url: "https://www.grupofreitasrenovacoes.pt/sobre",
+      description: "História, alvarás, competências e equipa técnica da Freitas Renovações LDA em Aveiro.",
+    },
+    {
+      "@type": "Person",
+      name: CONTRACTOR_INFO.contractorName,
+      jobTitle: CONTRACTOR_INFO.jobTitle,
+      worksFor: {
+        "@type": "HomeAndConstructionBusiness",
+        name: CONTRACTOR_INFO.companyName,
+        url: CONTRACTOR_INFO.website,
+      },
+      knowsAbout: [
+        "Construção Civil",
+        "Remodelações Residenciais",
+        "Canalização",
+        "Instalações Elétricas",
+        "Impermeabilização",
+        "Isolamentos",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: CONTRACTOR_INFO.address.street,
+        postalCode: CONTRACTOR_INFO.address.postalCode,
+        addressLocality: "Aveiro",
+        addressCountry: "PT",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: CONTRACTOR_INFO.geo.latitude,
+        longitude: CONTRACTOR_INFO.geo.longitude,
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Sobre Nós",
+          item: "https://www.grupofreitasrenovacoes.pt/sobre",
+        },
+      ],
+    },
   ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: CONTRACTOR_INFO.address.street,
-    postalCode: CONTRACTOR_INFO.address.postalCode,
-    addressLocality: "Aveiro",
-    addressCountry: "PT",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: CONTRACTOR_INFO.geo.latitude,
-    longitude: CONTRACTOR_INFO.geo.longitude,
-  },
 };
 
 export default function SobrePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sobreJsonLd) }} />
 
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>

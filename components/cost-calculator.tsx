@@ -452,6 +452,41 @@ export function CostCalculator({
                   </div>
                 </div>
               </div>
+
+              {/* Credit Callout Box */}
+              <div
+                style={{
+                  background: "rgba(16, 185, 129, 0.12)",
+                  border: "1px solid rgba(16, 185, 129, 0.35)",
+                  borderRadius: "0.5rem",
+                  padding: "0.75rem 0.875rem",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", marginBottom: "0.25rem" }}>
+                  <span style={{ fontSize: "0.875rem" }}>💶</span>
+                  <span style={{ color: "#34d399", fontWeight: 800, fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.03em" }}>
+                    Financiamento para esta obra
+                  </span>
+                </div>
+                <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "0.75rem", lineHeight: 1.45, margin: "0 0 0.5rem" }}>
+                  Pague em mensalidades com serviço de intermediação de crédito 100% gratuito através de parceiro Banco de Portugal.
+                </p>
+                <Link
+                  href="/credito-obras"
+                  style={{
+                    color: "#fbbf24",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
+                    textDecoration: "underline",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.25rem",
+                  }}
+                >
+                  Saber mais sobre Crédito Obras →
+                </Link>
+              </div>
             </div>
 
             {/* Action Buttons */}

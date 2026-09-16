@@ -9,12 +9,89 @@ export const metadata: Metadata = {
   title: "Projeto Verdemont Aveiro — Empreendimento Residencial | Freitas Renovações",
   description:
     "Conheça o grande projeto Verdemont em Aveiro. Fachadas de alta eficiência, varandas com iluminação noturna e reabilitação de referência pela Freitas Renovações LDA.",
-  alternates: { canonical: "/verdemont" },
+  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/verdemont" },
+  keywords: [
+    "projeto verdemont aveiro",
+    "empreendimento verdemont",
+    "verdemont freitas renovacoes",
+    "reabilitacao residencial aveiro",
+    "obras de grande dimensao aveiro",
+    "construcao fachada contemporanea aveiro",
+  ],
+  openGraph: {
+    title: "Projeto Verdemont Aveiro — Reabilitação de Referência | Freitas Renovações",
+    description:
+      "Fachadas de vanguarda, eficiência energética e iluminação arquitetural no empreendimento Verdemont em Aveiro.",
+    url: "https://www.grupofreitasrenovacoes.pt/verdemont",
+    type: "website",
+    locale: "pt_PT",
+    images: [
+      {
+        url: "https://www.grupofreitasrenovacoes.pt/verdemont.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Projeto Verdemont em Aveiro — Empreendimento Residencial Freitas Renovações LDA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projeto Verdemont Aveiro | Freitas Renovações",
+    description: "Reabilitação e construção de excelência no projeto Verdemont em Aveiro.",
+    images: ["https://www.grupofreitasrenovacoes.pt/verdemont.jpg"],
+  },
+};
+
+const verdemontJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ApartmentComplex",
+      name: "Projeto Verdemont Aveiro",
+      description: "Empreendimento residencial com reabilitação e acabamentos de vanguarda executados pela Freitas Renovações LDA.",
+      url: "https://www.grupofreitasrenovacoes.pt/verdemont",
+      sameAs: "https://www.verdemont.eu",
+      image: "https://www.grupofreitasrenovacoes.pt/verdemont.jpg",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Aveiro",
+        addressRegion: "Aveiro",
+        addressCountry: "PT",
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projetos",
+          item: "https://www.grupofreitasrenovacoes.pt/projetos",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Verdemont",
+          item: "https://www.grupofreitasrenovacoes.pt/verdemont",
+        },
+      ],
+    },
+  ],
 };
 
 export default function VerdemontPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(verdemontJsonLd) }}
+      />
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #051329, #0a2347)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">
