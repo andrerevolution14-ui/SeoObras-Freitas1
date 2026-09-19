@@ -117,7 +117,7 @@ export default function HomePage() {
       />
 
       {/* ── 1. HERO & LEAD GENERATOR ─────────────────────── */}
-      <section className="hero-section">
+      <section className="hero-section" style={{ backgroundColor: '#050d1a' }}>
         {/* Background photo */}
         <Image
           src="/hero-bg-v3.jpg"
@@ -127,6 +127,8 @@ export default function HomePage() {
           quality={85}
           className="hero-bg-image"
           sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAARCAAkAEADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUDBgIBAAf/xAAvEAACAQMDAwMDBAMBAAAAAAABAgMABBEFEiExQVFhBhNxgZEiMqGxwdHh8P/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAHhEAAgICAwEAAAAAAAAAAAAAAAECERIhMUFR/9oADAMBAAIRAxEAPwDuiiisBQFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFVbu7t7GDzriQIvbuc+w71lj9S6cSSb2EAe7cY/eoOiVFFVtze21shaeZEB7ZP9VFsAoooqgCiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k="
         />
         {/* Dark directional overlay */}
         <div className="hero-grid-pattern" />
