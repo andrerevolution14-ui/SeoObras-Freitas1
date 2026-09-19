@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Phone, MapPin, Star, Shield, Clock, ArrowRight, CheckCircle, CreditCard } from "lucide-react";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 import { TrustBar } from "@/components/trust-bar";
@@ -117,80 +118,204 @@ export default function HomePage() {
 
       {/* ── 1. HERO & LEAD GENERATOR ─────────────────────── */}
       <section className="hero-section">
+        {/* Background photo */}
+        <Image
+          src="/hero-bg-v3.jpg"
+          alt="Cozinha moderna renovada pela Freitas Renovações em Aveiro"
+          fill
+          priority
+          quality={85}
+          className="hero-bg-image"
+          sizes="100vw"
+        />
+        {/* Dark directional overlay */}
         <div className="hero-grid-pattern" />
-        <div className="section-container" style={{ width: "100%", position: "relative", zIndex: 1 }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "3rem",
-              alignItems: "center",
-            }}
-            className="hero-grid"
-          >
-            {/* Left Column — Value Proposition */}
-            <div className="hero-left-content">
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  background: "rgba(251, 191, 36, 0.15)",
-                  border: "1px solid rgba(251, 191, 36, 0.3)",
-                  color: "#fef08a",
-                  borderRadius: "0.25rem",
-                  padding: "0.375rem 0.875rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  marginBottom: "1.25rem",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                <MapPin size={13} />
-                Atendimento Rápido em Aveiro & Freguesias
+
+        <div className="section-container" style={{ width: "100%", position: "relative", zIndex: 2 }}>
+          {/* Desktop: 2-col grid | Mobile: flex column with custom order */}
+          <div className="hero-grid">
+
+            {/* Left: label + h1 + subtitle + buttons — order 1 on mobile */}
+            <div className="hero-left-content hero-text-col">
+
+              <div className="hero-section-label">
+                Freitas Renovações · Aveiro
               </div>
 
               <h1
                 style={{
                   fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                  fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)",
                   fontWeight: 900,
                   color: "#ffffff",
-                  lineHeight: 1.15,
-                  marginBottom: "1rem",
-                  letterSpacing: "-0.02em",
+                  lineHeight: 1.05,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.03em",
+                  textShadow: "0 2px 30px rgba(0,0,0,0.5)",
                 }}
               >
-                Obras, Remodelações e Reparações em{" "}
-                <span className="text-gradient-gold">Aveiro.</span>{" "}
-                <span style={{ color: "rgba(255,255,255,0.9)" }}>Preços Justos.</span>
+                Obras &amp; Remodelações{" "}
+                <span
+                  style={{
+                    display: "block",
+                    background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  em Aveiro.
+                </span>
+                <span
+                  style={{
+                    display: "block",
+                    fontSize: "0.55em",
+                    fontWeight: 700,
+                    color: "rgba(255,255,255,0.75)",
+                    letterSpacing: "-0.01em",
+                    marginTop: "0.25em",
+                    WebkitTextFillColor: "rgba(255,255,255,0.75)",
+                  }}
+                >
+                  Preços Justos. Garantia Contratual.
+                </span>
               </h1>
 
-              {/* Subtitle Paragraph — Hidden on Mobile per user request */}
+              {/* Subtitle — hidden on mobile */}
               <p
-                className="hero-subtitle hidden-mobile"
+                className="hero-subtitle"
                 style={{
-                  color: "rgba(255,255,255,0.8)",
-                  fontSize: "1rem",
+                  color: "rgba(255,255,255,0.72)",
+                  fontSize: "1.0625rem",
                   lineHeight: 1.65,
-                  marginBottom: "1.5rem",
-                  maxWidth: "480px",
+                  marginBottom: "2rem",
+                  maxWidth: "460px",
+                  textShadow: "0 1px 8px rgba(0,0,0,0.3)",
                 }}
               >
-                A equipa do Empreiteiro <strong style={{ color: "#fbbf24" }}>Jorge Freitas</strong> resolve a sua obra com garantia de qualidade, orçamento transparente, preços justos e rapidez.
+                A equipa do Empreiteiro{" "}
+                <strong style={{ color: "#fbbf24", fontWeight: 800 }}>Jorge Freitas</strong>{" "}
+                resolve a sua obra com transparência total, orçamento discriminado e rapidez de resposta.
               </p>
 
-              {/* Trust micro-badges */}
+              {/* Action Buttons — desktop only (mobile gets its own block below the form) */}
+              <div className="hero-btn-wrapper hero-btn-desktop">
+                <a
+                  href={`tel:${CONTRACTOR_INFO.phone}`}
+                  className="btn-primary hero-btn-call"
+                  id="hero-call-btn"
+                  style={{ boxShadow: "0 4px 24px rgba(245,158,11,0.45)" }}
+                >
+                  <Phone size={18} />
+                  <span>{CONTRACTOR_INFO.phoneDisplay}</span>
+                </a>
+                <a
+                  href="#hero-form"
+                  className="btn-secondary hero-btn-quote"
+                  id="hero-quote-btn"
+                  style={{
+                    border: "1.5px solid rgba(255,255,255,0.35)",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  <span>Pedir Orçamento Grátis</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+
+              {/* Badges + stars — DESKTOP only (hidden on mobile, shown below form) */}
+              <div className="hero-badges-desktop">
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0.5rem",
+                    paddingTop: "1.5rem",
+                    borderTop: "1px solid rgba(255,255,255,0.12)",
+                  }}
+                >
+                  {[
+                    { icon: "⭐", text: "4.9/5 Google" },
+                    { icon: "🛡️", text: "Empresa Licenciada" },
+                    { icon: "⚡", text: "Resposta até 12h" },
+                    { icon: "💶", text: "Preços Justos" },
+                  ].map((badge) => (
+                    <div
+                      key={badge.text}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.375rem",
+                        background: "rgba(255,255,255,0.07)",
+                        border: "1px solid rgba(255,255,255,0.14)",
+                        borderRadius: "2rem",
+                        padding: "0.3rem 0.875rem",
+                        color: "rgba(255,255,255,0.88)",
+                        fontSize: "0.75rem",
+                        fontWeight: 600,
+                        backdropFilter: "blur(6px)",
+                      }}
+                    >
+                      <span>{badge.icon}</span>
+                      <span>{badge.text}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginTop: "1rem" }}>
+                  <div style={{ display: "flex", gap: "2px" }}>
+                    {[1,2,3,4,5].map((s) => (
+                      <Star key={s} size={13} fill="#fbbf24" stroke="#fbbf24" />
+                    ))}
+                  </div>
+                  <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8125rem" }}>
+                    +48 clientes satisfeitos em Aveiro
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Form — order 2 on mobile */}
+            <div className="hero-form-col">
+              <HeroMultiStepForm />
+            </div>
+
+            {/* Buttons — MOBILE only, after form */}
+            <div className="hero-btns-mobile">
+              <a
+                href={`tel:${CONTRACTOR_INFO.phone}`}
+                className="btn-primary"
+                style={{ width: "100%", justifyContent: "center", fontSize: "0.9rem", padding: "0.75rem 1rem", boxShadow: "0 4px 24px rgba(245,158,11,0.45)" }}
+              >
+                <Phone size={17} />
+                <span>{CONTRACTOR_INFO.phoneDisplay}</span>
+              </a>
+              <a
+                href="#hero-form"
+                className="btn-secondary"
+                style={{ width: "100%", justifyContent: "center", fontSize: "0.9rem", padding: "0.75rem 1rem", border: "1.5px solid rgba(255,255,255,0.35)" }}
+              >
+                <span>Pedir Orçamento Grátis</span>
+                <ArrowRight size={15} />
+              </a>
+            </div>
+
+            {/* Badges + stars — MOBILE only, after buttons */}
+            <div className="hero-badges-mobile">
               <div
-                style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.75rem" }}
-                className="hero-badges-wrapper"
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "0.5rem",
+                  justifyContent: "center",
+                  paddingTop: "1.25rem",
+                  borderTop: "1px solid rgba(255,255,255,0.12)",
+                }}
               >
                 {[
-                  { emoji: "⭐", text: "4.9/5 no Google" },
-                  { emoji: "🛡️", text: "Empresa Licenciada" },
-                  { emoji: "💳", text: "Crédito Obras 100% Grátis" },
-                  { emoji: "⚡", text: "Resposta até 12h" },
-                  { emoji: "💶", text: "Preços Justos" },
+                  { icon: "⭐", text: "4.9/5 Google" },
+                  { icon: "🛡️", text: "Empresa Licenciada" },
+                  { icon: "⚡", text: "Resposta até 12h" },
+                  { icon: "💶", text: "Preços Justos" },
                 ].map((badge) => (
                   <div
                     key={badge.text}
@@ -198,101 +323,131 @@ export default function HomePage() {
                       display: "flex",
                       alignItems: "center",
                       gap: "0.375rem",
-                      background: "rgba(255,255,255,0.08)",
-                      border: "1px solid rgba(255,255,255,0.15)",
-                      borderRadius: "0.25rem",
-                      padding: "0.3rem 0.75rem",
-                      color: "rgba(255,255,255,0.95)",
+                      background: "rgba(255,255,255,0.07)",
+                      border: "1px solid rgba(255,255,255,0.14)",
+                      borderRadius: "2rem",
+                      padding: "0.3rem 0.875rem",
+                      color: "rgba(255,255,255,0.88)",
                       fontSize: "0.75rem",
                       fontWeight: 600,
+                      backdropFilter: "blur(6px)",
                     }}
                   >
-                    <span>{badge.emoji}</span>
+                    <span>{badge.icon}</span>
                     <span>{badge.text}</span>
                   </div>
                 ))}
               </div>
-
-              {/* Action Buttons */}
-              <div
-                style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}
-                className="hero-btn-wrapper"
-              >
-                <a
-                  href={`tel:${CONTRACTOR_INFO.phone}`}
-                  className="btn-primary"
-                  id="hero-call-btn"
-                >
-                  <Phone size={18} />
-                  <span>{CONTRACTOR_INFO.phoneDisplay}</span>
-                </a>
-                <a href="#hero-form" className="btn-secondary" id="hero-quote-btn">
-                  <span>Pedir Orçamento Grátis</span>
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-
-              {/* Rating Teaser */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.75rem",
-                  marginTop: "1.5rem",
-                  paddingTop: "1.25rem",
-                  borderTop: "1px solid rgba(255,255,255,0.1)",
-                }}
-                className="hero-rating-teaser"
-              >
+              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginTop: "0.75rem", justifyContent: "center" }}>
                 <div style={{ display: "flex", gap: "2px" }}>
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={14} fill="#fbbf24" stroke="#fbbf24" />
+                  {[1,2,3,4,5].map((s) => (
+                    <Star key={s} size={13} fill="#fbbf24" stroke="#fbbf24" />
                   ))}
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.8125rem" }}>
-                  +48 clientes satisfeitos em Aveiro com orçamentos justos
+                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8125rem" }}>
+                  +48 clientes satisfeitos em Aveiro
                 </p>
               </div>
             </div>
 
-            {/* Right Column — Multi-step Lead Form */}
-            <div>
-              <HeroMultiStepForm />
-            </div>
           </div>
         </div>
 
         <style>{`
+          /* ── Desktop ── */
+          .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+          }
+          .hero-badges-mobile { display: none; }
+          .hero-btns-mobile   { display: none; }
+          .hero-badges-desktop { display: block; }
+          .hero-btn-wrapper {
+            display: flex;
+            gap: 0.875rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+          }
+          .hero-btn-call, .hero-btn-quote {
+            font-size: 1rem;
+            padding: 0.875rem 1.75rem;
+          }
+
+          /* ── Mobile ── */
           @media (max-width: 768px) {
-            .hero-grid {
-              grid-template-columns: 1fr !important;
-              gap: 2rem !important;
+            .hero-section {
+              padding: 5.5rem 0 2.5rem;
+              min-height: auto;
+              align-items: flex-start;
             }
-            .hero-left-content {
-              text-align: center;
+            .hero-grid {
+              display: flex;
+              flex-direction: column;
+              gap: 1.25rem;
+              align-items: stretch;
+            }
+
+            /* 1 — Texto (label + h1) */
+            .hero-text-col {
+              order: 1;
               display: flex;
               flex-direction: column;
               align-items: center;
-            }
-            .hero-subtitle {
-              display: none !important;
-            }
-            .hero-badges-wrapper {
-              justify-content: center;
-            }
-            .hero-btn-wrapper {
-              justify-content: center;
+              text-align: center;
               width: 100%;
             }
-            .hero-btn-wrapper a {
+            .hero-text-col h1 {
+              text-align: center;
               width: 100%;
             }
-            .hero-rating-teaser {
+            .hero-section-label {
+              justify-content: center;
+              text-align: center;
+            }
+            .hero-subtitle { display: none !important; }
+
+            /* 2 — Formulário */
+            .hero-form-col {
+              order: 2;
+              width: 100%;
+            }
+
+            /* 3 — Botões (abaixo do form) */
+            .hero-btns-mobile {
+              display: flex;
+              flex-direction: column;
+              gap: 0.625rem;
+              order: 3;
+              width: 100%;
+            }
+            .hero-btns-mobile a {
+              width: 100%;
+              justify-content: center;
+              text-align: center;
+            }
+
+            /* 4 — Badges + estrelas */
+            .hero-badges-mobile {
+              display: block;
+              order: 4;
+              width: 100%;
+              text-align: center;
+            }
+            .hero-badges-mobile > div {
               justify-content: center;
             }
+
+            /* Esconder versões desktop */
+            .hero-badges-desktop { display: none; }
+            .hero-btn-desktop    { display: none !important; }
           }
         `}</style>
       </section>
+
+
+
 
       {/* ── 2. TRUST BAR (Continuous marquee scroll on mobile) ── */}
       <TrustBar />

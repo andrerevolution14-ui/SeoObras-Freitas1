@@ -12,9 +12,6 @@ import {
   Ruler,
   CheckSquare,
   Building2,
-  MapPin,
-  ShieldCheck,
-  MessageCircle,
   CreditCard,
 } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
@@ -112,54 +109,6 @@ export function Header() {
         boxShadow: isScrolled ? "0 4px 20px rgba(0,0,0,0.3)" : "none",
       }}
     >
-      {/* Barra de Topo Discreta */}
-      <div
-        style={{
-          background: "#040d1a",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          fontSize: "0.71875rem",
-          padding: "0.3rem 0",
-        }}
-      >
-        <div
-          className="section-container"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem", color: "#94a3b8" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
-              <MapPin size={11} style={{ color: "#fbbf24" }} /> Aveiro &amp; Concelhos Vizinhos
-            </span>
-            <span style={{ color: "rgba(255,255,255,0.15)" }}>|</span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}>
-              <ShieldCheck size={11} style={{ color: "#34d399" }} /> Alvará IMPIC Válido · Seguro de Obras
-            </span>
-          </div>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <a
-              href="https://wa.me/351912543977?text=Ol%C3%A1%20Jorge%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20uma%20obra%20em%20Aveiro"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.35rem",
-                color: "#34d399",
-                textDecoration: "none",
-                fontWeight: 700,
-                fontSize: "0.71875rem",
-              }}
-            >
-              <MessageCircle size={12} />
-              WhatsApp Direto
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Menu Principal */}
       <div
