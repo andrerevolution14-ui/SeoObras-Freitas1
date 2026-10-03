@@ -5,16 +5,19 @@ import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
 import { CostCalculator } from "@/components/cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Pedir Orçamento Gratuito & Calculadora de Obras em Aveiro | Freitas Renovações LDA",
+  title: "Orçamento Remodelação Aveiro — Orçamento Grátis em <12h | Freitas Renovações",
   description:
-    "Calcule o seu orçamento online ou peça proposta gratuita para obras e remodelações em Aveiro. Resposta em < 12h. Empreiteiro Jorge Freitas. Sem compromisso.",
+    "Peça orçamento para obras e remodelações em Aveiro sem compromisso. Resposta garantida em < 12h pelo Empreiteiro Jorge Freitas. Simule na calculadora online ou ligue já. Alvará IMPIC.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/orcamento" },
   keywords: [
-    "orcamento obras aveiro",
-    "pedir orcamento remodelacao aveiro",
+    "orçamento remodelação aveiro",
+    "orçamento obras aveiro",
+    "pedir orçamento remodelação aveiro",
+    "quanto custa remodelar uma casa em aveiro",
+    "preço m2 remodelação aveiro",
     "calculadora obras aveiro",
-    "preco remodelacao casa aveiro",
-    "orcamento gratis obras aveiro",
+    "orçamento gratis obras aveiro",
+    "empresa de remodelações aveiro orçamento",
     "jorge freitas orcamento",
     "freitas renovacoes orcamento",
   ],

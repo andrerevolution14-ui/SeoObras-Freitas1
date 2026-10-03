@@ -244,6 +244,35 @@ export function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Áreas & Concelhos Limítrofes */}
+          <div>
+            <h4 style={{ color: "#ffffff", fontWeight: 700, marginBottom: "0.875rem", fontSize: "0.8125rem", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              Áreas de Atuação
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              {[
+                { href: "/areas-atuacao/gloria-e-vera-cruz", label: "Aveiro Centro" },
+                { href: "/areas-atuacao/esgueira", label: "Esgueira" },
+                { href: "/areas-atuacao/aradas", label: "Aradas" },
+                { href: "/areas-atuacao/sao-bernardo", label: "São Bernardo" },
+                { href: "/areas-atuacao/cacia", label: "Cácia" },
+                { href: "/areas-atuacao/ilhavo", label: "Ílhavo & Gafanhas" },
+                { href: "/areas-atuacao/agueda", label: "Águeda" },
+                { href: "/areas-atuacao/estarreja", label: "Estarreja" },
+                { href: "/areas-atuacao/vagos", label: "Vagos" },
+                { href: "/areas-atuacao/praia-da-barra-costa-nova", label: "Praia da Barra & Costa Nova" },
+                { href: "/areas-atuacao", label: "Ver Todas as 17 Áreas" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="footer-link" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
+                    <MapPin size={12} style={{ color: "#fbbf24", flexShrink: 0 }} />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Bottom Bar */}

@@ -16,24 +16,54 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Freitas Renovações LDA | Obras e Remodelações em Aveiro",
+    default: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
     template: "%s | Freitas Renovações LDA",
   },
   description:
-    "Empresa de obras, remodelações e reparações em Aveiro. Empresa licenciada IMPIC, liderada pelo Empreiteiro Jorge Freitas. Orçamento gratuito. Resposta em < 12h. ⭐ 4.9/5 no Google. Preços justos.",
+    "Empresa de remodelações e obras gerais em Aveiro e concelhos vizinhos. Chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC. Empreiteiro Jorge Freitas. Orçamento grátis em <12h. ⭐ 4.9/5 Google.",
   keywords: [
-    "obras aveiro",
+    // 1. Termos Gerais de Elevada Intenção
     "remodelações aveiro",
-    "empreiteiro aveiro",
-    "canalizador aveiro",
-    "eletricista aveiro",
-    "reparações aveiro",
-    "empresa construção aveiro",
-    "telhados aveiro",
-    "pintura aveiro",
-    "capoto aveiro",
-    "isolamentos aveiro",
-    "freitas renovações",
+    "empresa de remodelações aveiro",
+    "obras aveiro",
+    "empresa de obras aveiro",
+    "obras e remodelações aveiro",
+    "empreiteiros aveiro",
+    "remodelações gerais aveiro",
+    "empresa de construção e remodelação aveiro",
+    "obras chave na mão aveiro",
+    // 2. Remodelações por Divisão e Tipologia
+    "remodelação de casas de banho aveiro",
+    "remodelação wc aveiro",
+    "remodelação de cozinhas aveiro",
+    "remodelação de apartamentos aveiro",
+    "remodelação de moradias aveiro",
+    "remodelação de interiores aveiro",
+    "obras em apartamentos aveiro",
+    "recuperação de casas velhas aveiro",
+    // 3. Serviços Técnicos e Especialidades
+    "isolamento térmico aveiro",
+    "aplicação de capoto aveiro",
+    "impermeabilização de telhados aveiro",
+    "reparação de infiltrações aveiro",
+    "pladur e tetos falsos aveiro",
+    "pinturas de interiores e exteriores aveiro",
+    "substituição de caixilharia aveiro",
+    "janelas aveiro",
+    // 4. Pesquisas de Orçamento e Custo
+    "orçamento remodelação aveiro",
+    "quanto custa remodelar uma casa em aveiro",
+    "preço m2 remodelação aveiro",
+    "orçamento obras aveiro",
+    // 5. Expansão Geográfica Próxima
+    "remodelações ílhavo",
+    "remodelações águeda",
+    "remodelações estarreja",
+    "remodelações vagos",
+    "remodelações praia da barra",
+    "remodelações costa nova",
+    // Entidades & Confiança
+    "freitas renovações lda",
     "jorge freitas empreiteiro",
     "obras remodelações aveiro preço justo",
   ],
@@ -67,9 +97,9 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     url: "https://www.grupofreitasrenovacoes.pt",
     siteName: "Freitas Renovações LDA",
-    title: "Freitas Renovações LDA | Obras e Remodelações em Aveiro",
+    title: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
     description:
-      "Empresa licenciada de obras, remodelações e reparações em Aveiro. ⭐ 4.9/5 Google · +100 obras · Empreiteiro Jorge Freitas · Preços Justos · Orçamento Grátis",
+      "Empresa licenciada de obras, remodelações gerais e chave na mão em Aveiro. ⭐ 4.9/5 Google · +100 obras · Empreiteiro Jorge Freitas · Preços Justos · Orçamento Grátis",
     images: [
       {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
@@ -82,7 +112,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Freitas Renovações LDA | Obras em Aveiro",
+    title: "Freitas Renovações LDA | Obras & Remodelações em Aveiro",
     description: "Empresa licenciada de obras e remodelações em Aveiro. ⭐ 4.9/5 Google · Orçamento gratuito · Preços Justos.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
@@ -116,7 +146,23 @@ const globalJsonLd = {
         height: 630,
       },
       description:
-        "Empresa de obras, remodelações e reparações em Aveiro, Portugal. Licenciada IMPIC. Empreiteiro Jorge Freitas. Preços justos e orçamento transparente.",
+        "Empresa de obras, remodelações gerais e reparações em Aveiro e concelhos limítrofes. Licenciada pelo IMPIC. Empreiteiro Jorge Freitas. Preços justos e garantia formal.",
+      knowsAbout: [
+        "Remodelações Gerais",
+        "Obras Chave na Mão",
+        "Remodelação de Casas de Banho",
+        "Remodelação de Cozinhas",
+        "Remodelação de Apartamentos",
+        "Remodelação de Moradias",
+        "Recuperação de Casas Velhas",
+        "Aplicação de Capoto ETICS",
+        "Isolamento Térmico e Acústico",
+        "Impermeabilização de Telhados",
+        "Reparação de Infiltrações",
+        "Pladur e Tetos Falsos",
+        "Pintura de Interiores e Exteriores",
+        "Substituição de Caixilharia e Janelas",
+      ],
       founder: {
         "@type": "Person",
         "@id": "https://www.grupofreitasrenovacoes.pt/#jorge-freitas",
@@ -157,7 +203,7 @@ const globalJsonLd = {
         name: p.name,
         containedInPlace: {
           "@type": "AdministrativeArea",
-          name: "Aveiro",
+          name: p.isNeighboringCounty ? p.name : "Aveiro",
           containedInPlace: { "@type": "Country", name: "Portugal" },
         },
       })),
@@ -168,11 +214,11 @@ const globalJsonLd = {
           latitude: CONTRACTOR_INFO.geo.latitude,
           longitude: CONTRACTOR_INFO.geo.longitude,
         },
-        geoRadius: "30000",
+        geoRadius: "45000",
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Serviços de Construção e Renovação em Aveiro",
+        name: "Serviços de Obras e Remodelações em Aveiro",
         itemListElement: SERVICES.map((s, i) => ({
           "@type": "Offer",
           position: i + 1,

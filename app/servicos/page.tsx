@@ -1,29 +1,51 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, Home, Droplets, Zap, CloudRain, Paintbrush, Layers, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  Home,
+  Droplets,
+  Zap,
+  CloudRain,
+  Paintbrush,
+  Layers,
+  Phone,
+  Bath,
+  UtensilsCrossed,
+  Building,
+  Sparkles,
+  Hammer,
+  Grid,
+  AppWindow,
+} from "lucide-react";
 import { SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
   description:
-    "Remodelação geral, canalização, eletricidade, telhados, pintura e isolamentos em Aveiro. Empresa licenciada IMPIC. Orçamento gratuito. Resposta em menos de 12h.",
+    "Empresa de remodelações em Aveiro: obras chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto, telhados e pladur. Alvará IMPIC. Orçamento gratuito em <12h.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/servicos" },
   keywords: [
-    "serviços de obras aveiro",
-    "remodelação geral aveiro",
-    "canalizador aveiro",
-    "eletricista aveiro",
-    "reparação de telhados aveiro",
-    "pintura de interiores aveiro",
-    "capoto e isolamento térmico aveiro",
+    "remodelações aveiro",
+    "empresa de remodelações aveiro",
+    "obras aveiro",
+    "obras e remodelações aveiro",
+    "obras chave na mão aveiro",
     "remodelação de casas de banho aveiro",
     "remodelação de cozinhas aveiro",
-    "empresa de renovações aveiro",
+    "remodelação de apartamentos aveiro",
+    "remodelação de moradias aveiro",
+    "remodelação de interiores aveiro",
+    "recuperação de casas velhas aveiro",
+    "aplicação de capoto aveiro",
+    "impermeabilização de telhados aveiro",
+    "pladur e tetos falsos aveiro",
+    "substituição de caixilharia aveiro",
   ],
   openGraph: {
     title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
     description:
-      "Remodelação geral, canalização, eletricidade, telhados, pintura e isolamentos em Aveiro. Orçamento gratuito. ⭐ 4.9/5 no Google.",
+      "Remodelações gerais chave na mão, casas de banho, cozinhas, moradias, capoto e telhados em Aveiro. Orçamento gratuito. ⭐ 4.9/5 no Google.",
     url: "https://www.grupofreitasrenovacoes.pt/servicos",
     type: "website",
     locale: "pt_PT",
@@ -39,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
-    description: "Remodelações, canalização, eletricidade, telhados e pintura em Aveiro. Resposta em <12h.",
+    description: "Remodelações, casas de banho, cozinhas, moradias e capoto em Aveiro. Resposta em <12h.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };
@@ -51,6 +73,13 @@ const iconMap: Record<string, React.ReactNode> = {
   CloudRain: <CloudRain size={24} />,
   Paintbrush: <Paintbrush size={24} />,
   Layers: <Layers size={24} />,
+  Bath: <Bath size={24} />,
+  UtensilsCrossed: <UtensilsCrossed size={24} />,
+  Building: <Building size={24} />,
+  Sparkles: <Sparkles size={24} />,
+  Hammer: <Hammer size={24} />,
+  Grid: <Grid size={24} />,
+  AppWindow: <AppWindow size={24} />,
 };
 
 const servicesJsonLd = {

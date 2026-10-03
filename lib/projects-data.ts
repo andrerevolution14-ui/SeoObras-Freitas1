@@ -311,6 +311,30 @@ export const AVERAGE_PRICES_AVEIRO: AveragePriceRow[] = [
     premiumRange: "20€ – 28€",
     notes: "Eliminação de musgos da ria, substituição de telhas e telas em caleiras.",
   },
+  {
+    service: "Caixilharia & Janelas PVC Corte Térmico",
+    unit: "€ / vão instalado",
+    lowCostRange: "280€ – 390€",
+    standardRange: "420€ – 650€",
+    premiumRange: "700€ – 1.100€",
+    notes: "Vidro duplo Low-E com gás árgon e classe energética A+. Elimina condensações.",
+  },
+  {
+    service: "Divisórias em Pladur (Paredes Acústicas)",
+    unit: "€ / m²",
+    lowCostRange: "22€ – 28€",
+    standardRange: "32€ – 42€",
+    premiumRange: "45€ – 60€",
+    notes: "Placa dupla com lã mineral para criação de quartos, escritórios e insonorização.",
+  },
+  {
+    service: "Recuperação de Casas Velhas & Reabilitação",
+    unit: "€ / m² de área bruta",
+    lowCostRange: "350€ – 500€",
+    standardRange: "550€ – 850€",
+    premiumRange: "900€ – 1.400€",
+    notes: "Reforço estrutural, tratamento de madeiras históricas, humidades e redes novas.",
+  },
 ];
 
 // ============================================================

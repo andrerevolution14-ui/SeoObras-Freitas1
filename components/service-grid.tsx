@@ -1,7 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Home, Droplets, Zap, CloudRain, Paintbrush, Layers } from "lucide-react";
+import {
+  ArrowRight,
+  Home,
+  Droplets,
+  Zap,
+  CloudRain,
+  Paintbrush,
+  Layers,
+  Bath,
+  UtensilsCrossed,
+  Building,
+  Sparkles,
+  Hammer,
+  Grid,
+  AppWindow,
+} from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 
 const iconComponents: Record<string, React.ComponentType<{ size?: number }>> = {
@@ -11,6 +26,13 @@ const iconComponents: Record<string, React.ComponentType<{ size?: number }>> = {
   CloudRain,
   Paintbrush,
   Layers,
+  Bath,
+  UtensilsCrossed,
+  Building,
+  Sparkles,
+  Hammer,
+  Grid,
+  AppWindow,
 };
 
 export function ServiceGrid() {
@@ -19,12 +41,12 @@ export function ServiceGrid() {
       <div className="section-container">
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-          <p className="section-eyebrow">O Que Fazemos</p>
+          <p className="section-eyebrow">Empresa Licenciada IMPIC</p>
           <h2 className="section-title">
-            Serviços de Obras & Reparações em Aveiro
+            Obras &amp; Remodelações em Aveiro e Concelhos Vizinhos
           </h2>
           <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            Desde reparações a obras completas de remodelação, a equipa do Jorge Freitas oferece soluções com preços justos e qualidade garantida.
+            Especialistas em remodelações gerais chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e reabilitação de casas velhas com preços justos.
           </p>
         </div>
 
