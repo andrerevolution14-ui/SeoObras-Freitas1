@@ -20,7 +20,7 @@ import {
   AlertTriangle,
   Loader2,
 } from "lucide-react";
-import { SERVICES, PARISHES, URGENCY_OPTIONS, CONTRACTOR_INFO } from "@/lib/constants";
+import { FORM_SERVICES, FORM_PARISHES, URGENCY_OPTIONS, CONTRACTOR_INFO } from "@/lib/constants";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   Home: <Home size={22} />,
@@ -267,10 +267,10 @@ export function HeroMultiStepForm() {
             exit="exit"
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* STEP 1: Service selection */}
+            {/* STEP 1: Service selection (Apenas as 6 opções originais) */}
             {step === 1 && (
               <div className="form-service-grid">
-                {SERVICES.map((service) => {
+                {FORM_SERVICES.map((service) => {
                   const isSelected = formData.service === service.slug;
                   return (
                     <button
@@ -380,11 +380,12 @@ export function HeroMultiStepForm() {
                     style={{ paddingLeft: "2.5rem", appearance: "none" }}
                   >
                     <option value="">Escolha a freguesia...</option>
-                    {PARISHES.map((parish) => (
-                      <option key={parish.slug} value={parish.slug}>
+                    {FORM_PARISHES.map((parish) => (
+                      <option key={parish.slug} value={parish.name}>
                         {parish.name}
                       </option>
                     ))}
+                    <option value="Outro Concelho Vizinho">Outro Concelho Vizinho (Ílhavo, Águeda, Estarreja, Vagos)</option>
                   </select>
                 </div>
 

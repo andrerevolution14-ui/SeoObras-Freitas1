@@ -7,7 +7,7 @@ import { ServiceGrid } from "@/components/service-grid";
 import { GoogleReviews } from "@/components/google-reviews";
 import { RealProjectsGallery } from "@/components/real-projects-gallery";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { CONTRACTOR_INFO } from "@/lib/constants";
+import { CONTRACTOR_INFO, FAQ_ITEMS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Enhanced JSON-LD Schema: LocalBusiness + BreadcrumbList
+// Enhanced JSON-LD Schema: LocalBusiness + FAQPage + HowTo + BreadcrumbList
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -112,13 +112,64 @@ const homeJsonLd = {
       },
     },
     {
+      "@type": "FAQPage",
+      "@id": "https://www.grupofreitasrenovacoes.pt/#faq",
+      mainEntity: FAQ_ITEMS.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://www.grupofreitasrenovacoes.pt/#howto-remodelacao",
+      name: "Como Pedir Orçamento e Executar Remodelações em Aveiro",
+      description:
+        "Processo passo a passo para planear, orçamentar e realizar obras com alvará IMPIC e acompanhamento do Empreiteiro Jorge Freitas.",
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "1. Contacto Inicial e Diagnóstico Rápido",
+          text: "Preencha o formulário online ou ligue para o 961 455 997. A nossa equipa responde em menos de 12 horas.",
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "2. Visita Técnica Gratuita em Aveiro",
+          text: "O Empreiteiro Jorge Freitas desloca-se sem custos ao imóvel para medições, aconselhamento técnico de materiais e avaliação in loco.",
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "3. Proposta Detalhada com Preços Fechados",
+          text: "Apresentamos orçamento discriminado com preços justos, sem custos ocultos e com garantia formal por escrito.",
+        },
+        {
+          "@type": "HowToStep",
+          position: 4,
+          name: "4. Execução da Obra com Alvará IMPIC",
+          text: "Execução rigorosa com proteção de áreas de condomínio, respeito pelos horários de ruído e materiais certificados.",
+        },
+        {
+          "@type": "HowToStep",
+          position: 5,
+          name: "5. Limpeza Final e Entrega de Chave na Mão",
+          text: "Conclusão e vistoria detalhada com o proprietário, entrega limpa e certificado de garantia até 5 anos.",
+        },
+      ],
+    },
+    {
       "@type": "BreadcrumbList",
-      "itemListElement": [
+      itemListElement: [
         {
           "@type": "ListItem",
-          "position": 1,
-          "name": "Início",
-          "item": "https://www.grupofreitasrenovacoes.pt",
+          position: 1,
+          name: "Início",
+          item: "https://www.grupofreitasrenovacoes.pt",
         },
       ],
     },

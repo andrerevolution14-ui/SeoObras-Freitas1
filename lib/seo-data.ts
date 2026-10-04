@@ -177,6 +177,60 @@ export function generateServiceSEO(service: Service): PageSEO {
         },
       ],
     },
+    "canalizacao": {
+      pricing: "A partir de 65€ para reparações pontuais | De 650€ a 1.250€ para rede completa WC em multicamada",
+      duration: "24h a 48h para reparações urgentes | 2 a 4 dias úteis para renovação integral",
+      directAnswer:
+        "Serviço profissional de canalizador em Aveiro e concelhos limítrofes pela Freitas Renovações LDA. Deteção precisa de fugas, substituição de tubagens velhas de chumbo/ferro por sistemas multicamada prensada sem emendas no chão e desentupimentos urgentes com resposta em menos de 12 horas.",
+      customFaqs: [
+        {
+          question: "Quanto custa um canalizador em Aveiro?",
+          answer:
+            "Em Aveiro, intervenções de canalizador variam entre 65€ e 120€ para reparação de pequenas fugas ou torneiras, e entre 650€ e 1.250€ para a renovação integral da rede de água quente, fria e esgotos de uma casa de banho com tubagem multicamada de alta resistência.",
+        },
+        {
+          question: "Fazem deteção de fugas de água sem partir as paredes?",
+          answer:
+            "Sim, utilizamos testes de pressão e técnicas de localização pontual para identificar a exata origem da rutura, minimizando estragos em azulejos e pavimentos e poupando custos desnecessários ao cliente.",
+        },
+      ],
+    },
+    "eletricidade": {
+      pricing: "Quadro elétrico novo: 350€ a 750€ | Instalação elétrica completa T2/T3: 1.800€ a 3.800€",
+      duration: "1 a 2 dias para modernização de quadros | 1 a 2 semanas para remodelação completa",
+      directAnswer:
+        "Instalações elétricas residenciais e comerciais em Aveiro certificadas de acordo com as normas da DGEG e CERTIEL. A Freitas Renovações LDA executa novos quadros elétricos com disjuntores diferenciais de segurança, passagens de cabos anti-fogo, circuitos dedicados para placas de indução e iluminação LED económica.",
+      customFaqs: [
+        {
+          question: "Quanto custa substituir um quadro elétrico em Aveiro?",
+          answer:
+            "A remodelação e certificação de um quadro elétrico em Aveiro custa tipicamente entre 350€ e 750€, incluindo disjuntores magnetotérmicos modernos, diferencial de 30mA para proteção humana e reorganização segura dos circuitos da casa.",
+        },
+        {
+          question: "Quando é necessário renovar a rede elétrica de um apartamento ou moradia?",
+          answer:
+            "Se o imóvel tiver mais de 25 anos, fios rígidos antigos sem condutor de proteção (terra), tomadas a aquecer ou o quadro elétrico desarmar constantemente ao ligar fornos ou termoacumuladores, a renovação é fundamental para evitar curto-circuitos e riscos de incêndio.",
+        },
+      ],
+    },
+    "isolamentos": {
+      pricing: "Isolamento de sótão/teto: 18€ a 28€/m² | Isolamento acústico de paredes: 32€ a 55€/m²",
+      duration: "2 a 5 dias úteis",
+      directAnswer:
+        "Soluções completas de isolamento térmico e acústico em Aveiro para erradicar o frio húmido atlântico, condensações nas paredes e barulhos de vizinhos. Aplicamos lã de rocha de alta densidade, cortiça expandida e telas acústicas sob soalhos com garantia escrita de eficácia.",
+      customFaqs: [
+        {
+          question: "Qual o melhor isolamento para combater a humidade e o frio em Aveiro?",
+          answer:
+            "A combinação de isolamento térmico de fachadas com capoto (ETICS) e aplicação de lã mineral hidrofugada de 80mm em tetos falsos ou sótãos é a solução mais comprovada para a zona de Aveiro, evitando condensações interiores e reduzindo em até 50% as despesas com aquecimento.",
+        },
+        {
+          question: "É possível insonorizar paredes para não ouvir vizinhos?",
+          answer:
+            "Sim. Criamos contra-paredes desvinculadas acusticamente com estrutura em pladur duplo, lã de rocha e membrana acústica de alta densidade, amortecendo a transmissão de som aéreo e de impacto.",
+        },
+      ],
+    },
   };
 
   const specifics = serviceSpecifics[service.slug] || {

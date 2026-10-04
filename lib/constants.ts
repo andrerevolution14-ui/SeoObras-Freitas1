@@ -413,6 +413,156 @@ export const SERVICES: Service[] = [
 ];
 
 // ============================================================
+// FORM SERVICES & PARISHES (Opções Compactas Originais do Formulário)
+// Restringe a 6 serviços essenciais para evitar que o formulário fique gigante
+// ============================================================
+export interface FormServiceOption {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  icon: "Home" | "Droplets" | "Zap" | "CloudRain" | "Paintbrush" | "Layers";
+}
+
+export const FORM_SERVICES: FormServiceOption[] = [
+  {
+    slug: "remodelacao-geral",
+    title: "Remodelação Geral",
+    shortTitle: "Remodelação",
+    icon: "Home",
+  },
+  {
+    slug: "canalizacao",
+    title: "Canalização & Fugas",
+    shortTitle: "Canalização",
+    icon: "Droplets",
+  },
+  {
+    slug: "eletricidade",
+    title: "Eletricidade",
+    shortTitle: "Eletricidade",
+    icon: "Zap",
+  },
+  {
+    slug: "infiltracoes-telhados",
+    title: "Infiltrações & Telhados",
+    shortTitle: "Telhados",
+    icon: "CloudRain",
+  },
+  {
+    slug: "pintura-capoto",
+    title: "Pintura & Capoto",
+    shortTitle: "Pintura",
+    icon: "Paintbrush",
+  },
+  {
+    slug: "isolamentos",
+    title: "Isolamentos",
+    shortTitle: "Isolamentos",
+    icon: "Layers",
+  },
+];
+
+// Freguesias originais do Concelho de Aveiro para o formulário
+export const FORM_PARISHES: Parish[] = [
+  {
+    slug: "gloria-e-vera-cruz",
+    name: "Glória e Vera Cruz",
+    fullName: "União de Freguesias de Glória e Vera Cruz",
+    description: "Zona histórica, canais da ria e coração urbano e comercial do centro de Aveiro",
+    population: 15800,
+    geo: { lat: "40.6405", lng: "-8.6538" },
+  },
+  {
+    slug: "esgueira",
+    name: "Esgueira",
+    fullName: "Freguesia de Esgueira",
+    description: "Freguesia residencial em forte expansão a norte de Aveiro, com elevado volume de obras em apartamentos e moradias",
+    population: 12500,
+    geo: { lat: "40.6535", lng: "-8.6457" },
+  },
+  {
+    slug: "aradas",
+    name: "Aradas",
+    fullName: "Freguesia de Aradas",
+    description: "Zona residencial tranquila a sul de Aveiro, ideal para remodelações de moradias unifamiliares",
+    population: 9200,
+    geo: { lat: "40.6290", lng: "-8.6441" },
+  },
+  {
+    slug: "cacia",
+    name: "Cácia",
+    fullName: "Freguesia de Cácia",
+    description: "Pólo residencial e empresarial a norte de Aveiro, com procura ativa de remodelações e manutenção de telhados",
+    population: 8700,
+    geo: { lat: "40.6752", lng: "-8.5956" },
+  },
+  {
+    slug: "sao-bernardo",
+    name: "São Bernardo",
+    fullName: "Freguesia de São Bernardo",
+    description: "Área nobre residencial junto ao Hospital e Universidade de Aveiro",
+    population: 7300,
+    geo: { lat: "40.6282", lng: "-8.6560" },
+  },
+  {
+    slug: "santa-joana",
+    name: "Santa Joana",
+    fullName: "Freguesia de Santa Joana",
+    description: "Freguesia residencial acolhedora a leste do centro de Aveiro",
+    population: 5600,
+    geo: { lat: "40.6445", lng: "-8.6294" },
+  },
+  {
+    slug: "oliveirinha",
+    name: "Oliveirinha",
+    fullName: "Freguesia de Oliveirinha",
+    description: "Área suburbana de moradias a sul de Aveiro com grande procura de capoto e isolamentos",
+    population: 6100,
+    geo: { lat: "40.6080", lng: "-8.6377" },
+  },
+  {
+    slug: "eixo",
+    name: "Eixo",
+    fullName: "Freguesia de Eixo",
+    description: "Zona de transição entre Aveiro e Águeda com moradias tradicionais e novos projetos de remodelação",
+    population: 4800,
+    geo: { lat: "40.6197", lng: "-8.5924" },
+  },
+  {
+    slug: "requeixo",
+    name: "Requeixo",
+    fullName: "Freguesia de Requeixo",
+    description: "Zona ribeirinha da Ria de Aveiro com habitações rurais e projetos de reabilitação",
+    population: 3200,
+    geo: { lat: "40.6597", lng: "-8.5790" },
+  },
+  {
+    slug: "nariz",
+    name: "Nariz",
+    fullName: "Freguesia de Nariz",
+    description: "Zona residencial e rural no município de Aveiro",
+    population: 2100,
+    geo: { lat: "40.5990", lng: "-8.5807" },
+  },
+  {
+    slug: "eirol",
+    name: "Eirol",
+    fullName: "Freguesia de Eirol",
+    description: "Freguesia a oeste de Aveiro caracterizada por moradias e recuperação de habitações",
+    population: 1800,
+    geo: { lat: "40.6470", lng: "-8.7050" },
+  },
+  {
+    slug: "sao-jacinto",
+    name: "São Jacinto",
+    fullName: "Freguesia de São Jacinto",
+    description: "Península costeira entre a Ria e o Oceano, com necessidades específicas de impermeabilização",
+    population: 1500,
+    geo: { lat: "40.6724", lng: "-8.7411" },
+  },
+];
+
+// ============================================================
 // REAL PROJECTS DATA (2022 - 2026)
 // ============================================================
 export interface RealProject {
@@ -804,50 +954,68 @@ export const CREDIT_PARTNER_INFO = {
 };
 
 // ============================================================
-// FAQ DATA
+// FAQ DATA (Otimizado para AEO — Perguntas de Alta Intenção)
 // ============================================================
 export const FAQ_ITEMS = [
   {
     id: "faq1",
-    question: "A Freitas Renovações é uma empresa licenciada?",
+    question: "A Freitas Renovações é uma empresa licenciada com Alvará em Aveiro?",
     answer:
-      "Sim. A Freitas Renovações LDA é uma empresa devidamente licenciada com Alvará de Construção válido e seguro de responsabilidade civil para execução de trabalhos em Aveiro.",
+      "Sim. A Freitas Renovações LDA é uma empresa de construção civil e remodelações devidamente habilitada com Alvará de Construção válido emitido pelo IMPIC e apólice ativa de seguro de responsabilidade civil. Todas as obras são supervisionadas pessoalmente pelo Empreiteiro Jorge Freitas.",
   },
   {
     id: "faq2",
-    question: "Ajudam com crédito ou financiamento para pagar a obra?",
+    question: "Quanto custa remodelar uma casa em Aveiro por m² em 2026?",
     answer:
-      "Sim! Oferecemos um serviço de intermediação de crédito parceiro 100% gratuito para os nossos clientes. Através de intermediários de crédito registados no Banco de Portugal, analisamos o seu processo, comparamos as melhores propostas bancárias do mercado e ajudamos a aprovar o financiamento para a sua obra (remodelação total, cozinha, casa de banho, capoto ou telhado) com a mensalidade e taxas mais vantajosas, sem qualquer encargo extra para si.",
+      "Em Aveiro, o custo médio de remodelação varia entre 350€ e 600€ por m² para intervenções parciais (pinturas, pavimentos e pladur) e entre 750€ e 1.200€ por m² para remodelações totais chave na mão (com redes técnicas novas, WC, cozinha e caixilharia). As estimativas variam consoante o estado do imóvel e a gama de acabamentos escolhida.",
   },
   {
     id: "faq3",
-    question: "Qual é o tempo de resposta aos pedidos de orçamento?",
+    question: "Quanto custa remodelar uma casa de banho completa em Aveiro?",
     answer:
-      "Garantimos uma resposta rápida a todos os contactos, com retorno no prazo máximo de 12 horas.",
+      "A remodelação completa de uma casa de banho em Aveiro situa-se habitualmente entre 2.800€ e 4.800€. O valor engloba demolição, canalização multicamada sem juntas, impermeabilização bicomponente, cerâmica retificada, colocação de base de duche plana antiderrapante, resguardo em vidro temperado e louças sanitárias.",
   },
   {
     id: "faq4",
-    question: "O orçamento é gratuito e sem compromisso?",
+    question: "Quanto custa a aplicação de Capoto (ETICS) por m² em Aveiro?",
     answer:
-      "Sim, totalmente! O orçamento é sempre gratuito, detalhado e com preços justos e transparentes.",
+      "A aplicação de capoto térmico ETICS em Aveiro custa tipicamente entre 38€ e 55€ por m². O valor inclui montagem de andaimes certificados, placas de EPS grafitado (ou lã de rocha), rede de fibra de vidro armada, barramento impermeável e acabamento texturado à cor pretendida.",
   },
   {
     id: "faq5",
-    question: "Quais as áreas de atuação da Freitas Renovações?",
+    question: "Qual é o tempo de resposta aos pedidos de orçamento?",
     answer:
-      "Trabalhamos em todo o município de Aveiro, incluindo Glória e Vera Cruz, Esgueira, Aradas, Cácia, São Bernardo, Santa Joana, Oliveirinha e freguesias circundantes.",
+      "Garantimos retorno no prazo máximo de 12 horas. O Empreiteiro Jorge Freitas agenda uma visita técnica sem qualquer compromisso ao imóvel para avaliar necessidades no local e entregar proposta discriminada.",
   },
   {
     id: "faq6",
-    question: "Os trabalhos têm garantia?",
+    question: "O orçamento e a visita técnica são gratuitos?",
     answer:
-      "Sim, todos os nossos trabalhos têm garantia formalizada por escrito. A duração varia consoante o tipo de obra executada.",
+      "Sim, 100% gratuitos e sem qualquer compromisso. O nosso orçamento discrimina materiais, etapas e mão de obra com preço fixo, sem custos ocultos nem alterações surpresa.",
   },
   {
     id: "faq7",
-    question: "Como garantem preços justos em cada obra?",
+    question: "Ajudam com crédito ou financiamento para pagar a obra?",
     answer:
-      "Apresentamos orçamentos discriminados por materiais e mão de obra, sem margens inflacionadas nem custos surpresa.",
+      "Sim! Oferecemos um serviço parceiro de intermediação de crédito 100% gratuito para os nossos clientes, registado no Banco de Portugal. Comparamos propostas em mais de 10 instituições bancárias para obter a prestação mais baixa para o financiamento da sua remodelação.",
+  },
+  {
+    id: "faq8",
+    question: "Quais as áreas de atuação da Freitas Renovações?",
+    answer:
+      "Cobrimos todas as freguesias de Aveiro (Glória e Vera Cruz, Esgueira, Aradas, São Bernardo, Cácia, Santa Joana, Oliveirinha, Eixo, etc.) e os concelhos limítrofes: Ílhavo (Gafanhas), Águeda, Estarreja, Vagos e a orla marítima da Praia da Barra e Costa Nova.",
+  },
+  {
+    id: "faq9",
+    question: "As obras têm garantia formal por escrito?",
+    answer:
+      "Sim. Todas as remodelações têm garantia contratual escrita até 5 anos para obras gerais e reabilitação estrutural, conforme a legislação portuguesa de empreitadas de construção civil.",
+  },
+  {
+    id: "faq10",
+    question: "É necessária licença camarária para obras interiores em apartamentos em Aveiro?",
+    answer:
+      "Remodelações interiores que não alterem a estrutura resistente do edifício nem a fachada não necessitam de licença camarária (isenção de controlo prévio segundo o RJUE). Contudo, em prédios em condomínio é obrigatório afixar aviso prévio na entrada com a previsão de duração e horários de ruído (dias úteis das 08h às 20h), procedimentos que gerimos com total rigor.",
   },
 ];
 

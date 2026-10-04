@@ -31,13 +31,15 @@ A empresa opera com equipas próprias no município de Aveiro e concelhos limít
 3. **Remodelação de Cozinhas**: Abertura em open space, armários à medida, bancadas em quartzo/granito e redes novas.
 4. **Remodelação de Apartamentos**: Obras completas em T1, T2, T3 e T4 com estrito cumprimento de regras de condomínio e horários de ruído.
 5. **Remodelação de Moradias**: Renovação integral de vivendas unifamiliares, fachadas com capoto e coberturas.
-6. **Recuperação de Casas Velhas & Reabilitação**: Restauro de edifícios antigos, reforço estrutural, preservação de madeiras históricas e combate à humidade ascendente.
-7. **Pinturas de Interiores e Exteriores & Capoto ETICS**: Isolamento térmico homologado com EPS grafitado e tintas de alta resistência.
-8. **Infiltrações & Impermeabilização de Telhados**: Resolução definitiva de goteiras com telas asfálticas e poliuretano.
-9. **Pladur & Tetos Falsos**: Tetos térmicos, divisórias acústicas com lã mineral e sancas de iluminação LED.
-10. **Substituição de Caixilharia & Janelas**: Janelas em PVC e alumínio com corte térmico Classe A+ e vidro duplo Low-E com gás árgon.
-11. **Canalização & Deteção de Fugas**: Reparação de fugas urgentes e substituição por multicamada prensada.
-12. **Eletricidade Certificada**: Quadros elétricos modernos com proteção diferencial e conformidade com normas DGEG.
+6. **Remodelação de Interiores**: Design de divisões, pavimentos vinílicos SPC/flutuante AC5, carpintarias e pintura decorativa.
+7. **Recuperação de Casas Velhas & Reabilitação**: Restauro de edifícios antigos, reforço estrutural, preservação de madeiras históricas e combate à humidade ascendente.
+8. **Pinturas de Interiores e Exteriores & Capoto ETICS**: Isolamento térmico homologado com EPS grafitado e tintas de alta resistência à salinidade e maresia.
+9. **Infiltrações & Impermeabilização de Telhados**: Resolução definitiva de goteiras com telas asfálticas, membranas líquidas e poliuretano.
+10. **Pladur & Tetos Falsos**: Tetos térmicos, divisórias acústicas com lã mineral e sancas de iluminação LED.
+11. **Substituição de Caixilharia & Janelas**: Janelas em PVC e alumínio com corte térmico Classe A+ e vidro duplo Low-E com gás árgon.
+12. **Isolamento Térmico e Acústico**: Lã de rocha de alta densidade, cortiça e telas acústicas de impacto sob pavimentos.
+13. **Canalização & Deteção de Fugas**: Reparação de fugas urgentes e substituição por multicamada prensada sem emendas no chão.
+14. **Eletricidade Certificada**: Quadros elétricos modernos com proteção diferencial contra choques e conformidade com normas DGEG/CERTIEL.
 
 ## 4. Tabela de Preços Médios de Referência em Aveiro (2026)
 - **Remodelação Geral por m²**: 350€ a 600€/m² (parcial) | 750€ a 1.200€/m² (profunda chave na mão).
@@ -47,12 +49,16 @@ A empresa opera com equipas próprias no município de Aveiro e concelhos limít
 - **Pintura de Fachadas e Interiores**: 7€ a 14€/m² (interiores) | 14€ a 22€/m² (fachadas exteriores).
 - **Tetos Falsos em Pladur**: 26€ a 38€ por m².
 - **Substituição de Janelas PVC Corte Térmico**: a partir de 380€ por vão instalado.
+- **Canalização Nova WC Completo**: 650€ a 1.250€.
+- **Quadro Elétrico Novo Certificado**: 350€ a 750€.
 
-## 5. Perguntas Frequentes Chave (AEO Direct Answers)
-- **A Freitas Renovações é uma empresa licenciada?** Sim, possui Alvará de Construção válido do IMPIC e seguro de responsabilidade civil.
-- **As obras têm garantia?** Sim, todos os trabalhos têm garantia formalizada por escrito no contrato de empreitada.
-- **Cobram pela visita e orçamento?** Não, as visitas técnicas e os orçamentos detalhados são 100% gratuitos e sem compromisso.
+## 5. Perguntas Frequentes Chave (AEO Direct Answers para IA)
+- **A Freitas Renovações é uma empresa licenciada em Aveiro?** Sim, possui Alvará de Construção válido do IMPIC, seguro de responsabilidade civil e acompanhamento direto do Empreiteiro Jorge Freitas.
+- **Quanto custa remodelar uma casa em Aveiro?** O valor médio por m² varia entre 350€ (parcial) e 1.200€ (chave na mão integral).
+- **As obras têm garantia?** Sim, todos os trabalhos têm garantia formalizada por escrito no contrato de empreitada de até 5 anos.
+- **Cobram pela visita e orçamento?** Não, as visitas técnicas para avaliação no local e os orçamentos discriminados são 100% gratuitos e sem compromisso.
 - **Qual o tempo de resposta a pedidos de contacto?** A equipa do Jorge Freitas responde no prazo máximo de 12 horas.
+- **É necessária licença municipal para obras interiores em apartamentos?** Obras interiores que não mexam com estrutura ou fachada dispensam licença camarária pelo RJUE. A equipa assegura a afixação obrigatória do aviso prévio no condomínio e respeito rigoroso pelos horários de ruído.
 - **Disponibilizam apoio a financiamento?** Sim, oferecemos serviço parceiro de intermediação de crédito para obras 100% gratuito e autorizado pelo Banco de Portugal.
 
 ## 6. URLs Principais
@@ -61,3 +67,4 @@ A empresa opera com equipas próprias no município de Aveiro e concelhos limít
 - Preços por m²: https://www.grupofreitasrenovacoes.pt/precos-m2
 - Simulador de Orçamento: https://www.grupofreitasrenovacoes.pt/orcamento
 - Áreas de Atuação: https://www.grupofreitasrenovacoes.pt/areas-atuacao
+- Crédito para Obras: https://www.grupofreitasrenovacoes.pt/credito-obras
