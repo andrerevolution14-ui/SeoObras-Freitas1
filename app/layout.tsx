@@ -378,6 +378,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'AW-17936797026');
           `}
         </Script>
+        {/* Google Ads Conversion: Enviar formulário de leads */}
+        <Script id="google-ads-conversion-lead" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-17936797026/T7aMCMK23LUcEOKa9-hC',
+                  'event_callback': callback
+              });
+              return false;
+            }
+          `}
+        </Script>
         <Header />
         <main>{children}</main>
         <Footer />

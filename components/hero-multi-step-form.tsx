@@ -124,6 +124,14 @@ export function HeroMultiStepForm() {
       const data = await res.json();
 
       if (res.ok && data.success) {
+        // Disparar conversão Google Ads (Enviar formulário de leads)
+        if (typeof window !== "undefined") {
+          const win = window as unknown as { gtag_report_conversion?: () => boolean };
+          if (typeof win.gtag_report_conversion === "function") {
+            win.gtag_report_conversion();
+          }
+        }
+
         setSubmittedCustomer({ name: formData.name, phone: formData.phone });
         setIsSubmitted(true);
         setFormData(initialFormData);
