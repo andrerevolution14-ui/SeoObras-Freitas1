@@ -378,7 +378,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', 'AW-17936797026');
           `}
         </Script>
-        {/* Google Ads Conversion: Enviar formulário de leads */}
+        {/* Google Ads Conversion: Enviar formulário de leads (1) */}
         <Script id="google-ads-conversion-lead" strategy="afterInteractive">
           {`
             function gtag_report_conversion(url) {
@@ -388,7 +388,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 }
               };
               gtag('event', 'conversion', {
-                  'send_to': 'AW-17936797026/T7aMCMK23LUcEOKa9-hC',
+                  'send_to': 'AW-17936797026/_-fvCOmXk5YdEOKa9-hC',
                   'event_callback': callback
               });
               return false;
