@@ -4,21 +4,12 @@ import { Calendar, Clock, User, ArrowRight, BookOpen } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/blog-data";
 
 export const metadata: Metadata = {
-  title: "Blog & Guia de Obras em Aveiro | Freitas Renovações LDA",
+  title: "Blog & Guia de Obras e Remodelações em Aveiro",
   description:
-    "Artigos, guias de preços, legislação e dicas úteis sobre obras, remodelações, infiltrações e licenças no concelho de Aveiro. Pela equipa de Jorge Freitas.",
+    "Artigos técnicos, guias de preços de referência, legislação e recomendações práticas sobre obras, remodelações e manutenção de habitações em Aveiro.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/blog" },
-  keywords: [
-    "blog obras aveiro",
-    "guia remodelacoes aveiro",
-    "artigos construcao aveiro",
-    "quanto custa obra aveiro blog",
-    "licencas obras camara de aveiro",
-    "infiltracoes telhados aveiro dicas",
-    "freitas renovacoes blog",
-  ],
   openGraph: {
-    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações LDA",
+    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações",
     description:
       "Artigos técnicos, guias de preços, conselhos de manutenção e legislação sobre obras em Aveiro por Jorge Freitas.",
     url: "https://www.grupofreitasrenovacoes.pt/blog",
@@ -29,13 +20,13 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Blog de Obras e Remodelações em Aveiro — Freitas Renovações LDA",
+        alt: "Blog de Obras e Remodelações em Aveiro — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações LDA",
+    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações",
     description: "Guias práticos de remodelação, preços e dicas de obras em Aveiro.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },

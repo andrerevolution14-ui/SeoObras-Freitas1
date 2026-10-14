@@ -50,7 +50,7 @@ export function CostCalculator({
 
   // Pre-filled WhatsApp message
   const whatsappText = encodeURIComponent(
-    `Olá Jorge Freitas! Fiz uma estimativa na calculadora do site para:\n• Serviço: ${currentService.name}\n• Área: ${areaM2} m²\n• Gama: ${selectedTierId}\n• Freguesia: ${selectedParish}, Aveiro\n• Estimativa calculada: ${results.minPrice.toLocaleString("pt-PT")}€ – ${results.maxPrice.toLocaleString("pt-PT")}€\n\nGostaria de agendar uma visita gratuita para validar o orçamento.`
+    `Olá Jorge Freitas! Fiz uma estimativa na calculadora do site para:\n• Serviço: ${currentService.name}\n• Área: ${areaM2} m²\n• Gama: ${selectedTierId}\n• Freguesia: ${selectedParish}, Aveiro\n• Estimativa calculada: ${results.minPrice.toLocaleString("pt-PT")}€ – ${results.maxPrice.toLocaleString("pt-PT")}€\n\nGostaria de enviar fotos e medidas para receber o orçamento detalhado.`
   );
 
   return (
@@ -547,7 +547,7 @@ export function CostCalculator({
                   textAlign: "center",
                 }}
               >
-                * Valores meramente indicativos calculados com base em obras médias em Aveiro. O orçamento final é gratuito e entregue após vistoria técnica.
+                * Valores meramente indicativos com base em obras médias em Aveiro. O orçamento discriminado a preço fixo é gratuito e entregue em menos de 12 horas após o envio de fotos e dimensões.
               </p>
             </div>
           </div>

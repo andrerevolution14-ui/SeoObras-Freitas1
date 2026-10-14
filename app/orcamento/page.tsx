@@ -5,26 +5,14 @@ import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
 import { CostCalculator } from "@/components/cost-calculator";
 
 export const metadata: Metadata = {
-  title: "Orçamento Remodelação Aveiro — Orçamento Grátis em <12h | Freitas Renovações",
+  title: "Pedir Avaliação e Orçamento de Obra em Aveiro",
   description:
-    "Peça orçamento para obras e remodelações em Aveiro sem compromisso. Resposta garantida em < 12h pelo Empreiteiro Jorge Freitas. Simule na calculadora online ou ligue já. Alvará IMPIC.",
+    "Solicite avaliação para obras e remodelações em Aveiro. Resposta em menos de 12 horas pelo Empreiteiro Jorge Freitas. Processo ágil em 2 passos e proposta detalhada.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/orcamento" },
-  keywords: [
-    "orçamento remodelação aveiro",
-    "orçamento obras aveiro",
-    "pedir orçamento remodelação aveiro",
-    "quanto custa remodelar uma casa em aveiro",
-    "preço m2 remodelação aveiro",
-    "calculadora obras aveiro",
-    "orçamento gratis obras aveiro",
-    "empresa de remodelações aveiro orçamento",
-    "jorge freitas orcamento",
-    "freitas renovacoes orcamento",
-  ],
   openGraph: {
-    title: "Pedir Orçamento Gratuito em Aveiro | Freitas Renovações LDA",
+    title: "Pedir Avaliação e Orçamento de Obra em Aveiro | Freitas Renovações",
     description:
-      "Calculadora de obras e orçamento gratuito, detalhado e sem compromisso. Resposta em menos de 12h. ⭐ 4.9/5 no Google.",
+      "Simulador de obras e proposta técnica detalhada sem custos ocultos. Resposta em menos de 12h.",
     url: "https://www.grupofreitasrenovacoes.pt/orcamento",
     type: "website",
     locale: "pt_PT",
@@ -33,14 +21,14 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Pedir Orçamento de Obras em Aveiro — Freitas Renovações LDA",
+        alt: "Pedir Avaliação de Obras em Aveiro — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pedir Orçamento Gratuito em Aveiro | Freitas Renovações LDA",
-    description: "Simule na calculadora ou peça orçamento gratuito com resposta em <12h.",
+    title: "Pedir Avaliação e Orçamento de Obra em Aveiro | Freitas Renovações",
+    description: "Simule na calculadora ou solicite proposta técnica com resposta em <12h.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };

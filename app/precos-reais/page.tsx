@@ -5,18 +5,10 @@ import { Calculator, ArrowRight, Phone, Shield } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Obras Realizadas e Preços Reais em Aveiro | Freitas Renovações",
+  title: "Obras Realizadas e Preços Reais em Aveiro",
   description:
     "Veja exemplos de obras concluídas em Aveiro com custos reais discriminados, prazo de execução e especificações técnicas. Remodelação de casas de banho, cozinhas e apartamentos.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/precos-reais" },
-  keywords: [
-    "precos reais obras aveiro",
-    "exemplos de obras concluidas aveiro",
-    "custos remodelacao aveiro",
-    "obras com fotos e precos aveiro",
-    "remodelacao moradia aveiro precos",
-    "freitas renovacoes projetos precos",
-  ],
   openGraph: {
     title: "Obras Realizadas e Preços Reais em Aveiro | Freitas Renovações",
     description:
@@ -29,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Obras Realizadas com Preços Reais em Aveiro — Freitas Renovações LDA",
+        alt: "Obras Realizadas com Preços Reais em Aveiro — Freitas Renovações",
       },
     ],
   },

@@ -28,56 +28,56 @@ export function generateServiceSEO(service: Service): PageSEO {
     }
   > = {
     "remodelacao-geral": {
-      pricing: "De 350€/m² (remodelação parcial) a 750€-1.200€/m² (reabilitação profunda chave na mão)",
-      duration: "3 a 8 semanas, consoante a área e complexidade",
+      pricing: "De 350€ a 550€/m² (renovação parcial de acabamentos) | 700€ a 1.200€/m² (reabilitação integral chave na mão)",
+      duration: "3 a 10 semanas, consoante a área e complexidade",
       directAnswer:
-        "A Freitas Renovações LDA é uma empresa licenciada com Alvará IMPIC e liderada pelo Empreiteiro Jorge Freitas. Oferece serviços completos de obras e remodelações chave na mão em Aveiro, cobrindo demolições, alvenarias, redes técnicas, pladur e acabamentos com preços justos, orçamento discriminado e resposta em menos de 12 horas.",
+        "A Freitas Renovações LDA é titular de Alvará IMPIC e liderada pelo Empreiteiro Jorge Freitas. Realizamos obras chave na mão em Aveiro mediante um processo ágil em 2 passos: 1) Envio do pedido com fotografias e dimensões aproximadas (resposta em <12h); 2) Apresentação de proposta discriminada e orçamento detalhado com base nas soluções e materiais escolhidos.",
       customFaqs: [
         {
           question: "Quanto custa uma remodelação geral em Aveiro por m²?",
           answer:
-            "Em Aveiro, o custo médio de uma remodelação geral varia entre 350€ e 600€ por m² para intervenções parciais de acabamentos e entre 750€ e 1.200€ por m² para remodelações totais com substituição de redes de água, eletricidade, esgotos, pavimentos e caixilharias. A Freitas Renovações LDA apresenta orçamento detalhado sem custos ocultos.",
+            "O valor por m² divide-se em dois âmbitos: entre 350€ e 550€/m² para renovações de superfícies e acabamentos existentes, e entre 700€ e 1.200€/m² para obras integrais chave na mão com renovação total de redes técnicas (água, esgotos, eletricidade), caixilharia com corte térmico, climatização e acabamentos de gama média-alta.",
         },
         {
-          question: "O que inclui o serviço de obras chave na mão em Aveiro?",
+          question: "O que está incluído no serviço de obras chave na mão da Freitas Renovações?",
           answer:
-            "O serviço chave na mão da Freitas Renovações LDA inclui planeamento completo, demolição e remoção de entulhos para vazadouro licenciado, renovação de canalizações e rede elétrica, montagem de pladur e tetos falsos, revestimentos cerâmicos ou vinílicos, carpintarias, pintura final e garantia contratual por escrito com acompanhamento direto do Jorge Freitas.",
+            "Inclui planeamento e cronograma formal, demolição com remoção de entulho para vazadouro licenciado, proteção integral de zonas comuns, execução de todas as especialidades técnicas certificadas, instalação de pavimentos e revestimentos, pinturas e limpeza pós-obra com garantia contratual escrita.",
         },
       ],
     },
     "remodelacao-casas-de-banho": {
-      pricing: "Entre 2.800€ e 4.800€ para uma casa de banho standard completa",
-      duration: "5 a 8 dias úteis",
+      pricing: "1.800€ a 2.600€ (troca de banheira por duche) | 3.200€ a 5.500€ (remodelação total standard)",
+      duration: "3 a 8 dias úteis",
       directAnswer:
-        "A remodelação de casas de banho em Aveiro pela Freitas Renovações LDA custa tipicamente entre 2.800€ e 4.800€ e demora entre 5 e 8 dias úteis. Inclui substituição de banheira por duche plano antiderrapante, nova tubagem multicamada sem juntas, impermeabilização bicomponente, cerâmica retificada e loiças sanitárias modernas.",
+        "A remodelação de casas de banho em Aveiro pela Freitas Renovações LDA contempla desde a conversão de banheira em base de duche plana antiderrapante até à remodelação integral com substituição de prumadas e canalização multicamada sem juntas no piso, impermeabilização bicomponente certificada e cerâmica retificada.",
       customFaqs: [
         {
           question: "Quanto custa remodelar uma casa de banho em Aveiro?",
           answer:
-            "A remodelação completa de um WC em Aveiro custa em média entre 2.800€ e 4.800€. O valor inclui demolição da banheira antiga, canalização nova em multicamada, impermeabilização com tela líquida, assentamento de azulejos, colocação de base de duche plana, resguardo em vidro temperado e torneiras economizadoras.",
+            "A conversão de banheira para base de duche situa-se entre 1.800€ e 2.600€. Já a remodelação integral de uma casa de banho completa custa entre 3.200€ e 5.500€, incluindo demolição total, nova rede de águas e esgotos em multicamada, impermeabilização com tela líquida bicomponente, cerâmica, loiças sanitárias suspensas ou compactas, torneiras e resguardo em vidro temperado.",
         },
         {
-          question: "Quanto tempo demora a trocar banheira por base de duche em Aveiro?",
+          question: "Quanto tempo demora a obra numa casa de banho?",
           answer:
-            "A substituição simples de banheira por base de duche é executada em 2 a 3 dias úteis. Uma remodelação completa da casa de banho (chão, paredes, canalizações e louças) fica concluída em 5 a 8 dias úteis.",
+            "A substituição de banheira por base de duche demora de 2 a 3 dias úteis. Uma renovação integral com nova canalização e revestimentos completos fica concluída entre 5 a 8 dias úteis, minimizando o impacto no dia a dia da habitação.",
         },
       ],
     },
     "remodelacao-cozinhas": {
-      pricing: "Entre 4.200€ e 9.500€ para cozinhas completas com móveis e bancada",
-      duration: "2 a 3 semanas",
+      pricing: "4.500€ a 7.500€ (renovação funcional standard) | 8.500€ a 16.000€+ (remodelação estrutural / open space com móveis por medida e pedra)",
+      duration: "2 a 4 semanas",
       directAnswer:
-        "A remodelação de cozinhas em Aveiro com a Freitas Renovações LDA tem um custo médio entre 4.200€ e 9.500€, dependendo dos metros lineares de móveis e do material da bancada (quartzo, Dekton ou granito). Inclui nova canalização, reforço elétrico para eletrodomésticos, layout em open space e acabamentos higiénicos.",
+        "Na Freitas Renovações LDA distinguimos claramente o âmbito da obra de cozinha: uma renovação funcional (mantendo layout e instalações) situa-se entre 4.500€ e 7.500€; uma intervenção profunda com abertura em open space, vigamento de suporte, móveis termolaminados/lacados por medida e bancadas em quartzo/granito situa-se entre 8.500€ e 16.000€+. O orçamento é apresentado de forma discriminada com base nas fotografias, dimensões e materiais definidos.",
       customFaqs: [
         {
-          question: "Quanto custa remodelar uma cozinha em Aveiro?",
+          question: "Quanto custa remodelar uma cozinha em Aveiro e o que define o valor?",
           answer:
-            "O valor de remodelação de cozinha em Aveiro situa-se geralmente entre 4.200€ e 9.500€. Fatores decisivos incluem a escolha de móveis termolaminados por medida, bancadas em quartzo compacto (Silestone) ou granito e a criação de open space com derrube de paredes divisórias.",
+            "O investimento depende do escopo: renovações funcionais sem alteração de paredes variam de 4.500€ a 7.500€. Já projetos com abertura para a sala (open space), substituição total de canalização e esgotos, circuito elétrico dedicado para placa de indução e bancadas em quartzo compacto (Silestone/Dekton) ou granito situam-se entre 8.500€ e 16.000€+. A mão de obra, demolição e descarte legal de entulho estão sempre incluídos.",
         },
         {
-          question: "A Freitas Renovações faz abertura de cozinhas em open space?",
+          question: "Como funciona o processo de orçamento para remodelação de cozinha?",
           answer:
-            "Sim. Analisamos previamente se as paredes são divisórias ou mestras estruturais, procedendo à demolição com colocação de vigamento de reforço se necessário, e unindo a cozinha à sala com continuidade estética no pavimento e iluminação.",
+            "Trabalhamos num processo simples e rápido em 2 passos: 1) Envio do pedido através do formulário ou contacto direto, com fotografias do espaço e dimensões aproximadas (resposta em menos de 12 horas); 2) Apresentação de proposta discriminada e orçamento detalhado pelo Empreiteiro Jorge Freitas com os materiais, prazos e soluções técnicas definidas.",
         },
       ],
     },
@@ -121,7 +121,7 @@ export function generateServiceSEO(service: Service): PageSEO {
         {
           question: "Como funciona a reabilitação de casas antigas em Aveiro?",
           answer:
-            "Iniciamos com vistoria técnica detalhada do Empreiteiro Jorge Freitas para avaliar a estabilidade de paredes mestras e madeiras de cobertura. Em seguida, tratamos patologias de humidade e térmitas, renovamos instalações técnicas e preservamos traços estéticos de valor histórico.",
+            "O processo inicia-se com a análise detalhada das fotografias, registos e especificações enviadas pelo proprietário. O Empreiteiro Jorge Freitas avalia as necessidades estruturais, patologias de humidade e caixilharias, apresentando uma proposta técnica discriminada e planeada para valorizar o imóvel.",
         },
       ],
     },
@@ -243,7 +243,7 @@ export function generateServiceSEO(service: Service): PageSEO {
   const baseFaqs = [
     {
       question: `Quanto custa ${service.title.toLowerCase()} em Aveiro?`,
-      answer: `O custo de ${service.title.toLowerCase()} em Aveiro é discriminado de forma clara no orçamento gratuito da Freitas Renovações LDA: ${specifics.pricing}. Ligue para ${CONTRACTOR_INFO.phoneDisplay} para agendar visita técnica sem compromisso.`,
+      answer: `O custo de ${service.title.toLowerCase()} em Aveiro é discriminado de forma clara no orçamento gratuito da Freitas Renovações LDA: ${specifics.pricing}. Ligue para ${CONTRACTOR_INFO.phoneDisplay} ou envie fotos e medidas para receber a sua proposta sem compromisso.`,
     },
     {
       question: `Qual o prazo para ${service.title.toLowerCase()} em Aveiro?`,
@@ -260,10 +260,10 @@ export function generateServiceSEO(service: Service): PageSEO {
   ];
 
   return {
-    title: `${service.title} em Aveiro — Preço Justo & Chave na Mão | Freitas Renovações`,
-    description: `${service.title} em Aveiro e arredores com preços justos e orçamento gratuito. Empresa licenciada IMPIC. Empreiteiro Jorge Freitas. Resposta em <12h. ☎ ${CONTRACTOR_INFO.phoneDisplay}. ⭐ 4.9/5 Google.`,
-    h1: `${service.title} em Aveiro — Empresa Licenciada, Preços Justos`,
-    intro: `A Freitas Renovações LDA oferece serviços especializados de ${service.title.toLowerCase()} em Aveiro e concelhos limítrofes. ${service.longDescription} Empresa licenciada IMPIC com mais de 100 obras executadas com sucesso, garantia contratual e orçamentos transparentes.`,
+    title: `${service.title} em Aveiro`,
+    description: `${service.title} em Aveiro e concelhos vizinhos. Alvará IMPIC, acompanhamento direto pelo Empreiteiro Jorge Freitas e orçamento discriminado em 2 passos rápidos. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
+    h1: `${service.title} em Aveiro — Qualidade de Execução & Garantia Escrita`,
+    intro: `A Freitas Renovações LDA oferece serviços especializados de ${service.title.toLowerCase()} em Aveiro e concelhos limítrofes. ${service.longDescription} Empresa licenciada IMPIC com mais de 100 obras executadas, garantia contratual e planeamento rigoroso.`,
     directAnswer: specifics.directAnswer,
     pricingGuide: specifics.pricing,
     durationGuide: specifics.duration,
@@ -277,29 +277,29 @@ export function generateParishSEO(parish: Parish, service?: Service): PageSEO {
   const regionLabel = parish.isNeighboringCounty ? `Concelho de ${parish.name}` : `${parish.name}, Aveiro`;
 
   return {
-    title: `${serviceTitle} em ${regionLabel} — Preço Justo | Freitas Renovações LDA`,
-    description: `Empresa licenciada de ${serviceName} em ${regionLabel}. Empreiteiro Jorge Freitas. Orçamento gratuito, alvará IMPIC, resposta em <12h. ☎ ${CONTRACTOR_INFO.phoneDisplay}. ⭐ 4.9/5 Google.`,
-    h1: `${serviceTitle} em ${regionLabel} — Empresa Licenciada, Preços Justos`,
-    intro: `A Freitas Renovações LDA presta serviços profissionais de ${serviceName} em ${parish.fullName}. ${parish.description}. A nossa equipa, liderada pelo Empreiteiro Jorge Freitas, garante deslocação rápida, medições rigorosas no local e orçamento discriminado sem compromisso.`,
-    directAnswer: `A Freitas Renovações LDA realiza serviços completos de ${serviceName} em ${parish.name}. Empresa com alvará IMPIC e classificação Google 4.9/5, disponibiliza resposta até 12 horas, preços justos por m² e garantia contratual em todas as obras.`,
-    pricingGuide: "Orçamento gratuito e discriminado com base na área útil e materiais selecionados",
-    durationGuide: "Prazos contratuais acordados e cumpridos escrupulosamente",
+    title: `${serviceTitle} em ${regionLabel}`,
+    description: `Empresa licenciada de ${serviceName} em ${regionLabel}. Empreiteiro Jorge Freitas. Processo rápido em 2 passos, alvará IMPIC e orçamento discriminado. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
+    h1: `${serviceTitle} em ${regionLabel} — Obras com Acompanhamento Direto`,
+    intro: `A Freitas Renovações LDA presta serviços profissionais de ${serviceName} em ${parish.fullName}. ${parish.description}. A nossa equipa, liderada pelo Empreiteiro Jorge Freitas, analisa as suas fotos e medidas para apresentar proposta discriminada e detalhada sem custos ocultos nem complicações.`,
+    directAnswer: `A Freitas Renovações LDA realiza serviços de ${serviceName} em ${parish.name} com alvará IMPIC, resposta rápida, garantia contratual escrita e acompanhamento presencial em todas as fases da obra.`,
+    pricingGuide: "Orçamento discriminado com base nas fotos, medidas enviadas e materiais selecionados",
+    durationGuide: "Prazos contratuais acordados e cumpridos com cronograma de execução",
     faq: [
       {
         question: `A Freitas Renovações faz ${serviceName} em ${parish.name}?`,
-        answer: `Sim! A Freitas Renovações LDA tem equipas ativas em ${parish.name} e presta todos os serviços de remodelações gerais, casas de banho, cozinhas, telhados, capoto e pintura com deslocação rápida e orçamento gratuito.`,
+        answer: `Sim! A Freitas Renovações LDA tem equipas ativas em ${parish.name} e presta todos os serviços de remodelações gerais, casas de banho, cozinhas, telhados, capoto e pintura com análise rápida de fotos e medidas e proposta transparente.`,
       },
       {
-        question: `Como pedir um orçamento gratuito para obras em ${parish.name}?`,
-        answer: `Basta ligar para o ${CONTRACTOR_INFO.phoneDisplay} ou preencher o formulário no nosso website. O Empreiteiro Jorge Freitas entra em contacto consigo no prazo máximo de 12 horas para agendar visita e apresentar o orçamento detalhado.`,
+        question: `Como solicitar uma avaliação para obras em ${parish.name}?`,
+        answer: `Ligue para o ${CONTRACTOR_INFO.phoneDisplay} ou preencha o formulário online enviando fotos e dimensões aproximadas. O Empreiteiro Jorge Freitas analisa os detalhes e apresenta proposta detalhada em menos de 12 horas.`,
       },
       {
         question: `A Freitas Renovações é licenciada pelo IMPIC para trabalhar em ${parish.name}?`,
-        answer: `Sim. A Freitas Renovações LDA é uma empresa de construção devidamente habilitada com Alvará do IMPIC e apólice de seguro de responsabilidade civil ativa, protegendo o seu património durante toda a obra.`,
+        answer: `Sim. A Freitas Renovações LDA é titular de Alvará de Construção emitido pelo IMPIC e apólice de seguro de responsabilidade civil ativa, protegendo o imóvel e os proprietários durante toda a obra.`,
       },
       {
-        question: `Cobram deslocação para visitas e orçamentos em ${parish.name}?`,
-        answer: `Não! As visitas técnicas para avaliação de obras e elaboração de orçamento em ${parish.name} e concelhos vizinhos são 100% gratuitas e sem qualquer compromisso.`,
+        question: `Como funciona o orçamento para obras em ${parish.name}?`,
+        answer: `O processo é 100% gratuito, ágil e em apenas 2 passos: envia as fotografias e medidas aproximadas do espaço e o Empreiteiro Jorge Freitas elabora uma proposta discriminada e detalhada sem que tenha de aguardar por visitas presenciais nem perder tempo.`,
       },
     ],
   };

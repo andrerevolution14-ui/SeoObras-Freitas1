@@ -6,23 +6,14 @@ import { PastProjectsPricing } from "@/components/past-projects-pricing";
 import { VerdemontShowcase } from "@/components/verdemont-showcase";
 
 export const metadata: Metadata = {
-  title: "Obras Realizadas em Aveiro e Preços Reais (2022-2026) | Freitas Renovações LDA",
+  title: "Obras Realizadas em Aveiro e Casos Reais",
   description:
-    "Veja obras passadas e preços reais de remodelações em Aveiro (ex: casa de banho 20m², cozinha, T2, capoto). Compare com o seu projeto. Jorge Freitas. ⭐ 4.9/5 Google.",
+    "Portfólio com obras executadas e custos de referência em Aveiro (casas de banho, cozinhas, apartamentos e moradias). Fichas técnicas e soluções aplicadas.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/projetos" },
-  keywords: [
-    "projetos de obras aveiro",
-    "portfolio remodelacoes aveiro",
-    "fotos de obras aveiro",
-    "obras concluidas aveiro",
-    "remodelacoes residenciais aveiro",
-    "jorge freitas obras concluidas",
-    "freitas renovacoes projetos",
-  ],
   openGraph: {
-    title: "Obras Realizadas em Aveiro e Preços Reais | Freitas Renovações LDA",
+    title: "Obras Realizadas em Aveiro e Casos Reais | Freitas Renovações",
     description:
-      "Portfolio com dezenas de obras concluídas em Aveiro. Fotos reais, custos transparentes e padrões de excelência.",
+      "Portfólio com obras concluídas em Aveiro. Fotografias reais, âmbito dos trabalhos e soluções técnicas aplicadas.",
     url: "https://www.grupofreitasrenovacoes.pt/projetos",
     type: "website",
     locale: "pt_PT",
@@ -31,14 +22,14 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Projetos de Obras Realizadas em Aveiro — Freitas Renovações LDA",
+        alt: "Projetos de Obras Realizadas em Aveiro — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Obras Realizadas em Aveiro | Freitas Renovações LDA",
-    description: "Conheça o portfólio de remodelações e obras em Aveiro com preços reais.",
+    title: "Obras Realizadas em Aveiro | Freitas Renovações",
+    description: "Conheça o portfólio de remodelações e obras em Aveiro com casos reais.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };

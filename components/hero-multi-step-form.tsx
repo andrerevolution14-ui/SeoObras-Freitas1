@@ -9,6 +9,9 @@ import {
   CloudRain,
   Paintbrush,
   Layers,
+  ChefHat,
+  Bath,
+  Building,
   MapPin,
   Phone,
   Mail,
@@ -29,12 +32,25 @@ const serviceIcons: Record<string, React.ReactNode> = {
   CloudRain: <CloudRain size={22} />,
   Paintbrush: <Paintbrush size={22} />,
   Layers: <Layers size={22} />,
+  ChefHat: <ChefHat size={22} />,
+  Bath: <Bath size={22} />,
+  Building: <Building size={22} />,
 };
+
+export const BUDGET_OPTIONS = [
+  "Preciso de orientação técnica no local (Recomendado)",
+  "Até 5.000 € (intervenção pontual / WC simples)",
+  "5.000 € a 15.000 € (cozinha ou renovação parcial)",
+  "15.000 € a 35.000 € (remodelação de apartamento)",
+  "Mais de 35.000 € (moradia / chave na mão)",
+];
 
 interface FormData {
   service: string;
   urgency: string;
   parish: string;
+  approxSize: string;
+  budgetRange: string;
   name: string;
   phone: string;
   email: string;
@@ -47,6 +63,8 @@ const initialFormData: FormData = {
   service: "",
   urgency: "",
   parish: "",
+  approxSize: "",
+  budgetRange: BUDGET_OPTIONS[0],
   name: "",
   phone: "",
   email: "",
@@ -69,10 +87,19 @@ const slideVariants = {
   }),
 };
 
-export function HeroMultiStepForm() {
+interface HeroMultiStepFormProps {
+  initialService?: string;
+  initialParish?: string;
+}
+
+export function HeroMultiStepForm({ initialService = "", initialParish = "" }: HeroMultiStepFormProps = {}) {
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [formData, setFormData] = useState<FormData>(() => ({
+    ...initialFormData,
+    service: initialService,
+    parish: initialParish,
+  }));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedCustomer, setSubmittedCustomer] = useState<{ name: string; phone: string }>({ name: "", phone: "" });
@@ -109,6 +136,9 @@ export function HeroMultiStepForm() {
         email: formData.email.trim(),
         localidade: formData.parish,
         servico: formData.service,
+        urgencia: formData.urgency,
+        orcamentoEstimado: formData.budgetRange,
+        dimensaoAprox: formData.approxSize.trim(),
         mensagem: formData.description.trim(),
         ajudaCredito: formData.needsCredit ? "Sim (Solicita Intermediação 100% Gratuita)" : "Não",
       };
@@ -362,39 +392,74 @@ export function HeroMultiStepForm() {
               </div>
             )}
 
-            {/* STEP 3: Parish */}
+            {/* STEP 3: Localização & Estimativa */}
             {step === 3 && (
-              <div>
-                <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 600, color: "#475569", marginBottom: "0.5rem" }}>
-                  Selecione a sua Freguesia
-                </label>
-                <div style={{ position: "relative" }}>
-                  <MapPin
-                    size={16}
-                    style={{
-                      position: "absolute",
-                      left: "0.875rem",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      color: "#64748b",
-                      pointerEvents: "none",
-                    }}
-                  />
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#071a3a", marginBottom: "0.35rem" }}>
+                    Freguesia / Concelho da Obra *
+                  </label>
+                  <div style={{ position: "relative" }}>
+                    <MapPin
+                      size={16}
+                      style={{
+                        position: "absolute",
+                        left: "0.875rem",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        color: "#64748b",
+                        pointerEvents: "none",
+                      }}
+                    />
+                    <select
+                      id="parish-select"
+                      value={formData.parish}
+                      onChange={(e) => setFormData((d) => ({ ...d, parish: e.target.value }))}
+                      className="form-input"
+                      style={{ paddingLeft: "2.5rem", appearance: "none" }}
+                    >
+                      <option value="">Escolha a freguesia...</option>
+                      {FORM_PARISHES.map((parish) => (
+                        <option key={parish.slug} value={parish.name}>
+                          {parish.name}
+                        </option>
+                      ))}
+                      <option value="Outro Concelho Vizinho">Outro Concelho Vizinho (Ílhavo, Águeda, Estarreja, Vagos)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#071a3a", marginBottom: "0.35rem" }}>
+                    Intervalo de Investimento Previsto
+                  </label>
                   <select
-                    id="parish-select"
-                    value={formData.parish}
-                    onChange={(e) => setFormData((d) => ({ ...d, parish: e.target.value }))}
+                    id="budget-select"
+                    value={formData.budgetRange}
+                    onChange={(e) => setFormData((d) => ({ ...d, budgetRange: e.target.value }))}
                     className="form-input"
-                    style={{ paddingLeft: "2.5rem", appearance: "none" }}
+                    style={{ appearance: "none" }}
                   >
-                    <option value="">Escolha a freguesia...</option>
-                    {FORM_PARISHES.map((parish) => (
-                      <option key={parish.slug} value={parish.name}>
-                        {parish.name}
+                    {BUDGET_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
                       </option>
                     ))}
-                    <option value="Outro Concelho Vizinho">Outro Concelho Vizinho (Ílhavo, Águeda, Estarreja, Vagos)</option>
                   </select>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 600, color: "#475569", marginBottom: "0.35rem" }}>
+                    Dimensão aproximada / Tipologia (opcional)
+                  </label>
+                  <input
+                    id="size-input"
+                    type="text"
+                    placeholder="Ex: 15 m², Apartamento T2, Moradia 2 pisos..."
+                    value={formData.approxSize}
+                    onChange={(e) => setFormData((d) => ({ ...d, approxSize: e.target.value }))}
+                    className="form-input"
+                  />
                 </div>
 
                 <div

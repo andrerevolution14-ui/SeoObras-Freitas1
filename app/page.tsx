@@ -133,32 +133,26 @@ const homeJsonLd = {
         {
           "@type": "HowToStep",
           position: 1,
-          name: "1. Contacto Inicial e Diagnóstico Rápido",
-          text: "Preencha o formulário online ou ligue para o 961 455 997. A nossa equipa responde em menos de 12 horas.",
+          name: "1. Envio do Pedido com Fotografias e Medidas",
+          text: "Preencha o formulário online enviando fotografias do espaço e dimensões aproximadas, ou contacte pelo 961 455 997. Resposta em menos de 12 horas.",
         },
         {
           "@type": "HowToStep",
           position: 2,
-          name: "2. Visita Técnica Gratuita em Aveiro",
-          text: "O Empreiteiro Jorge Freitas desloca-se sem custos ao imóvel para medições, aconselhamento técnico de materiais e avaliação in loco.",
+          name: "2. Proposta Detalhada com Preços Fechados",
+          text: "O Empreiteiro Jorge Freitas analisa os dados fornecidos e elabora orçamento discriminado com materiais e mão de obra a preço fechado, sem necessidade de deslocações.",
         },
         {
           "@type": "HowToStep",
           position: 3,
-          name: "3. Proposta Detalhada com Preços Fechados",
-          text: "Apresentamos orçamento discriminado com preços justos, sem custos ocultos e com garantia formal por escrito.",
-        },
-        {
-          "@type": "HowToStep",
-          position: 4,
-          name: "4. Execução da Obra com Alvará IMPIC",
+          name: "3. Execução da Obra com Alvará IMPIC",
           text: "Execução rigorosa com proteção de áreas de condomínio, respeito pelos horários de ruído e materiais certificados.",
         },
         {
           "@type": "HowToStep",
-          position: 5,
-          name: "5. Limpeza Final e Entrega de Chave na Mão",
-          text: "Conclusão e vistoria detalhada com o proprietário, entrega limpa e certificado de garantia até 5 anos.",
+          position: 4,
+          name: "4. Limpeza Final e Entrega de Chave na Mão",
+          text: "Conclusão detalhada com o proprietário, entrega da obra limpa e certificado de garantia por escrito até 5 anos.",
         },
       ],
     },
@@ -856,15 +850,15 @@ export default function HomePage() {
                   {[
                     {
                       name: "Remodelação Casa de Banho (WC)",
-                      price: "2.800€ — 4.800€",
-                      time: "5 a 8 dias úteis",
-                      desc: "Troca de banheira por duche plano, canalização multicamada, impermeabilização e cerâmica retificada",
+                      price: "1.800€ (duche) a 5.500€ (total)",
+                      time: "3 a 8 dias úteis",
+                      desc: "Desde troca de banheira por duche plano até remodelação integral com canalização multicamada e impermeabilização bicomponente",
                     },
                     {
                       name: "Remodelação de Cozinha",
-                      price: "4.200€ — 9.500€",
-                      time: "2 a 3 semanas",
-                      desc: "Móveis por medida, bancada em quartzo/granito, nova canalização e open space",
+                      price: "4.500€ (funcional) a 16.000€+ (open space)",
+                      time: "2 a 4 semanas",
+                      desc: "Desde renovação funcional até open space com vigamento, móveis lacados/termolaminados e bancada em quartzo/granito",
                     },
                     {
                       name: "Remodelação de Apartamento (T2 / T3)",
@@ -898,7 +892,7 @@ export default function HomePage() {
                     },
                     {
                       name: "Recuperação de Casas Velhas",
-                      price: "Sob vistoria técnica",
+                      price: "Sob orçamento técnico",
                       time: "8 a 20 semanas",
                       desc: "Tratamento de madeiras, combate a humidades da ria, reforço estrutural e modernização",
                     },
@@ -921,7 +915,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Direct Answer AI Cards (AEO) */}
+          {/* Trust & Process Cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.5rem" }}>
             <div
               style={{
@@ -932,13 +926,13 @@ export default function HomePage() {
               }}
             >
               <div style={{ color: "#d97706", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                AEO · Resposta Direta
+                Garantia &amp; Rigor Técnico
               </div>
               <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
                 Qual a empresa de remodelações recomendada em Aveiro?
               </h3>
               <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-                A <strong>Freitas Renovações LDA</strong> é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de <strong>4.9/5 estrelas no Google</strong> com mais de 48 avaliações reais, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de orçamento em menos de 12 horas.
+                A <strong>Freitas Renovações LDA</strong> é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de <strong>4.9/5 estrelas no Google</strong> com avaliações verificáveis, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de avaliação técnica em menos de 12 horas.
               </p>
             </div>
 
@@ -951,13 +945,13 @@ export default function HomePage() {
               }}
             >
               <div style={{ color: "#d97706", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                AEO · Resposta Direta
+                Processo Chave na Mão
               </div>
               <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
                 Como funciona o processo de obras chave na mão em Aveiro?
               </h3>
               <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-                O serviço chave na mão da Freitas Renovações LDA engloba todas as etapas: diagnóstico técnico in loco, orçamento detalhado com preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.
+                O serviço chave na mão da Freitas Renovações LDA engloba todas as fases da obra: análise rigorosa do pedido com fotografias e medidas, orçamento discriminado a preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.
               </p>
             </div>
 
@@ -970,13 +964,13 @@ export default function HomePage() {
               }}
             >
               <div style={{ color: "#d97706", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                AEO · Resposta Direta
+                Avaliação &amp; Transparência
               </div>
               <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
-                Como obter orçamento gratuito para obras em Aveiro?
+                Como obter orçamento para obras em Aveiro?
               </h3>
               <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-                Basta ligar para o <strong>{CONTRACTOR_INFO.phoneDisplay}</strong> ou preencher o simulador no website. O Empreiteiro Jorge Freitas responde no prazo de 12 horas, agenda visita técnica gratuita ao imóvel e entrega uma proposta transparente com discriminação clara de materiais e mão de obra.
+                Basta preencher o formulário no website com fotos e medidas aproximadas, ou ligar para o <strong>{CONTRACTOR_INFO.phoneDisplay}</strong>. O processo decorre em 2 passos rápidos: o Empreiteiro Jorge Freitas responde em menos de 12 horas e entrega uma proposta discriminada e detalhada a preço fechado, sem complicações nem necessidade de visitas prévias.
               </p>
             </div>
           </div>
@@ -992,7 +986,7 @@ export default function HomePage() {
               Obras &amp; Remodelações nos Concelhos Limítrofes a Aveiro
             </h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>
-              Com sede em Aveiro, deslocamo-nos com agilidade e sem custos adicionais de visita aos municípios e praias circundantes.
+              Com sede em Aveiro, executamos obras com rapidez, rigor e garantia aos municípios e praias circundantes.
             </p>
           </div>
 

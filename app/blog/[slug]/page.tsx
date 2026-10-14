@@ -23,16 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `https://www.grupofreitasrenovacoes.pt${post.image}`;
 
   return {
-    title: `${post.title} | Freitas Renovações Aveiro`,
+    title: post.title,
     description: post.metaDescription,
-    keywords: [
-      post.title.toLowerCase(),
-      post.category.toLowerCase(),
-      `${post.category.toLowerCase()} aveiro`,
-      "obras aveiro",
-      "remodelações aveiro",
-      "freitas renovações lda",
-    ],
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/blog/${slug}` },
     openGraph: {
       title: post.title,

@@ -23,22 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
-    keywords: [
-      service.title.toLowerCase(),
-      `${service.title.toLowerCase()} aveiro`,
-      `serviço de ${service.title.toLowerCase()} aveiro`,
-      `orçamento ${service.title.toLowerCase()} aveiro`,
-      "obras aveiro",
-      "remodelações aveiro",
-      "empresa de remodelações aveiro",
-      "obras chave na mão aveiro",
-      "freitas renovações lda",
-      "jorge freitas empreiteiro aveiro",
-      ...service.keywords,
-    ],
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}` },
     openGraph: {
-      title: seo.title,
+      title: `${seo.title} | Freitas Renovações`,
       description: seo.description,
       url: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}`,
       type: "website",
@@ -216,7 +203,7 @@ export default async function ServicePage({ params }: Props) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#fbbf24", fontSize: "0.8125rem", fontWeight: 800, marginBottom: "0.4rem" }}>
-                  <Sparkles size={14} /> Resumo Direto para Clientes &amp; Motores de IA (AEO)
+                  <Sparkles size={14} /> Especificações Técnicas &amp; Garantia da Obra
                 </div>
                 <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.875rem", lineHeight: 1.55, margin: 0 }}>
                   {seo.directAnswer}
@@ -260,7 +247,7 @@ export default async function ServicePage({ params }: Props) {
             </div>
 
             <div id="hero-form">
-              <HeroMultiStepForm />
+              <HeroMultiStepForm initialService={slug} />
             </div>
           </div>
         </div>
@@ -409,7 +396,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container" style={{ maxWidth: "800px" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p className="section-eyebrow">AEO / Respostas Diretas</p>
+            <p className="section-eyebrow">Esclarecimentos &amp; Processo de Obra</p>
             <h2 className="section-title">Perguntas Frequentes sobre {service.title} em Aveiro</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>
               Respostas claras, transparentes e sem jargões para tomar uma decisão informada.

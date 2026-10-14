@@ -23,14 +23,14 @@ import {
 import { CONTRACTOR_INFO, CREDIT_PARTNER_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Crédito para Obras em Aveiro | Intermediação 100% Gratuita | Freitas Renovações LDA",
+  title: "Crédito e Financiamento para Obras em Aveiro",
   description:
-    "Financie as suas obras e remodelações em Aveiro com as melhores taxas do mercado. Serviço parceiro de intermediação de crédito 100% gratuito e autorizado pelo Banco de Portugal. Simulação rápida sem compromisso.",
+    "Financie as suas obras e remodelações em Aveiro com as melhores taxas do mercado. Serviço parceiro de intermediação de crédito autorizado pelo Banco de Portugal. Simulação rápida sem compromisso.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/credito-obras" },
   openGraph: {
-    title: "Crédito para Obras & Remodelações em Aveiro | 100% Gratuito",
+    title: "Crédito para Obras & Remodelações em Aveiro | Freitas Renovações",
     description:
-      "Apoio no financiamento da sua obra através de parceiros intermediários de crédito registados no Banco de Portugal. Custo zero para o cliente, resposta rápida e taxas competitivas.",
+      "Apoio no financiamento da sua obra através de parceiros intermediários de crédito registados no Banco de Portugal. Resposta rápida e taxas competitivas.",
     url: "https://www.grupofreitasrenovacoes.pt/credito-obras",
     type: "website",
     locale: "pt_PT",
@@ -39,26 +39,16 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Crédito para Obras e Remodelações em Aveiro — Freitas Renovações LDA",
+        alt: "Crédito para Obras e Remodelações em Aveiro — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crédito para Obras & Remodelações em Aveiro | 100% Gratuito",
-    description: "Financiamento para obras em Aveiro com intermediação gratuita autorizada pelo Banco de Portugal.",
+    title: "Crédito para Obras & Remodelações em Aveiro | Freitas Renovações",
+    description: "Financiamento para obras em Aveiro com intermediação autorizada pelo Banco de Portugal.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
-  keywords: [
-    "credito para obras aveiro",
-    "financiamento remodelacao aveiro",
-    "intermediacao de credito obras",
-    "emprestimo obras casa aveiro",
-    "credito pessoal para obras",
-    "financiar obras de casa",
-    "obras a prestacoes aveiro",
-    "freitas renovacoes credito",
-  ],
 };
 
 const creditoJsonLd = {
@@ -493,7 +483,7 @@ export default function CreditoObrasPage() {
               {
                 step: "01",
                 title: "Orçamento com Jorge Freitas",
-                desc: "A nossa equipa visita a sua casa ou analisa o seu projeto e apresenta um orçamento transparente, detalhado e com preço justo.",
+                desc: "O Empreiteiro Jorge Freitas analisa as fotos e medidas do seu espaço e apresenta um orçamento transparente, detalhado e com preço fechado.",
                 icon: <Coins size={22} style={{ color: "#fbbf24" }} />,
               },
               {

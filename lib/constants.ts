@@ -420,45 +420,57 @@ export interface FormServiceOption {
   slug: string;
   title: string;
   shortTitle: string;
-  icon: "Home" | "Droplets" | "Zap" | "CloudRain" | "Paintbrush" | "Layers";
+  icon: "Home" | "Droplets" | "Zap" | "CloudRain" | "Paintbrush" | "Layers" | "ChefHat" | "Bath" | "Building";
 }
 
 export const FORM_SERVICES: FormServiceOption[] = [
   {
     slug: "remodelacao-geral",
-    title: "Remodelação Geral",
-    shortTitle: "Remodelação",
+    title: "Remodelação Chave na Mão",
+    shortTitle: "Chave na Mão",
     icon: "Home",
   },
   {
+    slug: "remodelacao-cozinhas",
+    title: "Remodelação de Cozinha",
+    shortTitle: "Cozinha",
+    icon: "ChefHat",
+  },
+  {
+    slug: "remodelacao-casas-de-banho",
+    title: "Remodelação Casa de Banho",
+    shortTitle: "Casa de Banho",
+    icon: "Bath",
+  },
+  {
+    slug: "remodelacao-apartamentos",
+    title: "Apartamento ou Moradia",
+    shortTitle: "Apartamento/Moradia",
+    icon: "Building",
+  },
+  {
+    slug: "pintura-capoto",
+    title: "Capoto ETICS & Fachadas",
+    shortTitle: "Capoto & Pintura",
+    icon: "Paintbrush",
+  },
+  {
+    slug: "infiltracoes-telhados",
+    title: "Telhados & Infiltrações",
+    shortTitle: "Telhados",
+    icon: "CloudRain",
+  },
+  {
     slug: "canalizacao",
-    title: "Canalização & Fugas",
+    title: "Canalização & Esgotos",
     shortTitle: "Canalização",
     icon: "Droplets",
   },
   {
     slug: "eletricidade",
-    title: "Eletricidade",
+    title: "Instalação Elétrica",
     shortTitle: "Eletricidade",
     icon: "Zap",
-  },
-  {
-    slug: "infiltracoes-telhados",
-    title: "Infiltrações & Telhados",
-    shortTitle: "Telhados",
-    icon: "CloudRain",
-  },
-  {
-    slug: "pintura-capoto",
-    title: "Pintura & Capoto",
-    shortTitle: "Pintura",
-    icon: "Paintbrush",
-  },
-  {
-    slug: "isolamentos",
-    title: "Isolamentos",
-    shortTitle: "Isolamentos",
-    icon: "Layers",
   },
 ];
 
@@ -985,13 +997,13 @@ export const FAQ_ITEMS = [
     id: "faq5",
     question: "Qual é o tempo de resposta aos pedidos de orçamento?",
     answer:
-      "Garantimos retorno no prazo máximo de 12 horas. O Empreiteiro Jorge Freitas agenda uma visita técnica sem qualquer compromisso ao imóvel para avaliar necessidades no local e entregar proposta discriminada.",
+      "Garantimos retorno no prazo máximo de 12 horas. O processo decorre em 2 passos ágeis: o cliente envia as fotografias e medidas aproximadas, e o Empreiteiro Jorge Freitas elabora e entrega uma proposta detalhada e discriminada sem necessidade de deslocações ou perdas de tempo.",
   },
   {
     id: "faq6",
-    question: "O orçamento e a visita técnica são gratuitos?",
+    question: "O orçamento é gratuito?",
     answer:
-      "Sim, 100% gratuitos e sem qualquer compromisso. O nosso orçamento discrimina materiais, etapas e mão de obra com preço fixo, sem custos ocultos nem alterações surpresa.",
+      "Sim, 100% gratuito e sem compromisso. Funciona em 2 passos simples: partilha as fotografias e medidas do espaço e recebe uma proposta detalhada com discriminação de materiais e mão de obra com preço fechado, sem custos ocultos nem complicações.",
   },
   {
     id: "faq7",

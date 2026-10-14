@@ -476,7 +476,7 @@ export const RENOVATION_PLANNER_DATA: Record<string, RenovationCategorySteps> = 
         number: 1,
         title: "Levantamento Técnico & Projeto de Espaço",
         subtitle: "Verificação de estrutura, canalizações, elétrica e janelas",
-        description: "O empreiteiro Jorge Freitas visita o imóvel em Aveiro, verifica paredes estruturais, estado do soalho e caixilharias e delineia o programa de obras.",
+        description: "O empreiteiro Jorge Freitas analisa a planta, fotografias e medições do imóvel, avaliando paredes estruturais, estado das instalações e delineando o programa de obras.",
         tipsAveiro: "Verificação prévia de enquadramento legal na Câmara Municipal de Aveiro (isenção de licença para escassa relevância vs. comunicação prévia).",
         estimatedDuration: "2 a 5 dias",
       },

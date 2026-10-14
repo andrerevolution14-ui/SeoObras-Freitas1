@@ -17,57 +17,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
-    template: "%s | Freitas Renovações LDA",
+    default: "Remodelações em Aveiro | Freitas Renovações",
+    template: "%s | Freitas Renovações",
   },
   description:
-    "Empresa de remodelações e obras gerais em Aveiro e concelhos vizinhos. Chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC. Empreiteiro Jorge Freitas. Orçamento grátis em <12h. ⭐ 4.9/5 Google.",
-  keywords: [
-    // 1. Termos Gerais de Elevada Intenção
-    "remodelações aveiro",
-    "empresa de remodelações aveiro",
-    "obras aveiro",
-    "empresa de obras aveiro",
-    "obras e remodelações aveiro",
-    "empreiteiros aveiro",
-    "remodelações gerais aveiro",
-    "empresa de construção e remodelação aveiro",
-    "obras chave na mão aveiro",
-    // 2. Remodelações por Divisão e Tipologia
-    "remodelação de casas de banho aveiro",
-    "remodelação wc aveiro",
-    "remodelação de cozinhas aveiro",
-    "remodelação de apartamentos aveiro",
-    "remodelação de moradias aveiro",
-    "remodelação de interiores aveiro",
-    "obras em apartamentos aveiro",
-    "recuperação de casas velhas aveiro",
-    // 3. Serviços Técnicos e Especialidades
-    "isolamento térmico aveiro",
-    "aplicação de capoto aveiro",
-    "impermeabilização de telhados aveiro",
-    "reparação de infiltrações aveiro",
-    "pladur e tetos falsos aveiro",
-    "pinturas de interiores e exteriores aveiro",
-    "substituição de caixilharia aveiro",
-    "janelas aveiro",
-    // 4. Pesquisas de Orçamento e Custo
-    "orçamento remodelação aveiro",
-    "quanto custa remodelar uma casa em aveiro",
-    "preço m2 remodelação aveiro",
-    "orçamento obras aveiro",
-    // 5. Expansão Geográfica Próxima
-    "remodelações ílhavo",
-    "remodelações águeda",
-    "remodelações estarreja",
-    "remodelações vagos",
-    "remodelações praia da barra",
-    "remodelações costa nova",
-    // Entidades & Confiança
-    "freitas renovações lda",
-    "jorge freitas empreiteiro",
-    "obras remodelações aveiro preço justo",
-  ],
+    "Empresa de remodelações e obras gerais em Aveiro e concelhos vizinhos. Chave na mão, casas de banho, cozinhas, apartamentos e moradias. Alvará IMPIC, orçamentos discriminados e acompanhamento direto pelo Empreiteiro Jorge Freitas.",
   authors: [{ name: "Jorge Freitas", url: "https://www.grupofreitasrenovacoes.pt" }],
   creator: "Freitas Renovações LDA",
   publisher: "Freitas Renovações LDA",

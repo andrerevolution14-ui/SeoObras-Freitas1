@@ -4,22 +4,14 @@ import { Shield, Award, Users, Clock, CheckCircle, Phone, ArrowRight, Star, MapP
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações LDA",
+  title: "Sobre Nós — Empreiteiro Jorge Freitas",
   description:
-    "Conheça Jorge Freitas, empreiteiro responsável da Freitas Renovações LDA em Aveiro. Alvará de construção válido, +100 obras concluídas e preços justos.",
+    "Conheça Jorge Freitas, empreiteiro responsável da Freitas Renovações LDA em Aveiro. Alvará IMPIC, rigor técnico, mais de 100 obras executadas e acompanhamento presencial.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/sobre" },
-  keywords: [
-    "jorge freitas empreiteiro",
-    "freitas renovacoes lda sobre",
-    "empreiteiro licenciado aveiro",
-    "empresa construcao aveiro alvara",
-    "obras aveiro equipa",
-    "construcao civil aveiro experiencia",
-  ],
   openGraph: {
-    title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações LDA",
+    title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações",
     description:
-      "Conheça Jorge Freitas e a equipa da Freitas Renovações LDA. Empresa licenciada IMPIC, +100 obras entregues em Aveiro com preços justos.",
+      "Conheça Jorge Freitas e a equipa da Freitas Renovações. Empresa licenciada IMPIC com mais de 100 obras entregues em Aveiro com garantia contratual.",
     url: "https://www.grupofreitasrenovacoes.pt/sobre",
     type: "profile",
     locale: "pt_PT",
@@ -28,13 +20,13 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Empreiteiro Jorge Freitas — Freitas Renovações LDA em Aveiro",
+        alt: "Empreiteiro Jorge Freitas — Freitas Renovações em Aveiro",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações LDA",
+    title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações",
     description: "Empreiteiro licenciado em Aveiro. Mais de 100 obras com garantia formal.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },

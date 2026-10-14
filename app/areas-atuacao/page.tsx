@@ -4,28 +4,12 @@ import { ArrowRight, MapPin, Phone, Shield, Sparkles } from "lucide-react";
 import { PARISHES, CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Áreas de Atuação — Obras em Aveiro e Concelhos Limítrofes | Freitas Renovações",
+  title: "Áreas de Atuação — Obras em Aveiro e Concelhos Limítrofes",
   description:
-    "Obras e remodelações em Aveiro e concelhos vizinhos: Ílhavo, Águeda, Estarreja, Vagos e Praia da Barra / Costa Nova. Empresa licenciada IMPIC. Orçamento gratuito em <12h.",
+    "Obras e remodelações em Aveiro e concelhos vizinhos: Ílhavo, Águeda, Estarreja, Vagos, Praia da Barra e Costa Nova. Empresa licenciada IMPIC com acompanhamento direto.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/areas-atuacao" },
-  keywords: [
-    "remodelações aveiro",
-    "remodelações ílhavo",
-    "remodelações águeda",
-    "remodelações estarreja",
-    "remodelações vagos",
-    "remodelações praia da barra",
-    "remodelações costa nova",
-    "obras aveiro freguesias",
-    "obras em esgueira aveiro",
-    "obras em aradas aveiro",
-    "obras em cacia aveiro",
-    "remodelacoes gloria e vera cruz aveiro",
-    "obras sao bernardo aveiro",
-    "empreiteiro aveiro e arredores",
-  ],
   openGraph: {
-    title: "Áreas de Atuação — Obras em Aveiro e Concelhos Limítrofes",
+    title: "Áreas de Atuação — Obras em Aveiro e Concelhos Limítrofes | Freitas Renovações",
     description:
       "Cobertura completa no município de Aveiro e concelhos vizinhos (Ílhavo, Águeda, Estarreja, Vagos, Barra e Costa Nova). Alvará IMPIC.",
     url: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
@@ -36,13 +20,13 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Áreas de Atuação de Obras e Remodelações em Aveiro e Limítrofes — Freitas Renovações LDA",
+        alt: "Áreas de Atuação de Obras e Remodelações em Aveiro e Limítrofes — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Áreas de Atuação — Obras em Aveiro e Concelhos Vizinhos",
+    title: "Áreas de Atuação — Obras em Aveiro e Concelhos Vizinhos | Freitas Renovações",
     description: "Obras em Aveiro, Ílhavo, Águeda, Estarreja e Vagos. Resposta em < 12h.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
@@ -151,7 +135,7 @@ export default function AreasAtuacaoPage() {
               Raio de atuação: Aveiro e concelhos limítrofes num raio de até 45 km
             </div>
             <div style={{ color: "#64748b", fontSize: "0.875rem", fontWeight: 600 }}>
-              Visitas técnicas e orçamentos 100% gratuitos em qualquer uma das {PARISHES.length} localizações
+              Orçamentos discriminados 100% gratuitos em qualquer uma das {PARISHES.length} localizações
             </div>
           </div>
         </div>

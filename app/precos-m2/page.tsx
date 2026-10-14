@@ -5,26 +5,12 @@ import { Calculator, CheckCircle, Phone, ArrowRight, Shield, Sparkles, HelpCircl
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Preço m2 Remodelação Aveiro — Quanto Custa Remodelar em 2026? | Freitas Renovações",
+  title: "Preço m2 Remodelação Aveiro — Custos e Estimativas 2026",
   description:
-    "Descubra quanto custa remodelar uma casa em Aveiro. Tabela oficial de preços médios por m² para casas de banho, cozinhas, moradias, capoto e telhados. Peça orçamento grátis.",
+    "Descubra quanto custa remodelar uma casa em Aveiro. Tabela de custos médios de referência por m² para casas de banho, cozinhas, apartamentos, moradias e capoto.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/precos-m2" },
-  keywords: [
-    "quanto custa remodelar uma casa em aveiro",
-    "preço m2 remodelação aveiro",
-    "orçamento remodelação aveiro",
-    "orçamento obras aveiro",
-    "preco m2 obras aveiro",
-    "tabela precos obras aveiro",
-    "preco capoto m2 aveiro",
-    "preco pintura m2 aveiro",
-    "preco remodelacao casa de banho aveiro",
-    "quanto custa remodelar cozinha aveiro",
-    "obras chave na mao aveiro precos",
-    "freitas renovacoes precos",
-  ],
   openGraph: {
-    title: "Preço m2 Remodelação Aveiro — Quanto Custa Remodelar em 2026?",
+    title: "Preço m2 Remodelação Aveiro — Custos e Estimativas 2026 | Freitas Renovações",
     description:
       "Tabela atualizada de preços de remodelação por m² em Aveiro: casas de banho, cozinhas, capoto, moradias e pinturas. Respostas diretas e sem custos ocultos.",
     url: "https://www.grupofreitasrenovacoes.pt/precos-m2",
@@ -35,13 +21,13 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tabela de Preços Médios por m2 em Aveiro — Freitas Renovações LDA",
+        alt: "Tabela de Preços Médios por m2 em Aveiro — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Preço m2 Remodelação Aveiro — Guia Oficial 2026",
+    title: "Preço m2 Remodelação Aveiro — Guia 2026 | Freitas Renovações",
     description: "Consulte custos reais de remodelação por m² em Aveiro com preços honestos.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
@@ -145,7 +131,7 @@ export default function PrecosM2Page() {
               marginBottom: "1rem",
             }}
           >
-            <Sparkles size={13} /> Guia de Custo &amp; AEO Aveiro 2026
+            <Sparkles size={13} /> Guia de Custos &amp; Estimativas Aveiro 2026
           </div>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
             Quanto Custa Remodelar uma Casa em Aveiro? Tabela &amp; Preço por m²
@@ -170,11 +156,11 @@ export default function PrecosM2Page() {
       {/* Tabela de Preços Médios */}
       <AveragePricesGuide />
 
-      {/* AEO Respostas Diretas sobre Custos */}
+      {/* Respostas Diretas sobre Custos */}
       <section className="section-padding" style={{ background: "#ffffff", borderTop: "1px solid #e2e8f0" }}>
         <div className="section-container" style={{ maxWidth: "800px" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p className="section-eyebrow">Dúvidas Frequentes de Orçamento (AEO)</p>
+            <p className="section-eyebrow">Perguntas Frequentes sobre Custos</p>
             <h2 className="section-title">Perguntas Rápidas sobre Preços de Obras em Aveiro</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>
               Tudo o que precisa de saber para orçamentar a sua remodelação sem custos surpresa.
@@ -197,7 +183,7 @@ export default function PrecosM2Page() {
               },
               {
                 q: "A Freitas Renovações cobra pela elaboração do orçamento?",
-                a: "Não. A visita técnica para medição e a elaboração do orçamento discriminado são 100% gratuitas e sem compromisso para todo o concelho de Aveiro e concelhos vizinhos.",
+                a: "Não. A análise técnica das informações enviadas e a elaboração do orçamento discriminado são 100% gratuitas e sem compromisso para todo o concelho de Aveiro e concelhos vizinhos.",
               },
             ].map((faq) => (
               <div

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, Phone, ArrowRight, CheckCircle, Clock, Shield, Sparkles } from "lucide-react";
+import { MapPin, Phone, ArrowRight, CheckCircle, Clock, Shield, Sparkles, Calendar, Euro } from "lucide-react";
 import { PARISHES, SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 import { generateParishSEO } from "@/lib/seo-data";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
+import { PAST_DETAILED_PROJECTS } from "@/lib/projects-data";
 
 interface Props {
   params: Promise<{ freguesia: string }>;
@@ -25,23 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: seo.title,
     description: seo.description,
-    keywords: [
-      `obras ${parish.name.toLowerCase()}`,
-      `remodelações ${parish.name.toLowerCase()}`,
-      `empresa de remodelações ${parish.name.toLowerCase()}`,
-      `empreiteiro ${parish.name.toLowerCase()}`,
-      `remodelação de casas de banho ${parish.name.toLowerCase()}`,
-      `remodelação de cozinhas ${parish.name.toLowerCase()}`,
-      `pintura ${parish.name.toLowerCase()}`,
-      `capoto ${parish.name.toLowerCase()}`,
-      `obras chave na mão ${parish.name.toLowerCase()}`,
-      "obras aveiro",
-      "remodelações aveiro",
-      "freitas renovações lda",
-    ],
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}` },
     openGraph: {
-      title: seo.title,
+      title: `${seo.title} | Freitas Renovações`,
       description: seo.description,
       url: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}`,
       type: "website",
@@ -51,13 +38,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
           width: 1200,
           height: 630,
-          alt: `Obras e Remodelações em ${locationLabel} — Freitas Renovações LDA`,
+          alt: `Obras e Remodelações em ${locationLabel} — Freitas Renovações`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: seo.title,
+      title: `${seo.title} | Freitas Renovações`,
       description: seo.description,
       images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
     },
@@ -114,6 +101,13 @@ export default async function ParishPage({ params }: Props) {
       { "@type": "ListItem", position: 3, name: parish.name, item: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}` },
     ],
   };
+
+  const localProjects = PAST_DETAILED_PROJECTS.filter(
+    (p) =>
+      p.parish.toLowerCase().includes(parish.name.toLowerCase()) ||
+      p.parish.toLowerCase().includes(parish.slug)
+  );
+  const showcaseProjects = localProjects.length > 0 ? localProjects : PAST_DETAILED_PROJECTS.slice(0, 2);
 
   return (
     <>
@@ -188,7 +182,7 @@ export default async function ParishPage({ params }: Props) {
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#fbbf24", fontSize: "0.8125rem", fontWeight: 800, marginBottom: "0.35rem" }}>
-                  <Sparkles size={14} /> Resumo Direto de Serviço Local (AEO)
+                  <Sparkles size={14} /> Atuação Técnica &amp; Orçamento Rápido em {parish.name}
                 </div>
                 <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.875rem", lineHeight: 1.55, margin: 0 }}>
                   {seo.directAnswer}
@@ -236,7 +230,7 @@ export default async function ParishPage({ params }: Props) {
             </div>
 
             <div id="hero-form">
-              <HeroMultiStepForm />
+              <HeroMultiStepForm initialParish={parish.name} />
             </div>
           </div>
         </div>
@@ -273,6 +267,115 @@ export default async function ParishPage({ params }: Props) {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Provas de Execução & Casos Reais na Freguesia */}
+      <section className="section-padding" style={{ background: "#ffffff", borderTop: "1px solid #e2e8f0" }}>
+        <div className="section-container">
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <p className="section-eyebrow">Provas de Execução &amp; Casos Reais</p>
+            <h2 className="section-title">
+              Obras Realizadas na Zona de {parish.name}
+            </h2>
+            <p className="section-subtitle" style={{ margin: "0 auto" }}>
+              Exemplos com âmbito definido, materiais instalados, prazos reais e custos discriminados.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.75rem" }}>
+            {showcaseProjects.map((proj) => (
+              <div
+                key={proj.id}
+                style={{
+                  background: "#f8fafc",
+                  borderRadius: "0.75rem",
+                  border: "1.5px solid #e2e8f0",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div style={{ position: "relative", height: "200px" }}>
+                  <img
+                    src={proj.image}
+                    alt={proj.altText}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "0.75rem",
+                      left: "0.75rem",
+                      background: "rgba(7, 26, 58, 0.88)",
+                      color: "#fbbf24",
+                      fontSize: "0.75rem",
+                      fontWeight: 700,
+                      padding: "0.25rem 0.6rem",
+                      borderRadius: "0.25rem",
+                    }}
+                  >
+                    {proj.categoryLabel}
+                  </div>
+                </div>
+
+                <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.35rem" }}>
+                    {proj.title}
+                  </h3>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.35rem", color: "#64748b", fontSize: "0.8125rem", marginBottom: "0.75rem" }}>
+                    <MapPin size={13} style={{ color: "#d97706" }} />
+                    {proj.parish}
+                  </div>
+
+                  <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.5, marginBottom: "1rem" }}>
+                    {proj.description}
+                  </p>
+
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "0.5rem",
+                      padding: "0.75rem",
+                      background: "#ffffff",
+                      borderRadius: "0.5rem",
+                      border: "1px solid #e2e8f0",
+                      marginBottom: "1rem",
+                      fontSize: "0.8125rem",
+                    }}
+                  >
+                    <div>
+                      <span style={{ color: "#64748b", display: "block" }}>Investimento:</span>
+                      <strong style={{ color: "#071a3a", fontSize: "0.9375rem" }}>{proj.realPrice.toLocaleString("pt-PT")} €</strong>
+                    </div>
+                    <div>
+                      <span style={{ color: "#64748b", display: "block" }}>Prazo de execução:</span>
+                      <strong style={{ color: "#071a3a", fontSize: "0.9375rem" }}>{proj.durationDays} dias</strong>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "auto" }}>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: "#071a3a", textTransform: "uppercase", marginBottom: "0.35rem" }}>
+                      Trabalhos incluídos:
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: "1.2rem", color: "#475569", fontSize: "0.8125rem", lineHeight: 1.45 }}>
+                      {proj.includedScope.slice(0, 3).map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <Link href="/projetos" className="btn-secondary" style={{ display: "inline-flex" }}>
+              Ver Todos os Casos de Obra &amp; Preços Reais
+              <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
       </section>

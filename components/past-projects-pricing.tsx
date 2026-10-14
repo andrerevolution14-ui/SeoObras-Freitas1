@@ -383,7 +383,7 @@ export function PastProjectsPricing() {
               Peça uma avaliação sem compromisso para o seu espaço exato
             </h3>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", maxWidth: "560px" }}>
-              O Jorge Freitas visita o seu imóvel em Aveiro, mede a área real, analisa tubagens e apresenta um orçamento fechado ao cêntimo em menos de 12 horas.
+              Envie fotografias e medidas aproximadas: o Empreiteiro Jorge Freitas analisa o projeto e entrega um orçamento discriminado e fechado ao cêntimo em menos de 12 horas.
             </p>
           </div>
 

@@ -7,13 +7,11 @@ import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // Google Business Profile — Place ID extraído do URL fornecido
-  // URL original: https://www.google.com/maps/place/Freitas+Renovações/@40.679534,-8.7662379,...
-  // Place ID: ChIJbnyBD_bGxkYRiViYJrwZFsE
+  // Google Business Profile — CID oficial: 0xc11699bc26385889 (13914443692994943113)
   const GOOGLE_MAPS_EMBED =
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47652.34!2d-8.7662379!3d40.679534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6cc6ccf60f817c6f%3A0xc11699bc26385889!2sFreitas+Renova%C3%A7%C3%B5es!5e0!3m2!1spt-PT!2spt!4v1725096000000!5m2!1spt-PT!2spt";
   const GOOGLE_MAPS_LINK =
-    "https://www.google.com/maps/place/Freitas+Renova%C3%A7%C3%B5es/@40.679534,-8.7662379,10z/data=!3m1!4b1!4m6!3m5!1s0x6cc6ccf60f817c6f:0xc11699bc26385889!8m2!3d40.679482!4d-8.4366004!16s%2Fg%2F11zx1bcp3x";
+    "https://maps.google.com/?cid=13914443692994943113";
 
   return (
     <footer className="footer" style={{ paddingTop: "3.5rem", background: "#071a3a" }}>

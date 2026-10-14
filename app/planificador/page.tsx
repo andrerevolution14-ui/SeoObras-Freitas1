@@ -5,19 +5,10 @@ import { Calculator, ArrowRight, Phone, Shield } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Planificador de Renovação em Aveiro — Passos Essenciais para Remodelar | Freitas Renovações",
+  title: "Planificador de Renovação em Aveiro — Passos Essenciais para Remodelar",
   description:
     "Guia passo a passo interativo para planear a renovação da sua casa de banho, cozinha ou habitação completa em Aveiro. Da demolição aos acabamentos sem derrapagens de custo.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/planificador" },
-  keywords: [
-    "planificador de obras aveiro",
-    "etapas de remodelacao aveiro",
-    "guia de obras aveiro",
-    "como planear obras de casa",
-    "remodelacao passo a passo aveiro",
-    "orcamento obras aveiro",
-    "freitas renovacoes planificador",
-  ],
   openGraph: {
     title: "Planificador de Renovação em Aveiro — Passos Essenciais | Freitas Renovações",
     description:
@@ -30,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Planificador de Renovação em Aveiro — Freitas Renovações LDA",
+        alt: "Planificador de Renovação em Aveiro — Freitas Renovações",
       },
     ],
   },
@@ -122,7 +113,7 @@ export default function PlanificadorPage() {
             Planificador de Renovação Passo a Passo
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1rem", maxWidth: "640px", lineHeight: 1.65 }}>
-            Siga as etapas comprovadas para planear a sua obra em Aveiro: escolha de materiais, prazos reais, estimativas de custos e vistoria técnica sem surpresas.
+            Siga o guia passo a passo para planear a sua obra em Aveiro: escolha de materiais, prazos reais, estimativas de custos e orçamento detalhado sem surpresas.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.75rem" }}>

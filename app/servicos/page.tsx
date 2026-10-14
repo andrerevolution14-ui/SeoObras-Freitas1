@@ -21,31 +21,14 @@ import {
 import { SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
+  title: "Serviços de Obras e Remodelações em Aveiro",
   description:
-    "Empresa de remodelações em Aveiro: obras chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto, telhados e pladur. Alvará IMPIC. Orçamento gratuito em <12h.",
+    "Soluções completas de remodelações em Aveiro: chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC e acompanhamento direto pelo Empreiteiro Jorge Freitas.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/servicos" },
-  keywords: [
-    "remodelações aveiro",
-    "empresa de remodelações aveiro",
-    "obras aveiro",
-    "obras e remodelações aveiro",
-    "obras chave na mão aveiro",
-    "remodelação de casas de banho aveiro",
-    "remodelação de cozinhas aveiro",
-    "remodelação de apartamentos aveiro",
-    "remodelação de moradias aveiro",
-    "remodelação de interiores aveiro",
-    "recuperação de casas velhas aveiro",
-    "aplicação de capoto aveiro",
-    "impermeabilização de telhados aveiro",
-    "pladur e tetos falsos aveiro",
-    "substituição de caixilharia aveiro",
-  ],
   openGraph: {
-    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
+    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações",
     description:
-      "Remodelações gerais chave na mão, casas de banho, cozinhas, moradias, capoto e telhados em Aveiro. Orçamento gratuito. ⭐ 4.9/5 no Google.",
+      "Remodelações gerais chave na mão, casas de banho, cozinhas, moradias, capoto e telhados em Aveiro. Processo ágil em 2 passos e proposta detalhada.",
     url: "https://www.grupofreitasrenovacoes.pt/servicos",
     type: "website",
     locale: "pt_PT",
@@ -54,14 +37,14 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Serviços de Obras e Remodelações em Aveiro — Freitas Renovações LDA",
+        alt: "Serviços de Obras e Remodelações em Aveiro — Freitas Renovações",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações LDA",
-    description: "Remodelações, casas de banho, cozinhas, moradias e capoto em Aveiro. Resposta em <12h.",
+    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações",
+    description: "Remodelações chave na mão, casas de banho, cozinhas e moradias em Aveiro. Resposta em <12h.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };
