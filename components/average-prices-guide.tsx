@@ -118,6 +118,29 @@ export function AveragePricesGuide() {
           </div>
         </div>
 
+        {/* Nota de Esclarecimento sobre Estimativas vs. Preços Reais Históricos */}
+        <div
+          style={{
+            background: "#eff6ff",
+            border: "1.5px solid #bfdbfe",
+            borderRadius: "0.5rem",
+            padding: "1rem 1.25rem",
+            marginBottom: "2rem",
+            display: "flex",
+            gap: "0.75rem",
+            alignItems: "flex-start",
+          }}
+        >
+          <AlertCircle size={20} style={{ color: "#2563eb", flexShrink: 0, marginTop: "2px" }} />
+          <div style={{ fontSize: "0.8125rem", color: "#1e3a8a", lineHeight: 1.6 }}>
+            <strong>Nota de Transparência Orçamental:</strong> Os valores desta tabela representam <em>estimativas orientativas para novas obras em 2026</em> calculadas por m² de área útil/bruta. Distinguem intervenções parciais de remodelações completas chave na mão. Aos valores acresce IVA à taxa legal em vigor (com possibilidade de taxa reduzida de 6% para reabilitação urbana). Para consultar os <strong>valores finais adjudicados e pagos pelos clientes</strong> em projetos concluídos pela Freitas Renovações, consulte a nossa página de{" "}
+            <Link href="/precos-reais" style={{ color: "#1d4ed8", fontWeight: 700, textDecoration: "underline" }}>
+              Preços Reais de Obras
+            </Link>
+            .
+          </div>
+        </div>
+
         {/* 3 Key Factors that Influence Price */}
         <div
           style={{

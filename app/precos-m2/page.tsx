@@ -44,7 +44,7 @@ const precosM2JsonLd = {
           name: "Quanto custa remodelar uma casa em Aveiro?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Em média, remodelar uma casa em Aveiro custa entre 350€/m² para intervenções parciais (pintura, pavimentos e portas) e entre 750€ e 1.200€/m² para remodelações totais chave na mão com canalização, eletricidade, caixilharia de corte térmico, cozinha e casas de banho.",
+            text: "Em média, remodelar uma casa em Aveiro custa entre 350€ e 550€/m² para intervenções parciais (pintura, pavimentos e portas) e entre 650€ e 900€/m² para remodelações totais chave na mão com canalização, eletricidade, caixilharia de corte térmico, cozinha e casas de banho. Reabilitações estruturais ou de alta gama situam-se entre 900€ e 1.300€/m².",
           },
         },
         {
@@ -52,7 +52,7 @@ const precosM2JsonLd = {
           name: "Qual é o preço por m² de remodelação em Aveiro?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "O preço médio por m² de remodelação em Aveiro varia de 280€ a 420€/m² para acabamentos standard equilibrados e de 480€ a 750€/m² para acabamentos de gama alta. A Freitas Renovações LDA apresenta propostas com preço fechado.",
+            text: "O preço médio por m² de remodelação em Aveiro varia de 350€ a 550€/m² para intervenções parciais e de 650€ a 900€/m² para remodelações chave na mão standard. A Freitas Renovações LDA apresenta propostas detalhadas com preço fechado e alvará IMPIC.",
           },
         },
         {
@@ -60,7 +60,7 @@ const precosM2JsonLd = {
           name: "Quanto custa remodelar uma casa de banho em Aveiro?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "A remodelação completa de uma casa de banho standard em Aveiro custa entre 2.800€ e 4.800€, englobando substituição de banheira por duche plano, nova canalização em multicamada, impermeabilização, loiças sanitárias e cerâmica retificada.",
+            text: "A remodelação completa de uma casa de banho standard em Aveiro custa entre 2.800€ e 4.500€, englobando substituição de banheira por duche plano, nova canalização em multicamada, impermeabilização bicomponente, loiças sanitárias e cerâmica retificada.",
           },
         },
         {
@@ -175,7 +175,7 @@ export default function PrecosM2Page() {
               },
               {
                 q: "Qual o preço por m² de uma remodelação de apartamento em Aveiro?",
-                a: "A remodelação de um apartamento T2 ou T3 em Aveiro oscila normalmente entre 280€ e 420€/m² para um padrão standard e entre 480€ e 750€/m² para um padrão premium com sancas de pladur, loiças suspensas e bancadas em quartzo.",
+                a: "A remodelação de um apartamento T2 ou T3 em Aveiro oscila normalmente entre 350€ e 550€/m² para intervenções parciais (pisos, portas e pinturas) e entre 650€ e 900€/m² para chave na mão standard com cozinha e casas de banho novas. Para acabamentos de luxo ou remodelações profundas com caixilharia de topo, os valores situam-se entre 900€ e 1.300€/m².",
               },
               {
                 q: "O que deve constar num orçamento de remodelação transparente?",

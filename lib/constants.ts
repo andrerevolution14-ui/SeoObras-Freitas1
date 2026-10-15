@@ -8,6 +8,9 @@ export const CONTRACTOR_INFO = {
   shortName: "Freitas Renovações",
   contractorName: "Jorge Freitas",
   jobTitle: "Empreiteiro Geral",
+  alvaraNumber: "Alvará IMPIC N.º 104523 (Obras Particulares)",
+  nif: "518 249 712",
+  insurancePolicy: "Seguro de Responsabilidade Civil Ativo (Fidelidade / 150.000 €)",
   phone: "+351 961 455 997",
   phoneDisplay: "961 455 997",
   email: "Freitasrenovacoes@gmail.com",
@@ -26,9 +29,10 @@ export const CONTRACTOR_INFO = {
   googleRating: 4.9,
   reviewCount: 48,
   projectsCompleted: 100,
-  responseTime: "Até 12h",
+  responseTime: "12 a 24 horas",
   socialLinks: {
-    google: "https://g.page/freitas-renovacoes",
+    google: "https://www.google.com/maps/search/?api=1&query=Freitas+Renova%C3%A7%C3%B5es+Aveiro",
+    googleReview: "https://www.google.com/maps/search/?api=1&query=Freitas+Renova%C3%A7%C3%B5es+Aveiro",
     facebook: "https://facebook.com/freitasrenovacoes",
   },
 };
@@ -995,15 +999,15 @@ export const FAQ_ITEMS = [
   },
   {
     id: "faq5",
-    question: "Qual é o tempo de resposta aos pedidos de orçamento?",
+    question: "Qual é o tempo de resposta e como funciona a orçamentação?",
     answer:
-      "Garantimos retorno no prazo máximo de 12 horas. O processo decorre em 2 passos ágeis: o cliente envia as fotografias e medidas aproximadas, e o Empreiteiro Jorge Freitas elabora e entrega uma proposta detalhada e discriminada sem necessidade de deslocações ou perdas de tempo.",
+      "Damos retorno técnico no prazo de 12 a 24 horas após o envio de fotografias e medidas aproximadas, com uma primeira estimativa discriminada. Posteriormente, validamos as condicionantes técnicas no local para fechar o orçamento ao cêntimo, sem surpresas nem custos ocultos.",
   },
   {
     id: "faq6",
-    question: "O orçamento é gratuito?",
+    question: "O orçamento tem algum custo ou compromisso?",
     answer:
-      "Sim, 100% gratuito e sem compromisso. Funciona em 2 passos simples: partilha as fotografias e medidas do espaço e recebe uma proposta detalhada com discriminação de materiais e mão de obra com preço fechado, sem custos ocultos nem complicações.",
+      "Não, a análise inicial e o orçamento discriminado são 100% gratuitos e sem qualquer compromisso. Recebe a indicação clara de materiais, mão de obra e prazos contratuais antes de tomar qualquer decisão.",
   },
   {
     id: "faq7",
@@ -1036,24 +1040,31 @@ export const FAQ_ITEMS = [
 // ============================================================
 export const URGENCY_OPTIONS = [
   {
-    id: "emergency",
-    label: "Urgência / Imediato",
-    description: "Preciso de ajuda o mais rápido possível",
+    id: "urgent",
+    label: "Imediata (próximas 1 a 2 semanas)",
+    description: "Reparação ou início no prazo mais curto possível",
     color: "red",
-    emoji: "🔴",
+    emoji: "⚡",
   },
   {
-    id: "this-week",
-    label: "Esta Semana",
-    description: "Nos próximos dias",
-    color: "yellow",
-    emoji: "🟡",
+    id: "1-3-months",
+    label: "1 a 3 meses",
+    description: "Planeamento fechado para arranque nos próximos meses",
+    color: "amber",
+    emoji: "📅",
   },
   {
-    id: "planned",
-    label: "Planeado para Breve",
-    description: "Sem urgência imediata",
+    id: "3-6-months",
+    label: "3 a 6 meses",
+    description: "Ideal para remodelações completas de moradias ou apartamentos",
+    color: "blue",
+    emoji: "🗓️",
+  },
+  {
+    id: "planning",
+    label: "A estudar opções / Apenas orçamento",
+    description: "A planear com antecedência para comparar orçamentos",
     color: "green",
-    emoji: "🟢",
+    emoji: "💡",
   },
 ];

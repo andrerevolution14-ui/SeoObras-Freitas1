@@ -38,11 +38,12 @@ const serviceIcons: Record<string, React.ReactNode> = {
 };
 
 export const BUDGET_OPTIONS = [
-  "Preciso de orientação técnica no local (Recomendado)",
-  "Até 5.000 € (intervenção pontual / WC simples)",
-  "5.000 € a 15.000 € (cozinha ou renovação parcial)",
-  "15.000 € a 35.000 € (remodelação de apartamento)",
-  "Mais de 35.000 € (moradia / chave na mão)",
+  "Ainda a avaliar / A definir com orçamento",
+  "Até 5.000 € (intervenção pontual / renovação simples)",
+  "5.000 € a 15.000 € (casa de banho ou cozinha completa)",
+  "15.000 € a 35.000 € (remodelação de apartamento T1/T2)",
+  "35.000 € a 70.000 € (remodelação integral T3/T4)",
+  "Mais de 70.000 € (moradia / reabilitação profunda)",
 ];
 
 interface FormData {
@@ -130,6 +131,19 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
     setErrorMessage(null);
 
     try {
+      let utmSource = "";
+      let utmMedium = "";
+      let utmCampaign = "";
+      let paginaOrigem = "";
+
+      if (typeof window !== "undefined") {
+        const urlParams = new URLSearchParams(window.location.search);
+        utmSource = urlParams.get("utm_source") || "";
+        utmMedium = urlParams.get("utm_medium") || "";
+        utmCampaign = urlParams.get("utm_campaign") || "";
+        paginaOrigem = window.location.pathname;
+      }
+
       const payload = {
         nome: formData.name.trim(),
         telefone: formData.phone.trim(),
@@ -141,6 +155,10 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         dimensaoAprox: formData.approxSize.trim(),
         mensagem: formData.description.trim(),
         ajudaCredito: formData.needsCredit ? "Sim (Solicita Intermediação 100% Gratuita)" : "Não",
+        utmSource,
+        utmMedium,
+        utmCampaign,
+        paginaOrigem,
       };
 
       const res = await fetch("/api/contact", {
@@ -719,7 +737,11 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
           paddingRight: "1.5rem",
         }}
       >
-        🔒 Dados confidenciais. Resposta garantida até 12 horas.
+        🔒 Dados protegidos nos termos do RGPD. Consulte a nossa{" "}
+        <a href="/privacidade" style={{ color: "#d97706", textDecoration: "underline" }}>
+          Política de Privacidade
+        </a>
+        . Primeira estimativa técnica em até 12 a 24 horas.
       </p>
     </div>
   );

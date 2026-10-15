@@ -1,7 +1,7 @@
 "use client";
 
 import { Star, BadgeCheck } from "lucide-react";
-import { GOOGLE_REVIEWS } from "@/lib/constants";
+import { GOOGLE_REVIEWS, CONTRACTOR_INFO } from "@/lib/constants";
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -153,7 +153,7 @@ export function GoogleReviews() {
         {/* CTA */}
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <a
-            href="https://g.page/freitas-renovacoes"
+            href={CONTRACTOR_INFO.socialLinks.google}
             target="_blank"
             rel="noopener noreferrer"
             style={{

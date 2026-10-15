@@ -180,10 +180,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Links Úteis */}
+          {/* Informações e Guias */}
           <div>
             <h4 style={{ color: "#ffffff", fontWeight: 700, marginBottom: "0.875rem", fontSize: "0.8125rem", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-              Informação & Guia SEO
+              Informações e Guias
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
@@ -194,10 +194,13 @@ export function Footer() {
                 { href: "/planificador", label: "Planificador Passo a Passo" },
                 { href: "/verdemont", label: "Projeto Verdemont (Destaque)" },
                 { href: "/projetos", label: "Portfólio de Projetos" },
+                { href: "/blog/quanto-custa-remodelar-casa-em-aveiro", label: "Quanto Custa Remodelar?" },
                 { href: "/blog/como-poupar-dinheiro-em-renovacoes-aveiro", label: "Como Poupar em Obras" },
                 { href: "/blog/melhores-ideias-renovacao-low-cost-aveiro", label: "Ideias Low-Cost Aveiro" },
                 { href: "/blog", label: "Blog & Todos os Guias" },
                 { href: "/sobre", label: "Sobre Nós" },
+                { href: "/privacidade", label: "Política de Privacidade (RGPD)" },
+                { href: "/termos", label: "Termos & Condições Gerais" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="footer-link" style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
@@ -282,14 +285,29 @@ export function Footer() {
             gap: "1rem",
             alignItems: "center",
             justifyContent: "space-between",
-            color: "rgba(255,255,255,0.5)",
+            color: "rgba(255,255,255,0.6)",
             fontSize: "0.8125rem",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            marginTop: "2rem",
           }}
         >
-          <p>© {currentYear} {CONTRACTOR_INFO.companyName}. Todos os direitos reservados.</p>
-          <p style={{ color: "rgba(255,255,255,0.4)" }}>
-            {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} Aveiro (GPS: {CONTRACTOR_INFO.geo.latitude}, {CONTRACTOR_INFO.geo.longitude})
-          </p>
+          <div>
+            <p style={{ margin: 0, fontWeight: 600, color: "#ffffff" }}>
+              © {currentYear} {CONTRACTOR_INFO.companyName} · {CONTRACTOR_INFO.alvaraNumber} · NIPC {CONTRACTOR_INFO.nif}
+            </p>
+            <p style={{ margin: "0.25rem 0 0", color: "rgba(255,255,255,0.45)" }}>
+              {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} Aveiro (GPS: {CONTRACTOR_INFO.geo.latitude}, {CONTRACTOR_INFO.geo.longitude})
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+            <Link href="/privacidade" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>
+              Privacidade &amp; RGPD
+            </Link>
+            <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
+            <Link href="/termos" style={{ color: "rgba(255,255,255,0.7)", textDecoration: "none" }}>
+              Termos e Condições
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

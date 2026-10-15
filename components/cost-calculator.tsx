@@ -547,7 +547,7 @@ export function CostCalculator({
                   textAlign: "center",
                 }}
               >
-                * Valores meramente indicativos com base em obras médias em Aveiro. O orçamento discriminado a preço fixo é gratuito e entregue em menos de 12 horas após o envio de fotos e dimensões.
+                * Estimativas orientativas com base em médias de mercado em Aveiro. A primeira proposta discriminada é gratuita e enviada em até 12-24 horas, seguida de validação técnica no local.
               </p>
             </div>
           </div>

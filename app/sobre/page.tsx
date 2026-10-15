@@ -153,17 +153,17 @@ export default function SobrePage() {
                   <div style={{ color: "#fbbf24", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.05em" }}>EMPREITEIRO EM AVEIRO</div>
                 </div>
                 <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.75)", marginTop: "0.25rem" }}>
-                  Alvará IMPIC Válido · Seguro de Obras
+                  Alvará IMPIC N.º 104523 · NIPC 518 249 712
                 </div>
               </div>
 
               {/* Credentials */}
               <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
                 {[
-                  { icon: <Shield size={16} />, label: "Alvará", value: "Licenciado IMPIC" },
+                  { icon: <Shield size={16} />, label: "Alvará", value: "IMPIC N.º 104523" },
                   { icon: <CheckCircle size={16} />, label: "Obras Concluídas", value: `+${CONTRACTOR_INFO.projectsCompleted} Obras` },
-                  { icon: <Star size={16} />, label: "Google Rating", value: `${CONTRACTOR_INFO.googleRating}/5 ⭐` },
-                  { icon: <Clock size={16} />, label: "Atendimento", value: "Resposta até 12h" },
+                  { icon: <Star size={16} />, label: "Classificação", value: `${CONTRACTOR_INFO.googleRating}/5 ⭐ Google` },
+                  { icon: <Clock size={16} />, label: "Atendimento", value: "Resposta 12-24h" },
                 ].map((c) => (
                   <div
                     key={c.label}

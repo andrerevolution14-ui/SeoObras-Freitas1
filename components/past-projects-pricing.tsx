@@ -144,6 +144,8 @@ export function PastProjectsPricing() {
                   <img
                     src={project.image}
                     alt={project.altText}
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -383,7 +385,7 @@ export function PastProjectsPricing() {
               Peça uma avaliação sem compromisso para o seu espaço exato
             </h3>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.875rem", maxWidth: "560px" }}>
-              Envie fotografias e medidas aproximadas: o Empreiteiro Jorge Freitas analisa o projeto e entrega um orçamento discriminado e fechado ao cêntimo em menos de 12 horas.
+              Envie fotografias e medidas aproximadas: o Empreiteiro Jorge Freitas analisa o projeto e entrega uma primeira estimativa discriminada em até 12 a 24 horas, seguindo-se a validação técnica no local.
             </p>
           </div>
 

@@ -46,6 +46,8 @@ export function RealProjectsGallery() {
                 <img
                   src={project.image}
                   alt={project.altText || `${project.title} em ${project.parish} Aveiro`}
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: "100%",
                     height: "100%",

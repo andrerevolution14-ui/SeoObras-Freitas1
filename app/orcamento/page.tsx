@@ -91,7 +91,7 @@ export default function OrcamentoPage() {
           </h1>
           <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "600px", lineHeight: 1.65 }}>
             Simule o custo da sua obra na calculadora abaixo ou contacte diretamente. O empreiteiro Jorge Freitas responde pessoalmente
-            em menos de 12 horas com um orçamento detalhado e preço justo.
+            em 12 a 24 horas com uma primeira estimativa discriminada e proposta transparente.
           </p>
         </div>
       </section>
@@ -107,9 +107,9 @@ export default function OrcamentoPage() {
           <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center", justifyContent: "center" }}>
             {[
               { icon: <CheckCircle size={15} />, text: "Orçamento 100% gratuito" },
-              { icon: <Clock size={15} />, text: "Resposta em menos de 12h" },
-              { icon: <Shield size={15} />, text: "Empresa licenciada IMPIC" },
-              { icon: <Star size={15} />, text: "⭐ 4.9/5 no Google (48 avaliações)" },
+              { icon: <Clock size={15} />, text: "Resposta em até 12-24h" },
+              { icon: <Shield size={15} />, text: "Alvará IMPIC N.º 104523" },
+              { icon: <Star size={15} />, text: "⭐ 4.9/5 estrelas em Aveiro" },
             ].map((item) => (
               <div key={item.text} style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontSize: "0.8125rem", fontWeight: 600, color: "#334155" }}>
                 <span style={{ color: "#0f2d5e" }}>{item.icon}</span>

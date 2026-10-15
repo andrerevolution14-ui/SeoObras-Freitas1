@@ -10,50 +10,14 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import { CONTRACTOR_INFO, FAQ_ITEMS } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
+  title: "Obras e Remodelações em Aveiro | Freitas Renovações",
   description:
-    "Empresa licenciada de remodelações e obras gerais em Aveiro. Obras chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Empreiteiro Jorge Freitas. Alvará IMPIC. Orçamento grátis em <12h. ⭐ 4.9/5 Google.",
+    "Remodelações de casas, apartamentos, cozinhas e casas de banho em Aveiro. Acompanhamento por Jorge Freitas. Peça um orçamento gratuito.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt" },
-  keywords: [
-    "remodelações aveiro",
-    "empresa de remodelações aveiro",
-    "obras aveiro",
-    "empresa de obras aveiro",
-    "obras e remodelações aveiro",
-    "empreiteiros aveiro",
-    "remodelações gerais aveiro",
-    "empresa de construção e remodelação aveiro",
-    "obras chave na mão aveiro",
-    "remodelação de casas de banho aveiro",
-    "remodelação wc aveiro",
-    "remodelação de cozinhas aveiro",
-    "remodelação de apartamentos aveiro",
-    "remodelação de moradias aveiro",
-    "remodelação de interiores aveiro",
-    "recuperação de casas velhas aveiro",
-    "isolamento térmico aveiro",
-    "aplicação de capoto aveiro",
-    "impermeabilização de telhados aveiro",
-    "reparação de infiltrações aveiro",
-    "pladur e tetos falsos aveiro",
-    "pinturas de interiores e exteriores aveiro",
-    "substituição de caixilharia aveiro",
-    "orçamento remodelação aveiro",
-    "quanto custa remodelar uma casa em aveiro",
-    "preço m2 remodelação aveiro",
-    "remodelações ílhavo",
-    "remodelações águeda",
-    "remodelações estarreja",
-    "remodelações vagos",
-    "remodelações praia da barra",
-    "remodelações costa nova",
-    "freitas renovações lda",
-    "jorge freitas empreiteiro",
-  ],
   openGraph: {
-    title: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
+    title: "Obras e Remodelações em Aveiro | Freitas Renovações",
     description:
-      "Empresa licenciada de obras, remodelações gerais e chave na mão em Aveiro. Empreiteiro Jorge Freitas. ⭐ 4.9/5 Google · +100 obras · Preços Justos · Orçamento gratuito.",
+      "Remodelações de casas, apartamentos, cozinhas e casas de banho em Aveiro. Acompanhamento por Jorge Freitas. Peça um orçamento gratuito.",
     url: "https://www.grupofreitasrenovacoes.pt",
     siteName: "Freitas Renovações LDA",
     type: "website",
@@ -70,47 +34,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Freitas Renovações LDA | Obras & Remodelações em Aveiro",
-    description: "Empresa licenciada de obras e remodelações em Aveiro. Orçamento gratuito e resposta em menos de 12h. Preços justos.",
+    title: "Obras e Remodelações em Aveiro | Freitas Renovações",
+    description: "Remodelações de casas, apartamentos, cozinhas e casas de banho em Aveiro. Acompanhamento por Jorge Freitas. Peça um orçamento gratuito.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
 };
 
-// Enhanced JSON-LD Schema: LocalBusiness + FAQPage + HowTo + BreadcrumbList
+// JSON-LD Schema: FAQPage + HowTo + BreadcrumbList (Organization já declarada em layout.tsx)
 const homeJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "HomeAndConstructionBusiness",
-      "@id": "https://www.grupofreitasrenovacoes.pt/#organization",
-      name: CONTRACTOR_INFO.companyName,
-      image: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
-      logo: "https://www.grupofreitasrenovacoes.pt/logo.png",
-      telephone: CONTRACTOR_INFO.phone,
-      email: CONTRACTOR_INFO.email,
-      url: "https://www.grupofreitasrenovacoes.pt",
-      priceRange: "$$",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: CONTRACTOR_INFO.address.street,
-        postalCode: CONTRACTOR_INFO.address.postalCode,
-        addressLocality: "Aveiro",
-        addressRegion: "Aveiro",
-        addressCountry: "PT",
-      },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: CONTRACTOR_INFO.geo.latitude,
-        longitude: CONTRACTOR_INFO.geo.longitude,
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "48",
-        bestRating: "5",
-        worstRating: "1",
-      },
-    },
     {
       "@type": "FAQPage",
       "@id": "https://www.grupofreitasrenovacoes.pt/#faq",
@@ -134,25 +67,25 @@ const homeJsonLd = {
           "@type": "HowToStep",
           position: 1,
           name: "1. Envio do Pedido com Fotografias e Medidas",
-          text: "Preencha o formulário online enviando fotografias do espaço e dimensões aproximadas, ou contacte pelo 961 455 997. Resposta em menos de 12 horas.",
+          text: "Preencha o formulário online enviando fotografias do espaço e dimensões aproximadas, ou contacte pelo 961 455 997. Primeira resposta técnica em até 12 a 24 horas.",
         },
         {
           "@type": "HowToStep",
           position: 2,
-          name: "2. Proposta Detalhada com Preços Fechados",
-          text: "O Empreiteiro Jorge Freitas analisa os dados fornecidos e elabora orçamento discriminado com materiais e mão de obra a preço fechado, sem necessidade de deslocações.",
+          name: "2. Estimativa e Validação Técnica no Local",
+          text: "O Empreiteiro Jorge Freitas analisa os dados fornecidos, apresenta uma estimativa preliminar e agenda visita técnica para verificação de canalizações e estrutura.",
         },
         {
           "@type": "HowToStep",
           position: 3,
-          name: "3. Execução da Obra com Alvará IMPIC",
-          text: "Execução rigorosa com proteção de áreas de condomínio, respeito pelos horários de ruído e materiais certificados.",
+          name: "3. Proposta Fechada e Execução com Alvará IMPIC",
+          text: "Orçamento fechado com descrição de materiais, proteção de áreas de condomínio e cumprimento estrito de horários de ruído.",
         },
         {
           "@type": "HowToStep",
           position: 4,
           name: "4. Limpeza Final e Entrega de Chave na Mão",
-          text: "Conclusão detalhada com o proprietário, entrega da obra limpa e certificado de garantia por escrito até 5 anos.",
+          text: "Vistoria final com o proprietário, entrega da obra limpa e emissão de certificado de garantia por escrito até 5 anos.",
         },
       ],
     },
@@ -212,38 +145,27 @@ export default function HomePage() {
                   fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)",
                   fontWeight: 900,
                   color: "#ffffff",
-                  lineHeight: 1.05,
-                  marginBottom: "1.25rem",
+                  lineHeight: 1.08,
+                  marginBottom: "1rem",
                   letterSpacing: "-0.03em",
                   textShadow: "0 2px 30px rgba(0,0,0,0.5)",
                 }}
               >
-                Empresa de Obras &amp; Remodelações{" "}
-                <span
-                  style={{
-                    display: "block",
-                    background: "linear-gradient(135deg, #fbbf24, #f59e0b)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  em Aveiro.
-                </span>
-                <span
-                  style={{
-                    display: "block",
-                    fontSize: "0.52em",
-                    fontWeight: 700,
-                    color: "rgba(255,255,255,0.75)",
-                    letterSpacing: "-0.01em",
-                    marginTop: "0.25em",
-                    WebkitTextFillColor: "rgba(255,255,255,0.75)",
-                  }}
-                >
-                  Obras Chave na Mão · Preços Justos · Alvará IMPIC
-                </span>
+                Obras e remodelações em Aveiro
               </h1>
+
+              <div
+                style={{
+                  display: "inline-block",
+                  fontSize: "clamp(0.9375rem, 2vw, 1.125rem)",
+                  fontWeight: 700,
+                  color: "#fbbf24",
+                  letterSpacing: "-0.01em",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Obras Chave na Mão · Casas de Banho · Cozinhas · Alvará IMPIC
+              </div>
 
               {/* Subtitle — hidden on mobile */}
               <p
@@ -816,7 +738,7 @@ export default function HomePage() {
       <section className="section-padding" style={{ background: "#f8fafc", borderBottom: "1px solid #e2e8f0" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p className="section-eyebrow">Transparência Total &amp; Answer Engine Optimization</p>
+            <p className="section-eyebrow">Preços e Condições Transparentes</p>
             <h2 className="section-title">
               Quanto Custa Remodelar em Aveiro? Tabela &amp; Respostas Rápidas
             </h2>

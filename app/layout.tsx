@@ -147,10 +147,9 @@ const globalJsonLd = {
         areaServed: "PT",
         availableLanguage: "Portuguese",
       },
-      // Google Business Profile URL — verified Place ID
+      // Google Business Profile & Redes Oficiais
       sameAs: [
-        "https://maps.app.goo.gl/FreitasRenovacoes",
-        "https://www.google.com/maps/place/?q=place_id:ChIJbnyBD_bGxkYRiViYJrwZFsE",
+        CONTRACTOR_INFO.socialLinks.google,
         CONTRACTOR_INFO.socialLinks.facebook,
       ],
       areaServed: PARISHES.map((p) => ({
@@ -203,39 +202,6 @@ const globalJsonLd = {
           closes: "13:00",
         },
       ],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: CONTRACTOR_INFO.googleRating.toString(),
-        reviewCount: CONTRACTOR_INFO.reviewCount.toString(),
-        bestRating: "5",
-        worstRating: "1",
-      },
-      review: [
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Maria Sousa" },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody:
-            "Excelente trabalho! O Jorge e a sua equipa remodelaram a nossa moradia em tempo record. Materiais de qualidade, limpeza impecável e preço justo. Recomendo a 100%!",
-          datePublished: "2025-01-15",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "António Costa" },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody:
-            "Limpeza de telhado impecável. O telhado ficou como novo e o Jorge deu uma resposta muito rápida com um preço justo.",
-          datePublished: "2024-10-08",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Pedro Rodrigues" },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody:
-            "Infiltrações no telhado resolvidas definitivamente. Excelente relação qualidade/preço e total profissionalismo do Empreiteiro Jorge Freitas.",
-          datePublished: "2024-08-14",
-        },
-      ],
     },
     {
       "@type": "WebSite",
@@ -245,48 +211,6 @@ const globalJsonLd = {
       description: "Empresa de obras e remodelações em Aveiro — Freitas Renovações LDA",
       inLanguage: "pt-PT",
       publisher: { "@id": "https://www.grupofreitasrenovacoes.pt/#organization" },
-    },
-    {
-      "@type": "HowTo",
-      name: "Como Remodelar uma Casa de Banho em Aveiro — Passos Essenciais",
-      description: "Guia técnico passo a passo para remodelar a casa de banho em Aveiro com preços justos, desde a demolição à vistoria final.",
-      estimatedCost: {
-        "@type": "MonetaryAmount",
-        currency: "EUR",
-        value: "3450",
-      },
-      step: [
-        {
-          "@type": "HowToStep",
-          name: "Diagnóstico e Medições",
-          text: "Medir área útil, verificar prumadas e inspecionar canos antigos de ferro ou chumbo.",
-        },
-        {
-          "@type": "HowToStep",
-          name: "Seleção de Materiais e Loiças",
-          text: "Escolher base de duche plana, torneiras economizadoras e cerâmica porcelânica retificada.",
-        },
-        {
-          "@type": "HowToStep",
-          name: "Demolição e Preparação Segura",
-          text: "Remover banheira antiga, resguardos e azulejos com transporte a vazadouro licenciado em Aveiro.",
-        },
-        {
-          "@type": "HowToStep",
-          name: "Canalização Multicamada e Impermeabilização",
-          text: "Instalar tubagens PEX/Multicamada sem uniões no chão e aplicar membrana líquida impermeabilizante armada.",
-        },
-        {
-          "@type": "HowToStep",
-          name: "Assentamento de Cerâmica e Acabamentos",
-          text: "Colocar revestimentos com cimento-cola C2TE e betume hidrófugo resistente ao clima húmido de Aveiro.",
-        },
-        {
-          "@type": "HowToStep",
-          name: "Montagem de Equipamentos e Vistoria Final",
-          text: "Instalação de resguardo em vidro temperado 8mm, sanita compacta e entrega da garantia contratual.",
-        },
-      ],
     },
   ],
 };

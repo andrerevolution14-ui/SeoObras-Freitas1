@@ -46,6 +46,12 @@ export async function POST(request: NextRequest) {
     const rawUrgencia = (rawBody.urgencia || rawBody.urgency || "").toString().trim();
     const mensagem = (rawBody.mensagem || rawBody.description || "").toString().trim();
     const ajudaCredito = (rawBody.ajudaCredito || rawBody.credito || "").toString().trim();
+    const orcamentoEstimado = (rawBody.orcamentoEstimado || "").toString().trim();
+    const dimensaoAprox = (rawBody.dimensaoAprox || "").toString().trim();
+    const utmSource = (rawBody.utmSource || "").toString().trim();
+    const utmMedium = (rawBody.utmMedium || "").toString().trim();
+    const utmCampaign = (rawBody.utmCampaign || "").toString().trim();
+    const paginaOrigem = (rawBody.paginaOrigem || "").toString().trim();
 
     // Validação dos campos obrigatórios
     if (!nome || nome.length < 2) {
@@ -73,12 +79,20 @@ export async function POST(request: NextRequest) {
     const urgenciaLabel = foundUrgency ? `${foundUrgency.emoji} ${foundUrgency.label}` : rawUrgencia;
 
     // Formatação da mensagem em HTML para o Telegram
-    let telegramMessage = `🚨 <b>NOVO PEDIDO DE ORÇAMENTO</b> 🚨\n\n` +
+    let telegramMessage = `🚨 <b>NOVO PEDIDO DE ORÇAMENTO (CRM)</b> 🚨\n\n` +
       `👤 <b>Cliente:</b> ${escapeHtml(nome)}\n` +
       `📞 <b>Telefone:</b> ${escapeHtml(telefone)}\n` +
       `✉️ <b>Email:</b> ${email ? escapeHtml(email) : "Não informado"}\n` +
       `📍 <b>Localidade:</b> ${escapeHtml(localidadeName)}\n` +
       `🛠️ <b>Serviço:</b> ${escapeHtml(servicoTitle)}\n`;
+
+    if (orcamentoEstimado) {
+      telegramMessage += `💰 <b>Investimento Previsto:</b> ${escapeHtml(orcamentoEstimado)}\n`;
+    }
+
+    if (dimensaoAprox) {
+      telegramMessage += `📐 <b>Dimensão/Tipologia:</b> ${escapeHtml(dimensaoAprox)}\n`;
+    }
 
     if (urgenciaLabel) {
       telegramMessage += `⚡ <b>Urgência:</b> ${escapeHtml(urgenciaLabel)}\n`;
@@ -86,6 +100,12 @@ export async function POST(request: NextRequest) {
 
     if (ajudaCredito && ajudaCredito !== "Não") {
       telegramMessage += `💶 <b>Intermediação Crédito:</b> ${escapeHtml(ajudaCredito)}\n`;
+    }
+
+    if (paginaOrigem || utmSource) {
+      telegramMessage += `🎯 <b>Origem / Lead Tracking:</b> ${escapeHtml(paginaOrigem || "/")}` +
+        (utmSource ? ` (utm: ${escapeHtml(utmSource)}${utmCampaign ? ` / ${escapeHtml(utmCampaign)}` : ""})` : "") +
+        `\n`;
     }
 
     telegramMessage += `\n📝 <b>Mensagem:</b>\n${mensagem ? escapeHtml(mensagem) : "Sem mensagem adicional"}`;
@@ -135,14 +155,18 @@ export async function POST(request: NextRequest) {
           to: [toEmail],
           subject: `🏠 Novo Pedido: ${servicoTitle} em ${localidadeName} — ${nome}`,
           html: `
-            <h2>Novo Pedido de Orçamento</h2>
+            <h2>Novo Pedido de Orçamento Qualificado</h2>
             <p><strong>Cliente:</strong> ${escapeHtml(nome)}</p>
             <p><strong>Telefone:</strong> <a href="tel:${escapeHtml(telefone)}">${escapeHtml(telefone)}</a></p>
             <p><strong>Email:</strong> ${email ? escapeHtml(email) : "Não informado"}</p>
             <p><strong>Localidade:</strong> ${escapeHtml(localidadeName)}</p>
             <p><strong>Serviço:</strong> ${escapeHtml(servicoTitle)}</p>
+            ${orcamentoEstimado ? `<p><strong>Investimento Previsto:</strong> ${escapeHtml(orcamentoEstimado)}</p>` : ""}
+            ${dimensaoAprox ? `<p><strong>Dimensão/Tipologia:</strong> ${escapeHtml(dimensaoAprox)}</p>` : ""}
             ${urgenciaLabel ? `<p><strong>Urgência:</strong> ${escapeHtml(urgenciaLabel)}</p>` : ""}
             ${ajudaCredito && ajudaCredito !== "Não" ? `<p><strong>Intermediação de Crédito:</strong> <span style="color:#16a34a; font-weight:bold;">${escapeHtml(ajudaCredito)}</span></p>` : ""}
+            ${paginaOrigem ? `<p><strong>Página de Origem:</strong> ${escapeHtml(paginaOrigem)}</p>` : ""}
+            ${utmSource ? `<p><strong>Campanha/UTM:</strong> ${escapeHtml(utmSource)} / ${escapeHtml(utmMedium)} / ${escapeHtml(utmCampaign)}</p>` : ""}
             <p><strong>Mensagem:</strong> ${mensagem ? escapeHtml(mensagem) : "Sem mensagem adicional"}</p>
           `,
         });

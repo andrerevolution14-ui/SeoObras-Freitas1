@@ -19,6 +19,22 @@ const nextConfig: NextConfig = {
   compress: true,
   // Remove powered-by header
   poweredByHeader: false,
+  // Redirect non-www to www permanently (308)
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "grupofreitasrenovacoes.pt",
+          },
+        ],
+        destination: "https://www.grupofreitasrenovacoes.pt/:path*",
+        permanent: true,
+      },
+    ];
+  },
   // Security headers — improve Google trust score
   async headers() {
     return [
@@ -47,4 +63,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
