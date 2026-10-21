@@ -43,14 +43,14 @@ export function RealProjectsGallery() {
             >
               {/* Project Image */}
               <div style={{ position: "relative", height: "230px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
-                <img
+                <Image
                   src={project.image}
                   alt={project.altText || `${project.title} em ${project.parish} Aveiro`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                   loading="lazy"
-                  decoding="async"
+                  quality={75}
                   style={{
-                    width: "100%",
-                    height: "100%",
                     objectFit: "cover",
                     transition: "transform 0.3s ease",
                   }}

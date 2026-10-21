@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Menu,
   X,
@@ -120,9 +121,12 @@ export function Header() {
           href="/"
           style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}
         >
-          <img
+          <Image
             src="/logo1s.png"
             alt="Logótipo da Freitas Renovações LDA — Empreiteiro Licenciado em Aveiro"
+            width={160}
+            height={42}
+            priority
             style={{
               height: "42px",
               width: "auto",
@@ -407,7 +411,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div style={{ marginTop: "1rem" }}>
+          <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
             <a
               href={`tel:${CONTRACTOR_INFO.phone}`}
               className="btn-primary"
@@ -415,6 +419,29 @@ export function Header() {
             >
               <Phone size={16} />
               Ligar: {CONTRACTOR_INFO.phoneDisplay}
+            </a>
+            <a
+              href={CONTRACTOR_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                width: "100%",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+                background: "#25D366",
+                color: "#ffffff",
+                fontWeight: 800,
+                padding: "0.75rem 1.25rem",
+                borderRadius: "0.375rem",
+                fontSize: "0.875rem",
+                textDecoration: "none",
+                boxShadow: "0 2px 10px rgba(37, 211, 102, 0.3)",
+              }}
+            >
+              <span style={{ fontSize: "1.1rem", lineHeight: 1 }}>💬</span>
+              <span>Mensagem WhatsApp Direta</span>
             </a>
           </div>
         </div>

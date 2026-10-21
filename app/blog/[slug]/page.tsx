@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, Clock, User, ArrowRight, Phone, ShieldCheck, MapPin } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/blog-data";
 import { CONTRACTOR_INFO } from "@/lib/constants";
@@ -183,9 +184,13 @@ export default async function BlogPostPage({ params }: Props) {
               alignItems: "center",
             }}
           >
-            <img
+            <Image
               src="/jorge-freitas.jpg"
               alt="Empreiteiro Jorge Freitas — Autor e especialista técnico de construção civil e remodelações em Aveiro"
+              width={70}
+              height={70}
+              quality={75}
+              loading="lazy"
               style={{ width: "70px", height: "70px", borderRadius: "50%", objectFit: "cover", border: "2px solid #f59e0b", flexShrink: 0 }}
             />
             <div>

@@ -81,6 +81,15 @@ export function Footer() {
                 <span>{CONTRACTOR_INFO.phoneDisplay} ({CONTRACTOR_INFO.phone})</span>
               </a>
               <a
+                href={CONTRACTOR_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#34d399", fontSize: "0.875rem", textDecoration: "none", fontWeight: 700 }}
+              >
+                <span style={{ fontSize: "1rem", lineHeight: 1 }}>💬</span>
+                <span>WhatsApp: {CONTRACTOR_INFO.phoneDisplay} (Mensagem Direta)</span>
+              </a>
+              <a
                 href={`mailto:${CONTRACTOR_INFO.email}`}
                 style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "rgba(255,255,255,0.75)", fontSize: "0.875rem", textDecoration: "none" }}
               >

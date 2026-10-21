@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { MobileCtaBar } from "@/components/mobile-cta-bar";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { CONTRACTOR_INFO, SERVICES, PARISHES } from "@/lib/constants";
 
 // Load Inter via next/font — zero layout shift, self-hosted, no external request
@@ -219,12 +220,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-PT" className={inter.variable}>
       <head>
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
         {/* Geographic meta tags — reinforce local SEO */}
         <meta name="geo.region" content="PT-01" />
         <meta name="geo.placename" content="Aveiro, Portugal" />
@@ -240,42 +235,46 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }}
         />
+
+        {/* Early dataLayer initialization — lightweight, no external requests */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              function gtag_report_conversion(url) {
+                var callback = function () {
+                  if (typeof(url) != 'undefined') {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-17936797026/_-fvCOmXk5YdEOKa9-hC',
+                  'event_callback': callback
+                });
+                return false;
+              }
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.className} antialiased`}>
-        {/* Google tag (gtag.js) */}
+        {/* Google tag (gtag.js) loaded lazily to preserve mobile LCP & speed */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17936797026"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-tag-aw-17936797026" strategy="afterInteractive">
+        <Script id="google-tag-aw-17936797026" strategy="lazyOnload">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'AW-17936797026');
           `}
         </Script>
-        {/* Google Ads Conversion: Enviar formulário de leads (1) */}
-        <Script id="google-ads-conversion-lead" strategy="afterInteractive">
-          {`
-            function gtag_report_conversion(url) {
-              var callback = function () {
-                if (typeof(url) != 'undefined') {
-                  window.location = url;
-                }
-              };
-              gtag('event', 'conversion', {
-                  'send_to': 'AW-17936797026/_-fvCOmXk5YdEOKa9-hC',
-                  'event_callback': callback
-              });
-              return false;
-            }
-          `}
-        </Script>
+
         <Header />
         <main>{children}</main>
         <Footer />
+        <WhatsAppButton />
         <MobileCtaBar />
       </body>
     </html>

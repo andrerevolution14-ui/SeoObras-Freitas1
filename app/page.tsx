@@ -119,9 +119,10 @@ export default function HomePage() {
           alt="Cozinha e sala modernas renovadas pela Freitas Renovações em Aveiro"
           fill
           priority
-          quality={85}
+          fetchPriority="high"
+          quality={75}
           className="hero-bg-image"
-          sizes="100vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAARCAAkAEADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUDBgIBAAf/xAAvEAACAQMDAwMDBAMBAAAAAAABAgMABBEFEiExQVFhBhNxgZEiMqGxwdHh8P/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAHhEAAgICAwEAAAAAAAAAAAAAAAECERIhMUFR/9oADAMBAAIRAxEAPwDuiiisBQFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFVbu7t7GDzriQIvbuc+w71lj9S6cSSb2EAe7cY/eoOiVFFVtze21shaeZEB7ZP9VFsAoooqgCiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k="
         />

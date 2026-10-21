@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ExternalLink, Award, CheckCircle, ArrowRight, ShieldCheck, Building } from "lucide-react";
 import { VERDEMONT_PROJECT, PAST_DETAILED_PROJECTS } from "@/lib/projects-data";
 
@@ -200,16 +201,20 @@ export function VerdemontShowcase() {
                 background: "#071a3a",
               }}
             >
-              <img
-                src="/verdemont.jpg"
-                alt="Empreendimento de arquitetura contemporânea Verdemont www.verdemont.eu — Intervenção Freitas Renovações LDA"
-                style={{
-                  width: "100%",
-                  height: "440px",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
+              <div style={{ position: "relative", width: "100%", height: "440px" }}>
+                <Image
+                  src="/verdemont.jpg"
+                  alt="Empreendimento de arquitetura contemporânea Verdemont www.verdemont.eu — Intervenção Freitas Renovações LDA"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 550px"
+                  quality={75}
+                  loading="lazy"
+                  style={{
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </div>
 
               <div
                 style={{

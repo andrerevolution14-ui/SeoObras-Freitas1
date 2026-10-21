@@ -13,6 +13,10 @@ export const CONTRACTOR_INFO = {
   insurancePolicy: "Seguro de Responsabilidade Civil Ativo (Fidelidade / 150.000 €)",
   phone: "+351 961 455 997",
   phoneDisplay: "961 455 997",
+  whatsapp: "351961455997",
+  whatsappDisplay: "961 455 997",
+  whatsappDefaultMessage: "Olá Jorge Freitas, gostaria de pedir um orçamento para obras/remodelação em Aveiro.",
+  whatsappUrl: "https://wa.me/351961455997?text=Ol%C3%A1%20Jorge%20Freitas%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20obras%2Fremodela%C3%A7%C3%A3o%20em%20Aveiro.",
   email: "Freitasrenovacoes@gmail.com",
   website: "https://www.grupofreitasrenovacoes.pt",
   address: {
@@ -34,6 +38,7 @@ export const CONTRACTOR_INFO = {
     google: "https://www.google.com/maps/search/?api=1&query=Freitas+Renova%C3%A7%C3%B5es+Aveiro",
     googleReview: "https://www.google.com/maps/search/?api=1&query=Freitas+Renova%C3%A7%C3%B5es+Aveiro",
     facebook: "https://facebook.com/freitasrenovacoes",
+    whatsapp: "https://wa.me/351961455997?text=Ol%C3%A1%20Jorge%20Freitas%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20obras%2Fremodela%C3%A7%C3%A3o%20em%20Aveiro.",
   },
 };
 
