@@ -1,6 +1,7 @@
 "use client";
 
-import { Star, BadgeCheck } from "lucide-react";
+import Link from "next/link";
+import { Star, BadgeCheck, ArrowRight, Camera } from "lucide-react";
 import { GOOGLE_REVIEWS, CONTRACTOR_INFO } from "@/lib/constants";
 
 function StarRating({ rating }: { rating: number }) {
@@ -150,30 +151,61 @@ export function GoogleReviews() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
-          <a
-            href={CONTRACTOR_INFO.socialLinks.google}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              color: "#d97706",
-              fontWeight: 700,
-              fontSize: "0.875rem",
-              textDecoration: "none",
-              padding: "0.625rem 1.25rem",
-              border: "1.5px solid rgba(245, 158, 11, 0.3)",
-              borderRadius: "0.375rem",
-              background: "rgba(251, 191, 36, 0.08)",
-              transition: "all 0.2s",
-            }}
-          >
-            <Star size={15} />
-            Ver todas as avaliações no Google
-          </a>
+        {/* CTA para a Página de Clientes & Obras Reais */}
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "2.25rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.875rem",
+          }}
+        >
+          <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", justifyContent: "center" }}>
+            <Link
+              href="/clientes"
+              className="btn-primary"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                fontSize: "0.9375rem",
+                padding: "0.85rem 1.5rem",
+                boxShadow: "0 4px 20px rgba(245, 158, 11, 0.35)",
+              }}
+            >
+              <Camera size={17} />
+              <span>Ver Todas as Reviews e Fotos de Obras Reais em Aveiro</span>
+              <ArrowRight size={16} />
+            </Link>
+
+            <a
+              href={CONTRACTOR_INFO.socialLinks.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                color: "#071a3a",
+                fontWeight: 700,
+                fontSize: "0.875rem",
+                textDecoration: "none",
+                padding: "0.75rem 1.25rem",
+                border: "1.5px solid #cbd5e1",
+                borderRadius: "0.375rem",
+                background: "#ffffff",
+                transition: "all 0.2s",
+              }}
+            >
+              <Star size={15} fill="#f59e0b" stroke="#f59e0b" />
+              <span>Ver Perfil no Google</span>
+            </a>
+          </div>
+          <p style={{ fontSize: "0.8125rem", color: "#64748b", margin: 0 }}>
+            Cozinhas, Casas de Banho, Apartamentos e Moradias · Testemunhos e fotografias reais sem filtros
+          </p>
         </div>
       </div>
     </section>

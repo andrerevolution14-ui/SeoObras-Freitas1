@@ -255,7 +255,7 @@ export default function HomePage() {
                     ))}
                   </div>
                   <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8125rem" }}>
-                    +48 clientes satisfeitos em Aveiro
+                    +48 clientes satisfeitos em Aveiro · <a href="/clientes" style={{ color: "#fbbf24", fontWeight: 700, textDecoration: "underline" }}>Ver opiniões e fotos reais →</a>
                   </p>
                 </div>
               </div>
@@ -332,7 +332,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8125rem" }}>
-                  +48 clientes satisfeitos em Aveiro
+                  +48 clientes satisfeitos · <a href="/clientes" style={{ color: "#fbbf24", fontWeight: 700, textDecoration: "underline" }}>Ver opiniões reais →</a>
                 </p>
               </div>
             </div>

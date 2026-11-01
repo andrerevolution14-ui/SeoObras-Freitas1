@@ -76,7 +76,16 @@ export default function ProjetosPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projetosJsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
+      <section
+        style={{
+          backgroundColor: "#071a3a",
+          backgroundImage:
+            "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.76) 55%, rgba(15, 45, 94, 0.52) 100%), url('/heroes/casal-sala-renovada.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          padding: "7.5rem 0 4rem",
+        }}
+      >
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>

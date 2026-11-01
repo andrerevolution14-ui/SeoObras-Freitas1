@@ -53,36 +53,12 @@ export function Header() {
       badgeColor: "#fbbf24",
     },
     {
-      title: "Preços Reais de Obras",
-      desc: "Casos reais concluídos (ex: WC 20m², Cozinha) com custos por m²",
+      title: "Preços Reais & Tabela m²",
+      desc: "Casos reais concluídos em Aveiro com custos discriminados",
       href: "/precos-reais",
       icon: <FileSpreadsheet size={18} style={{ color: "#38bdf8" }} />,
-      badge: "Económico",
+      badge: "Transparência",
       badgeColor: "#38bdf8",
-    },
-    {
-      title: "Preços Médios por m²",
-      desc: "Tabela de referência para construção civil e remodelação em Aveiro",
-      href: "/precos-m2",
-      icon: <Ruler size={18} style={{ color: "#a78bfa" }} />,
-      badge: "Guia 2026",
-      badgeColor: "#a78bfa",
-    },
-    {
-      title: "Planificador de Renovação",
-      desc: "Checklist passo a passo para renovar WC e Cozinha sem derrapagens",
-      href: "/planificador",
-      icon: <CheckSquare size={18} style={{ color: "#f472b6" }} />,
-      badge: "Checklist",
-      badgeColor: "#f472b6",
-    },
-    {
-      title: "Projeto Verdemont",
-      desc: "Grande projeto de referência em Aveiro com acabamentos de topo",
-      href: "/verdemont",
-      icon: <Building2 size={18} style={{ color: "#34d399" }} />,
-      badge: "Destaque",
-      badgeColor: "#34d399",
     },
     {
       title: "Crédito para Obras",
@@ -145,7 +121,24 @@ export function Header() {
         </Link>
 
         {/* Navegação Desktop */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "1.25rem" }} className="hidden-mobile">
+        <nav style={{ display: "flex", alignItems: "center", gap: "1.15rem" }} className="hidden-mobile">
+          <Link
+            href="/clientes"
+            className="nav-link"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.3rem",
+              color: "#fbbf24",
+              fontWeight: 800,
+              background: "rgba(251, 191, 36, 0.12)",
+              border: "1px solid rgba(251, 191, 36, 0.3)",
+              padding: "0.3rem 0.65rem",
+              borderRadius: "0.375rem",
+            }}
+          >
+            <span>⭐ Clientes</span>
+          </Link>
           <Link href="/servicos" className="nav-link">Serviços</Link>
           <Link href="/projetos" className="nav-link">Projetos</Link>
 
@@ -280,8 +273,6 @@ export function Header() {
             )}
           </div>
 
-          <Link href="/areas-atuacao" className="nav-link">Áreas</Link>
-          <Link href="/blog" className="nav-link">Blog &amp; Guias</Link>
           <Link href="/sobre" className="nav-link">Sobre Nós</Link>
           <Link href="/orcamento" className="nav-link" style={{ color: "#fbbf24", fontWeight: 800 }}>Orçamento</Link>
         </nav>
@@ -393,10 +384,9 @@ export function Header() {
           <nav style={{ display: "flex", flexDirection: "column", gap: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "0.75rem" }}>
             {[
               { href: "/", label: "Início" },
+              { href: "/clientes", label: "⭐ Clientes & Obras Reais (Aveiro)" },
               { href: "/servicos", label: "Serviços de Obras" },
               { href: "/projetos", label: "Portfólio de Projetos" },
-              { href: "/areas-atuacao", label: "Áreas de Atuação em Aveiro" },
-              { href: "/blog", label: "Blog & Guias SEO" },
               { href: "/sobre", label: "Sobre Nós" },
             ].map((item) => (
               <Link

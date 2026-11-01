@@ -196,6 +196,7 @@ export function Footer() {
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {[
+                { href: "/clientes", label: "Clientes & Obras Reais (Aveiro)" },
                 { href: "/orcamento", label: "Calculadora de Orçamento" },
                 { href: "/credito-obras", label: "Crédito para Obras (100% Grátis)" },
                 { href: "/precos-reais", label: "Preços Reais de Obras" },

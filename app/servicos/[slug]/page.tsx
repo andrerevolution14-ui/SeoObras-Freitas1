@@ -113,7 +113,11 @@ export default async function ServicePage({ params }: Props) {
       {/* Hero */}
       <section
         style={{
-          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
+          backgroundColor: "#071a3a",
+          backgroundImage:
+            "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.56) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
           position: "relative",
           overflow: "hidden",

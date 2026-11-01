@@ -146,7 +146,11 @@ export default function CreditoObrasPage() {
       {/* ── 1. HERO SECTION ───────────────────────────── */}
       <section
         style={{
-          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 60%, #1e3a8a 100%)",
+          backgroundColor: "#071a3a",
+          backgroundImage:
+            "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.55) 100%), url('/heroes/casal-chaves-casa.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           padding: "7.5rem 0 4.5rem",
           position: "relative",
           overflow: "hidden",

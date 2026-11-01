@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: baseUpdate },
+    { url: `${baseUrl}/clientes`, lastModified: baseUpdate },
     { url: `${baseUrl}/servicos`, lastModified: new Date("2026-10-12T00:00:00Z") },
     { url: `${baseUrl}/areas-atuacao`, lastModified: new Date("2026-10-10T00:00:00Z") },
     { url: `${baseUrl}/orcamento`, lastModified: baseUpdate },
