@@ -137,17 +137,18 @@ export default function HomePage() {
             <div className="hero-left-content hero-text-col">
 
               <div className="hero-section-label">
-                Empresa de Construção &amp; Remodelação · Aveiro
+                Empresa de Construção e Remodelação
               </div>
 
               <h1
+                className="hero-main-title"
                 style={{
                   fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                   fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)",
                   fontWeight: 900,
                   color: "#ffffff",
                   lineHeight: 1.08,
-                  marginBottom: "1rem",
+                  marginBottom: "0.75rem",
                   letterSpacing: "-0.03em",
                   textShadow: "0 2px 30px rgba(0,0,0,0.5)",
                 }}
@@ -156,13 +157,14 @@ export default function HomePage() {
               </h1>
 
               <div
+                className="hero-gold-subline"
                 style={{
                   display: "inline-block",
                   fontSize: "clamp(0.9375rem, 2vw, 1.125rem)",
                   fontWeight: 700,
                   color: "#fbbf24",
                   letterSpacing: "-0.01em",
-                  marginBottom: "1.25rem",
+                  marginBottom: "1rem",
                 }}
               >
                 Obras Chave na Mão · Casas de Banho · Cozinhas · Alvará IMPIC
@@ -325,14 +327,14 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginTop: "0.75rem", justifyContent: "center" }}>
-                <div style={{ display: "flex", gap: "2px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginTop: "0.75rem", justifyContent: "center", flexWrap: "nowrap" }}>
+                <div style={{ display: "flex", gap: "2px", flexShrink: 0 }}>
                   {[1,2,3,4,5].map((s) => (
-                    <Star key={s} size={13} fill="#fbbf24" stroke="#fbbf24" />
+                    <Star key={s} size={12} fill="#fbbf24" stroke="#fbbf24" />
                   ))}
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8125rem" }}>
-                  +48 clientes satisfeitos · <a href="/clientes" style={{ color: "#fbbf24", fontWeight: 700, textDecoration: "underline" }}>Ver opiniões reais →</a>
+                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.75rem", margin: 0, whiteSpace: "nowrap" }}>
+                  +48 clientes satisfeitos · <a href="/clientes" style={{ color: "#fbbf24", fontWeight: 700, textDecoration: "underline", whiteSpace: "nowrap" }}>Ver opiniões reais →</a>
                 </p>
               </div>
             </div>
@@ -365,18 +367,18 @@ export default function HomePage() {
           /* ── Mobile ── */
           @media (max-width: 768px) {
             .hero-section {
-              padding: 5.5rem 0 2.5rem;
+              padding: 4.35rem 0 1.75rem !important;
               min-height: auto;
               align-items: flex-start;
             }
             .hero-grid {
               display: flex;
               flex-direction: column;
-              gap: 1.25rem;
+              gap: 0.65rem;
               align-items: stretch;
             }
 
-            /* 1 — Texto (label + h1) */
+            /* 1 — Texto (label + h1 + subline) puxado para cima e alinhado */
             .hero-text-col {
               order: 1;
               display: flex;
@@ -385,13 +387,28 @@ export default function HomePage() {
               text-align: center;
               width: 100%;
             }
-            .hero-text-col h1 {
-              text-align: center;
-              width: 100%;
-            }
             .hero-section-label {
               justify-content: center;
               text-align: center;
+              margin-bottom: 0.3rem !important;
+              font-size: 0.625rem !important;
+              letter-spacing: 0.12em !important;
+              white-space: nowrap;
+            }
+            .hero-section-label::before {
+              display: none !important;
+            }
+            .hero-text-col h1 {
+              text-align: center;
+              width: 100%;
+              font-size: 1.625rem !important;
+              line-height: 1.12 !important;
+              margin-bottom: 0.35rem !important;
+            }
+            .hero-gold-subline {
+              font-size: 0.76rem !important;
+              line-height: 1.32 !important;
+              margin-bottom: 0.15rem !important;
             }
             .hero-subtitle { display: none !important; }
 
