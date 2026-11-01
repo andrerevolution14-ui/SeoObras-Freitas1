@@ -151,7 +151,7 @@ export default function CreditoObrasPage() {
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.55) 100%), url('/heroes/casal-chaves-casa.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "7.5rem 0 4.5rem",
+          padding: "7.5rem 0 4rem",
           position: "relative",
           overflow: "hidden",
         }}
@@ -174,193 +174,53 @@ export default function CreditoObrasPage() {
             <span style={{ color: "#fbbf24", fontWeight: 600 }}>Crédito para Obras</span>
           </nav>
 
-          <div
+          <p className="section-eyebrow">Serviço Parceiro 100% Gratuito · Banco de Portugal</p>
+          <h1
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              background: "rgba(16, 185, 129, 0.15)",
-              border: "1px solid rgba(16, 185, 129, 0.4)",
-              color: "#34d399",
-              borderRadius: "2rem",
-              padding: "0.35rem 1rem",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              marginBottom: "1rem",
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
+              fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
+              fontWeight: 900,
+              color: "#ffffff",
+              lineHeight: 1.15,
+              marginBottom: "0.875rem",
+              maxWidth: "740px",
+              letterSpacing: "-0.02em",
             }}
           >
-            <BadgeCheck size={15} />
-            Serviço Parceiro 100% Gratuito · Banco de Portugal
-          </div>
-
-          <div
+            Financie a Sua Obra em Aveiro com as{" "}
+            <span className="text-gradient-gold">Melhores Taxas</span>
+          </h1>
+          <p
             style={{
-              display: "grid",
-              gridTemplateColumns: "1.2fr 0.8fr",
-              gap: "3rem",
-              alignItems: "center",
+              color: "rgba(255,255,255,0.75)",
+              fontSize: "1.0625rem",
+              maxWidth: "580px",
+              lineHeight: 1.7,
+              marginBottom: "1.75rem",
             }}
-            id="credito-hero-grid"
           >
-            <div>
-              <h1
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
-                  fontWeight: 900,
-                  color: "#ffffff",
-                  lineHeight: 1.15,
-                  marginBottom: "1.25rem",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Financie a Sua Obra em Aveiro com as{" "}
-                <span className="text-gradient-gold">Melhores Taxas.</span>
-              </h1>
-              <p
-                style={{
-                  color: "rgba(255,255,255,0.85)",
-                  fontSize: "1.0625rem",
-                  lineHeight: 1.7,
-                  marginBottom: "1.75rem",
-                  maxWidth: "580px",
-                }}
-              >
-                Na <strong>Freitas Renovações LDA</strong> ajudamos a concretizar a remodelação dos
-                seus sonhos sem comprometer o seu orçamento mensal. Através da nossa rede de
-                <strong> parceiros intermediários de crédito autorizados pelo Banco de Portugal</strong>,
-                encontramos a melhor solução de financiamento para a sua obra — <strong>sem qualquer custo para si</strong>.
-              </p>
+            Através de parceiros intermediários de crédito autorizados pelo Banco de Portugal, encontramos a melhor solução de financiamento para a sua remodelação — 100% gratuito e sem qualquer custo para si.
+          </p>
 
-              <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "2rem" }}>
-                <a
-                  href={`https://wa.me/351961455997?text=${whatsappSimulationText}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  id="credito-hero-whatsapp-cta"
-                  style={{ fontSize: "0.9375rem" }}
-                >
-                  <MessageCircle size={18} />
-                  <span>Pedir Simulação Gratuita</span>
-                </a>
-
-                <a
-                  href={`tel:${CONTRACTOR_INFO.phone}`}
-                  className="btn-secondary"
-                  id="credito-hero-call-cta"
-                  style={{ fontSize: "0.9375rem" }}
-                >
-                  <Phone size={17} />
-                  <span>Falar com Jorge Freitas</span>
-                </a>
-              </div>
-
-              {/* Mini Highlights */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, 1fr)",
-                  gap: "0.75rem",
-                  borderTop: "1px solid rgba(255,255,255,0.12)",
-                  paddingTop: "1.5rem",
-                }}
-                id="credito-stats-row"
-              >
-                <div>
-                  <div style={{ color: "#34d399", fontWeight: 900, fontSize: "1.375rem", lineHeight: 1 }}>
-                    0€ Custo
-                  </div>
-                  <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-                    Para o cliente final
-                  </div>
-                </div>
-                <div>
-                  <div style={{ color: "#fbbf24", fontWeight: 900, fontSize: "1.375rem", lineHeight: 1 }}>
-                    24h a 48h
-                  </div>
-                  <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-                    Resposta e propostas
-                  </div>
-                </div>
-                <div>
-                  <div style={{ color: "#38bdf8", fontWeight: 900, fontSize: "1.375rem", lineHeight: 1 }}>
-                    +10 Bancos
-                  </div>
-                  <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.75rem", marginTop: "0.25rem" }}>
-                    Comparação de mercado
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Card — Value Card */}
-            <div
-              style={{
-                background: "rgba(255,255,255,0.06)",
-                border: "1.5px solid rgba(251, 191, 36, 0.35)",
-                borderRadius: "1rem",
-                padding: "1.75rem",
-                backdropFilter: "blur(12px)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-              }}
+          <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
+            <a
+              href={`https://wa.me/351961455997?text=${whatsappSimulationText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              id="credito-hero-whatsapp-cta"
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-                <div
-                  style={{
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "0.5rem",
-                    background: "rgba(251, 191, 36, 0.15)",
-                    border: "1px solid rgba(251, 191, 36, 0.3)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#fbbf24",
-                  }}
-                >
-                  <CreditCard size={22} />
-                </div>
-                <div>
-                  <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "1rem" }}>
-                    Vantagem Freitas Renovações
-                  </div>
-                  <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.75rem" }}>
-                    Solução Chave na Mão + Financiamento
-                  </div>
-                </div>
-              </div>
+              <MessageCircle size={17} />
+              <span>Pedir Simulação Gratuita</span>
+            </a>
 
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.875rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
-                Ao adjudicar a sua obra connosco, não precisa de perder dias nos balcões dos bancos.
-                O nosso parceiro especializado trata de tudo por si para garantir a taxa mais competitiva de Portugal.
-              </p>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem", marginBottom: "1.5rem" }}>
-                {[
-                  "Sem comissões ocultas ou despesas de consultoria",
-                  "Crédito para remodelações totais ou parciais",
-                  "Prazos até 84 ou 120 meses à sua medida",
-                  "Possibilidade de 100% do financiamento da obra",
-                  "Intermediários certificados pelo Banco de Portugal",
-                ].map((point) => (
-                  <div key={point} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.8125rem", color: "#e2e8f0" }}>
-                    <CheckCircle2 size={16} style={{ color: "#34d399", flexShrink: 0, marginTop: "2px" }} />
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/orcamento"
-                className="btn-primary"
-                style={{ width: "100%", justifyContent: "center", fontSize: "0.875rem" }}
-              >
-                <span>Simular Custos na Calculadora</span>
-                <ArrowRight size={15} />
-              </Link>
-            </div>
+            <a
+              href={`tel:${CONTRACTOR_INFO.phone}`}
+              className="btn-secondary"
+              id="credito-hero-call-cta"
+            >
+              <Phone size={16} />
+              <span>Falar com Jorge Freitas</span>
+            </a>
           </div>
         </div>
       </section>

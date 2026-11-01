@@ -190,100 +190,37 @@ export default function ClientesPage() {
       <section
         aria-label="O que dizem os nossos clientes — Obras e remodelações reais em Aveiro"
         style={{
-          position: "relative",
           backgroundColor: "#071a3a",
           backgroundImage:
-            "linear-gradient(105deg, rgba(7, 26, 58, 0.88) 0%, rgba(7, 26, 58, 0.72) 52%, rgba(7, 26, 58, 0.48) 100%), url('/heroes/casal-sala-renovada.jpg')",
+            "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.55) 100%), url('/heroes/casal-sala-renovada.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "6.5rem 0 2.5rem",
-          borderBottom: "1px solid rgba(255,255,255,0.12)",
+          padding: "7.5rem 0 4rem",
         }}
       >
-        <div className="section-container" style={{ position: "relative", zIndex: 2 }}>
-          <div className="clientes-hero-inner">
-            <div style={{ maxWidth: "680px" }}>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  background: "rgba(251, 191, 36, 0.14)",
-                  border: "1px solid rgba(251, 191, 36, 0.35)",
-                  color: "#fbbf24",
-                  borderRadius: "2rem",
-                  padding: "0.24rem 0.8rem",
-                  fontSize: "0.7rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase",
-                  marginBottom: "0.6rem",
-                }}
-              >
-                <BadgeCheck size={13} />
-                Obras Reais · Clientes Reais em Aveiro e Arredores
-              </div>
-
-              <h1
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(1.85rem, 3.8vw, 2.65rem)",
-                  fontWeight: 900,
-                  color: "#ffffff",
-                  lineHeight: 1.12,
-                  letterSpacing: "-0.025em",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                O que dizem os nossos clientes
-              </h1>
-
-              <p
-                style={{
-                  color: "rgba(255,255,255,0.86)",
-                  fontSize: "0.95rem",
-                  lineHeight: 1.55,
-                  margin: 0,
-                }}
-              >
-                Fotografias reais sem filtros e opiniões verificadas de proprietários em Aveiro, Esgueira, Aradas, São Bernardo, Oliveirinha e Ílhavo.
-              </p>
-            </div>
-
-            {/* Selo Compacto de Classificação */}
-            <div
-              className="clientes-hero-rating-box"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.85rem",
-                background: "rgba(7, 26, 58, 0.82)",
-                border: "1.5px solid rgba(251, 191, 36, 0.42)",
-                borderRadius: "0.85rem",
-                padding: "0.75rem 1.1rem",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 10px 28px rgba(0, 0, 0, 0.22)",
-              }}
-            >
-              <div style={{ textAlign: "left" }}>
-                <div style={{ display: "flex", gap: "2px", marginBottom: "0.2rem" }}>
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={14} fill="#fbbf24" stroke="#fbbf24" />
-                  ))}
-                </div>
-                <div style={{ fontSize: "0.76rem", color: "#e2e8f0", fontWeight: 700, whiteSpace: "nowrap" }}>
-                  <strong style={{ color: "#fbbf24", fontSize: "0.92rem" }}>4.9/5</strong> · +48 Avaliações
-                </div>
-              </div>
-              <Link
-                href="/orcamento"
-                className="btn-primary"
-                style={{ fontSize: "0.78rem", padding: "0.52rem 0.95rem", whiteSpace: "nowrap" }}
-              >
-                <span>Pedir Orçamento</span>
-                <ArrowRight size={14} />
-              </Link>
-            </div>
+        <div className="section-container">
+          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
+            <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
+            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
+            <span style={{ color: "#fbbf24" }}>Clientes</span>
+          </nav>
+          <p className="section-eyebrow">Obras Reais · Clientes Reais · ⭐ 4.9/5 Google</p>
+          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
+            O que dizem os nossos clientes em Aveiro
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "580px", lineHeight: 1.65, marginBottom: "1.75rem" }}>
+            Fotografias reais sem filtros e opiniões verificadas de proprietários em Aveiro, Esgueira,
+            Aradas, São Bernardo, Oliveirinha e Ílhavo — prazos cumpridos e orçamento sem surpresas.
+          </p>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary">
+              <Phone size={16} />
+              Ligar: {CONTRACTOR_INFO.phoneDisplay}
+            </a>
+            <Link href="/orcamento" className="btn-secondary">
+              Pedir Orçamento Gratuito
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

@@ -33,11 +33,13 @@ export function TrustBar() {
         borderBottom: "1px solid rgba(255,255,255,0.08)",
         padding: "0.875rem 0",
         overflow: "hidden",
+        width: "100%",
+        maxWidth: "100vw",
       }}
     >
-      <div className="section-container" style={{ display: "flex", justifyContent: "center" }}>
-        {/* Centered & Animated Marquee container */}
-        <div className="trust-marquee" style={{ alignItems: "center", justifyContent: "center" }}>
+      <div className="section-container" style={{ display: "flex", justifyContent: "flex-start", overflow: "hidden" }}>
+        {/* Animated Marquee container */}
+        <div className="trust-marquee" style={{ alignItems: "center" }}>
           {[...badges, ...badges, ...badges].map((badge, i) => (
             <div
               key={i}
