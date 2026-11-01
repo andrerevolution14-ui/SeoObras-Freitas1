@@ -147,13 +147,13 @@ export default function HomePage() {
                   fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)",
                   fontWeight: 900,
                   color: "#ffffff",
-                  lineHeight: 1.08,
+                  lineHeight: 1.12,
                   marginBottom: "0.75rem",
                   letterSpacing: "-0.03em",
                   textShadow: "0 2px 30px rgba(0,0,0,0.5)",
                 }}
               >
-                Obras e remodelações em Aveiro
+                Obras e remodelações <span className="hero-title-nowrap">em Aveiro</span>
               </h1>
 
               <div
@@ -167,7 +167,14 @@ export default function HomePage() {
                   marginBottom: "1rem",
                 }}
               >
-                Obras Chave na Mão · Casas de Banho · Cozinhas · Alvará IMPIC
+                <span style={{ whiteSpace: "nowrap" }}>Obras Chave na Mão</span>
+                {" · "}
+                <span style={{ whiteSpace: "nowrap" }}>Casas de Banho</span>
+                <span className="hero-subline-sep-desktop">{" · "}</span>
+                <br className="hero-subline-break-mobile" />
+                <span style={{ whiteSpace: "nowrap" }}>Cozinhas</span>
+                {" · "}
+                <span style={{ whiteSpace: "nowrap" }}>Alvará IMPIC</span>
               </div>
 
               {/* Subtitle — hidden on mobile */}
@@ -350,6 +357,8 @@ export default function HomePage() {
             gap: 3.5rem;
             align-items: center;
           }
+          .hero-subline-break-mobile { display: none; }
+          .hero-subline-sep-desktop { display: inline; }
           .hero-badges-mobile { display: none; }
           .hero-btns-mobile   { display: none; }
           .hero-badges-desktop { display: block; }
@@ -367,18 +376,18 @@ export default function HomePage() {
           /* ── Mobile ── */
           @media (max-width: 768px) {
             .hero-section {
-              padding: 4.35rem 0 1.75rem !important;
+              padding: 5.15rem 0 1.85rem !important;
               min-height: auto;
               align-items: flex-start;
             }
             .hero-grid {
               display: flex;
               flex-direction: column;
-              gap: 0.65rem;
+              gap: 0.95rem;
               align-items: stretch;
             }
 
-            /* 1 — Texto (label + h1 + subline) puxado para cima e alinhado */
+            /* 1 — Texto (label + h1 + subline) com espaçamento estético e equilibrado */
             .hero-text-col {
               order: 1;
               display: flex;
@@ -386,13 +395,16 @@ export default function HomePage() {
               align-items: center;
               text-align: center;
               width: 100%;
+              padding: 0.15rem 0.25rem 0;
             }
             .hero-section-label {
               justify-content: center;
               text-align: center;
-              margin-bottom: 0.3rem !important;
-              font-size: 0.625rem !important;
-              letter-spacing: 0.12em !important;
+              margin-bottom: 0.5rem !important;
+              font-size: 0.64rem !important;
+              font-weight: 700 !important;
+              letter-spacing: 0.14em !important;
+              color: rgba(255, 255, 255, 0.76) !important;
               white-space: nowrap;
             }
             .hero-section-label::before {
@@ -401,14 +413,29 @@ export default function HomePage() {
             .hero-text-col h1 {
               text-align: center;
               width: 100%;
-              font-size: 1.625rem !important;
-              line-height: 1.12 !important;
-              margin-bottom: 0.35rem !important;
+              max-width: 320px;
+              margin-left: auto;
+              margin-right: auto;
+              font-size: 1.68rem !important;
+              line-height: 1.22 !important;
+              letter-spacing: -0.025em !important;
+              margin-bottom: 0.55rem !important;
+              text-wrap: balance;
+            }
+            .hero-title-nowrap {
+              white-space: nowrap;
+            }
+            .hero-subline-sep-desktop {
+              display: none;
+            }
+            .hero-subline-break-mobile {
+              display: block;
             }
             .hero-gold-subline {
-              font-size: 0.76rem !important;
-              line-height: 1.32 !important;
-              margin-bottom: 0.15rem !important;
+              font-size: 0.78rem !important;
+              line-height: 1.48 !important;
+              margin-bottom: 0 !important;
+              letter-spacing: 0 !important;
             }
             .hero-subtitle { display: none !important; }
 
