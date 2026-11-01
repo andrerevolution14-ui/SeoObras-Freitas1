@@ -96,25 +96,29 @@ export default function SobrePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sobreJsonLd) }} />
 
-      {/* Hero Compacto */}
+      {/* Hero */}
       <section
-        className="page-compact-hero"
         style={{
           backgroundColor: "#071a3a",
           backgroundImage:
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.55) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "5rem 0 1.25rem",
+          padding: "7.5rem 0 4rem",
         }}
       >
         <div className="section-container">
-          <p className="section-eyebrow" style={{ color: "#fbbf24", marginBottom: "0.25rem" }}>Quem Somos · Alvará IMPIC</p>
-          <h1 style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.15rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.25rem", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
+            <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
+            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
+            <span style={{ color: "#fbbf24" }}>Sobre Nós</span>
+          </nav>
+          <p className="section-eyebrow" style={{ color: "#fbbf24" }}>Quem Somos</p>
+          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
             A Equipa da Freitas Renovações LDA
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.85rem", maxWidth: "560px", lineHeight: 1.45, margin: 0 }}>
-            Liderada pelo Empreiteiro Jorge Freitas com acompanhamento presencial em Aveiro.
+          <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1rem", maxWidth: "560px", lineHeight: 1.65 }}>
+            Empresa de construção civil e remodelações em Aveiro, fundada e liderada pelo Empreiteiro Jorge Freitas com forte compromisso na qualidade e em preços justos.
           </p>
         </div>
       </section>

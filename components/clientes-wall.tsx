@@ -36,45 +36,26 @@ export function ClientesWall() {
 
   return (
     <div>
-      {/* ── Barra de Filtros Compacta (1 Linha) ── */}
-      <div
-        className="compact-filter-scroll"
-        style={{
-          display: "flex",
-          gap: "0.4rem",
-          marginBottom: "1rem",
-          overflowX: "auto",
-          paddingBottom: "0.2rem",
-          scrollbarWidth: "none",
-          justifyContent: "center",
-        }}
-      >
-        {CLIENTES_CATEGORIES.map((cat) => {
-          const isActive = selectedCategory === cat.id;
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => setSelectedCategory(cat.id)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                padding: "0.32rem 0.75rem",
-                borderRadius: "2rem",
-                border: isActive ? "1.5px solid #071a3a" : "1px solid #cbd5e1",
-                background: isActive ? "#071a3a" : "#ffffff",
-                color: isActive ? "#fbbf24" : "#475569",
-                fontWeight: isActive ? 700 : 600,
-                fontSize: "0.75rem",
-                whiteSpace: "nowrap",
-                cursor: "pointer",
-                transition: "all 0.15s ease",
-              }}
-            >
-              {cat.label}
-            </button>
-          );
-        })}
+      {/* ── Barra de Filtros Elegante ── */}
+      <div className="clientes-filter-dock-wrap">
+        <div className="clientes-filter-dock">
+          {CLIENTES_CATEGORIES.map((cat) => {
+            const isActive = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`clientes-filter-pill ${isActive ? "is-active" : ""}`}
+              >
+                <span>{cat.label}</span>
+                {cat.count !== undefined && (
+                  <span className="clientes-filter-count">{cat.count}</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* ── Mosaico Masonry de Clientes & Obras Reais ── */}
@@ -1001,6 +982,63 @@ export function ClientesWall() {
       )}
 
       <style>{`
+        .clientes-filter-dock-wrap {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1.75rem;
+        }
+        .clientes-filter-dock {
+          display: inline-flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.375rem;
+          background: #ffffff;
+          padding: 0.375rem;
+          border-radius: 999px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 20px rgba(7, 26, 58, 0.05);
+        }
+        .clientes-filter-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.52rem 1.1rem;
+          border-radius: 999px;
+          border: 1px solid transparent;
+          background: transparent;
+          color: #334155;
+          font-weight: 600;
+          font-size: 0.875rem;
+          white-space: nowrap;
+          cursor: pointer;
+          transition: all 0.18s ease;
+        }
+        .clientes-filter-pill:hover {
+          background: #f8fafc;
+          color: #071a3a;
+        }
+        .clientes-filter-pill.is-active {
+          background: #071a3a;
+          color: #fbbf24;
+          font-weight: 700;
+          box-shadow: 0 4px 12px rgba(7, 26, 58, 0.18);
+        }
+        .clientes-filter-count {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.08rem 0.45rem;
+          border-radius: 999px;
+          font-size: 0.72rem;
+          font-weight: 800;
+          background: #f1f5f9;
+          color: #64748b;
+        }
+        .clientes-filter-pill.is-active .clientes-filter-count {
+          background: rgba(251, 191, 36, 0.18);
+          color: #fbbf24;
+        }
+
         .clientes-masonry {
           column-count: 3;
           column-gap: 1.5rem;
@@ -1022,15 +1060,32 @@ export function ClientesWall() {
             column-count: 2;
           }
         }
-        .compact-filter-scroll::-webkit-scrollbar {
-          display: none;
+        @media (max-width: 768px) {
+          .clientes-filter-dock-wrap {
+            margin-bottom: 1.35rem;
+          }
+          .clientes-filter-dock {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            gap: 0.45rem;
+            border-radius: 1rem;
+          }
+          .clientes-filter-pill {
+            padding: 0.48rem 0.92rem;
+            font-size: 0.84rem;
+            background: #ffffff;
+            border: 1px solid #dbe2ea;
+            box-shadow: 0 2px 6px rgba(7, 26, 58, 0.04);
+          }
+          .clientes-filter-pill.is-active {
+            border-color: #071a3a;
+          }
         }
         @media (max-width: 680px) {
           .clientes-masonry {
             column-count: 1;
-          }
-          .compact-filter-scroll {
-            justify-content: flex-start !important;
           }
         }
       `}</style>

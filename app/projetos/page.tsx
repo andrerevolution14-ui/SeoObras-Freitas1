@@ -75,34 +75,38 @@ export default function ProjetosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projetosJsonLd) }}
       />
-      {/* Hero Compacto */}
+      {/* Hero */}
       <section
-        className="page-compact-hero"
         style={{
           backgroundColor: "#071a3a",
           backgroundImage:
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.76) 55%, rgba(15, 45, 94, 0.52) 100%), url('/heroes/casal-sala-renovada.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "5rem 0 1.25rem",
+          padding: "7.5rem 0 4rem",
         }}
       >
         <div className="section-container">
-          <p className="section-eyebrow" style={{ marginBottom: "0.25rem" }}>Portfólio &amp; Custos Reais em Aveiro</p>
-          <h1 style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.15rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.25rem", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
-            Obras Realizadas e Preços Reais (2022–2026)
+          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
+            <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
+            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
+            <span style={{ color: "#fbbf24" }}>Projetos & Preços Reais</span>
+          </nav>
+          <p className="section-eyebrow">Portfolio de Trabalhos em Aveiro</p>
+          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
+            Obras Realizadas e Preços Reais em Aveiro (2022–2026)
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.85rem", maxWidth: "580px", lineHeight: 1.45, margin: 0 }}>
-            Compare áreas (m²), prazos e custos reais de obras concluídas pela nossa equipa em Aveiro.
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "620px", lineHeight: 1.65 }}>
+            Trabalhos reais com preços reais transparentes. Compare as dimensões do seu espaço (m²) e o tipo de acabamento com intervenções já concluídas pela equipa do Jorge Freitas em Aveiro.
           </p>
         </div>
       </section>
 
-      {/* Detailed Past Projects with Real Prices (Interactive filterable gallery) */}
-      <PastProjectsPricing />
-
       {/* Featured Verdemont Project */}
       <VerdemontShowcase />
+
+      {/* Detailed Past Projects with Real Prices (Interactive filterable gallery) */}
+      <PastProjectsPricing />
 
       {/* Additional Historical Projects */}
       <section className="section-padding" style={{ background: "#f8fafc", borderTop: "1px solid #e2e8f0" }}>

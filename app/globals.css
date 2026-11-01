@@ -534,55 +534,36 @@ body {
   overflow: visible;
 }
 
-/* ── Global Compact Above-the-Fold Optimization (Mobile & Desktop) ── */
-.compact-filter-scroll::-webkit-scrollbar {
-  display: none;
-}
-
+/* ── Elegant Mobile Above-the-Fold Optimization ── */
 @media (max-width: 768px) {
-  /* Make all interior page top banners compact, direct & clean on mobile */
+  /* Balanced, atmospheric top hero on mobile (not oversized, not squished) */
   main > section:first-of-type:not(.hero-section) {
-    padding-top: 4.65rem !important;
-    padding-bottom: 1.15rem !important;
+    padding-top: 6rem !important;
+    padding-bottom: 2.35rem !important;
   }
 
-  /* Hide breadcrumbs on mobile to reach core content immediately */
+  /* Hide top breadcrumb trail on mobile for a cleaner editorial look */
   main > section:first-of-type:not(.hero-section) nav {
     display: none !important;
   }
 
-  /* Tighter h1 & subtitle on mobile above-the-fold */
+  /* Refined, commanding mobile heading & comfortable subtitle */
   main > section:first-of-type:not(.hero-section) h1 {
-    font-size: 1.45rem !important;
-    line-height: 1.15 !important;
-    margin-bottom: 0.3rem !important;
+    font-size: 1.85rem !important;
+    line-height: 1.18 !important;
+    margin-bottom: 0.75rem !important;
+    letter-spacing: -0.02em !important;
   }
 
   main > section:first-of-type:not(.hero-section) p:not(.section-eyebrow) {
-    font-size: 0.8125rem !important;
-    line-height: 1.4 !important;
-    margin-bottom: 0.65rem !important;
+    font-size: 0.9375rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.25rem !important;
   }
 
-  .compact-filter-scroll {
-    justify-content: flex-start !important;
-  }
-
-  /* Compact Homepage Hero on Mobile */
-  .hero-section {
-    padding: 4.65rem 0 1.75rem !important;
-    min-height: auto !important;
-  }
-  .hero-section .hero-grid {
-    gap: 0.75rem !important;
-  }
-  .hero-section .hero-section-label {
-    margin-bottom: 0.4rem !important;
-    font-size: 0.625rem !important;
-  }
-  .hero-section h1 {
-    font-size: 1.7rem !important;
-    line-height: 1.12 !important;
-    margin-bottom: 0.3rem !important;
+  .clientes-hero-rating-box {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.65rem 0.95rem !important;
   }
 }

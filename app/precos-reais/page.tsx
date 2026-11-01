@@ -88,26 +88,41 @@ export default function PrecosReaisPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(precosReaisJsonLd) }}
       />
-      {/* Hero Compacto */}
+      {/* Hero */}
       <section
-        className="page-compact-hero"
         style={{
           backgroundColor: "#071a3a",
           backgroundImage:
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.76) 55%, rgba(15, 45, 94, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "5rem 0 1.25rem",
+          padding: "7.5rem 0 3.5rem",
         }}
       >
         <div className="section-container">
-          <p className="section-eyebrow" style={{ color: "#fbbf24", marginBottom: "0.25rem" }}>Transparência Total &amp; Casos de Estudo</p>
-          <h1 style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.15rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.25rem", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
+            <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
+            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
+            <span style={{ color: "#fbbf24" }}>Preços Reais de Obras</span>
+          </nav>
+          <p className="section-eyebrow" style={{ color: "#fbbf24" }}>Transparência Total &amp; Casos de Estudo</p>
+          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
             Obras Realizadas com Preços Reais em Aveiro
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.85rem", maxWidth: "580px", lineHeight: 1.45, margin: 0 }}>
-            Custos reais discriminados, áreas (m²) e prazos de obras concluídas em Aveiro.
+          <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1rem", maxWidth: "620px", lineHeight: 1.65 }}>
+            Compare a sua obra com remodelações concluídas pela nossa equipa em Esgueira, Glória, Aradas e arredores. Valores reais mais baratos e prazos rigorosamente cumpridos.
           </p>
+
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.75rem" }}>
+            <Link href="/orcamento" className="btn-primary" style={{ fontSize: "0.875rem", padding: "0.6rem 1.25rem" }}>
+              <Calculator size={16} />
+              Calcular Minha Obra
+            </Link>
+            <Link href="/precos-m2" className="btn-secondary" style={{ fontSize: "0.875rem", padding: "0.6rem 1.25rem", color: "#ffffff", borderColor: "rgba(255,255,255,0.25)" }}>
+              Ver Tabela por m²
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 

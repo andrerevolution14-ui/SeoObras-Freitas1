@@ -21,7 +21,7 @@ export function PastProjectsPricing() {
   const [expandedProjectId, setExpandedProjectId] = useState<string | null>("proj-wc-20m2-aveiro");
 
   const categories = [
-    { id: "all", label: "Tudo" },
+    { id: "all", label: "Todas as Obras" },
     { id: "casa-de-banho", label: "Casas de Banho" },
     { id: "cozinha", label: "Cozinhas" },
     { id: "remodelacao-total", label: "Remodelações Totais" },
@@ -37,20 +37,48 @@ export function PastProjectsPricing() {
   return (
     <section
       id="obras-passadas-precos-reais"
-      style={{ background: "#ffffff", padding: "1.5rem 0 3.5rem" }}
+      className="section-padding"
+      style={{ background: "#ffffff" }}
     >
       <div className="section-container">
-        {/* Category Filters — Compact 1-Line Bar */}
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              background: "rgba(245, 158, 11, 0.12)",
+              border: "1px solid rgba(245, 158, 11, 0.25)",
+              color: "#b45309",
+              borderRadius: "2rem",
+              padding: "0.35rem 1rem",
+              fontSize: "0.75rem",
+              fontWeight: 800,
+              marginBottom: "0.875rem",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+            }}
+          >
+            <Euro size={14} />
+            Transparência Total & Preços Reais
+          </div>
+          <h2 className="section-title">
+            Obras Realizadas em Aveiro e Preços Reais para Comparar
+          </h2>
+          <p className="section-subtitle" style={{ margin: "0 auto" }}>
+            Compare o seu espaço com obras similares já executadas pela equipa do Jorge Freitas (ex: casa de banho de 20m², remodelação T2, capoto). Conheça os custos reais discriminados, áreas e prazos de conclusão.
+          </p>
+        </div>
+
+        {/* Category Filters */}
         <div
-          className="compact-filter-scroll"
           style={{
             display: "flex",
-            gap: "0.4rem",
+            flexWrap: "wrap",
+            gap: "0.5rem",
             justifyContent: "center",
-            marginBottom: "1.25rem",
-            overflowX: "auto",
-            paddingBottom: "0.2rem",
-            scrollbarWidth: "none",
+            marginBottom: "2rem",
           }}
         >
           {categories.map((cat) => {
@@ -61,14 +89,13 @@ export function PastProjectsPricing() {
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
                 style={{
-                  padding: "0.32rem 0.75rem",
+                  padding: "0.5rem 1rem",
                   borderRadius: "2rem",
-                  border: isSelected ? "1.5px solid #0f2d5e" : "1px solid #cbd5e1",
+                  border: isSelected ? "2px solid #0f2d5e" : "1.5px solid #e2e8f0",
                   background: isSelected ? "#071a3a" : "#f8fafc",
                   color: isSelected ? "#fbbf24" : "#475569",
-                  fontWeight: isSelected ? 700 : 600,
-                  fontSize: "0.75rem",
-                  whiteSpace: "nowrap",
+                  fontWeight: isSelected ? 800 : 600,
+                  fontSize: "0.8125rem",
                   cursor: "pointer",
                   transition: "all 0.15s ease",
                 }}

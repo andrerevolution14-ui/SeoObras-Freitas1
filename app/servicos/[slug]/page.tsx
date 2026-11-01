@@ -118,13 +118,13 @@ export default async function ServicePage({ params }: Props) {
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.56) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "5.25rem 0 2.25rem",
+          padding: "7.5rem 0 4rem",
           position: "relative",
           overflow: "hidden",
         }}
       >
         <div className="section-container" style={{ position: "relative", zIndex: 1 }}>
-          <nav style={{ marginBottom: "0.75rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.75rem" }}>
+          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
             <Link href="/servicos" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Serviços</Link>
@@ -136,28 +136,28 @@ export default async function ServicePage({ params }: Props) {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 420px",
-              gap: "2.5rem",
+              gap: "3.5rem",
               alignItems: "start",
             }}
             className="service-hero-grid"
           >
             <div>
-              <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginBottom: "0.5rem" }}>
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
                 <span
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: "0.3rem",
+                    gap: "0.35rem",
                     background: "rgba(251, 191, 36, 0.15)",
                     border: "1px solid rgba(251, 191, 36, 0.35)",
                     color: "#fbbf24",
                     borderRadius: "2rem",
-                    padding: "0.2rem 0.65rem",
-                    fontSize: "0.6875rem",
+                    padding: "0.25rem 0.75rem",
+                    fontSize: "0.75rem",
                     fontWeight: 700,
                   }}
                 >
-                  <Shield size={11} /> Alvará IMPIC Válido
+                  <Shield size={12} /> Alvará IMPIC Válido
                 </span>
 
                 {service.emergencyAvailable && (
@@ -165,13 +165,13 @@ export default async function ServicePage({ params }: Props) {
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
-                      gap: "0.3rem",
+                      gap: "0.35rem",
                       background: "rgba(239, 68, 68, 0.15)",
                       border: "1px solid rgba(239, 68, 68, 0.3)",
                       color: "#fca5a5",
                       borderRadius: "2rem",
-                      padding: "0.2rem 0.65rem",
-                      fontSize: "0.6875rem",
+                      padding: "0.25rem 0.75rem",
+                      fontSize: "0.75rem",
                       fontWeight: 700,
                     }}
                   >
@@ -182,51 +182,50 @@ export default async function ServicePage({ params }: Props) {
 
               <h1
                 style={{
-                  fontSize: "clamp(1.65rem, 3.5vw, 2.5rem)",
+                  fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
                   fontWeight: 900,
                   color: "#ffffff",
                   lineHeight: 1.15,
-                  marginBottom: "0.65rem",
+                  marginBottom: "1rem",
                   letterSpacing: "-0.02em",
                 }}
               >
                 {seo.h1}
               </h1>
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.95rem", lineHeight: 1.55, marginBottom: "1rem" }}>
+              <p style={{ color: "rgba(255,255,255,0.78)", fontSize: "1.0625rem", lineHeight: 1.65, marginBottom: "1.5rem" }}>
                 {seo.intro}
               </p>
 
-              {/* AEO Quick Snapshot Box — Desktop only in hero to keep mobile direct */}
+              {/* AEO Quick Snapshot Box */}
               <div
-                className="service-hero-desktop-only"
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(251, 191, 36, 0.25)",
                   borderRadius: "0.5rem",
-                  padding: "0.875rem 1.125rem",
-                  marginBottom: "1.15rem",
+                  padding: "1rem 1.25rem",
+                  marginBottom: "1.5rem",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#fbbf24", fontSize: "0.75rem", fontWeight: 800, marginBottom: "0.3rem" }}>
-                  <Sparkles size={13} /> Especificações Técnicas &amp; Garantia da Obra
+                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#fbbf24", fontSize: "0.8125rem", fontWeight: 800, marginBottom: "0.4rem" }}>
+                  <Sparkles size={14} /> Especificações Técnicas &amp; Garantia da Obra
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.8125rem", lineHeight: 1.5, margin: 0 }}>
+                <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.875rem", lineHeight: 1.55, margin: 0 }}>
                   {seo.directAnswer}
                 </p>
               </div>
 
-              <div className="service-hero-desktop-only" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.6rem", marginBottom: "1.25rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginBottom: "1.75rem" }}>
                 {service.features.map((f) => (
-                  <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.45rem" }}>
-                    <CheckCircle size={14} style={{ color: "#fbbf24", flexShrink: 0, marginTop: "3px" }} />
-                    <span style={{ color: "rgba(255,255,255,0.88)", fontSize: "0.8125rem" }}>{f}</span>
+                  <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+                    <CheckCircle size={15} style={{ color: "#fbbf24", flexShrink: 0, marginTop: "3px" }} />
+                    <span style={{ color: "rgba(255,255,255,0.88)", fontSize: "0.875rem" }}>{f}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="service-hero-desktop-only" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ fontSize: "0.875rem", padding: "0.65rem 1.15rem" }}>
-                  <Phone size={16} />
+              <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
+                <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ fontSize: "0.9375rem" }}>
+                  <Phone size={18} />
                   Ligar: {CONTRACTOR_INFO.phoneDisplay}
                 </a>
                 <a
@@ -235,18 +234,18 @@ export default async function ServicePage({ params }: Props) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "0.5rem",
-                    padding: "0.65rem 1.15rem",
+                    padding: "0.75rem 1.25rem",
                     borderRadius: "0.375rem",
                     background: "rgba(255,255,255,0.1)",
                     border: "1.5px solid rgba(255,255,255,0.25)",
                     color: "#ffffff",
                     textDecoration: "none",
-                    fontSize: "0.875rem",
+                    fontSize: "0.9375rem",
                     fontWeight: 700,
                   }}
                 >
                   Pedir Orçamento Grátis
-                  <ArrowRight size={14} />
+                  <ArrowRight size={15} />
                 </a>
               </div>
             </div>
@@ -258,9 +257,7 @@ export default async function ServicePage({ params }: Props) {
         </div>
         <style>{`
           @media (max-width: 900px) {
-            .service-hero-grid { grid-template-columns: 1fr !important; gap: 0.85rem !important; }
-            .service-hero-desktop-only { display: none !important; }
-          }
+            .service-hero-grid { grid-template-columns: 1fr !important; gap: 2.25rem !important; }
           }
         `}</style>
       </section>
