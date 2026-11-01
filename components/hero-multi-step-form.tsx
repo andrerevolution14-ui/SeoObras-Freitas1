@@ -337,7 +337,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         setFormData((d) => ({ ...d, service: service.slug }));
                       }}
                       style={{
-                        padding: "0.85rem 0.875rem",
+                        padding: "0.8rem 0.75rem",
                         border: `1.5px solid ${isSelected ? "#f59e0b" : "#cbd5e1"}`,
                         borderRadius: "0.375rem",
                         background: isSelected ? "rgba(251, 191, 36, 0.1)" : "#ffffff",
@@ -345,10 +345,12 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         display: "flex",
                         flexDirection: "row",
                         alignItems: "center",
-                        gap: "0.65rem",
+                        gap: "0.55rem",
                         transition: "all 0.15s ease",
                         textAlign: "left",
                         minWidth: 0,
+                        maxWidth: "100%",
+                        overflow: "hidden",
                       }}
                     >
                       <span
@@ -365,17 +367,19 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       <span
                         style={{
                           fontWeight: 700,
-                          fontSize: "0.8125rem",
+                          fontSize: "0.8rem",
                           color: "#071a3a",
-                          lineHeight: 1.25,
+                          lineHeight: 1.2,
                           flex: 1,
                           minWidth: 0,
+                          overflowWrap: "break-word",
+                          wordBreak: "break-word",
                         }}
                       >
                         {service.shortTitle}
                       </span>
                       {isSelected && (
-                        <CheckCircle size={16} style={{ color: "#d97706", flexShrink: 0 }} />
+                        <CheckCircle size={15} style={{ color: "#d97706", flexShrink: 0 }} />
                       )}
                     </button>
                   );

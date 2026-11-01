@@ -454,7 +454,7 @@ export const FORM_SERVICES: FormServiceOption[] = [
   {
     slug: "remodelacao-apartamentos",
     title: "Apartamento ou Moradia",
-    shortTitle: "Apartamento/Moradia",
+    shortTitle: "Apartamento / Moradia",
     icon: "Building",
   },
   {
