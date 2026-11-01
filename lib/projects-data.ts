@@ -211,7 +211,7 @@ export const PAST_DETAILED_PROJECTS: PastDetailedProject[] = [
     realPrice: 1850,
     pricePerM2: 231.2,
     durationDays: 4,
-    image: "/r5.jfif",
+    image: "/r5.jpg",
     altText: "Remodelação de casa de banho suite compacta 8m2 em Cácia Aveiro com base de duche e azulejos modernos",
     description: "Otimização de espaço reduzido transformando um WC escuro numa suite moderna, luminosa e fácil de limpar com custo ultra económico.",
     includedScope: [

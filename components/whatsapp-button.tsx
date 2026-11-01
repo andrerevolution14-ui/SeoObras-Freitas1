@@ -1,23 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export function WhatsAppButton() {
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
-
-  useEffect(() => {
-    // Show gentle prompt tooltip after 3 seconds on page
-    const timer = setTimeout(() => {
-      setShowTooltip(true);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const handleClick = () => {
-    setHasInteracted(true);
     // Track in Google Analytics / Google Ads if gtag is loaded
     if (typeof window !== "undefined") {
       const win = window as unknown as { gtag?: (...args: any[]) => void };
@@ -36,43 +22,7 @@ export function WhatsAppButton() {
       <aside
         aria-label="Contacto WhatsApp"
         className="whatsapp-floating-wrapper"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
       >
-        {/* Tooltip / Speech Bubble */}
-        <div
-          className={`whatsapp-tooltip ${showTooltip ? "whatsapp-tooltip-visible" : ""}`}
-          role="status"
-        >
-          <div className="whatsapp-tooltip-header">
-            <span className="whatsapp-status-dot" />
-            <span className="whatsapp-tooltip-title">Jorge Freitas · Empreiteiro</span>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowTooltip(false);
-              }}
-              aria-label="Fechar mensagem"
-              className="whatsapp-tooltip-close"
-            >
-              ×
-            </button>
-          </div>
-          <p className="whatsapp-tooltip-body">
-            Olá! Precisa de orçamento para a sua obra? Fale connosco pelo WhatsApp.
-          </p>
-          <a
-            href={CONTRACTOR_INFO.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleClick}
-            className="whatsapp-tooltip-btn"
-          >
-            Iniciar Conversa Rápida
-          </a>
-        </div>
-
         {/* Floating Action Button */}
         <a
           href={CONTRACTOR_INFO.whatsappUrl}
@@ -116,103 +66,7 @@ export function WhatsAppButton() {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-          gap: 10px;
           user-select: none;
-        }
-
-        /* Tooltip Speech Bubble */
-        .whatsapp-tooltip {
-          opacity: 0;
-          transform: translateY(10px) scale(0.95);
-          pointer-events: none;
-          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-          background: #ffffff;
-          border-radius: 12px;
-          padding: 12px 14px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          max-width: 260px;
-          position: relative;
-        }
-
-        .whatsapp-tooltip::after {
-          content: "";
-          position: absolute;
-          bottom: -6px;
-          right: 24px;
-          width: 12px;
-          height: 12px;
-          background: #ffffff;
-          transform: rotate(45deg);
-          border-right: 1px solid rgba(0, 0, 0, 0.08);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .whatsapp-tooltip-visible {
-          opacity: 1;
-          transform: translateY(0) scale(1);
-          pointer-events: auto;
-        }
-
-        .whatsapp-tooltip-header {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          margin-bottom: 6px;
-        }
-
-        .whatsapp-status-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #22c55e;
-          display: inline-block;
-          box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
-        }
-
-        .whatsapp-tooltip-title {
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: #071a3a;
-          flex: 1;
-        }
-
-        .whatsapp-tooltip-close {
-          background: transparent;
-          border: none;
-          color: #94a3b8;
-          font-size: 1.1rem;
-          line-height: 1;
-          cursor: pointer;
-          padding: 0 2px;
-        }
-
-        .whatsapp-tooltip-close:hover {
-          color: #071a3a;
-        }
-
-        .whatsapp-tooltip-body {
-          font-size: 0.8125rem;
-          color: #475569;
-          line-height: 1.4;
-          margin: 0 0 10px 0;
-        }
-
-        .whatsapp-tooltip-btn {
-          display: block;
-          text-align: center;
-          background: #25D366;
-          color: #ffffff;
-          font-weight: 800;
-          font-size: 0.75rem;
-          padding: 6px 12px;
-          border-radius: 6px;
-          text-decoration: none;
-          transition: background 0.15s ease;
-        }
-
-        .whatsapp-tooltip-btn:hover {
-          background: #1eb856;
         }
 
         /* Floating Button Main */
@@ -290,7 +144,6 @@ export function WhatsAppButton() {
           .whatsapp-floating-wrapper {
             bottom: 74px;
             right: 14px;
-            gap: 8px;
           }
 
           .whatsapp-floating-btn {
@@ -301,12 +154,6 @@ export function WhatsAppButton() {
           .whatsapp-icon {
             width: 29px;
             height: 29px;
-          }
-
-          .whatsapp-tooltip {
-            max-width: 230px;
-            padding: 10px 12px;
-            font-size: 0.75rem;
           }
         }
       `}</style>

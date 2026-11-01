@@ -26,25 +26,23 @@ export function ClientesWall() {
   const [selectedCategory, setSelectedCategory] = useState<ClienteCategory>("all");
   const [lightboxItem, setLightboxItem] = useState<ClienteFeedItem | null>(null);
 
-  const mainWallItems = CLIENTES_FEED_ITEMS.slice(0, 16).filter(
-    (item) => selectedCategory === "all" || item.category === selectedCategory
-  );
-
-  const bottomTextReviews = CLIENTES_FEED_ITEMS.slice(16).filter(
+  const filteredItems = CLIENTES_FEED_ITEMS.filter(
     (item) => selectedCategory === "all" || item.category === selectedCategory
   );
 
   return (
     <div>
-      {/* ── Barra de Filtros Elegante ── */}
+      {/* ── Barra de Filtros Elegante e Centrada ── */}
       <div className="clientes-filter-dock-wrap">
-        <div className="clientes-filter-dock">
+        <div className="clientes-filter-dock" role="tablist" aria-label="Filtrar obras e opiniões por categoria">
           {CLIENTES_CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
               <button
                 key={cat.id}
                 type="button"
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`clientes-filter-pill ${isActive ? "is-active" : ""}`}
               >
@@ -58,205 +56,107 @@ export function ClientesWall() {
         </div>
       </div>
 
-      {/* ── Mosaico Masonry de Clientes & Obras Reais ── */}
-      <div className="clientes-masonry">
-        {mainWallItems.map((item) => {
-          /* ── FORMATO 1: CARTÃO EDITORIAL SÓ DE OPINIÃO (Inspirado nos 4 exemplos da Freitas Renovações) ── */
+      {/* ── Grelha Unificada (CSS Grid) de Clientes & Obras Reais ── */}
+      <div className="clientes-grid">
+        {filteredItems.map((item) => {
+          const seoImageTitle = `${item.headline} em ${item.location} — Freitas Renovações Aveiro`;
+
+          /* ── FORMATO 1: CARTÃO EDITORIAL SÓ DE OPINIÃO ── */
           if (item.type === "review-only") {
             return (
               <article
                 key={item.id}
+                onClick={() => setLightboxItem(item)}
+                itemScope
+                itemType="https://schema.org/Review"
                 className="clientes-card clientes-card-editorial"
-                style={{
-                  background: "#f8f8f6",
-                  border: "1.5px solid #dce1e7",
-                  borderRadius: "1rem",
-                  padding: "1.85rem 1.65rem",
-                  position: "relative",
-                  overflow: "hidden",
-                  boxShadow: "0 6px 22px rgba(7, 26, 58, 0.05)",
-                }}
               >
-                {/* Pormenor geométrico subtil no canto superior direito (como nos cartões originais) */}
                 <div
                   aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    top: "-20px",
-                    right: "-20px",
-                    width: "110px",
-                    height: "110px",
-                    border: "1px solid rgba(7, 26, 58, 0.1)",
-                    transform: "rotate(28deg)",
-                    pointerEvents: "none",
-                  }}
+                  className="editorial-corner-shape"
                 />
 
-                {/* Topo: Marca + Etiqueta OPINIÕES */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "0.5rem",
-                    marginBottom: "0.75rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "0.7rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: "#475569",
-                    }}
-                  >
-                    {item.categoryLabel}
-                  </span>
-                  <div
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.25rem",
-                      background: "rgba(22, 163, 74, 0.1)",
-                      border: "1px solid rgba(22, 163, 74, 0.25)",
-                      borderRadius: "2rem",
-                      padding: "0.18rem 0.55rem",
-                    }}
-                  >
-                    <BadgeCheck size={12} style={{ color: "#15803d" }} />
-                    <span style={{ fontSize: "0.68rem", fontWeight: 700, color: "#15803d" }}>
-                      Cliente Verificado
+                <div>
+                  {/* Topo: Etiqueta OPINIÕES + Cliente Verificado */}
+                  <div className="clientes-card-top-row">
+                    <span className="clientes-category-eyebrow">
+                      {item.categoryLabel}
                     </span>
-                  </div>
-                </div>
-
-                {/* Título Forte (ex: "Casa de banho", "Remodelação de cozinha") */}
-                <h3
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                    fontSize: "1.65rem",
-                    fontWeight: 900,
-                    color: "#1e293b",
-                    lineHeight: 1.12,
-                    letterSpacing: "-0.025em",
-                    marginBottom: "1.1rem",
-                  }}
-                >
-                  {item.headline}
-                </h3>
-
-                {/* Caixa com moldura fina e aspas grandes (fiel ao design das 4 imagens) */}
-                <div
-                  style={{
-                    border: "1px solid #94a3b8",
-                    borderRadius: "0.875rem",
-                    padding: "1.5rem 1.35rem 1.25rem",
-                    position: "relative",
-                    background: "rgba(255, 255, 255, 0.65)",
-                  }}
-                >
-                  {/* Aspas grandes no topo da moldura */}
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      position: "absolute",
-                      top: "-1.35rem",
-                      left: "1rem",
-                      background: "#f8f8f6",
-                      padding: "0 0.4rem",
-                      fontSize: "2.75rem",
-                      lineHeight: 1,
-                      fontWeight: 900,
-                      color: "#94a3b8",
-                      fontFamily: "Georgia, serif",
-                    }}
-                  >
-                    &ldquo;
+                    <div className="clientes-verified-pill">
+                      <BadgeCheck size={12} style={{ color: "#15803d", flexShrink: 0 }} />
+                      <span>Verificado</span>
+                    </div>
                   </div>
 
-                  {/* Estrelas */}
-                  <div style={{ display: "flex", gap: "2px", marginBottom: "0.75rem" }}>
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <Star key={s} size={14} fill="#f59e0b" stroke="#f59e0b" />
-                    ))}
-                  </div>
+                  {/* Título Forte */}
+                  <h3 itemProp="name" className="editorial-headline">
+                    {item.headline}
+                  </h3>
 
-                  {/* Parágrafos da Review */}
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                    {item.quote?.map((paragraph, pIdx) => (
-                      <p
-                        key={pIdx}
-                        style={{
-                          color: "#1e293b",
-                          fontSize: "0.925rem",
-                          lineHeight: 1.62,
-                          margin: 0,
-                        }}
-                      >
-                        {pIdx === 0 ? `“${paragraph}` : paragraph}
-                        {pIdx === (item.quote?.length || 1) - 1 ? "”" : ""}
-                      </p>
-                    ))}
-                  </div>
+                  {/* Caixa com moldura fina e aspas grandes */}
+                  <div className="editorial-quote-box">
+                    <div aria-hidden="true" className="editorial-quote-mark">
+                      &ldquo;
+                    </div>
 
-                  {/* Destaque de Quebra de Objeção */}
-                  {item.highlightTag && (
+                    {/* Estrelas */}
                     <div
-                      style={{
-                        marginTop: "1rem",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.35rem",
-                        background: "rgba(7, 26, 58, 0.06)",
-                        color: "#071a3a",
-                        padding: "0.25rem 0.65rem",
-                        borderRadius: "0.375rem",
-                        fontSize: "0.75rem",
-                        fontWeight: 700,
-                      }}
+                      itemProp="reviewRating"
+                      itemScope
+                      itemType="https://schema.org/Rating"
+                      className="clientes-stars-row"
                     >
-                      <CheckCircle2 size={13} style={{ color: "#d97706", flexShrink: 0 }} />
-                      <span>{item.highlightTag}</span>
+                      <meta itemProp="ratingValue" content={String(item.rating || 5)} />
+                      <meta itemProp="bestRating" content="5" />
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star key={s} size={13} fill="#f59e0b" stroke="#f59e0b" />
+                      ))}
                     </div>
-                  )}
 
-                  {/* Linha divisória + Assinatura do Cliente */}
-                  <div
-                    style={{
-                      marginTop: "1.1rem",
-                      paddingTop: "0.85rem",
-                      borderTop: "1px solid #cbd5e1",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontWeight: 800, fontSize: "0.95rem", color: "#0f172a" }}>
-                        {item.clientName}
-                      </div>
-                      <div style={{ fontSize: "0.8rem", color: "#475569", marginTop: "0.1rem" }}>
-                        {item.location}
-                      </div>
+                    {/* Parágrafos da Review */}
+                    <div itemProp="reviewBody" className="clientes-quote-text">
+                      {item.quote?.map((paragraph, pIdx) => (
+                        <p key={pIdx}>
+                          {pIdx === 0 ? `“${paragraph}` : paragraph}
+                          {pIdx === (item.quote?.length || 1) - 1 ? "”" : ""}
+                        </p>
+                      ))}
                     </div>
-                    <MessageSquareQuote size={20} style={{ color: "#cbd5e1" }} />
+
+                    {/* Destaque de Quebra de Objeção */}
+                    {item.highlightTag && (
+                      <div className="clientes-highlight-tag">
+                        <CheckCircle2 size={12} style={{ color: "#d97706", flexShrink: 0 }} />
+                        <span>{item.highlightTag}</span>
+                      </div>
+                    )}
+
+                    {/* Linha divisória + Assinatura do Cliente */}
+                    <div
+                      itemProp="author"
+                      itemScope
+                      itemType="https://schema.org/Person"
+                      className="clientes-author-footer"
+                    >
+                      <div>
+                        <div itemProp="name" className="clientes-author-name">
+                          {item.clientName}
+                        </div>
+                        <div className="clientes-author-loc">
+                          {item.location}
+                        </div>
+                      </div>
+                      <MessageSquareQuote size={18} className="clientes-quote-icon" />
+                    </div>
                   </div>
                 </div>
 
                 {/* Rodapé discreto da marca */}
-                <div
-                  style={{
-                    marginTop: "0.9rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    fontSize: "0.7rem",
-                    color: "#64748b",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  <span>Grupo Freitas Renovações</span>
+                <div className="editorial-brand-footer">
+                  <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
+                    <meta itemProp="name" content="Freitas Renovações LDA" />
+                    Grupo Freitas Renovações
+                  </span>
                   <span>Alvará IMPIC</span>
                 </div>
               </article>
@@ -268,34 +168,22 @@ export function ClientesWall() {
             return (
               <article
                 key={item.id}
-                className="clientes-card"
-                style={{
-                  background: "#ffffff",
-                  border: "1.5px solid #e2e8f0",
-                  borderRadius: "1rem",
-                  overflow: "hidden",
-                  boxShadow: "0 8px 26px rgba(7, 26, 58, 0.06)",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
+                onClick={() => setLightboxItem(item)}
+                itemScope
+                itemType="https://schema.org/Review"
+                className="clientes-card clientes-card-with-photo"
               >
-                {/* Imagem da Obra Clicável */}
-                <div
-                  onClick={() => setLightboxItem(item)}
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    height: "270px",
-                    background: "#071a3a",
-                    cursor: "pointer",
-                    overflow: "hidden",
-                  }}
-                  className="clientes-photo-wrapper"
-                >
+                {/* Imagem da Obra Clicável com SEO Completo */}
+                <div className="clientes-photo-wrapper">
                   <img
                     src={item.image}
-                    alt={item.imageAlt || item.headline}
+                    alt={item.imageAlt || seoImageTitle}
+                    title={seoImageTitle}
+                    width={800}
+                    height={600}
                     loading="lazy"
+                    decoding="async"
+                    itemProp="image"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -305,185 +193,89 @@ export function ClientesWall() {
                   />
 
                   {/* Etiqueta Superior Esquerda */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "0.85rem",
-                      left: "0.85rem",
-                      background: "rgba(7, 26, 58, 0.9)",
-                      backdropFilter: "blur(6px)",
-                      color: "#fbbf24",
-                      fontSize: "0.68rem",
-                      fontWeight: 800,
-                      letterSpacing: "0.05em",
-                      padding: "0.3rem 0.65rem",
-                      borderRadius: "0.375rem",
-                      border: "1px solid rgba(251, 191, 36, 0.35)",
-                    }}
-                  >
+                  <div className="photo-badge-top-left">
                     {item.categoryLabel}
                   </div>
 
                   {/* Botão Ampliar Foto */}
                   <button
                     type="button"
-                    aria-label="Ampliar fotografia da obra"
-                    style={{
-                      position: "absolute",
-                      top: "0.85rem",
-                      right: "0.85rem",
-                      background: "rgba(15, 23, 42, 0.75)",
-                      color: "#ffffff",
-                      border: "1px solid rgba(255,255,255,0.25)",
-                      borderRadius: "0.375rem",
-                      padding: "0.35rem 0.55rem",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.3rem",
-                      fontSize: "0.7rem",
-                      fontWeight: 700,
-                      cursor: "pointer",
-                    }}
+                    aria-label={`Ampliar fotografia: ${seoImageTitle}`}
+                    className="photo-zoom-btn"
                   >
-                    <Maximize2 size={12} />
-                    <span>Ver Detalhe</span>
+                    <Maximize2 size={11} />
+                    <span className="zoom-label-text">Ampliar</span>
                   </button>
 
                   {/* Barra inferior na foto: Localização */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      background: "linear-gradient(to top, rgba(7,26,58,0.9) 0%, rgba(7,26,58,0) 100%)",
-                      padding: "1.75rem 1rem 0.7rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <span
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.3rem",
-                        color: "#ffffff",
-                        fontSize: "0.78rem",
-                        fontWeight: 700,
-                      }}
-                    >
-                      <MapPin size={13} style={{ color: "#fbbf24" }} />
-                      {item.location}
+                  <div className="photo-bottom-bar">
+                    <span className="photo-loc-tag">
+                      <MapPin size={12} style={{ color: "#fbbf24", flexShrink: 0 }} />
+                      <span>{item.location}</span>
                     </span>
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        color: "#34d399",
-                        fontWeight: 700,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                      }}
-                    >
-                      <Camera size={12} />
-                      Foto Real de Obra
+                    <span className="photo-real-tag">
+                      <Camera size={11} />
+                      <span>Obra Real</span>
                     </span>
                   </div>
                 </div>
 
                 {/* Corpo da Avaliação */}
-                <div style={{ padding: "1.4rem 1.4rem 1.3rem" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    <div style={{ display: "flex", gap: "2px" }}>
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Star key={s} size={14} fill="#f59e0b" stroke="#f59e0b" />
+                <div className="clientes-card-body">
+                  <div>
+                    <div className="clientes-rating-tag-row">
+                      <div
+                        itemProp="reviewRating"
+                        itemScope
+                        itemType="https://schema.org/Rating"
+                        style={{ display: "flex", gap: "2px" }}
+                      >
+                        <meta itemProp="ratingValue" content={String(item.rating || 5)} />
+                        <meta itemProp="bestRating" content="5" />
+                        {[1, 2, 3, 4, 5].map((s) => (
+                          <Star key={s} size={13} fill="#f59e0b" stroke="#f59e0b" />
+                        ))}
+                      </div>
+                      {item.highlightTag && (
+                        <span className="clientes-amber-pill">
+                          ✓ {item.highlightTag}
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 itemProp="name" className="clientes-photo-card-title">
+                      {item.headline}
+                    </h3>
+
+                    <div itemProp="reviewBody" className="clientes-quote-text">
+                      {item.quote?.map((paragraph, idx) => (
+                        <p key={idx}>
+                          {idx === 0 ? `“${paragraph}` : paragraph}
+                          {idx === (item.quote?.length || 1) - 1 ? "”" : ""}
+                        </p>
                       ))}
                     </div>
-                    {item.highlightTag && (
-                      <span
-                        style={{
-                          fontSize: "0.7rem",
-                          fontWeight: 700,
-                          color: "#b45309",
-                          background: "rgba(245, 158, 11, 0.12)",
-                          padding: "0.18rem 0.55rem",
-                          borderRadius: "1rem",
-                        }}
-                      >
-                        ✓ {item.highlightTag}
-                      </span>
-                    )}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontSize: "1.15rem",
-                      fontWeight: 800,
-                      color: "#071a3a",
-                      marginBottom: "0.65rem",
-                      lineHeight: 1.25,
-                    }}
-                  >
-                    {item.headline}
-                  </h3>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                    {item.quote?.map((paragraph, idx) => (
-                      <p
-                        key={idx}
-                        style={{
-                          color: "#334155",
-                          fontSize: "0.885rem",
-                          lineHeight: 1.6,
-                          margin: 0,
-                        }}
-                      >
-                        {idx === 0 ? `“${paragraph}` : paragraph}
-                        {idx === (item.quote?.length || 1) - 1 ? "”" : ""}
-                      </p>
-                    ))}
                   </div>
 
                   {/* Assinatura do Cliente */}
                   <div
-                    style={{
-                      marginTop: "1.1rem",
-                      paddingTop: "0.85rem",
-                      borderTop: "1px solid #f1f5f9",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
+                    itemProp="author"
+                    itemScope
+                    itemType="https://schema.org/Person"
+                    className="clientes-photo-author-row"
                   >
                     <div>
-                      <div style={{ fontWeight: 800, fontSize: "0.9rem", color: "#071a3a" }}>
+                      <div itemProp="name" className="clientes-author-name">
                         {item.clientName}
                       </div>
-                      <div style={{ fontSize: "0.75rem", color: "#64748b" }}>
+                      <div className="clientes-author-loc">
                         {item.location}
                       </div>
                     </div>
 
-                    <div
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                        color: "#16a34a",
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                      }}
-                    >
-                      <BadgeCheck size={14} />
-                      <span>Obra Verificada</span>
+                    <div className="clientes-verified-inline">
+                      <BadgeCheck size={13} />
+                      <span>Verificada</span>
                     </div>
                   </div>
                 </div>
@@ -496,22 +288,20 @@ export function ClientesWall() {
             <article
               key={item.id}
               onClick={() => setLightboxItem(item)}
+              itemScope
+              itemType="https://schema.org/ImageObject"
               className="clientes-card clientes-card-photo-only"
-              style={{
-                background: "#071a3a",
-                borderRadius: "1rem",
-                overflow: "hidden",
-                border: "1.5px solid #1e293b",
-                cursor: "pointer",
-                position: "relative",
-                boxShadow: "0 8px 24px rgba(7, 26, 58, 0.12)",
-              }}
             >
-              <div style={{ position: "relative", height: "340px", width: "100%", overflow: "hidden" }}>
+              <div className="photo-only-inner">
                 <img
                   src={item.image}
-                  alt={item.imageAlt || item.headline}
+                  alt={item.imageAlt || seoImageTitle}
+                  title={seoImageTitle}
+                  width={800}
+                  height={600}
                   loading="lazy"
+                  decoding="async"
+                  itemProp="contentUrl"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -519,102 +309,34 @@ export function ClientesWall() {
                     transition: "transform 0.35s ease",
                   }}
                 />
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background:
-                      "linear-gradient(180deg, rgba(7,26,58,0.45) 0%, rgba(7,26,58,0.1) 45%, rgba(7,26,58,0.94) 100%)",
-                  }}
-                />
+                <meta itemProp="name" content={item.headline} />
+                <meta itemProp="description" content={item.imageAlt || item.imageCaption || item.headline} />
+                <meta itemProp="contentLocation" content={`${item.location}, Aveiro, Portugal`} />
+
+                <div className="photo-only-overlay" />
 
                 {/* Topo */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "0.85rem",
-                    left: "0.85rem",
-                    right: "0.85rem",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <span
-                    style={{
-                      background: "rgba(251, 191, 36, 0.95)",
-                      color: "#071a3a",
-                      fontSize: "0.68rem",
-                      fontWeight: 900,
-                      padding: "0.28rem 0.65rem",
-                      borderRadius: "0.375rem",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
+                <div className="photo-only-top">
+                  <span className="photo-only-badge">
                     📷 {item.categoryLabel}
                   </span>
-                  <span
-                    style={{
-                      background: "rgba(7, 26, 58, 0.8)",
-                      color: "#ffffff",
-                      padding: "0.3rem 0.55rem",
-                      borderRadius: "0.375rem",
-                      fontSize: "0.7rem",
-                      fontWeight: 700,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.25rem",
-                    }}
-                  >
-                    <Maximize2 size={12} />
-                    Ampliar
+                  <span className="photo-only-zoom">
+                    <Maximize2 size={11} />
+                    <span className="zoom-label-text">Ampliar</span>
                   </span>
                 </div>
 
                 {/* Rodapé sobre a foto */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "1.25rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.3rem",
-                      color: "#fbbf24",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      marginBottom: "0.3rem",
-                    }}
-                  >
-                    <MapPin size={13} />
+                <div className="photo-only-bottom">
+                  <div className="photo-only-loc">
+                    <MapPin size={12} />
                     <span>{item.location}</span>
                   </div>
-                  <h3
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "1.125rem",
-                      fontWeight: 800,
-                      marginBottom: "0.35rem",
-                      lineHeight: 1.25,
-                    }}
-                  >
+                  <h3 className="photo-only-title">
                     {item.headline}
                   </h3>
                   {item.imageCaption && (
-                    <p
-                      style={{
-                        color: "rgba(255,255,255,0.82)",
-                        fontSize: "0.8125rem",
-                        lineHeight: 1.5,
-                        margin: 0,
-                      }}
-                    >
+                    <p itemProp="caption" className="photo-only-caption">
                       {item.imageCaption}
                     </p>
                   )}
@@ -625,226 +347,20 @@ export function ClientesWall() {
         })}
       </div>
 
-      {/* ── 10 Reviews Adicionais Sem Imagem (Em Baixo, tudo junto) ── */}
-      {bottomTextReviews.length > 0 && (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(310px, 1fr))",
-            gap: "1.5rem",
-            marginTop: "0.25rem",
-          }}
-        >
-            {bottomTextReviews.map((item) => (
-              <article
-                key={item.id}
-                className="clientes-card-editorial"
-                style={{
-                  background: "#f8f8f6",
-                  border: "1.5px solid #dce1e7",
-                  borderRadius: "1rem",
-                  padding: "1.75rem 1.55rem",
-                  position: "relative",
-                  overflow: "hidden",
-                  boxShadow: "0 6px 22px rgba(7, 26, 58, 0.05)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: "absolute",
-                    top: "-20px",
-                    right: "-20px",
-                    width: "110px",
-                    height: "110px",
-                    border: "1px solid rgba(7, 26, 58, 0.1)",
-                    transform: "rotate(28deg)",
-                    pointerEvents: "none",
-                  }}
-                />
-
-                <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "0.5rem",
-                      marginBottom: "0.7rem",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "0.68rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.14em",
-                        textTransform: "uppercase",
-                        color: "#475569",
-                      }}
-                    >
-                      {item.categoryLabel}
-                    </span>
-                    <div
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                        background: "rgba(22, 163, 74, 0.1)",
-                        border: "1px solid rgba(22, 163, 74, 0.25)",
-                        borderRadius: "2rem",
-                        padding: "0.18rem 0.55rem",
-                      }}
-                    >
-                      <BadgeCheck size={12} style={{ color: "#15803d" }} />
-                      <span style={{ fontSize: "0.68rem", fontWeight: 700, color: "#15803d" }}>
-                        Cliente Verificado
-                      </span>
-                    </div>
-                  </div>
-
-                  <h4
-                    style={{
-                      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                      fontSize: "1.45rem",
-                      fontWeight: 900,
-                      color: "#1e293b",
-                      lineHeight: 1.15,
-                      letterSpacing: "-0.02em",
-                      marginBottom: "1rem",
-                    }}
-                  >
-                    {item.headline}
-                  </h4>
-
-                  <div
-                    style={{
-                      border: "1px solid #94a3b8",
-                      borderRadius: "0.875rem",
-                      padding: "1.4rem 1.25rem 1.15rem",
-                      position: "relative",
-                      background: "rgba(255, 255, 255, 0.65)",
-                    }}
-                  >
-                    <div
-                      aria-hidden="true"
-                      style={{
-                        position: "absolute",
-                        top: "-1.3rem",
-                        left: "1rem",
-                        background: "#f8f8f6",
-                        padding: "0 0.4rem",
-                        fontSize: "2.6rem",
-                        lineHeight: 1,
-                        fontWeight: 900,
-                        color: "#94a3b8",
-                        fontFamily: "Georgia, serif",
-                      }}
-                    >
-                      &ldquo;
-                    </div>
-
-                    <div style={{ display: "flex", gap: "2px", marginBottom: "0.65rem" }}>
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <Star key={s} size={14} fill="#f59e0b" stroke="#f59e0b" />
-                      ))}
-                    </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
-                      {item.quote?.map((paragraph, pIdx) => (
-                        <p
-                          key={pIdx}
-                          style={{
-                            color: "#1e293b",
-                            fontSize: "0.9rem",
-                            lineHeight: 1.6,
-                            margin: 0,
-                          }}
-                        >
-                          {pIdx === 0 ? `“${paragraph}` : paragraph}
-                          {pIdx === (item.quote?.length || 1) - 1 ? "”" : ""}
-                        </p>
-                      ))}
-                    </div>
-
-                    {item.highlightTag && (
-                      <div
-                        style={{
-                          marginTop: "0.9rem",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.35rem",
-                          background: "rgba(7, 26, 58, 0.06)",
-                          color: "#071a3a",
-                          padding: "0.22rem 0.6rem",
-                          borderRadius: "0.375rem",
-                          fontSize: "0.74rem",
-                          fontWeight: 700,
-                        }}
-                      >
-                        <CheckCircle2 size={13} style={{ color: "#d97706", flexShrink: 0 }} />
-                        <span>{item.highlightTag}</span>
-                      </div>
-                    )}
-
-                    <div
-                      style={{
-                        marginTop: "1rem",
-                        paddingTop: "0.8rem",
-                        borderTop: "1px solid #cbd5e1",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <div>
-                        <div style={{ fontWeight: 800, fontSize: "0.92rem", color: "#0f172a" }}>
-                          {item.clientName}
-                        </div>
-                        <div style={{ fontSize: "0.78rem", color: "#475569", marginTop: "0.1rem" }}>
-                          {item.location}
-                        </div>
-                      </div>
-                      <MessageSquareQuote size={19} style={{ color: "#cbd5e1" }} />
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    marginTop: "0.85rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    fontSize: "0.68rem",
-                    color: "#64748b",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  <span>Grupo Freitas Renovações</span>
-                  <span>Alvará IMPIC</span>
-                </div>
-              </article>
-            ))}
-          </div>
-      )}
-
-      {/* ── Lightbox Modal para Ver Fotografia de Obra ao Detalhe ── */}
+      {/* ── Lightbox Modal para Ver Fotografia / Testemunho ao Detalhe ── */}
       {lightboxItem && (
         <div
           onClick={() => setLightboxItem(null)}
           style={{
             position: "fixed",
             inset: 0,
-            zIndex: 100,
+            zIndex: 110,
             background: "rgba(5, 13, 26, 0.88)",
             backdropFilter: "blur(8px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "1.25rem",
+            padding: "1rem",
           }}
         >
           <div
@@ -852,7 +368,7 @@ export function ClientesWall() {
             style={{
               background: "#ffffff",
               borderRadius: "1rem",
-              maxWidth: "920px",
+              maxWidth: "860px",
               width: "100%",
               maxHeight: "90vh",
               overflowY: "auto",
@@ -885,13 +401,14 @@ export function ClientesWall() {
             </button>
 
             {lightboxItem.image && (
-              <div style={{ background: "#050d1a", textAlign: "center", maxHeight: "520px", overflow: "hidden" }}>
+              <div style={{ background: "#050d1a", textAlign: "center", maxHeight: "500px", overflow: "hidden" }}>
                 <img
                   src={lightboxItem.image}
                   alt={lightboxItem.imageAlt || lightboxItem.headline}
+                  title={`${lightboxItem.headline} — ${lightboxItem.location}`}
                   style={{
                     width: "100%",
-                    maxHeight: "520px",
+                    maxHeight: "500px",
                     objectFit: "contain",
                     display: "block",
                   }}
@@ -982,6 +499,7 @@ export function ClientesWall() {
       )}
 
       <style>{`
+        /* ── Barra de Filtros ── */
         .clientes-filter-dock-wrap {
           display: flex;
           justify-content: center;
@@ -1039,42 +557,395 @@ export function ClientesWall() {
           color: #fbbf24;
         }
 
-        .clientes-masonry {
-          column-count: 3;
-          column-gap: 1.5rem;
+        /* ── Grelha Unificada (CSS Grid em Desktop, Tablet e Mobile) ── */
+        .clientes-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          align-items: stretch;
         }
+
         .clientes-card {
-          break-inside: avoid;
-          margin-bottom: 1.5rem;
           transition: transform 0.22s ease, box-shadow 0.22s ease;
+          cursor: pointer;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
         }
         .clientes-card:hover {
           transform: translateY(-3px);
+        }
+
+        /* ── Cartão Editorial (Só Opinião) ── */
+        .clientes-card-editorial {
+          background: #f8f8f6;
+          border: 1.5px solid #dce1e7;
+          border-radius: 1rem;
+          padding: 1.65rem 1.5rem;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 6px 22px rgba(7, 26, 58, 0.05);
+        }
+        .editorial-corner-shape {
+          position: absolute;
+          top: -20px;
+          right: -20px;
+          width: 100px;
+          height: 100px;
+          border: 1px solid rgba(7, 26, 58, 0.09);
+          transform: rotate(28deg);
+          pointer-events: none;
+        }
+        .clientes-card-top-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.4rem;
+          margin-bottom: 0.65rem;
+        }
+        .clientes-category-eyebrow {
+          font-size: 0.68rem;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #475569;
+        }
+        .clientes-verified-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.22rem;
+          background: rgba(22, 163, 74, 0.1);
+          border: 1px solid rgba(22, 163, 74, 0.25);
+          border-radius: 2rem;
+          padding: 0.16rem 0.5rem;
+          font-size: 0.66rem;
+          font-weight: 700;
+          color: #15803d;
+          white-space: nowrap;
+        }
+        .editorial-headline {
+          font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+          font-size: 1.4rem;
+          font-weight: 900;
+          color: #1e293b;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          margin-bottom: 0.95rem;
+        }
+        .editorial-quote-box {
+          border: 1px solid #94a3b8;
+          border-radius: 0.875rem;
+          padding: 1.35rem 1.2rem 1.1rem;
+          position: relative;
+          background: rgba(255, 255, 255, 0.68);
+        }
+        .editorial-quote-mark {
+          position: absolute;
+          top: -1.25rem;
+          left: 0.9rem;
+          background: #f8f8f6;
+          padding: 0 0.35rem;
+          font-size: 2.5rem;
+          line-height: 1;
+          font-weight: 900;
+          color: #94a3b8;
+          font-family: Georgia, serif;
+        }
+        .clientes-stars-row {
+          display: flex;
+          gap: 2px;
+          margin-bottom: 0.6rem;
+        }
+        .clientes-quote-text {
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+        }
+        .clientes-quote-text p {
+          color: #1e293b;
+          font-size: 0.885rem;
+          line-height: 1.58;
+          margin: 0;
+        }
+        .clientes-highlight-tag {
+          margin-top: 0.85rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          background: rgba(7, 26, 58, 0.06);
+          color: #071a3a;
+          padding: 0.22rem 0.55rem;
+          border-radius: 0.375rem;
+          font-size: 0.72rem;
+          font-weight: 700;
+        }
+        .clientes-author-footer {
+          margin-top: 0.95rem;
+          padding-top: 0.75rem;
+          border-top: 1px solid #cbd5e1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.4rem;
+        }
+        .clientes-author-name {
+          font-weight: 800;
+          font-size: 0.9rem;
+          color: #0f172a;
+        }
+        .clientes-author-loc {
+          font-size: 0.75rem;
+          color: #475569;
+          margin-top: 0.05rem;
+        }
+        .clientes-quote-icon {
+          color: #cbd5e1;
+          flex-shrink: 0;
+        }
+        .editorial-brand-footer {
+          margin-top: 0.85rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 0.68rem;
+          color: #64748b;
+          letter-spacing: 0.03em;
+        }
+
+        /* ── Cartão com Foto + Review ── */
+        .clientes-card-with-photo {
+          background: #ffffff;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 1rem;
+          overflow: hidden;
+          box-shadow: 0 8px 26px rgba(7, 26, 58, 0.06);
+        }
+        .clientes-photo-wrapper {
+          position: relative;
+          width: 100%;
+          height: 240px;
+          background: #071a3a;
+          overflow: hidden;
+          flex-shrink: 0;
         }
         .clientes-photo-wrapper:hover img,
         .clientes-card-photo-only:hover img {
           transform: scale(1.04);
         }
+        .photo-badge-top-left {
+          position: absolute;
+          top: 0.75rem;
+          left: 0.75rem;
+          background: rgba(7, 26, 58, 0.9);
+          backdrop-filter: blur(6px);
+          color: #fbbf24;
+          font-size: 0.65rem;
+          font-weight: 800;
+          letter-spacing: 0.04em;
+          padding: 0.25rem 0.6rem;
+          border-radius: 0.375rem;
+          border: 1px solid rgba(251, 191, 36, 0.35);
+        }
+        .photo-zoom-btn {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          background: rgba(15, 23, 42, 0.75);
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.25);
+          border-radius: 0.375rem;
+          padding: 0.3rem 0.5rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          font-size: 0.68rem;
+          font-weight: 700;
+          cursor: pointer;
+        }
+        .photo-bottom-bar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(to top, rgba(7,26,58,0.92) 0%, rgba(7,26,58,0) 100%);
+          padding: 1.5rem 0.85rem 0.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.4rem;
+        }
+        .photo-loc-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          color: #ffffff;
+          font-size: 0.75rem;
+          font-weight: 700;
+        }
+        .photo-real-tag {
+          font-size: 0.68rem;
+          color: #34d399;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.22rem;
+          white-space: nowrap;
+        }
+        .clientes-card-body {
+          padding: 1.25rem 1.3rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex: 1;
+        }
+        .clientes-rating-tag-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.4rem;
+          flex-wrap: wrap;
+          margin-bottom: 0.45rem;
+        }
+        .clientes-amber-pill {
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: #b45309;
+          background: rgba(245, 158, 11, 0.12);
+          padding: 0.16rem 0.5rem;
+          border-radius: 1rem;
+        }
+        .clientes-photo-card-title {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: #071a3a;
+          margin-bottom: 0.55rem;
+          line-height: 1.25;
+        }
+        .clientes-photo-author-row {
+          margin-top: 1rem;
+          padding-top: 0.75rem;
+          border-top: 1px solid #f1f5f9;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.4rem;
+        }
+        .clientes-verified-inline {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.2rem;
+          color: #16a34a;
+          font-size: 0.7rem;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        /* ── Cartão Só Foto ── */
+        .clientes-card-photo-only {
+          background: #071a3a;
+          border-radius: 1rem;
+          overflow: hidden;
+          border: 1.5px solid #1e293b;
+          position: relative;
+          box-shadow: 0 8px 24px rgba(7, 26, 58, 0.12);
+        }
+        .photo-only-inner {
+          position: relative;
+          height: 100%;
+          min-height: 340px;
+          width: 100%;
+          overflow: hidden;
+        }
+        .photo-only-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7,26,58,0.45) 0%, rgba(7,26,58,0.1) 45%, rgba(7,26,58,0.94) 100%);
+        }
+        .photo-only-top {
+          position: absolute;
+          top: 0.75rem;
+          left: 0.75rem;
+          right: 0.75rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        .photo-only-badge {
+          background: rgba(251, 191, 36, 0.95);
+          color: #071a3a;
+          font-size: 0.65rem;
+          font-weight: 900;
+          padding: 0.25rem 0.6rem;
+          border-radius: 0.375rem;
+          letter-spacing: 0.03em;
+        }
+        .photo-only-zoom {
+          background: rgba(7, 26, 58, 0.8);
+          color: #ffffff;
+          padding: 0.28rem 0.5rem;
+          border-radius: 0.375rem;
+          font-size: 0.68rem;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.22rem;
+        }
+        .photo-only-bottom {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 1.15rem;
+        }
+        .photo-only-loc {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          color: #fbbf24;
+          font-size: 0.72rem;
+          font-weight: 700;
+          margin-bottom: 0.25rem;
+        }
+        .photo-only-title {
+          color: #ffffff;
+          font-size: 1.05rem;
+          font-weight: 800;
+          margin-bottom: 0.3rem;
+          line-height: 1.25;
+        }
+        .photo-only-caption {
+          color: rgba(255,255,255,0.82);
+          font-size: 0.78rem;
+          line-height: 1.45;
+          margin: 0;
+        }
+
+        /* ── Tablet (2 Colunas em Grade) ── */
         @media (max-width: 1024px) {
-          .clientes-masonry {
-            column-count: 2;
+          .clientes-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.15rem;
           }
         }
+
+        /* ── Mobile (2 Colunas em Grade Elegante, Centrado e Suave) ── */
         @media (max-width: 768px) {
           .clientes-filter-dock-wrap {
-            margin-bottom: 1.35rem;
+            margin-bottom: 1.25rem;
           }
           .clientes-filter-dock {
             background: transparent;
             border: none;
             box-shadow: none;
             padding: 0;
-            gap: 0.45rem;
+            gap: 0.42rem;
             border-radius: 1rem;
           }
           .clientes-filter-pill {
-            padding: 0.48rem 0.92rem;
-            font-size: 0.84rem;
+            padding: 0.48rem 0.9rem;
+            font-size: 0.82rem;
             background: #ffffff;
             border: 1px solid #dbe2ea;
             box-shadow: 0 2px 6px rgba(7, 26, 58, 0.04);
@@ -1083,13 +954,150 @@ export function ClientesWall() {
             border-color: #071a3a;
           }
         }
-        @media (max-width: 680px) {
-          .clientes-masonry {
-            column-count: 1;
+
+        @media (max-width: 640px) {
+          .clientes-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.65rem;
+          }
+          .clientes-card-editorial {
+            padding: 0.85rem 0.7rem;
+            border-radius: 0.85rem;
+          }
+          .editorial-corner-shape {
+            display: none;
+          }
+          .clientes-card-top-row {
+            margin-bottom: 0.4rem;
+          }
+          .clientes-category-eyebrow {
+            font-size: 0.56rem;
+            letter-spacing: 0.06em;
+          }
+          .clientes-verified-pill {
+            padding: 0.1rem 0.35rem;
+            font-size: 0.56rem;
+          }
+          .editorial-headline {
+            font-size: 0.92rem;
+            margin-bottom: 0.55rem;
+            line-height: 1.2;
+          }
+          .editorial-quote-box {
+            padding: 0.75rem 0.6rem 0.65rem;
+            border-radius: 0.65rem;
+          }
+          .editorial-quote-mark {
+            font-size: 1.5rem;
+            top: -0.75rem;
+            left: 0.45rem;
+            padding: 0 0.2rem;
+          }
+          .clientes-stars-row {
+            margin-bottom: 0.35rem;
+          }
+          .clientes-quote-text {
+            gap: 0.35rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .clientes-quote-text p {
+            font-size: 0.74rem;
+            line-height: 1.42;
+            display: inline;
+          }
+          .clientes-quote-text p::after {
+            content: " ";
+          }
+          .clientes-highlight-tag {
+            margin-top: 0.5rem;
+            padding: 0.16rem 0.4rem;
+            font-size: 0.6rem;
+          }
+          .clientes-author-footer,
+          .clientes-photo-author-row {
+            margin-top: 0.6rem;
+            padding-top: 0.5rem;
+          }
+          .clientes-author-name {
+            font-size: 0.76rem;
+          }
+          .clientes-author-loc {
+            font-size: 0.64rem;
+          }
+          .clientes-quote-icon {
+            display: none;
+          }
+          .editorial-brand-footer {
+            margin-top: 0.5rem;
+            font-size: 0.56rem;
+          }
+          .clientes-photo-wrapper {
+            height: 140px;
+          }
+          .photo-badge-top-left,
+          .photo-only-badge {
+            top: 0.45rem;
+            left: 0.45rem;
+            font-size: 0.54rem;
+            padding: 0.18rem 0.42rem;
+          }
+          .photo-zoom-btn,
+          .photo-only-zoom {
+            top: 0.45rem;
+            right: 0.45rem;
+            padding: 0.22rem 0.35rem;
+          }
+          .zoom-label-text {
+            display: none;
+          }
+          .photo-bottom-bar {
+            padding: 1rem 0.5rem 0.4rem;
+          }
+          .photo-loc-tag {
+            font-size: 0.62rem;
+          }
+          .photo-real-tag {
+            display: none;
+          }
+          .clientes-card-body {
+            padding: 0.75rem 0.65rem;
+          }
+          .clientes-amber-pill {
+            display: none;
+          }
+          .clientes-photo-card-title {
+            font-size: 0.88rem;
+            margin-bottom: 0.35rem;
+            line-height: 1.2;
+          }
+          .clientes-verified-inline span {
+            display: none;
+          }
+          .photo-only-inner {
+            min-height: 230px;
+          }
+          .photo-only-bottom {
+            padding: 0.65rem;
+          }
+          .photo-only-loc {
+            font-size: 0.62rem;
+          }
+          .photo-only-title {
+            font-size: 0.86rem;
+            margin-bottom: 0.2rem;
+          }
+          .photo-only-caption {
+            font-size: 0.68rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
         }
       `}</style>
     </div>
   );
 }
-

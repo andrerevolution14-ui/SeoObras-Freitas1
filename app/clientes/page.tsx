@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     images: [
       {
+        url: "https://www.grupofreitasrenovacoes.pt/clientes/wc-madeira-espelho-led.jpg",
+        width: 1200,
+        height: 900,
+        alt: "Casa de banho remodelada em Aveiro com revestimento madeira e espelho LED — Freitas Renovações",
+      },
+      {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
     title: "Clientes & Obras Reais em Aveiro | Freitas Renovações",
     description:
       "O que dizem os nossos clientes em Aveiro e arredores: fotos reais de remodelações e opiniões verificadas.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/clientes/wc-madeira-espelho-led.jpg"],
   },
 };
 
@@ -76,7 +82,81 @@ const clientesJsonLd = {
           ratingValue: item.rating || 5,
           bestRating: 5,
         },
+        ...(item.image
+          ? {
+              associatedMedia: {
+                "@type": "ImageObject",
+                contentUrl: `https://www.grupofreitasrenovacoes.pt${item.image}`,
+                name: `${item.headline} — ${item.location}`,
+                description: item.imageAlt || item.headline,
+                contentLocation: `${item.location}, Aveiro, Portugal`,
+              },
+            }
+          : {}),
       })),
+    },
+    {
+      "@type": "ImageGallery",
+      "@id": "https://www.grupofreitasrenovacoes.pt/clientes#galeria-obras-reais",
+      name: "Galeria de Obras e Remodelações Reais em Aveiro — Freitas Renovações",
+      description:
+        "Fotografias reais de casas de banho, cozinhas, apartamentos e moradias remodeladas pela Freitas Renovações LDA em Aveiro e concelhos vizinhos.",
+      image: [
+        ...CLIENTES_FEED_ITEMS.filter((item) => item.image).map((item) => ({
+          "@type": "ImageObject",
+          contentUrl: `https://www.grupofreitasrenovacoes.pt${item.image}`,
+          name: `${item.headline} em ${item.location}`,
+          description: item.imageAlt || item.imageCaption || item.headline,
+          caption: item.imageCaption || item.headline,
+          contentLocation: `${item.location}, Aveiro, Portugal`,
+          creator: {
+            "@type": "Organization",
+            name: CONTRACTOR_INFO.companyName,
+          },
+        })),
+        {
+          "@type": "ImageObject",
+          contentUrl: "https://www.grupofreitasrenovacoes.pt/heroes/casal-sala-renovada.jpg",
+          name: "Casal feliz em sala de estar renovada em Aveiro — Freitas Renovações",
+          description: "Proprietários satisfeitos na sua sala e terraço após remodelação chave na mão em Aveiro.",
+          contentLocation: "Aveiro, Portugal",
+        },
+        {
+          "@type": "ImageObject",
+          contentUrl: "https://www.grupofreitasrenovacoes.pt/heroes/casal-chaves-casa.jpg",
+          name: "Entrega de chaves de moradia remodelada em Aveiro — Freitas Renovações",
+          description: "Clientes celebram a entrega das chaves da sua casa renovada pela Freitas Renovações em Aveiro.",
+          contentLocation: "Aveiro, Portugal",
+        },
+        {
+          "@type": "ImageObject",
+          contentUrl: "https://www.grupofreitasrenovacoes.pt/heroes/familia-cozinha-nova.jpg",
+          name: "Família em cozinha moderna remodelada em Aveiro — Freitas Renovações",
+          description: "Cozinha em open space com ilha em pedra e armários por medida executada em Aveiro.",
+          contentLocation: "Aveiro, Portugal",
+        },
+        {
+          "@type": "ImageObject",
+          contentUrl: "https://www.grupofreitasrenovacoes.pt/heroes/empreiteiro-clientes-obra.jpg",
+          name: "Acompanhamento de obra em Aveiro pelo Empreiteiro Jorge Freitas",
+          description: "Reunião presencial em obra com proprietários para validação de acabamentos e prazos em Aveiro.",
+          contentLocation: "Aveiro, Portugal",
+        },
+        {
+          "@type": "ImageObject",
+          contentUrl: "https://www.grupofreitasrenovacoes.pt/heroes/aveiro-ria-moliceiros.jpg",
+          name: "Obras e remodelações junto à Ria de Aveiro — Freitas Renovações",
+          description: "Atuação local em todas as freguesias de Aveiro, canais da Ria e concelhos limítrofes.",
+          contentLocation: "Aveiro, Portugal",
+        },
+        {
+          "@type": "ImageObject",
+          contentUrl: "https://www.grupofreitasrenovacoes.pt/heroes/aveiro-barra-costa.jpg",
+          name: "Reabilitação de moradias e fachadas na Praia da Barra e Costa Nova, Aveiro",
+          description: "Isolamento térmico Capoto ETICS e pintura resistente ao salitre na faixa costeira de Aveiro e Ílhavo.",
+          contentLocation: "Praia da Barra, Aveiro, Portugal",
+        },
+      ],
     },
     {
       "@type": "BreadcrumbList",
@@ -106,8 +186,9 @@ export default function ClientesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(clientesJsonLd) }}
       />
 
-      {/* ── 1. HERO COMPACTO DE ALTA CONFIANÇA COM IMAGEM DE FUNDO REAL ── */}
+      {/* ── 1. HERO DE ALTA CONFIANÇA COM IMAGEM DE FUNDO REAL ── */}
       <section
+        aria-label="O que dizem os nossos clientes — Obras e remodelações reais em Aveiro"
         style={{
           position: "relative",
           backgroundColor: "#071a3a",
@@ -120,15 +201,7 @@ export default function ClientesPage() {
         }}
       >
         <div className="section-container" style={{ position: "relative", zIndex: 2 }}>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "1.25rem",
-            }}
-          >
+          <div className="clientes-hero-inner">
             <div style={{ maxWidth: "680px" }}>
               <div
                 style={{
@@ -139,12 +212,12 @@ export default function ClientesPage() {
                   border: "1px solid rgba(251, 191, 36, 0.35)",
                   color: "#fbbf24",
                   borderRadius: "2rem",
-                  padding: "0.22rem 0.75rem",
+                  padding: "0.24rem 0.8rem",
                   fontSize: "0.7rem",
                   fontWeight: 800,
                   letterSpacing: "0.05em",
                   textTransform: "uppercase",
-                  marginBottom: "0.5rem",
+                  marginBottom: "0.6rem",
                 }}
               >
                 <BadgeCheck size={13} />
@@ -159,7 +232,7 @@ export default function ClientesPage() {
                   color: "#ffffff",
                   lineHeight: 1.12,
                   letterSpacing: "-0.025em",
-                  marginBottom: "0.4rem",
+                  marginBottom: "0.5rem",
                 }}
               >
                 O que dizem os nossos clientes
@@ -167,9 +240,9 @@ export default function ClientesPage() {
 
               <p
                 style={{
-                  color: "rgba(255,255,255,0.85)",
-                  fontSize: "0.925rem",
-                  lineHeight: 1.5,
+                  color: "rgba(255,255,255,0.86)",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.55,
                   margin: 0,
                 }}
               >
@@ -179,31 +252,33 @@ export default function ClientesPage() {
 
             {/* Selo Compacto de Classificação */}
             <div
+              className="clientes-hero-rating-box"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.85rem",
-                background: "rgba(7, 26, 58, 0.78)",
-                border: "1.5px solid rgba(251, 191, 36, 0.4)",
-                borderRadius: "0.75rem",
+                background: "rgba(7, 26, 58, 0.82)",
+                border: "1.5px solid rgba(251, 191, 36, 0.42)",
+                borderRadius: "0.85rem",
                 padding: "0.75rem 1.1rem",
                 backdropFilter: "blur(8px)",
+                boxShadow: "0 10px 28px rgba(0, 0, 0, 0.22)",
               }}
             >
-              <div>
+              <div style={{ textAlign: "left" }}>
                 <div style={{ display: "flex", gap: "2px", marginBottom: "0.2rem" }}>
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={15} fill="#fbbf24" stroke="#fbbf24" />
+                    <Star key={s} size={14} fill="#fbbf24" stroke="#fbbf24" />
                   ))}
                 </div>
-                <div style={{ fontSize: "0.76rem", color: "#e2e8f0", fontWeight: 700 }}>
-                  <strong style={{ color: "#fbbf24", fontSize: "0.95rem" }}>4.9/5</strong> · +48 Avaliações Reais
+                <div style={{ fontSize: "0.76rem", color: "#e2e8f0", fontWeight: 700, whiteSpace: "nowrap" }}>
+                  <strong style={{ color: "#fbbf24", fontSize: "0.92rem" }}>4.9/5</strong> · +48 Avaliações
                 </div>
               </div>
               <Link
                 href="/orcamento"
                 className="btn-primary"
-                style={{ fontSize: "0.78rem", padding: "0.5rem 0.9rem", whiteSpace: "nowrap" }}
+                style={{ fontSize: "0.78rem", padding: "0.52rem 0.95rem", whiteSpace: "nowrap" }}
               >
                 <span>Pedir Orçamento</span>
                 <ArrowRight size={14} />
@@ -229,7 +304,7 @@ export default function ClientesPage() {
       {/* ── 3. SECÇÃO QUEBRA DE OBJEÇÕES: PORQUE OS CLIENTES NOS RECOMENDAM ── */}
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
-          <div style={{ textAlign: "center", maxWidth: "680px", margin: "0 auto 2.5rem" }}>
+          <div style={{ textAlign: "center", maxWidth: "680px", margin: "0 auto 2.25rem" }}>
             <p className="section-eyebrow">Obras Sem Dores de Cabeça</p>
             <h2 className="section-title">
               Os 4 Compromissos Que Mais Tranquilizam os Nossos Clientes
@@ -239,13 +314,7 @@ export default function ClientesPage() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: "1.25rem",
-            }}
-          >
+          <div className="clientes-pillars-grid">
             {[
               {
                 icon: <FileCheck2 size={22} />,
@@ -266,32 +335,15 @@ export default function ClientesPage() {
             ].map((pillar) => (
               <div
                 key={pillar.title}
-                style={{
-                  background: "#f8fafc",
-                  border: "1.5px solid #e2e8f0",
-                  borderRadius: "0.875rem",
-                  padding: "1.5rem",
-                }}
+                className="clientes-pillar-card"
               >
-                <div
-                  style={{
-                    width: "44px",
-                    height: "44px",
-                    borderRadius: "0.5rem",
-                    background: "#071a3a",
-                    color: "#fbbf24",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: "1rem",
-                  }}
-                >
+                <div className="clientes-pillar-icon">
                   {pillar.icon}
                 </div>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.5rem" }}>
+                <h3 style={{ fontSize: "1.02rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.45rem" }}>
                   {pillar.title}
                 </h3>
-                <p style={{ fontSize: "0.86rem", color: "#475569", lineHeight: 1.6, margin: 0 }}>
+                <p style={{ fontSize: "0.85rem", color: "#475569", lineHeight: 1.58, margin: 0 }}>
                   {pillar.desc}
                 </p>
               </div>
@@ -308,7 +360,7 @@ export default function ClientesPage() {
             "linear-gradient(135deg, rgba(7, 26, 58, 0.88) 0%, rgba(15, 45, 94, 0.78) 100%), url('/heroes/casal-chaves-casa.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "4.5rem 0",
+          padding: "4.25rem 0",
           textAlign: "center",
           borderTop: "2px solid rgba(251, 191, 36, 0.3)",
         }}
@@ -343,7 +395,7 @@ export default function ClientesPage() {
           </h2>
           <p
             style={{
-              color: "rgba(255,255,255,0.78)",
+              color: "rgba(255,255,255,0.82)",
               fontSize: "1rem",
               maxWidth: "560px",
               margin: "0 auto 1.85rem",
@@ -372,7 +424,74 @@ export default function ClientesPage() {
           </div>
         </div>
       </section>
+
+      <style>{`
+        .clientes-hero-inner {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1.25rem;
+        }
+        .clientes-pillars-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.25rem;
+        }
+        .clientes-pillar-card {
+          background: #f8fafc;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 0.875rem;
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+        }
+        .clientes-pillar-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 0.5rem;
+          background: #071a3a;
+          color: #fbbf24;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+        @media (max-width: 1024px) {
+          .clientes-pillars-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (max-width: 768px) {
+          .clientes-hero-inner {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+          }
+          .clientes-pillars-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+          }
+          .clientes-pillar-card {
+            padding: 1rem 0.85rem;
+            align-items: center;
+            text-align: center;
+          }
+          .clientes-pillar-card h3 {
+            font-size: 0.9rem !important;
+          }
+          .clientes-pillar-card p {
+            font-size: 0.76rem !important;
+            line-height: 1.45 !important;
+          }
+          .clientes-pillar-icon {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 0.65rem;
+          }
+        }
+      `}</style>
     </>
   );
 }
-

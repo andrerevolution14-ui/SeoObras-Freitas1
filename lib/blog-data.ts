@@ -45,7 +45,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Licenciamento & Legislação",
     readTime: "5 min de leitura",
-    image: "/r2.jfif",
+    image: "/r2.jpg",
     excerpt: "Tire as dúvidas sobre o licenciamento urbanístico na Câmara Municipal de Aveiro para obras de remodelação e alteração de fachadas.",
     content: [
       "Uma das dúvidas mais frequentes dos proprietários em Aveiro é saber se as obras de remodelação interior necessitam de autorização camarária.",
@@ -61,7 +61,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Impermeabilização & Telhados",
     readTime: "7 min de leitura",
-    image: "/r3.jfif",
+    image: "/r3.jpg",
     excerpt: "Soluções definitivas para combater a humidade por condensação e infiltrações causadas pela ria e pelo clima húmido de Aveiro.",
     content: [
       "Devido à forte influência da Ria de Aveiro e aos ventos atlânticos, muitas habitações no concelho sofrem com níveis elevados de humidade, salitre nas paredes e infiltrações em terraços ou telhados.",
@@ -77,7 +77,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Isolamento Térmico",
     readTime: "6 min de leitura",
-    image: "/r4.jfif",
+    image: "/r4.jpg",
     excerpt: "Reduza até 40% o consumo de aquecimento e elimine fungos nas paredes com o revestimento térmico pelo exterior Capoto em Aveiro.",
     content: [
       "O sistema ETICS, popularmente conhecido como Capoto, consiste na aplicação de placas de isolamento térmico (EPS ou Lã Mineral) na face exterior das paredes, finalizadas com argamassas armadas e tintas acrílicas protetoras.",
@@ -93,7 +93,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Remodelações",
     readTime: "5 min de leitura",
-    image: "/r5.jfif",
+    image: "/r5.jpg",
     excerpt: "Transforme a sua casa de banho antiga num espaço moderno, funcional e de fácil limpeza com este guia prático.",
     content: [
       "Remodelar a casa de banho é uma das intervenções residenciais mais valorizadas em Aveiro. Para garantir um resultado duradouro, o primeiro passo deve ser sempre a substituição dos canos de chumbo ou ferro antigos por tubagem multicamada moderna.",
@@ -109,7 +109,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Canalização",
     readTime: "4 min de leitura",
-    image: "/r6.jfif",
+    image: "/r6.jpg",
     excerpt: "Identifique rapidamente infiltrações e fugas ocultas para evitar estragos na estrutura e faturas de água inflacionadas em Aveiro.",
     content: [
       "Um aumento repentino na fatura de água sem alteração nos hábitos de consumo é o principal alerta de uma fuga de água oculta na instalação.",
@@ -141,7 +141,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Eletricidade",
     readTime: "6 min de leitura",
-    image: "/r8.jfif",
+    image: "/r8.jpg",
     excerpt: "Garanta a segurança da sua família substituindo fiação antiga por instalações elétricas certificadas e eficientes.",
     content: [
       "Muitas habitações construídas há mais de 30 anos em Aveiro ainda possuem quadros elétricos sem disjuntores diferenciais de proteção adequados ou condutores dimensionados para os eletrodomésticos modernos.",
@@ -157,7 +157,7 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Jorge Freitas",
     category: "Dicas de Construção",
     readTime: "7 min de leitura",
-    image: "/r9.jfif",
+    image: "/r9.jpg",
     excerpt: "Proteja o seu investimento aprendendo a verificar licenças, seguros e garantias antes de adjudicar a sua obra em Aveiro.",
     content: [
       "Adjudicar uma obra de remodelação requer confiança mútua e formalidade jurídica. Antes de entregar um sinal de pagamento a um empreiteiro em Aveiro, siga estes passos fundamentais:",

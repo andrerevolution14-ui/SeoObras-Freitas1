@@ -67,6 +67,7 @@ export function GoogleReviews() {
 
         {/* Reviews Grid */}
         <div
+          className="home-reviews-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))",
@@ -176,7 +177,7 @@ export function GoogleReviews() {
               }}
             >
               <Camera size={17} />
-              <span>Ver Todas as Reviews e Fotos de Obras Reais em Aveiro</span>
+              <span>Ver Opiniões e Fotos de Obras Reais</span>
               <ArrowRight size={16} />
             </Link>
 
@@ -187,6 +188,7 @@ export function GoogleReviews() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: "0.5rem",
                 color: "#071a3a",
                 fontWeight: 700,
@@ -208,6 +210,23 @@ export function GoogleReviews() {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .home-reviews-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.7rem !important;
+          }
+          .home-reviews-grid .testimonial-card {
+            padding: 0.85rem 0.75rem !important;
+          }
+          .home-reviews-grid .testimonial-card p {
+            font-size: 0.76rem !important;
+            line-height: 1.45 !important;
+            margin-bottom: 0.6rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

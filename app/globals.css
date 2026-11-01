@@ -534,12 +534,18 @@ body {
   overflow: visible;
 }
 
-/* ── Elegant Mobile Above-the-Fold Optimization ── */
+/* ── Elegant Mobile Above-the-Fold & Centering Optimization ── */
 @media (max-width: 768px) {
   /* Balanced, atmospheric top hero on mobile (not oversized, not squished) */
   main > section:first-of-type:not(.hero-section) {
     padding-top: 6rem !important;
     padding-bottom: 2.35rem !important;
+    text-align: center;
+  }
+
+  /* Keep multi-step form inside hero left-aligned for inputs */
+  main > section:first-of-type:not(.hero-section) #hero-form {
+    text-align: left;
   }
 
   /* Hide top breadcrumb trail on mobile for a cleaner editorial look */
@@ -547,23 +553,45 @@ body {
     display: none !important;
   }
 
-  /* Refined, commanding mobile heading & comfortable subtitle */
+  /* Refined, commanding mobile heading & comfortable centered subtitle */
   main > section:first-of-type:not(.hero-section) h1 {
     font-size: 1.85rem !important;
     line-height: 1.18 !important;
     margin-bottom: 0.75rem !important;
     letter-spacing: -0.02em !important;
+    text-align: center;
   }
 
   main > section:first-of-type:not(.hero-section) p:not(.section-eyebrow) {
     font-size: 0.9375rem !important;
     line-height: 1.55 !important;
     margin-bottom: 1.25rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+  }
+
+  /* Center CTA button rows inside mobile heroes */
+  main > section:first-of-type:not(.hero-section) .section-container > div[style*="flex"],
+  main > section:first-of-type:not(.hero-section) .section-container > div > div[style*="flex"] {
+    justify-content: center;
   }
 
   .clientes-hero-rating-box {
     width: 100%;
-    justify-content: space-between;
+    max-width: 420px;
+    margin: 0 auto;
+    justify-content: space-between !important;
     padding: 0.65rem 0.95rem !important;
+  }
+
+  /* Smooth, centered section titles across mobile */
+  .section-title {
+    font-size: 1.55rem !important;
+    line-height: 1.22 !important;
+  }
+  .section-subtitle {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
   }
 }
