@@ -32,7 +32,7 @@ export function ClientesWall() {
 
   return (
     <div>
-      {/* ── Barra de Filtros Elegante e Centrada ── */}
+      {/* ── Barra de Filtros Compacta e Centrada + Nota de Leitura ── */}
       <div className="clientes-filter-dock-wrap">
         <div className="clientes-filter-dock" role="tablist" aria-label="Filtrar obras e opiniões por categoria">
           {CLIENTES_CATEGORIES.map((cat) => {
@@ -53,6 +53,10 @@ export function ClientesWall() {
               </button>
             );
           })}
+        </div>
+        <div className="clientes-tap-hint">
+          <Maximize2 size={12} style={{ color: "#d97706", flexShrink: 0 }} />
+          <span>Pode tocar em qualquer avaliação ou foto para abrir e ler completa</span>
         </div>
       </div>
 
@@ -151,13 +155,16 @@ export function ClientesWall() {
                   </div>
                 </div>
 
-                {/* Rodapé discreto da marca */}
+                {/* Rodapé discreto da marca + Abrir review */}
                 <div className="editorial-brand-footer">
                   <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
                     <meta itemProp="name" content="Freitas Renovações LDA" />
-                    Grupo Freitas Renovações
+                    Freitas Renovações
                   </span>
-                  <span>Alvará IMPIC</span>
+                  <span className="clientes-open-review-label">
+                    <span>Abrir review</span>
+                    <Maximize2 size={10} />
+                  </span>
                 </div>
               </article>
             );
@@ -257,14 +264,14 @@ export function ClientesWall() {
                     </div>
                   </div>
 
-                  {/* Assinatura do Cliente */}
+                  {/* Assinatura do Cliente + Abrir review */}
                   <div
                     itemProp="author"
                     itemScope
                     itemType="https://schema.org/Person"
                     className="clientes-photo-author-row"
                   >
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <div itemProp="name" className="clientes-author-name">
                         {item.clientName}
                       </div>
@@ -273,9 +280,9 @@ export function ClientesWall() {
                       </div>
                     </div>
 
-                    <div className="clientes-verified-inline">
-                      <BadgeCheck size={13} />
-                      <span>Verificada</span>
+                    <div className="clientes-open-review-label">
+                      <span>Abrir review</span>
+                      <Maximize2 size={10} />
                     </div>
                   </div>
                 </div>
@@ -502,31 +509,54 @@ export function ClientesWall() {
         /* ── Barra de Filtros ── */
         .clientes-filter-dock-wrap {
           display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.55rem;
+          margin-bottom: 1.25rem;
+        }
+        .clientes-tap-hint {
+          display: inline-flex;
+          align-items: center;
           justify-content: center;
-          margin-bottom: 1.75rem;
+          gap: 0.35rem;
+          font-size: 0.74rem;
+          font-weight: 600;
+          color: #64748b;
+          text-align: center;
+        }
+        .clientes-open-review-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.22rem;
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: #d97706;
+          white-space: nowrap;
+          flex-shrink: 0;
         }
         .clientes-filter-dock {
           display: inline-flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 0.375rem;
+          gap: 0.35rem;
           background: #ffffff;
-          padding: 0.375rem;
+          padding: 0.32rem;
           border-radius: 999px;
           border: 1px solid #e2e8f0;
           box-shadow: 0 4px 20px rgba(7, 26, 58, 0.05);
+          max-width: 100%;
         }
         .clientes-filter-pill {
           display: inline-flex;
           align-items: center;
-          gap: 0.45rem;
-          padding: 0.52rem 1.1rem;
+          gap: 0.4rem;
+          padding: 0.45rem 0.95rem;
           border-radius: 999px;
           border: 1px solid transparent;
           background: transparent;
           color: #334155;
           font-weight: 600;
-          font-size: 0.875rem;
+          font-size: 0.84rem;
           white-space: nowrap;
           cursor: pointer;
           transition: all 0.18s ease;
@@ -545,9 +575,9 @@ export function ClientesWall() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 0.08rem 0.45rem;
+          padding: 0.06rem 0.4rem;
           border-radius: 999px;
-          font-size: 0.72rem;
+          font-size: 0.7rem;
           font-weight: 800;
           background: #f1f5f9;
           color: #64748b;
@@ -560,15 +590,20 @@ export function ClientesWall() {
         /* ── Grelha Unificada (CSS Grid em Desktop, Tablet e Mobile) ── */
         .clientes-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 1.5rem;
           align-items: stretch;
+          width: 100%;
+          max-width: 100%;
         }
 
         .clientes-card {
           transition: transform 0.22s ease, box-shadow 0.22s ease;
           cursor: pointer;
           height: 100%;
+          min-width: 0;
+          max-width: 100%;
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -925,7 +960,7 @@ export function ClientesWall() {
         /* ── Tablet (2 Colunas em Grade) ── */
         @media (max-width: 1024px) {
           .clientes-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.15rem;
           }
         }
@@ -933,32 +968,46 @@ export function ClientesWall() {
         /* ── Mobile (2 Colunas em Grade Elegante, Centrado e Suave) ── */
         @media (max-width: 768px) {
           .clientes-filter-dock-wrap {
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.9rem;
+            gap: 0.45rem;
+          }
+          .clientes-tap-hint {
+            font-size: 0.7rem;
           }
           .clientes-filter-dock {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            padding: 0;
-            gap: 0.42rem;
-            border-radius: 1rem;
-          }
-          .clientes-filter-pill {
-            padding: 0.48rem 0.9rem;
-            font-size: 0.82rem;
             background: #ffffff;
             border: 1px solid #dbe2ea;
-            box-shadow: 0 2px 6px rgba(7, 26, 58, 0.04);
+            box-shadow: 0 2px 10px rgba(7, 26, 58, 0.04);
+            padding: 0.25rem;
+            gap: 0.28rem;
+            border-radius: 0.75rem;
+          }
+          .clientes-filter-pill {
+            padding: 0.34rem 0.65rem;
+            font-size: 0.74rem;
+            gap: 0.28rem;
+            background: transparent;
+            border: none;
+            border-radius: 0.5rem;
           }
           .clientes-filter-pill.is-active {
-            border-color: #071a3a;
+            background: #071a3a;
+            color: #fbbf24;
+          }
+          .clientes-filter-count {
+            font-size: 0.64rem;
+            padding: 0.04rem 0.32rem;
           }
         }
 
         @media (max-width: 640px) {
           .clientes-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.65rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.55rem;
+          }
+          .clientes-open-review-label {
+            font-size: 0.58rem;
+            gap: 0.16rem;
           }
           .clientes-card-editorial {
             padding: 0.85rem 0.7rem;

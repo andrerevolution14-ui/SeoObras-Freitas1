@@ -34,7 +34,7 @@ export const CLIENTES_CATEGORIES: { id: ClienteCategory; label: string; count?: 
   { id: "casas-de-banho", label: "Casas de Banho", count: 6 },
   { id: "cozinhas", label: "Cozinhas", count: 5 },
   { id: "apartamentos-interiores", label: "Apartamentos", count: 7 },
-  { id: "moradias-fachadas", label: "Moradias & Exterior", count: 8 },
+  { id: "moradias-fachadas", label: "Moradias", count: 8 },
 ];
 
 export const CLIENTES_FEED_ITEMS: ClienteFeedItem[] = [

@@ -190,9 +190,9 @@ export default function ClientesPage() {
       <section
         aria-label="O que dizem os nossos clientes — Obras e remodelações reais em Aveiro"
         style={{
-          backgroundColor: "#071a3a",
+          backgroundColor: "#050e22",
           backgroundImage:
-            "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.55) 100%), url('/heroes/casal-sala-renovada.jpg')",
+            "linear-gradient(180deg, rgba(5, 14, 34, 0.90) 0%, rgba(7, 26, 58, 0.85) 55%, rgba(5, 14, 34, 0.92) 100%), url('/heroes/casal-sala-renovada.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -200,15 +200,36 @@ export default function ClientesPage() {
       >
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
-            <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Clientes</span>
+            <Link href="/" style={{ color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>Início</Link>
+            <span style={{ color: "rgba(255,255,255,0.4)" }}>›</span>
+            <span style={{ color: "#fbbf24", fontWeight: 600 }}>Clientes</span>
           </nav>
-          <p className="section-eyebrow">Obras Reais · Clientes Reais · ⭐ 4.9/5 Google</p>
-          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
+          <p className="section-eyebrow" style={{ color: "#fbbf24", textShadow: "0 1px 4px rgba(0,0,0,0.45)" }}>
+            Obras Reais · Clientes Reais · ⭐ 4.9/5 Google
+          </p>
+          <h1
+            style={{
+              fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
+              fontWeight: 900,
+              color: "#ffffff",
+              marginBottom: "0.875rem",
+              letterSpacing: "-0.02em",
+              textShadow: "0 2px 10px rgba(0,0,0,0.45)",
+            }}
+          >
             O que dizem os nossos clientes em Aveiro
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "580px", lineHeight: 1.65, marginBottom: "1.75rem" }}>
+          <p
+            style={{
+              color: "rgba(255,255,255,0.92)",
+              fontWeight: 500,
+              fontSize: "1rem",
+              maxWidth: "580px",
+              lineHeight: 1.65,
+              marginBottom: "1.75rem",
+              textShadow: "0 1px 6px rgba(0,0,0,0.55)",
+            }}
+          >
             Fotografias reais sem filtros e opiniões verificadas de proprietários em Aveiro, Esgueira,
             Aradas, São Bernardo, Oliveirinha e Ílhavo — prazos cumpridos e orçamento sem surpresas.
           </p>
@@ -228,7 +249,7 @@ export default function ClientesPage() {
       {/* ── 2. GRELHA PRINCIPAL DE REVIEWS & FOTOS REAIS ── */}
       <section
         style={{
-          padding: "1.75rem 0 4rem",
+          padding: "1.1rem 0 3.75rem",
           background: "#f1f5f9",
           borderBottom: "1px solid #e2e8f0",
         }}
