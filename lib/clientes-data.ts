@@ -30,11 +30,11 @@ export interface ClienteFeedItem {
 }
 
 export const CLIENTES_CATEGORIES: { id: ClienteCategory; label: string; count?: number }[] = [
-  { id: "all", label: "Todas as Avaliações & Fotos" },
+  { id: "all", label: "Tudo" },
   { id: "casas-de-banho", label: "Casas de Banho" },
   { id: "cozinhas", label: "Cozinhas" },
-  { id: "apartamentos-interiores", label: "Apartamentos & Interiores" },
-  { id: "moradias-fachadas", label: "Moradias, Fachadas & Raiz" },
+  { id: "apartamentos-interiores", label: "Apartamentos" },
+  { id: "moradias-fachadas", label: "Moradias & Exterior" },
 ];
 
 export const CLIENTES_FEED_ITEMS: ClienteFeedItem[] = [

@@ -24,134 +24,57 @@ import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export function ClientesWall() {
   const [selectedCategory, setSelectedCategory] = useState<ClienteCategory>("all");
-  const [formatFilter, setFormatFilter] = useState<"all" | "with-photo" | "text-only">("all");
   const [lightboxItem, setLightboxItem] = useState<ClienteFeedItem | null>(null);
 
-  const mainWallItems = CLIENTES_FEED_ITEMS.slice(0, 16).filter((item) => {
-    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-    const matchesFormat =
-      formatFilter === "all"
-        ? true
-        : formatFilter === "with-photo"
-        ? Boolean(item.image)
-        : item.type === "review-only";
-    return matchesCategory && matchesFormat;
-  });
+  const mainWallItems = CLIENTES_FEED_ITEMS.slice(0, 16).filter(
+    (item) => selectedCategory === "all" || item.category === selectedCategory
+  );
 
-  const bottomTextReviews = CLIENTES_FEED_ITEMS.slice(16).filter((item) => {
-    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-    const matchesFormat = formatFilter === "with-photo" ? false : true;
-    return matchesCategory && matchesFormat;
-  });
+  const bottomTextReviews = CLIENTES_FEED_ITEMS.slice(16).filter(
+    (item) => selectedCategory === "all" || item.category === selectedCategory
+  );
 
   return (
     <div>
-      {/* ── Barra de Filtros Rápida e Direta ── */}
+      {/* ── Barra de Filtros Compacta (1 Linha) ── */}
       <div
+        className="compact-filter-scroll"
         style={{
           display: "flex",
-          flexDirection: "column",
-          gap: "0.65rem",
-          marginBottom: "1.4rem",
-          alignItems: "center",
+          gap: "0.4rem",
+          marginBottom: "1rem",
+          overflowX: "auto",
+          paddingBottom: "0.2rem",
+          scrollbarWidth: "none",
+          justifyContent: "center",
         }}
       >
-        {/* Filtros por Tipologia de Obra */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.5rem",
-            justifyContent: "center",
-          }}
-        >
-          {CLIENTES_CATEGORIES.map((cat) => {
-            const isActive = selectedCategory === cat.id;
-            const count =
-              cat.id === "all"
-                ? CLIENTES_FEED_ITEMS.length
-                : CLIENTES_FEED_ITEMS.filter((i) => i.category === cat.id).length;
-
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setSelectedCategory(cat.id)}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.45rem",
-                  padding: "0.55rem 1.1rem",
-                  borderRadius: "2rem",
-                  border: isActive ? "2px solid #071a3a" : "1.5px solid #cbd5e1",
-                  background: isActive ? "#071a3a" : "#ffffff",
-                  color: isActive ? "#fbbf24" : "#334155",
-                  fontWeight: isActive ? 800 : 600,
-                  fontSize: "0.84rem",
-                  cursor: "pointer",
-                  transition: "all 0.18s ease",
-                  boxShadow: isActive ? "0 4px 14px rgba(7, 26, 58, 0.18)" : "none",
-                }}
-              >
-                <span>{cat.label}</span>
-                <span
-                  style={{
-                    fontSize: "0.7rem",
-                    padding: "0.08rem 0.45rem",
-                    borderRadius: "1rem",
-                    background: isActive ? "rgba(251, 191, 36, 0.2)" : "#f1f5f9",
-                    color: isActive ? "#fbbf24" : "#64748b",
-                    fontWeight: 700,
-                  }}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Sub-filtro opcional: Tudo | Com Fotos de Obra | Só Testemunhos */}
-        <div
-          style={{
-            display: "inline-flex",
-            background: "#e2e8f0",
-            padding: "0.25rem",
-            borderRadius: "0.5rem",
-            gap: "0.25rem",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          {[
-            { id: "all", label: "Mistura Completa (Fotos + Reviews)" },
-            { id: "with-photo", label: "📷 Com Foto da Obra" },
-            { id: "text-only", label: "💬 Só Avaliações Escritas" },
-          ].map((tab) => {
-            const active = formatFilter === tab.id;
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setFormatFilter(tab.id as "all" | "with-photo" | "text-only")}
-                style={{
-                  padding: "0.35rem 0.85rem",
-                  borderRadius: "0.375rem",
-                  border: "none",
-                  background: active ? "#ffffff" : "transparent",
-                  color: active ? "#071a3a" : "#475569",
-                  fontWeight: active ? 700 : 600,
-                  fontSize: "0.76rem",
-                  cursor: "pointer",
-                  boxShadow: active ? "0 1px 4px rgba(0,0,0,0.08)" : "none",
-                  transition: "all 0.15s ease",
-                }}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
+        {CLIENTES_CATEGORIES.map((cat) => {
+          const isActive = selectedCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => setSelectedCategory(cat.id)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "0.32rem 0.75rem",
+                borderRadius: "2rem",
+                border: isActive ? "1.5px solid #071a3a" : "1px solid #cbd5e1",
+                background: isActive ? "#071a3a" : "#ffffff",
+                color: isActive ? "#fbbf24" : "#475569",
+                fontWeight: isActive ? 700 : 600,
+                fontSize: "0.75rem",
+                whiteSpace: "nowrap",
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+              }}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* ── Mosaico Masonry de Clientes & Obras Reais ── */}
@@ -1099,9 +1022,15 @@ export function ClientesWall() {
             column-count: 2;
           }
         }
+        .compact-filter-scroll::-webkit-scrollbar {
+          display: none;
+        }
         @media (max-width: 680px) {
           .clientes-masonry {
             column-count: 1;
+          }
+          .compact-filter-scroll {
+            justify-content: flex-start !important;
           }
         }
       `}</style>

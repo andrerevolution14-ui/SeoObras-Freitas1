@@ -151,7 +151,7 @@ export default function CreditoObrasPage() {
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.55) 100%), url('/heroes/casal-chaves-casa.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "7.5rem 0 4.5rem",
+          padding: "5.25rem 0 2rem",
           position: "relative",
           overflow: "hidden",
         }}
@@ -160,11 +160,11 @@ export default function CreditoObrasPage() {
           {/* Breadcrumb */}
           <nav
             style={{
-              marginBottom: "1.25rem",
+              marginBottom: "0.75rem",
               display: "flex",
               gap: "0.5rem",
               alignItems: "center",
-              fontSize: "0.8125rem",
+              fontSize: "0.75rem",
             }}
           >
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>
@@ -178,20 +178,20 @@ export default function CreditoObrasPage() {
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: "0.5rem",
+              gap: "0.4rem",
               background: "rgba(16, 185, 129, 0.15)",
               border: "1px solid rgba(16, 185, 129, 0.4)",
               color: "#34d399",
               borderRadius: "2rem",
-              padding: "0.35rem 1rem",
-              fontSize: "0.75rem",
+              padding: "0.2rem 0.75rem",
+              fontSize: "0.6875rem",
               fontWeight: 700,
-              marginBottom: "1rem",
+              marginBottom: "0.6rem",
               letterSpacing: "0.04em",
               textTransform: "uppercase",
             }}
           >
-            <BadgeCheck size={15} />
+            <BadgeCheck size={13} />
             Serviço Parceiro 100% Gratuito · Banco de Portugal
           </div>
 
@@ -199,7 +199,7 @@ export default function CreditoObrasPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "1.2fr 0.8fr",
-              gap: "3rem",
+              gap: "2.25rem",
               alignItems: "center",
             }}
             id="credito-hero-grid"
@@ -207,11 +207,11 @@ export default function CreditoObrasPage() {
             <div>
               <h1
                 style={{
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
+                  fontSize: "clamp(1.65rem, 3.5vw, 2.5rem)",
                   fontWeight: 900,
                   color: "#ffffff",
                   lineHeight: 1.15,
-                  marginBottom: "1.25rem",
+                  marginBottom: "0.65rem",
                   letterSpacing: "-0.02em",
                 }}
               >
@@ -221,19 +221,17 @@ export default function CreditoObrasPage() {
               <p
                 style={{
                   color: "rgba(255,255,255,0.85)",
-                  fontSize: "1.0625rem",
-                  lineHeight: 1.7,
-                  marginBottom: "1.75rem",
-                  maxWidth: "580px",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.55,
+                  marginBottom: "1.15rem",
+                  maxWidth: "560px",
                 }}
               >
-                Na <strong>Freitas Renovações LDA</strong> ajudamos a concretizar a remodelação dos
-                seus sonhos sem comprometer o seu orçamento mensal. Através da nossa rede de
-                <strong> parceiros intermediários de crédito autorizados pelo Banco de Portugal</strong>,
-                encontramos a melhor solução de financiamento para a sua obra — <strong>sem qualquer custo para si</strong>.
+                Através de <strong>parceiros intermediários de crédito autorizados pelo Banco de Portugal</strong>,
+                encontramos a melhor solução de financiamento para a sua remodelação — <strong>100% gratuito para si</strong>.
               </p>
 
-              <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap", marginBottom: "2rem" }}>
+              <div style={{ display: "flex", gap: "0.65rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
                 <a
                   href={`https://wa.me/351961455997?text=${whatsappSimulationText}`}
                   target="_blank"
@@ -297,6 +295,7 @@ export default function CreditoObrasPage() {
 
             {/* Right Card — Value Card */}
             <div
+              className="credito-hero-card-desktop"
               style={{
                 background: "rgba(255,255,255,0.06)",
                 border: "1.5px solid rgba(251, 191, 36, 0.35)",
@@ -915,11 +914,15 @@ export default function CreditoObrasPage() {
         @media (max-width: 768px) {
           #credito-hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 2rem !important;
+            gap: 1rem !important;
+          }
+          .credito-hero-card-desktop {
+            display: none !important;
           }
           #credito-stats-row {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 1rem !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 0.5rem !important;
+            padding-top: 0.85rem !important;
           }
           #tabela-header, .tabela-row {
             grid-template-columns: 1fr 1fr !important;

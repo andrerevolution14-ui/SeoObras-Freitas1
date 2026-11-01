@@ -78,56 +78,26 @@ export default function AreasAtuacaoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(areasJsonLd) }}
       />
 
-      {/* Hero */}
+      {/* Hero Compacto */}
       <section
+        className="page-compact-hero"
         style={{
           backgroundColor: "#071a3a",
           backgroundImage:
             "linear-gradient(105deg, rgba(7, 26, 58, 0.88) 0%, rgba(7, 26, 58, 0.74) 55%, rgba(15, 45, 94, 0.50) 100%), url('/heroes/aveiro-ria-moliceiros.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "7.5rem 0 4rem",
+          padding: "5rem 0 1.25rem",
         }}
       >
         <div className="section-container">
-          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
-            <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Áreas de Atuação</span>
-          </nav>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.4rem",
-              background: "rgba(251, 191, 36, 0.15)",
-              border: "1px solid rgba(251, 191, 36, 0.35)",
-              color: "#fbbf24",
-              borderRadius: "2rem",
-              padding: "0.25rem 0.75rem",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              marginBottom: "1rem",
-            }}
-          >
-            <Sparkles size={13} /> Aveiro &amp; Concelhos Limítrofes
-          </div>
-          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
-            Obras e Remodelações em Aveiro &amp; Concelhos Vizinhos
+          <p className="section-eyebrow" style={{ color: "#fbbf24", marginBottom: "0.25rem" }}>Aveiro &amp; Concelhos Limítrofes</p>
+          <h1 style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.15rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.25rem", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+            Áreas de Atuação em Aveiro e Arredores
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.0625rem", maxWidth: "640px", lineHeight: 1.65, marginBottom: "1.75rem" }}>
-            A Freitas Renovações LDA atua com equipas dedicadas em todas as freguesias de Aveiro e nos municípios vizinhos de Ílhavo, Águeda, Estarreja, Vagos e na faixa costeira da Barra e Costa Nova.
+          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.85rem", maxWidth: "580px", lineHeight: 1.45, margin: 0 }}>
+            Todas as freguesias de Aveiro, Ílhavo, Águeda, Estarreja, Vagos e Costa Nova.
           </p>
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" id="areas-cta-phone">
-              <Phone size={16} />
-              Ligar: {CONTRACTOR_INFO.phoneDisplay}
-            </a>
-            <Link href="/orcamento" className="btn-secondary">
-              Pedir Orçamento Gratuito
-              <ArrowRight size={16} />
-            </Link>
-          </div>
         </div>
       </section>
 

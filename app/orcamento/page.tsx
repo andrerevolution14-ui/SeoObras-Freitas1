@@ -77,36 +77,31 @@ export default function OrcamentoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orcamentoJsonLd) }}
       />
 
-      {/* Hero */}
+      {/* Hero Compacto */}
       <section
+        className="page-compact-hero"
         style={{
           backgroundColor: "#071a3a",
           backgroundImage:
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.76) 55%, rgba(15, 45, 94, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "7.5rem 0 4rem",
+          padding: "5rem 0 1.25rem",
         }}
       >
         <div className="section-container">
-          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
-            <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Pedir Orçamento</span>
-          </nav>
-          <p className="section-eyebrow">Gratuito &amp; Sem Compromisso</p>
-          <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
-            Calculadora &amp; Pedido de Orçamento Gratuito em Aveiro
+          <p className="section-eyebrow" style={{ marginBottom: "0.25rem" }}>Gratuito &amp; Sem Compromisso</p>
+          <h1 style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.15rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.25rem", letterSpacing: "-0.02em", lineHeight: 1.15 }}>
+            Calculadora &amp; Pedido de Orçamento em Aveiro
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "1rem", maxWidth: "600px", lineHeight: 1.65 }}>
-            Simule o custo da sua obra na calculadora abaixo ou contacte diretamente. O empreiteiro Jorge Freitas responde pessoalmente
-            em 12 a 24 horas com uma primeira estimativa discriminada e proposta transparente.
+          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.85rem", maxWidth: "560px", lineHeight: 1.45, margin: 0 }}>
+            Simule o custo da sua obra abaixo ou envie o seu pedido — resposta em até 12h.
           </p>
         </div>
       </section>
 
       {/* Interactive Calculator Section */}
-      <div style={{ background: "#f8fafc", padding: "3rem 0 1rem" }}>
+      <div style={{ background: "#f8fafc", padding: "1.25rem 0 1rem" }}>
         <CostCalculator idPrefix="orcamento-page-calc" embedded={false} />
       </div>
 

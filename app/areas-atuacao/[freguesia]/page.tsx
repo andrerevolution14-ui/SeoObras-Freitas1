@@ -123,13 +123,13 @@ export default async function ParishPage({ params }: Props) {
             "linear-gradient(105deg, rgba(7, 26, 58, 0.90) 0%, rgba(7, 26, 58, 0.78) 55%, rgba(15, 45, 94, 0.58) 100%), url('/heroes/aveiro-barra-costa.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          padding: "7.5rem 0 4rem",
+          padding: "5.25rem 0 2.25rem",
           position: "relative",
           overflow: "hidden",
         }}
       >
         <div className="section-container" style={{ position: "relative", zIndex: 1 }}>
-          <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
+          <nav style={{ marginBottom: "0.75rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.75rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
             <Link href="/areas-atuacao" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Áreas</Link>
@@ -137,78 +137,79 @@ export default async function ParishPage({ params }: Props) {
             <span style={{ color: "#fbbf24" }}>{parish.name}</span>
           </nav>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "3.5rem", alignItems: "start" }} className="parish-hero-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: "2.5rem", alignItems: "start" }} className="parish-hero-grid">
             <div>
               <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "0.5rem",
+                  gap: "0.4rem",
                   background: "rgba(251, 191, 36, 0.15)",
                   border: "1px solid rgba(251, 191, 36, 0.3)",
                   color: "#fef08a",
                   borderRadius: "2rem",
-                  padding: "0.35rem 0.875rem",
-                  fontSize: "0.75rem",
+                  padding: "0.2rem 0.65rem",
+                  fontSize: "0.6875rem",
                   fontWeight: 700,
-                  marginBottom: "1.25rem",
+                  marginBottom: "0.5rem",
                 }}
               >
-                <MapPin size={13} />
+                <MapPin size={11} />
                 <span>{parish.isNeighboringCounty ? `Concelho Vizinho Atendido` : `Freguesia de Aveiro`}</span>
               </div>
 
               <h1
                 style={{
-                  fontSize: "clamp(1.875rem, 4vw, 2.75rem)",
+                  fontSize: "clamp(1.65rem, 3.5vw, 2.5rem)",
                   fontWeight: 900,
                   color: "#ffffff",
                   lineHeight: 1.15,
-                  marginBottom: "1rem",
+                  marginBottom: "0.65rem",
                   letterSpacing: "-0.02em",
                 }}
               >
                 {seo.h1}
               </h1>
 
-              <p style={{ color: "rgba(255,255,255,0.78)", fontSize: "1.0625rem", lineHeight: 1.65, marginBottom: "1.5rem" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.95rem", lineHeight: 1.55, marginBottom: "1rem" }}>
                 {seo.intro}
               </p>
 
-              {/* Local AEO Snapshot */}
+              {/* Local AEO Snapshot — Desktop only in hero to keep mobile direct */}
               <div
+                className="parish-hero-desktop-only"
                 style={{
                   background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(251, 191, 36, 0.25)",
                   borderRadius: "0.5rem",
-                  padding: "1rem 1.25rem",
-                  marginBottom: "1.5rem",
+                  padding: "0.875rem 1.125rem",
+                  marginBottom: "1.15rem",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#fbbf24", fontSize: "0.8125rem", fontWeight: 800, marginBottom: "0.35rem" }}>
-                  <Sparkles size={14} /> Atuação Técnica &amp; Orçamento Rápido em {parish.name}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#fbbf24", fontSize: "0.75rem", fontWeight: 800, marginBottom: "0.3rem" }}>
+                  <Sparkles size={13} /> Atuação Técnica &amp; Orçamento Rápido em {parish.name}
                 </div>
-                <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.875rem", lineHeight: 1.55, margin: 0 }}>
+                <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.8125rem", lineHeight: 1.5, margin: 0 }}>
                   {seo.directAnswer}
                 </p>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem", marginBottom: "1.75rem" }}>
+              <div className="parish-hero-desktop-only" style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.25rem" }}>
                 {[
-                  { icon: <Clock size={16} />, text: `Resposta até 12 horas para orçamentos em ${parish.name}` },
-                  { icon: <CheckCircle size={16} />, text: "Orçamento gratuito, detalhado e com preços justos" },
-                  { icon: <Shield size={16} />, text: "Empresa licenciada com Alvará de Construção IMPIC" },
+                  { icon: <Clock size={15} />, text: `Resposta até 12 horas para orçamentos em ${parish.name}` },
+                  { icon: <CheckCircle size={15} />, text: "Orçamento gratuito, detalhado e com preços justos" },
+                  { icon: <Shield size={15} />, text: "Empresa licenciada com Alvará de Construção IMPIC" },
                 ].map((item) => (
-                  <div key={item.text} style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                  <div key={item.text} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                     <span style={{ color: "#fbbf24" }}>{item.icon}</span>
-                    <span style={{ color: "rgba(255,255,255,0.88)", fontSize: "0.875rem" }}>{item.text}</span>
+                    <span style={{ color: "rgba(255,255,255,0.88)", fontSize: "0.8125rem" }}>{item.text}</span>
                   </div>
                 ))}
               </div>
 
-              <div style={{ display: "flex", gap: "0.875rem", flexWrap: "wrap" }}>
-                <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ fontSize: "0.9375rem" }}>
-                  <Phone size={18} />
+              <div className="parish-hero-desktop-only" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ fontSize: "0.875rem", padding: "0.65rem 1.15rem" }}>
+                  <Phone size={16} />
                   Ligar: {CONTRACTOR_INFO.phoneDisplay}
                 </a>
                 <a
@@ -217,18 +218,18 @@ export default async function ParishPage({ params }: Props) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "0.5rem",
-                    padding: "0.75rem 1.25rem",
+                    padding: "0.65rem 1.15rem",
                     borderRadius: "0.375rem",
                     background: "rgba(255,255,255,0.1)",
                     border: "1.5px solid rgba(255,255,255,0.25)",
                     color: "#ffffff",
                     textDecoration: "none",
-                    fontSize: "0.9375rem",
+                    fontSize: "0.875rem",
                     fontWeight: 700,
                   }}
                 >
                   Pedir Orçamento Grátis
-                  <ArrowRight size={15} />
+                  <ArrowRight size={14} />
                 </a>
               </div>
             </div>
@@ -240,7 +241,8 @@ export default async function ParishPage({ params }: Props) {
         </div>
         <style>{`
           @media (max-width: 900px) {
-            .parish-hero-grid { grid-template-columns: 1fr !important; gap: 2.25rem !important; }
+            .parish-hero-grid { grid-template-columns: 1fr !important; gap: 0.85rem !important; }
+            .parish-hero-desktop-only { display: none !important; }
           }
         `}</style>
       </section>
