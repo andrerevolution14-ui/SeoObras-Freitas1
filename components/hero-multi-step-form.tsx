@@ -323,7 +323,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
             exit="exit"
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* STEP 1: Service selection (Apenas as 6 opções originais) */}
+            {/* STEP 1: Service selection */}
             {step === 1 && (
               <div className="form-service-grid">
                 {FORM_SERVICES.map((service) => {
@@ -337,31 +337,46 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         setFormData((d) => ({ ...d, service: service.slug }));
                       }}
                       style={{
-                        padding: "0.875rem 0.75rem",
+                        padding: "0.85rem 0.875rem",
                         border: `1.5px solid ${isSelected ? "#f59e0b" : "#cbd5e1"}`,
                         borderRadius: "0.375rem",
                         background: isSelected ? "rgba(251, 191, 36, 0.1)" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        gap: "0.375rem",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: "0.65rem",
                         transition: "all 0.15s ease",
                         textAlign: "left",
+                        minWidth: 0,
                       }}
                     >
-                      <span style={{ color: isSelected ? "#d97706" : "#475569" }}>
+                      <span
+                        style={{
+                          color: isSelected ? "#d97706" : "#475569",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                        }}
+                      >
                         {serviceIcons[service.icon]}
                       </span>
                       <span
                         style={{
                           fontWeight: 700,
                           fontSize: "0.8125rem",
-                          color: isSelected ? "#071a3a" : "#334155",
+                          color: "#071a3a",
+                          lineHeight: 1.25,
+                          flex: 1,
+                          minWidth: 0,
                         }}
                       >
                         {service.shortTitle}
                       </span>
+                      {isSelected && (
+                        <CheckCircle size={16} style={{ color: "#d97706", flexShrink: 0 }} />
+                      )}
                     </button>
                   );
                 })}

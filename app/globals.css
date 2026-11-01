@@ -518,63 +518,63 @@ main {
     font-size: 16px !important;
   }
 
-  /* Compact form header, body, service cards & footer so full form fits above fold */
+  /* Balanced form header, body, service cards & footer matching all steps */
   .hero-form-header {
-    padding: 0.65rem 0.875rem 0.55rem !important;
+    padding: 0.85rem 1rem 0.75rem !important;
   }
 
   .hero-form-header > div:first-child {
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
-  .hero-form-header p {
-    margin-top: 0.45rem !important;
-    font-size: 0.875rem !important;
+  .hero-form-header h3 {
+    margin-top: 0.6rem !important;
+    font-size: 0.95rem !important;
   }
 
   .hero-form-body {
-    padding: 0.65rem 0.75rem !important;
+    padding: 0.9rem 0.95rem !important;
     min-height: auto !important;
   }
 
   .form-service-grid {
-    gap: 0.4rem !important;
+    gap: 0.625rem !important;
   }
 
   .form-service-grid button {
     flex-direction: row !important;
     align-items: center !important;
-    padding: 0.48rem 0.6rem !important;
-    gap: 0.4rem !important;
+    padding: 0.72rem 0.7rem !important;
+    gap: 0.55rem !important;
     min-height: 0 !important;
   }
 
   .form-service-grid button svg {
-    width: 15px !important;
-    height: 15px !important;
+    width: 18px !important;
+    height: 18px !important;
     flex-shrink: 0;
   }
 
   .form-service-grid button span {
-    font-size: 0.75rem !important;
-    line-height: 1.15 !important;
+    font-size: 0.78rem !important;
+    line-height: 1.22 !important;
   }
 
   .hero-form-footer {
-    padding: 0.55rem 0.75rem 0.65rem !important;
+    padding: 0.75rem 0.95rem 0.85rem !important;
   }
 
   .hero-form-footer .btn-primary {
-    padding: 0.6rem 1rem !important;
-    font-size: 0.875rem !important;
+    padding: 0.7rem 1rem !important;
+    font-size: 0.9rem !important;
   }
 }
 
 /* Step 1 service selector: 2-col on all screens */
 .form-service-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.625rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
 }
 
 /* Ensure form body content doesn't clip on mobile */
