@@ -1,170 +1,165 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, Calendar, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { REAL_PROJECTS } from "@/lib/constants";
 
 export function RealProjectsGallery() {
   return (
     <section className="section-padding" id="projetos-realizados" style={{ background: "#ffffff" }}>
       <div className="section-container">
-        {/* Section Header */}
-        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-          <p className="section-eyebrow">Trabalhos Concluídos</p>
-          <h2 className="section-title">
-            Projetos Realizados em Aveiro (2022–2026)
-          </h2>
-          <p className="section-subtitle" style={{ margin: "0 auto" }}>
-            Conheça alguns dos trabalhos efetuados pela equipa do Jorge Freitas com preços justos, transparência e elevada qualidade técnica.
-          </p>
+        {/* Cabeçalho */}
+        <div className="gf-proj-head">
+          <div>
+            <p className="section-eyebrow">Trabalhos Concluídos</p>
+            <h2 className="section-title" style={{ marginBottom: 0 }}>
+              Projetos Realizados em Aveiro (2022–2026)
+            </h2>
+          </div>
+          <div>
+            <p className="section-subtitle" style={{ marginBottom: "1.5rem" }}>
+              Conheça alguns dos trabalhos efetuados pela equipa do Jorge Freitas com preços justos, transparência e elevada qualidade técnica.
+            </p>
+            <Link href="/projetos" className="link-arrow">
+              Ver galeria completa de projetos <ArrowRight size={15} />
+            </Link>
+          </div>
         </div>
 
-        {/* 2x2 Grid for 4 Real Projects */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.5rem",
-          }}
-        >
-          {REAL_PROJECTS.map((project) => (
-            <div
-              key={project.id}
-              className="card-hover"
-              style={{
-                background: "#ffffff",
-                borderRadius: "0.5rem",
-                overflow: "hidden",
-                border: "1.5px solid #e2e8f0",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {/* Project Image */}
-              <div style={{ position: "relative", height: "230px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
+        {/* Grelha editorial */}
+        <div className="gf-proj-grid">
+          {REAL_PROJECTS.map((project, i) => (
+            <article key={project.id} className="gf-proj">
+              <Link href="/#hero-form" className="gf-proj-media photo-slot" aria-label={`Pedir orçamento para obra idêntica: ${project.title}`}>
                 <Image
                   src={project.image}
                   alt={project.altText || `${project.title} em ${project.parish} Aveiro`}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   loading="lazy"
-                  quality={75}
-                  style={{
-                    objectFit: "cover",
-                    transition: "transform 0.3s ease",
-                  }}
+                  quality={80}
+                  style={{ objectFit: "cover" }}
                 />
-
-                {/* Service Tag */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "0.75rem",
-                    left: "0.75rem",
-                    background: "rgba(7, 26, 58, 0.9)",
-                    color: "#fbbf24",
-                    fontSize: "0.6875rem",
-                    fontWeight: 800,
-                    padding: "0.25rem 0.625rem",
-                    borderRadius: "0.25rem",
-                    backdropFilter: "blur(4px)",
-                    border: "1px solid rgba(251, 191, 36, 0.3)",
-                  }}
-                >
-                  {project.service}
-                </div>
-
-                {/* Year Tag */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "0.75rem",
-                    right: "0.75rem",
-                    background: "rgba(245, 158, 11, 0.95)",
-                    color: "#071a3a",
-                    fontSize: "0.6875rem",
-                    fontWeight: 900,
-                    padding: "0.25rem 0.625rem",
-                    borderRadius: "0.25rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.25rem",
-                  }}
-                >
-                  <Calendar size={12} />
-                  {project.year}
-                </div>
-
-                {/* Concluído Badge */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "0.75rem",
-                    left: "0.75rem",
-                    background: "rgba(34, 197, 94, 0.9)",
-                    color: "#ffffff",
-                    fontSize: "0.6875rem",
-                    fontWeight: 700,
-                    padding: "0.2rem 0.5rem",
-                    borderRadius: "0.25rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.25rem",
-                  }}
-                >
-                  <CheckCircle size={12} />
-                  Resultado Final
-                </div>
-              </div>
-
-              {/* Content Body */}
-              <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <span className="gf-proj-year">{project.year}</span>
+                <span className="gf-proj-cta">
+                  Pedir orçamento para obra idêntica <ArrowUpRight size={15} />
+                </span>
+              </Link>
+              <div className="gf-proj-body">
+                <span className="gf-proj-index font-display">{String(i + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#071a3a", marginBottom: "0.375rem" }}>
-                    {project.title}
-                  </h3>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.375rem", color: "#64748b", fontSize: "0.8125rem", marginBottom: "0.75rem" }}>
-                    <MapPin size={13} style={{ color: "#f59e0b" }} />
-                    <span>{project.parish}</span>
-                  </div>
-
-                  <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.6 }}>
-                    {project.description}
+                  <p className="gf-proj-meta">
+                    {project.service} <span>·</span> {project.parish}
                   </p>
-                </div>
-
-                <div style={{ marginTop: "1.25rem", paddingTop: "0.875rem", borderTop: "1px solid #f1f5f9" }}>
-                  <Link
-                    href="/#hero-form"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.375rem",
-                      color: "#d97706",
-                      fontWeight: 700,
-                      fontSize: "0.875rem",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <span>Pedir orçamento para obra idêntica</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  <h3 className="gf-proj-title">{project.title}</h3>
+                  <p className="gf-proj-desc">{project.description}</p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div style={{ textAlign: "center", marginTop: "2.25rem" }}>
-          <Link href="/projetos" className="btn-primary" style={{ display: "inline-flex" }}>
+        <div style={{ marginTop: "4rem", display: "flex", justifyContent: "center" }}>
+          <Link href="/projetos" className="btn-dark">
             Ver Galeria Completa de Projetos
             <ArrowRight size={16} />
           </Link>
         </div>
       </div>
+
+      <style>{`
+        .gf-proj-head {
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 4rem;
+          align-items: end;
+          margin-bottom: 4.5rem;
+        }
+        .gf-proj-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          column-gap: 2.5rem;
+          row-gap: 4.5rem;
+        }
+        .gf-proj:nth-child(even) { margin-top: 6rem; }
+        .gf-proj-media {
+          display: block;
+          aspect-ratio: 4 / 3;
+          text-decoration: none;
+        }
+        .gf-proj-media::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(11, 27, 46, 0) 50%, rgba(11, 27, 46, 0.75) 100%);
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+        .gf-proj-media:hover::after { opacity: 1; }
+        .gf-proj-year {
+          position: absolute;
+          top: 1.25rem;
+          left: 1.25rem;
+          z-index: 2;
+          background: rgba(11, 27, 46, 0.85);
+          color: #ffffff;
+          font-size: 0.6875rem;
+          letter-spacing: 0.18em;
+          font-weight: 600;
+          padding: 0.45rem 0.75rem;
+          backdrop-filter: blur(6px);
+        }
+        .gf-proj-cta {
+          position: absolute;
+          left: 1.5rem;
+          bottom: 1.25rem;
+          z-index: 2;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          color: #ffffff;
+          font-size: 0.875rem;
+          font-weight: 600;
+          opacity: 0;
+          transform: translateY(8px);
+          transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .gf-proj-media:hover .gf-proj-cta { opacity: 1; transform: none; }
+        .gf-proj-body {
+          display: grid;
+          grid-template-columns: 3.25rem 1fr;
+          gap: 0.5rem;
+          padding-top: 1.75rem;
+        }
+        .gf-proj-index { color: #B8935A; font-size: 0.9375rem; font-weight: 500; padding-top: 0.15rem; }
+        .gf-proj-meta {
+          font-size: 0.6875rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #6B7480;
+          font-weight: 500;
+          margin-bottom: 0.625rem;
+        }
+        .gf-proj-meta span { color: #B8935A; margin: 0 0.35rem; }
+        .gf-proj-title {
+          font-size: clamp(1.375rem, 2vw, 1.75rem);
+          font-weight: 600;
+          color: #0B1B2E;
+          letter-spacing: -0.03em;
+          line-height: 1.15;
+          margin-bottom: 0.75rem;
+        }
+        .gf-proj-desc { color: #5A6472; font-size: 0.9375rem; line-height: 1.7; max-width: 480px; }
+        @media (max-width: 900px) {
+          .gf-proj-head { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+          .gf-proj:nth-child(even) { margin-top: 0; }
+        }
+        @media (max-width: 640px) {
+          .gf-proj-grid { grid-template-columns: 1fr; row-gap: 3rem; }
+          .gf-proj-body { grid-template-columns: 2.5rem 1fr; padding-top: 1.25rem; }
+          .gf-proj-cta { opacity: 1; transform: none; font-size: 0.8125rem; }
+          .gf-proj-media::after { opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }

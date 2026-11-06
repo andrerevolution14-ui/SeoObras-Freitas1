@@ -2,37 +2,47 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  Menu,
-  X,
-  Phone,
-  ChevronDown,
-  Calculator,
-  FileSpreadsheet,
-  Ruler,
-  CheckSquare,
-  Building2,
-  CreditCard,
-} from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
+import { BrandLogo } from "@/components/brand-logo";
+
+const TOOLS_MENU_ITEMS = [
+  {
+    title: "Calculadora de Orçamento",
+    desc: "Simule custos de obras e remodelações em Aveiro em tempo real.",
+    href: "/orcamento",
+  },
+  {
+    title: "Preços Reais & Tabela m²",
+    desc: "Casos reais concluídos em Aveiro com custos discriminados.",
+    href: "/precos-reais",
+  },
+  {
+    title: "Crédito para Obras",
+    desc: "Intermediação parceira 100% gratuita para financiar a sua remodelação.",
+    href: "/credito-obras",
+  },
+];
+
+const NAV_LINKS = [
+  { href: "/servicos", label: "Serviços" },
+  { href: "/projetos", label: "Projetos" },
+  { href: "/clientes", label: "Clientes" },
+];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(true);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fechar dropdown ao clicar fora
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -43,106 +53,50 @@ export function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const TOOLS_MENU_ITEMS = [
-    {
-      title: "Calculadora de Orçamento",
-      desc: "Simule custos de obras e remodelações em Aveiro em tempo real",
-      href: "/orcamento",
-      icon: <Calculator size={18} style={{ color: "#fbbf24" }} />,
-      badge: "Interativo",
-      badgeColor: "#fbbf24",
-    },
-    {
-      title: "Preços Reais & Tabela m²",
-      desc: "Casos reais concluídos em Aveiro com custos discriminados",
-      href: "/precos-reais",
-      icon: <FileSpreadsheet size={18} style={{ color: "#38bdf8" }} />,
-      badge: "Transparência",
-      badgeColor: "#38bdf8",
-    },
-    {
-      title: "Crédito para Obras",
-      desc: "Intermediação parceira 100% gratuita para financiar remodelações",
-      href: "/credito-obras",
-      icon: <CreditCard size={18} style={{ color: "#10b981" }} />,
-      badge: "100% Grátis",
-      badgeColor: "#10b981",
-    },
-  ];
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  const solid = isScrolled || isMobileMenuOpen;
 
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        transition: "all 0.3s ease",
-        background: isScrolled ? "rgba(7, 26, 58, 0.98)" : "rgba(7, 26, 58, 0.95)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
-        boxShadow: isScrolled ? "0 4px 20px rgba(0,0,0,0.3)" : "none",
-      }}
-    >
-
-      {/* Menu Principal */}
-      <div
-        className="section-container"
-        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "66px" }}
-      >
-        {/* Logótipo Oficial */}
-        <Link
-          href="/"
-          style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}
-        >
-          <Image
-            src="/logo1s.png"
-            alt="Logótipo da Freitas Renovações LDA — Empreiteiro Licenciado em Aveiro"
-            width={160}
-            height={42}
-            priority
-            style={{
-              height: "42px",
-              width: "auto",
-              objectFit: "contain",
-              display: "block",
-            }}
-          />
-          <div>
-            <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "1rem", lineHeight: 1.1 }}>
-              Freitas Renovações
-            </div>
-            <div style={{ color: "#fbbf24", fontSize: "0.625rem", letterSpacing: "0.06em", fontWeight: 700 }}>
-              EMPREITEIRO AVEIRO
-            </div>
+    <header className={`gf-header ${solid ? "is-solid" : ""}`}>
+      {/* Barra institucional (desktop) */}
+      <div className="gf-topbar hidden-mobile">
+        <div className="section-container gf-topbar-inner">
+          <div className="gf-topbar-left">
+            <span>{CONTRACTOR_INFO.alvaraNumber}</span>
+            <span className="gf-dot" />
+            <span>Aveiro e concelhos limítrofes</span>
+            <span className="gf-dot" />
+            <span>Seg–Sex 08:00–18:00 · Sáb 09:00–13:00</span>
           </div>
-        </Link>
+          <div className="gf-topbar-right">
+            <a href="/clientes" className="gf-topbar-link">
+              <Star size={11} fill="#C9A86A" stroke="#C9A86A" />
+              {CONTRACTOR_INFO.googleRating} no Google · {CONTRACTOR_INFO.reviewCount} avaliações
+            </a>
+            <a href={`mailto:${CONTRACTOR_INFO.email}`} className="gf-topbar-link">
+              {CONTRACTOR_INFO.email}
+            </a>
+          </div>
+        </div>
+      </div>
 
-        {/* Navegação Desktop */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "1.15rem" }} className="hidden-mobile">
-          <Link
-            href="/clientes"
-            className="nav-link"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.3rem",
-              color: "#fbbf24",
-              fontWeight: 800,
-              background: "rgba(251, 191, 36, 0.12)",
-              border: "1px solid rgba(251, 191, 36, 0.3)",
-              padding: "0.3rem 0.65rem",
-              borderRadius: "0.375rem",
-            }}
-          >
-            <span>⭐ Clientes</span>
-          </Link>
-          <Link href="/servicos" className="nav-link">Serviços</Link>
-          <Link href="/projetos" className="nav-link">Projetos</Link>
+      {/* Navegação principal */}
+      <div className="section-container gf-nav-row">
+        <BrandLogo tone="light" size="md" />
 
-          {/* Menu Pendente (Dropdown) Ferramentas & Preços */}
+        <nav className="gf-nav hidden-mobile" aria-label="Navegação principal">
+          {NAV_LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className="gf-nav-link">
+              {l.label}
+            </Link>
+          ))}
+
           <div
             ref={dropdownRef}
             style={{ position: "relative" }}
@@ -151,310 +105,285 @@ export function Header() {
           >
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.35rem",
-                background: isDropdownOpen ? "rgba(251, 191, 36, 0.12)" : "transparent",
-                border: isDropdownOpen ? "1px solid rgba(251, 191, 36, 0.35)" : "1px solid transparent",
-                borderRadius: "0.375rem",
-                padding: "0.35rem 0.65rem",
-                color: isDropdownOpen ? "#fbbf24" : "#e2e8f0",
-                cursor: "pointer",
-                fontSize: "0.875rem",
-                fontWeight: 600,
-                transition: "all 0.2s ease",
-              }}
+              className="gf-nav-link gf-nav-button"
               aria-expanded={isDropdownOpen}
               aria-haspopup="true"
             >
-              <span>Ferramentas &amp; Preços</span>
+              Preços &amp; Ferramentas
               <ChevronDown
                 size={14}
-                style={{
-                  color: "#fbbf24",
-                  transition: "transform 0.25s ease",
-                  transform: isDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                }}
+                style={{ transition: "transform 0.25s ease", transform: isDropdownOpen ? "rotate(180deg)" : "none" }}
               />
             </button>
 
-            {/* Caixa Pendente Dropdown no PC */}
             {isDropdownOpen && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "calc(100% + 4px)",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "350px",
-                  background: "rgba(7, 26, 58, 0.98)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  border: "1.5px solid rgba(251, 191, 36, 0.35)",
-                  borderRadius: "0.75rem",
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255,255,255,0.08)",
-                  padding: "0.6rem",
-                  zIndex: 100,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.25rem",
-                  animation: "dropdownFadeIn 0.2s ease",
-                }}
-              >
-                <div
-                  style={{
-                    padding: "0.35rem 0.6rem 0.5rem",
-                    borderBottom: "1px solid rgba(255,255,255,0.08)",
-                    fontSize: "0.6875rem",
-                    fontWeight: 800,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    color: "#fbbf24",
-                  }}
-                >
-                  Ferramentas &amp; Custos em Aveiro
-                </div>
-
+              <div className="gf-dropdown">
                 {TOOLS_MENU_ITEMS.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsDropdownOpen(false)}
-                    className="tools-dropdown-link"
-                    style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: "0.75rem",
-                      padding: "0.6rem 0.75rem",
-                      borderRadius: "0.5rem",
-                      textDecoration: "none",
-                      transition: "all 0.15s ease",
-                      border: "1px solid transparent",
-                    }}
+                    className="gf-dropdown-link"
                   >
-                    <div
-                      style={{
-                        padding: "0.4rem",
-                        borderRadius: "0.375rem",
-                        background: "rgba(255,255,255,0.06)",
-                        flexShrink: 0,
-                        marginTop: "2px",
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
-                        <span style={{ color: "#ffffff", fontWeight: 700, fontSize: "0.875rem" }}>
-                          {item.title}
-                        </span>
-                        <span
-                          style={{
-                            fontSize: "0.625rem",
-                            padding: "0.1rem 0.4rem",
-                            borderRadius: "1rem",
-                            background: `${item.badgeColor}20`,
-                            color: item.badgeColor,
-                            fontWeight: 700,
-                            border: `1px solid ${item.badgeColor}40`,
-                          }}
-                        >
-                          {item.badge}
-                        </span>
-                      </div>
-                      <div style={{ color: "#94a3b8", fontSize: "0.71875rem", marginTop: "2px", lineHeight: 1.35 }}>
-                        {item.desc}
-                      </div>
-                    </div>
+                    <span className="gf-dropdown-title">
+                      {item.title}
+                      <ArrowUpRight size={14} />
+                    </span>
+                    <span className="gf-dropdown-desc">{item.desc}</span>
                   </Link>
                 ))}
               </div>
             )}
           </div>
 
-          <Link href="/sobre" className="nav-link">Sobre Nós</Link>
-          <Link href="/orcamento" className="nav-link" style={{ color: "#fbbf24", fontWeight: 800 }}>Orçamento</Link>
+          <Link href="/sobre" className="gf-nav-link">Sobre Nós</Link>
         </nav>
 
-        {/* Botão de Chamada CTA */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }} className="hidden-mobile">
-          <a
-            href={`tel:${CONTRACTOR_INFO.phone}`}
-            id="header-cta-phone"
-            className="btn-primary"
-            style={{ padding: "0.5rem 1rem", fontSize: "0.8125rem" }}
-          >
-            <Phone size={14} />
+        <div className="gf-nav-cta hidden-mobile">
+          <a href={`tel:${CONTRACTOR_INFO.phone}`} id="header-cta-phone" className="gf-phone">
+            <Phone size={15} />
             <span>{CONTRACTOR_INFO.phoneDisplay}</span>
           </a>
+          <Link href="/orcamento" className="btn-primary" style={{ padding: "0.7rem 1.25rem", fontSize: "0.8125rem" }}>
+            Pedir Orçamento
+          </Link>
         </div>
 
-        {/* Botão Hambúrguer Mobile */}
-        <div style={{ display: "none", alignItems: "center", gap: "0.5rem" }} className="mobile-controls">
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              color: "#ffffff",
-              padding: "0.45rem",
-              borderRadius: "0.25rem",
-              cursor: "pointer",
-            }}
-            aria-label="Abrir Menu"
-          >
-            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="mobile-controls gf-burger"
+          aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
-      {/* Menu Gaveta Mobile */}
+      {/* Menu mobile */}
       {isMobileMenuOpen && (
-        <div
-          style={{
-            background: "#071a3a",
-            borderTop: "1px solid rgba(255,255,255,0.08)",
-            padding: "1rem 1.25rem 1.75rem",
-            maxHeight: "calc(100vh - 100px)",
-            overflowY: "auto",
-          }}
-        >
-          {/* Seção Ferramentas & Preços em Acordeão */}
-          <div style={{ marginBottom: "1rem" }}>
-            <button
-              onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                background: "rgba(251, 191, 36, 0.12)",
-                border: "1px solid rgba(251, 191, 36, 0.25)",
-                padding: "0.6rem 0.85rem",
-                borderRadius: "0.375rem",
-                color: "#fbbf24",
-                fontWeight: 800,
-                fontSize: "0.8125rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                cursor: "pointer",
-                marginBottom: "0.5rem",
-              }}
-            >
-              <span>Ferramentas &amp; Preços Aveiro</span>
-              <ChevronDown
-                size={16}
-                style={{
-                  transition: "transform 0.2s ease",
-                  transform: isMobileDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                }}
-              />
-            </button>
-
-            {isMobileDropdownOpen && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem", paddingLeft: "0.25rem" }}>
-                {TOOLS_MENU_ITEMS.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.6rem",
-                      padding: "0.55rem 0.75rem",
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      borderRadius: "0.375rem",
-                      color: "#e2e8f0",
-                      textDecoration: "none",
-                      fontSize: "0.8125rem",
-                    }}
-                  >
-                    {item.icon}
-                    <span style={{ fontWeight: 600 }}>{item.title}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Navegação Geral */}
-          <nav style={{ display: "flex", flexDirection: "column", gap: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "0.75rem" }}>
+        <div className="gf-mobile-menu">
+          <nav style={{ display: "flex", flexDirection: "column" }}>
             {[
               { href: "/", label: "Início" },
-              { href: "/clientes", label: "⭐ Clientes & Obras Reais (Aveiro)" },
-              { href: "/servicos", label: "Serviços de Obras" },
-              { href: "/projetos", label: "Portfólio de Projetos" },
+              { href: "/servicos", label: "Serviços" },
+              { href: "/projetos", label: "Projetos" },
+              { href: "/clientes", label: "Clientes & Obras Reais" },
               { href: "/sobre", label: "Sobre Nós" },
             ].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="nav-link"
                 onClick={() => setIsMobileMenuOpen(false)}
-                style={{ padding: "0.4rem 0", borderBottom: "1px solid rgba(255,255,255,0.05)", fontSize: "0.875rem" }}
+                className="gf-mobile-link"
               >
                 {item.label}
+                <ArrowRight size={16} />
               </Link>
             ))}
           </nav>
 
-          <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-            <a
-              href={`tel:${CONTRACTOR_INFO.phone}`}
-              className="btn-primary"
-              style={{ width: "100%", justifyContent: "center" }}
-            >
+          <p className="gf-mobile-label">Preços &amp; Ferramentas</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {TOOLS_MENU_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="gf-mobile-sublink"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ width: "100%" }}>
               <Phone size={16} />
-              Ligar: {CONTRACTOR_INFO.phoneDisplay}
+              Ligar {CONTRACTOR_INFO.phoneDisplay}
             </a>
             <a
               href={CONTRACTOR_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                width: "100%",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                background: "#25D366",
-                color: "#ffffff",
-                fontWeight: 800,
-                padding: "0.75rem 1.25rem",
-                borderRadius: "0.375rem",
-                fontSize: "0.875rem",
-                textDecoration: "none",
-                boxShadow: "0 2px 10px rgba(37, 211, 102, 0.3)",
-              }}
+              className="btn-secondary"
+              style={{ width: "100%" }}
             >
-              <span style={{ fontSize: "1.1rem", lineHeight: 1 }}>💬</span>
-              <span>Mensagem WhatsApp Direta</span>
+              Mensagem WhatsApp
             </a>
           </div>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.6875rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.04em" }}>
+            {CONTRACTOR_INFO.alvaraNumber}
+          </p>
         </div>
       )}
 
       <style>{`
-        @media (max-width: 768px) {
+        .gf-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          background: linear-gradient(180deg, rgba(7, 15, 26, 0.7) 0%, rgba(7, 15, 26, 0) 100%);
+          transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+          border-bottom: 1px solid transparent;
+        }
+        .gf-header.is-solid {
+          background: rgba(11, 27, 46, 0.97);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-bottom-color: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+        }
+        .gf-topbar {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          font-size: 0.6875rem;
+          letter-spacing: 0.04em;
+          color: rgba(255, 255, 255, 0.55);
+          overflow: hidden;
+          max-height: 40px;
+          transition: max-height 0.35s ease, opacity 0.3s ease;
+        }
+        .gf-header.is-solid .gf-topbar { max-height: 0; opacity: 0; border-bottom-color: transparent; }
+        .gf-topbar-inner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 36px;
+          gap: 1rem;
+        }
+        .gf-topbar-left, .gf-topbar-right { display: flex; align-items: center; gap: 0.875rem; white-space: nowrap; }
+        .gf-dot { width: 3px; height: 3px; background: #B8935A; border-radius: 50%; }
+        .gf-topbar-link { color: rgba(255, 255, 255, 0.65); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; transition: color 0.2s; }
+        .gf-topbar-link:hover { color: #C9A86A; }
+        .gf-nav-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 80px;
+          transition: height 0.35s ease;
+          gap: 2rem;
+        }
+        .gf-header.is-solid .gf-nav-row { height: 70px; }
+        .gf-nav { display: flex; align-items: center; gap: 2.25rem; }
+        .gf-nav-link {
+          position: relative;
+          color: rgba(255, 255, 255, 0.85);
+          text-decoration: none;
+          font-size: 0.875rem;
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          padding: 0.5rem 0;
+          transition: color 0.2s ease;
+        }
+        .gf-nav-link::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 1px;
+          background: #B8935A;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .gf-nav-link:hover { color: #ffffff; }
+        .gf-nav-link:hover::after { transform: scaleX(1); }
+        .gf-nav-button { display: inline-flex; align-items: center; gap: 0.35rem; background: none; border: 0; cursor: pointer; font-family: inherit; }
+        .gf-dropdown {
+          position: absolute;
+          top: 100%;
+          left: -1.5rem;
+          width: 340px;
+          background: #0B1B2E;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-top: 2px solid #B8935A;
+          box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+          padding: 0.5rem;
+          margin-top: 0.75rem;
+          animation: gfDrop 0.22s ease;
+        }
+        .gf-dropdown::before { content: ""; position: absolute; top: -16px; left: 0; right: 0; height: 16px; }
+        .gf-dropdown-link {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+          padding: 0.9rem 1rem;
+          text-decoration: none;
+          transition: background 0.2s ease;
+        }
+        .gf-dropdown-link:hover { background: rgba(255, 255, 255, 0.05); }
+        .gf-dropdown-title { display: flex; justify-content: space-between; align-items: center; color: #ffffff; font-weight: 600; font-size: 0.875rem; }
+        .gf-dropdown-title svg { color: #B8935A; }
+        .gf-dropdown-desc { color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; line-height: 1.45; }
+        @keyframes gfDrop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+        .gf-nav-cta { display: flex; align-items: center; gap: 1.5rem; }
+        .gf-phone {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: #ffffff;
+          font-weight: 600;
+          font-size: 0.9375rem;
+          letter-spacing: 0.02em;
+          text-decoration: none;
+          font-variant-numeric: tabular-nums;
+        }
+        .gf-phone svg { color: #B8935A; }
+        .gf-burger {
+          display: none;
+          background: transparent;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          color: #ffffff;
+          width: 44px;
+          height: 44px;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+        .gf-mobile-menu {
+          background: #0B1B2E;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 1rem 1.25rem 2rem;
+          height: calc(100dvh - 70px);
+          overflow-y: auto;
+        }
+        .gf-mobile-link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.05rem 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          color: #ffffff;
+          text-decoration: none;
+          font-size: 1.375rem;
+          font-weight: 500;
+          letter-spacing: -0.02em;
+          font-family: var(--font-display), sans-serif;
+        }
+        .gf-mobile-link svg { color: #B8935A; }
+        .gf-mobile-label {
+          margin: 2rem 0 0.5rem;
+          font-size: 0.6875rem;
+          letter-spacing: 0.22em;
+          text-transform: uppercase;
+          color: #C9A86A;
+          font-weight: 600;
+        }
+        .gf-mobile-sublink {
+          padding: 0.65rem 0;
+          color: rgba(255, 255, 255, 0.75);
+          text-decoration: none;
+          font-size: 0.9375rem;
+        }
+        @media (max-width: 1100px) {
+          .gf-nav { gap: 1.5rem; }
+          .gf-phone { display: none; }
+        }
+        @media (max-width: 900px) {
           .hidden-mobile { display: none !important; }
-          .mobile-controls { display: flex !important; }
-        }
-        .tools-dropdown-link:hover {
-          background: rgba(251, 191, 36, 0.12) !important;
-          border-color: rgba(251, 191, 36, 0.3) !important;
-        }
-        @keyframes dropdownFadeIn {
-          from {
-            opacity: 0;
-            transform: translate(-50%, -6px);
-          }
-          to {
-            opacity: 1;
-            transform: translate(-50%, 0);
-          }
+          .mobile-controls { display: inline-flex !important; }
+          .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; }
         }
       `}</style>
     </header>

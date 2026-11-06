@@ -101,14 +101,14 @@ export default function PlanificadorPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(planificadorJsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 3.5rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #0B1B2E, #13294A)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Planificador de Obras</span>
+            <span style={{ color: "#C9A86A" }}>Planificador de Obras</span>
           </nav>
-          <p className="section-eyebrow" style={{ color: "#fbbf24" }}>Planeamento Sem Erros</p>
+          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Planeamento Sem Erros</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
             Planificador de Renovação Passo a Passo
           </h1>
@@ -133,9 +133,9 @@ export default function PlanificadorPage() {
       <RenovationPlanner />
 
       {/* CTA Final */}
-      <section style={{ background: "#071a3a", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section style={{ background: "#0B1B2E", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
-          <Shield size={36} style={{ color: "#fbbf24", margin: "0 auto 1rem" }} />
+          <Shield size={36} style={{ color: "#C9A86A", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>
             Precisa de apoio para planear e executar a sua obra?
           </h2>

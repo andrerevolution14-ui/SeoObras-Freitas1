@@ -50,9 +50,9 @@ export function RenovationPlanner() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(15, 45, 94, 0.08)",
-              border: "1px solid rgba(15, 45, 94, 0.15)",
-              color: "#0f2d5e",
+              background: "rgba(19, 41, 74, 0.08)",
+              border: "1px solid rgba(19, 41, 74, 0.15)",
+              color: "#13294A",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -62,7 +62,7 @@ export function RenovationPlanner() {
               textTransform: "uppercase",
             }}
           >
-            <Compass size={14} style={{ color: "#d97706" }} />
+            <Compass size={14} style={{ color: "#8F6E3E" }} />
             Guia Prático Passo a Passo
           </div>
           <h2 className="section-title">
@@ -97,14 +97,14 @@ export function RenovationPlanner() {
                 style={{
                   padding: "0.75rem 1.25rem",
                   borderRadius: "0.5rem",
-                  border: isSelected ? "2px solid #0f2d5e" : "1.5px solid #e2e8f0",
-                  background: isSelected ? "#071a3a" : "#f8fafc",
-                  color: isSelected ? "#fbbf24" : "#334155",
+                  border: isSelected ? "2px solid #13294A" : "1.5px solid #e2e8f0",
+                  background: isSelected ? "#0B1B2E" : "#f8fafc",
+                  color: isSelected ? "#C9A86A" : "#334155",
                   fontWeight: isSelected ? 800 : 600,
                   fontSize: "0.875rem",
                   cursor: "pointer",
                   transition: "all 0.15s ease",
-                  boxShadow: isSelected ? "0 4px 15px rgba(7, 26, 58, 0.15)" : "none",
+                  boxShadow: isSelected ? "0 4px 15px rgba(11, 27, 46, 0.15)" : "none",
                 }}
               >
                 {tab.label}
@@ -129,7 +129,7 @@ export function RenovationPlanner() {
           }}
         >
           <div>
-            <div style={{ fontWeight: 800, color: "#071a3a", fontSize: "1rem" }}>
+            <div style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "1rem" }}>
               {plannerData.title}
             </div>
             <div style={{ color: "#64748b", fontSize: "0.8125rem", marginTop: "0.15rem" }}>
@@ -143,13 +143,13 @@ export function RenovationPlanner() {
                 style={{
                   width: `${progressPercent}%`,
                   height: "100%",
-                  background: "linear-gradient(90deg, #f59e0b, #22c55e)",
+                  background: "linear-gradient(90deg, #B8935A, #22c55e)",
                   borderRadius: "5px",
                   transition: "width 0.3s ease",
                 }}
               />
             </div>
-            <span style={{ fontWeight: 800, color: "#0f2d5e", fontSize: "0.875rem", minWidth: "40px" }}>
+            <span style={{ fontWeight: 800, color: "#13294A", fontSize: "0.875rem", minWidth: "40px" }}>
               {progressPercent}%
             </span>
           </div>
@@ -195,8 +195,8 @@ export function RenovationPlanner() {
                       width: "42px",
                       height: "42px",
                       borderRadius: "50%",
-                      background: isCompleted ? "#22c55e" : "#071a3a",
-                      color: isCompleted ? "#ffffff" : "#fbbf24",
+                      background: isCompleted ? "#22c55e" : "#0B1B2E",
+                      color: isCompleted ? "#ffffff" : "#C9A86A",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -222,7 +222,7 @@ export function RenovationPlanner() {
                       style={{
                         fontWeight: 800,
                         fontSize: "1.0625rem",
-                        color: isCompleted ? "#166534" : "#071a3a",
+                        color: isCompleted ? "#166534" : "#0B1B2E",
                         textDecoration: isCompleted ? "line-through" : "none",
                       }}
                     >
@@ -231,8 +231,8 @@ export function RenovationPlanner() {
                     <span
                       style={{
                         fontSize: "0.7rem",
-                        background: "rgba(15, 45, 94, 0.08)",
-                        color: "#0f2d5e",
+                        background: "rgba(19, 41, 74, 0.08)",
+                        color: "#13294A",
                         fontWeight: 700,
                         padding: "0.2rem 0.5rem",
                         borderRadius: "0.25rem",
@@ -246,7 +246,7 @@ export function RenovationPlanner() {
                     </span>
                   </div>
 
-                  <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "#d97706", marginBottom: "0.5rem" }}>
+                  <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "#8F6E3E", marginBottom: "0.5rem" }}>
                     {step.subtitle}
                   </div>
 
@@ -256,12 +256,12 @@ export function RenovationPlanner() {
 
                   <div
                     style={{
-                      background: "rgba(245, 158, 11, 0.08)",
-                      borderLeft: "3px solid #f59e0b",
+                      background: "rgba(184, 147, 90, 0.08)",
+                      borderLeft: "3px solid #B8935A",
                       padding: "0.5rem 0.75rem",
                       borderRadius: "0 0.375rem 0.375rem 0",
                       fontSize: "0.8125rem",
-                      color: "#92400e",
+                      color: "#6E5530",
                       lineHeight: 1.5,
                     }}
                   >
@@ -281,7 +281,7 @@ export function RenovationPlanner() {
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "0.35rem",
-                      background: isCompleted ? "#22c55e" : "#071a3a",
+                      background: isCompleted ? "#22c55e" : "#0B1B2E",
                       color: "#ffffff",
                       fontSize: "0.75rem",
                       fontWeight: 800,
@@ -304,24 +304,24 @@ export function RenovationPlanner() {
         <div
           style={{
             marginTop: "2.5rem",
-            background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
+            background: "linear-gradient(135deg, #C9A86A 0%, #B8935A 100%)",
             borderRadius: "0.75rem",
             padding: "2rem",
             textAlign: "center",
-            color: "#071a3a",
+            color: "#0B1B2E",
           }}
         >
           <h3 style={{ fontSize: "1.375rem", fontWeight: 900, marginBottom: "0.5rem" }}>
             Quer que a Freitas Renovações execute o plano por si em Aveiro?
           </h3>
-          <p style={{ maxWidth: "520px", margin: "0 auto 1.5rem", fontSize: "0.9375rem", fontWeight: 600, color: "rgba(7, 26, 58, 0.85)" }}>
+          <p style={{ maxWidth: "520px", margin: "0 auto 1.5rem", fontSize: "0.9375rem", fontWeight: 600, color: "rgba(11, 27, 46, 0.85)" }}>
             Poupa tempo, garante materiais ao melhor preço com desconto profissional e tem a supervisão direta do Empreiteiro Jorge Freitas.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
             <Link
               href="/#calculadora-orcamento"
               className="btn-primary"
-              style={{ background: "#071a3a", color: "#ffffff", boxShadow: "0 4px 15px rgba(0,0,0,0.2)" }}
+              style={{ background: "#0B1B2E", color: "#ffffff", boxShadow: "0 4px 15px rgba(0,0,0,0.2)" }}
             >
               Calcular Custo da Minha Obra
               <ArrowRight size={16} />
@@ -329,7 +329,7 @@ export function RenovationPlanner() {
             <a
               href={`tel:${CONTRACTOR_INFO.phone}`}
               className="btn-secondary"
-              style={{ background: "rgba(7, 26, 58, 0.12)", color: "#071a3a", border: "2px solid rgba(7, 26, 58, 0.25)" }}
+              style={{ background: "rgba(11, 27, 46, 0.12)", color: "#0B1B2E", border: "2px solid rgba(11, 27, 46, 0.25)" }}
             >
               <Phone size={16} />
               Ligar {CONTRACTOR_INFO.phoneDisplay}

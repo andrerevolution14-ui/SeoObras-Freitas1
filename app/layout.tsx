@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
@@ -14,6 +14,14 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter",
   preload: true,
+});
+
+// Display font — títulos de marca (Grupo Freitas)
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -218,7 +226,7 @@ const globalJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-PT" className={inter.variable}>
+    <html lang="pt-PT" className={`${inter.variable} ${interTight.variable}`}>
       <head>
         {/* Geographic meta tags — reinforce local SEO */}
         <meta name="geo.region" content="PT-01" />

@@ -52,7 +52,7 @@ export default function TermosPage() {
       {/* Hero Header */}
       <section
         style={{
-          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
+          background: "linear-gradient(135deg, #0B1B2E 0%, #13294A 100%)",
           padding: "7.5rem 0 4rem",
           color: "#ffffff",
         }}
@@ -71,7 +71,7 @@ export default function TermosPage() {
               Início
             </Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Termos e Condições</span>
+            <span style={{ color: "#C9A86A" }}>Termos e Condições</span>
           </nav>
 
           <div
@@ -79,9 +79,9 @@ export default function TermosPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(251, 191, 36, 0.15)",
-              border: "1px solid rgba(251, 191, 36, 0.3)",
-              color: "#fbbf24",
+              background: "rgba(184, 147, 90, 0.15)",
+              border: "1px solid rgba(184, 147, 90, 0.3)",
+              color: "#C9A86A",
               fontSize: "0.75rem",
               fontWeight: 800,
               padding: "0.35rem 0.85rem",
@@ -118,14 +118,14 @@ export default function TermosPage() {
       {/* Main Content */}
       <section className="section-padding" style={{ background: "#ffffff", color: "#334155" }}>
         <div className="section-container" style={{ maxWidth: "860px", lineHeight: 1.8, fontSize: "1rem" }}>
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginBottom: "0.75rem" }}>
             1. Identificação da Empresa e Licenciamento
           </h2>
           <p>
             O website <strong>grupofreitasrenovacoes.pt</strong> é operado pela sociedade <strong>{CONTRACTOR_INFO.companyName}</strong>, com sede na {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, titular de <strong>Alvará de Construção IMPIC N.º 104523</strong> (Empreiteiro de Obras Particulares emitido pelo Instituto dos Mercados Públicos, do Imobiliário e da Construção) e com apólice de Seguro de Responsabilidade Civil em vigor.
           </p>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             2. Natureza das Informações e Estimativas de Preço
           </h2>
           <p>
@@ -137,7 +137,7 @@ export default function TermosPage() {
             <li>Seja emitido um <strong>Orçamento Discriminado Formal com Preço Fechado</strong> e respetivo caderno de encargos assinado por ambas as partes.</li>
           </ul>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             3. Processo de Orçamentação em 3 Fases
           </h2>
           <p>
@@ -149,7 +149,7 @@ export default function TermosPage() {
             <li><strong>Proposta Fechada e Contrato:</strong> Apresentação de mapa de quantidades com descrição exata de materiais, mão de obra, prazos de execução e garantia por escrito.</li>
           </ol>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             4. Garantias Legais de Construção Civil
           </h2>
           <p>
@@ -161,21 +161,21 @@ export default function TermosPage() {
             <li><strong>Compromisso pós-obra:</strong> Assistência técnica prioritária para afinações e revisões de pormenores após a entrega da chave na mão.</li>
           </ul>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             5. Cumprimento de Normas de Ruído e Condomínios
           </h2>
           <p>
             Em intervenções em frações autónomas sujeitas a regime de condomínio, a nossa equipa assegura o cumprimento do Regulamento Geral do Ruído (horários de obras em dias úteis entre as 08h00 e as 20h00), a afixação do aviso prévio no hall de entrada e a proteção das zonas comuns (elevadores e escadas) durante o transporte de materiais e remoção de entulho.
           </p>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             6. Propriedade Intelectual
           </h2>
           <p>
             Todos os conteúdos textuais, logótipos e registos fotográficos de projetos reais publicados no website pertencem à Freitas Renovações LDA ou são utilizados com autorização. É estritamente proibida a sua reprodução sem consentimento prévio por escrito.
           </p>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             7. Resolução Alternativa de Litígios de Consumo (RAL)
           </h2>
           <p>
@@ -190,23 +190,23 @@ export default function TermosPage() {
               margin: "1rem 0 1.5rem",
             }}
           >
-            <p style={{ fontWeight: 700, color: "#071a3a", marginBottom: "0.25rem" }}>
+            <p style={{ fontWeight: 700, color: "#0B1B2E", marginBottom: "0.25rem" }}>
               CIAB — Centro de Informação, Mediação e Arbitragem de Consumo / Tribunal Arbitral de Consumo
             </p>
             <p style={{ margin: 0, fontSize: "0.9375rem" }}>
-              Ou Centro de Arbitragem de Conflitos de Consumo do Distrito de Coimbra / Região Centro: <a href="https://www.centrodearbitragemdecentro.pt" target="_blank" rel="noopener noreferrer" style={{ color: "#0f2d5e", fontWeight: 600 }}>www.centrodearbitragemdecentro.pt</a>
+              Ou Centro de Arbitragem de Conflitos de Consumo do Distrito de Coimbra / Região Centro: <a href="https://www.centrodearbitragemdecentro.pt" target="_blank" rel="noopener noreferrer" style={{ color: "#13294A", fontWeight: 600 }}>www.centrodearbitragemdecentro.pt</a>
             </p>
           </div>
 
           <p>
-            Poderá ainda aceder à Plataforma Europeia de Resolução de Litígios em Linha (RLL) disponível em: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: "#0f2d5e", fontWeight: 600 }}>ec.europa.eu/consumers/odr</a>.
+            Poderá ainda aceder à Plataforma Europeia de Resolução de Litígios em Linha (RLL) disponível em: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: "#13294A", fontWeight: 600 }}>ec.europa.eu/consumers/odr</a>.
           </p>
 
-          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#071a3a", marginTop: "2rem", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0B1B2E", marginTop: "2rem", marginBottom: "0.75rem" }}>
             8. Contactos para Questões Contratuais
           </h2>
           <p>
-            Para qualquer esclarecimento sobre os presentes termos, contacte-nos através do endereço <a href={`mailto:${CONTRACTOR_INFO.email}`} style={{ color: "#0f2d5e", fontWeight: 600 }}>{CONTRACTOR_INFO.email}</a> ou ligue para o <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#0f2d5e", fontWeight: 600 }}>{CONTRACTOR_INFO.phoneDisplay}</a>.
+            Para qualquer esclarecimento sobre os presentes termos, contacte-nos através do endereço <a href={`mailto:${CONTRACTOR_INFO.email}`} style={{ color: "#13294A", fontWeight: 600 }}>{CONTRACTOR_INFO.email}</a> ou ligue para o <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#13294A", fontWeight: 600 }}>{CONTRACTOR_INFO.phoneDisplay}</a>.
           </p>
         </div>
       </section>

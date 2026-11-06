@@ -109,21 +109,21 @@ export default function PrecosM2Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(precosM2JsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 3.5rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #0B1B2E, #13294A)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Preços Médios por m²</span>
+            <span style={{ color: "#C9A86A" }}>Preços Médios por m²</span>
           </nav>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.4rem",
-              background: "rgba(251, 191, 36, 0.15)",
-              border: "1px solid rgba(251, 191, 36, 0.35)",
-              color: "#fbbf24",
+              background: "rgba(184, 147, 90, 0.15)",
+              border: "1px solid rgba(184, 147, 90, 0.35)",
+              color: "#C9A86A",
               borderRadius: "2rem",
               padding: "0.25rem 0.75rem",
               fontSize: "0.75rem",
@@ -195,8 +195,8 @@ export default function PrecosM2Page() {
                   padding: "1.25rem 1.5rem",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#071a3a", fontWeight: 800, fontSize: "1rem", marginBottom: "0.5rem" }}>
-                  <HelpCircle size={18} style={{ color: "#d97706", flexShrink: 0 }} />
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#0B1B2E", fontWeight: 800, fontSize: "1rem", marginBottom: "0.5rem" }}>
+                  <HelpCircle size={18} style={{ color: "#8F6E3E", flexShrink: 0 }} />
                   {faq.q}
                 </div>
                 <p style={{ color: "#475569", lineHeight: 1.65, fontSize: "0.9rem", margin: 0 }}>
@@ -209,9 +209,9 @@ export default function PrecosM2Page() {
       </section>
 
       {/* CTA Final */}
-      <section style={{ background: "#071a3a", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section style={{ background: "#0B1B2E", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
-          <Shield size={36} style={{ color: "#fbbf24", margin: "0 auto 1rem" }} />
+          <Shield size={36} style={{ color: "#C9A86A", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>
             Quer uma cotação exata para a sua obra em Aveiro?
           </h2>

@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #0B1B2E, #13294A)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container" style={{ maxWidth: "840px" }}>
           {/* Breadcrumb */}
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
@@ -114,14 +114,14 @@ export default async function BlogPostPage({ params }: Props) {
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
             <Link href="/blog" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Blog</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>{post.category}</span>
+            <span style={{ color: "#C9A86A" }}>{post.category}</span>
           </nav>
 
           <span
             style={{
-              background: "rgba(251, 191, 36, 0.15)",
-              border: "1px solid rgba(251, 191, 36, 0.3)",
-              color: "#fbbf24",
+              background: "rgba(184, 147, 90, 0.15)",
+              border: "1px solid rgba(184, 147, 90, 0.3)",
+              color: "#C9A86A",
               fontSize: "0.75rem",
               fontWeight: 800,
               padding: "0.25rem 0.75rem",
@@ -139,7 +139,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", color: "rgba(255,255,255,0.75)", fontSize: "0.875rem" }}>
             <span style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
-              <User size={14} style={{ color: "#fbbf24" }} />
+              <User size={14} style={{ color: "#C9A86A" }} />
               Por {post.author} (Empreiteiro Responsável)
             </span>
             <span style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}>
@@ -191,10 +191,10 @@ export default async function BlogPostPage({ params }: Props) {
               height={70}
               quality={75}
               loading="lazy"
-              style={{ width: "70px", height: "70px", borderRadius: "50%", objectFit: "cover", border: "2px solid #f59e0b", flexShrink: 0 }}
+              style={{ width: "70px", height: "70px", borderRadius: "50%", objectFit: "cover", border: "2px solid #B8935A", flexShrink: 0 }}
             />
             <div>
-              <div style={{ fontWeight: 800, color: "#071a3a", fontSize: "1.0625rem" }}>
+              <div style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "1.0625rem" }}>
                 Artigo verificado por {CONTRACTOR_INFO.contractorName}
               </div>
               <div style={{ fontSize: "0.8125rem", color: "#64748b", margin: "0.25rem 0 0.5rem" }}>
@@ -207,21 +207,21 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
 
           {/* Internal Silo Links */}
-          <div style={{ marginTop: "2.5rem", padding: "1.5rem", background: "rgba(7, 26, 58, 0.04)", border: "1px solid rgba(7, 26, 58, 0.1)", borderRadius: "0.5rem" }}>
-            <h3 style={{ fontWeight: 800, color: "#071a3a", fontSize: "1rem", marginBottom: "0.75rem" }}>
+          <div style={{ marginTop: "2.5rem", padding: "1.5rem", background: "rgba(11, 27, 46, 0.04)", border: "1px solid rgba(11, 27, 46, 0.1)", borderRadius: "0.5rem" }}>
+            <h3 style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "1rem", marginBottom: "0.75rem" }}>
               Serviços Relacionados em Aveiro:
             </h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-              <Link href="/servicos/remodelacao-geral" style={{ color: "#d97706", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
+              <Link href="/servicos/remodelacao-geral" style={{ color: "#8F6E3E", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
                 → Remodelação Geral em Aveiro
               </Link>
-              <Link href="/servicos/canalizacao" style={{ color: "#d97706", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
+              <Link href="/servicos/canalizacao" style={{ color: "#8F6E3E", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
                 → Canalização e Deteção de Fugas
               </Link>
-              <Link href="/areas-atuacao/esgueira" style={{ color: "#d97706", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
+              <Link href="/areas-atuacao/esgueira" style={{ color: "#8F6E3E", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
                 → Obras em Esgueira
               </Link>
-              <Link href="/areas-atuacao/gloria-e-vera-cruz" style={{ color: "#d97706", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
+              <Link href="/areas-atuacao/gloria-e-vera-cruz" style={{ color: "#8F6E3E", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none" }}>
                 → Obras no Centro de Aveiro
               </Link>
             </div>
@@ -231,7 +231,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div
             style={{
               marginTop: "3rem",
-              background: "linear-gradient(135deg, #071a3a, #0f2d5e)",
+              background: "linear-gradient(135deg, #0B1B2E, #13294A)",
               borderRadius: "0.5rem",
               padding: "2rem",
               color: "#ffffff",

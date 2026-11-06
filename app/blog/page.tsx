@@ -80,14 +80,14 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #071a3a, #0f2d5e)", padding: "7.5rem 0 4rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #0B1B2E, #13294A)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Blog & Guia de Obras</span>
+            <span style={{ color: "#C9A86A" }}>Blog & Guia de Obras</span>
           </nav>
-          <p className="section-eyebrow" style={{ color: "#fbbf24" }}>Informação & Dicas Úteis</p>
+          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Informação & Dicas Úteis</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
             Guia de Obras e Remodelações em Aveiro
           </h1>
@@ -115,7 +115,7 @@ export default function BlogIndexPage() {
                 }}
               >
                 {/* Image Header */}
-                <div style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#071a3a" }}>
+                <div style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#0B1B2E" }}>
                   <img
                     src={post.image}
                     alt={`${post.title} — Artigo de remodelações em Aveiro por Jorge Freitas`}
@@ -126,8 +126,8 @@ export default function BlogIndexPage() {
                       position: "absolute",
                       top: "0.75rem",
                       left: "0.75rem",
-                      background: "rgba(7, 26, 58, 0.9)",
-                      color: "#fbbf24",
+                      background: "rgba(11, 27, 46, 0.9)",
+                      color: "#C9A86A",
                       fontSize: "0.6875rem",
                       fontWeight: 800,
                       padding: "0.25rem 0.625rem",
@@ -150,7 +150,7 @@ export default function BlogIndexPage() {
                       </span>
                     </div>
 
-                    <h2 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#071a3a", marginBottom: "0.5rem", lineHeight: 1.35 }}>
+                    <h2 style={{ fontWeight: 800, fontSize: "1.0625rem", color: "#0B1B2E", marginBottom: "0.5rem", lineHeight: 1.35 }}>
                       <Link href={`/blog/${post.slug}`} style={{ color: "inherit", textDecoration: "none" }}>
                         {post.title}
                       </Link>
@@ -168,7 +168,7 @@ export default function BlogIndexPage() {
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "0.375rem",
-                        color: "#d97706",
+                        color: "#8F6E3E",
                         fontWeight: 700,
                         fontSize: "0.875rem",
                         textDecoration: "none",
@@ -186,15 +186,15 @@ export default function BlogIndexPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #fbbf24, #f59e0b)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #C9A86A, #B8935A)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#071a3a", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0B1B2E", marginBottom: "0.75rem" }}>
             Tem dúvidas sobre a sua obra em Aveiro?
           </h2>
-          <p style={{ color: "#071a3a", fontSize: "1rem", marginBottom: "1.5rem", opacity: 0.9 }}>
+          <p style={{ color: "#0B1B2E", fontSize: "1rem", marginBottom: "1.5rem", opacity: 0.9 }}>
             Fale diretamente com o Empreiteiro Jorge Freitas e receba um orçamento gratuito com preço justo.
           </p>
-          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#071a3a", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+          <Link href="/#hero-form" className="btn-primary" style={{ display: "inline-flex", background: "#0B1B2E", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
             Solicitar Orçamento Grátis
             <ArrowRight size={16} />
           </Link>

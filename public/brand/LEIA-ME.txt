@@ -1,0 +1,1 @@
+Coloque aqui as novas fotografias de marca e atualize lib/brand-images.ts

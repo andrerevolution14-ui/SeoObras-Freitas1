@@ -17,9 +17,9 @@ export function LowCostIdeas() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(245, 158, 11, 0.12)",
-              border: "1px solid rgba(245, 158, 11, 0.25)",
-              color: "#b45309",
+              background: "rgba(184, 147, 90, 0.12)",
+              border: "1px solid rgba(184, 147, 90, 0.25)",
+              color: "#8A6A3B",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -74,8 +74,8 @@ export function LowCostIdeas() {
                 >
                   <span
                     style={{
-                      background: "rgba(15, 45, 94, 0.08)",
-                      color: "#0f2d5e",
+                      background: "rgba(19, 41, 74, 0.08)",
+                      color: "#13294A",
                       fontSize: "0.75rem",
                       fontWeight: 800,
                       padding: "0.25rem 0.625rem",
@@ -107,7 +107,7 @@ export function LowCostIdeas() {
                   style={{
                     fontWeight: 800,
                     fontSize: "1.0625rem",
-                    color: "#071a3a",
+                    color: "#0B1B2E",
                     marginBottom: "0.5rem",
                     lineHeight: 1.35,
                   }}
@@ -123,7 +123,7 @@ export function LowCostIdeas() {
               <div
                 style={{
                   background: "#f8fafc",
-                  borderLeft: "3px solid #f59e0b",
+                  borderLeft: "3px solid #B8935A",
                   padding: "0.75rem 0.875rem",
                   borderRadius: "0 0.375rem 0.375rem 0",
                   fontSize: "0.8125rem",
@@ -154,7 +154,7 @@ export function LowCostIdeas() {
           <Link
             href="/#calculadora-orcamento"
             style={{
-              color: "#0f2d5e",
+              color: "#13294A",
               fontWeight: 800,
               fontSize: "0.9375rem",
               textDecoration: "underline",

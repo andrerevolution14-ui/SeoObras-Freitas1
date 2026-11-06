@@ -81,9 +81,9 @@ export default function AreasAtuacaoPage() {
       {/* Hero */}
       <section
         style={{
-          backgroundColor: "#071a3a",
+          backgroundColor: "#0B1B2E",
           backgroundImage:
-            "linear-gradient(105deg, rgba(7, 26, 58, 0.88) 0%, rgba(7, 26, 58, 0.74) 55%, rgba(15, 45, 94, 0.50) 100%), url('/heroes/aveiro-ria-moliceiros.jpg')",
+            "linear-gradient(105deg, rgba(11, 27, 46, 0.88) 0%, rgba(11, 27, 46, 0.74) 55%, rgba(19, 41, 74, 0.50) 100%), url('/heroes/aveiro-ria-moliceiros.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -93,16 +93,16 @@ export default function AreasAtuacaoPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Áreas de Atuação</span>
+            <span style={{ color: "#C9A86A" }}>Áreas de Atuação</span>
           </nav>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.4rem",
-              background: "rgba(251, 191, 36, 0.15)",
-              border: "1px solid rgba(251, 191, 36, 0.35)",
-              color: "#fbbf24",
+              background: "rgba(184, 147, 90, 0.15)",
+              border: "1px solid rgba(184, 147, 90, 0.35)",
+              color: "#C9A86A",
               borderRadius: "2rem",
               padding: "0.25rem 0.75rem",
               fontSize: "0.75rem",
@@ -137,10 +137,10 @@ export default function AreasAtuacaoPage() {
           <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", justifyContent: "space-between" }}>
             <div style={{
               display: "flex", alignItems: "center", gap: "0.5rem",
-              background: "rgba(15,45,94,0.06)", borderRadius: "0.5rem",
-              padding: "0.625rem 1rem", fontSize: "0.875rem", color: "#071a3a", fontWeight: 700,
+              background: "rgba(19, 41, 74,0.06)", borderRadius: "0.5rem",
+              padding: "0.625rem 1rem", fontSize: "0.875rem", color: "#0B1B2E", fontWeight: 700,
             }}>
-              <MapPin size={16} style={{ color: "#f59e0b" }} />
+              <MapPin size={16} style={{ color: "#B8935A" }} />
               Raio de atuação: Aveiro e concelhos limítrofes num raio de até 45 km
             </div>
             <div style={{ color: "#64748b", fontSize: "0.875rem", fontWeight: 600 }}>
@@ -169,30 +169,30 @@ export default function AreasAtuacaoPage() {
                 style={{
                   display: "block",
                   background: "#ffffff",
-                  border: "2px solid #fbbf24",
+                  border: "2px solid #C9A86A",
                   borderRadius: "0.75rem",
                   padding: "1.5rem",
                   textDecoration: "none",
                   transition: "all 0.2s ease",
-                  boxShadow: "0 4px 15px rgba(251, 191, 36, 0.08)",
+                  boxShadow: "0 4px 15px rgba(184, 147, 90, 0.08)",
                 }}
                 className="card-hover"
               >
                 <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "0.5rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <MapPin size={18} style={{ color: "#d97706", flexShrink: 0 }} />
-                    <h3 style={{ fontWeight: 800, color: "#071a3a", fontSize: "1.125rem", margin: 0 }}>
+                    <MapPin size={18} style={{ color: "#8F6E3E", flexShrink: 0 }} />
+                    <h3 style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "1.125rem", margin: 0 }}>
                       Remodelações {parish.name}
                     </h3>
                   </div>
-                  <span style={{ fontSize: "0.6875rem", background: "rgba(251, 191, 36, 0.2)", color: "#b45309", padding: "0.2rem 0.5rem", borderRadius: "1rem", fontWeight: 700 }}>
+                  <span style={{ fontSize: "0.6875rem", background: "rgba(184, 147, 90, 0.2)", color: "#8A6A3B", padding: "0.2rem 0.5rem", borderRadius: "1rem", fontWeight: 700 }}>
                     Concelho
                   </span>
                 </div>
                 <p style={{ color: "#475569", fontSize: "0.85rem", lineHeight: 1.55, margin: "0 0 1rem 0" }}>
                   {parish.description}
                 </p>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", color: "#ca8a04", fontWeight: 700, fontSize: "0.8125rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", color: "#8F6E3E", fontWeight: 700, fontSize: "0.8125rem" }}>
                   Ver obras e pedir orçamento em {parish.name} <ArrowRight size={13} />
                 </div>
               </Link>
@@ -230,8 +230,8 @@ export default function AreasAtuacaoPage() {
               >
                 <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "0.5rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <MapPin size={15} style={{ color: "#f59e0b", flexShrink: 0 }} />
-                    <h3 style={{ fontWeight: 800, color: "#071a3a", fontSize: "1rem", margin: 0 }}>
+                    <MapPin size={15} style={{ color: "#B8935A", flexShrink: 0 }} />
+                    <h3 style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "1rem", margin: 0 }}>
                       {parish.name}
                     </h3>
                   </div>
@@ -250,15 +250,15 @@ export default function AreasAtuacaoPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #fbbf24, #f59e0b)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #C9A86A, #B8935A)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#071a3a", marginBottom: "0.5rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0B1B2E", marginBottom: "0.5rem" }}>
             Quer remodelar a sua casa com preço justo?
           </h2>
-          <p style={{ color: "rgba(7,26,58,0.8)", marginBottom: "1.5rem", fontSize: "0.9375rem" }}>
+          <p style={{ color: "rgba(11, 27, 46,0.8)", marginBottom: "1.5rem", fontSize: "0.9375rem" }}>
             Avaliamos o local gratuitamente em Aveiro, Ílhavo, Águeda, Estarreja, Vagos e praias. Resposta garantida em até 12 horas.
           </p>
-          <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ background: "#071a3a", color: "#fff" }} id="areas-bottom-phone">
+          <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ background: "#0B1B2E", color: "#fff" }} id="areas-bottom-phone">
             <Phone size={16} />
             Ligar: {CONTRACTOR_INFO.phoneDisplay}
           </a>

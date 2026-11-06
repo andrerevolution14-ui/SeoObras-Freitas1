@@ -224,7 +224,7 @@ function SliderCard({ project }: { project: BeforeAfterProject }) {
 
       {/* Footer */}
       <div style={{ padding: "1rem 1.25rem" }}>
-        <p style={{ fontSize: "0.75rem", color: "#ca8a04", fontWeight: 700, marginBottom: "0.25rem" }}>
+        <p style={{ fontSize: "0.75rem", color: "#8F6E3E", fontWeight: 700, marginBottom: "0.25rem" }}>
           {project.service}
         </p>
         <h3 style={{ fontWeight: 800, fontSize: "0.9375rem", color: "#0f172a", marginBottom: "0.25rem" }}>

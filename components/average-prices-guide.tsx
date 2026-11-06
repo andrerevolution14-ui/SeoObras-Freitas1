@@ -18,9 +18,9 @@ export function AveragePricesGuide() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(15, 45, 94, 0.08)",
-              border: "1px solid rgba(15, 45, 94, 0.15)",
-              color: "#0f2d5e",
+              background: "rgba(19, 41, 74, 0.08)",
+              border: "1px solid rgba(19, 41, 74, 0.15)",
+              color: "#13294A",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -30,7 +30,7 @@ export function AveragePricesGuide() {
               textTransform: "uppercase",
             }}
           >
-            <Table size={14} style={{ color: "#d97706" }} />
+            <Table size={14} style={{ color: "#8F6E3E" }} />
             Tabela de Referência Atualizada 2026
           </div>
           <h2 className="section-title">
@@ -62,7 +62,7 @@ export function AveragePricesGuide() {
               }}
             >
               <thead>
-                <tr style={{ background: "#071a3a", color: "#ffffff" }}>
+                <tr style={{ background: "#0B1B2E", color: "#ffffff" }}>
                   <th style={{ padding: "1rem 1.25rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     Tipo de Obra em Aveiro
                   </th>
@@ -72,7 +72,7 @@ export function AveragePricesGuide() {
                   <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#86efac" }}>
                     Económica / Low-Cost
                   </th>
-                  <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#fbbf24" }}>
+                  <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#C9A86A" }}>
                     Standard / Equilibrada
                   </th>
                   <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#fbcfe8" }}>
@@ -93,7 +93,7 @@ export function AveragePricesGuide() {
                       transition: "background 0.15s ease",
                     }}
                   >
-                    <td style={{ padding: "1rem 1.25rem", fontWeight: 700, color: "#071a3a", fontSize: "0.875rem" }}>
+                    <td style={{ padding: "1rem 1.25rem", fontWeight: 700, color: "#0B1B2E", fontSize: "0.875rem" }}>
                       {row.service}
                     </td>
                     <td style={{ padding: "1rem 1rem", color: "#64748b", fontSize: "0.8125rem", fontWeight: 600 }}>
@@ -102,7 +102,7 @@ export function AveragePricesGuide() {
                     <td style={{ padding: "1rem 1rem", fontWeight: 700, color: "#16a34a", fontSize: "0.875rem" }}>
                       {row.lowCostRange}
                     </td>
-                    <td style={{ padding: "1rem 1rem", fontWeight: 800, color: "#0f2d5e", fontSize: "0.875rem" }}>
+                    <td style={{ padding: "1rem 1rem", fontWeight: 800, color: "#13294A", fontSize: "0.875rem" }}>
                       {row.standardRange}
                     </td>
                     <td style={{ padding: "1rem 1rem", fontWeight: 700, color: "#9333ea", fontSize: "0.875rem" }}>
@@ -157,9 +157,9 @@ export function AveragePricesGuide() {
               border: "1.5px solid #e2e8f0",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#0f2d5e" }}>
-              <ShieldCheck size={18} style={{ color: "#d97706" }} />
-              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#071a3a" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#13294A" }}>
+              <ShieldCheck size={18} style={{ color: "#8F6E3E" }} />
+              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
                 1. Mão de Obra vs. Materiais
               </h4>
             </div>
@@ -176,9 +176,9 @@ export function AveragePricesGuide() {
               border: "1.5px solid #e2e8f0",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#0f2d5e" }}>
-              <AlertCircle size={18} style={{ color: "#d97706" }} />
-              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#071a3a" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#13294A" }}>
+              <AlertCircle size={18} style={{ color: "#8F6E3E" }} />
+              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
                 2. Idade do Imóvel e Acessos
               </h4>
             </div>
@@ -195,9 +195,9 @@ export function AveragePricesGuide() {
               border: "1.5px solid #e2e8f0",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#0f2d5e" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#13294A" }}>
               <CheckCircle size={18} style={{ color: "#16a34a" }} />
-              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#071a3a" }}>
+              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
                 3. Taxa Reduzida de IVA a 6%
               </h4>
             </div>

@@ -211,28 +211,28 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         animate={{ opacity: 1, scale: 1 }}
         className="glass-card"
         style={{
-          borderRadius: "0.5rem",
+          borderRadius: "2px",
           padding: "2.5rem 1.75rem",
           textAlign: "center",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+          boxShadow: "0 40px 80px -30px rgba(0,0,0,0.55)",
         }}
       >
         <div
           style={{
             width: "64px",
             height: "64px",
-            background: "linear-gradient(135deg, #22c55e, #16a34a)",
-            borderRadius: "0.5rem",
+            background: "#0B1B2E",
+            borderRadius: "2px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             margin: "0 auto 1.25rem",
-            boxShadow: "0 4px 20px rgba(34, 197, 94, 0.35)",
+            boxShadow: "none",
           }}
         >
-          <CheckCircle size={32} color="#ffffff" />
+          <CheckCircle size={30} color="#C9A86A" strokeWidth={1.5} />
         </div>
-        <h3 style={{ color: "#071a3a", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
+        <h3 style={{ color: "#0B1B2E", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
           Pedido Recebido com Sucesso!
         </h3>
         <p style={{ color: "#475569", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
@@ -241,15 +241,15 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         </p>
         <div
           style={{
-            background: "rgba(251, 191, 36, 0.12)",
-            border: "1px solid rgba(251, 191, 36, 0.3)",
-            borderRadius: "0.375rem",
+            background: "rgba(184, 147, 90, 0.12)",
+            border: "1px solid rgba(184, 147, 90, 0.3)",
+            borderRadius: "2px",
             padding: "0.875rem",
             marginBottom: "1.25rem",
           }}
         >
-          <p style={{ color: "#d97706", fontSize: "0.8125rem", fontWeight: 700 }}>
-            🔔 Notificação enviada em tempo real. Resposta garantida até 12 horas com orçamento transparente e preço justo.
+          <p style={{ color: "#8F6E3E", fontSize: "0.8125rem", fontWeight: 700 }}>
+            Notificação enviada em tempo real. Resposta garantida até 12 horas com orçamento transparente e preço justo.
           </p>
         </div>
         <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>
@@ -265,35 +265,25 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
       id="hero-form"
       className="glass-card"
       style={{
-        borderRadius: "0.5rem",
+        borderRadius: "2px",
         overflow: "hidden",
-        boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+        boxShadow: "0 40px 80px -30px rgba(0,0,0,0.55)",
       }}
     >
       {/* Form Header */}
       <div
         className="hero-form-header"
         style={{
-          background: "#071a3a",
-          padding: "1.25rem 1.5rem 1rem",
+          background: "#0B1B2E",
+          padding: "1.5rem 1.75rem 1.375rem",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.875rem" }}>
-          <span style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.75rem", fontWeight: 600 }}>
+          <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
             Passo {step} de {TOTAL_STEPS}
           </span>
-          <span
-            style={{
-              background: "rgba(251, 191, 36, 0.18)",
-              color: "#fbbf24",
-              fontSize: "0.6875rem",
-              fontWeight: 800,
-              padding: "0.2rem 0.625rem",
-              borderRadius: "0.25rem",
-              border: "1px solid rgba(251, 191, 36, 0.35)",
-            }}
-          >
-            Preço Justo & Sem Compromisso
+          <span style={{ color: "#C9A86A", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+            Sem compromisso
           </span>
         </div>
 
@@ -306,7 +296,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
           />
         </div>
 
-        <h3 style={{ color: "#ffffff", fontWeight: 700, fontSize: "1.0625rem", marginTop: "0.875rem" }}>
+        <h3 style={{ color: "#ffffff", fontWeight: 500, fontSize: "1.375rem", marginTop: "1.125rem", letterSpacing: "-0.02em" }}>
           {stepTitles[step - 1]}
         </h3>
       </div>
@@ -338,9 +328,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       }}
                       style={{
                         padding: "0.8rem 0.75rem",
-                        border: `1.5px solid ${isSelected ? "#f59e0b" : "#cbd5e1"}`,
-                        borderRadius: "0.375rem",
-                        background: isSelected ? "rgba(251, 191, 36, 0.1)" : "#ffffff",
+                        border: `1.5px solid ${isSelected ? "#B8935A" : "#DDD9D1"}`,
+                        borderRadius: "2px",
+                        background: isSelected ? "rgba(184, 147, 90, 0.1)" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
                         flexDirection: "row",
@@ -355,7 +345,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     >
                       <span
                         style={{
-                          color: isSelected ? "#d97706" : "#475569",
+                          color: isSelected ? "#8F6E3E" : "#475569",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -368,7 +358,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         style={{
                           fontWeight: 700,
                           fontSize: "0.8rem",
-                          color: "#071a3a",
+                          color: "#0B1B2E",
                           lineHeight: 1.2,
                           flex: 1,
                           minWidth: 0,
@@ -379,7 +369,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         {service.shortTitle}
                       </span>
                       {isSelected && (
-                        <CheckCircle size={15} style={{ color: "#d97706", flexShrink: 0 }} />
+                        <CheckCircle size={15} style={{ color: "#8F6E3E", flexShrink: 0 }} />
                       )}
                     </button>
                   );
@@ -400,9 +390,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       onClick={() => setFormData((d) => ({ ...d, urgency: opt.id }))}
                       style={{
                         padding: "0.875rem 1rem",
-                        border: `1.5px solid ${isSelected ? "#f59e0b" : "#cbd5e1"}`,
-                        borderRadius: "0.375rem",
-                        background: isSelected ? "rgba(251, 191, 36, 0.1)" : "#ffffff",
+                        border: `1.5px solid ${isSelected ? "#B8935A" : "#DDD9D1"}`,
+                        borderRadius: "2px",
+                        background: isSelected ? "rgba(184, 147, 90, 0.1)" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
@@ -411,9 +401,8 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         textAlign: "left",
                       }}
                     >
-                      <span style={{ fontSize: "1.25rem" }}>{opt.emoji}</span>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#071a3a" }}>
+                                            <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#0B1B2E" }}>
                           {opt.label}
                         </div>
                         <div style={{ fontSize: "0.75rem", color: "#64748b" }}>
@@ -421,7 +410,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         </div>
                       </div>
                       {isSelected && (
-                        <CheckCircle size={18} style={{ color: "#d97706", flexShrink: 0 }} />
+                        <CheckCircle size={18} style={{ color: "#8F6E3E", flexShrink: 0 }} />
                       )}
                     </button>
                   );
@@ -433,7 +422,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
             {step === 3 && (
               <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
                 <div>
-                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#071a3a", marginBottom: "0.35rem" }}>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#0B1B2E", marginBottom: "0.35rem" }}>
                     Freguesia / Concelho da Obra *
                   </label>
                   <div style={{ position: "relative" }}>
@@ -467,7 +456,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#071a3a", marginBottom: "0.35rem" }}>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#0B1B2E", marginBottom: "0.35rem" }}>
                     Intervalo de Investimento Previsto
                   </label>
                   <select
@@ -503,18 +492,18 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                   style={{
                     marginTop: "1rem",
                     padding: "0.875rem",
-                    background: "rgba(251, 191, 36, 0.08)",
-                    border: "1px solid rgba(251, 191, 36, 0.25)",
-                    borderRadius: "0.375rem",
+                    background: "rgba(184, 147, 90, 0.08)",
+                    border: "1px solid rgba(184, 147, 90, 0.25)",
+                    borderRadius: "2px",
                     display: "flex",
                     gap: "0.625rem",
                     alignItems: "flex-start",
                   }}
                 >
-                  <AlertTriangle size={16} style={{ color: "#d97706", flexShrink: 0, marginTop: "1px" }} />
+                  <AlertTriangle size={16} style={{ color: "#8F6E3E", flexShrink: 0, marginTop: "1px" }} />
                   <p style={{ fontSize: "0.75rem", color: "#64748b", lineHeight: 1.5 }}>
                     Cobrimos todo o município de Aveiro. Se preferir ligar diretamente:{" "}
-                    <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#d97706", fontWeight: 700 }}>
+                    <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#8F6E3E", fontWeight: 700 }}>
                       {CONTRACTOR_INFO.phoneDisplay}
                     </a>
                     .
@@ -605,8 +594,8 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     justifyContent: "center",
                     gap: "0.5rem",
                     padding: "0.625rem",
-                    border: "1.5px dashed #cbd5e1",
-                    borderRadius: "0.375rem",
+                    border: "1.5px dashed #DDD9D1",
+                    borderRadius: "2px",
                     background: "#f8fafc",
                     color: "#475569",
                     cursor: "pointer",
@@ -636,9 +625,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     display: "flex",
                     alignItems: "flex-start",
                     gap: "0.625rem",
-                    background: formData.needsCredit ? "rgba(16, 185, 129, 0.08)" : "rgba(251, 191, 36, 0.08)",
-                    border: formData.needsCredit ? "1.5px solid #10b981" : "1px solid rgba(251, 191, 36, 0.35)",
-                    borderRadius: "0.375rem",
+                    background: formData.needsCredit ? "rgba(184, 147, 90, 0.12)" : "#FAF8F4",
+                    border: formData.needsCredit ? "1px solid #B8935A" : "1px solid #E3E1DC",
+                    borderRadius: "2px",
                     padding: "0.625rem 0.75rem",
                     cursor: "pointer",
                     userSelect: "none",
@@ -650,11 +639,11 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     id="form-needs-credit"
                     checked={formData.needsCredit}
                     onChange={(e) => setFormData((d) => ({ ...d, needsCredit: e.target.checked }))}
-                    style={{ marginTop: "2px", accentColor: "#10b981", width: "16px", height: "16px", cursor: "pointer" }}
+                    style={{ marginTop: "2px", accentColor: "#0B1B2E", width: "16px", height: "16px", cursor: "pointer" }}
                   />
                   <div style={{ fontSize: "0.75rem", color: "#1e293b", lineHeight: 1.45 }}>
-                    <span style={{ fontWeight: 700, color: "#071a3a", display: "block" }}>
-                      💶 Precisa de Crédito para a Obra? (100% Grátis)
+                    <span style={{ fontWeight: 700, color: "#0B1B2E", display: "block" }}>
+                      Precisa de crédito para a obra? (100% grátis)
                     </span>
                     <span style={{ color: "#64748b" }}>
                       Simular financiamento com o nosso parceiro de intermediação autorizado. Sem custos nem compromisso.
@@ -687,9 +676,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
               alignItems: "center",
               gap: "0.25rem",
               padding: "0.625rem 1rem",
-              background: "#f1f5f9",
-              border: "1px solid #cbd5e1",
-              borderRadius: "0.375rem",
+              background: "transparent",
+              border: "1px solid #DDD9D1",
+              borderRadius: "2px",
               color: "#475569",
               fontWeight: 600,
               fontSize: "0.875rem",
@@ -741,7 +730,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
             className="btn-primary"
             style={{ flex: 1, justifyContent: "center" }}
           >
-            {isSubmitting ? "A enviar..." : "Solicitar Orçamento Grátis →"}
+            {isSubmitting ? "A enviar..." : <>Solicitar Orçamento Grátis <ArrowRight size={16} /></>}
           </button>
         )}
       </div>
@@ -756,8 +745,8 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
           paddingRight: "1.5rem",
         }}
       >
-        🔒 Dados protegidos nos termos do RGPD. Consulte a nossa{" "}
-        <a href="/privacidade" style={{ color: "#d97706", textDecoration: "underline" }}>
+        Dados protegidos nos termos do RGPD. Consulte a nossa{" "}
+        <a href="/privacidade" style={{ color: "#8F6E3E", textDecoration: "underline" }}>
           Política de Privacidade
         </a>
         . Primeira estimativa técnica em até 12 a 24 horas.

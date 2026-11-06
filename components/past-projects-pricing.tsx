@@ -48,9 +48,9 @@ export function PastProjectsPricing() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(245, 158, 11, 0.12)",
-              border: "1px solid rgba(245, 158, 11, 0.25)",
-              color: "#b45309",
+              background: "rgba(184, 147, 90, 0.12)",
+              border: "1px solid rgba(184, 147, 90, 0.25)",
+              color: "#8A6A3B",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -91,9 +91,9 @@ export function PastProjectsPricing() {
                 style={{
                   padding: "0.5rem 1rem",
                   borderRadius: "2rem",
-                  border: isSelected ? "2px solid #0f2d5e" : "1.5px solid #e2e8f0",
-                  background: isSelected ? "#071a3a" : "#f8fafc",
-                  color: isSelected ? "#fbbf24" : "#475569",
+                  border: isSelected ? "2px solid #13294A" : "1.5px solid #e2e8f0",
+                  background: isSelected ? "#0B1B2E" : "#f8fafc",
+                  color: isSelected ? "#C9A86A" : "#475569",
                   fontWeight: isSelected ? 800 : 600,
                   fontSize: "0.8125rem",
                   cursor: "pointer",
@@ -138,7 +138,7 @@ export function PastProjectsPricing() {
                     height: "230px",
                     width: "100%",
                     overflow: "hidden",
-                    background: "#071a3a",
+                    background: "#0B1B2E",
                   }}
                 >
                   <img
@@ -159,13 +159,13 @@ export function PastProjectsPricing() {
                       position: "absolute",
                       top: "0.75rem",
                       left: "0.75rem",
-                      background: "rgba(7, 26, 58, 0.9)",
-                      color: "#fbbf24",
+                      background: "rgba(11, 27, 46, 0.9)",
+                      color: "#C9A86A",
                       fontSize: "0.6875rem",
                       fontWeight: 800,
                       padding: "0.25rem 0.625rem",
                       borderRadius: "0.25rem",
-                      border: "1px solid rgba(251, 191, 36, 0.3)",
+                      border: "1px solid rgba(184, 147, 90, 0.3)",
                       backdropFilter: "blur(4px)",
                     }}
                   >
@@ -200,7 +200,7 @@ export function PastProjectsPricing() {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      background: "rgba(7, 26, 58, 0.85)",
+                      background: "rgba(11, 27, 46, 0.85)",
                       backdropFilter: "blur(6px)",
                       padding: "0.4rem 0.75rem",
                       borderRadius: "0.375rem",
@@ -210,7 +210,7 @@ export function PastProjectsPricing() {
                     }}
                   >
                     <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                      <Maximize2 size={12} style={{ color: "#fbbf24" }} />
+                      <Maximize2 size={12} style={{ color: "#C9A86A" }} />
                       Área: {project.areaM2} m² ({Math.round(project.pricePerM2)}€/m²)
                     </span>
                     <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
@@ -227,7 +227,7 @@ export function PastProjectsPricing() {
                       style={{
                         fontWeight: 800,
                         fontSize: "1.125rem",
-                        color: "#071a3a",
+                        color: "#0B1B2E",
                         marginBottom: "0.4rem",
                         lineHeight: 1.3,
                       }}
@@ -245,7 +245,7 @@ export function PastProjectsPricing() {
                         marginBottom: "0.875rem",
                       }}
                     >
-                      <MapPin size={13} style={{ color: "#f59e0b" }} />
+                      <MapPin size={13} style={{ color: "#B8935A" }} />
                       <span>{project.parish}</span>
                       <span>•</span>
                       <Calendar size={13} style={{ color: "#64748b" }} />
@@ -271,7 +271,7 @@ export function PastProjectsPricing() {
                         style={{
                           background: "transparent",
                           border: "none",
-                          color: "#0f2d5e",
+                          color: "#13294A",
                           fontSize: "0.8125rem",
                           fontWeight: 700,
                           cursor: "pointer",
@@ -287,7 +287,7 @@ export function PastProjectsPricing() {
 
                       {isExpanded && (
                         <div style={{ marginTop: "0.875rem" }}>
-                          <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.5rem", textTransform: "uppercase" }}>
+                          <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#0B1B2E", marginBottom: "0.5rem", textTransform: "uppercase" }}>
                             Trabalhos Executados nesta Obra:
                           </div>
                           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.35rem" }}>
@@ -327,7 +327,7 @@ export function PastProjectsPricing() {
                       <div style={{ fontSize: "0.7rem", color: "#94a3b8" }}>
                         Preço Unitário
                       </div>
-                      <div style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#071a3a" }}>
+                      <div style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
                         ~{Math.round(project.pricePerM2)}€ / m²
                       </div>
                     </div>
@@ -342,8 +342,8 @@ export function PastProjectsPricing() {
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "0.35rem",
-                        background: "#071a3a",
-                        color: "#fbbf24",
+                        background: "#0B1B2E",
+                        color: "#C9A86A",
                         fontSize: "0.8125rem",
                         fontWeight: 800,
                         padding: "0.55rem 1rem",
@@ -366,7 +366,7 @@ export function PastProjectsPricing() {
         <div
           style={{
             marginTop: "3rem",
-            background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
+            background: "linear-gradient(135deg, #0B1B2E 0%, #13294A 100%)",
             borderRadius: "0.75rem",
             padding: "2rem",
             color: "#ffffff",
@@ -378,7 +378,7 @@ export function PastProjectsPricing() {
           }}
         >
           <div>
-            <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "0.35rem" }}>
+            <div style={{ color: "#C9A86A", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "0.35rem" }}>
               Tem uma casa com dimensões parecidas em Aveiro?
             </div>
             <h3 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.35rem" }}>

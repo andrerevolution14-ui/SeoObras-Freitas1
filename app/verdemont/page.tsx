@@ -92,16 +92,16 @@ export default function VerdemontPage() {
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
             <Link href="/projetos" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Projetos</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#fbbf24" }}>Projeto Verdemont</span>
+            <span style={{ color: "#C9A86A" }}>Projeto Verdemont</span>
           </nav>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(251, 191, 36, 0.15)",
-              border: "1px solid rgba(251, 191, 36, 0.4)",
-              color: "#fbbf24",
+              background: "rgba(184, 147, 90, 0.15)",
+              border: "1px solid rgba(184, 147, 90, 0.4)",
+              color: "#C9A86A",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -144,9 +144,9 @@ export default function VerdemontPage() {
       <VerdemontShowcase />
 
       {/* CTA Final */}
-      <section style={{ background: "#071a3a", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section style={{ background: "#0B1B2E", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
-          <ShieldCheck size={36} style={{ color: "#fbbf24", margin: "0 auto 1rem" }} />
+          <ShieldCheck size={36} style={{ color: "#C9A86A", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>
             Planeia uma intervenção de grande dimensão em Aveiro?
           </h2>

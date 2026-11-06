@@ -7,13 +7,13 @@ export function VerdemontShowcase() {
     <section
       id="projeto-destaque-verdemont"
       style={{
-        background: "linear-gradient(135deg, #051329 0%, #0a2347 50%, #071a3a 100%)",
+        background: "linear-gradient(135deg, #051329 0%, #0a2347 50%, #0B1B2E 100%)",
         color: "#ffffff",
         position: "relative",
         overflow: "hidden",
         padding: "4.5rem 0",
-        borderTop: "2px solid rgba(251, 191, 36, 0.3)",
-        borderBottom: "2px solid rgba(251, 191, 36, 0.3)",
+        borderTop: "2px solid rgba(184, 147, 90, 0.3)",
+        borderBottom: "2px solid rgba(184, 147, 90, 0.3)",
       }}
     >
       {/* Decorative background glow */}
@@ -25,7 +25,7 @@ export function VerdemontShowcase() {
           width: "450px",
           height: "450px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, rgba(7, 26, 58, 0) 70%)",
+          background: "radial-gradient(circle, rgba(184, 147, 90, 0.15) 0%, rgba(11, 27, 46, 0) 70%)",
           pointerEvents: "none",
         }}
       />
@@ -47,9 +47,9 @@ export function VerdemontShowcase() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "rgba(251, 191, 36, 0.15)",
-                border: "1px solid rgba(251, 191, 36, 0.4)",
-                color: "#fbbf24",
+                background: "rgba(184, 147, 90, 0.15)",
+                border: "1px solid rgba(184, 147, 90, 0.4)",
+                color: "#C9A86A",
                 borderRadius: "2rem",
                 padding: "0.35rem 1rem",
                 fontSize: "0.75rem",
@@ -105,7 +105,7 @@ export function VerdemontShowcase() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#fbbf24",
+                  color: "#C9A86A",
                   fontWeight: 800,
                   textDecoration: "underline",
                   textUnderlineOffset: "3px",
@@ -152,14 +152,14 @@ export function VerdemontShowcase() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.625rem",
-                  background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
-                  color: "#071a3a",
+                  background: "linear-gradient(135deg, #C9A86A 0%, #B8935A 100%)",
+                  color: "#0B1B2E",
                   fontWeight: 900,
                   fontSize: "1rem",
                   padding: "0.875rem 1.75rem",
                   borderRadius: "0.5rem",
                   textDecoration: "none",
-                  boxShadow: "0 6px 20px rgba(251, 191, 36, 0.35)",
+                  boxShadow: "0 6px 20px rgba(184, 147, 90, 0.35)",
                   transition: "transform 0.2s, box-shadow 0.2s",
                 }}
               >
@@ -196,9 +196,9 @@ export function VerdemontShowcase() {
                 position: "relative",
                 borderRadius: "1rem",
                 overflow: "hidden",
-                border: "2px solid rgba(251, 191, 36, 0.4)",
+                border: "2px solid rgba(184, 147, 90, 0.4)",
                 boxShadow: "0 15px 50px rgba(0,0,0,0.5)",
-                background: "#071a3a",
+                background: "#0B1B2E",
               }}
             >
               <div style={{ position: "relative", width: "100%", height: "440px" }}>
@@ -242,7 +242,7 @@ export function VerdemontShowcase() {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "1.125rem" }}>
+                  <div style={{ color: "#C9A86A", fontWeight: 800, fontSize: "1.125rem" }}>
                     Projeto Verdemont
                   </div>
                   <a

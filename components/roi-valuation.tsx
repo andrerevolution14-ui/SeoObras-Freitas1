@@ -87,7 +87,7 @@ export function RoiValuation() {
                   style={{
                     fontWeight: 800,
                     fontSize: "1.125rem",
-                    color: "#071a3a",
+                    color: "#0B1B2E",
                     marginBottom: "0.5rem",
                     lineHeight: 1.35,
                   }}
@@ -99,7 +99,7 @@ export function RoiValuation() {
                   style={{
                     fontSize: "0.8125rem",
                     fontWeight: 800,
-                    color: "#b45309",
+                    color: "#8A6A3B",
                     marginBottom: "0.875rem",
                   }}
                 >
@@ -120,8 +120,8 @@ export function RoiValuation() {
 
               <div
                 style={{
-                  background: "rgba(15, 45, 94, 0.04)",
-                  borderLeft: "3px solid #0f2d5e",
+                  background: "rgba(19, 41, 74, 0.04)",
+                  borderLeft: "3px solid #13294A",
                   padding: "0.625rem 0.75rem",
                   borderRadius: "0 0.375rem 0.375rem 0",
                   fontSize: "0.775rem",

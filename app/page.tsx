@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Phone, MapPin, Star, Shield, Clock, ArrowRight, CheckCircle, CreditCard } from "lucide-react";
+import Link from "next/link";
+import { Phone, Star, ArrowRight, ArrowUpRight } from "lucide-react";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 import { TrustBar } from "@/components/trust-bar";
 import { ServiceGrid } from "@/components/service-grid";
@@ -8,6 +9,7 @@ import { GoogleReviews } from "@/components/google-reviews";
 import { RealProjectsGallery } from "@/components/real-projects-gallery";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { CONTRACTOR_INFO, FAQ_ITEMS } from "@/lib/constants";
+import { BRAND_IMAGES } from "@/lib/brand-images";
 
 export const metadata: Metadata = {
   title: "Obras e Remodelações em Aveiro | Freitas Renovações",
@@ -103,997 +105,677 @@ const homeJsonLd = {
   ],
 };
 
+
+// ── Conteúdos da homepage ────────────────────────────────────
+const PILLARS = [
+  {
+    title: "Alvará de Construção Válido IMPIC",
+    desc: "Empresa devidamente licenciada com seguro de responsabilidade civil para execução de obras.",
+  },
+  {
+    title: "Garantia Contratual",
+    desc: "Todos os trabalhos têm garantia contratual escrita adaptada à tipologia da obra.",
+  },
+  {
+    title: "Resposta até 12h",
+    desc: "Atendimento ágil para avaliar a sua obra e apresentar orçamento discriminado.",
+  },
+  {
+    title: "Preços Justos e Transparentes",
+    desc: "Valores claros, sem custos ocultos nem alterações imprevisíveis no orçamento final.",
+  },
+];
+
+const PROCESS_STEPS = homeJsonLd["@graph"][1].step as { name: string; text: string }[];
+
+const PRICE_ROWS = [
+  {
+    name: "Remodelação Casa de Banho (WC)",
+    price: "1.800€ (duche) a 5.500€ (total)",
+    time: "3 a 8 dias úteis",
+    desc: "Desde troca de banheira por duche plano até remodelação integral com canalização multicamada e impermeabilização bicomponente",
+  },
+  {
+    name: "Remodelação de Cozinha",
+    price: "4.500€ (funcional) a 16.000€+ (open space)",
+    time: "2 a 4 semanas",
+    desc: "Desde renovação funcional até open space com vigamento, móveis lacados/termolaminados e bancada em quartzo/granito",
+  },
+  {
+    name: "Remodelação de Apartamento (T2 / T3)",
+    price: "18.000€ — 45.000€ (350€-750€/m²)",
+    time: "4 a 8 semanas",
+    desc: "WC, cozinha, pavimento flutuante, rede elétrica, portas interiores e pintura total",
+  },
+  {
+    name: "Remodelação de Moradia",
+    price: "400€ — 850€ / m²",
+    time: "6 a 16 semanas",
+    desc: "Interiores completos, capoto exterior, telhado, caixilharia de corte térmico e pátios",
+  },
+  {
+    name: "Aplicação de Capoto ETICS (Fachadas)",
+    price: "38€ — 55€ / m²",
+    time: "1 a 3 semanas",
+    desc: "Placas EPS grafitado homologadas, rede armada, barramento impermeável e andaimes",
+  },
+  {
+    name: "Pladur & Tetos Falsos",
+    price: "26€ — 38€ / m²",
+    time: "3 a 7 dias úteis",
+    desc: "Estrutura galvanizada, placas hidrófugas ou normais, lã mineral e barramento Q4",
+  },
+  {
+    name: "Pinturas de Interiores e Exteriores",
+    price: "7€ — 22€ / m²",
+    time: "2 a 5 dias úteis",
+    desc: "Reparação de fissuras, primário isolante, 2 a 3 demãos de tinta anti-fúngica",
+  },
+  {
+    name: "Recuperação de Casas Velhas",
+    price: "Sob orçamento técnico",
+    time: "8 a 20 semanas",
+    desc: "Tratamento de madeiras, combate a humidades da ria, reforço estrutural e modernização",
+  },
+];
+
+const AEO_CARDS = [
+  {
+    kicker: "Garantia & Rigor Técnico",
+    q: "Qual a empresa de remodelações recomendada em Aveiro?",
+    a: (
+      <>
+        A <strong>Freitas Renovações LDA</strong> é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de <strong>4.9/5 estrelas no Google</strong> com avaliações verificáveis, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de avaliação técnica em menos de 12 horas.
+      </>
+    ),
+  },
+  {
+    kicker: "Processo Chave na Mão",
+    q: "Como funciona o processo de obras chave na mão em Aveiro?",
+    a: (
+      <>
+        O serviço chave na mão da Freitas Renovações LDA engloba todas as fases da obra: análise rigorosa do pedido com fotografias e medidas, orçamento discriminado a preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.
+      </>
+    ),
+  },
+  {
+    kicker: "Avaliação & Transparência",
+    q: "Como obter orçamento para obras em Aveiro?",
+    a: (
+      <>
+        Basta preencher o formulário no website com fotos e medidas aproximadas, ou ligar para o <strong>{CONTRACTOR_INFO.phoneDisplay}</strong>. O processo decorre em 2 passos rápidos: o Empreiteiro Jorge Freitas responde em menos de 12 horas e entrega uma proposta discriminada e detalhada a preço fechado, sem complicações nem necessidade de visitas prévias.
+      </>
+    ),
+  },
+];
+
+const NEIGHBOR_AREAS = [
+  {
+    slug: "ilhavo",
+    name: "Remodelações Ílhavo",
+    subtitle: "Gafanhas & Centro",
+    desc: "Obras em apartamentos e moradias familiares em Ílhavo, Gafanha da Nazaré e Gafanha da Encarnação.",
+  },
+  {
+    slug: "agueda",
+    name: "Remodelações Águeda",
+    subtitle: "Vivendas & Restauro",
+    desc: "Recuperação de casas de aldeia, renovação de vivendas e isolamentos térmicos em Águeda.",
+  },
+  {
+    slug: "estarreja",
+    name: "Remodelações Estarreja",
+    subtitle: "Capoto & Coberturas",
+    desc: "Aplicação de capoto ETICS, reparação de infiltrações de telhados e remodelações totais em Estarreja.",
+  },
+  {
+    slug: "vagos",
+    name: "Remodelações Vagos",
+    subtitle: "Moradias Térreas",
+    desc: "Remodelação completa de moradias térreas, casas de banho e modernização de cozinhas em Vagos.",
+  },
+  {
+    slug: "praia-da-barra-costa-nova",
+    name: "Remodelações Barra & Costa Nova",
+    subtitle: "Proteção Maresia",
+    desc: "Impermeabilização marítima, caixilharia com corte térmico e obras em apartamentos de veraneio.",
+  },
+];
+
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
 
-      {/* ── 1. HERO & LEAD GENERATOR ─────────────────────── */}
-      <section className="hero-section" style={{ backgroundColor: '#050d1a' }}>
-        {/* Background photo */}
+      {/* ── 1. HERO & FORMULÁRIO ─────────────────────────── */}
+      <section className="hero-section">
         <Image
-          src="/hero-bg-v3.jpg"
-          alt="Cozinha e sala modernas renovadas pela Freitas Renovações em Aveiro"
+          src={BRAND_IMAGES.hero.src}
+          alt={BRAND_IMAGES.hero.alt}
           fill
           priority
           fetchPriority="high"
-          quality={75}
+          quality={80}
           className="hero-bg-image"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAARCAAkAEADASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUDBgIBAAf/xAAvEAACAQMDAwMDBAMBAAAAAAABAgMABBEFEiExQVFhBhNxgZEiMqGxwdHh8P/EABgBAAMBAQAAAAAAAAAAAAAAAAABAgME/8QAHhEAAgICAwEAAAAAAAAAAAAAAAECERIhMUFR/9oADAMBAAIRAxEAPwDuiiisBQFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFVbu7t7GDzriQIvbuc+w71lj9S6cSSb2EAe7cY/eoOiVFFVtze21shaeZEB7ZP9VFsAoooqgCiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k="
+          sizes="100vw"
         />
-        {/* Dark directional overlay */}
         <div className="hero-grid-pattern" />
 
         <div className="section-container" style={{ width: "100%", position: "relative", zIndex: 2 }}>
-          {/* Desktop: 2-col grid | Mobile: flex column with custom order */}
-          <div className="hero-grid">
+          <div className="gf-hero-grid">
+            <div className="gf-hero-text">
+              <div className="hero-section-label">Grupo Freitas · Construção e Remodelação</div>
 
-            {/* Left: label + h1 + subtitle + buttons — order 1 on mobile */}
-            <div className="hero-left-content hero-text-col">
-
-              <div className="hero-section-label">
-                Empresa de Construção e Remodelação
-              </div>
-
-              <h1
-                className="hero-main-title"
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                  fontSize: "clamp(2.25rem, 5.5vw, 4.25rem)",
-                  fontWeight: 900,
-                  color: "#ffffff",
-                  lineHeight: 1.12,
-                  marginBottom: "0.75rem",
-                  letterSpacing: "-0.03em",
-                  textShadow: "0 2px 30px rgba(0,0,0,0.5)",
-                }}
-              >
-                Obras e remodelações <span className="hero-title-nowrap">em Aveiro</span>
+              <h1 className="gf-hero-title">
+                Obras e remodelações <span style={{ whiteSpace: "nowrap" }}>em Aveiro</span>
+                <span className="gf-hero-dot">.</span>
               </h1>
 
-              <div
-                className="hero-gold-subline"
-                style={{
-                  display: "inline-block",
-                  fontSize: "clamp(0.9375rem, 2vw, 1.125rem)",
-                  fontWeight: 700,
-                  color: "#fbbf24",
-                  letterSpacing: "-0.01em",
-                  marginBottom: "1rem",
-                }}
-              >
-                <span style={{ whiteSpace: "nowrap" }}>Obras Chave na Mão</span>
-                {" · "}
-                <span style={{ whiteSpace: "nowrap" }}>Casas de Banho</span>
-                <span className="hero-subline-sep-desktop">{" · "}</span>
-                <br className="hero-subline-break-mobile" />
-                <span style={{ whiteSpace: "nowrap" }}>Cozinhas</span>
-                {" · "}
-                <span style={{ whiteSpace: "nowrap" }}>Alvará IMPIC</span>
-              </div>
-
-              {/* Subtitle — hidden on mobile */}
-              <p
-                className="hero-subtitle"
-                style={{
-                  color: "rgba(255,255,255,0.72)",
-                  fontSize: "1.0625rem",
-                  lineHeight: 1.65,
-                  marginBottom: "2rem",
-                  maxWidth: "480px",
-                  textShadow: "0 1px 8px rgba(0,0,0,0.3)",
-                }}
-              >
-                A equipa do Empreiteiro{" "}
-                <strong style={{ color: "#fbbf24", fontWeight: 800 }}>Jorge Freitas</strong>{" "}
-                realiza remodelações gerais, casas de banho, cozinhas, moradias, apartamentos e capoto em Aveiro e concelhos vizinhos com garantia contratual e resposta até 12h.
+              <p className="gf-hero-services">
+                Obras Chave na Mão <i /> Casas de Banho <i /> Cozinhas <i /> Alvará IMPIC
               </p>
 
-              {/* Action Buttons — desktop only (mobile gets its own block below the form) */}
-              <div className="hero-btn-wrapper hero-btn-desktop">
-                <a
-                  href={`tel:${CONTRACTOR_INFO.phone}`}
-                  className="btn-primary hero-btn-call"
-                  id="hero-call-btn"
-                  style={{ boxShadow: "0 4px 24px rgba(245,158,11,0.45)" }}
-                >
-                  <Phone size={18} />
-                  <span>{CONTRACTOR_INFO.phoneDisplay}</span>
-                </a>
-                <a
-                  href="#hero-form"
-                  className="btn-secondary hero-btn-quote"
-                  id="hero-quote-btn"
-                  style={{
-                    border: "1.5px solid rgba(255,255,255,0.35)",
-                    backdropFilter: "blur(4px)",
-                  }}
-                >
-                  <span>Pedir Orçamento Grátis</span>
+              <p className="gf-hero-lead">
+                A equipa do Empreiteiro <strong>Jorge Freitas</strong> realiza remodelações gerais, casas de banho, cozinhas, moradias, apartamentos e capoto em Aveiro e concelhos vizinhos com garantia contratual e resposta até 12h.
+              </p>
+
+              <div className="gf-hero-ctas">
+                <a href="#hero-form" className="btn-primary" id="hero-quote-btn">
+                  Pedir Orçamento Grátis
                   <ArrowRight size={16} />
                 </a>
+                <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-secondary" id="hero-call-btn">
+                  <Phone size={16} />
+                  {CONTRACTOR_INFO.phoneDisplay}
+                </a>
               </div>
 
-              {/* Badges + stars — DESKTOP only (hidden on mobile, shown below form) */}
-              <div className="hero-badges-desktop">
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "0.5rem",
-                    paddingTop: "1.5rem",
-                    borderTop: "1px solid rgba(255,255,255,0.12)",
-                  }}
-                >
-                  {[
-                    { icon: "⭐", text: "4.9/5 Google" },
-                    { icon: "🛡️", text: "Empresa Licenciada" },
-                    { icon: "⚡", text: "Resposta até 12h" },
-                    { icon: "💶", text: "Preços Justos" },
-                  ].map((badge) => (
-                    <div
-                      key={badge.text}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.375rem",
-                        background: "rgba(255,255,255,0.07)",
-                        border: "1px solid rgba(255,255,255,0.14)",
-                        borderRadius: "2rem",
-                        padding: "0.3rem 0.875rem",
-                        color: "rgba(255,255,255,0.88)",
-                        fontSize: "0.75rem",
-                        fontWeight: 600,
-                        backdropFilter: "blur(6px)",
-                      }}
-                    >
-                      <span>{badge.icon}</span>
-                      <span>{badge.text}</span>
-                    </div>
+              <Link href="/clientes" className="gf-hero-proof">
+                <span className="stars">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} size={13} fill="#C9A86A" stroke="#C9A86A" />
                   ))}
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginTop: "1rem" }}>
-                  <div style={{ display: "flex", gap: "2px" }}>
-                    {[1,2,3,4,5].map((s) => (
-                      <Star key={s} size={13} fill="#fbbf24" stroke="#fbbf24" />
-                    ))}
-                  </div>
-                  <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "0.8125rem" }}>
-                    +48 clientes satisfeitos em Aveiro · <a href="/clientes" style={{ color: "#fbbf24", fontWeight: 700, textDecoration: "underline" }}>Ver opiniões e fotos reais →</a>
-                  </p>
-                </div>
-              </div>
+                </span>
+                <span>
+                  <strong>{CONTRACTOR_INFO.googleRating}/5</strong> · +{CONTRACTOR_INFO.reviewCount} clientes satisfeitos em Aveiro
+                </span>
+                <ArrowUpRight size={14} />
+              </Link>
             </div>
 
-            {/* Right: Form — order 2 on mobile */}
-            <div className="hero-form-col">
+            <div className="gf-hero-form">
               <HeroMultiStepForm />
             </div>
-
-            {/* Buttons — MOBILE only, after form */}
-            <div className="hero-btns-mobile">
-              <a
-                href={`tel:${CONTRACTOR_INFO.phone}`}
-                className="btn-primary"
-                style={{ width: "100%", justifyContent: "center", fontSize: "0.9rem", padding: "0.75rem 1rem", boxShadow: "0 4px 24px rgba(245,158,11,0.45)" }}
-              >
-                <Phone size={17} />
-                <span>{CONTRACTOR_INFO.phoneDisplay}</span>
-              </a>
-              <a
-                href="#hero-form"
-                className="btn-secondary"
-                style={{ width: "100%", justifyContent: "center", fontSize: "0.9rem", padding: "0.75rem 1rem", border: "1.5px solid rgba(255,255,255,0.35)" }}
-              >
-                <span>Pedir Orçamento Grátis</span>
-                <ArrowRight size={15} />
-              </a>
-            </div>
-
-            {/* Badges + stars — MOBILE only, after buttons */}
-            <div className="hero-badges-mobile">
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.5rem",
-                  justifyContent: "center",
-                  paddingTop: "1.25rem",
-                  borderTop: "1px solid rgba(255,255,255,0.12)",
-                }}
-              >
-                {[
-                  { icon: "⭐", text: "4.9/5 Google" },
-                  { icon: "🛡️", text: "Empresa Licenciada" },
-                  { icon: "⚡", text: "Resposta até 12h" },
-                  { icon: "💶", text: "Preços Justos" },
-                ].map((badge) => (
-                  <div
-                    key={badge.text}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.375rem",
-                      background: "rgba(255,255,255,0.07)",
-                      border: "1px solid rgba(255,255,255,0.14)",
-                      borderRadius: "2rem",
-                      padding: "0.3rem 0.875rem",
-                      color: "rgba(255,255,255,0.88)",
-                      fontSize: "0.75rem",
-                      fontWeight: 600,
-                      backdropFilter: "blur(6px)",
-                    }}
-                  >
-                    <span>{badge.icon}</span>
-                    <span>{badge.text}</span>
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.45rem", marginTop: "0.75rem", justifyContent: "center", flexWrap: "nowrap" }}>
-                <div style={{ display: "flex", gap: "2px", flexShrink: 0 }}>
-                  {[1,2,3,4,5].map((s) => (
-                    <Star key={s} size={12} fill="#fbbf24" stroke="#fbbf24" />
-                  ))}
-                </div>
-                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.75rem", margin: 0, whiteSpace: "nowrap" }}>
-                  +48 clientes satisfeitos · <a href="/clientes" style={{ color: "#fbbf24", fontWeight: 700, textDecoration: "underline", whiteSpace: "nowrap" }}>Ver opiniões reais →</a>
-                </p>
-              </div>
-            </div>
-
           </div>
         </div>
 
         <style>{`
-          /* ── Desktop ── */
-          .hero-grid {
+          .gf-hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3.5rem;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 5rem;
             align-items: center;
+            padding-bottom: 6rem;
           }
-          .hero-subline-break-mobile { display: none; }
-          .hero-subline-sep-desktop { display: inline; }
-          .hero-badges-mobile { display: none; }
-          .hero-btns-mobile   { display: none; }
-          .hero-badges-desktop { display: block; }
-          .hero-btn-wrapper {
+          .gf-hero-title {
+            color: #ffffff;
+            font-size: clamp(2.75rem, 6vw, 5.5rem);
+            font-weight: 600;
+            line-height: 0.98;
+            letter-spacing: -0.045em;
+            margin-bottom: 1.75rem;
+            text-wrap: balance;
+          }
+          .gf-hero-dot { color: #B8935A; }
+          .gf-hero-services {
             display: flex;
-            gap: 0.875rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            align-items: center;
+            gap: 0.4rem 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
           }
-          .hero-btn-call, .hero-btn-quote {
-            font-size: 1rem;
-            padding: 0.875rem 1.75rem;
+          .gf-hero-services i { width: 4px; height: 4px; background: #B8935A; display: inline-block; transform: rotate(45deg); }
+          .gf-hero-lead {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            max-width: 540px;
+            margin-bottom: 2.5rem;
           }
-
-          /* ── Mobile ── */
-          @media (max-width: 768px) {
-            .hero-section {
-              padding: 5.15rem 0 1.85rem !important;
-              min-height: auto;
-              align-items: flex-start;
-            }
-            .hero-grid {
-              display: flex;
-              flex-direction: column;
-              gap: 0.95rem;
-              align-items: stretch;
-            }
-
-            /* 1 — Texto (label + h1 + subline) com espaçamento estético e equilibrado */
-            .hero-text-col {
-              order: 1;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              width: 100%;
-              padding: 0.15rem 0.25rem 0;
-            }
-            .hero-section-label {
-              justify-content: center;
-              text-align: center;
-              margin-bottom: 0.5rem !important;
-              font-size: 0.64rem !important;
-              font-weight: 700 !important;
-              letter-spacing: 0.14em !important;
-              color: rgba(255, 255, 255, 0.76) !important;
-              white-space: nowrap;
-            }
-            .hero-section-label::before {
-              display: none !important;
-            }
-            .hero-text-col h1 {
-              text-align: center;
-              width: 100%;
-              max-width: 320px;
-              margin-left: auto;
-              margin-right: auto;
-              font-size: 1.68rem !important;
-              line-height: 1.22 !important;
-              letter-spacing: -0.025em !important;
-              margin-bottom: 0.55rem !important;
-              text-wrap: balance;
-            }
-            .hero-title-nowrap {
-              white-space: nowrap;
-            }
-            .hero-subline-sep-desktop {
-              display: none;
-            }
-            .hero-subline-break-mobile {
-              display: block;
-            }
-            .hero-gold-subline {
-              font-size: 0.78rem !important;
-              line-height: 1.48 !important;
-              margin-bottom: 0 !important;
-              letter-spacing: 0 !important;
-            }
-            .hero-subtitle { display: none !important; }
-
-            /* 2 — Formulário */
-            .hero-form-col {
-              order: 2;
-              width: 100%;
-            }
-
-            /* 3 — Botões (abaixo do form) */
-            .hero-btns-mobile {
-              display: flex;
-              flex-direction: column;
-              gap: 0.625rem;
-              order: 3;
-              width: 100%;
-            }
-            .hero-btns-mobile a {
-              width: 100%;
-              justify-content: center;
-              text-align: center;
-            }
-
-            /* 4 — Badges + estrelas */
-            .hero-badges-mobile {
-              display: block;
-              order: 4;
-              width: 100%;
-              text-align: center;
-            }
-            .hero-badges-mobile > div {
-              justify-content: center;
-            }
-
-            /* Esconder versões desktop */
-            .hero-badges-desktop { display: none; }
-            .hero-btn-desktop    { display: none !important; }
+          .gf-hero-lead strong { color: #ffffff; font-weight: 600; }
+          .gf-hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+          .gf-hero-proof {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8125rem;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+          .gf-hero-proof strong { color: #ffffff; font-weight: 600; }
+          .gf-hero-proof:hover { color: #ffffff; }
+          .gf-hero-proof svg:last-child { color: #B8935A; }
+          @media (max-width: 1024px) {
+            .gf-hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+          }
+          @media (max-width: 860px) {
+            .gf-hero-grid { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
+            .gf-hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .gf-hero-title { font-size: clamp(2.35rem, 10vw, 3.25rem); margin-bottom: 1.25rem; }
+            .gf-hero-services { justify-content: center; font-size: 0.6875rem; margin-bottom: 0; }
+            .gf-hero-lead, .gf-hero-ctas { display: none; }
+            .gf-hero-proof { order: 5; border-top: 0; padding-top: 1.25rem; font-size: 0.75rem; }
+            .hero-section-label { margin-bottom: 1.125rem; font-size: 0.625rem; }
+            .hero-section-label::before { display: none; }
           }
         `}</style>
       </section>
 
-
-
-
-      {/* ── 2. TRUST BAR (Continuous marquee scroll on mobile) ── */}
+      {/* ── 2. CREDENCIAIS ───────────────────────────────── */}
       <TrustBar />
 
-      {/* ── 3. GOOGLE REVIEWS ────────────────────────────── */}
-      <GoogleReviews />
-
-      {/* ── 4. PROJETOS REALIZADOS (Directly below reviews) ── */}
+      {/* ── 3. PROJETOS REALIZADOS ───────────────────────── */}
       <RealProjectsGallery />
 
-      {/* ── 5. SERVICE GRID ──────────────────────────────── */}
+      {/* ── 4. SERVIÇOS ──────────────────────────────────── */}
       <ServiceGrid />
 
-      {/* ── 6. E-E-A-T ABOUT JORGE FREITAS ───────────────── */}
-      <section
-        className="section-padding"
-        style={{
-          background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        <div className="section-container" style={{ position: "relative", zIndex: 1 }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "3.5rem",
-              alignItems: "center",
-            }}
-            className="about-grid"
-          >
+      {/* ── 5. QUEM SOMOS — JORGE FREITAS (E-E-A-T) ─────── */}
+      <section className="section-padding gf-about" style={{ background: "#0B1B2E" }}>
+        <div className="section-container">
+          <div className="gf-about-grid">
+            <div className="gf-about-photo photo-slot">
+              <Image
+                src={BRAND_IMAGES.founder.src}
+                alt={BRAND_IMAGES.founder.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                quality={85}
+                style={{ objectFit: "cover", objectPosition: "center 25%" }}
+              />
+              <div className="gf-about-caption">
+                <span className="font-display">{CONTRACTOR_INFO.contractorName}</span>
+                <span>{CONTRACTOR_INFO.jobTitle} · Fundador</span>
+              </div>
+            </div>
+
             <div>
-              <p className="section-eyebrow" style={{ color: "#fbbf24" }}>Quem Somos</p>
-              <h2
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontSize: "clamp(1.625rem, 3.2vw, 2.25rem)",
-                  fontWeight: 800,
-                  color: "#ffffff",
-                  lineHeight: 1.2,
-                  marginBottom: "1rem",
-                }}
-              >
-                Supervisão Direta pelo <span className="text-gradient-gold">Empreiteiro Jorge Freitas</span>
+              <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Quem Somos</p>
+              <h2 className="section-title" style={{ color: "#ffffff" }}>
+                Supervisão Direta pelo <span style={{ color: "#C9A86A" }}>Empreiteiro Jorge Freitas</span>
               </h2>
-              <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.9375rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+              <p className="gf-about-lead">
                 A Freitas Renovações LDA é uma empresa licenciada em Aveiro que se destaca pela transparência, cumprimento rigoroso de prazos e orçamentos de preço justo. O Jorge Freitas acompanha cada obra pessoalmente.
               </p>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.875rem", marginBottom: "1.75rem" }}>
-                {[
-                  { number: `+${CONTRACTOR_INFO.projectsCompleted}`, label: "Obras Concluídas" },
-                  { number: "4.9★", label: "Avaliação Google" },
-                  { number: "Até 12h", label: "Resposta Rápida" },
-                  { number: "100%", label: "Preços Justos" },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    style={{
-                      background: "rgba(255,255,255,0.06)",
-                      border: "1px solid rgba(255,255,255,0.12)",
-                      borderRadius: "0.375rem",
-                      padding: "1rem",
-                    }}
-                  >
-                    <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#fbbf24", lineHeight: 1 }}>
-                      {stat.number}
-                    </div>
-                    <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.55)", marginTop: "0.25rem" }}>
-                      {stat.label}
-                    </div>
+              <div className="gf-pillars">
+                {PILLARS.map((p, i) => (
+                  <div key={p.title} className="gf-pillar">
+                    <span className="gf-pillar-num font-display">{String(i + 1).padStart(2, "0")}</span>
+                    <h3>{p.title}</h3>
+                    <p>{p.desc}</p>
                   </div>
                 ))}
               </div>
 
-              <a href="/sobre" className="btn-primary" id="about-learn-more-btn">
+              <Link href="/sobre" className="btn-primary" id="about-learn-more-btn">
                 Saber Mais Sobre a Nossa Empresa
                 <ArrowRight size={16} />
-              </a>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
-              {[
-                {
-                  icon: <Shield size={20} />,
-                  title: "Alvará de Construção Válido IMPIC",
-                  desc: "Empresa devidamente licenciada com seguro de responsabilidade civil para execução de obras.",
-                },
-                {
-                  icon: <CheckCircle size={20} />,
-                  title: "Garantia Contratual",
-                  desc: "Todos os trabalhos têm garantia contratual escrita adaptada à tipologia da obra.",
-                },
-                {
-                  icon: <Clock size={20} />,
-                  title: "Resposta até 12h",
-                  desc: "Atendimento ágil para avaliar a sua obra e apresentar orçamento discriminado.",
-                },
-                {
-                  icon: <Star size={20} />,
-                  title: "Preços Justos e Transparentes",
-                  desc: "Valores claros, sem custos ocultos nem alterações imprevisíveis no orçamento final.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  style={{
-                    display: "flex",
-                    gap: "0.875rem",
-                    padding: "1rem",
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    borderRadius: "0.375rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "0.25rem",
-                      background: "rgba(251, 191, 36, 0.15)",
-                      border: "1px solid rgba(251, 191, 36, 0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#fbbf24",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "0.9375rem", marginBottom: "0.2rem" }}>
-                      {item.title}
-                    </div>
-                    <div style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.5 }}>
-                      {item.desc}
-                    </div>
-                  </div>
-                </div>
-              ))}
+              </Link>
             </div>
           </div>
         </div>
         <style>{`
+          .gf-about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; }
+          .gf-about-photo { aspect-ratio: 4 / 5; }
+          .gf-about-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(11, 27, 46, 0.85)); }
+          .gf-about-caption { position: absolute; left: 1.75rem; bottom: 1.5rem; z-index: 2; display: flex; flex-direction: column; gap: 0.3rem; }
+          .gf-about-caption span:first-child { color: #ffffff; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; }
+          .gf-about-caption span:last-child { color: #C9A86A; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; }
+          .gf-about-lead { color: rgba(255, 255, 255, 0.7); font-size: 1.0625rem; line-height: 1.75; margin-bottom: 3rem; max-width: 560px; }
+          .gf-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+          .gf-pillar { padding: 1.75rem 1.75rem 1.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+          .gf-pillar:nth-child(even) { padding-left: 1.75rem; padding-right: 0; border-left: 1px solid rgba(255, 255, 255, 0.1); }
+          .gf-pillar-num { color: #B8935A; font-size: 0.75rem; letter-spacing: 0.06em; }
+          .gf-pillar h3 { color: #ffffff; font-size: 1.0625rem; font-weight: 500; margin: 0.75rem 0 0.5rem; letter-spacing: -0.015em; }
+          .gf-pillar p { color: rgba(255, 255, 255, 0.55); font-size: 0.8125rem; line-height: 1.6; }
           @media (max-width: 900px) {
-            .about-grid { grid-template-columns: 1fr !important; gap: 2.25rem !important; }
+            .gf-about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .gf-about-photo { aspect-ratio: 4 / 4.2; }
+          }
+          @media (max-width: 560px) {
+            .gf-pillars { grid-template-columns: 1fr; }
+            .gf-pillar, .gf-pillar:nth-child(even) { padding: 1.25rem 0; border-left: 0; }
           }
         `}</style>
       </section>
 
-      {/* ── 6.5. CRÉDITO & FINANCIAMENTO PARA OBRAS (100% GRÁTIS) ── */}
-      <section
-        className="section-padding"
-        style={{
-          background: "#ffffff",
-          borderTop: "1px solid #e2e8f0",
-          borderBottom: "1px solid #e2e8f0",
-        }}
-      >
+      {/* ── 6. PROCESSO (espelha o HowTo do schema) ─────── */}
+      <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
-          <div
-            style={{
-              background: "linear-gradient(135deg, #071a3a 0%, #0f2d5e 100%)",
-              borderRadius: "1rem",
-              padding: "2.5rem 2rem",
-              color: "#ffffff",
-              display: "grid",
-              gridTemplateColumns: "1.3fr 0.7fr",
-              gap: "2.5rem",
-              alignItems: "center",
-              boxShadow: "0 10px 30px rgba(7, 26, 58, 0.15)",
-              border: "1.5px solid rgba(251, 191, 36, 0.3)",
-            }}
-            className="credit-highlight-box"
-          >
+          <div className="gf-proc-head">
             <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  background: "rgba(16, 185, 129, 0.2)",
-                  border: "1px solid rgba(16, 185, 129, 0.4)",
-                  color: "#34d399",
-                  borderRadius: "2rem",
-                  padding: "0.3rem 0.875rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  marginBottom: "1rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.04em",
-                }}
-              >
-                <CreditCard size={14} />
-                Condição Especial da Oferta · 100% Gratuito
-              </div>
-
-              <h2
-                style={{
-                  fontSize: "clamp(1.5rem, 2.8vw, 2.1rem)",
-                  fontWeight: 900,
-                  lineHeight: 1.2,
-                  marginBottom: "1rem",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Precisa de Financiamento para a Sua Obra?{" "}
-                <span className="text-gradient-gold">Nós Ajudamos.</span>
-              </h2>
-
-              <p
-                style={{
-                  color: "rgba(255,255,255,0.8)",
-                  fontSize: "0.9375rem",
-                  lineHeight: 1.65,
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Para além da garantia de qualidade e preços justos nas suas remodelações, dispomos de um
-                <strong> serviço parceiro de intermediação de crédito 100% gratuito</strong>, devidamente
-                autorizado pelo Banco de Portugal. Comparamos propostas em mais de 10 bancos para garantir
-                a taxa mais baixa do mercado e prestações à sua medida.
-              </p>
-
-              <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                <a
-                  href="/credito-obras"
-                  className="btn-primary"
-                  id="home-credit-learn-btn"
-                  style={{ fontSize: "0.875rem", padding: "0.75rem 1.25rem" }}
-                >
-                  <span>Saber Mais Sobre Crédito Obras</span>
-                  <ArrowRight size={15} />
-                </a>
-
-                <a
-                  href={`tel:${CONTRACTOR_INFO.phone}`}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    color: "#ffffff",
-                    fontWeight: 700,
-                    padding: "0.75rem 1.25rem",
-                    borderRadius: "0.375rem",
-                    fontSize: "0.875rem",
-                    textDecoration: "none",
-                  }}
-                  id="home-credit-call-btn"
-                >
-                  <Phone size={15} style={{ color: "#fbbf24" }} />
-                  <span>{CONTRACTOR_INFO.phoneDisplay}</span>
-                </a>
-              </div>
+              <p className="section-eyebrow">Como Trabalhamos</p>
+              <h2 className="section-title" style={{ marginBottom: 0 }}>Do primeiro contacto à entrega da chave.</h2>
             </div>
-
-            {/* Quick Benefits List */}
-            <div
-              style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <div style={{ fontWeight: 800, color: "#fbbf24", fontSize: "0.9375rem", marginBottom: "0.875rem" }}>
-                Vantagens do Financiamento:
-              </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                {[
-                  "Custo Zero: 0€ de comissões para si",
-                  "Resposta rápida entre 24h e 48h",
-                  "Prazos flexíveis de 12 a 120 meses",
-                  "Financiamento até 100% do valor da obra",
-                  "Intermediários vinculados Banco de Portugal",
-                ].map((item) => (
-                  <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.9)" }}>
-                    <CheckCircle size={15} style={{ color: "#34d399", flexShrink: 0, marginTop: "2px" }} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="gf-proc-photo photo-slot">
+              <Image
+                src={BRAND_IMAGES.process.src}
+                alt={BRAND_IMAGES.process.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 40vw"
+                style={{ objectFit: "cover" }}
+              />
             </div>
+          </div>
+          <ol className="gf-proc">
+            {PROCESS_STEPS.map((step, i) => (
+              <li key={step.name} className="gf-proc-step">
+                <span className="gf-proc-num font-display">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{step.name.replace(/^\d+\.\s*/, "")}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <style>{`
+          .gf-proc-head { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+          .gf-proc-photo { aspect-ratio: 16 / 9; }
+          .gf-proc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #0B1B2E; }
+          .gf-proc-step { padding: 2rem 2rem 0 0; position: relative; }
+          .gf-proc-step::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #B8935A; }
+          .gf-proc-num { font-size: 3rem; font-weight: 500; color: #E3E1DC; letter-spacing: -0.04em; line-height: 1; }
+          .gf-proc-step h3 { font-size: 1.125rem; font-weight: 600; color: #0B1B2E; margin: 1.25rem 0 0.75rem; letter-spacing: -0.02em; line-height: 1.3; }
+          .gf-proc-step p { color: #5A6472; font-size: 0.875rem; line-height: 1.7; }
+          @media (max-width: 900px) {
+            .gf-proc-head { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+            .gf-proc { grid-template-columns: 1fr 1fr; row-gap: 2.5rem; }
+          }
+          @media (max-width: 560px) {
+            .gf-proc { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid #0B1B2E; row-gap: 0; }
+            .gf-proc-step { padding: 0 0 2.25rem 1.75rem; }
+            .gf-proc-step::before { top: 0.25rem; left: -4px; }
+            .gf-proc-num { font-size: 2.25rem; }
+          }
+        `}</style>
+      </section>
+
+      {/* ── 7. AVALIAÇÕES GOOGLE ─────────────────────────── */}
+      <GoogleReviews />
+
+      {/* ── 8. CRÉDITO & FINANCIAMENTO ───────────────────── */}
+      <section className="gf-credit">
+        <div className="gf-credit-photo photo-slot">
+          <Image
+            src={BRAND_IMAGES.credit.src}
+            alt={BRAND_IMAGES.credit.alt}
+            fill
+            sizes="(max-width: 900px) 100vw, 50vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="gf-credit-body">
+          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Condição Especial · 100% Gratuito</p>
+          <h2 className="section-title" style={{ color: "#ffffff" }}>
+            Precisa de Financiamento para a Sua Obra? <span style={{ color: "#C9A86A" }}>Nós Ajudamos.</span>
+          </h2>
+          <p className="gf-credit-text">
+            Para além da garantia de qualidade e preços justos nas suas remodelações, dispomos de um <strong>serviço parceiro de intermediação de crédito 100% gratuito</strong>, devidamente autorizado pelo Banco de Portugal. Comparamos propostas em mais de 10 bancos para garantir a taxa mais baixa do mercado e prestações à sua medida.
+          </p>
+          <ul className="gf-credit-list">
+            {[
+              "Custo Zero: 0€ de comissões para si",
+              "Resposta rápida entre 24h e 48h",
+              "Prazos flexíveis de 12 a 120 meses",
+              "Financiamento até 100% do valor da obra",
+              "Intermediários vinculados Banco de Portugal",
+            ].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <Link href="/credito-obras" className="btn-primary" id="home-credit-learn-btn">
+              Saber Mais Sobre Crédito Obras
+              <ArrowRight size={16} />
+            </Link>
+            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-secondary" id="home-credit-call-btn">
+              <Phone size={15} />
+              {CONTRACTOR_INFO.phoneDisplay}
+            </a>
           </div>
         </div>
         <style>{`
-          @media (max-width: 850px) {
-            .credit-highlight-box {
-              grid-template-columns: 1fr !important;
-              gap: 1.75rem !important;
-              padding: 1.75rem 1.25rem !important;
-            }
+          .gf-credit { display: grid; grid-template-columns: 1fr 1fr; background: #13294A; }
+          .gf-credit-photo { min-height: 560px; }
+          .gf-credit-body { padding: 6rem clamp(1.5rem, 6vw, 6rem); max-width: 760px; }
+          .gf-credit-text { color: rgba(255, 255, 255, 0.72); font-size: 1rem; line-height: 1.75; margin-bottom: 2rem; }
+          .gf-credit-text strong { color: #ffffff; font-weight: 600; }
+          .gf-credit-list { list-style: none; padding: 0; margin: 0 0 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem 2rem; }
+          .gf-credit-list li { position: relative; padding-left: 1.5rem; color: rgba(255, 255, 255, 0.88); font-size: 0.875rem; line-height: 1.5; }
+          .gf-credit-list li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 10px; height: 5px; border-left: 1.5px solid #C9A86A; border-bottom: 1.5px solid #C9A86A; transform: rotate(-45deg); }
+          @media (max-width: 900px) {
+            .gf-credit { grid-template-columns: 1fr; }
+            .gf-credit-photo { min-height: 280px; }
+            .gf-credit-body { padding: 4rem 1.25rem; }
+            .gf-credit-list { grid-template-columns: 1fr; }
           }
         `}</style>
       </section>
 
-      {/* ── 6.8. GUIA AEO: TABELA DE CUSTOS & RESPOSTAS DIRETAS PARA IA ── */}
-      <section className="section-padding" style={{ background: "#f8fafc", borderBottom: "1px solid #e2e8f0" }}>
+      {/* ── 9. PREÇOS DE REFERÊNCIA + RESPOSTAS (AEO) ────── */}
+      <section className="section-padding" style={{ background: "#F5F3EE" }}>
         <div className="section-container">
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p className="section-eyebrow">Preços e Condições Transparentes</p>
-            <h2 className="section-title">
-              Quanto Custa Remodelar em Aveiro? Tabela &amp; Respostas Rápidas
-            </h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>
+          <div className="gf-price-head">
+            <div>
+              <p className="section-eyebrow">Preços e Condições Transparentes</p>
+              <h2 className="section-title" style={{ marginBottom: 0 }}>
+                Quanto Custa Remodelar em Aveiro? Tabela &amp; Respostas Rápidas
+              </h2>
+            </div>
+            <p className="section-subtitle">
               Valores médios de referência para planeamento de obras no concelho de Aveiro e concelhos limítrofes. Apresentamos sempre orçamento discriminado e fechado sem custos surpresa.
             </p>
           </div>
 
-          {/* Pricing Summary Table */}
-          <div
-            style={{
-              background: "#ffffff",
-              borderRadius: "0.75rem",
-              border: "1.5px solid #e2e8f0",
-              overflow: "hidden",
-              boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
-              marginBottom: "3rem",
-            }}
-          >
-            <div style={{ overflowX: "auto" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left", fontSize: "0.9rem" }}>
-                <thead>
-                  <tr style={{ background: "#071a3a", color: "#ffffff" }}>
-                    <th style={{ padding: "1rem 1.25rem", fontWeight: 800 }}>Divisão / Tipologia de Obra</th>
-                    <th style={{ padding: "1rem 1.25rem", fontWeight: 800 }}>Preço Médio Estimado</th>
-                    <th style={{ padding: "1rem 1.25rem", fontWeight: 800 }}>Prazo Médio</th>
-                    <th style={{ padding: "1rem 1.25rem", fontWeight: 800 }}>O que Inclui</th>
+          <div className="gf-table-wrap">
+            <table className="gf-table">
+              <thead>
+                <tr>
+                  <th>Divisão / Tipologia de Obra</th>
+                  <th>Preço Médio Estimado</th>
+                  <th>Prazo Médio</th>
+                  <th>O que Inclui</th>
+                </tr>
+              </thead>
+              <tbody>
+                {PRICE_ROWS.map((row) => (
+                  <tr key={row.name}>
+                    <td className="gf-td-name">{row.name}</td>
+                    <td className="gf-td-price">{row.price}</td>
+                    <td className="gf-td-time">{row.time}</td>
+                    <td className="gf-td-desc">{row.desc}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {[
-                    {
-                      name: "Remodelação Casa de Banho (WC)",
-                      price: "1.800€ (duche) a 5.500€ (total)",
-                      time: "3 a 8 dias úteis",
-                      desc: "Desde troca de banheira por duche plano até remodelação integral com canalização multicamada e impermeabilização bicomponente",
-                    },
-                    {
-                      name: "Remodelação de Cozinha",
-                      price: "4.500€ (funcional) a 16.000€+ (open space)",
-                      time: "2 a 4 semanas",
-                      desc: "Desde renovação funcional até open space com vigamento, móveis lacados/termolaminados e bancada em quartzo/granito",
-                    },
-                    {
-                      name: "Remodelação de Apartamento (T2 / T3)",
-                      price: "18.000€ — 45.000€ (350€-750€/m²)",
-                      time: "4 a 8 semanas",
-                      desc: "WC, cozinha, pavimento flutuante, rede elétrica, portas interiores e pintura total",
-                    },
-                    {
-                      name: "Remodelação de Moradia",
-                      price: "400€ — 850€ / m²",
-                      time: "6 a 16 semanas",
-                      desc: "Interiores completos, capoto exterior, telhado, caixilharia de corte térmico e pátios",
-                    },
-                    {
-                      name: "Aplicação de Capoto ETICS (Fachadas)",
-                      price: "38€ — 55€ / m²",
-                      time: "1 a 3 semanas",
-                      desc: "Placas EPS grafitado homologadas, rede armada, barramento impermeável e andaimes",
-                    },
-                    {
-                      name: "Pladur & Tetos Falsos",
-                      price: "26€ — 38€ / m²",
-                      time: "3 a 7 dias úteis",
-                      desc: "Estrutura galvanizada, placas hidrófugas ou normais, lã mineral e barramento Q4",
-                    },
-                    {
-                      name: "Pinturas de Interiores e Exteriores",
-                      price: "7€ — 22€ / m²",
-                      time: "2 a 5 dias úteis",
-                      desc: "Reparação de fissuras, primário isolante, 2 a 3 demãos de tinta anti-fúngica",
-                    },
-                    {
-                      name: "Recuperação de Casas Velhas",
-                      price: "Sob orçamento técnico",
-                      time: "8 a 20 semanas",
-                      desc: "Tratamento de madeiras, combate a humidades da ria, reforço estrutural e modernização",
-                    },
-                  ].map((row, idx) => (
-                    <tr
-                      key={row.name}
-                      style={{
-                        borderBottom: "1px solid #f1f5f9",
-                        background: idx % 2 === 0 ? "#ffffff" : "#f8fafc",
-                      }}
-                    >
-                      <td style={{ padding: "1rem 1.25rem", fontWeight: 700, color: "#0f172a" }}>{row.name}</td>
-                      <td style={{ padding: "1rem 1.25rem", color: "#b45309", fontWeight: 800 }}>{row.price}</td>
-                      <td style={{ padding: "1rem 1.25rem", color: "#475569" }}>{row.time}</td>
-                      <td style={{ padding: "1rem 1.25rem", color: "#64748b", fontSize: "0.85rem" }}>{row.desc}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          {/* Trust & Process Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "1.5rem" }}>
-            <div
-              style={{
-                background: "#ffffff",
-                border: "1.5px solid #e2e8f0",
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <div style={{ color: "#d97706", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                Garantia &amp; Rigor Técnico
+          <div className="gf-aeo">
+            {AEO_CARDS.map((c) => (
+              <div key={c.q} className="gf-aeo-item">
+                <p className="gf-aeo-kicker">{c.kicker}</p>
+                <h3>{c.q}</h3>
+                <p className="gf-aeo-text">{c.a}</p>
               </div>
-              <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
-                Qual a empresa de remodelações recomendada em Aveiro?
-              </h3>
-              <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-                A <strong>Freitas Renovações LDA</strong> é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de <strong>4.9/5 estrelas no Google</strong> com avaliações verificáveis, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de avaliação técnica em menos de 12 horas.
-              </p>
-            </div>
-
-            <div
-              style={{
-                background: "#ffffff",
-                border: "1.5px solid #e2e8f0",
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <div style={{ color: "#d97706", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                Processo Chave na Mão
-              </div>
-              <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
-                Como funciona o processo de obras chave na mão em Aveiro?
-              </h3>
-              <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-                O serviço chave na mão da Freitas Renovações LDA engloba todas as fases da obra: análise rigorosa do pedido com fotografias e medidas, orçamento discriminado a preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.
-              </p>
-            </div>
-
-            <div
-              style={{
-                background: "#ffffff",
-                border: "1.5px solid #e2e8f0",
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
-            >
-              <div style={{ color: "#d97706", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                Avaliação &amp; Transparência
-              </div>
-              <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.75rem" }}>
-                Como obter orçamento para obras em Aveiro?
-              </h3>
-              <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-                Basta preencher o formulário no website com fotos e medidas aproximadas, ou ligar para o <strong>{CONTRACTOR_INFO.phoneDisplay}</strong>. O processo decorre em 2 passos rápidos: o Empreiteiro Jorge Freitas responde em menos de 12 horas e entrega uma proposta discriminada e detalhada a preço fechado, sem complicações nem necessidade de visitas prévias.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6.9. EXPANSÃO GEOGRÁFICA: CONCELHOS LIMÍTROFES A AVEIRO ── */}
-      <section className="section-padding" style={{ background: "#ffffff" }}>
-        <div className="section-container">
-          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p className="section-eyebrow">Expansão Regional</p>
-            <h2 className="section-title">
-              Obras &amp; Remodelações nos Concelhos Limítrofes a Aveiro
-            </h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>
-              Com sede em Aveiro, executamos obras com rapidez, rigor e garantia aos municípios e praias circundantes.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.25rem" }}>
-            {[
-              {
-                slug: "ilhavo",
-                name: "Remodelações Ílhavo",
-                subtitle: "Gafanhas & Centro",
-                desc: "Obras em apartamentos e moradias familiares em Ílhavo, Gafanha da Nazaré e Gafanha da Encarnação.",
-              },
-              {
-                slug: "agueda",
-                name: "Remodelações Águeda",
-                subtitle: "Vivendas & Restauro",
-                desc: "Recuperação de casas de aldeia, renovação de vivendas e isolamentos térmicos em Águeda.",
-              },
-              {
-                slug: "estarreja",
-                name: "Remodelações Estarreja",
-                subtitle: "Capoto & Coberturas",
-                desc: "Aplicação de capoto ETICS, reparação de infiltrações de telhados e remodelações totais em Estarreja.",
-              },
-              {
-                slug: "vagos",
-                name: "Remodelações Vagos",
-                subtitle: "Moradias Térreas",
-                desc: "Remodelação completa de moradias térreas, casas de banho e modernização de cozinhas em Vagos.",
-              },
-              {
-                slug: "praia-da-barra-costa-nova",
-                name: "Remodelações Barra & Costa Nova",
-                subtitle: "Proteção Maresia",
-                desc: "Impermeabilização marítima, caixilharia com corte térmico e obras em apartamentos de veraneio.",
-              },
-            ].map((area) => (
-              <a
-                key={area.slug}
-                href={`/areas-atuacao/${area.slug}`}
-                style={{
-                  background: "#f8fafc",
-                  border: "1.5px solid #e2e8f0",
-                  borderRadius: "0.75rem",
-                  padding: "1.25rem",
-                  textDecoration: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "all 0.2s ease",
-                }}
-                className="neighboring-area-card"
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#f59e0b", fontSize: "0.75rem", fontWeight: 800, marginBottom: "0.25rem" }}>
-                  <MapPin size={13} /> {area.subtitle}
-                </div>
-                <h3 style={{ fontSize: "1.0625rem", fontWeight: 800, color: "#071a3a", marginBottom: "0.5rem" }}>
-                  {area.name}
-                </h3>
-                <p style={{ color: "#64748b", fontSize: "0.8125rem", lineHeight: 1.5, flexGrow: 1, marginBottom: "0.75rem" }}>
-                  {area.desc}
-                </p>
-                <div style={{ color: "#ca8a04", fontWeight: 700, fontSize: "0.8125rem", display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                  Ver obras nesta zona <ArrowRight size={12} />
-                </div>
-              </a>
             ))}
           </div>
         </div>
+        <style>{`
+          .gf-price-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
+          .gf-table-wrap { overflow-x: auto; background: #ffffff; border: 1px solid #E3E1DC; margin-bottom: 4.5rem; }
+          .gf-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 760px; }
+          .gf-table th {
+            padding: 1.125rem 1.5rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #ffffff;
+            background: #0B1B2E;
+          }
+          .gf-table td { padding: 1.375rem 1.5rem; border-top: 1px solid #EDEBE6; vertical-align: top; }
+          .gf-table tbody tr { transition: background 0.2s ease; }
+          .gf-table tbody tr:hover { background: #FAF8F4; }
+          .gf-td-name { font-weight: 600; color: #0B1B2E; }
+          .gf-td-price { color: #0B1B2E; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+          .gf-td-time { color: #5A6472; white-space: nowrap; }
+          .gf-td-desc { color: #6B7480; font-size: 0.85rem; line-height: 1.6; }
+          .gf-aeo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; }
+          .gf-aeo-item { border-top: 1px solid #0B1B2E; padding-top: 1.75rem; }
+          .gf-aeo-kicker { font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8F6E3E; font-weight: 600; margin-bottom: 1rem; }
+          .gf-aeo-item h3 { font-size: 1.25rem; font-weight: 600; color: #0B1B2E; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 1rem; }
+          .gf-aeo-text { color: #5A6472; font-size: 0.9rem; line-height: 1.75; }
+          .gf-aeo-text strong { color: #0B1B2E; font-weight: 600; }
+          @media (max-width: 760px) {
+            .gf-table-wrap { background: transparent; border: 0; overflow: visible; }
+            .gf-table { min-width: 0; }
+            .gf-table thead { display: none; }
+            .gf-table, .gf-table tbody, .gf-table tr, .gf-table td { display: block; width: 100%; }
+            .gf-table tr { background: #ffffff; border: 1px solid #E3E1DC; padding: 1.25rem; margin-bottom: 0.625rem; }
+            .gf-table td { padding: 0; border: 0; }
+            .gf-td-name { font-size: 1rem; margin-bottom: 0.625rem; }
+            .gf-td-price { white-space: normal; color: #8F6E3E; }
+            .gf-td-time { font-size: 0.8125rem; margin: 0.25rem 0 0.75rem; }
+            .gf-td-time::before { content: "Prazo médio: "; color: #6B7480; }
+          }
+          @media (max-width: 900px) {
+            .gf-price-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
+            .gf-aeo { grid-template-columns: 1fr; gap: 2.5rem; }
+          }
+        `}</style>
       </section>
 
-      {/* ── 7. FAQ ACCORDION ─────────────────────────────── */}
-      <FaqAccordion />
-
-      {/* ── 8. FINAL CTA ─────────────────────────────────── */}
-      <section
-        style={{
-          background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
-          padding: "4rem 0",
-          textAlign: "center",
-        }}
-      >
+      {/* ── 10. CONCELHOS LIMÍTROFES ─────────────────────── */}
+      <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
-          <h2
-            style={{
-              fontSize: "clamp(1.625rem, 3.2vw, 2.25rem)",
-              fontWeight: 900,
-              color: "#071a3a",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Pronto para remodelar com preço justo?
-          </h2>
-          <p style={{ color: "rgba(7, 26, 58, 0.85)", fontSize: "1rem", marginBottom: "2rem", maxWidth: "480px", margin: "0 auto 2rem" }}>
+          <div className="gf-area-head">
+            <div>
+              <p className="section-eyebrow">Expansão Regional</p>
+              <h2 className="section-title" style={{ marginBottom: 0 }}>
+                Obras &amp; Remodelações nos Concelhos Limítrofes a Aveiro
+              </h2>
+            </div>
+            <p className="section-subtitle">
+              Com sede em Aveiro, executamos obras com rapidez, rigor e garantia aos municípios e praias circundantes.
+            </p>
+          </div>
+          <div className="gf-areas">
+            {NEIGHBOR_AREAS.map((area) => (
+              <Link key={area.slug} href={`/areas-atuacao/${area.slug}`} className="gf-area">
+                <span className="gf-area-sub">{area.subtitle}</span>
+                <h3>{area.name}</h3>
+                <p>{area.desc}</p>
+                <span className="gf-area-link">
+                  Ver obras nesta zona <ArrowUpRight size={14} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          .gf-area-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
+          .gf-areas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid #E3E1DC; border-bottom: 1px solid #E3E1DC; }
+          .gf-area {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1.5rem 1.75rem;
+            border-left: 1px solid #E3E1DC;
+            text-decoration: none;
+            transition: background 0.3s ease;
+          }
+          .gf-area:first-child { border-left: 0; }
+          .gf-area:hover { background: #F5F3EE; }
+          .gf-area-sub { font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8F6E3E; font-weight: 600; }
+          .gf-area h3 { font-size: 1.125rem; font-weight: 600; color: #0B1B2E; letter-spacing: -0.02em; line-height: 1.25; margin: 0.875rem 0 0.75rem; }
+          .gf-area p { color: #6B7480; font-size: 0.8125rem; line-height: 1.65; flex: 1; margin-bottom: 1.5rem; }
+          .gf-area-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8125rem; font-weight: 600; color: #0B1B2E; }
+          .gf-area-link svg { color: #B8935A; }
+          @media (max-width: 1024px) {
+            .gf-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 0; }
+            .gf-area { border-bottom: 1px solid #E3E1DC; }
+            .gf-area:nth-child(odd) { border-left: 0; }
+          }
+          @media (max-width: 900px) {
+            .gf-area-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
+          }
+          @media (max-width: 560px) {
+            .gf-areas { grid-template-columns: 1fr; }
+            .gf-area { border-left: 0; padding: 1.5rem 0; }
+          }
+        `}</style>
+      </section>
+
+      {/* ── 11. FAQ ──────────────────────────────────────── */}
+      <div style={{ borderTop: "1px solid #E3E1DC" }}>
+        <FaqAccordion />
+      </div>
+
+      {/* ── 12. CTA FINAL ────────────────────────────────── */}
+      <section className="gf-final">
+        <Image
+          src={BRAND_IMAGES.closing.src}
+          alt={BRAND_IMAGES.closing.alt}
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center 60%" }}
+        />
+        <div className="gf-final-overlay" />
+        <div className="section-container gf-final-inner">
+          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Orçamento Gratuito</p>
+          <h2 className="gf-final-title">Pronto para remodelar com preço justo?</h2>
+          <p className="gf-final-text">
             Peça um orçamento gratuito hoje. A equipa do Jorge Freitas responde no prazo máximo de 12 horas.
           </p>
-
-          <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <a
-              href={`tel:${CONTRACTOR_INFO.phone}`}
-              id="final-cta-call"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: "#071a3a",
-                color: "#ffffff",
-                fontWeight: 800,
-                padding: "0.875rem 1.75rem",
-                borderRadius: "0.375rem",
-                fontSize: "1rem",
-                textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(7, 26, 58, 0.3)",
-              }}
-            >
-              <Phone size={18} />
-              <span>{CONTRACTOR_INFO.phoneDisplay}</span>
-            </a>
-
-            <a
-              href="#hero-form"
-              id="final-cta-form"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                background: "rgba(7, 26, 58, 0.12)",
-                color: "#071a3a",
-                fontWeight: 800,
-                padding: "0.875rem 1.75rem",
-                borderRadius: "0.375rem",
-                fontSize: "1rem",
-                textDecoration: "none",
-                border: "2px solid rgba(7, 26, 58, 0.3)",
-              }}
-            >
-              <span>Pedir Orçamento Online</span>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <a href="#hero-form" id="final-cta-form" className="btn-primary">
+              Pedir Orçamento Online
               <ArrowRight size={16} />
+            </a>
+            <a href={`tel:${CONTRACTOR_INFO.phone}`} id="final-cta-call" className="btn-secondary">
+              <Phone size={16} />
+              {CONTRACTOR_INFO.phoneDisplay}
             </a>
           </div>
         </div>
+        <style>{`
+          .gf-final { position: relative; overflow: hidden; background: #070F1A; padding: 9rem 0; }
+          .gf-final-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7, 15, 26, 0.94) 0%, rgba(7, 15, 26, 0.75) 50%, rgba(7, 15, 26, 0.35) 100%); }
+          .gf-final-inner { position: relative; z-index: 2; }
+          .gf-final-title {
+            color: #ffffff;
+            font-size: clamp(2.25rem, 5vw, 4.25rem);
+            font-weight: 600;
+            letter-spacing: -0.045em;
+            line-height: 1.02;
+            max-width: 760px;
+            margin-bottom: 1.5rem;
+            text-wrap: balance;
+          }
+          .gf-final-text { color: rgba(255, 255, 255, 0.72); font-size: 1.0625rem; line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
+          @media (max-width: 768px) {
+            .gf-final { padding: 5.5rem 0; }
+            .gf-final-overlay { background: rgba(7, 15, 26, 0.82); }
+            .gf-final .btn-primary, .gf-final .btn-secondary { width: 100%; }
+          }
+        `}</style>
       </section>
     </>
   );

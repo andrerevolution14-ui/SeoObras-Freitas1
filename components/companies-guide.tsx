@@ -21,9 +21,9 @@ export function CompaniesGuide() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(15, 45, 94, 0.08)",
-              border: "1px solid rgba(15, 45, 94, 0.15)",
-              color: "#0f2d5e",
+              background: "rgba(19, 41, 74, 0.08)",
+              border: "1px solid rgba(19, 41, 74, 0.15)",
+              color: "#13294A",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -33,7 +33,7 @@ export function CompaniesGuide() {
               textTransform: "uppercase",
             }}
           >
-            <Building2 size={14} style={{ color: "#d97706" }} />
+            <Building2 size={14} style={{ color: "#8F6E3E" }} />
             Segurança, Licenciamento & Poupança
           </div>
           <h2 className="section-title">
@@ -64,8 +64,8 @@ export function CompaniesGuide() {
                 marginBottom: "1.25rem",
               }}
             >
-              <ShieldCheck size={22} style={{ color: "#0f2d5e" }} />
-              <h3 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#071a3a" }}>
+              <ShieldCheck size={22} style={{ color: "#13294A" }} />
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#0B1B2E" }}>
                 Checklist: Como Escolher um Empreiteiro em Aveiro
               </h3>
             </div>
@@ -82,7 +82,7 @@ export function CompaniesGuide() {
                     boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
                   }}
                 >
-                  <div style={{ fontWeight: 800, color: "#071a3a", fontSize: "0.9375rem", marginBottom: "0.35rem" }}>
+                  <div style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "0.9375rem", marginBottom: "0.35rem" }}>
                     {crit.title}
                   </div>
                   <p style={{ color: "#64748b", fontSize: "0.8125rem", lineHeight: 1.55, marginBottom: "0.625rem" }}>
@@ -119,8 +119,8 @@ export function CompaniesGuide() {
                 marginBottom: "1.25rem",
               }}
             >
-              <PiggyBank size={22} style={{ color: "#d97706" }} />
-              <h3 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#071a3a" }}>
+              <PiggyBank size={22} style={{ color: "#8F6E3E" }} />
+              <h3 style={{ fontSize: "1.25rem", fontWeight: 800, color: "#0B1B2E" }}>
                 Como Poupar Dinheiro em Obras em Aveiro
               </h3>
             </div>
@@ -144,8 +144,8 @@ export function CompaniesGuide() {
                       width: "36px",
                       height: "36px",
                       borderRadius: "0.375rem",
-                      background: "rgba(245, 158, 11, 0.15)",
-                      color: "#b45309",
+                      background: "rgba(184, 147, 90, 0.15)",
+                      color: "#8A6A3B",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -157,7 +157,7 @@ export function CompaniesGuide() {
                     {tip.number}
                   </div>
                   <div>
-                    <div style={{ fontWeight: 800, color: "#071a3a", fontSize: "0.9375rem", marginBottom: "0.25rem" }}>
+                    <div style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "0.9375rem", marginBottom: "0.25rem" }}>
                       {tip.title}
                     </div>
                     <p style={{ color: "#64748b", fontSize: "0.8125rem", lineHeight: 1.55 }}>
@@ -174,7 +174,7 @@ export function CompaniesGuide() {
         <div
           style={{
             marginTop: "3rem",
-            background: "#071a3a",
+            background: "#0B1B2E",
             borderRadius: "0.75rem",
             padding: "1.75rem 2rem",
             color: "#ffffff",
@@ -186,7 +186,7 @@ export function CompaniesGuide() {
           }}
         >
           <div>
-            <div style={{ color: "#fbbf24", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase" }}>
+            <div style={{ color: "#C9A86A", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase" }}>
               Precisa de aconselhamento honesto em Aveiro?
             </div>
             <div style={{ fontSize: "1.125rem", fontWeight: 800, marginTop: "0.25rem" }}>

@@ -1,22 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Star, BadgeCheck, ArrowRight, Camera, Maximize2, X } from "lucide-react";
+import { Star, ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { GOOGLE_REVIEWS, CONTRACTOR_INFO } from "@/lib/constants";
 
 type GoogleReviewItem = (typeof GOOGLE_REVIEWS)[number];
 
-function StarRating({ rating, size = 14 }: { rating: number; size?: number }) {
+function StarRating({ rating, size = 14, color = "#B8935A" }: { rating: number; size?: number; color?: string }) {
   return (
-    <div className="stars" style={{ flexShrink: 0 }}>
+    <div className="stars" style={{ flexShrink: 0 }} aria-label={`${rating} em 5 estrelas`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          size={size}
-          fill={i < rating ? "#f59e0b" : "none"}
-          stroke={i < rating ? "#f59e0b" : "#cbd5e1"}
-        />
+        <Star key={i} size={size} fill={i < rating ? color : "none"} stroke={i < rating ? color : "#cbd5e1"} />
       ))}
     </div>
   );
@@ -24,76 +19,48 @@ function StarRating({ rating, size = 14 }: { rating: number; size?: number }) {
 
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString("pt-PT", { month: "short", year: "numeric" });
+  return date.toLocaleDateString("pt-PT", { month: "long", year: "numeric" });
 }
 
 export function GoogleReviews() {
   const [activeReview, setActiveReview] = useState<GoogleReviewItem | null>(null);
 
-  return (
-    <section
-      className="section-padding"
-      id="reviews"
-      style={{
-        background: "linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)",
-        overflow: "hidden",
-      }}
-    >
-      <div className="section-container">
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "1.25rem" }}>
-          <p className="section-eyebrow">Avaliações Verificadas</p>
-          <h2 className="section-title">
-            O que dizem os nossos clientes em Aveiro
-          </h2>
-          <div
-            className="google-rating-summary-pill"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "0.5rem",
-              background: "#ffffff",
-              border: "1.5px solid #e2e8f0",
-              borderRadius: "0.5rem",
-              padding: "0.5rem 1rem",
-              marginTop: "0.5rem",
-              maxWidth: "100%",
-              boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
-            }}
-          >
-            <div className="stars">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} size={16} fill="#f59e0b" stroke="#f59e0b" />
-              ))}
-            </div>
-            <div style={{ fontSize: "0.875rem", color: "#64748b" }}>
-              <strong style={{ fontWeight: 800, fontSize: "1rem", color: "#071a3a" }}>4.9</strong>
-              <span> / 5 · 48 avaliações reais no Google</span>
-            </div>
-          </div>
+  useEffect(() => {
+    if (!activeReview) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActiveReview(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [activeReview]);
 
-          {/* Info discreta que indica que podem abrir as reviews */}
-          <div
-            style={{
-              marginTop: "0.75rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.35rem",
-              fontSize: "0.75rem",
-              color: "#64748b",
-              fontWeight: 600,
-            }}
-          >
-            <Maximize2 size={12} style={{ color: "#d97706", flexShrink: 0 }} />
-            <span>Pode tocar em qualquer avaliação para abrir e ler na íntegra</span>
+  return (
+    <section className="section-padding" id="reviews" style={{ background: "#ffffff" }}>
+      <div className="section-container">
+        <div className="gf-rev-head">
+          <div>
+            <p className="section-eyebrow">Avaliações Verificadas</p>
+            <h2 className="section-title" style={{ marginBottom: 0 }}>
+              O que dizem os nossos clientes em Aveiro
+            </h2>
           </div>
+          <a
+            href={CONTRACTOR_INFO.socialLinks.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="gf-rev-score"
+            aria-label="Ver perfil no Google"
+          >
+            <span className="gf-rev-score-num font-display">{CONTRACTOR_INFO.googleRating}</span>
+            <span>
+              <StarRating rating={5} size={15} />
+              <span className="gf-rev-score-label">
+                {CONTRACTOR_INFO.reviewCount} avaliações reais no Google
+                <ArrowUpRight size={13} />
+              </span>
+            </span>
+          </a>
         </div>
 
-        {/* Reviews Grid */}
-        <div className="home-reviews-grid">
+        <div className="gf-rev-grid">
           {GOOGLE_REVIEWS.map((review) => (
             <article
               key={review.id}
@@ -107,493 +74,200 @@ export function GoogleReviews() {
                 }
               }}
               aria-label={`Abrir avaliação de ${review.name}`}
-              className="testimonial-card home-review-card"
+              className="gf-rev"
             >
-              <div>
-                {/* Header */}
-                <div className="home-review-header">
-                  <div className="home-review-user">
-                    <div
-                      className="home-review-avatar"
-                      style={{
-                        background: `linear-gradient(135deg, ${getAvatarColor(review.name)})`,
-                      }}
-                    >
-                      {review.name.charAt(0)}
-                    </div>
-                    <div style={{ minWidth: 0, flex: 1 }}>
-                      <div className="home-review-name-row">
-                        <span className="home-review-name">{review.name}</span>
-                        <BadgeCheck
-                          size={13}
-                          className="home-review-verified-icon"
-                          style={{ color: "#16a34a", flexShrink: 0 }}
-                        />
-                      </div>
-                      <div className="home-review-parish">
-                        📍 {review.parish}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="home-review-verified-pill">
-                    <BadgeCheck size={11} style={{ color: "#16a34a", flexShrink: 0 }} />
-                    <span>Verificado</span>
-                  </div>
-                </div>
-
-                {/* Stars + Date */}
-                <div className="home-review-stars-date">
-                  <StarRating rating={review.rating} size={13} />
-                  <span className="home-review-date">{formatDate(review.date)}</span>
-                </div>
-
-                {/* Review text */}
-                <p className="home-review-text">
-                  &ldquo;{review.text}&rdquo;
-                </p>
+              <div className="gf-rev-top">
+                <StarRating rating={review.rating} size={13} />
+                <span className="gf-rev-service">{review.service}</span>
               </div>
-
-              {/* Footer: Service badge + Abrir review */}
-              <div className="home-review-footer">
-                <span className="home-review-service-badge">
-                  🔧 {review.service}
+              <p className="gf-rev-text">&ldquo;{review.text}&rdquo;</p>
+              <footer className="gf-rev-foot">
+                <span className="gf-rev-initial font-display">{review.name.charAt(0)}</span>
+                <span style={{ minWidth: 0 }}>
+                  <span className="gf-rev-name">{review.name}</span>
+                  <span className="gf-rev-parish">
+                    {review.parish} · {formatDate(review.date)}
+                  </span>
                 </span>
-                <span className="home-review-open-hint">
-                  <span>Abrir review</span>
-                  <Maximize2 size={10} />
-                </span>
-              </div>
+              </footer>
             </article>
           ))}
         </div>
 
-        {/* CTA para a Página de Clientes & Obras Reais */}
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "2rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0.75rem",
-          }}
-        >
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
-            <Link
-              href="/clientes"
-              className="btn-primary"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                fontSize: "0.9rem",
-                padding: "0.8rem 1.35rem",
-                boxShadow: "0 4px 20px rgba(245, 158, 11, 0.35)",
-              }}
-            >
-              <Camera size={16} />
-              <span>Ver Opiniões e Fotos de Obras Reais</span>
-              <ArrowRight size={15} />
-            </Link>
-
-            <a
-              href={CONTRACTOR_INFO.socialLinks.google}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                color: "#071a3a",
-                fontWeight: 700,
-                fontSize: "0.85rem",
-                textDecoration: "none",
-                padding: "0.75rem 1.2rem",
-                border: "1.5px solid #cbd5e1",
-                borderRadius: "0.375rem",
-                background: "#ffffff",
-                transition: "all 0.2s",
-              }}
-            >
-              <Star size={14} fill="#f59e0b" stroke="#f59e0b" />
-              <span>Ver Perfil no Google</span>
-            </a>
-          </div>
-          <p style={{ fontSize: "0.78rem", color: "#64748b", margin: 0 }}>
-            Cozinhas, Casas de Banho, Apartamentos e Moradias · Testemunhos e fotografias reais sem filtros
-          </p>
+        <div className="gf-rev-actions">
+          <Link href="/clientes" className="btn-dark">
+            Ver Opiniões e Fotos de Obras Reais
+            <ArrowRight size={16} />
+          </Link>
+          <a href={CONTRACTOR_INFO.socialLinks.google} target="_blank" rel="noopener noreferrer" className="btn-outline-dark">
+            Ver Perfil no Google
+            <ArrowUpRight size={15} />
+          </a>
         </div>
       </div>
 
-      {/* Modal de Leitura de Review */}
       {activeReview && (
-        <div
-          onClick={() => setActiveReview(null)}
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 120,
-            background: "rgba(5, 13, 26, 0.85)",
-            backdropFilter: "blur(6px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "1rem",
-          }}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: "#ffffff",
-              borderRadius: "0.875rem",
-              maxWidth: "520px",
-              width: "100%",
-              padding: "1.5rem",
-              boxShadow: "0 24px 50px rgba(0,0,0,0.45)",
-              position: "relative",
-            }}
-          >
-            <button
-              type="button"
-              onClick={() => setActiveReview(null)}
-              aria-label="Fechar avaliação"
-              style={{
-                position: "absolute",
-                top: "0.85rem",
-                right: "0.85rem",
-                background: "#f1f5f9",
-                color: "#071a3a",
-                border: "none",
-                borderRadius: "50%",
-                width: "34px",
-                height: "34px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-              }}
-            >
+        <div className="gf-rev-modal" onClick={() => setActiveReview(null)} role="dialog" aria-modal="true">
+          <div className="gf-rev-modal-card" onClick={(e) => e.stopPropagation()}>
+            <button className="gf-rev-close" onClick={() => setActiveReview(null)} aria-label="Fechar">
               <X size={18} />
             </button>
-
-            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem", paddingRight: "2rem" }}>
-              <div
-                style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "0.5rem",
-                  background: `linear-gradient(135deg, ${getAvatarColor(activeReview.name)})`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 800,
-                  color: "#ffffff",
-                  fontSize: "1rem",
-                  flexShrink: 0,
-                }}
-              >
-                {activeReview.name.charAt(0)}
-              </div>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", flexWrap: "wrap" }}>
-                  <span style={{ fontWeight: 800, fontSize: "1.05rem", color: "#071a3a" }}>
-                    {activeReview.name}
-                  </span>
-                  <span
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.2rem",
-                      background: "rgba(34, 197, 94, 0.1)",
-                      border: "1px solid rgba(34, 197, 94, 0.25)",
-                      borderRadius: "999px",
-                      padding: "0.12rem 0.5rem",
-                      fontSize: "0.68rem",
-                      color: "#16a34a",
-                      fontWeight: 700,
-                    }}
-                  >
-                    <BadgeCheck size={12} />
-                    Cliente Verificado
-                  </span>
-                </div>
-                <div style={{ fontSize: "0.8125rem", color: "#64748b", marginTop: "0.15rem" }}>
-                  📍 {activeReview.parish}, Aveiro · {formatDate(activeReview.date)}
-                </div>
-              </div>
-            </div>
-
-            <div style={{ marginBottom: "0.85rem" }}>
-              <StarRating rating={activeReview.rating} size={16} />
-            </div>
-
-            <p style={{ color: "#1e293b", fontSize: "0.95rem", lineHeight: 1.65, marginBottom: "1.25rem" }}>
-              &ldquo;{activeReview.text}&rdquo;
-            </p>
-
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "0.75rem",
-                flexWrap: "wrap",
-                paddingTop: "1rem",
-                borderTop: "1px solid #e2e8f0",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  background: "rgba(7, 26, 58, 0.06)",
-                  color: "#071a3a",
-                  fontSize: "0.78rem",
-                  fontWeight: 700,
-                  padding: "0.3rem 0.7rem",
-                  borderRadius: "0.35rem",
-                }}
-              >
-                🔧 {activeReview.service}
+            <StarRating rating={activeReview.rating} size={16} />
+            <p className="gf-rev-modal-text font-display">&ldquo;{activeReview.text}&rdquo;</p>
+            <div className="gf-rev-foot" style={{ borderTop: "1px solid #E3E1DC", paddingTop: "1.25rem" }}>
+              <span className="gf-rev-initial font-display">{activeReview.name.charAt(0)}</span>
+              <span>
+                <span className="gf-rev-name">{activeReview.name}</span>
+                <span className="gf-rev-parish">
+                  {activeReview.parish} · {activeReview.service} · {formatDate(activeReview.date)}
+                </span>
               </span>
-
-              <Link
-                href="/clientes"
-                onClick={() => setActiveReview(null)}
-                style={{
-                  fontSize: "0.8125rem",
-                  fontWeight: 800,
-                  color: "#d97706",
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.25rem",
-                }}
-              >
-                <span>Ver mais obras reais</span>
-                <ArrowRight size={14} />
-              </Link>
             </div>
+            <Link href="/clientes" onClick={() => setActiveReview(null)} className="link-arrow" style={{ marginTop: "1.5rem" }}>
+              Ver mais obras reais <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       )}
 
       <style>{`
-        .home-reviews-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 1.25rem;
-          width: 100%;
-          max-width: 100%;
-        }
-        .home-review-card {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          min-width: 0;
-          max-width: 100%;
-          overflow: hidden;
-          box-sizing: border-box;
-          cursor: pointer;
-        }
-        .home-review-header {
+        .gf-rev-head {
           display: flex;
           justify-content: space-between;
-          align-items: flex-start;
-          gap: 0.5rem;
-          margin-bottom: 0.75rem;
+          align-items: flex-end;
+          gap: 3rem;
+          margin-bottom: 4rem;
+          flex-wrap: wrap;
         }
-        .home-review-user {
+        .gf-rev-head > div { max-width: 640px; }
+        .gf-rev-score {
           display: flex;
           align-items: center;
-          gap: 0.65rem;
+          gap: 1.25rem;
+          text-decoration: none;
+          padding-left: 2rem;
+          border-left: 1px solid #E3E1DC;
+        }
+        .gf-rev-score-num { font-size: 4.5rem; line-height: 0.9; font-weight: 500; color: #0B1B2E; letter-spacing: -0.05em; }
+        .gf-rev-score-label {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          margin-top: 0.5rem;
+          font-size: 0.8125rem;
+          color: #5A6472;
+        }
+        .gf-rev-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1.5rem;
+        }
+        .gf-rev {
+          display: flex;
+          flex-direction: column;
+          padding: 2rem;
+          background: #F5F3EE;
+          border: 1px solid transparent;
+          cursor: pointer;
+          transition: background 0.3s ease, border-color 0.3s ease;
           min-width: 0;
+        }
+        .gf-rev:hover { background: #ffffff; border-color: #DDD9D1; }
+        .gf-rev:focus-visible { outline: 2px solid #B8935A; outline-offset: 2px; }
+        .gf-rev-top { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .gf-rev-service {
+          font-size: 0.625rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #6B7480;
+          font-weight: 600;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .gf-rev-text {
+          color: #0B1B2E;
+          font-size: 1rem;
+          line-height: 1.65;
+          margin-bottom: 2rem;
           flex: 1;
         }
-        .home-review-avatar {
-          width: 38px;
-          height: 38px;
-          border-radius: 0.375rem;
+        .gf-rev-foot { display: flex; align-items: center; gap: 0.875rem; }
+        .gf-rev-initial {
+          width: 40px;
+          height: 40px;
+          flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: 800;
-          color: #ffffff;
-          font-size: 0.9rem;
-          flex-shrink: 0;
+          background: #0B1B2E;
+          color: #C9A86A;
+          font-weight: 500;
+          font-size: 1rem;
         }
-        .home-review-name-row {
+        .gf-rev-name { display: block; font-weight: 600; color: #0B1B2E; font-size: 0.9375rem; }
+        .gf-rev-parish { display: block; color: #6B7480; font-size: 0.75rem; margin-top: 0.15rem; }
+        .gf-rev-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3.5rem; }
+        .gf-rev-modal {
+          position: fixed;
+          inset: 0;
+          z-index: 120;
+          background: rgba(7, 15, 26, 0.85);
+          backdrop-filter: blur(6px);
           display: flex;
           align-items: center;
-          gap: 0.25rem;
-          min-width: 0;
+          justify-content: center;
+          padding: 1rem;
         }
-        .home-review-name {
-          font-weight: 800;
-          font-size: 0.92rem;
-          color: #071a3a;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+        .gf-rev-modal-card {
+          position: relative;
+          background: #ffffff;
+          max-width: 620px;
+          width: 100%;
+          padding: 3rem 2.5rem 2.5rem;
+          display: flex;
+          flex-direction: column;
+          border-top: 3px solid #B8935A;
         }
-        .home-review-verified-icon {
-          display: none;
-        }
-        .home-review-parish {
-          font-size: 0.75rem;
-          color: #64748b;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .home-review-verified-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.22rem;
-          background: rgba(34, 197, 94, 0.08);
-          border: 1px solid rgba(34, 197, 94, 0.2);
-          border-radius: 0.25rem;
-          padding: 0.18rem 0.45rem;
-          font-size: 0.68rem;
-          color: #16a34a;
-          font-weight: 700;
-          flex-shrink: 0;
-        }
-        .home-review-stars-date {
+        .gf-rev-close {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          width: 40px;
+          height: 40px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          gap: 0.4rem;
-          margin-bottom: 0.65rem;
+          justify-content: center;
+          border: 1px solid #E3E1DC;
+          background: #fff;
+          cursor: pointer;
+          color: #0B1B2E;
         }
-        .home-review-date {
-          font-size: 0.72rem;
-          color: #94a3b8;
-          white-space: nowrap;
-        }
-        .home-review-text {
-          color: #475569;
-          font-size: 0.875rem;
-          line-height: 1.58;
-          margin: 0 0 0.875rem 0;
-          word-break: break-word;
-        }
-        .home-review-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 0.4rem;
-          padding-top: 0.6rem;
-          border-top: 1px solid #f1f5f9;
-        }
-        .home-review-service-badge {
-          display: inline-flex;
-          align-items: center;
-          background: rgba(7, 26, 58, 0.06);
-          color: #071a3a;
-          font-size: 0.72rem;
-          font-weight: 700;
-          padding: 0.2rem 0.55rem;
-          border-radius: 0.25rem;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          max-width: 68%;
-        }
-        .home-review-open-hint {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.22rem;
-          font-size: 0.68rem;
-          font-weight: 700;
-          color: #d97706;
-          white-space: nowrap;
-          flex-shrink: 0;
-        }
-
+        .gf-rev-modal-text { font-size: 1.375rem; line-height: 1.5; color: #0B1B2E; letter-spacing: -0.015em; margin: 1.5rem 0 2rem; font-weight: 500; }
         @media (max-width: 960px) {
-          .home-reviews-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.85rem;
-          }
+          .gf-rev-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .gf-rev-score { padding-left: 0; border-left: 0; }
         }
-
         @media (max-width: 640px) {
-          .home-reviews-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            gap: 0.55rem !important;
+          .gf-rev-head { margin-bottom: 2.5rem; gap: 1.5rem; }
+          .gf-rev-score-num { font-size: 3.5rem; }
+          .gf-rev-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 0.75rem;
+            margin: 0 -1.25rem;
+            padding: 0 1.25rem 0.5rem;
+            scrollbar-width: none;
           }
-          .home-review-card {
-            padding: 0.7rem 0.6rem !important;
-            border-radius: 0.65rem !important;
-          }
-          .home-review-header {
-            margin-bottom: 0.45rem !important;
-          }
-          .home-review-user {
-            gap: 0.4rem !important;
-          }
-          .home-review-avatar {
-            width: 26px !important;
-            height: 26px !important;
-            font-size: 0.72rem !important;
-            border-radius: 0.3rem !important;
-          }
-          .home-review-name {
-            font-size: 0.76rem !important;
-          }
-          .home-review-verified-icon {
-            display: inline-block !important;
-          }
-          .home-review-verified-pill {
-            display: none !important;
-          }
-          .home-review-parish {
-            font-size: 0.64rem !important;
-          }
-          .home-review-stars-date {
-            margin-bottom: 0.4rem !important;
-          }
-          .home-review-date {
-            font-size: 0.6rem !important;
-          }
-          .home-review-text {
-            font-size: 0.72rem !important;
-            line-height: 1.4 !important;
-            margin-bottom: 0.5rem !important;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-          }
-          .home-review-footer {
-            padding-top: 0.45rem !important;
-            gap: 0.25rem !important;
-          }
-          .home-review-service-badge {
-            font-size: 0.6rem !important;
-            padding: 0.14rem 0.38rem !important;
-            max-width: 58% !important;
-          }
-          .home-review-open-hint {
-            font-size: 0.6rem !important;
-          }
+          .gf-rev-grid::-webkit-scrollbar { display: none; }
+          .gf-rev { flex: 0 0 84%; scroll-snap-align: start; padding: 1.5rem; }
+          .gf-rev-text { font-size: 0.9375rem; }
+          .gf-rev-actions a { width: 100%; }
+          .gf-rev-modal-card { padding: 2.5rem 1.5rem 1.75rem; }
+          .gf-rev-modal-text { font-size: 1.125rem; }
         }
       `}</style>
     </section>
   );
-}
-
-function getAvatarColor(name: string): string {
-  const colors = [
-    "#071a3a, #1a3f7a",
-    "#7c3aed, #5b21b6",
-    "#0369a1, #0284c7",
-    "#047857, #059669",
-    "#b45309, #d97706",
-    "#be123c, #e11d48",
-  ];
-  const idx = name.charCodeAt(0) % colors.length;
-  return colors[idx];
 }
