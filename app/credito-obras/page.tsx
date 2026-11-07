@@ -146,9 +146,9 @@ export default function CreditoObrasPage() {
       {/* ── 1. HERO SECTION ───────────────────────────── */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(11, 27, 46, 0.90) 0%, rgba(11, 27, 46, 0.78) 55%, rgba(19, 41, 74, 0.55) 100%), url('/heroes/casal-chaves-casa.jpg')",
+            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.55) 100%), url('/heroes/casal-chaves-casa.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -171,7 +171,7 @@ export default function CreditoObrasPage() {
               Início
             </Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A", fontWeight: 600 }}>Crédito para Obras</span>
+            <span style={{ color: "#D4D4D4", fontWeight: 600 }}>Crédito para Obras</span>
           </nav>
 
           <p className="section-eyebrow">Serviço Parceiro 100% Gratuito · Banco de Portugal</p>
@@ -229,7 +229,7 @@ export default function CreditoObrasPage() {
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p className="section-eyebrow" style={{ color: "#8F6E3E" }}>Porquê Escolher a Nossa Ajuda</p>
+            <p className="section-eyebrow" style={{ color: "#525252" }}>Porquê Escolher a Nossa Ajuda</p>
             <h2 className="section-title">
               Vantagens Exclusivas da Intermediação de Crédito Gratuita
             </h2>
@@ -249,8 +249,8 @@ export default function CreditoObrasPage() {
               <div
                 key={adv.title}
                 style={{
-                  background: "#f8fafc",
-                  border: "1.5px solid #e2e8f0",
+                  background: "#F7F7F5",
+                  border: "1.5px solid #E5E5E3",
                   borderRadius: "0.75rem",
                   padding: "1.75rem",
                   transition: "all 0.2s ease",
@@ -262,12 +262,12 @@ export default function CreditoObrasPage() {
                     width: "42px",
                     height: "42px",
                     borderRadius: "0.5rem",
-                    background: "rgba(19, 41, 74, 0.08)",
-                    border: "1px solid rgba(19, 41, 74, 0.15)",
+                    background: "rgba(23, 23, 23, 0.08)",
+                    border: "1px solid rgba(23, 23, 23, 0.15)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#13294A",
+                    color: "#171717",
                     fontWeight: 900,
                     fontSize: "1rem",
                     marginBottom: "1rem",
@@ -279,13 +279,13 @@ export default function CreditoObrasPage() {
                   style={{
                     fontSize: "1.125rem",
                     fontWeight: 800,
-                    color: "#0B1B2E",
+                    color: "#0A0A0A",
                     marginBottom: "0.5rem",
                   }}
                 >
                   {adv.title}
                 </h3>
-                <p style={{ color: "#64748b", fontSize: "0.875rem", lineHeight: 1.65 }}>
+                <p style={{ color: "#6B6B6B", fontSize: "0.875rem", lineHeight: 1.65 }}>
                   {adv.desc}
                 </p>
               </div>
@@ -294,7 +294,7 @@ export default function CreditoObrasPage() {
             {/* Extra Card: Segurança Regulamentada */}
             <div
               style={{
-                background: "linear-gradient(135deg, #0B1B2E 0%, #13294A 100%)",
+                background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
                 borderRadius: "0.75rem",
                 padding: "1.75rem",
                 color: "#ffffff",
@@ -324,10 +324,10 @@ export default function CreditoObrasPage() {
       </section>
 
       {/* ── 3. COMO FUNCIONA EM 4 PASSOS ──────────────────── */}
-      <section className="section-padding" style={{ background: "#f8fafc" }}>
+      <section className="section-padding" style={{ background: "#F7F7F5" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p className="section-eyebrow" style={{ color: "#13294A" }}>Passo a Passo Simples</p>
+            <p className="section-eyebrow" style={{ color: "#171717" }}>Passo a Passo Simples</p>
             <h2 className="section-title">
               Como Funciona o Processo de Financiamento da Obra?
             </h2>
@@ -348,7 +348,7 @@ export default function CreditoObrasPage() {
                 step: "01",
                 title: "Orçamento com Jorge Freitas",
                 desc: "O Empreiteiro Jorge Freitas analisa as fotos e medidas do seu espaço e apresenta um orçamento transparente, detalhado e com preço fechado.",
-                icon: <Coins size={22} style={{ color: "#C9A86A" }} />,
+                icon: <Coins size={22} style={{ color: "#D4D4D4" }} />,
               },
               {
                 step: "02",
@@ -375,7 +375,7 @@ export default function CreditoObrasPage() {
                   background: "#ffffff",
                   borderRadius: "0.75rem",
                   padding: "1.75rem",
-                  border: "1.5px solid #e2e8f0",
+                  border: "1.5px solid #E5E5E3",
                   position: "relative",
                 }}
               >
@@ -386,7 +386,7 @@ export default function CreditoObrasPage() {
                     right: "1.25rem",
                     fontSize: "1.75rem",
                     fontWeight: 900,
-                    color: "rgba(19, 41, 74, 0.08)",
+                    color: "rgba(23, 23, 23, 0.08)",
                     lineHeight: 1,
                   }}
                 >
@@ -398,7 +398,7 @@ export default function CreditoObrasPage() {
                     width: "44px",
                     height: "44px",
                     borderRadius: "0.5rem",
-                    background: "#0B1B2E",
+                    background: "#0A0A0A",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -412,13 +412,13 @@ export default function CreditoObrasPage() {
                   style={{
                     fontSize: "1.0625rem",
                     fontWeight: 800,
-                    color: "#0B1B2E",
+                    color: "#0A0A0A",
                     marginBottom: "0.5rem",
                   }}
                 >
                   {st.title}
                 </h3>
-                <p style={{ color: "#64748b", fontSize: "0.8125rem", lineHeight: 1.65 }}>
+                <p style={{ color: "#6B6B6B", fontSize: "0.8125rem", lineHeight: 1.65 }}>
                   {st.desc}
                 </p>
               </div>
@@ -431,7 +431,7 @@ export default function CreditoObrasPage() {
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p className="section-eyebrow" style={{ color: "#8F6E3E" }}>Obras Elegíveis</p>
+            <p className="section-eyebrow" style={{ color: "#525252" }}>Obras Elegíveis</p>
             <h2 className="section-title">
               Que Obras Podem Ser Financiadas com Este Apoio?
             </h2>
@@ -476,10 +476,10 @@ export default function CreditoObrasPage() {
               <div
                 key={work.title}
                 style={{
-                  background: "#f8fafc",
+                  background: "#F7F7F5",
                   borderRadius: "0.75rem",
                   padding: "1.5rem",
-                  border: "1.5px solid #e2e8f0",
+                  border: "1.5px solid #E5E5E3",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -491,8 +491,8 @@ export default function CreditoObrasPage() {
                       display: "inline-block",
                       fontSize: "0.6875rem",
                       fontWeight: 700,
-                      color: "#13294A",
-                      background: "rgba(19, 41, 74,0.08)",
+                      color: "#171717",
+                      background: "rgba(23, 23, 23,0.08)",
                       borderRadius: "0.25rem",
                       padding: "0.2rem 0.5rem",
                       marginBottom: "0.75rem",
@@ -500,17 +500,17 @@ export default function CreditoObrasPage() {
                   >
                     {work.tag}
                   </div>
-                  <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#0B1B2E", marginBottom: "0.5rem", lineHeight: 1.35 }}>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#0A0A0A", marginBottom: "0.5rem", lineHeight: 1.35 }}>
                     {work.title}
                   </h3>
-                  <p style={{ color: "#64748b", fontSize: "0.8125rem", lineHeight: 1.6, marginBottom: "1rem" }}>
+                  <p style={{ color: "#6B6B6B", fontSize: "0.8125rem", lineHeight: 1.6, marginBottom: "1rem" }}>
                     {work.desc}
                   </p>
                 </div>
 
-                <div style={{ borderTop: "1px solid #e2e8f0", paddingTop: "0.75rem" }}>
-                  <span style={{ fontSize: "0.75rem", color: "#94a3b8" }}>Valores comuns de obra:</span>
-                  <div style={{ fontWeight: 800, color: "#13294A", fontSize: "0.9375rem" }}>
+                <div style={{ borderTop: "1px solid #E5E5E3", paddingTop: "0.75rem" }}>
+                  <span style={{ fontSize: "0.75rem", color: "#999999" }}>Valores comuns de obra:</span>
+                  <div style={{ fontWeight: 800, color: "#171717", fontSize: "0.9375rem" }}>
                     {work.amount}
                   </div>
                 </div>
@@ -521,7 +521,7 @@ export default function CreditoObrasPage() {
       </section>
 
       {/* ── 5. TABELA EXEMPLIFICATIVA DE MENSALIDADES ──────── */}
-      <section className="section-padding" style={{ background: "#f8fafc" }}>
+      <section className="section-padding" style={{ background: "#F7F7F5" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p className="section-eyebrow" style={{ color: "#16a34a" }}>Exemplos Práticos</p>
@@ -537,7 +537,7 @@ export default function CreditoObrasPage() {
             style={{
               background: "#ffffff",
               borderRadius: "0.75rem",
-              border: "1.5px solid #e2e8f0",
+              border: "1.5px solid #E5E5E3",
               overflow: "hidden",
               boxShadow: "0 4px 15px rgba(0,0,0,0.04)",
               maxWidth: "800px",
@@ -548,7 +548,7 @@ export default function CreditoObrasPage() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
-                background: "#0B1B2E",
+                background: "#0A0A0A",
                 color: "#ffffff",
                 padding: "1rem 1.25rem",
                 fontWeight: 700,
@@ -601,15 +601,15 @@ export default function CreditoObrasPage() {
                   gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
                   padding: "1rem 1.25rem",
                   fontSize: "0.8125rem",
-                  borderBottom: idx < 4 ? "1px solid #f1f5f9" : "none",
-                  background: idx % 2 === 0 ? "#ffffff" : "#f8fafc",
+                  borderBottom: idx < 4 ? "1px solid #F2F2F0" : "none",
+                  background: idx % 2 === 0 ? "#ffffff" : "#F7F7F5",
                   alignItems: "center",
                 }}
                 className="tabela-row"
               >
-                <div style={{ fontWeight: 700, color: "#0B1B2E" }}>{row.work}</div>
-                <div style={{ color: "#475569", fontWeight: 600 }}>{row.value}</div>
-                <div style={{ color: "#64748b" }}>{row.period}</div>
+                <div style={{ fontWeight: 700, color: "#0A0A0A" }}>{row.work}</div>
+                <div style={{ color: "#525252", fontWeight: 600 }}>{row.value}</div>
+                <div style={{ color: "#6B6B6B" }}>{row.period}</div>
                 <div style={{ fontWeight: 800, color: "#16a34a", fontSize: "0.875rem" }}>{row.monthly}</div>
               </div>
             ))}
@@ -618,7 +618,7 @@ export default function CreditoObrasPage() {
           <p
             style={{
               fontSize: "0.75rem",
-              color: "#64748b",
+              color: "#6B6B6B",
               textAlign: "center",
               marginTop: "1rem",
               maxWidth: "700px",
@@ -635,7 +635,7 @@ export default function CreditoObrasPage() {
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container" style={{ maxWidth: "850px" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <p className="section-eyebrow" style={{ color: "#13294A" }}>Perguntas Frequentes</p>
+            <p className="section-eyebrow" style={{ color: "#171717" }}>Perguntas Frequentes</p>
             <h2 className="section-title">
               Dúvidas Comuns sobre Financiamento de Obras
             </h2>
@@ -667,19 +667,19 @@ export default function CreditoObrasPage() {
               <div
                 key={faq.q}
                 style={{
-                  background: "#f8fafc",
+                  background: "#F7F7F5",
                   borderRadius: "0.5rem",
-                  border: "1.5px solid #e2e8f0",
+                  border: "1.5px solid #E5E5E3",
                   padding: "1.25rem 1.5rem",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
-                  <HelpCircle size={18} style={{ color: "#8F6E3E", flexShrink: 0, marginTop: "2px" }} />
+                  <HelpCircle size={18} style={{ color: "#525252", flexShrink: 0, marginTop: "2px" }} />
                   <div>
-                    <h3 style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0B1B2E", marginBottom: "0.5rem" }}>
+                    <h3 style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#0A0A0A", marginBottom: "0.5rem" }}>
                       {faq.q}
                     </h3>
-                    <p style={{ color: "#475569", fontSize: "0.8125rem", lineHeight: 1.65 }}>
+                    <p style={{ color: "#525252", fontSize: "0.8125rem", lineHeight: 1.65 }}>
                       {faq.a}
                     </p>
                   </div>
@@ -693,7 +693,7 @@ export default function CreditoObrasPage() {
       {/* ── 7. FINAL CTA BANNER ────────────────────────────── */}
       <section
         style={{
-          background: "linear-gradient(135deg, #C9A86A 0%, #B8935A 100%)",
+          background: "linear-gradient(135deg, #D4D4D4 0%, #6B6B6B 100%)",
           padding: "4rem 0",
           textAlign: "center",
         }}
@@ -703,7 +703,7 @@ export default function CreditoObrasPage() {
             style={{
               fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
               fontWeight: 900,
-              color: "#0B1B2E",
+              color: "#0A0A0A",
               marginBottom: "0.875rem",
               letterSpacing: "-0.01em",
             }}
@@ -712,7 +712,7 @@ export default function CreditoObrasPage() {
           </h2>
           <p
             style={{
-              color: "rgba(11, 27, 46, 0.85)",
+              color: "rgba(10, 10, 10, 0.85)",
               fontSize: "1.0625rem",
               maxWidth: "540px",
               margin: "0 auto 2rem",
@@ -732,14 +732,14 @@ export default function CreditoObrasPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "#0B1B2E",
+                background: "#0A0A0A",
                 color: "#ffffff",
                 fontWeight: 800,
                 padding: "0.875rem 1.75rem",
                 borderRadius: "0.375rem",
                 fontSize: "1rem",
                 textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(11, 27, 46, 0.3)",
+                boxShadow: "0 4px 20px rgba(10, 10, 10, 0.3)",
               }}
             >
               <MessageCircle size={18} />
@@ -753,14 +753,14 @@ export default function CreditoObrasPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "rgba(11, 27, 46, 0.12)",
-                color: "#0B1B2E",
+                background: "rgba(10, 10, 10, 0.12)",
+                color: "#0A0A0A",
                 fontWeight: 800,
                 padding: "0.875rem 1.75rem",
                 borderRadius: "0.375rem",
                 fontSize: "1rem",
                 textDecoration: "none",
-                border: "2px solid rgba(11, 27, 46, 0.3)",
+                border: "2px solid rgba(10, 10, 10, 0.3)",
               }}
             >
               <Phone size={18} />

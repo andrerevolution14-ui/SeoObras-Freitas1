@@ -20,7 +20,7 @@ export function MobileCtaBar() {
       <div
         className="mobile-cta-bar"
         style={{
-          background: "#0B1B2E",
+          background: "#0A0A0A",
           borderTop: "1px solid rgba(255,255,255,0.12)",
           width: "100%",
           maxWidth: "100vw",
@@ -66,9 +66,9 @@ export function MobileCtaBar() {
             alignItems: "center",
             justifyContent: "center",
             gap: "0.4rem",
-            background: "#B8935A",
+            background: "#ffffff",
             border: "none",
-            color: "#0B1B2E",
+            color: "#0A0A0A",
             fontWeight: 700,
             fontSize: "0.8125rem",
             borderRadius: "2px",

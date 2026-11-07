@@ -16,7 +16,7 @@ const inter = Inter({
   preload: true,
 });
 
-// Display font — títulos de marca (Grupo Freitas)
+// Display font — títulos de marca (Freitas Renovações)
 const interTight = Inter_Tight({
   subsets: ["latin"],
   display: "swap",

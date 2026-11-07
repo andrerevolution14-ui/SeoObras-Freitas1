@@ -8,7 +8,7 @@ export function AveragePricesGuide() {
     <section
       id="precos-medios-m2-aveiro"
       className="section-padding"
-      style={{ background: "#f8fafc", position: "relative" }}
+      style={{ background: "#F7F7F5", position: "relative" }}
     >
       <div className="section-container">
         {/* Header */}
@@ -18,9 +18,9 @@ export function AveragePricesGuide() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(19, 41, 74, 0.08)",
-              border: "1px solid rgba(19, 41, 74, 0.15)",
-              color: "#13294A",
+              background: "rgba(23, 23, 23, 0.08)",
+              border: "1px solid rgba(23, 23, 23, 0.15)",
+              color: "#171717",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -30,7 +30,7 @@ export function AveragePricesGuide() {
               textTransform: "uppercase",
             }}
           >
-            <Table size={14} style={{ color: "#8F6E3E" }} />
+            <Table size={14} style={{ color: "#525252" }} />
             Tabela de Referência Atualizada 2026
           </div>
           <h2 className="section-title">
@@ -46,7 +46,7 @@ export function AveragePricesGuide() {
           style={{
             background: "#ffffff",
             borderRadius: "0.75rem",
-            border: "1.5px solid #e2e8f0",
+            border: "1.5px solid #E5E5E3",
             boxShadow: "0 4px 25px rgba(0,0,0,0.04)",
             overflow: "hidden",
             marginBottom: "2.5rem",
@@ -62,7 +62,7 @@ export function AveragePricesGuide() {
               }}
             >
               <thead>
-                <tr style={{ background: "#0B1B2E", color: "#ffffff" }}>
+                <tr style={{ background: "#0A0A0A", color: "#ffffff" }}>
                   <th style={{ padding: "1rem 1.25rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     Tipo de Obra em Aveiro
                   </th>
@@ -72,7 +72,7 @@ export function AveragePricesGuide() {
                   <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#86efac" }}>
                     Económica / Low-Cost
                   </th>
-                  <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#C9A86A" }}>
+                  <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#D4D4D4" }}>
                     Standard / Equilibrada
                   </th>
                   <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#fbcfe8" }}>
@@ -88,27 +88,27 @@ export function AveragePricesGuide() {
                   <tr
                     key={row.service}
                     style={{
-                      borderBottom: "1px solid #f1f5f9",
+                      borderBottom: "1px solid #F2F2F0",
                       background: idx % 2 === 0 ? "#ffffff" : "#fcfcfd",
                       transition: "background 0.15s ease",
                     }}
                   >
-                    <td style={{ padding: "1rem 1.25rem", fontWeight: 700, color: "#0B1B2E", fontSize: "0.875rem" }}>
+                    <td style={{ padding: "1rem 1.25rem", fontWeight: 700, color: "#0A0A0A", fontSize: "0.875rem" }}>
                       {row.service}
                     </td>
-                    <td style={{ padding: "1rem 1rem", color: "#64748b", fontSize: "0.8125rem", fontWeight: 600 }}>
+                    <td style={{ padding: "1rem 1rem", color: "#6B6B6B", fontSize: "0.8125rem", fontWeight: 600 }}>
                       {row.unit}
                     </td>
                     <td style={{ padding: "1rem 1rem", fontWeight: 700, color: "#16a34a", fontSize: "0.875rem" }}>
                       {row.lowCostRange}
                     </td>
-                    <td style={{ padding: "1rem 1rem", fontWeight: 800, color: "#13294A", fontSize: "0.875rem" }}>
+                    <td style={{ padding: "1rem 1rem", fontWeight: 800, color: "#171717", fontSize: "0.875rem" }}>
                       {row.standardRange}
                     </td>
                     <td style={{ padding: "1rem 1rem", fontWeight: 700, color: "#9333ea", fontSize: "0.875rem" }}>
                       {row.premiumRange}
                     </td>
-                    <td style={{ padding: "1rem 1.25rem", color: "#475569", fontSize: "0.8125rem", lineHeight: 1.5 }}>
+                    <td style={{ padding: "1rem 1.25rem", color: "#525252", fontSize: "0.8125rem", lineHeight: 1.5 }}>
                       {row.notes}
                     </td>
                   </tr>
@@ -154,16 +154,16 @@ export function AveragePricesGuide() {
               background: "#ffffff",
               padding: "1.5rem",
               borderRadius: "0.5rem",
-              border: "1.5px solid #e2e8f0",
+              border: "1.5px solid #E5E5E3",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#13294A" }}>
-              <ShieldCheck size={18} style={{ color: "#8F6E3E" }} />
-              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#171717" }}>
+              <ShieldCheck size={18} style={{ color: "#525252" }} />
+              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0A0A0A" }}>
                 1. Mão de Obra vs. Materiais
               </h4>
             </div>
-            <p style={{ fontSize: "0.8125rem", color: "#64748b", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "0.8125rem", color: "#6B6B6B", lineHeight: 1.6 }}>
               Em média, a mão de obra representa entre 40% e 55% do valor total da obra em Aveiro. Os restantes 45% a 60% correspondem a materiais, equipamentos sanitários e taxas de gestão de resíduos autorizadas.
             </p>
           </div>
@@ -173,16 +173,16 @@ export function AveragePricesGuide() {
               background: "#ffffff",
               padding: "1.5rem",
               borderRadius: "0.5rem",
-              border: "1.5px solid #e2e8f0",
+              border: "1.5px solid #E5E5E3",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#13294A" }}>
-              <AlertCircle size={18} style={{ color: "#8F6E3E" }} />
-              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#171717" }}>
+              <AlertCircle size={18} style={{ color: "#525252" }} />
+              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0A0A0A" }}>
                 2. Idade do Imóvel e Acessos
               </h4>
             </div>
-            <p style={{ fontSize: "0.8125rem", color: "#64748b", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "0.8125rem", color: "#6B6B6B", lineHeight: 1.6 }}>
               Prédios antigos no centro de Aveiro sem elevador ou com canalizações de chumbo requerem substituição de prumadas e transporte manual de entulho, o que reflete ligeiramente no custo logístico.
             </p>
           </div>
@@ -192,16 +192,16 @@ export function AveragePricesGuide() {
               background: "#ffffff",
               padding: "1.5rem",
               borderRadius: "0.5rem",
-              border: "1.5px solid #e2e8f0",
+              border: "1.5px solid #E5E5E3",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#13294A" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", color: "#171717" }}>
               <CheckCircle size={18} style={{ color: "#16a34a" }} />
-              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
+              <h4 style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0A0A0A" }}>
                 3. Taxa Reduzida de IVA a 6%
               </h4>
             </div>
-            <p style={{ fontSize: "0.8125rem", color: "#64748b", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "0.8125rem", color: "#6B6B6B", lineHeight: 1.6 }}>
               Trabalhar com uma empresa licenciada como a Freitas Renovações LDA permite aplicar IVA reduzido a 6% em mão de obra de reabilitação urbana em habitações próprias ou zonas ARU de Aveiro.
             </p>
           </div>

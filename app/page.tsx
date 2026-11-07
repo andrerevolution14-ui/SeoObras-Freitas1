@@ -8,6 +8,7 @@ import { ServiceGrid } from "@/components/service-grid";
 import { GoogleReviews } from "@/components/google-reviews";
 import { RealProjectsGallery } from "@/components/real-projects-gallery";
 import { FaqAccordion } from "@/components/faq-accordion";
+import { ServiceMarquee } from "@/components/service-marquee";
 import { CONTRACTOR_INFO, FAQ_ITEMS } from "@/lib/constants";
 import { BRAND_IMAGES } from "@/lib/brand-images";
 
@@ -109,21 +110,40 @@ const homeJsonLd = {
 // ── Conteúdos da homepage ────────────────────────────────────
 const PILLARS = [
   {
-    title: "Alvará de Construção Válido IMPIC",
-    desc: "Empresa devidamente licenciada com seguro de responsabilidade civil para execução de obras.",
+    title: "Empresa licenciada e segurada",
+    desc: "Alvará de Construção IMPIC N.º 104523 e seguro de responsabilidade civil ativo em todas as obras.",
   },
   {
-    title: "Garantia Contratual",
-    desc: "Todos os trabalhos têm garantia contratual escrita adaptada à tipologia da obra.",
+    title: "Garantia contratual escrita",
+    desc: "Cada obra termina com vistoria conjunta e garantia formalizada por escrito, adaptada à tipologia dos trabalhos.",
   },
   {
-    title: "Resposta até 12h",
-    desc: "Atendimento ágil para avaliar a sua obra e apresentar orçamento discriminado.",
+    title: "Um único responsável",
+    desc: "O Jorge Freitas coordena pessoalmente equipas, especialidades e prazos — do orçamento à entrega da chave.",
   },
   {
-    title: "Preços Justos e Transparentes",
-    desc: "Valores claros, sem custos ocultos nem alterações imprevisíveis no orçamento final.",
+    title: "Orçamento fechado e discriminado",
+    desc: "Materiais, quantidades e mão de obra descritos linha a linha. Sem custos ocultos nem revisões inesperadas.",
   },
+];
+
+const COMPANY_FACTS = [
+  { k: "Denominação social", v: CONTRACTOR_INFO.companyName },
+  { k: "NIPC", v: CONTRACTOR_INFO.nif },
+  { k: "Alvará de construção", v: CONTRACTOR_INFO.alvaraNumber.replace("Alvará ", "") },
+  { k: "Seguro", v: "Responsabilidade Civil · Fidelidade · 150.000 €" },
+  { k: "Direção técnica", v: `${CONTRACTOR_INFO.contractorName}, ${CONTRACTOR_INFO.jobTitle}` },
+  { k: "Sede", v: `${CONTRACTOR_INFO.address.street}, ${CONTRACTOR_INFO.address.postalCode} Aveiro` },
+  { k: "Área de atuação", v: "Concelho de Aveiro e concelhos limítrofes" },
+  { k: "Horário", v: "Seg–Sex 08:00–18:00 · Sáb 09:00–13:00" },
+];
+
+const COMMITMENTS = [
+  "Orçamento discriminado e a preço fechado antes de qualquer início de obra.",
+  "Prazos definidos em contrato, com cronograma partilhado com o cliente.",
+  "Proteção de áreas comuns e cumprimento dos horários de ruído do condomínio.",
+  "Materiais certificados e especialidades coordenadas por um só interlocutor.",
+  "Limpeza final, vistoria conjunta e garantia entregue por escrito.",
 ];
 
 const PROCESS_STEPS = homeJsonLd["@graph"][1].step as { name: string; text: string }[];
@@ -264,7 +284,7 @@ export default function HomePage() {
         <div className="section-container" style={{ width: "100%", position: "relative", zIndex: 2 }}>
           <div className="gf-hero-grid">
             <div className="gf-hero-text">
-              <div className="hero-section-label">Grupo Freitas · Construção e Remodelação</div>
+              <div className="hero-section-label">Empresa Licenciada · Alvará IMPIC</div>
 
               <h1 className="gf-hero-title">
                 Obras e remodelações <span style={{ whiteSpace: "nowrap" }}>em Aveiro</span>
@@ -276,7 +296,7 @@ export default function HomePage() {
               </p>
 
               <p className="gf-hero-lead">
-                A equipa do Empreiteiro <strong>Jorge Freitas</strong> realiza remodelações gerais, casas de banho, cozinhas, moradias, apartamentos e capoto em Aveiro e concelhos vizinhos com garantia contratual e resposta até 12h.
+                Remodelações chave na mão de apartamentos, moradias, cozinhas e casas de banho em Aveiro e concelhos vizinhos. Orçamento discriminado, prazos em contrato e garantia escrita — com o Empreiteiro <strong>Jorge Freitas</strong> à frente de cada obra.
               </p>
 
               <div className="gf-hero-ctas">
@@ -293,11 +313,11 @@ export default function HomePage() {
               <Link href="/clientes" className="gf-hero-proof">
                 <span className="stars">
                   {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={13} fill="#C9A86A" stroke="#C9A86A" />
+                    <Star key={s} size={13} fill="#ffffff" stroke="#ffffff" />
                   ))}
                 </span>
                 <span>
-                  <strong>{CONTRACTOR_INFO.googleRating}/5</strong> · +{CONTRACTOR_INFO.reviewCount} clientes satisfeitos em Aveiro
+                  <strong>{CONTRACTOR_INFO.googleRating}/5</strong> · {CONTRACTOR_INFO.reviewCount} avaliações verificadas no Google
                 </span>
                 <ArrowUpRight size={14} />
               </Link>
@@ -326,7 +346,7 @@ export default function HomePage() {
             margin-bottom: 1.75rem;
             text-wrap: balance;
           }
-          .gf-hero-dot { color: #B8935A; }
+          .gf-hero-dot { color: #8C8C8C; }
           .gf-hero-services {
             display: flex;
             flex-wrap: wrap;
@@ -339,7 +359,7 @@ export default function HomePage() {
             text-transform: uppercase;
             margin-bottom: 1.5rem;
           }
-          .gf-hero-services i { width: 4px; height: 4px; background: #B8935A; display: inline-block; transform: rotate(45deg); }
+          .gf-hero-services i { width: 4px; height: 4px; background: rgba(255,255,255,0.5); display: inline-block; transform: rotate(45deg); }
           .gf-hero-lead {
             color: rgba(255, 255, 255, 0.72);
             font-size: 1.0625rem;
@@ -362,7 +382,7 @@ export default function HomePage() {
           }
           .gf-hero-proof strong { color: #ffffff; font-weight: 600; }
           .gf-hero-proof:hover { color: #ffffff; }
-          .gf-hero-proof svg:last-child { color: #B8935A; }
+          .gf-hero-proof svg:last-child { color: #ffffff; }
           @media (max-width: 1024px) {
             .gf-hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
           }
@@ -385,11 +405,13 @@ export default function HomePage() {
       {/* ── 3. PROJETOS REALIZADOS ───────────────────────── */}
       <RealProjectsGallery />
 
+      <ServiceMarquee />
+
       {/* ── 4. SERVIÇOS ──────────────────────────────────── */}
       <ServiceGrid />
 
       {/* ── 5. QUEM SOMOS — JORGE FREITAS (E-E-A-T) ─────── */}
-      <section className="section-padding gf-about" style={{ background: "#0B1B2E" }}>
+      <section className="section-padding gf-about on-dark" style={{ background: "#0A0A0A" }}>
         <div className="section-container">
           <div className="gf-about-grid">
             <div className="gf-about-photo photo-slot">
@@ -408,12 +430,12 @@ export default function HomePage() {
             </div>
 
             <div>
-              <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Quem Somos</p>
+              <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Quem Somos</p>
               <h2 className="section-title" style={{ color: "#ffffff" }}>
-                Supervisão Direta pelo <span style={{ color: "#C9A86A" }}>Empreiteiro Jorge Freitas</span>
+                Supervisão Direta pelo <span style={{ color: "#8C8C8C" }}>Empreiteiro Jorge Freitas</span>
               </h2>
               <p className="gf-about-lead">
-                A Freitas Renovações LDA é uma empresa licenciada em Aveiro que se destaca pela transparência, cumprimento rigoroso de prazos e orçamentos de preço justo. O Jorge Freitas acompanha cada obra pessoalmente.
+                A Freitas Renovações LDA é uma empresa de construção licenciada, sediada em Aveiro. Mais de {CONTRACTOR_INFO.projectsCompleted} obras concluídas assentam no mesmo princípio: quem orçamenta é quem responde pela obra. O Jorge Freitas acompanha pessoalmente cada projeto, do primeiro levantamento à entrega da chave.
               </p>
 
               <div className="gf-pillars">
@@ -436,15 +458,15 @@ export default function HomePage() {
         <style>{`
           .gf-about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 6rem; align-items: center; }
           .gf-about-photo { aspect-ratio: 4 / 5; }
-          .gf-about-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(11, 27, 46, 0.85)); }
+          .gf-about-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(10, 10, 10, 0.85)); }
           .gf-about-caption { position: absolute; left: 1.75rem; bottom: 1.5rem; z-index: 2; display: flex; flex-direction: column; gap: 0.3rem; }
           .gf-about-caption span:first-child { color: #ffffff; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; }
-          .gf-about-caption span:last-child { color: #C9A86A; font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; }
+          .gf-about-caption span:last-child { color: rgba(255,255,255,0.6); font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; }
           .gf-about-lead { color: rgba(255, 255, 255, 0.7); font-size: 1.0625rem; line-height: 1.75; margin-bottom: 3rem; max-width: 560px; }
           .gf-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 3rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
           .gf-pillar { padding: 1.75rem 1.75rem 1.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
           .gf-pillar:nth-child(even) { padding-left: 1.75rem; padding-right: 0; border-left: 1px solid rgba(255, 255, 255, 0.1); }
-          .gf-pillar-num { color: #B8935A; font-size: 0.75rem; letter-spacing: 0.06em; }
+          .gf-pillar-num { color: #8C8C8C; font-size: 0.75rem; letter-spacing: 0.06em; }
           .gf-pillar h3 { color: #ffffff; font-size: 1.0625rem; font-weight: 500; margin: 0.75rem 0 0.5rem; letter-spacing: -0.015em; }
           .gf-pillar p { color: rgba(255, 255, 255, 0.55); font-size: 0.8125rem; line-height: 1.6; }
           @media (max-width: 900px) {
@@ -454,6 +476,66 @@ export default function HomePage() {
           @media (max-width: 560px) {
             .gf-pillars { grid-template-columns: 1fr; }
             .gf-pillar, .gf-pillar:nth-child(even) { padding: 1.25rem 0; border-left: 0; }
+          }
+        `}</style>
+      </section>
+
+      {/* ── 5b. A EMPRESA EM DETALHE (credibilidade institucional) ── */}
+      <section className="section-padding" style={{ background: "#F4F4F2" }}>
+        <div className="section-container">
+          <div className="gf-inst">
+            <div>
+              <p className="section-eyebrow">A Empresa em Detalhe</p>
+              <h2 className="section-title">Transparência começa nos dados da empresa.</h2>
+              <p className="section-subtitle" style={{ marginBottom: "2.5rem" }}>
+                Antes de nos confiar a sua casa, deve poder verificar quem somos. Estes são os nossos dados oficiais — todos públicos e verificáveis.
+              </p>
+              <dl className="gf-facts">
+                {COMPANY_FACTS.map((f) => (
+                  <div key={f.k} className="gf-fact">
+                    <dt>{f.k}</dt>
+                    <dd>{f.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div className="gf-commit on-dark">
+              <p className="gf-commit-kicker">Os nossos compromissos</p>
+              <h3 className="gf-commit-title font-display">Tudo o que prometemos fica escrito.</h3>
+              <ol className="gf-commit-list">
+                {COMMITMENTS.map((c, i) => (
+                  <li key={c}>
+                    <span className="font-display">{String(i + 1).padStart(2, "0")}</span>
+                    <p>{c}</p>
+                  </li>
+                ))}
+              </ol>
+              <a href="#hero-form" className="btn-primary" style={{ width: "100%" }}>
+                Pedir Orçamento Discriminado
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </div>
+        <style>{`
+          .gf-inst { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 5rem; align-items: start; }
+          .gf-facts { margin: 0; border-top: 1px solid #0A0A0A; }
+          .gf-fact { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; padding: 1.05rem 0; border-bottom: 1px solid #DCDCDA; }
+          .gf-fact dt { font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; font-weight: 600; padding-top: 0.2rem; }
+          .gf-fact dd { margin: 0; color: #0A0A0A; font-size: 0.9375rem; font-weight: 500; }
+          .gf-commit { background: #0A0A0A; color: #ffffff; padding: 3rem 2.5rem; position: sticky; top: 100px; }
+          .gf-commit-kicker { font-size: 0.6875rem; letter-spacing: 0.22em; text-transform: uppercase; color: #8C8C8C; font-weight: 600; margin-bottom: 1rem; }
+          .gf-commit-title { font-size: 1.875rem; line-height: 1.15; letter-spacing: -0.035em; font-weight: 500; margin-bottom: 2rem; }
+          .gf-commit-list { list-style: none; padding: 0; margin: 0 0 2.5rem; }
+          .gf-commit-list li { display: grid; grid-template-columns: 2.25rem 1fr; gap: 0.5rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.12); }
+          .gf-commit-list span { color: #8C8C8C; font-size: 0.8125rem; padding-top: 0.15rem; }
+          .gf-commit-list p { color: rgba(255,255,255,0.85); font-size: 0.9375rem; line-height: 1.55; }
+          @media (max-width: 960px) {
+            .gf-inst { grid-template-columns: 1fr; gap: 3rem; }
+            .gf-commit { position: static; padding: 2.25rem 1.5rem; }
+          }
+          @media (max-width: 560px) {
+            .gf-fact { grid-template-columns: 1fr; gap: 0.3rem; }
           }
         `}</style>
       </section>
@@ -489,18 +571,18 @@ export default function HomePage() {
         <style>{`
           .gf-proc-head { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
           .gf-proc-photo { aspect-ratio: 16 / 9; }
-          .gf-proc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #0B1B2E; }
+          .gf-proc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #0A0A0A; }
           .gf-proc-step { padding: 2rem 2rem 0 0; position: relative; }
-          .gf-proc-step::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #B8935A; }
-          .gf-proc-num { font-size: 3rem; font-weight: 500; color: #E3E1DC; letter-spacing: -0.04em; line-height: 1; }
-          .gf-proc-step h3 { font-size: 1.125rem; font-weight: 600; color: #0B1B2E; margin: 1.25rem 0 0.75rem; letter-spacing: -0.02em; line-height: 1.3; }
-          .gf-proc-step p { color: #5A6472; font-size: 0.875rem; line-height: 1.7; }
+          .gf-proc-step::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #0A0A0A; }
+          .gf-proc-num { font-size: 3rem; font-weight: 500; color: #E5E5E3; letter-spacing: -0.04em; line-height: 1; }
+          .gf-proc-step h3 { font-size: 1.125rem; font-weight: 600; color: #0A0A0A; margin: 1.25rem 0 0.75rem; letter-spacing: -0.02em; line-height: 1.3; }
+          .gf-proc-step p { color: #5C5C5C; font-size: 0.875rem; line-height: 1.7; }
           @media (max-width: 900px) {
             .gf-proc-head { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
             .gf-proc { grid-template-columns: 1fr 1fr; row-gap: 2.5rem; }
           }
           @media (max-width: 560px) {
-            .gf-proc { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid #0B1B2E; row-gap: 0; }
+            .gf-proc { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid #0A0A0A; row-gap: 0; }
             .gf-proc-step { padding: 0 0 2.25rem 1.75rem; }
             .gf-proc-step::before { top: 0.25rem; left: -4px; }
             .gf-proc-num { font-size: 2.25rem; }
@@ -512,7 +594,7 @@ export default function HomePage() {
       <GoogleReviews />
 
       {/* ── 8. CRÉDITO & FINANCIAMENTO ───────────────────── */}
-      <section className="gf-credit">
+      <section className="gf-credit on-dark">
         <div className="gf-credit-photo photo-slot">
           <Image
             src={BRAND_IMAGES.credit.src}
@@ -523,12 +605,12 @@ export default function HomePage() {
           />
         </div>
         <div className="gf-credit-body">
-          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Condição Especial · 100% Gratuito</p>
+          <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Crédito para Obras · Serviço Gratuito</p>
           <h2 className="section-title" style={{ color: "#ffffff" }}>
-            Precisa de Financiamento para a Sua Obra? <span style={{ color: "#C9A86A" }}>Nós Ajudamos.</span>
+            Financiamento para a sua obra, <span style={{ color: "#8C8C8C" }}>sem custos de intermediação.</span>
           </h2>
           <p className="gf-credit-text">
-            Para além da garantia de qualidade e preços justos nas suas remodelações, dispomos de um <strong>serviço parceiro de intermediação de crédito 100% gratuito</strong>, devidamente autorizado pelo Banco de Portugal. Comparamos propostas em mais de 10 bancos para garantir a taxa mais baixa do mercado e prestações à sua medida.
+            Trabalhamos com um <strong>intermediário de crédito parceiro, autorizado pelo Banco de Portugal</strong>, que compara propostas de mais de 10 bancos e apresenta a solução mais vantajosa para financiar a sua remodelação. O serviço é gratuito para o cliente e não o obriga a avançar.
           </p>
           <ul className="gf-credit-list">
             {[
@@ -553,14 +635,14 @@ export default function HomePage() {
           </div>
         </div>
         <style>{`
-          .gf-credit { display: grid; grid-template-columns: 1fr 1fr; background: #13294A; }
+          .gf-credit { display: grid; grid-template-columns: 1fr 1fr; background: #171717; }
           .gf-credit-photo { min-height: 560px; }
           .gf-credit-body { padding: 6rem clamp(1.5rem, 6vw, 6rem); max-width: 760px; }
           .gf-credit-text { color: rgba(255, 255, 255, 0.72); font-size: 1rem; line-height: 1.75; margin-bottom: 2rem; }
           .gf-credit-text strong { color: #ffffff; font-weight: 600; }
           .gf-credit-list { list-style: none; padding: 0; margin: 0 0 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.875rem 2rem; }
           .gf-credit-list li { position: relative; padding-left: 1.5rem; color: rgba(255, 255, 255, 0.88); font-size: 0.875rem; line-height: 1.5; }
-          .gf-credit-list li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 10px; height: 5px; border-left: 1.5px solid #C9A86A; border-bottom: 1.5px solid #C9A86A; transform: rotate(-45deg); }
+          .gf-credit-list li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 10px; height: 5px; border-left: 1.5px solid #ffffff; border-bottom: 1.5px solid #ffffff; transform: rotate(-45deg); }
           @media (max-width: 900px) {
             .gf-credit { grid-template-columns: 1fr; }
             .gf-credit-photo { min-height: 280px; }
@@ -571,7 +653,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 9. PREÇOS DE REFERÊNCIA + RESPOSTAS (AEO) ────── */}
-      <section className="section-padding" style={{ background: "#F5F3EE" }}>
+      <section className="section-padding" style={{ background: "#F4F4F2" }}>
         <div className="section-container">
           <div className="gf-price-head">
             <div>
@@ -620,7 +702,7 @@ export default function HomePage() {
         </div>
         <style>{`
           .gf-price-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
-          .gf-table-wrap { overflow-x: auto; background: #ffffff; border: 1px solid #E3E1DC; margin-bottom: 4.5rem; }
+          .gf-table-wrap { overflow-x: auto; background: #ffffff; border: 1px solid #E5E5E3; margin-bottom: 4.5rem; }
           .gf-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 760px; }
           .gf-table th {
             padding: 1.125rem 1.5rem;
@@ -629,32 +711,32 @@ export default function HomePage() {
             text-transform: uppercase;
             font-weight: 600;
             color: #ffffff;
-            background: #0B1B2E;
+            background: #0A0A0A;
           }
-          .gf-table td { padding: 1.375rem 1.5rem; border-top: 1px solid #EDEBE6; vertical-align: top; }
+          .gf-table td { padding: 1.375rem 1.5rem; border-top: 1px solid #EDEDEB; vertical-align: top; }
           .gf-table tbody tr { transition: background 0.2s ease; }
-          .gf-table tbody tr:hover { background: #FAF8F4; }
-          .gf-td-name { font-weight: 600; color: #0B1B2E; }
-          .gf-td-price { color: #0B1B2E; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
-          .gf-td-time { color: #5A6472; white-space: nowrap; }
-          .gf-td-desc { color: #6B7480; font-size: 0.85rem; line-height: 1.6; }
+          .gf-table tbody tr:hover { background: #F8F8F7; }
+          .gf-td-name { font-weight: 600; color: #0A0A0A; }
+          .gf-td-price { color: #0A0A0A; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+          .gf-td-time { color: #5C5C5C; white-space: nowrap; }
+          .gf-td-desc { color: #6B6B6B; font-size: 0.85rem; line-height: 1.6; }
           .gf-aeo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3rem; }
-          .gf-aeo-item { border-top: 1px solid #0B1B2E; padding-top: 1.75rem; }
-          .gf-aeo-kicker { font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8F6E3E; font-weight: 600; margin-bottom: 1rem; }
-          .gf-aeo-item h3 { font-size: 1.25rem; font-weight: 600; color: #0B1B2E; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 1rem; }
-          .gf-aeo-text { color: #5A6472; font-size: 0.9rem; line-height: 1.75; }
-          .gf-aeo-text strong { color: #0B1B2E; font-weight: 600; }
+          .gf-aeo-item { border-top: 1px solid #0A0A0A; padding-top: 1.75rem; }
+          .gf-aeo-kicker { font-size: 0.6875rem; letter-spacing: 0.18em; text-transform: uppercase; color: #525252; font-weight: 600; margin-bottom: 1rem; }
+          .gf-aeo-item h3 { font-size: 1.25rem; font-weight: 600; color: #0A0A0A; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 1rem; }
+          .gf-aeo-text { color: #5C5C5C; font-size: 0.9rem; line-height: 1.75; }
+          .gf-aeo-text strong { color: #0A0A0A; font-weight: 600; }
           @media (max-width: 760px) {
             .gf-table-wrap { background: transparent; border: 0; overflow: visible; }
             .gf-table { min-width: 0; }
             .gf-table thead { display: none; }
             .gf-table, .gf-table tbody, .gf-table tr, .gf-table td { display: block; width: 100%; }
-            .gf-table tr { background: #ffffff; border: 1px solid #E3E1DC; padding: 1.25rem; margin-bottom: 0.625rem; }
+            .gf-table tr { background: #ffffff; border: 1px solid #E5E5E3; padding: 1.25rem; margin-bottom: 0.625rem; }
             .gf-table td { padding: 0; border: 0; }
             .gf-td-name { font-size: 1rem; margin-bottom: 0.625rem; }
-            .gf-td-price { white-space: normal; color: #8F6E3E; }
+            .gf-td-price { white-space: normal; color: #525252; }
             .gf-td-time { font-size: 0.8125rem; margin: 0.25rem 0 0.75rem; }
-            .gf-td-time::before { content: "Prazo médio: "; color: #6B7480; }
+            .gf-td-time::before { content: "Prazo médio: "; color: #6B6B6B; }
           }
           @media (max-width: 900px) {
             .gf-price-head { grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2.5rem; }
@@ -692,25 +774,25 @@ export default function HomePage() {
         </div>
         <style>{`
           .gf-area-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
-          .gf-areas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid #E3E1DC; border-bottom: 1px solid #E3E1DC; }
+          .gf-areas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid #E5E5E3; border-bottom: 1px solid #E5E5E3; }
           .gf-area {
             display: flex;
             flex-direction: column;
             padding: 2rem 1.5rem 1.75rem;
-            border-left: 1px solid #E3E1DC;
+            border-left: 1px solid #E5E5E3;
             text-decoration: none;
             transition: background 0.3s ease;
           }
           .gf-area:first-child { border-left: 0; }
-          .gf-area:hover { background: #F5F3EE; }
-          .gf-area-sub { font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8F6E3E; font-weight: 600; }
-          .gf-area h3 { font-size: 1.125rem; font-weight: 600; color: #0B1B2E; letter-spacing: -0.02em; line-height: 1.25; margin: 0.875rem 0 0.75rem; }
-          .gf-area p { color: #6B7480; font-size: 0.8125rem; line-height: 1.65; flex: 1; margin-bottom: 1.5rem; }
-          .gf-area-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8125rem; font-weight: 600; color: #0B1B2E; }
-          .gf-area-link svg { color: #B8935A; }
+          .gf-area:hover { background: #F4F4F2; }
+          .gf-area-sub { font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: #525252; font-weight: 600; }
+          .gf-area h3 { font-size: 1.125rem; font-weight: 600; color: #0A0A0A; letter-spacing: -0.02em; line-height: 1.25; margin: 0.875rem 0 0.75rem; }
+          .gf-area p { color: #6B6B6B; font-size: 0.8125rem; line-height: 1.65; flex: 1; margin-bottom: 1.5rem; }
+          .gf-area-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8125rem; font-weight: 600; color: #0A0A0A; }
+          .gf-area-link svg { color: #6B6B6B; }
           @media (max-width: 1024px) {
             .gf-areas { grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 0; }
-            .gf-area { border-bottom: 1px solid #E3E1DC; }
+            .gf-area { border-bottom: 1px solid #E5E5E3; }
             .gf-area:nth-child(odd) { border-left: 0; }
           }
           @media (max-width: 900px) {
@@ -724,12 +806,12 @@ export default function HomePage() {
       </section>
 
       {/* ── 11. FAQ ──────────────────────────────────────── */}
-      <div style={{ borderTop: "1px solid #E3E1DC" }}>
+      <div style={{ borderTop: "1px solid #E5E5E3" }}>
         <FaqAccordion />
       </div>
 
       {/* ── 12. CTA FINAL ────────────────────────────────── */}
-      <section className="gf-final">
+      <section className="gf-final on-dark">
         <Image
           src={BRAND_IMAGES.closing.src}
           alt={BRAND_IMAGES.closing.alt}
@@ -739,14 +821,14 @@ export default function HomePage() {
         />
         <div className="gf-final-overlay" />
         <div className="section-container gf-final-inner">
-          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Orçamento Gratuito</p>
-          <h2 className="gf-final-title">Pronto para remodelar com preço justo?</h2>
+          <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Orçamento Gratuito e Sem Compromisso</p>
+          <h2 className="gf-final-title">Fale connosco sobre a sua obra.</h2>
           <p className="gf-final-text">
-            Peça um orçamento gratuito hoje. A equipa do Jorge Freitas responde no prazo máximo de 12 horas.
+            Envie-nos fotografias e medidas aproximadas. O Jorge Freitas analisa o pedido e responde em até 12 horas com uma primeira estimativa discriminada.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <a href="#hero-form" id="final-cta-form" className="btn-primary">
-              Pedir Orçamento Online
+              Pedir Orçamento
               <ArrowRight size={16} />
             </a>
             <a href={`tel:${CONTRACTOR_INFO.phone}`} id="final-cta-call" className="btn-secondary">
@@ -756,8 +838,8 @@ export default function HomePage() {
           </div>
         </div>
         <style>{`
-          .gf-final { position: relative; overflow: hidden; background: #070F1A; padding: 9rem 0; }
-          .gf-final-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7, 15, 26, 0.94) 0%, rgba(7, 15, 26, 0.75) 50%, rgba(7, 15, 26, 0.35) 100%); }
+          .gf-final { position: relative; overflow: hidden; background: #050505; padding: 9rem 0; }
+          .gf-final-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 5, 5, 0.94) 0%, rgba(5, 5, 5, 0.75) 50%, rgba(5, 5, 5, 0.35) 100%); }
           .gf-final-inner { position: relative; z-index: 2; }
           .gf-final-title {
             color: #ffffff;
@@ -772,7 +854,7 @@ export default function HomePage() {
           .gf-final-text { color: rgba(255, 255, 255, 0.72); font-size: 1.0625rem; line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
           @media (max-width: 768px) {
             .gf-final { padding: 5.5rem 0; }
-            .gf-final-overlay { background: rgba(7, 15, 26, 0.82); }
+            .gf-final-overlay { background: rgba(5, 5, 5, 0.82); }
             .gf-final .btn-primary, .gf-final .btn-secondary { width: 100%; }
           }
         `}</style>

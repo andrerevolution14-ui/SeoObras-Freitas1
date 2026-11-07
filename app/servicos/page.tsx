@@ -112,9 +112,9 @@ export default function ServicosPage() {
       {/* Hero */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(11, 27, 46, 0.90) 0%, rgba(11, 27, 46, 0.78) 55%, rgba(19, 41, 74, 0.55) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
+            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.55) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -124,7 +124,7 @@ export default function ServicosPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A" }}>Serviços</span>
+            <span style={{ color: "#D4D4D4" }}>Serviços</span>
           </nav>
           <p className="section-eyebrow">O Que Fazemos</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
@@ -148,7 +148,7 @@ export default function ServicosPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding" style={{ background: "#f8fafc" }}>
+      <section className="section-padding" style={{ background: "#F7F7F5" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p className="section-eyebrow">Todos os Serviços</p>
@@ -170,27 +170,27 @@ export default function ServicosPage() {
                   {iconMap[service.icon] ?? <Home size={24} />}
                 </div>
 
-                <h2 style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0B1B2E", marginBottom: "0.5rem" }}>
+                <h2 style={{ fontSize: "1.125rem", fontWeight: 800, color: "#0A0A0A", marginBottom: "0.5rem" }}>
                   {service.title}
                 </h2>
-                <p style={{ color: "#64748b", fontSize: "0.875rem", lineHeight: 1.6, marginBottom: "1rem" }}>
+                <p style={{ color: "#6B6B6B", fontSize: "0.875rem", lineHeight: 1.6, marginBottom: "1rem" }}>
                   {service.description}
                 </p>
 
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.25rem", display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                   {service.features.slice(0, 3).map((f) => (
-                    <li key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8125rem", color: "#475569" }}>
-                      <CheckCircle size={13} style={{ color: "#13294A", flexShrink: 0 }} />
+                    <li key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8125rem", color: "#525252" }}>
+                      <CheckCircle size={13} style={{ color: "#171717", flexShrink: 0 }} />
                       {f}
                     </li>
                   ))}
                 </ul>
 
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#13294A" }}>
+                  <span style={{ fontSize: "0.8125rem", fontWeight: 700, color: "#171717" }}>
                     Ver detalhes e pedir orçamento
                   </span>
-                  <ArrowRight size={15} style={{ color: "#13294A" }} />
+                  <ArrowRight size={15} style={{ color: "#171717" }} />
                 </div>
 
                 {service.emergencyAvailable && (
@@ -214,7 +214,7 @@ export default function ServicosPage() {
       </section>
 
       {/* Why Us Strip */}
-      <section style={{ background: "#0B1B2E", padding: "3rem 0" }}>
+      <section style={{ background: "#0A0A0A", padding: "3rem 0" }}>
         <div className="section-container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", textAlign: "center" }}>
             {[
@@ -224,7 +224,7 @@ export default function ServicosPage() {
               { label: "+100 Obras Concluídas", sub: "Em Aveiro e Arredores" },
             ].map((item) => (
               <div key={item.label}>
-                <div style={{ fontWeight: 800, color: "#C9A86A", fontSize: "0.9375rem", marginBottom: "0.25rem" }}>{item.label}</div>
+                <div style={{ fontWeight: 800, color: "#D4D4D4", fontSize: "0.9375rem", marginBottom: "0.25rem" }}>{item.label}</div>
                 <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.8125rem" }}>{item.sub}</div>
               </div>
             ))}
@@ -233,24 +233,24 @@ export default function ServicosPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #C9A86A, #B8935A)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #D4D4D4, #6B6B6B)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0B1B2E", marginBottom: "0.5rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.5rem" }}>
             Não sabe qual o serviço que precisa?
           </h2>
-          <p style={{ color: "rgba(11, 27, 46,0.75)", marginBottom: "1.25rem", fontSize: "0.9375rem" }}>
+          <p style={{ color: "rgba(10, 10, 10,0.75)", marginBottom: "1.25rem", fontSize: "0.9375rem" }}>
             Descreva o problema e o Jorge Freitas dará uma resposta em menos de 12 horas.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ background: "#0B1B2E", color: "#fff" }} id="servicos-bottom-phone">
+            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ background: "#0A0A0A", color: "#fff" }} id="servicos-bottom-phone">
               <Phone size={16} />
               Ligar Agora
             </a>
             <Link href="/orcamento" style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              background: "rgba(11, 27, 46,0.1)", color: "#0B1B2E", fontWeight: 700,
+              background: "rgba(10, 10, 10,0.1)", color: "#0A0A0A", fontWeight: 700,
               padding: "0.75rem 1.5rem", borderRadius: "0.375rem", textDecoration: "none",
-              border: "2px solid rgba(11, 27, 46,0.25)",
+              border: "2px solid rgba(10, 10, 10,0.25)",
             }}>
               Pedir Orçamento Online
               <ArrowRight size={16} />

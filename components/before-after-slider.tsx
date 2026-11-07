@@ -98,7 +98,7 @@ function SliderCard({ project }: { project: BeforeAfterProject }) {
         background: "#ffffff",
         borderRadius: "0.5rem",
         overflow: "hidden",
-        border: "1.5px solid #e2e8f0",
+        border: "1.5px solid #E5E5E3",
         boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
       }}
     >
@@ -129,7 +129,7 @@ function SliderCard({ project }: { project: BeforeAfterProject }) {
         >
           <div style={{ textAlign: "center", opacity: 0.7 }}>
             <div style={{ fontSize: "2.5rem", marginBottom: "0.25rem" }}>✨</div>
-            <p style={{ fontSize: "0.8125rem", color: "#0f172a", fontWeight: 700 }}>Depois da Remodelação</p>
+            <p style={{ fontSize: "0.8125rem", color: "#111111", fontWeight: 700 }}>Depois da Remodelação</p>
           </div>
           <div
             style={{
@@ -224,13 +224,13 @@ function SliderCard({ project }: { project: BeforeAfterProject }) {
 
       {/* Footer */}
       <div style={{ padding: "1rem 1.25rem" }}>
-        <p style={{ fontSize: "0.75rem", color: "#8F6E3E", fontWeight: 700, marginBottom: "0.25rem" }}>
+        <p style={{ fontSize: "0.75rem", color: "#525252", fontWeight: 700, marginBottom: "0.25rem" }}>
           {project.service}
         </p>
-        <h3 style={{ fontWeight: 800, fontSize: "0.9375rem", color: "#0f172a", marginBottom: "0.25rem" }}>
+        <h3 style={{ fontWeight: 800, fontSize: "0.9375rem", color: "#111111", marginBottom: "0.25rem" }}>
           {project.title}
         </h3>
-        <p style={{ fontSize: "0.8125rem", color: "#64748b", display: "flex", alignItems: "center", gap: "0.25rem" }}>
+        <p style={{ fontSize: "0.8125rem", color: "#6B6B6B", display: "flex", alignItems: "center", gap: "0.25rem" }}>
           📍 {project.parish}
         </p>
       </div>

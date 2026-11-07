@@ -58,7 +58,7 @@ export function CostCalculator({
       id="calculadora-orcamento"
       className={embedded ? "" : "section-padding"}
       style={{
-        background: embedded ? "transparent" : "linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)",
+        background: embedded ? "transparent" : "linear-gradient(180deg, #F7F7F5 0%, #F2F2F0 100%)",
         position: "relative",
       }}
     >
@@ -70,9 +70,9 @@ export function CostCalculator({
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "rgba(19, 41, 74, 0.08)",
-                border: "1px solid rgba(19, 41, 74, 0.15)",
-                color: "#13294A",
+                background: "rgba(23, 23, 23, 0.08)",
+                border: "1px solid rgba(23, 23, 23, 0.15)",
+                color: "#171717",
                 borderRadius: "2rem",
                 padding: "0.35rem 1rem",
                 fontSize: "0.75rem",
@@ -82,7 +82,7 @@ export function CostCalculator({
                 textTransform: "uppercase",
               }}
             >
-              <Calculator size={14} style={{ color: "#8F6E3E" }} />
+              <Calculator size={14} style={{ color: "#525252" }} />
               Simulador Interativo para Aveiro
             </div>
             <h2 className="section-title">
@@ -98,8 +98,8 @@ export function CostCalculator({
           style={{
             background: "#ffffff",
             borderRadius: "1rem",
-            border: "1.5px solid #e2e8f0",
-            boxShadow: "0 10px 40px rgba(11, 27, 46, 0.07)",
+            border: "1.5px solid #E5E5E3",
+            boxShadow: "0 10px 40px rgba(10, 10, 10, 0.07)",
             overflow: "hidden",
             display: "grid",
             gridTemplateColumns: "1.15fr 0.85fr",
@@ -115,7 +115,7 @@ export function CostCalculator({
                   display: "block",
                   fontSize: "0.875rem",
                   fontWeight: 800,
-                  color: "#0B1B2E",
+                  color: "#0A0A0A",
                   marginBottom: "0.75rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.03em",
@@ -142,10 +142,10 @@ export function CostCalculator({
                         padding: "0.625rem 0.5rem",
                         borderRadius: "0.5rem",
                         border: isSelected
-                          ? "2px solid #13294A"
-                          : "1.5px solid #e2e8f0",
-                        background: isSelected ? "#0B1B2E" : "#ffffff",
-                        color: isSelected ? "#C9A86A" : "#1e293b",
+                          ? "2px solid #171717"
+                          : "1.5px solid #E5E5E3",
+                        background: isSelected ? "#0A0A0A" : "#ffffff",
+                        color: isSelected ? "#D4D4D4" : "#1F1F1F",
                         fontWeight: isSelected ? 800 : 600,
                         fontSize: "0.8125rem",
                         cursor: "pointer",
@@ -158,7 +158,7 @@ export function CostCalculator({
                   );
                 })}
               </div>
-              <p style={{ color: "#64748b", fontSize: "0.8rem", marginTop: "0.5rem" }}>
+              <p style={{ color: "#6B6B6B", fontSize: "0.8rem", marginTop: "0.5rem" }}>
                 {currentService.description}
               </p>
             </div>
@@ -178,7 +178,7 @@ export function CostCalculator({
                   style={{
                     fontSize: "0.875rem",
                     fontWeight: 800,
-                    color: "#0B1B2E",
+                    color: "#0A0A0A",
                     textTransform: "uppercase",
                     letterSpacing: "0.03em",
                   }}
@@ -187,8 +187,8 @@ export function CostCalculator({
                 </label>
                 <div
                   style={{
-                    background: "rgba(184, 147, 90, 0.12)",
-                    color: "#8A6A3B",
+                    background: "rgba(128, 128, 128, 0.12)",
+                    color: "#404040",
                     padding: "0.25rem 0.75rem",
                     borderRadius: "0.375rem",
                     fontWeight: 900,
@@ -209,7 +209,7 @@ export function CostCalculator({
                 onChange={(e) => setAreaM2(Number(e.target.value))}
                 style={{
                   width: "100%",
-                  accentColor: "#B8935A",
+                  accentColor: "#6B6B6B",
                   height: "8px",
                   borderRadius: "4px",
                   cursor: "pointer",
@@ -219,13 +219,13 @@ export function CostCalculator({
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  color: "#94a3b8",
+                  color: "#999999",
                   fontSize: "0.75rem",
                   marginTop: "0.375rem",
                 }}
               >
                 <span>{currentService.minArea} {currentService.areaUnit}</span>
-                <span style={{ color: "#64748b", fontWeight: 600 }}>Exemplo: {currentService.defaultArea} {currentService.areaUnit}</span>
+                <span style={{ color: "#6B6B6B", fontWeight: 600 }}>Exemplo: {currentService.defaultArea} {currentService.areaUnit}</span>
                 <span>{currentService.maxArea} {currentService.areaUnit}</span>
               </div>
             </div>
@@ -237,7 +237,7 @@ export function CostCalculator({
                   display: "block",
                   fontSize: "0.875rem",
                   fontWeight: 800,
-                  color: "#0B1B2E",
+                  color: "#0A0A0A",
                   marginBottom: "0.75rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.03em",
@@ -258,9 +258,9 @@ export function CostCalculator({
                         padding: "0.75rem 0.5rem",
                         borderRadius: "0.5rem",
                         border: isSelected
-                          ? "2px solid #13294A"
-                          : "1.5px solid #e2e8f0",
-                        background: isSelected ? "rgba(19, 41, 74, 0.05)" : "#ffffff",
+                          ? "2px solid #171717"
+                          : "1.5px solid #E5E5E3",
+                        background: isSelected ? "rgba(23, 23, 23, 0.05)" : "#ffffff",
                         cursor: "pointer",
                         textAlign: "center",
                         transition: "all 0.15s ease",
@@ -270,7 +270,7 @@ export function CostCalculator({
                         style={{
                           fontSize: "0.6875rem",
                           fontWeight: 800,
-                          color: isSelected ? "#13294A" : "#64748b",
+                          color: isSelected ? "#171717" : "#6B6B6B",
                           textTransform: "uppercase",
                         }}
                       >
@@ -280,7 +280,7 @@ export function CostCalculator({
                         style={{
                           fontSize: "0.875rem",
                           fontWeight: 800,
-                          color: isSelected ? "#0B1B2E" : "#334155",
+                          color: isSelected ? "#0A0A0A" : "#3A3A3A",
                           marginTop: "0.2rem",
                         }}
                       >
@@ -300,7 +300,7 @@ export function CostCalculator({
                   display: "block",
                   fontSize: "0.875rem",
                   fontWeight: 800,
-                  color: "#0B1B2E",
+                  color: "#0A0A0A",
                   marginBottom: "0.5rem",
                   textTransform: "uppercase",
                   letterSpacing: "0.03em",
@@ -316,10 +316,10 @@ export function CostCalculator({
                   width: "100%",
                   padding: "0.625rem 0.875rem",
                   borderRadius: "0.5rem",
-                  border: "1.5px solid #cbd5e1",
+                  border: "1.5px solid #D4D4D2",
                   background: "#ffffff",
                   fontSize: "0.875rem",
-                  color: "#0B1B2E",
+                  color: "#0A0A0A",
                   fontWeight: 600,
                 }}
               >
@@ -335,7 +335,7 @@ export function CostCalculator({
           {/* Results Column */}
           <div
             style={{
-              background: "linear-gradient(135deg, #0B1B2E 0%, #13294A 100%)",
+              background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
               padding: "2rem",
               color: "#ffffff",
               display: "flex",
@@ -349,9 +349,9 @@ export function CostCalculator({
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.375rem",
-                  background: "rgba(184, 147, 90, 0.15)",
-                  border: "1px solid rgba(184, 147, 90, 0.3)",
-                  color: "#C9A86A",
+                  background: "rgba(128, 128, 128, 0.15)",
+                  border: "1px solid rgba(128, 128, 128, 0.3)",
+                  color: "#D4D4D4",
                   padding: "0.25rem 0.625rem",
                   borderRadius: "0.25rem",
                   fontSize: "0.75rem",
@@ -371,7 +371,7 @@ export function CostCalculator({
                 style={{
                   fontSize: "clamp(1.75rem, 3vw, 2.35rem)",
                   fontWeight: 900,
-                  color: "#C9A86A",
+                  color: "#D4D4D4",
                   lineHeight: 1.1,
                   margin: "0.35rem 0 0.875rem",
                 }}
@@ -417,7 +417,7 @@ export function CostCalculator({
                       gap: "0.35rem",
                     }}
                   >
-                    <Clock size={15} style={{ color: "#C9A86A" }} />
+                    <Clock size={15} style={{ color: "#D4D4D4" }} />
                     {results.durationDays} dias úteis
                   </div>
                 </div>
@@ -475,7 +475,7 @@ export function CostCalculator({
                 <Link
                   href="/credito-obras"
                   style={{
-                    color: "#C9A86A",
+                    color: "#D4D4D4",
                     fontWeight: 700,
                     fontSize: "0.75rem",
                     textDecoration: "underline",
@@ -535,7 +535,7 @@ export function CostCalculator({
                   textDecoration: "none",
                 }}
               >
-                <Phone size={15} style={{ color: "#C9A86A" }} />
+                <Phone size={15} style={{ color: "#D4D4D4" }} />
                 <span>Ligar ao Jorge Freitas ({CONTRACTOR_INFO.phoneDisplay})</span>
               </a>
 

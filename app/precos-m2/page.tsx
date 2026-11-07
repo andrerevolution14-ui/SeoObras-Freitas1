@@ -109,21 +109,21 @@ export default function PrecosM2Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(precosM2JsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #0B1B2E, #13294A)", padding: "7.5rem 0 3.5rem" }}>
+      <section style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A" }}>Preços Médios por m²</span>
+            <span style={{ color: "#D4D4D4" }}>Preços Médios por m²</span>
           </nav>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.4rem",
-              background: "rgba(184, 147, 90, 0.15)",
-              border: "1px solid rgba(184, 147, 90, 0.35)",
-              color: "#C9A86A",
+              background: "rgba(128, 128, 128, 0.15)",
+              border: "1px solid rgba(128, 128, 128, 0.35)",
+              color: "#D4D4D4",
               borderRadius: "2rem",
               padding: "0.25rem 0.75rem",
               fontSize: "0.75rem",
@@ -157,7 +157,7 @@ export default function PrecosM2Page() {
       <AveragePricesGuide />
 
       {/* Respostas Diretas sobre Custos */}
-      <section className="section-padding" style={{ background: "#ffffff", borderTop: "1px solid #e2e8f0" }}>
+      <section className="section-padding" style={{ background: "#ffffff", borderTop: "1px solid #E5E5E3" }}>
         <div className="section-container" style={{ maxWidth: "800px" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p className="section-eyebrow">Perguntas Frequentes sobre Custos</p>
@@ -189,17 +189,17 @@ export default function PrecosM2Page() {
               <div
                 key={faq.q}
                 style={{
-                  background: "#f8fafc",
-                  border: "1.5px solid #e2e8f0",
+                  background: "#F7F7F5",
+                  border: "1.5px solid #E5E5E3",
                   borderRadius: "0.5rem",
                   padding: "1.25rem 1.5rem",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#0B1B2E", fontWeight: 800, fontSize: "1rem", marginBottom: "0.5rem" }}>
-                  <HelpCircle size={18} style={{ color: "#8F6E3E", flexShrink: 0 }} />
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#0A0A0A", fontWeight: 800, fontSize: "1rem", marginBottom: "0.5rem" }}>
+                  <HelpCircle size={18} style={{ color: "#525252", flexShrink: 0 }} />
                   {faq.q}
                 </div>
-                <p style={{ color: "#475569", lineHeight: 1.65, fontSize: "0.9rem", margin: 0 }}>
+                <p style={{ color: "#525252", lineHeight: 1.65, fontSize: "0.9rem", margin: 0 }}>
                   {faq.a}
                 </p>
               </div>
@@ -209,9 +209,9 @@ export default function PrecosM2Page() {
       </section>
 
       {/* CTA Final */}
-      <section style={{ background: "#0B1B2E", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section style={{ background: "#0A0A0A", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
-          <Shield size={36} style={{ color: "#C9A86A", margin: "0 auto 1rem" }} />
+          <Shield size={36} style={{ color: "#D4D4D4", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>
             Quer uma cotação exata para a sua obra em Aveiro?
           </h2>

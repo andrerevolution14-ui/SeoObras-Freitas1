@@ -1,5 +1,5 @@
 // ============================================================
-// lib/brand-images.ts — Grupo Freitas
+// lib/brand-images.ts — Freitas Renovações
 // Fonte única de todas as fotografias de marca do site.
 //
 // Para trocar uma imagem (ex.: novas fotos geradas no Higgsfield):
@@ -19,13 +19,13 @@ export const BRAND_IMAGES = {
   /** Fundo do hero da homepage — cinematográfico, tons escuros, interior premium. */
   hero: {
     src: "/hero-bg-v4.jpg",
-    alt: "Cozinha contemporânea remodelada pelo Grupo Freitas em Aveiro",
+    alt: "Cozinha contemporânea remodelada pelo Freitas Renovações em Aveiro",
     recommended: "2400×1350 (16:9), escura à esquerda para o texto",
   },
   /** Retrato do fundador — secção "Quem somos". */
   founder: {
     src: "/jorge-freitas.jpg",
-    alt: "Jorge Freitas, Empreiteiro Geral e fundador do Grupo Freitas em Aveiro",
+    alt: "Jorge Freitas, Empreiteiro Geral e fundador do Freitas Renovações em Aveiro",
     recommended: "1200×1500 (4:5), retrato em obra",
   },
   /** Equipa / reunião com clientes — secção de processo. */
@@ -37,7 +37,7 @@ export const BRAND_IMAGES = {
   /** Moradia exterior ao fim do dia — CTA final. */
   closing: {
     src: "/verdemont.jpg",
-    alt: "Moradia contemporânea iluminada ao anoitecer — obra Grupo Freitas",
+    alt: "Moradia contemporânea iluminada ao anoitecer — obra Freitas Renovações",
     recommended: "2400×1200 (2:1), exterior ao anoitecer",
   },
   /** Ambiente para o bloco de financiamento. */
@@ -49,7 +49,7 @@ export const BRAND_IMAGES = {
   /** Faixa de manifesto (imagem larga). */
   manifesto: {
     src: "/hero-bg-v3.jpg",
-    alt: "Interior de cozinha e sala em open space remodelado pelo Grupo Freitas",
+    alt: "Interior de cozinha e sala em open space remodelado pelo Freitas Renovações",
     recommended: "2400×1000 (21:9)",
   },
 } satisfies Record<string, BrandImage>;

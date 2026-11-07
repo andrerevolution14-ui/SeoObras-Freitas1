@@ -55,7 +55,7 @@ export function ClientesWall() {
           })}
         </div>
         <div className="clientes-tap-hint">
-          <Maximize2 size={12} style={{ color: "#8F6E3E", flexShrink: 0 }} />
+          <Maximize2 size={12} style={{ color: "#525252", flexShrink: 0 }} />
           <span>Pode tocar em qualquer avaliação ou foto para abrir e ler completa</span>
         </div>
       </div>
@@ -113,7 +113,7 @@ export function ClientesWall() {
                       <meta itemProp="ratingValue" content={String(item.rating || 5)} />
                       <meta itemProp="bestRating" content="5" />
                       {[1, 2, 3, 4, 5].map((s) => (
-                        <Star key={s} size={13} fill="#B8935A" stroke="#B8935A" />
+                        <Star key={s} size={13} fill="#6B6B6B" stroke="#6B6B6B" />
                       ))}
                     </div>
 
@@ -130,7 +130,7 @@ export function ClientesWall() {
                     {/* Destaque de Quebra de Objeção */}
                     {item.highlightTag && (
                       <div className="clientes-highlight-tag">
-                        <CheckCircle2 size={12} style={{ color: "#8F6E3E", flexShrink: 0 }} />
+                        <CheckCircle2 size={12} style={{ color: "#525252", flexShrink: 0 }} />
                         <span>{item.highlightTag}</span>
                       </div>
                     )}
@@ -217,7 +217,7 @@ export function ClientesWall() {
                   {/* Barra inferior na foto: Localização */}
                   <div className="photo-bottom-bar">
                     <span className="photo-loc-tag">
-                      <MapPin size={12} style={{ color: "#C9A86A", flexShrink: 0 }} />
+                      <MapPin size={12} style={{ color: "#D4D4D4", flexShrink: 0 }} />
                       <span>{item.location}</span>
                     </span>
                     <span className="photo-real-tag">
@@ -240,7 +240,7 @@ export function ClientesWall() {
                         <meta itemProp="ratingValue" content={String(item.rating || 5)} />
                         <meta itemProp="bestRating" content="5" />
                         {[1, 2, 3, 4, 5].map((s) => (
-                          <Star key={s} size={13} fill="#B8935A" stroke="#B8935A" />
+                          <Star key={s} size={13} fill="#6B6B6B" stroke="#6B6B6B" />
                         ))}
                       </div>
                       {item.highlightTag && (
@@ -362,7 +362,7 @@ export function ClientesWall() {
             position: "fixed",
             inset: 0,
             zIndex: 110,
-            background: "rgba(7, 15, 26, 0.88)",
+            background: "rgba(5, 5, 5, 0.88)",
             backdropFilter: "blur(8px)",
             display: "flex",
             alignItems: "center",
@@ -392,7 +392,7 @@ export function ClientesWall() {
                 top: "0.85rem",
                 right: "0.85rem",
                 zIndex: 10,
-                background: "rgba(11, 27, 46, 0.85)",
+                background: "rgba(10, 10, 10, 0.85)",
                 color: "#ffffff",
                 border: "none",
                 borderRadius: "50%",
@@ -408,7 +408,7 @@ export function ClientesWall() {
             </button>
 
             {lightboxItem.image && (
-              <div style={{ background: "#070F1A", textAlign: "center", maxHeight: "500px", overflow: "hidden" }}>
+              <div style={{ background: "#050505", textAlign: "center", maxHeight: "500px", overflow: "hidden" }}>
                 <img
                   src={lightboxItem.image}
                   alt={lightboxItem.imageAlt || lightboxItem.headline}
@@ -427,8 +427,8 @@ export function ClientesWall() {
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem", flexWrap: "wrap" }}>
                 <span
                   style={{
-                    background: "#0B1B2E",
-                    color: "#C9A86A",
+                    background: "#0A0A0A",
+                    color: "#D4D4D4",
                     fontSize: "0.7rem",
                     fontWeight: 800,
                     padding: "0.2rem 0.6rem",
@@ -437,32 +437,32 @@ export function ClientesWall() {
                 >
                   {lightboxItem.categoryLabel}
                 </span>
-                <span style={{ fontSize: "0.8125rem", color: "#64748b", fontWeight: 600 }}>
+                <span style={{ fontSize: "0.8125rem", color: "#6B6B6B", fontWeight: 600 }}>
                   📍 {lightboxItem.location}
                 </span>
               </div>
 
-              <h3 style={{ fontSize: "1.35rem", fontWeight: 900, color: "#0B1B2E", marginBottom: "0.75rem" }}>
+              <h3 style={{ fontSize: "1.35rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.75rem" }}>
                 {lightboxItem.headline}
               </h3>
 
               {lightboxItem.quote ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "1rem" }}>
                   {lightboxItem.quote.map((p, i) => (
-                    <p key={i} style={{ color: "#334155", fontSize: "0.9375rem", lineHeight: 1.65, margin: 0 }}>
+                    <p key={i} style={{ color: "#3A3A3A", fontSize: "0.9375rem", lineHeight: 1.65, margin: 0 }}>
                       {i === 0 ? `“${p}` : p}
                       {i === lightboxItem.quote!.length - 1 ? "”" : ""}
                     </p>
                   ))}
                   {lightboxItem.clientName && (
-                    <div style={{ fontWeight: 800, color: "#0B1B2E", fontSize: "0.9rem", marginTop: "0.25rem" }}>
+                    <div style={{ fontWeight: 800, color: "#0A0A0A", fontSize: "0.9rem", marginTop: "0.25rem" }}>
                       — {lightboxItem.clientName} ({lightboxItem.location})
                     </div>
                   )}
                 </div>
               ) : (
                 lightboxItem.imageCaption && (
-                  <p style={{ color: "#334155", fontSize: "0.9375rem", lineHeight: 1.65, marginBottom: "1rem" }}>
+                  <p style={{ color: "#3A3A3A", fontSize: "0.9375rem", lineHeight: 1.65, marginBottom: "1rem" }}>
                     {lightboxItem.imageCaption}
                   </p>
                 )
@@ -474,7 +474,7 @@ export function ClientesWall() {
                   gap: "0.75rem",
                   flexWrap: "wrap",
                   paddingTop: "1rem",
-                  borderTop: "1px solid #e2e8f0",
+                  borderTop: "1px solid #E5E5E3",
                 }}
               >
                 <Link
@@ -491,9 +491,9 @@ export function ClientesWall() {
                   style={{
                     fontSize: "0.85rem",
                     padding: "0.65rem 1.2rem",
-                    background: "#f1f5f9",
-                    color: "#0B1B2E",
-                    border: "1px solid #cbd5e1",
+                    background: "#F2F2F0",
+                    color: "#0A0A0A",
+                    border: "1px solid #D4D4D2",
                   }}
                 >
                   <Phone size={15} />
@@ -521,7 +521,7 @@ export function ClientesWall() {
           gap: 0.35rem;
           font-size: 0.74rem;
           font-weight: 600;
-          color: #64748b;
+          color: #6B6B6B;
           text-align: center;
         }
         .clientes-open-review-label {
@@ -530,7 +530,7 @@ export function ClientesWall() {
           gap: 0.22rem;
           font-size: 0.68rem;
           font-weight: 700;
-          color: #8F6E3E;
+          color: #525252;
           white-space: nowrap;
           flex-shrink: 0;
         }
@@ -542,8 +542,8 @@ export function ClientesWall() {
           background: #ffffff;
           padding: 0.32rem;
           border-radius: 999px;
-          border: 1px solid #e2e8f0;
-          box-shadow: 0 4px 20px rgba(11, 27, 46, 0.05);
+          border: 1px solid #E5E5E3;
+          box-shadow: 0 4px 20px rgba(10, 10, 10, 0.05);
           max-width: 100%;
         }
         .clientes-filter-pill {
@@ -554,7 +554,7 @@ export function ClientesWall() {
           border-radius: 999px;
           border: 1px solid transparent;
           background: transparent;
-          color: #334155;
+          color: #3A3A3A;
           font-weight: 600;
           font-size: 0.84rem;
           white-space: nowrap;
@@ -562,14 +562,14 @@ export function ClientesWall() {
           transition: all 0.18s ease;
         }
         .clientes-filter-pill:hover {
-          background: #f8fafc;
-          color: #0B1B2E;
+          background: #F7F7F5;
+          color: #0A0A0A;
         }
         .clientes-filter-pill.is-active {
-          background: #0B1B2E;
-          color: #C9A86A;
+          background: #0A0A0A;
+          color: #D4D4D4;
           font-weight: 700;
-          box-shadow: 0 4px 12px rgba(11, 27, 46, 0.18);
+          box-shadow: 0 4px 12px rgba(10, 10, 10, 0.18);
         }
         .clientes-filter-count {
           display: inline-flex;
@@ -579,12 +579,12 @@ export function ClientesWall() {
           border-radius: 999px;
           font-size: 0.7rem;
           font-weight: 800;
-          background: #f1f5f9;
-          color: #64748b;
+          background: #F2F2F0;
+          color: #6B6B6B;
         }
         .clientes-filter-pill.is-active .clientes-filter-count {
-          background: rgba(184, 147, 90, 0.18);
-          color: #C9A86A;
+          background: rgba(128, 128, 128, 0.18);
+          color: #D4D4D4;
         }
 
         /* ── Grelha Unificada (CSS Grid em Desktop, Tablet e Mobile) ── */
@@ -620,7 +620,7 @@ export function ClientesWall() {
           padding: 1.65rem 1.5rem;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 6px 22px rgba(11, 27, 46, 0.05);
+          box-shadow: 0 6px 22px rgba(10, 10, 10, 0.05);
         }
         .editorial-corner-shape {
           position: absolute;
@@ -628,7 +628,7 @@ export function ClientesWall() {
           right: -20px;
           width: 100px;
           height: 100px;
-          border: 1px solid rgba(11, 27, 46, 0.09);
+          border: 1px solid rgba(10, 10, 10, 0.09);
           transform: rotate(28deg);
           pointer-events: none;
         }
@@ -644,7 +644,7 @@ export function ClientesWall() {
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: #475569;
+          color: #525252;
         }
         .clientes-verified-pill {
           display: inline-flex;
@@ -663,13 +663,13 @@ export function ClientesWall() {
           font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
           font-size: 1.4rem;
           font-weight: 900;
-          color: #1e293b;
+          color: #1F1F1F;
           line-height: 1.15;
           letter-spacing: -0.02em;
           margin-bottom: 0.95rem;
         }
         .editorial-quote-box {
-          border: 1px solid #94a3b8;
+          border: 1px solid #999999;
           border-radius: 0.875rem;
           padding: 1.35rem 1.2rem 1.1rem;
           position: relative;
@@ -684,7 +684,7 @@ export function ClientesWall() {
           font-size: 2.5rem;
           line-height: 1;
           font-weight: 900;
-          color: #94a3b8;
+          color: #999999;
           font-family: Georgia, serif;
         }
         .clientes-stars-row {
@@ -698,7 +698,7 @@ export function ClientesWall() {
           gap: 0.6rem;
         }
         .clientes-quote-text p {
-          color: #1e293b;
+          color: #1F1F1F;
           font-size: 0.885rem;
           line-height: 1.58;
           margin: 0;
@@ -708,8 +708,8 @@ export function ClientesWall() {
           display: inline-flex;
           align-items: center;
           gap: 0.3rem;
-          background: rgba(11, 27, 46, 0.06);
-          color: #0B1B2E;
+          background: rgba(10, 10, 10, 0.06);
+          color: #0A0A0A;
           padding: 0.22rem 0.55rem;
           border-radius: 0.375rem;
           font-size: 0.72rem;
@@ -718,7 +718,7 @@ export function ClientesWall() {
         .clientes-author-footer {
           margin-top: 0.95rem;
           padding-top: 0.75rem;
-          border-top: 1px solid #cbd5e1;
+          border-top: 1px solid #D4D4D2;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -727,15 +727,15 @@ export function ClientesWall() {
         .clientes-author-name {
           font-weight: 800;
           font-size: 0.9rem;
-          color: #0f172a;
+          color: #111111;
         }
         .clientes-author-loc {
           font-size: 0.75rem;
-          color: #475569;
+          color: #525252;
           margin-top: 0.05rem;
         }
         .clientes-quote-icon {
-          color: #cbd5e1;
+          color: #D4D4D2;
           flex-shrink: 0;
         }
         .editorial-brand-footer {
@@ -744,23 +744,23 @@ export function ClientesWall() {
           align-items: center;
           justify-content: space-between;
           font-size: 0.68rem;
-          color: #64748b;
+          color: #6B6B6B;
           letter-spacing: 0.03em;
         }
 
         /* ── Cartão com Foto + Review ── */
         .clientes-card-with-photo {
           background: #ffffff;
-          border: 1.5px solid #e2e8f0;
+          border: 1.5px solid #E5E5E3;
           border-radius: 1rem;
           overflow: hidden;
-          box-shadow: 0 8px 26px rgba(11, 27, 46, 0.06);
+          box-shadow: 0 8px 26px rgba(10, 10, 10, 0.06);
         }
         .clientes-photo-wrapper {
           position: relative;
           width: 100%;
           height: 240px;
-          background: #0B1B2E;
+          background: #0A0A0A;
           overflow: hidden;
           flex-shrink: 0;
         }
@@ -772,15 +772,15 @@ export function ClientesWall() {
           position: absolute;
           top: 0.75rem;
           left: 0.75rem;
-          background: rgba(11, 27, 46, 0.9);
+          background: rgba(10, 10, 10, 0.9);
           backdrop-filter: blur(6px);
-          color: #C9A86A;
+          color: #D4D4D4;
           font-size: 0.65rem;
           font-weight: 800;
           letter-spacing: 0.04em;
           padding: 0.25rem 0.6rem;
           border-radius: 0.375rem;
-          border: 1px solid rgba(184, 147, 90, 0.35);
+          border: 1px solid rgba(128, 128, 128, 0.35);
         }
         .photo-zoom-btn {
           position: absolute;
@@ -803,7 +803,7 @@ export function ClientesWall() {
           bottom: 0;
           left: 0;
           right: 0;
-          background: linear-gradient(to top, rgba(11, 27, 46,0.92) 0%, rgba(11, 27, 46,0) 100%);
+          background: linear-gradient(to top, rgba(10, 10, 10,0.92) 0%, rgba(10, 10, 10,0) 100%);
           padding: 1.5rem 0.85rem 0.6rem;
           display: flex;
           align-items: center;
@@ -845,22 +845,22 @@ export function ClientesWall() {
         .clientes-amber-pill {
           font-size: 0.68rem;
           font-weight: 700;
-          color: #8A6A3B;
-          background: rgba(184, 147, 90, 0.12);
+          color: #404040;
+          background: rgba(128, 128, 128, 0.12);
           padding: 0.16rem 0.5rem;
           border-radius: 1rem;
         }
         .clientes-photo-card-title {
           font-size: 1.1rem;
           font-weight: 800;
-          color: #0B1B2E;
+          color: #0A0A0A;
           margin-bottom: 0.55rem;
           line-height: 1.25;
         }
         .clientes-photo-author-row {
           margin-top: 1rem;
           padding-top: 0.75rem;
-          border-top: 1px solid #f1f5f9;
+          border-top: 1px solid #F2F2F0;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -878,12 +878,12 @@ export function ClientesWall() {
 
         /* ── Cartão Só Foto ── */
         .clientes-card-photo-only {
-          background: #0B1B2E;
+          background: #0A0A0A;
           border-radius: 1rem;
           overflow: hidden;
-          border: 1.5px solid #1e293b;
+          border: 1.5px solid #1F1F1F;
           position: relative;
-          box-shadow: 0 8px 24px rgba(11, 27, 46, 0.12);
+          box-shadow: 0 8px 24px rgba(10, 10, 10, 0.12);
         }
         .photo-only-inner {
           position: relative;
@@ -895,7 +895,7 @@ export function ClientesWall() {
         .photo-only-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, rgba(11, 27, 46,0.45) 0%, rgba(11, 27, 46,0.1) 45%, rgba(11, 27, 46,0.94) 100%);
+          background: linear-gradient(180deg, rgba(10, 10, 10,0.45) 0%, rgba(10, 10, 10,0.1) 45%, rgba(10, 10, 10,0.94) 100%);
         }
         .photo-only-top {
           position: absolute;
@@ -908,8 +908,8 @@ export function ClientesWall() {
           gap: 0.4rem;
         }
         .photo-only-badge {
-          background: rgba(184, 147, 90, 0.95);
-          color: #0B1B2E;
+          background: rgba(128, 128, 128, 0.95);
+          color: #0A0A0A;
           font-size: 0.65rem;
           font-weight: 900;
           padding: 0.25rem 0.6rem;
@@ -917,7 +917,7 @@ export function ClientesWall() {
           letter-spacing: 0.03em;
         }
         .photo-only-zoom {
-          background: rgba(11, 27, 46, 0.8);
+          background: rgba(10, 10, 10, 0.8);
           color: #ffffff;
           padding: 0.28rem 0.5rem;
           border-radius: 0.375rem;
@@ -938,7 +938,7 @@ export function ClientesWall() {
           display: inline-flex;
           align-items: center;
           gap: 0.25rem;
-          color: #C9A86A;
+          color: #D4D4D4;
           font-size: 0.72rem;
           font-weight: 700;
           margin-bottom: 0.25rem;
@@ -977,7 +977,7 @@ export function ClientesWall() {
           .clientes-filter-dock {
             background: #ffffff;
             border: 1px solid #dbe2ea;
-            box-shadow: 0 2px 10px rgba(11, 27, 46, 0.04);
+            box-shadow: 0 2px 10px rgba(10, 10, 10, 0.04);
             padding: 0.25rem;
             gap: 0.28rem;
             border-radius: 0.75rem;
@@ -991,8 +991,8 @@ export function ClientesWall() {
             border-radius: 0.5rem;
           }
           .clientes-filter-pill.is-active {
-            background: #0B1B2E;
-            color: #C9A86A;
+            background: #0A0A0A;
+            color: #D4D4D4;
           }
           .clientes-filter-count {
             font-size: 0.64rem;

@@ -17,9 +17,9 @@ export function LowCostIdeas() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(184, 147, 90, 0.12)",
-              border: "1px solid rgba(184, 147, 90, 0.25)",
-              color: "#8A6A3B",
+              background: "rgba(128, 128, 128, 0.12)",
+              border: "1px solid rgba(128, 128, 128, 0.25)",
+              color: "#404040",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -56,7 +56,7 @@ export function LowCostIdeas() {
                 background: "#ffffff",
                 borderRadius: "0.75rem",
                 padding: "1.75rem",
-                border: "1.5px solid #e2e8f0",
+                border: "1.5px solid #E5E5E3",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
                 display: "flex",
                 flexDirection: "column",
@@ -74,8 +74,8 @@ export function LowCostIdeas() {
                 >
                   <span
                     style={{
-                      background: "rgba(19, 41, 74, 0.08)",
-                      color: "#13294A",
+                      background: "rgba(23, 23, 23, 0.08)",
+                      color: "#171717",
                       fontSize: "0.75rem",
                       fontWeight: 800,
                       padding: "0.25rem 0.625rem",
@@ -107,7 +107,7 @@ export function LowCostIdeas() {
                   style={{
                     fontWeight: 800,
                     fontSize: "1.0625rem",
-                    color: "#0B1B2E",
+                    color: "#0A0A0A",
                     marginBottom: "0.5rem",
                     lineHeight: 1.35,
                   }}
@@ -115,19 +115,19 @@ export function LowCostIdeas() {
                   {idea.title}
                 </h3>
 
-                <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.6, marginBottom: "1rem" }}>
+                <p style={{ color: "#525252", fontSize: "0.875rem", lineHeight: 1.6, marginBottom: "1rem" }}>
                   {idea.summary}
                 </p>
               </div>
 
               <div
                 style={{
-                  background: "#f8fafc",
-                  borderLeft: "3px solid #B8935A",
+                  background: "#F7F7F5",
+                  borderLeft: "3px solid #6B6B6B",
                   padding: "0.75rem 0.875rem",
                   borderRadius: "0 0.375rem 0.375rem 0",
                   fontSize: "0.8125rem",
-                  color: "#334155",
+                  color: "#3A3A3A",
                   lineHeight: 1.5,
                 }}
               >
@@ -143,18 +143,18 @@ export function LowCostIdeas() {
             marginTop: "2.5rem",
             textAlign: "center",
             padding: "1.5rem",
-            background: "#f8fafc",
+            background: "#F7F7F5",
             borderRadius: "0.5rem",
-            border: "1.5px dashed #cbd5e1",
+            border: "1.5px dashed #D4D4D2",
           }}
         >
-          <p style={{ color: "#475569", fontSize: "0.9375rem", marginBottom: "0.75rem" }}>
+          <p style={{ color: "#525252", fontSize: "0.9375rem", marginBottom: "0.75rem" }}>
             Tem um orçamento fixo e quer saber o que é possível fazer com o máximo aproveitamento?
           </p>
           <Link
             href="/#calculadora-orcamento"
             style={{
-              color: "#13294A",
+              color: "#171717",
               fontWeight: 800,
               fontSize: "0.9375rem",
               textDecoration: "underline",

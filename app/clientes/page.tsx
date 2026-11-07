@@ -192,7 +192,7 @@ export default function ClientesPage() {
         style={{
           backgroundColor: "#050e22",
           backgroundImage:
-            "linear-gradient(180deg, rgba(5, 14, 34, 0.90) 0%, rgba(11, 27, 46, 0.85) 55%, rgba(5, 14, 34, 0.92) 100%), url('/heroes/casal-sala-renovada.jpg')",
+            "linear-gradient(180deg, rgba(5, 14, 34, 0.90) 0%, rgba(10, 10, 10, 0.85) 55%, rgba(5, 14, 34, 0.92) 100%), url('/heroes/casal-sala-renovada.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -202,9 +202,9 @@ export default function ClientesPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.65)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.4)" }}>›</span>
-            <span style={{ color: "#C9A86A", fontWeight: 600 }}>Clientes</span>
+            <span style={{ color: "#D4D4D4", fontWeight: 600 }}>Clientes</span>
           </nav>
-          <p className="section-eyebrow" style={{ color: "#C9A86A", textShadow: "0 1px 4px rgba(0,0,0,0.45)" }}>
+          <p className="section-eyebrow" style={{ color: "#D4D4D4", textShadow: "0 1px 4px rgba(0,0,0,0.45)" }}>
             Obras Reais · Clientes Reais · ⭐ 4.9/5 Google
           </p>
           <h1
@@ -250,8 +250,8 @@ export default function ClientesPage() {
       <section
         style={{
           padding: "1.1rem 0 3.75rem",
-          background: "#f1f5f9",
-          borderBottom: "1px solid #e2e8f0",
+          background: "#F2F2F0",
+          borderBottom: "1px solid #E5E5E3",
         }}
       >
         <div className="section-container">
@@ -298,10 +298,10 @@ export default function ClientesPage() {
                 <div className="clientes-pillar-icon">
                   {pillar.icon}
                 </div>
-                <h3 style={{ fontSize: "1.02rem", fontWeight: 800, color: "#0B1B2E", marginBottom: "0.45rem" }}>
+                <h3 style={{ fontSize: "1.02rem", fontWeight: 800, color: "#0A0A0A", marginBottom: "0.45rem" }}>
                   {pillar.title}
                 </h3>
-                <p style={{ fontSize: "0.85rem", color: "#475569", lineHeight: 1.58, margin: 0 }}>
+                <p style={{ fontSize: "0.85rem", color: "#525252", lineHeight: 1.58, margin: 0 }}>
                   {pillar.desc}
                 </p>
               </div>
@@ -313,14 +313,14 @@ export default function ClientesPage() {
       {/* ── 4. CTA FINAL ── */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(135deg, rgba(11, 27, 46, 0.88) 0%, rgba(19, 41, 74, 0.78) 100%), url('/heroes/casal-chaves-casa.jpg')",
+            "linear-gradient(135deg, rgba(10, 10, 10, 0.88) 0%, rgba(23, 23, 23, 0.78) 100%), url('/heroes/casal-chaves-casa.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "4.25rem 0",
           textAlign: "center",
-          borderTop: "2px solid rgba(184, 147, 90, 0.3)",
+          borderTop: "2px solid rgba(128, 128, 128, 0.3)",
         }}
       >
         <div className="section-container">
@@ -329,7 +329,7 @@ export default function ClientesPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.4rem",
-              color: "#C9A86A",
+              color: "#D4D4D4",
               fontSize: "0.8rem",
               fontWeight: 800,
               textTransform: "uppercase",
@@ -397,8 +397,8 @@ export default function ClientesPage() {
           gap: 1.25rem;
         }
         .clientes-pillar-card {
-          background: #f8fafc;
-          border: 1.5px solid #e2e8f0;
+          background: #F7F7F5;
+          border: 1.5px solid #E5E5E3;
           border-radius: 0.875rem;
           padding: 1.5rem;
           display: flex;
@@ -408,8 +408,8 @@ export default function ClientesPage() {
           width: 44px;
           height: 44px;
           border-radius: 0.5rem;
-          background: #0B1B2E;
-          color: #C9A86A;
+          background: #0A0A0A;
+          color: #D4D4D4;
           display: flex;
           align-items: center;
           justify-content: center;

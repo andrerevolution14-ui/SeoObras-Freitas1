@@ -91,9 +91,9 @@ export default function PrecosReaisPage() {
       {/* Hero */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(11, 27, 46, 0.90) 0%, rgba(11, 27, 46, 0.76) 55%, rgba(19, 41, 74, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
+            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.76) 55%, rgba(23, 23, 23, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 3.5rem",
@@ -103,9 +103,9 @@ export default function PrecosReaisPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A" }}>Preços Reais de Obras</span>
+            <span style={{ color: "#D4D4D4" }}>Preços Reais de Obras</span>
           </nav>
-          <p className="section-eyebrow" style={{ color: "#C9A86A" }}>Transparência Total &amp; Casos de Estudo</p>
+          <p className="section-eyebrow" style={{ color: "#D4D4D4" }}>Transparência Total &amp; Casos de Estudo</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
             Obras Realizadas com Preços Reais em Aveiro
           </h1>
@@ -130,9 +130,9 @@ export default function PrecosReaisPage() {
       <PastProjectsPricing />
 
       {/* CTA Final */}
-      <section style={{ background: "#0B1B2E", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section style={{ background: "#0A0A0A", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
-          <Shield size={36} style={{ color: "#C9A86A", margin: "0 auto 1rem" }} />
+          <Shield size={36} style={{ color: "#D4D4D4", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>
             Tem uma obra semelhante para fazer?
           </h2>

@@ -80,9 +80,9 @@ export default function OrcamentoPage() {
       {/* Hero */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(11, 27, 46, 0.90) 0%, rgba(11, 27, 46, 0.76) 55%, rgba(19, 41, 74, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
+            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.76) 55%, rgba(23, 23, 23, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -92,7 +92,7 @@ export default function OrcamentoPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A" }}>Pedir Orçamento</span>
+            <span style={{ color: "#D4D4D4" }}>Pedir Orçamento</span>
           </nav>
           <p className="section-eyebrow">Gratuito &amp; Sem Compromisso</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
@@ -106,12 +106,12 @@ export default function OrcamentoPage() {
       </section>
 
       {/* Interactive Calculator Section */}
-      <div style={{ background: "#f8fafc", padding: "3rem 0 1rem" }}>
+      <div style={{ background: "#F7F7F5", padding: "3rem 0 1rem" }}>
         <CostCalculator idPrefix="orcamento-page-calc" embedded={false} />
       </div>
 
       {/* Trust Strip */}
-      <section style={{ background: "#ffffff", borderBottom: "1px solid #e2e8f0", padding: "1.25rem 0" }}>
+      <section style={{ background: "#ffffff", borderBottom: "1px solid #E5E5E3", padding: "1.25rem 0" }}>
         <div className="section-container">
           <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", alignItems: "center", justifyContent: "center" }}>
             {[
@@ -120,8 +120,8 @@ export default function OrcamentoPage() {
               { icon: <Shield size={15} />, text: "Alvará IMPIC N.º 104523" },
               { icon: <Star size={15} />, text: "⭐ 4.9/5 estrelas em Aveiro" },
             ].map((item) => (
-              <div key={item.text} style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontSize: "0.8125rem", fontWeight: 600, color: "#334155" }}>
-                <span style={{ color: "#13294A" }}>{item.icon}</span>
+              <div key={item.text} style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontSize: "0.8125rem", fontWeight: 600, color: "#3A3A3A" }}>
+                <span style={{ color: "#171717" }}>{item.icon}</span>
                 {item.text}
               </div>
             ))}
@@ -130,7 +130,7 @@ export default function OrcamentoPage() {
       </section>
 
       {/* Main Content */}
-      <section className="section-padding" style={{ background: "#f8fafc" }}>
+      <section className="section-padding" style={{ background: "#F7F7F5" }}>
         <div className="section-container">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }} id="orcamento-grid">
 
@@ -142,18 +142,18 @@ export default function OrcamentoPage() {
 
               {/* Phone CTA */}
               <div style={{
-                background: "#0B1B2E", borderRadius: "0.75rem", padding: "1.75rem",
-                marginBottom: "1.25rem", border: "2px solid rgba(184, 147, 90,0.3)",
+                background: "#0A0A0A", borderRadius: "0.75rem", padding: "1.75rem",
+                marginBottom: "1.25rem", border: "2px solid rgba(128, 128, 128,0.3)",
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
                   <div style={{
-                    width: "44px", height: "44px", background: "rgba(184, 147, 90,0.15)",
+                    width: "44px", height: "44px", background: "rgba(128, 128, 128,0.15)",
                     borderRadius: "0.5rem", display: "flex", alignItems: "center", justifyContent: "center",
                   }}>
-                    <Phone size={20} style={{ color: "#C9A86A" }} />
+                    <Phone size={20} style={{ color: "#D4D4D4" }} />
                   </div>
                   <div>
-                    <div style={{ color: "#C9A86A", fontWeight: 800, fontSize: "1rem" }}>Ligar Agora</div>
+                    <div style={{ color: "#D4D4D4", fontWeight: 800, fontSize: "1rem" }}>Ligar Agora</div>
                     <div style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.8125rem" }}>Resposta imediata</div>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function OrcamentoPage() {
               {/* WhatsApp / Email */}
               <div style={{
                 background: "#ffffff", borderRadius: "0.75rem", padding: "1.5rem",
-                border: "1.5px solid #e2e8f0",
+                border: "1.5px solid #E5E5E3",
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
                   <div style={{
@@ -184,15 +184,15 @@ export default function OrcamentoPage() {
                     <MessageCircle size={20} style={{ color: "#16a34a" }} />
                   </div>
                   <div>
-                    <div style={{ color: "#0B1B2E", fontWeight: 800, fontSize: "1rem" }}>Email / Mensagem</div>
-                    <div style={{ color: "#64748b", fontSize: "0.8125rem" }}>Resposta em menos de 12h</div>
+                    <div style={{ color: "#0A0A0A", fontWeight: 800, fontSize: "1rem" }}>Email / Mensagem</div>
+                    <div style={{ color: "#6B6B6B", fontSize: "0.8125rem" }}>Resposta em menos de 12h</div>
                   </div>
                 </div>
                 <a
                   href={`mailto:${CONTRACTOR_INFO.email}?subject=Pedido%20de%20Or%C3%A7amento&body=Ol%C3%A1%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20`}
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.375rem",
-                    color: "#13294A", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none",
+                    color: "#171717", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none",
                   }}
                   id="orcamento-email-cta"
                 >
@@ -207,7 +207,7 @@ export default function OrcamentoPage() {
                   href="/#hero-form"
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.375rem",
-                    color: "#64748b", fontSize: "0.8125rem", textDecoration: "none",
+                    color: "#6B6B6B", fontSize: "0.8125rem", textDecoration: "none",
                     fontWeight: 600,
                   }}
                 >
@@ -222,7 +222,7 @@ export default function OrcamentoPage() {
               <h2 className="section-title" style={{ marginBottom: "1rem" }}>
                 Que tipo de obra precisa?
               </h2>
-              <p style={{ color: "#64748b", fontSize: "0.875rem", marginBottom: "1.25rem", lineHeight: 1.6 }}>
+              <p style={{ color: "#6B6B6B", fontSize: "0.875rem", marginBottom: "1.25rem", lineHeight: 1.6 }}>
                 Selecione o serviço para ver detalhes e pedir orçamento específico.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
@@ -232,15 +232,15 @@ export default function OrcamentoPage() {
                     href={`/servicos/${service.slug}`}
                     style={{
                       display: "flex", alignItems: "center", justifyContent: "space-between",
-                      background: "#ffffff", border: "1.5px solid #e2e8f0",
+                      background: "#ffffff", border: "1.5px solid #E5E5E3",
                       borderRadius: "0.5rem", padding: "0.875rem 1rem",
                       textDecoration: "none", transition: "all 0.2s ease",
                     }}
                     className="card-hover"
                   >
                     <div>
-                      <div style={{ fontWeight: 700, color: "#0B1B2E", fontSize: "0.9375rem" }}>{service.title}</div>
-                      <div style={{ color: "#64748b", fontSize: "0.8rem", marginTop: "0.125rem" }}>{service.description.slice(0, 60)}...</div>
+                      <div style={{ fontWeight: 700, color: "#0A0A0A", fontSize: "0.9375rem" }}>{service.title}</div>
+                      <div style={{ color: "#6B6B6B", fontSize: "0.8rem", marginTop: "0.125rem" }}>{service.description.slice(0, 60)}...</div>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
                       {service.emergencyAvailable && (
@@ -248,7 +248,7 @@ export default function OrcamentoPage() {
                           URGÊNCIA
                         </span>
                       )}
-                      <ArrowRight size={15} style={{ color: "#94a3b8" }} />
+                      <ArrowRight size={15} style={{ color: "#999999" }} />
                     </div>
                   </Link>
                 ))}

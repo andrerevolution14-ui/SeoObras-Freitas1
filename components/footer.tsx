@@ -82,7 +82,7 @@ export function Footer() {
               </li>
             </ul>
             <a href={GOOGLE_MAPS_LINK} target="_blank" rel="noopener noreferrer" className="gf-foot-rating">
-              <Star size={13} fill="#C9A86A" stroke="#C9A86A" />
+              <Star size={13} fill="#ffffff" stroke="#ffffff" />
               {CONTRACTOR_INFO.googleRating} no Google Business
               <ArrowUpRight size={12} />
             </a>
@@ -122,7 +122,7 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a href="http://www.verdemont.eu" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: "#C9A86A" }}>
+                <a href="http://www.verdemont.eu" target="_blank" rel="noopener noreferrer" className="footer-link" style={{ color: "#ffffff" }}>
                   Projeto Verdemont (www.verdemont.eu) ↗
                 </a>
               </li>
@@ -187,7 +187,7 @@ export function Footer() {
           font-variant-numeric: tabular-nums;
           transition: color 0.2s;
         }
-        .gf-foot-phone:hover { color: #C9A86A; }
+        .gf-foot-phone:hover { color: #B5B5B5; }
         .gf-foot-small { margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); }
         .gf-foot-cols {
           display: grid;
@@ -196,7 +196,7 @@ export function Footer() {
           padding: 4rem 0;
         }
         .gf-foot-h {
-          color: #C9A86A;
+          color: #8C8C8C;
           font-size: 0.6875rem;
           letter-spacing: 0.22em;
           text-transform: uppercase;
@@ -217,7 +217,7 @@ export function Footer() {
           padding: 0.55rem 0.875rem;
           border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .gf-foot-map { margin-top: 1rem; height: 150px; border: 1px solid rgba(255, 255, 255, 0.1); background: #13294A; }
+        .gf-foot-map { margin-top: 1rem; height: 150px; border: 1px solid rgba(255, 255, 255, 0.1); background: #171717; }
         .gf-foot-legal {
           display: flex;
           flex-wrap: wrap;

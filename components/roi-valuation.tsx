@@ -7,7 +7,7 @@ export function RoiValuation() {
     <section
       id="remodelacoes-valorizacao-roi"
       className="section-padding"
-      style={{ background: "#f8fafc" }}
+      style={{ background: "#F7F7F5" }}
     >
       <div className="section-container">
         {/* Header */}
@@ -56,7 +56,7 @@ export function RoiValuation() {
                 background: "#ffffff",
                 borderRadius: "0.75rem",
                 padding: "1.75rem",
-                border: "1.5px solid #e2e8f0",
+                border: "1.5px solid #E5E5E3",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
                 display: "flex",
                 flexDirection: "column",
@@ -87,7 +87,7 @@ export function RoiValuation() {
                   style={{
                     fontWeight: 800,
                     fontSize: "1.125rem",
-                    color: "#0B1B2E",
+                    color: "#0A0A0A",
                     marginBottom: "0.5rem",
                     lineHeight: 1.35,
                   }}
@@ -99,7 +99,7 @@ export function RoiValuation() {
                   style={{
                     fontSize: "0.8125rem",
                     fontWeight: 800,
-                    color: "#8A6A3B",
+                    color: "#404040",
                     marginBottom: "0.875rem",
                   }}
                 >
@@ -108,7 +108,7 @@ export function RoiValuation() {
 
                 <p
                   style={{
-                    color: "#475569",
+                    color: "#525252",
                     fontSize: "0.875rem",
                     lineHeight: 1.6,
                     marginBottom: "1rem",
@@ -120,12 +120,12 @@ export function RoiValuation() {
 
               <div
                 style={{
-                  background: "rgba(19, 41, 74, 0.04)",
-                  borderLeft: "3px solid #13294A",
+                  background: "rgba(23, 23, 23, 0.04)",
+                  borderLeft: "3px solid #171717",
                   padding: "0.625rem 0.75rem",
                   borderRadius: "0 0.375rem 0.375rem 0",
                   fontSize: "0.775rem",
-                  color: "#334155",
+                  color: "#3A3A3A",
                   lineHeight: 1.45,
                 }}
               >

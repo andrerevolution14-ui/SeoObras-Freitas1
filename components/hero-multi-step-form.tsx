@@ -209,7 +209,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
       <motion.div
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="glass-card"
+        className="glass-card on-light"
         style={{
           borderRadius: "2px",
           padding: "2.5rem 1.75rem",
@@ -221,7 +221,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
           style={{
             width: "64px",
             height: "64px",
-            background: "#0B1B2E",
+            background: "#0A0A0A",
             borderRadius: "2px",
             display: "flex",
             alignItems: "center",
@@ -230,25 +230,25 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
             boxShadow: "none",
           }}
         >
-          <CheckCircle size={30} color="#C9A86A" strokeWidth={1.5} />
+          <CheckCircle size={30} color="#ffffff" strokeWidth={1.5} />
         </div>
-        <h3 style={{ color: "#0B1B2E", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
+        <h3 style={{ color: "#0A0A0A", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
           Pedido Recebido com Sucesso!
         </h3>
-        <p style={{ color: "#475569", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
+        <p style={{ color: "#525252", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
           Obrigado, <strong>{submittedCustomer.name || "estimado cliente"}</strong>! O Jorge Freitas recebeu a sua solicitação diretamente no Telegram e entrará em contacto para o número{" "}
           <strong>{submittedCustomer.phone}</strong>.
         </p>
         <div
           style={{
-            background: "rgba(184, 147, 90, 0.12)",
-            border: "1px solid rgba(184, 147, 90, 0.3)",
+            background: "rgba(128, 128, 128, 0.12)",
+            border: "1px solid rgba(128, 128, 128, 0.3)",
             borderRadius: "2px",
             padding: "0.875rem",
             marginBottom: "1.25rem",
           }}
         >
-          <p style={{ color: "#8F6E3E", fontSize: "0.8125rem", fontWeight: 700 }}>
+          <p style={{ color: "#525252", fontSize: "0.8125rem", fontWeight: 700 }}>
             Notificação enviada em tempo real. Resposta garantida até 12 horas com orçamento transparente e preço justo.
           </p>
         </div>
@@ -274,7 +274,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
       <div
         className="hero-form-header"
         style={{
-          background: "#0B1B2E",
+          background: "#0A0A0A",
           padding: "1.5rem 1.75rem 1.375rem",
         }}
       >
@@ -282,7 +282,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
           <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
             Passo {step} de {TOTAL_STEPS}
           </span>
-          <span style={{ color: "#C9A86A", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+          <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
             Sem compromisso
           </span>
         </div>
@@ -328,9 +328,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       }}
                       style={{
                         padding: "0.8rem 0.75rem",
-                        border: `1.5px solid ${isSelected ? "#B8935A" : "#DDD9D1"}`,
+                        border: `1.5px solid ${isSelected ? "#0A0A0A" : "#DCDCDA"}`,
                         borderRadius: "2px",
-                        background: isSelected ? "rgba(184, 147, 90, 0.1)" : "#ffffff",
+                        background: isSelected ? "#F2F2F0" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
                         flexDirection: "row",
@@ -345,7 +345,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     >
                       <span
                         style={{
-                          color: isSelected ? "#8F6E3E" : "#475569",
+                          color: isSelected ? "#0A0A0A" : "#6B6B6B",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -358,7 +358,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         style={{
                           fontWeight: 700,
                           fontSize: "0.8rem",
-                          color: "#0B1B2E",
+                          color: "#0A0A0A",
                           lineHeight: 1.2,
                           flex: 1,
                           minWidth: 0,
@@ -369,7 +369,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         {service.shortTitle}
                       </span>
                       {isSelected && (
-                        <CheckCircle size={15} style={{ color: "#8F6E3E", flexShrink: 0 }} />
+                        <CheckCircle size={15} style={{ color: "#525252", flexShrink: 0 }} />
                       )}
                     </button>
                   );
@@ -390,9 +390,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       onClick={() => setFormData((d) => ({ ...d, urgency: opt.id }))}
                       style={{
                         padding: "0.875rem 1rem",
-                        border: `1.5px solid ${isSelected ? "#B8935A" : "#DDD9D1"}`,
+                        border: `1.5px solid ${isSelected ? "#0A0A0A" : "#DCDCDA"}`,
                         borderRadius: "2px",
-                        background: isSelected ? "rgba(184, 147, 90, 0.1)" : "#ffffff",
+                        background: isSelected ? "#F2F2F0" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
@@ -402,15 +402,15 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       }}
                     >
                                             <div style={{ flex: 1 }}>
-                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#0B1B2E" }}>
+                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#0A0A0A" }}>
                           {opt.label}
                         </div>
-                        <div style={{ fontSize: "0.75rem", color: "#64748b" }}>
+                        <div style={{ fontSize: "0.75rem", color: "#6B6B6B" }}>
                           {opt.description}
                         </div>
                       </div>
                       {isSelected && (
-                        <CheckCircle size={18} style={{ color: "#8F6E3E", flexShrink: 0 }} />
+                        <CheckCircle size={18} style={{ color: "#525252", flexShrink: 0 }} />
                       )}
                     </button>
                   );
@@ -422,7 +422,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
             {step === 3 && (
               <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
                 <div>
-                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#0B1B2E", marginBottom: "0.35rem" }}>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#0A0A0A", marginBottom: "0.35rem" }}>
                     Freguesia / Concelho da Obra *
                   </label>
                   <div style={{ position: "relative" }}>
@@ -433,7 +433,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         left: "0.875rem",
                         top: "50%",
                         transform: "translateY(-50%)",
-                        color: "#64748b",
+                        color: "#6B6B6B",
                         pointerEvents: "none",
                       }}
                     />
@@ -456,7 +456,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#0B1B2E", marginBottom: "0.35rem" }}>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 700, color: "#0A0A0A", marginBottom: "0.35rem" }}>
                     Intervalo de Investimento Previsto
                   </label>
                   <select
@@ -475,7 +475,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 600, color: "#475569", marginBottom: "0.35rem" }}>
+                  <label style={{ display: "block", fontSize: "0.8125rem", fontWeight: 600, color: "#525252", marginBottom: "0.35rem" }}>
                     Dimensão aproximada / Tipologia (opcional)
                   </label>
                   <input
@@ -492,18 +492,18 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                   style={{
                     marginTop: "1rem",
                     padding: "0.875rem",
-                    background: "rgba(184, 147, 90, 0.08)",
-                    border: "1px solid rgba(184, 147, 90, 0.25)",
+                    background: "rgba(128, 128, 128, 0.08)",
+                    border: "1px solid rgba(128, 128, 128, 0.25)",
                     borderRadius: "2px",
                     display: "flex",
                     gap: "0.625rem",
                     alignItems: "flex-start",
                   }}
                 >
-                  <AlertTriangle size={16} style={{ color: "#8F6E3E", flexShrink: 0, marginTop: "1px" }} />
-                  <p style={{ fontSize: "0.75rem", color: "#64748b", lineHeight: 1.5 }}>
+                  <AlertTriangle size={16} style={{ color: "#525252", flexShrink: 0, marginTop: "1px" }} />
+                  <p style={{ fontSize: "0.75rem", color: "#6B6B6B", lineHeight: 1.5 }}>
                     Cobrimos todo o município de Aveiro. Se preferir ligar diretamente:{" "}
-                    <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#8F6E3E", fontWeight: 700 }}>
+                    <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#525252", fontWeight: 700 }}>
                       {CONTRACTOR_INFO.phoneDisplay}
                     </a>
                     .
@@ -524,7 +524,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         left: "0.875rem",
                         top: "50%",
                         transform: "translateY(-50%)",
-                        color: "#64748b",
+                        color: "#6B6B6B",
                       }}
                     />
                     <input
@@ -554,7 +554,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         left: "0.875rem",
                         top: "50%",
                         transform: "translateY(-50%)",
-                        color: "#64748b",
+                        color: "#6B6B6B",
                       }}
                     />
                     <input
@@ -594,10 +594,10 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     justifyContent: "center",
                     gap: "0.5rem",
                     padding: "0.625rem",
-                    border: "1.5px dashed #DDD9D1",
+                    border: "1.5px dashed #DCDCDA",
                     borderRadius: "2px",
-                    background: "#f8fafc",
-                    color: "#475569",
+                    background: "#F7F7F5",
+                    color: "#525252",
                     cursor: "pointer",
                     fontSize: "0.8125rem",
                     fontWeight: 600,
@@ -625,8 +625,8 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     display: "flex",
                     alignItems: "flex-start",
                     gap: "0.625rem",
-                    background: formData.needsCredit ? "rgba(184, 147, 90, 0.12)" : "#FAF8F4",
-                    border: formData.needsCredit ? "1px solid #B8935A" : "1px solid #E3E1DC",
+                    background: formData.needsCredit ? "rgba(128, 128, 128, 0.12)" : "#F8F8F7",
+                    border: formData.needsCredit ? "1px solid #0A0A0A" : "1px solid #E5E5E3",
                     borderRadius: "2px",
                     padding: "0.625rem 0.75rem",
                     cursor: "pointer",
@@ -639,13 +639,13 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     id="form-needs-credit"
                     checked={formData.needsCredit}
                     onChange={(e) => setFormData((d) => ({ ...d, needsCredit: e.target.checked }))}
-                    style={{ marginTop: "2px", accentColor: "#0B1B2E", width: "16px", height: "16px", cursor: "pointer" }}
+                    style={{ marginTop: "2px", accentColor: "#0A0A0A", width: "16px", height: "16px", cursor: "pointer" }}
                   />
-                  <div style={{ fontSize: "0.75rem", color: "#1e293b", lineHeight: 1.45 }}>
-                    <span style={{ fontWeight: 700, color: "#0B1B2E", display: "block" }}>
+                  <div style={{ fontSize: "0.75rem", color: "#1F1F1F", lineHeight: 1.45 }}>
+                    <span style={{ fontWeight: 700, color: "#0A0A0A", display: "block" }}>
                       Precisa de crédito para a obra? (100% grátis)
                     </span>
-                    <span style={{ color: "#64748b" }}>
+                    <span style={{ color: "#6B6B6B" }}>
                       Simular financiamento com o nosso parceiro de intermediação autorizado. Sem custos nem compromisso.
                     </span>
                   </div>
@@ -661,7 +661,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         className="hero-form-footer"
         style={{
           padding: "1rem 1.5rem 1.25rem",
-          borderTop: "1px solid #e2e8f0",
+          borderTop: "1px solid #E5E5E3",
           display: "flex",
           gap: "0.625rem",
           alignItems: "center",
@@ -677,9 +677,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
               gap: "0.25rem",
               padding: "0.625rem 1rem",
               background: "transparent",
-              border: "1px solid #DDD9D1",
+              border: "1px solid #DCDCDA",
               borderRadius: "2px",
-              color: "#475569",
+              color: "#525252",
               fontWeight: 600,
               fontSize: "0.875rem",
               cursor: "pointer",
@@ -739,14 +739,14 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         style={{
           textAlign: "center",
           fontSize: "0.725rem",
-          color: "#64748b",
+          color: "#6B6B6B",
           paddingBottom: "1rem",
           paddingLeft: "1.5rem",
           paddingRight: "1.5rem",
         }}
       >
         Dados protegidos nos termos do RGPD. Consulte a nossa{" "}
-        <a href="/privacidade" style={{ color: "#8F6E3E", textDecoration: "underline" }}>
+        <a href="/privacidade" style={{ color: "#525252", textDecoration: "underline" }}>
           Política de Privacidade
         </a>
         . Primeira estimativa técnica em até 12 a 24 horas.

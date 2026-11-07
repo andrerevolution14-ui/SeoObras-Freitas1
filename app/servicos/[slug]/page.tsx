@@ -113,9 +113,9 @@ export default async function ServicePage({ params }: Props) {
       {/* Hero */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(11, 27, 46, 0.90) 0%, rgba(11, 27, 46, 0.78) 55%, rgba(19, 41, 74, 0.56) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
+            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.56) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -129,7 +129,7 @@ export default async function ServicePage({ params }: Props) {
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
             <Link href="/servicos" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Serviços</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A" }}>{service.title}</span>
+            <span style={{ color: "#D4D4D4" }}>{service.title}</span>
           </nav>
 
           <div
@@ -148,9 +148,9 @@ export default async function ServicePage({ params }: Props) {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "0.35rem",
-                    background: "rgba(184, 147, 90, 0.15)",
-                    border: "1px solid rgba(184, 147, 90, 0.35)",
-                    color: "#C9A86A",
+                    background: "rgba(128, 128, 128, 0.15)",
+                    border: "1px solid rgba(128, 128, 128, 0.35)",
+                    color: "#D4D4D4",
                     borderRadius: "2rem",
                     padding: "0.25rem 0.75rem",
                     fontSize: "0.75rem",
@@ -200,13 +200,13 @@ export default async function ServicePage({ params }: Props) {
               <div
                 style={{
                   background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(184, 147, 90, 0.25)",
+                  border: "1px solid rgba(128, 128, 128, 0.25)",
                   borderRadius: "0.5rem",
                   padding: "1rem 1.25rem",
                   marginBottom: "1.5rem",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#C9A86A", fontSize: "0.8125rem", fontWeight: 800, marginBottom: "0.4rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", color: "#D4D4D4", fontSize: "0.8125rem", fontWeight: 800, marginBottom: "0.4rem" }}>
                   <Sparkles size={14} /> Especificações Técnicas &amp; Garantia da Obra
                 </div>
                 <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.875rem", lineHeight: 1.55, margin: 0 }}>
@@ -217,7 +217,7 @@ export default async function ServicePage({ params }: Props) {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginBottom: "1.75rem" }}>
                 {service.features.map((f) => (
                   <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                    <CheckCircle size={15} style={{ color: "#C9A86A", flexShrink: 0, marginTop: "3px" }} />
+                    <CheckCircle size={15} style={{ color: "#D4D4D4", flexShrink: 0, marginTop: "3px" }} />
                     <span style={{ color: "rgba(255,255,255,0.88)", fontSize: "0.875rem" }}>{f}</span>
                   </div>
                 ))}
@@ -263,7 +263,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* AEO Technical Specifications & Estimates */}
-      <section style={{ background: "#ffffff", padding: "3.5rem 0", borderBottom: "1px solid #e2e8f0" }}>
+      <section style={{ background: "#ffffff", padding: "3.5rem 0", borderBottom: "1px solid #E5E5E3" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p className="section-eyebrow">Transparência &amp; Orçamento Honesto</p>
@@ -284,8 +284,8 @@ export default async function ServicePage({ params }: Props) {
           >
             <div
               style={{
-                background: "#f8fafc",
-                border: "1.5px solid #e2e8f0",
+                background: "#F7F7F5",
+                border: "1.5px solid #E5E5E3",
                 borderRadius: "0.75rem",
                 padding: "1.5rem",
                 display: "flex",
@@ -293,21 +293,21 @@ export default async function ServicePage({ params }: Props) {
                 gap: "0.5rem",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#B8935A", fontWeight: 800, fontSize: "0.9375rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#6B6B6B", fontWeight: 800, fontSize: "0.9375rem" }}>
                 <Euro size={18} /> Preço Médio Indicativo
               </div>
-              <p style={{ color: "#0f172a", fontSize: "1.0625rem", fontWeight: 700, margin: 0 }}>
+              <p style={{ color: "#111111", fontSize: "1.0625rem", fontWeight: 700, margin: 0 }}>
                 {seo.pricingGuide}
               </p>
-              <p style={{ color: "#64748b", fontSize: "0.8125rem", margin: 0 }}>
+              <p style={{ color: "#6B6B6B", fontSize: "0.8125rem", margin: 0 }}>
                 Sem taxas ocultas, discriminado por mão de obra e materiais certificados.
               </p>
             </div>
 
             <div
               style={{
-                background: "#f8fafc",
-                border: "1.5px solid #e2e8f0",
+                background: "#F7F7F5",
+                border: "1.5px solid #E5E5E3",
                 borderRadius: "0.75rem",
                 padding: "1.5rem",
                 display: "flex",
@@ -315,21 +315,21 @@ export default async function ServicePage({ params }: Props) {
                 gap: "0.5rem",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#B8935A", fontWeight: 800, fontSize: "0.9375rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#6B6B6B", fontWeight: 800, fontSize: "0.9375rem" }}>
                 <Clock size={18} /> Prazo Típico de Execução
               </div>
-              <p style={{ color: "#0f172a", fontSize: "1.0625rem", fontWeight: 700, margin: 0 }}>
+              <p style={{ color: "#111111", fontSize: "1.0625rem", fontWeight: 700, margin: 0 }}>
                 {seo.durationGuide}
               </p>
-              <p style={{ color: "#64748b", fontSize: "0.8125rem", margin: 0 }}>
+              <p style={{ color: "#6B6B6B", fontSize: "0.8125rem", margin: 0 }}>
                 Cumprimento escrupuloso com cronograma assinado em contrato de empreitada.
               </p>
             </div>
 
             <div
               style={{
-                background: "#f8fafc",
-                border: "1.5px solid #e2e8f0",
+                background: "#F7F7F5",
+                border: "1.5px solid #E5E5E3",
                 borderRadius: "0.75rem",
                 padding: "1.5rem",
                 display: "flex",
@@ -337,13 +337,13 @@ export default async function ServicePage({ params }: Props) {
                 gap: "0.5rem",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#B8935A", fontWeight: 800, fontSize: "0.9375rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "#6B6B6B", fontWeight: 800, fontSize: "0.9375rem" }}>
                 <Shield size={18} /> Garantia &amp; Qualidade Técnica
               </div>
-              <p style={{ color: "#0f172a", fontSize: "1.0625rem", fontWeight: 700, margin: 0 }}>
+              <p style={{ color: "#111111", fontSize: "1.0625rem", fontWeight: 700, margin: 0 }}>
                 Garantia Contratual Escrita
               </p>
-              <p style={{ color: "#64748b", fontSize: "0.8125rem", margin: 0 }}>
+              <p style={{ color: "#6B6B6B", fontSize: "0.8125rem", margin: 0 }}>
                 Alvará IMPIC Válido · Seguro de Responsabilidade Civil · Acompanhamento Jorge Freitas.
               </p>
             </div>
@@ -352,7 +352,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Local Areas for this service */}
-      <section className="section-padding" style={{ background: "#f8fafc" }}>
+      <section className="section-padding" style={{ background: "#F7F7F5" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "2rem" }}>
             <p className="section-eyebrow">Cobertura Geográfica Total</p>
@@ -374,19 +374,19 @@ export default async function ServicePage({ params }: Props) {
                   gap: "0.375rem",
                   padding: "0.5rem 0.875rem",
                   background: "#ffffff",
-                  border: parish.isNeighboringCounty ? "1.5px solid #C9A86A" : "1.5px solid #e2e8f0",
+                  border: parish.isNeighboringCounty ? "1.5px solid #D4D4D4" : "1.5px solid #E5E5E3",
                   borderRadius: "0.375rem",
-                  color: "#334155",
+                  color: "#3A3A3A",
                   fontSize: "0.875rem",
                   fontWeight: 600,
                   textDecoration: "none",
                 }}
                 className="parish-chip"
               >
-                <MapPin size={13} style={{ color: parish.isNeighboringCounty ? "#B8935A" : "#64748b" }} />
+                <MapPin size={13} style={{ color: parish.isNeighboringCounty ? "#6B6B6B" : "#6B6B6B" }} />
                 <span>{parish.name}</span>
                 {parish.isNeighboringCounty && (
-                  <span style={{ fontSize: "0.6875rem", background: "rgba(184, 147, 90, 0.2)", color: "#8A6A3B", padding: "0.1rem 0.35rem", borderRadius: "0.2rem" }}>
+                  <span style={{ fontSize: "0.6875rem", background: "rgba(128, 128, 128, 0.2)", color: "#404040", padding: "0.1rem 0.35rem", borderRadius: "0.2rem" }}>
                     Concelho
                   </span>
                 )}
@@ -412,15 +412,15 @@ export default async function ServicePage({ params }: Props) {
                 key={i}
                 style={{
                   padding: "1.35rem",
-                  background: "#f8fafc",
-                  border: "1.5px solid #e2e8f0",
+                  background: "#F7F7F5",
+                  border: "1.5px solid #E5E5E3",
                   borderRadius: "0.5rem",
                 }}
               >
-                <h3 style={{ fontWeight: 800, color: "#0B1B2E", marginBottom: "0.5rem", fontSize: "1rem" }}>
+                <h3 style={{ fontWeight: 800, color: "#0A0A0A", marginBottom: "0.5rem", fontSize: "1rem" }}>
                   {item.question}
                 </h3>
-                <p style={{ color: "#475569", lineHeight: 1.65, fontSize: "0.9rem", margin: 0 }}>
+                <p style={{ color: "#525252", lineHeight: 1.65, fontSize: "0.9rem", margin: 0 }}>
                   {item.answer}
                 </p>
               </div>
@@ -428,7 +428,7 @@ export default async function ServicePage({ params }: Props) {
           </div>
 
           <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <p style={{ color: "#64748b", fontSize: "0.9375rem", marginBottom: "1rem" }}>
+            <p style={{ color: "#6B6B6B", fontSize: "0.9375rem", marginBottom: "1rem" }}>
               Ainda tem dúvidas ou pretende um orçamento discriminado para a sua habitação?
             </p>
             <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ display: "inline-flex" }}>

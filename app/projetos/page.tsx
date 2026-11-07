@@ -78,9 +78,9 @@ export default function ProjetosPage() {
       {/* Hero */}
       <section
         style={{
-          backgroundColor: "#0B1B2E",
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(11, 27, 46, 0.90) 0%, rgba(11, 27, 46, 0.76) 55%, rgba(19, 41, 74, 0.52) 100%), url('/heroes/casal-sala-renovada.jpg')",
+            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.76) 55%, rgba(23, 23, 23, 0.52) 100%), url('/heroes/casal-sala-renovada.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -90,7 +90,7 @@ export default function ProjetosPage() {
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Início</Link>
             <span style={{ color: "rgba(255,255,255,0.3)" }}>›</span>
-            <span style={{ color: "#C9A86A" }}>Projetos & Preços Reais</span>
+            <span style={{ color: "#D4D4D4" }}>Projetos & Preços Reais</span>
           </nav>
           <p className="section-eyebrow">Portfolio de Trabalhos em Aveiro</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "0.875rem", letterSpacing: "-0.02em" }}>
@@ -109,7 +109,7 @@ export default function ProjetosPage() {
       <PastProjectsPricing />
 
       {/* Additional Historical Projects */}
-      <section className="section-padding" style={{ background: "#f8fafc", borderTop: "1px solid #e2e8f0" }}>
+      <section className="section-padding" style={{ background: "#F7F7F5", borderTop: "1px solid #E5E5E3" }}>
         <div className="section-container">
           <div style={{ textAlign: "center", marginBottom: "2rem" }}>
             <h2 className="section-title">
@@ -128,7 +128,7 @@ export default function ProjetosPage() {
                   background: "#ffffff",
                   borderRadius: "0.5rem",
                   overflow: "hidden",
-                  border: "1.5px solid #e2e8f0",
+                  border: "1.5px solid #E5E5E3",
                   boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
                   display: "flex",
                   flexDirection: "column",
@@ -136,7 +136,7 @@ export default function ProjetosPage() {
                 className="card-hover"
               >
                 {/* Real Image Container with proper Alt Text */}
-                <div style={{ position: "relative", height: "220px", width: "100%", overflow: "hidden", background: "#0B1B2E" }}>
+                <div style={{ position: "relative", height: "220px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
                   <img
                     src={item.image}
                     alt={item.altText || `${item.title} em ${item.parish} Aveiro`}
@@ -151,8 +151,8 @@ export default function ProjetosPage() {
                       position: "absolute",
                       top: "0.75rem",
                       left: "0.75rem",
-                      background: "rgba(11, 27, 46, 0.9)",
-                      color: "#C9A86A",
+                      background: "rgba(10, 10, 10, 0.9)",
+                      color: "#D4D4D4",
                       fontSize: "0.6875rem",
                       fontWeight: 800,
                       padding: "0.25rem 0.625rem",
@@ -183,11 +183,11 @@ export default function ProjetosPage() {
 
                 <div style={{ padding: "1.25rem", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                   <div>
-                    <h3 style={{ fontWeight: 800, color: "#0B1B2E", marginBottom: "0.375rem", fontSize: "1.0625rem" }}>
+                    <h3 style={{ fontWeight: 800, color: "#0A0A0A", marginBottom: "0.375rem", fontSize: "1.0625rem" }}>
                       {item.title}
                     </h3>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", color: "#64748b", fontSize: "0.8125rem", marginBottom: "0.75rem" }}>
-                      <MapPin size={13} style={{ color: "#B8935A" }} />
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", color: "#6B6B6B", fontSize: "0.8125rem", marginBottom: "0.75rem" }}>
+                      <MapPin size={13} style={{ color: "#6B6B6B" }} />
                       <span>{item.parish}</span>
                       {item.areaM2 && (
                         <>
@@ -196,19 +196,19 @@ export default function ProjetosPage() {
                         </>
                       )}
                     </div>
-                    <p style={{ color: "#475569", fontSize: "0.875rem", lineHeight: 1.6 }}>
+                    <p style={{ color: "#525252", fontSize: "0.875rem", lineHeight: 1.6 }}>
                       {item.description}
                     </p>
                   </div>
 
-                  <div style={{ marginTop: "1.25rem", paddingTop: "0.875rem", borderTop: "1px solid #f1f5f9" }}>
+                  <div style={{ marginTop: "1.25rem", paddingTop: "0.875rem", borderTop: "1px solid #F2F2F0" }}>
                     <Link
                       href="/#calculadora-orcamento"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "0.375rem",
-                        color: "#8F6E3E",
+                        color: "#525252",
                         fontWeight: 700,
                         fontSize: "0.875rem",
                         textDecoration: "none",
@@ -226,23 +226,23 @@ export default function ProjetosPage() {
       </section>
 
       {/* Final CTA */}
-      <section style={{ background: "linear-gradient(135deg, #C9A86A, #B8935A)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #D4D4D4, #6B6B6B)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
-          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0B1B2E", marginBottom: "0.75rem" }}>
+          <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.75rem" }}>
             Quer ver a sua casa em Aveiro transformada com preço justo?
           </h2>
-          <p style={{ color: "rgba(11, 27, 46, 0.85)", fontSize: "1rem", marginBottom: "1.75rem", maxWidth: "480px", margin: "0 auto 1.75rem" }}>
+          <p style={{ color: "rgba(10, 10, 10, 0.85)", fontSize: "1rem", marginBottom: "1.75rem", maxWidth: "480px", margin: "0 auto 1.75rem" }}>
             Peça hoje um orçamento gratuito e sem compromisso. Resposta em menos de 12 horas.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/orcamento" className="btn-primary" style={{ display: "inline-flex", background: "#0B1B2E", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
+            <Link href="/orcamento" className="btn-primary" style={{ display: "inline-flex", background: "#0A0A0A", color: "#fff", boxShadow: "0 4px 20px rgba(0,0,0,0.25)" }}>
               Pedir Orçamento Gratuito
               <ArrowRight size={16} />
             </Link>
             <a
               href={`tel:${CONTRACTOR_INFO.phone}`}
               className="btn-secondary"
-              style={{ background: "rgba(11, 27, 46, 0.1)", color: "#0B1B2E", border: "2px solid rgba(11, 27, 46, 0.25)" }}
+              style={{ background: "rgba(10, 10, 10, 0.1)", color: "#0A0A0A", border: "2px solid rgba(10, 10, 10, 0.25)" }}
             >
               Ligar {CONTRACTOR_INFO.phoneDisplay}
             </a>

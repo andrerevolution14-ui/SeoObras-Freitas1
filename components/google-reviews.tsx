@@ -7,11 +7,11 @@ import { GOOGLE_REVIEWS, CONTRACTOR_INFO } from "@/lib/constants";
 
 type GoogleReviewItem = (typeof GOOGLE_REVIEWS)[number];
 
-function StarRating({ rating, size = 14, color = "#B8935A" }: { rating: number; size?: number; color?: string }) {
+function StarRating({ rating, size = 14, color = "#0A0A0A" }: { rating: number; size?: number; color?: string }) {
   return (
     <div className="stars" style={{ flexShrink: 0 }} aria-label={`${rating} em 5 estrelas`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={size} fill={i < rating ? color : "none"} stroke={i < rating ? color : "#cbd5e1"} />
+        <Star key={i} size={size} fill={i < rating ? color : "none"} stroke={i < rating ? color : "#D4D4D2"} />
       ))}
     </div>
   );
@@ -114,7 +114,7 @@ export function GoogleReviews() {
             </button>
             <StarRating rating={activeReview.rating} size={16} />
             <p className="gf-rev-modal-text font-display">&ldquo;{activeReview.text}&rdquo;</p>
-            <div className="gf-rev-foot" style={{ borderTop: "1px solid #E3E1DC", paddingTop: "1.25rem" }}>
+            <div className="gf-rev-foot" style={{ borderTop: "1px solid #E5E5E3", paddingTop: "1.25rem" }}>
               <span className="gf-rev-initial font-display">{activeReview.name.charAt(0)}</span>
               <span>
                 <span className="gf-rev-name">{activeReview.name}</span>
@@ -146,16 +146,16 @@ export function GoogleReviews() {
           gap: 1.25rem;
           text-decoration: none;
           padding-left: 2rem;
-          border-left: 1px solid #E3E1DC;
+          border-left: 1px solid #E5E5E3;
         }
-        .gf-rev-score-num { font-size: 4.5rem; line-height: 0.9; font-weight: 500; color: #0B1B2E; letter-spacing: -0.05em; }
+        .gf-rev-score-num { font-size: 4.5rem; line-height: 0.9; font-weight: 500; color: #0A0A0A; letter-spacing: -0.05em; }
         .gf-rev-score-label {
           display: flex;
           align-items: center;
           gap: 0.3rem;
           margin-top: 0.5rem;
           font-size: 0.8125rem;
-          color: #5A6472;
+          color: #5C5C5C;
         }
         .gf-rev-grid {
           display: grid;
@@ -166,27 +166,27 @@ export function GoogleReviews() {
           display: flex;
           flex-direction: column;
           padding: 2rem;
-          background: #F5F3EE;
+          background: #F4F4F2;
           border: 1px solid transparent;
           cursor: pointer;
           transition: background 0.3s ease, border-color 0.3s ease;
           min-width: 0;
         }
-        .gf-rev:hover { background: #ffffff; border-color: #DDD9D1; }
-        .gf-rev:focus-visible { outline: 2px solid #B8935A; outline-offset: 2px; }
+        .gf-rev:hover { background: #ffffff; border-color: #DCDCDA; }
+        .gf-rev:focus-visible { outline: 2px solid #0A0A0A; outline-offset: 2px; }
         .gf-rev-top { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
         .gf-rev-service {
           font-size: 0.625rem;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          color: #6B7480;
+          color: #6B6B6B;
           font-weight: 600;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
         .gf-rev-text {
-          color: #0B1B2E;
+          color: #0A0A0A;
           font-size: 1rem;
           line-height: 1.65;
           margin-bottom: 2rem;
@@ -200,19 +200,19 @@ export function GoogleReviews() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #0B1B2E;
-          color: #C9A86A;
+          background: #0A0A0A;
+          color: #ffffff;
           font-weight: 500;
           font-size: 1rem;
         }
-        .gf-rev-name { display: block; font-weight: 600; color: #0B1B2E; font-size: 0.9375rem; }
-        .gf-rev-parish { display: block; color: #6B7480; font-size: 0.75rem; margin-top: 0.15rem; }
+        .gf-rev-name { display: block; font-weight: 600; color: #0A0A0A; font-size: 0.9375rem; }
+        .gf-rev-parish { display: block; color: #6B6B6B; font-size: 0.75rem; margin-top: 0.15rem; }
         .gf-rev-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3.5rem; }
         .gf-rev-modal {
           position: fixed;
           inset: 0;
           z-index: 120;
-          background: rgba(7, 15, 26, 0.85);
+          background: rgba(5, 5, 5, 0.85);
           backdrop-filter: blur(6px);
           display: flex;
           align-items: center;
@@ -227,7 +227,7 @@ export function GoogleReviews() {
           padding: 3rem 2.5rem 2.5rem;
           display: flex;
           flex-direction: column;
-          border-top: 3px solid #B8935A;
+          border-top: 3px solid #0A0A0A;
         }
         .gf-rev-close {
           position: absolute;
@@ -238,12 +238,12 @@ export function GoogleReviews() {
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid #E3E1DC;
+          border: 1px solid #E5E5E3;
           background: #fff;
           cursor: pointer;
-          color: #0B1B2E;
+          color: #0A0A0A;
         }
-        .gf-rev-modal-text { font-size: 1.375rem; line-height: 1.5; color: #0B1B2E; letter-spacing: -0.015em; margin: 1.5rem 0 2rem; font-weight: 500; }
+        .gf-rev-modal-text { font-size: 1.375rem; line-height: 1.5; color: #0A0A0A; letter-spacing: -0.015em; margin: 1.5rem 0 2rem; font-weight: 500; }
         @media (max-width: 960px) {
           .gf-rev-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
           .gf-rev-score { padding-left: 0; border-left: 0; }

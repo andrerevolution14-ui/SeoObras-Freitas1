@@ -48,9 +48,9 @@ export function PastProjectsPricing() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(184, 147, 90, 0.12)",
-              border: "1px solid rgba(184, 147, 90, 0.25)",
-              color: "#8A6A3B",
+              background: "rgba(128, 128, 128, 0.12)",
+              border: "1px solid rgba(128, 128, 128, 0.25)",
+              color: "#404040",
               borderRadius: "2rem",
               padding: "0.35rem 1rem",
               fontSize: "0.75rem",
@@ -91,9 +91,9 @@ export function PastProjectsPricing() {
                 style={{
                   padding: "0.5rem 1rem",
                   borderRadius: "2rem",
-                  border: isSelected ? "2px solid #13294A" : "1.5px solid #e2e8f0",
-                  background: isSelected ? "#0B1B2E" : "#f8fafc",
-                  color: isSelected ? "#C9A86A" : "#475569",
+                  border: isSelected ? "2px solid #171717" : "1.5px solid #E5E5E3",
+                  background: isSelected ? "#0A0A0A" : "#F7F7F5",
+                  color: isSelected ? "#D4D4D4" : "#525252",
                   fontWeight: isSelected ? 800 : 600,
                   fontSize: "0.8125rem",
                   cursor: "pointer",
@@ -124,7 +124,7 @@ export function PastProjectsPricing() {
                   background: "#ffffff",
                   borderRadius: "0.75rem",
                   overflow: "hidden",
-                  border: "1.5px solid #e2e8f0",
+                  border: "1.5px solid #E5E5E3",
                   boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
                   display: "flex",
                   flexDirection: "column",
@@ -138,7 +138,7 @@ export function PastProjectsPricing() {
                     height: "230px",
                     width: "100%",
                     overflow: "hidden",
-                    background: "#0B1B2E",
+                    background: "#0A0A0A",
                   }}
                 >
                   <img
@@ -159,13 +159,13 @@ export function PastProjectsPricing() {
                       position: "absolute",
                       top: "0.75rem",
                       left: "0.75rem",
-                      background: "rgba(11, 27, 46, 0.9)",
-                      color: "#C9A86A",
+                      background: "rgba(10, 10, 10, 0.9)",
+                      color: "#D4D4D4",
                       fontSize: "0.6875rem",
                       fontWeight: 800,
                       padding: "0.25rem 0.625rem",
                       borderRadius: "0.25rem",
-                      border: "1px solid rgba(184, 147, 90, 0.3)",
+                      border: "1px solid rgba(128, 128, 128, 0.3)",
                       backdropFilter: "blur(4px)",
                     }}
                   >
@@ -200,7 +200,7 @@ export function PastProjectsPricing() {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      background: "rgba(11, 27, 46, 0.85)",
+                      background: "rgba(10, 10, 10, 0.85)",
                       backdropFilter: "blur(6px)",
                       padding: "0.4rem 0.75rem",
                       borderRadius: "0.375rem",
@@ -210,7 +210,7 @@ export function PastProjectsPricing() {
                     }}
                   >
                     <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                      <Maximize2 size={12} style={{ color: "#C9A86A" }} />
+                      <Maximize2 size={12} style={{ color: "#D4D4D4" }} />
                       Área: {project.areaM2} m² ({Math.round(project.pricePerM2)}€/m²)
                     </span>
                     <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
@@ -227,7 +227,7 @@ export function PastProjectsPricing() {
                       style={{
                         fontWeight: 800,
                         fontSize: "1.125rem",
-                        color: "#0B1B2E",
+                        color: "#0A0A0A",
                         marginBottom: "0.4rem",
                         lineHeight: 1.3,
                       }}
@@ -240,21 +240,21 @@ export function PastProjectsPricing() {
                         display: "flex",
                         alignItems: "center",
                         gap: "0.5rem",
-                        color: "#64748b",
+                        color: "#6B6B6B",
                         fontSize: "0.8125rem",
                         marginBottom: "0.875rem",
                       }}
                     >
-                      <MapPin size={13} style={{ color: "#B8935A" }} />
+                      <MapPin size={13} style={{ color: "#6B6B6B" }} />
                       <span>{project.parish}</span>
                       <span>•</span>
-                      <Calendar size={13} style={{ color: "#64748b" }} />
+                      <Calendar size={13} style={{ color: "#6B6B6B" }} />
                       <span>Ano {project.year}</span>
                     </div>
 
                     <p
                       style={{
-                        color: "#475569",
+                        color: "#525252",
                         fontSize: "0.875rem",
                         lineHeight: 1.6,
                         marginBottom: "1rem",
@@ -264,14 +264,14 @@ export function PastProjectsPricing() {
                     </p>
 
                     {/* Scope list toggle */}
-                    <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: "0.875rem", marginBottom: "1rem" }}>
+                    <div style={{ borderTop: "1px solid #F2F2F0", paddingTop: "0.875rem", marginBottom: "1rem" }}>
                       <button
                         type="button"
                         onClick={() => setExpandedProjectId(isExpanded ? null : project.id)}
                         style={{
                           background: "transparent",
                           border: "none",
-                          color: "#13294A",
+                          color: "#171717",
                           fontSize: "0.8125rem",
                           fontWeight: 700,
                           cursor: "pointer",
@@ -287,7 +287,7 @@ export function PastProjectsPricing() {
 
                       {isExpanded && (
                         <div style={{ marginTop: "0.875rem" }}>
-                          <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#0B1B2E", marginBottom: "0.5rem", textTransform: "uppercase" }}>
+                          <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#0A0A0A", marginBottom: "0.5rem", textTransform: "uppercase" }}>
                             Trabalhos Executados nesta Obra:
                           </div>
                           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.35rem" }}>
@@ -298,7 +298,7 @@ export function PastProjectsPricing() {
                                   display: "flex",
                                   alignItems: "flex-start",
                                   gap: "0.375rem",
-                                  color: "#334155",
+                                  color: "#3A3A3A",
                                   fontSize: "0.8rem",
                                   lineHeight: 1.45,
                                 }}
@@ -316,7 +316,7 @@ export function PastProjectsPricing() {
                   {/* Bottom Action CTA */}
                   <div
                     style={{
-                      borderTop: "1px solid #f1f5f9",
+                      borderTop: "1px solid #F2F2F0",
                       paddingTop: "1rem",
                       display: "flex",
                       alignItems: "center",
@@ -324,10 +324,10 @@ export function PastProjectsPricing() {
                     }}
                   >
                     <div>
-                      <div style={{ fontSize: "0.7rem", color: "#94a3b8" }}>
+                      <div style={{ fontSize: "0.7rem", color: "#999999" }}>
                         Preço Unitário
                       </div>
-                      <div style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0B1B2E" }}>
+                      <div style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#0A0A0A" }}>
                         ~{Math.round(project.pricePerM2)}€ / m²
                       </div>
                     </div>
@@ -342,8 +342,8 @@ export function PastProjectsPricing() {
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "0.35rem",
-                        background: "#0B1B2E",
-                        color: "#C9A86A",
+                        background: "#0A0A0A",
+                        color: "#D4D4D4",
                         fontSize: "0.8125rem",
                         fontWeight: 800,
                         padding: "0.55rem 1rem",
@@ -366,7 +366,7 @@ export function PastProjectsPricing() {
         <div
           style={{
             marginTop: "3rem",
-            background: "linear-gradient(135deg, #0B1B2E 0%, #13294A 100%)",
+            background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
             borderRadius: "0.75rem",
             padding: "2rem",
             color: "#ffffff",
@@ -378,7 +378,7 @@ export function PastProjectsPricing() {
           }}
         >
           <div>
-            <div style={{ color: "#C9A86A", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "0.35rem" }}>
+            <div style={{ color: "#D4D4D4", fontWeight: 800, fontSize: "0.8125rem", textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "0.35rem" }}>
               Tem uma casa com dimensões parecidas em Aveiro?
             </div>
             <h3 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.35rem" }}>

@@ -1,17 +1,18 @@
 import { CONTRACTOR_INFO } from "@/lib/constants";
+import { CountUp } from "@/components/count-up";
 
-const stats = [
-  { value: `${CONTRACTOR_INFO.projectsCompleted}+`, label: "Obras concluídas", sub: "Aveiro e concelhos vizinhos" },
-  { value: `${CONTRACTOR_INFO.googleRating}`, suffix: "/5", label: "Avaliação Google", sub: `${CONTRACTOR_INFO.reviewCount} avaliações verificadas` },
+const stats: { value: React.ReactNode; suffix?: string; label: string; sub: string }[] = [
+  { value: <CountUp to={CONTRACTOR_INFO.projectsCompleted} suffix="+" />, label: "Obras concluídas", sub: "Aveiro e concelhos vizinhos" },
+  { value: <CountUp to={CONTRACTOR_INFO.googleRating} decimals={1} />, suffix: "/5", label: "Avaliação Google", sub: `${CONTRACTOR_INFO.reviewCount} avaliações verificadas` },
   { value: "IMPIC", label: "Alvará de construção", sub: "N.º 104523 · Obras particulares" },
-  { value: "150k€", label: "Seguro de responsabilidade civil", sub: "Apólice ativa" },
-  { value: "12h", label: "Tempo de resposta", sub: "Orçamento discriminado" },
+  { value: <CountUp to={150} suffix="k€" />, label: "Seguro de responsabilidade civil", sub: "Apólice ativa · Fidelidade" },
+  { value: <CountUp to={12} suffix="h" />, label: "Primeira resposta", sub: "Com orçamento discriminado" },
 ];
 
 /** Faixa institucional de credenciais — logo abaixo do hero. */
 export function TrustBar() {
   return (
-    <div className="trust-bar gf-stats" aria-label="Credenciais Grupo Freitas">
+    <div className="trust-bar gf-stats on-dark" aria-label="Credenciais Freitas Renovações">
       <div className="section-container">
         <dl className="gf-stats-grid">
           {stats.map((s) => (
@@ -28,7 +29,7 @@ export function TrustBar() {
       </div>
 
       <style>{`
-        .gf-stats { background: #0B1B2E; border-top: 0; }
+        .gf-stats { background: #0A0A0A; border-top: 0; }
         .gf-stats-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -65,7 +66,6 @@ export function TrustBar() {
           color: rgba(255, 255, 255, 0.45);
           font-size: 0.75rem;
         }
-        .gf-stat:nth-child(3) .gf-stat-value { color: #C9A86A; }
         @media (max-width: 1024px) {
           .gf-stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
           .gf-stat:nth-child(4) { border-left: 0; padding-left: 0; }

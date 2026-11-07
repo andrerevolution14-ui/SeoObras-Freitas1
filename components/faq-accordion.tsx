@@ -42,11 +42,11 @@ export function FaqAccordion() {
             </a>
           </div>
 
-          <div style={{ borderTop: "1px solid #E3E1DC" }}>
+          <div style={{ borderTop: "1px solid #E5E5E3" }}>
             {FAQ_ITEMS.map((item, i) => {
               const isOpen = openId === item.id;
               return (
-                <div key={item.id} className="accordion-item" style={{ borderColor: isOpen ? "#B8935A" : undefined }}>
+                <div key={item.id} className="accordion-item" style={{ borderColor: isOpen ? "#0A0A0A" : undefined }}>
                   <button
                     className="accordion-trigger"
                     id={`faq-${item.id}`}
@@ -54,7 +54,7 @@ export function FaqAccordion() {
                     aria-expanded={isOpen}
                   >
                     <span style={{ display: "flex", gap: "1.25rem", paddingRight: "1rem" }}>
-                      <span className="font-display" style={{ color: "#B8935A", fontSize: "0.8125rem", fontWeight: 500, paddingTop: "0.2rem", minWidth: "1.5rem" }}>
+                      <span className="font-display" style={{ color: "#9A9A9A", fontSize: "0.8125rem", fontWeight: 500, paddingTop: "0.2rem", minWidth: "1.5rem" }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span>{item.question}</span>
@@ -93,11 +93,11 @@ export function FaqAccordion() {
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid #DDD9D1;
-          color: #0B1B2E;
+          border: 1px solid #DCDCDA;
+          color: #0A0A0A;
           transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
         }
-        .gf-faq-toggle[data-open="true"] { transform: rotate(45deg); background: #0B1B2E; border-color: #0B1B2E; color: #C9A86A; }
+        .gf-faq-toggle[data-open="true"] { transform: rotate(45deg); background: #0A0A0A; border-color: #0A0A0A; color: #ffffff; }
         @media (max-width: 900px) {
           .gf-faq { grid-template-columns: 1fr; gap: 2.5rem; }
           .gf-faq-intro { position: static; }
