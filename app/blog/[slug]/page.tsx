@@ -1,3 +1,4 @@
+import { fitTitle } from "@/lib/seo-data";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `https://www.grupofreitasrenovacoes.pt${post.image}`;
 
   return {
-    title: post.title,
+    title: fitTitle(post.title),
     description: post.metaDescription,
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/blog/${slug}` },
     openGraph: {

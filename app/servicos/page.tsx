@@ -23,7 +23,7 @@ import { SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Serviços de Obras e Remodelações em Aveiro",
   description:
-    "Soluções completas de remodelações em Aveiro: chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC e acompanhamento direto pelo Empreiteiro Jorge Freitas.",
+    "Remodelações em Aveiro: chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC e orçamento grátis em 12h.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/servicos" },
   openGraph: {
     title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     images: [
       {
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og/servicos.jpg",
         width: 1200,
         height: 630,
         alt: "Serviços de Obras e Remodelações em Aveiro — Freitas Renovações",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações",
     description: "Remodelações chave na mão, casas de banho, cozinhas e moradias em Aveiro. Resposta em <12h.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/og/servicos.jpg"],
   },
 };
 

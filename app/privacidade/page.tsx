@@ -4,9 +4,9 @@ import { ShieldCheck, Lock, FileText, CheckCircle, Phone, Mail, MapPin } from "l
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade e Proteção de Dados (RGPD)",
+  title: "Política de Privacidade (RGPD)",
   description:
-    "Política de privacidade e proteção de dados da Freitas Renovações LDA em Aveiro. Saiba como recolhemos, protegemos e tratamos os seus dados pessoais de acordo com o RGPD.",
+    "Como a Freitas Renovações LDA recolhe, protege e trata os seus dados pessoais, de acordo com o RGPD.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/privacidade" },
   robots: { index: true, follow: true },
 };

@@ -209,6 +209,8 @@ export function Build3D() {
         .b3.is-live .b3-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; overflow: hidden; }
         .b3:not(.is-live) .b3-sticky { padding: 6rem 0; }
         .b3-grid { position: relative; display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); gap: 3rem; align-items: center; width: 100%; padding-top: 70px; }
+        .b3-copy { position: relative; z-index: 5; }
+        .b3-scene { z-index: 1; }
         .b3-eyebrow { font-size: 0.6875rem; letter-spacing: 0.24em; text-transform: uppercase; color: #8A7660; font-weight: 600; margin-bottom: 1.25rem; }
         .b3-title { font-size: clamp(2.25rem, 3.6vw, 3.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.04; margin: 0 0 1.25rem; }
         .b3-title em { font-style: italic; color: #8A6A4A; }

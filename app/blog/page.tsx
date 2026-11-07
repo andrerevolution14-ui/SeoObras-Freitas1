@@ -4,7 +4,7 @@ import { Calendar, Clock, User, ArrowRight, BookOpen } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/blog-data";
 
 export const metadata: Metadata = {
-  title: "Blog & Guia de Obras e Remodelações em Aveiro",
+  title: "Blog de Obras e Remodelações em Aveiro",
   description:
     "Artigos técnicos, guias de preços de referência, legislação e recomendações práticas sobre obras, remodelações e manutenção de habitações em Aveiro.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/blog" },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     images: [
       {
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og/blog.jpg",
         width: 1200,
         height: 630,
         alt: "Blog de Obras e Remodelações em Aveiro — Freitas Renovações",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blog & Guia de Obras em Aveiro | Freitas Renovações",
     description: "Guias práticos de remodelação, preços e dicas de obras em Aveiro.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/og/blog.jpg"],
   },
 };
 

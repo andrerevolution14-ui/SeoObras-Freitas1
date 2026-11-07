@@ -46,10 +46,6 @@ export const metadata: Metadata = {
   publisher: "Freitas Renovações LDA",
   formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL("https://www.grupofreitasrenovacoes.pt"),
-  alternates: {
-    canonical: "https://www.grupofreitasrenovacoes.pt/",
-    languages: { "pt-PT": "https://www.grupofreitasrenovacoes.pt/" },
-  },
   category: "construction",
   // Favicon & Touch Icons
   icons: {
@@ -69,7 +65,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_PT",
-    url: "https://www.grupofreitasrenovacoes.pt",
     siteName: "Freitas Renovações LDA",
     title: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
     description:
@@ -110,15 +105,20 @@ const globalJsonLd = {
       logo: {
         "@type": "ImageObject",
         url: "https://www.grupofreitasrenovacoes.pt/logo.png",
-        width: 200,
-        height: 60,
+        width: 636,
+        height: 608,
       },
-      image: {
-        "@type": "ImageObject",
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
-        width: 1200,
-        height: 630,
-      },
+      image: [
+        {
+          "@type": "ImageObject",
+          url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+          width: 1200,
+          height: 630,
+        },
+        "https://www.grupofreitasrenovacoes.pt/brand/obra/fase-7.webp",
+        "https://www.grupofreitasrenovacoes.pt/brand/antes-depois/bathroom-depois.webp",
+        "https://www.grupofreitasrenovacoes.pt/brand/antes-depois/kitchen-depois.webp",
+      ],
       description:
         "Empresa de obras, remodelações gerais e reparações em Aveiro e concelhos limítrofes. Licenciada pelo IMPIC. Empreiteiro Jorge Freitas. Preços justos e garantia formal.",
       knowsAbout: [
@@ -205,6 +205,13 @@ const globalJsonLd = {
         })),
       },
       priceRange: "$$",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: CONTRACTOR_INFO.googleRating,
+        reviewCount: CONTRACTOR_INFO.reviewCount,
+        bestRating: 5,
+        worstRating: 1,
+      },
       paymentAccepted: "Transferência Bancária, MBWay, Multibanco",
       currenciesAccepted: "EUR",
       openingHoursSpecification: [
@@ -243,10 +250,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.placename" content="Aveiro, Portugal" />
         <meta name="geo.position" content={`${CONTRACTOR_INFO.geo.latitude};${CONTRACTOR_INFO.geo.longitude}`} />
         <meta name="ICBM" content={`${CONTRACTOR_INFO.geo.latitude}, ${CONTRACTOR_INFO.geo.longitude}`} />
-
-        {/* hreflang — signal language/region to Google */}
-        <link rel="alternate" hrefLang="pt-PT" href="https://www.grupofreitasrenovacoes.pt/" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.grupofreitasrenovacoes.pt/" />
 
         {/* Schema.org JSON-LD */}
         <script

@@ -6,7 +6,7 @@ import { CONTRACTOR_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Sobre Nós — Empreiteiro Jorge Freitas",
   description:
-    "Conheça Jorge Freitas, empreiteiro responsável da Freitas Renovações LDA em Aveiro. Alvará IMPIC, rigor técnico, mais de 100 obras executadas e acompanhamento presencial.",
+    "Conheça Jorge Freitas, empreiteiro da Freitas Renovações em Aveiro: alvará IMPIC, mais de 100 obras executadas e acompanhamento presencial.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/sobre" },
   openGraph: {
     title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     images: [
       {
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og/sobre.jpg",
         width: 1200,
         height: 630,
         alt: "Empreiteiro Jorge Freitas — Freitas Renovações em Aveiro",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sobre Nós — Empreiteiro Jorge Freitas | Freitas Renovações",
     description: "Empreiteiro licenciado em Aveiro. Mais de 100 obras com garantia formal.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/og/sobre.jpg"],
   },
 };
 

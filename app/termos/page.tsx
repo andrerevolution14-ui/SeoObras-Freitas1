@@ -6,7 +6,7 @@ import { CONTRACTOR_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Termos e Condições Gerais de Serviço",
   description:
-    "Termos e condições gerais de utilização do website e prestação de serviços da Freitas Renovações LDA em Aveiro. Regras de orçamento, garantias de obra e resolução de litígios.",
+    "Termos de utilização do website e de prestação de serviços da Freitas Renovações LDA: orçamentos, garantias e resolução de litígios.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/termos" },
   robots: { index: true, follow: true },
 };

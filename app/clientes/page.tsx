@@ -16,9 +16,9 @@ import { CLIENTES_FEED_ITEMS, CLIENTES_TRUST_PILLARS } from "@/lib/clientes-data
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Clientes & Avaliações Reais em Aveiro | Obras Reais",
+  title: "Clientes e Avaliações Reais em Aveiro",
   description:
-    "Veja o que dizem os nossos clientes em Aveiro e arredores. Fotografias reais de obras concluídas (casas de banho, cozinhas, apartamentos e moradias) e testemunhos verificados sobre prazos, limpeza e cumprimento de orçamento.",
+    "Opiniões e fotos reais de obras concluídas em Aveiro: casas de banho, cozinhas, apartamentos e moradias. 4.9★ no Google com 48 avaliações verificadas.",
   alternates: {
     canonical: "https://www.grupofreitasrenovacoes.pt/clientes",
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         alt: "Casa de banho remodelada em Aveiro com revestimento madeira e espelho LED — Freitas Renovações",
       },
       {
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og/clientes.jpg",
         width: 1200,
         height: 630,
         alt: "Avaliações de Clientes e Obras Reais em Aveiro — Freitas Renovações",

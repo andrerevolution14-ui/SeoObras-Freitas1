@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle, Phone, MapPin, Shield, Clock, Euro, Sparkles } from "lucide-react";
 import { SERVICES, PARISHES, CONTRACTOR_INFO } from "@/lib/constants";
 import { generateServiceSEO } from "@/lib/seo-data";
+import { fitTitle } from "@/lib/seo-data";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 
 interface Props {
@@ -21,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const seo = generateServiceSEO(service);
   return {
-    title: seo.title,
+    title: fitTitle(seo.title),
     description: seo.description,
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}` },
     openGraph: {
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "pt_PT",
       images: [
         {
-          url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+          url: `https://www.grupofreitasrenovacoes.pt/og/servicos/${slug}.jpg`,
           width: 1200,
           height: 630,
           alt: `${service.title} em Aveiro — Freitas Renovações LDA`,
@@ -43,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
-      images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+      images: [`https://www.grupofreitasrenovacoes.pt/og/servicos/${slug}.jpg`],
     },
   };
 }
@@ -58,10 +60,18 @@ export default async function ServicePage({ params }: Props) {
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `https://www.grupofreitasrenovacoes.pt/servicos/${service.slug}#service`,
     name: service.title,
+    serviceType: service.shortTitle,
     description: service.description,
+    url: `https://www.grupofreitasrenovacoes.pt/servicos/${service.slug}`,
+    image: [
+      `https://www.grupofreitasrenovacoes.pt/og/servicos/${service.slug}.jpg`,
+      `https://www.grupofreitasrenovacoes.pt/brand/servicos/${service.slug}.webp`,
+    ],
     provider: {
       "@type": "HomeAndConstructionBusiness",
+      "@id": "https://www.grupofreitasrenovacoes.pt/#organization",
       name: CONTRACTOR_INFO.companyName,
       telephone: CONTRACTOR_INFO.phone,
       url: CONTRACTOR_INFO.website,
@@ -114,15 +124,28 @@ export default async function ServicePage({ params }: Props) {
       <section
         className="on-dark" style={{
           backgroundColor: "#0A0A0A",
-          backgroundImage:
-            `linear-gradient(105deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.7) 55%, rgba(23, 23, 23, 0.35) 100%), url('/brand/servicos/${service.slug}.webp')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
           position: "relative",
           overflow: "hidden",
         }}
       >
+        <Image
+          src={`/brand/servicos/${service.slug}.webp`}
+          alt={`${seo.title} — Freitas Renovações`}
+          fill
+          priority
+          sizes="100vw"
+          quality={70}
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(105deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.7) 55%, rgba(23, 23, 23, 0.35) 100%)",
+          }}
+        />
         <div className="section-container" style={{ position: "relative", zIndex: 1 }}>
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>

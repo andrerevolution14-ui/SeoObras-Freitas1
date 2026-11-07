@@ -5,6 +5,34 @@
 
 import { Service, Parish, CONTRACTOR_INFO } from "./constants";
 
+const BRAND_SUFFIX = " | Freitas Renovações";
+
+/**
+ * Título para a <title>: se o título + marca couber nos ~60 caracteres que o Google mostra,
+ * usa o modelo com a marca; caso contrário, devolve o título sozinho (sem ser cortado no Google).
+ */
+export function fitTitle(t: string): string | { absolute: string } {
+  return t.length + BRAND_SUFFIX.length <= 62 ? t : { absolute: t };
+}
+
+/** Títulos SEO curtos por serviço (palavra-chave primeiro). */
+export const SERVICE_SEO_TITLES: Record<string, string> = {
+  "remodelacao-geral": "Remodelações Chave na Mão em Aveiro",
+  "remodelacao-casas-de-banho": "Remodelação de Casas de Banho em Aveiro",
+  "remodelacao-cozinhas": "Remodelação de Cozinhas em Aveiro",
+  "remodelacao-apartamentos": "Remodelação de Apartamentos em Aveiro",
+  "remodelacao-moradias": "Remodelação de Moradias em Aveiro",
+  "remodelacao-interiores": "Remodelação de Interiores em Aveiro",
+  "recuperacao-casas-velhas": "Recuperação de Casas Antigas em Aveiro",
+  "infiltracoes-telhados": "Telhados e Infiltrações em Aveiro",
+  "pintura-capoto": "Pintura e Capoto ETICS em Aveiro",
+  "pladur-tetos-falsos": "Pladur e Tetos Falsos em Aveiro",
+  "caixilharia-janelas": "Caixilharia e Janelas em Aveiro",
+  "isolamentos": "Isolamento Térmico e Acústico em Aveiro",
+  "canalizacao": "Canalização e Deteção de Fugas em Aveiro",
+  "eletricidade": "Eletricidade Certificada em Aveiro",
+};
+
 export interface PageSEO {
   title: string;
   description: string;
@@ -260,8 +288,8 @@ export function generateServiceSEO(service: Service): PageSEO {
   ];
 
   return {
-    title: `${service.title} em Aveiro`,
-    description: `${service.title} em Aveiro e concelhos vizinhos. Alvará IMPIC, acompanhamento direto pelo Empreiteiro Jorge Freitas e orçamento discriminado em 2 passos rápidos. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
+    title: SERVICE_SEO_TITLES[service.slug] ?? `${service.title} em Aveiro`,
+    description: `${SERVICE_SEO_TITLES[service.slug] ?? `${service.title} em Aveiro`}. Empresa licenciada IMPIC, orçamento grátis em 12h e garantia escrita. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
     h1: `${service.title} em Aveiro — Qualidade de Execução & Garantia Escrita`,
     intro: `A Freitas Renovações LDA oferece serviços especializados de ${service.title.toLowerCase()} em Aveiro e concelhos limítrofes. ${service.longDescription} Empresa licenciada IMPIC com mais de 100 obras executadas, garantia contratual e planeamento rigoroso.`,
     directAnswer: specifics.directAnswer,
@@ -275,10 +303,11 @@ export function generateParishSEO(parish: Parish, service?: Service): PageSEO {
   const serviceName = service ? service.title.toLowerCase() : "obras e remodelações";
   const serviceTitle = service ? service.title : "Obras e Remodelações";
   const regionLabel = parish.isNeighboringCounty ? `Concelho de ${parish.name}` : `${parish.name}, Aveiro`;
+  const seoLabel = parish.isNeighboringCounty ? parish.name : `${parish.name}, Aveiro`;
 
   return {
-    title: `${serviceTitle} em ${regionLabel}`,
-    description: `Empresa licenciada de ${serviceName} em ${regionLabel}. Empreiteiro Jorge Freitas. Processo rápido em 2 passos, alvará IMPIC e orçamento discriminado. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
+    title: `${serviceTitle} em ${seoLabel}`,
+    description: `${serviceTitle} em ${seoLabel}: casas de banho, cozinhas e obras chave na mão. Alvará IMPIC, orçamento grátis em 12h. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
     h1: `${serviceTitle} em ${regionLabel} — Obras com Acompanhamento Direto`,
     intro: `A Freitas Renovações LDA presta serviços profissionais de ${serviceName} em ${parish.fullName}. ${parish.description}. A nossa equipa, liderada pelo Empreiteiro Jorge Freitas, analisa as suas fotos e medidas para apresentar proposta discriminada e detalhada sem custos ocultos nem complicações.`,
     directAnswer: `A Freitas Renovações LDA realiza serviços de ${serviceName} em ${parish.name} com alvará IMPIC, resposta rápida, garantia contratual escrita e acompanhamento presencial em todas as fases da obra.`,

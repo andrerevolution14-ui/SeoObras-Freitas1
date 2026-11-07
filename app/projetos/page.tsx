@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     images: [
       {
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og/projetos.jpg",
         width: 1200,
         height: 630,
         alt: "Projetos de Obras Realizadas em Aveiro — Freitas Renovações",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Obras Realizadas em Aveiro | Freitas Renovações",
     description: "Conheça o portfólio de remodelações e obras em Aveiro com casos reais.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/og/projetos.jpg"],
   },
 };
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MapPin, Phone, ArrowRight, CheckCircle, Clock, Shield, Sparkles, Calendar, Euro } from "lucide-react";
 import { PARISHES, SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 import { generateParishSEO } from "@/lib/seo-data";
+import { fitTitle } from "@/lib/seo-data";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 import { PAST_DETAILED_PROJECTS } from "@/lib/projects-data";
 
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locationLabel = parish.isNeighboringCounty ? `Concelho de ${parish.name}` : `${parish.name}, Aveiro`;
 
   return {
-    title: seo.title,
+    title: fitTitle(seo.title),
     description: seo.description,
     alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}` },
     openGraph: {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "pt_PT",
       images: [
         {
-          url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+          url: `https://www.grupofreitasrenovacoes.pt/og/areas/${freguesia}.jpg`,
           width: 1200,
           height: 630,
           alt: `Obras e Remodelações em ${locationLabel} — Freitas Renovações`,
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${seo.title} | Freitas Renovações`,
       description: seo.description,
-      images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+      images: [`https://www.grupofreitasrenovacoes.pt/og/areas/${freguesia}.jpg`],
     },
   };
 }

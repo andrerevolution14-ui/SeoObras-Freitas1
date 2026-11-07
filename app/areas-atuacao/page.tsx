@@ -4,12 +4,12 @@ import { ArrowRight, MapPin, Phone, Shield, Sparkles } from "lucide-react";
 import { PARISHES, CONTRACTOR_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Áreas de Atuação — Obras em Aveiro e Concelhos Limítrofes",
+  title: "Obras em Aveiro e Concelhos Vizinhos",
   description:
-    "Obras e remodelações em Aveiro e concelhos vizinhos: Ílhavo, Águeda, Estarreja, Vagos, Praia da Barra e Costa Nova. Empresa licenciada IMPIC com acompanhamento direto.",
+    "Obras e remodelações em Aveiro e concelhos vizinhos: Ílhavo, Águeda, Estarreja, Vagos, Barra e Costa Nova. Empresa licenciada IMPIC.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/areas-atuacao" },
   openGraph: {
-    title: "Áreas de Atuação — Obras em Aveiro e Concelhos Limítrofes | Freitas Renovações",
+    title: "Obras em Aveiro e Concelhos Vizinhos | Freitas Renovações",
     description:
       "Cobertura completa no município de Aveiro e concelhos vizinhos (Ílhavo, Águeda, Estarreja, Vagos, Barra e Costa Nova). Alvará IMPIC.",
     url: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     locale: "pt_PT",
     images: [
       {
-        url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
+        url: "https://www.grupofreitasrenovacoes.pt/og/areas-atuacao.jpg",
         width: 1200,
         height: 630,
         alt: "Áreas de Atuação de Obras e Remodelações em Aveiro e Limítrofes — Freitas Renovações",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Áreas de Atuação — Obras em Aveiro e Concelhos Vizinhos | Freitas Renovações",
     description: "Obras em Aveiro, Ílhavo, Águeda, Estarreja e Vagos. Resposta em < 12h.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
+    images: ["https://www.grupofreitasrenovacoes.pt/og/areas-atuacao.jpg"],
   },
 };
 

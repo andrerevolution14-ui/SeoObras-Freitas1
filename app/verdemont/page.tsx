@@ -6,7 +6,7 @@ import { CONTRACTOR_INFO } from "@/lib/constants";
 import { VERDEMONT_PROJECT } from "@/lib/projects-data";
 
 export const metadata: Metadata = {
-  title: "Projeto Verdemont Aveiro — Empreendimento Residencial",
+  title: "Projeto Verdemont — Empreendimento em Aveiro",
   description:
     "Conheça o projeto Verdemont em Aveiro. Fachadas de alta eficiência, varandas com iluminação arquitetural e reabilitação de referência pela Freitas Renovações.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/verdemont" },
