@@ -6,6 +6,8 @@
 //   1. Coloque o ficheiro em /public/brand/ (ex.: /public/brand/hero.jpg)
 //   2. Altere apenas o `src` abaixo. Mantenha o `alt` descritivo (SEO).
 // Regra de marca: fotografias SEMPRE a cores, luz natural/quente.
+// Imagens de ambiente geradas no Higgsfield (Soul): equipa, processo, crédito e CTA final.
+// Obras reais, antes/depois e projetos usam SEMPRE fotografias reais.
 // ============================================================
 
 export interface BrandImage {
@@ -33,26 +35,26 @@ export const BRAND_IMAGES = {
   },
   /** Equipa em obra — secção "Quem somos". */
   team: {
-    src: "/r10.webp",
-    alt: "Equipa da Freitas Renovações a aplicar pavimento numa remodelação em Aveiro",
+    src: "/brand/equipa-em-obra.webp",
+    alt: "Equipa de remodelação a assentar azulejo de grande formato numa casa de banho em obra",
     recommended: "1200×1500 (4:5), equipa uniformizada em obra",
   },
   /** Reunião com clientes — secção de processo. */
   process: {
-    src: "/heroes/empreiteiro-clientes-obra.jpg",
-    alt: "Empreiteiro Jorge Freitas a rever o projeto de remodelação com clientes em Aveiro",
+    src: "/brand/processo-planeamento.webp",
+    alt: "Empreiteiro a rever a planta da remodelação com a cliente num apartamento em obra",
     recommended: "1600×1200 (4:3)",
   },
   /** Moradia exterior ao fim do dia — CTA final. */
   closing: {
-    src: "/verdemont.jpg",
-    alt: "Moradia contemporânea iluminada ao anoitecer — obra Freitas Renovações",
+    src: "/brand/casa-de-banho-noite.webp",
+    alt: "Casa de banho remodelada com duche em vidro, espelho LED e iluminação quente",
     recommended: "2400×1200 (2:1), exterior ao anoitecer",
   },
   /** Ambiente para o bloco de financiamento. */
   credit: {
-    src: "/heroes/casal-sala-renovada.jpg",
-    alt: "Casal na sala acabada de remodelar em Aveiro",
+    src: "/brand/casa-renovada.webp",
+    alt: "Casal na sala e cozinha em open space de um apartamento acabado de remodelar",
     recommended: "1600×1200 (4:3), lifestyle",
   },
   /** Identidade local — secção de zonas de atuação. */

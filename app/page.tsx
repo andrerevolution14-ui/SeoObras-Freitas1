@@ -443,7 +443,7 @@ export default function HomePage() {
                 style={{ objectFit: "cover", objectPosition: "center 40%" }}
               />
               <div className="gf-about-caption">
-                <span className="font-display">A nossa equipa em obra</span>
+                <span className="font-display">Cada detalhe, à mão</span>
                 <span>Direção técnica · {CONTRACTOR_INFO.contractorName}</span>
               </div>
             </div>
@@ -790,7 +790,7 @@ export default function HomePage() {
           alt={BRAND_IMAGES.closing.alt}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center 60%" }}
+          style={{ objectFit: "cover", objectPosition: "center 55%" }}
         />
         <div className="gf-final-overlay" />
         <div className="section-container gf-final-inner">
@@ -812,7 +812,7 @@ export default function HomePage() {
         </div>
         <style>{`
           .gf-final { position: relative; overflow: hidden; background: #050505; padding: 9rem 0; }
-          .gf-final-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 5, 5, 0.94) 0%, rgba(5, 5, 5, 0.75) 50%, rgba(5, 5, 5, 0.35) 100%); }
+          .gf-final-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.5) 45%, rgba(5, 5, 5, 0.05) 100%); }
           .gf-final-inner { position: relative; z-index: 2; }
           .gf-final-title {
             color: #ffffff;
@@ -827,7 +827,7 @@ export default function HomePage() {
           .gf-final-text { color: rgba(255, 255, 255, 0.72); font-size: 1.0625rem; line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem; }
           @media (max-width: 768px) {
             .gf-final { padding: 5.5rem 0; }
-            .gf-final-overlay { background: rgba(5, 5, 5, 0.82); }
+            .gf-final-overlay { background: linear-gradient(180deg, rgba(5,5,5,0.55), rgba(5,5,5,0.85)); }
             .gf-final .btn-primary, .gf-final .btn-secondary { width: 100%; }
           }
         `}</style>
