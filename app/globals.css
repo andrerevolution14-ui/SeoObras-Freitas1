@@ -432,7 +432,7 @@ main > section:first-of-type .btn-secondary:hover {
   background:
     linear-gradient(180deg, rgba(5, 5, 5, 0.6) 0%, rgba(5, 5, 5, 0) 25%),
     linear-gradient(180deg, rgba(5, 5, 5, 0) 70%, rgba(5, 5, 5, 0.55) 100%),
-    linear-gradient(95deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.66) 38%, rgba(5, 5, 5, 0.12) 68%, rgba(5, 5, 5, 0.05) 100%);
+    linear-gradient(95deg, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.5) 38%, rgba(5, 5, 5, 0.08) 66%, rgba(5, 5, 5, 0) 100%);
 }
 
 @media (max-width: 768px) {
@@ -441,7 +441,7 @@ main > section:first-of-type .btn-secondary:hover {
     filter: brightness(0.85) saturate(1.05);
   }
   .hero-grid-pattern {
-    background: linear-gradient(180deg, rgba(5, 5, 5, 0.85) 0%, rgba(5, 5, 5, 0.7) 60%, rgba(5, 5, 5, 0.92) 100%);
+    background: linear-gradient(180deg, rgba(5, 5, 5, 0.55) 0%, rgba(5, 5, 5, 0.18) 20%, rgba(5, 5, 5, 0.3) 45%, rgba(5, 5, 5, 0.8) 100%);
   }
   .hero-left-content {
     display: flex;

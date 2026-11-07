@@ -195,8 +195,8 @@ export function GoogleReviews() {
         }
         .gf-rs-row { overflow: hidden; }
         .gf-rs-row-all { display: none; }
-        .gf-rs-track { display: flex; gap: 0.875rem; width: max-content; animation: gf-rs-scroll 70s linear infinite; }
-        .gf-rs-row.is-reverse .gf-rs-track { animation-direction: reverse; animation-duration: 80s; }
+        .gf-rs-track { display: flex; gap: 0.875rem; width: max-content; animation: gf-rs-scroll 150s linear infinite; }
+        .gf-rs-row.is-reverse .gf-rs-track { animation-direction: reverse; animation-duration: 170s; }
         .gf-rs-rows:hover .gf-rs-track, .gf-rs-rows:focus-within .gf-rs-track { animation-play-state: paused; }
         @keyframes gf-rs-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .gf-rs-card {
@@ -258,7 +258,7 @@ export function GoogleReviews() {
           .gf-rs-thumb { width: 52px; height: 52px; }
           .gf-rs-row-desk { display: none; }
           .gf-rs-row-all { display: block; }
-          .gf-rs-track { animation-duration: 55s; }
+          .gf-rs-track { animation-duration: 190s; }
           .gf-rev-modal-card { padding: 2.5rem 1.5rem 1.75rem; }
           .gf-rev-modal-text { font-size: 1.0625rem; }
         }

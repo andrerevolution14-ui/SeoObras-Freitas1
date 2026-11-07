@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 interface BrandLogoProps {
   /** "light" = logótipo branco (fundos escuros) · "dark" = logótipo preto (fundos claros) */
@@ -8,20 +7,21 @@ interface BrandLogoProps {
   href?: string | null;
 }
 
-// Altura do logótipo em px (versão horizontal: ícone + FREITAS RENOVAÇÕES)
-const HEIGHTS = { sm: 30, md: 38, lg: 52 };
-const RATIO = 1484 / 320;
+// Altura do logótipo em px (versão horizontal vetorial: ícone + FREITAS RENOVAÇÕES)
+const HEIGHTS = { sm: 30, md: 40, lg: 54 };
+const RATIO = 2433 / 562;
 
-/** Logótipo oficial Freitas Renovações — versão horizontal (public/brand). */
+/** Logótipo oficial Freitas Renovações — SVG vetorial (nítido em qualquer ecrã). */
 export function BrandLogo({ tone = "light", size = "md", href = "/" }: BrandLogoProps) {
   const h = HEIGHTS[size];
   const img = (
-    <Image
-      src={tone === "light" ? "/brand/logo-horizontal-white.png" : "/brand/logo-horizontal-dark.png"}
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={tone === "light" ? "/brand/logo-horizontal-white.svg" : "/brand/logo-horizontal-dark.svg"}
       alt="Freitas Renovações LDA — Empresa de Obras e Remodelações em Aveiro"
       width={Math.round(h * RATIO)}
       height={h}
-      priority={size !== "lg"}
+      className="gf-logo-img"
       style={{ height: h, width: "auto", display: "block" }}
     />
   );

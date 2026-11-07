@@ -91,7 +91,6 @@ export function Header() {
 
       {/* Navegação principal */}
       <div className="section-container gf-nav-row">
-        <span className="mobile-controls gf-spacer" aria-hidden="true" />
         <div className="gf-logo-slot">
           <BrandLogo tone="light" size="md" />
         </div>
@@ -267,7 +266,7 @@ export function Header() {
           transition: height 0.35s ease;
           gap: 2rem;
         }
-        .gf-logo-slot { display: flex; align-items: center; justify-self: start; }
+        .gf-logo-slot { display: flex; align-items: center; justify-self: start; transform: translateY(4px); }
         .gf-nav-cta { justify-self: end; }
         .gf-spacer { display: none; width: 44px; height: 44px; }
         .gf-progress {
@@ -407,8 +406,9 @@ export function Header() {
         @media (max-width: 900px) {
           .hidden-mobile { display: none !important; }
           .mobile-controls { display: inline-flex !important; }
-          .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; grid-template-columns: 44px 1fr 44px; gap: 0.75rem; }
-          .gf-logo-slot { justify-self: center; }
+          .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; grid-template-columns: 1fr 44px; gap: 0.75rem; }
+          .gf-logo-slot { justify-self: start; transform: translateY(3px); }
+          .gf-logo-slot .gf-logo-img { height: 34px !important; }
           .gf-burger { justify-self: end; }
           .gf-spacer { justify-self: start; border: 0 !important; background: none !important; }
         }

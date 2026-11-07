@@ -295,6 +295,7 @@ export default function HomePage() {
 
         <style>{`
           .gf-hero { min-height: 100svh; }
+          .gf-hero-title, .gf-hero-lead, .gf-hero .hero-section-label { text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55); }
           .gf-hero-wrap { width: 100%; position: relative; z-index: 2; }
           .gf-hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #0A0A0A; }
           .gf-hero-poster, .gf-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
