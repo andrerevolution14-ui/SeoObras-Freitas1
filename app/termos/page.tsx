@@ -122,7 +122,7 @@ export default function TermosPage() {
             1. Identificação da Empresa e Licenciamento
           </h2>
           <p>
-            O website <strong>grupofreitasrenovacoes.pt</strong> é operado pela sociedade <strong>{CONTRACTOR_INFO.companyName}</strong>, com sede na {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, titular de <strong>Alvará de Construção IMPIC N.º 104523</strong> (Empreiteiro de Obras Particulares emitido pelo Instituto dos Mercados Públicos, do Imobiliário e da Construção) e com apólice de Seguro de Responsabilidade Civil em vigor.
+            O website <strong>grupofreitasrenovacoes.pt</strong> é operado pela sociedade <strong>{CONTRACTOR_INFO.companyName}</strong>, com sede na {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, titular de <strong>Alvará de Construção IMPIC N.º 104523</strong> (Empreiteiro de Obras Particulares emitido pelo Instituto dos Mercados Públicos, do Imobiliário e da Construção) e com apólice de Seguro de Responsabilidade Civil em vigor.
           </p>
 
           <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0A0A0A", marginTop: "2rem", marginBottom: "0.75rem" }}>

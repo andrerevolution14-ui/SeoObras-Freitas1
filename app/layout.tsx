@@ -146,7 +146,6 @@ const globalJsonLd = {
       },
       address: {
         "@type": "PostalAddress",
-        streetAddress: CONTRACTOR_INFO.address.street,
         addressLocality: CONTRACTOR_INFO.address.city,
         postalCode: CONTRACTOR_INFO.address.postalCode,
         addressRegion: "Aveiro",

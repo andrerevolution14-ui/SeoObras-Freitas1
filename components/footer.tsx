@@ -77,7 +77,6 @@ export function Footer() {
               <li><a href={CONTRACTOR_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp: {CONTRACTOR_INFO.phoneDisplay}</a></li>
               <li><a href={`mailto:${CONTRACTOR_INFO.email}`} className="footer-link">{CONTRACTOR_INFO.email}</a></li>
               <li className="footer-link" style={{ lineHeight: 1.6 }}>
-                {CONTRACTOR_INFO.address.street}<br />
                 {CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal
               </li>
             </ul>
@@ -148,7 +147,7 @@ export function Footer() {
               © {currentYear} {CONTRACTOR_INFO.companyName} · {CONTRACTOR_INFO.alvaraNumber} · NIPC {CONTRACTOR_INFO.nif}
             </p>
             <p style={{ margin: "0.35rem 0 0", color: "rgba(255,255,255,0.4)" }}>
-              {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} Aveiro (GPS: {CONTRACTOR_INFO.geo.latitude}, {CONTRACTOR_INFO.geo.longitude}) · {CONTRACTOR_INFO.insurancePolicy}
+              {CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal · {CONTRACTOR_INFO.insurancePolicy}
             </p>
           </div>
           <div style={{ display: "flex", gap: "1.5rem" }}>

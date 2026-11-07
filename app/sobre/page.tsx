@@ -60,7 +60,6 @@ const sobreJsonLd = {
       ],
       address: {
         "@type": "PostalAddress",
-        streetAddress: CONTRACTOR_INFO.address.street,
         postalCode: CONTRACTOR_INFO.address.postalCode,
         addressLocality: "Aveiro",
         addressCountry: "PT",
@@ -265,8 +264,7 @@ export default function SobrePage() {
             {[
               { label: "Empresa", value: CONTRACTOR_INFO.companyName },
               { label: "Empreiteiro Responsável", value: CONTRACTOR_INFO.contractorName },
-              { label: "Morada", value: `${CONTRACTOR_INFO.address.street}, ${CONTRACTOR_INFO.address.postalCode} Aveiro` },
-              { label: "Coordenadas GPS", value: `${CONTRACTOR_INFO.geo.latitude}, ${CONTRACTOR_INFO.geo.longitude}` },
+              { label: "Morada", value: `${CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal` },
               { label: "Contacto Telefónico", value: CONTRACTOR_INFO.phoneDisplay },
               { label: "Prazo de Resposta", value: "Até 12 horas" },
             ].map((item) => (

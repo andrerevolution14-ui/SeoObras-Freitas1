@@ -126,7 +126,7 @@ const COMPANY_FACTS = [
   { k: "Alvará de construção", v: CONTRACTOR_INFO.alvaraNumber.replace("Alvará ", "") },
   { k: "Seguro", v: "Responsabilidade Civil · Fidelidade · 150.000 €" },
   { k: "Direção técnica", v: `${CONTRACTOR_INFO.contractorName}, ${CONTRACTOR_INFO.jobTitle}` },
-  { k: "Sede", v: `${CONTRACTOR_INFO.address.street}, ${CONTRACTOR_INFO.address.postalCode} Aveiro` },
+  { k: "Sede", v: `${CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal` },
   { k: "Área de atuação", v: "Concelho de Aveiro e concelhos limítrofes" },
   { k: "Horário", v: "Seg–Sex 08:00–18:00 · Sáb 09:00–13:00" },
 ];

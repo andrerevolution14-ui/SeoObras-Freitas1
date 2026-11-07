@@ -20,7 +20,6 @@ export const CONTRACTOR_INFO = {
   email: "Freitasrenovacoes@gmail.com",
   website: "https://www.grupofreitasrenovacoes.pt",
   address: {
-    street: "R. Magistério Primário",
     city: "Aveiro",
     postalCode: "3800-212",
     country: "Portugal",

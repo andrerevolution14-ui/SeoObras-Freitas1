@@ -138,7 +138,7 @@ export default function PrivacidadePage() {
               <li><strong>Denominação Social:</strong> {CONTRACTOR_INFO.companyName}</li>
               <li><strong>Titularidade Técnica:</strong> Jorge Freitas (Empreiteiro Geral)</li>
               <li><strong>Alvará IMPIC:</strong> N.º 104523 (Obras Particulares)</li>
-              <li><strong>Sede:</strong> {CONTRACTOR_INFO.address.street}, {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, Portugal</li>
+              <li><strong>Sede:</strong> {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, Portugal</li>
               <li><strong>Email de Contacto RGPD:</strong> <a href={`mailto:${CONTRACTOR_INFO.email}`} style={{ color: "#171717", fontWeight: 600 }}>{CONTRACTOR_INFO.email}</a></li>
               <li><strong>Telefone:</strong> <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#171717", fontWeight: 600 }}>{CONTRACTOR_INFO.phoneDisplay}</a></li>
             </ul>

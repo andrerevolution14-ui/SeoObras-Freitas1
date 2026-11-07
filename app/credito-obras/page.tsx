@@ -83,7 +83,6 @@ const creditoJsonLd = {
         "url": CONTRACTOR_INFO.website,
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": CONTRACTOR_INFO.address.street,
           "addressLocality": "Aveiro",
           "postalCode": CONTRACTOR_INFO.address.postalCode,
           "addressCountry": "PT",

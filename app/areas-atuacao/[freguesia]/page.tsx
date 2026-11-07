@@ -70,7 +70,6 @@ export default async function ParishPage({ params }: Props) {
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
-      streetAddress: CONTRACTOR_INFO.address.street,
       addressLocality: parish.name,
       addressRegion: "Aveiro",
       postalCode: CONTRACTOR_INFO.address.postalCode,

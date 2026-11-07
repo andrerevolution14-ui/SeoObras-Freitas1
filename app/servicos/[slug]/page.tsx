@@ -78,7 +78,6 @@ export default async function ServicePage({ params }: Props) {
       priceRange: "$$",
       address: {
         "@type": "PostalAddress",
-        streetAddress: CONTRACTOR_INFO.address.street,
         addressLocality: "Aveiro",
         postalCode: CONTRACTOR_INFO.address.postalCode,
         addressCountry: "PT",
