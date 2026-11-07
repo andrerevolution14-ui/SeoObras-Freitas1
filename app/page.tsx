@@ -9,8 +9,11 @@ import { GoogleReviews } from "@/components/google-reviews";
 import { RealProjectsGallery } from "@/components/real-projects-gallery";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { ServiceMarquee } from "@/components/service-marquee";
+import { Build3D } from "@/components/build-3d";
 import { CONTRACTOR_INFO, FAQ_ITEMS } from "@/lib/constants";
 import { BRAND_IMAGES } from "@/lib/brand-images";
+import { HeroVideo } from "@/components/hero-video";
+import { GoogleG } from "@/components/google-g";
 
 export const metadata: Metadata = {
   title: "Obras e Remodelações em Aveiro | Freitas Renovações",
@@ -109,22 +112,10 @@ const homeJsonLd = {
 
 // ── Conteúdos da homepage ────────────────────────────────────
 const PILLARS = [
-  {
-    title: "Empresa licenciada e segurada",
-    desc: "Alvará de Construção IMPIC N.º 104523 e seguro de responsabilidade civil ativo em todas as obras.",
-  },
-  {
-    title: "Garantia contratual escrita",
-    desc: "Cada obra termina com vistoria conjunta e garantia formalizada por escrito, adaptada à tipologia dos trabalhos.",
-  },
-  {
-    title: "Um único responsável",
-    desc: "O Jorge Freitas coordena pessoalmente equipas, especialidades e prazos — do orçamento à entrega da chave.",
-  },
-  {
-    title: "Orçamento fechado e discriminado",
-    desc: "Materiais, quantidades e mão de obra descritos linha a linha. Sem custos ocultos nem revisões inesperadas.",
-  },
+  { title: "Licenciada e segurada", desc: "Alvará IMPIC 104523 · Seguro RC ativo" },
+  { title: "Garantia escrita", desc: "Entregue no fim de cada obra" },
+  { title: "Um só responsável", desc: "Do orçamento à entrega da chave" },
+  { title: "Orçamento fechado", desc: "Discriminado linha a linha" },
 ];
 
 const COMPANY_FACTS = [
@@ -146,7 +137,6 @@ const COMMITMENTS = [
   "Limpeza final, vistoria conjunta e garantia entregue por escrito.",
 ];
 
-const PROCESS_STEPS = homeJsonLd["@graph"][1].step as { name: string; text: string }[];
 
 const PRICE_ROWS = [
   {
@@ -199,35 +189,6 @@ const PRICE_ROWS = [
   },
 ];
 
-const AEO_CARDS = [
-  {
-    kicker: "Garantia & Rigor Técnico",
-    q: "Qual a empresa de remodelações recomendada em Aveiro?",
-    a: (
-      <>
-        A <strong>Freitas Renovações LDA</strong> é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de <strong>4.9/5 estrelas no Google</strong> com avaliações verificáveis, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de avaliação técnica em menos de 12 horas.
-      </>
-    ),
-  },
-  {
-    kicker: "Processo Chave na Mão",
-    q: "Como funciona o processo de obras chave na mão em Aveiro?",
-    a: (
-      <>
-        O serviço chave na mão da Freitas Renovações LDA engloba todas as fases da obra: análise rigorosa do pedido com fotografias e medidas, orçamento discriminado a preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.
-      </>
-    ),
-  },
-  {
-    kicker: "Avaliação & Transparência",
-    q: "Como obter orçamento para obras em Aveiro?",
-    a: (
-      <>
-        Basta preencher o formulário no website com fotos e medidas aproximadas, ou ligar para o <strong>{CONTRACTOR_INFO.phoneDisplay}</strong>. O processo decorre em 2 passos rápidos: o Empreiteiro Jorge Freitas responde em menos de 12 horas e entrega uma proposta discriminada e detalhada a preço fechado, sem complicações nem necessidade de visitas prévias.
-      </>
-    ),
-  },
-];
 
 const NEIGHBOR_AREAS = [
   {
@@ -268,20 +229,17 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
 
       {/* ── 1. HERO & FORMULÁRIO ─────────────────────────── */}
-      <section className="hero-section">
-        <Image
-          src={BRAND_IMAGES.hero.src}
-          alt={BRAND_IMAGES.hero.alt}
-          fill
-          priority
-          fetchPriority="high"
-          quality={80}
-          className="hero-bg-image"
-          sizes="100vw"
+      <section className="hero-section gf-hero">
+        <HeroVideo
+          src={BRAND_IMAGES.heroVideo.src}
+          srcMobile={BRAND_IMAGES.heroVideo.srcMobile}
+          poster={BRAND_IMAGES.heroVideo.poster}
+          posterMobile={BRAND_IMAGES.heroVideo.posterMobile}
+          label={BRAND_IMAGES.heroVideo.alt}
         />
         <div className="hero-grid-pattern" />
 
-        <div className="section-container" style={{ width: "100%", position: "relative", zIndex: 2 }}>
+        <div className="section-container gf-hero-wrap">
           <div className="gf-hero-grid">
             <div className="gf-hero-text hero-enter">
               <div className="hero-section-label">Empresa Licenciada · Alvará IMPIC</div>
@@ -291,12 +249,8 @@ export default function HomePage() {
                 <span className="gf-hero-dot">.</span>
               </h1>
 
-              <p className="gf-hero-services">
-                Obras Chave na Mão <i /> Casas de Banho <i /> Cozinhas <i /> Alvará IMPIC
-              </p>
-
               <p className="gf-hero-lead">
-                Remodelações chave na mão de apartamentos, moradias, cozinhas e casas de banho em Aveiro e concelhos vizinhos. Orçamento discriminado, prazos em contrato e garantia escrita — com o Empreiteiro <strong>Jorge Freitas</strong> à frente de cada obra.
+                Chave na mão, com orçamento fechado, prazo em contrato e garantia escrita.
               </p>
 
               <div className="gf-hero-ctas">
@@ -310,17 +264,23 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <Link href="/clientes" className="gf-hero-proof">
-                <span className="stars">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} size={13} fill="#ffffff" stroke="#ffffff" />
+              <a href="#reviews" className="gf-gbadge" aria-label={`${CONTRACTOR_INFO.googleRating} em 5 no Google, ${CONTRACTOR_INFO.reviewCount} avaliações`}>
+                <GoogleG />
+                <span className="gf-gbadge-score font-display">{CONTRACTOR_INFO.googleRating}</span>
+                <span className="gf-gbadge-mid">
+                  <span className="gf-gbadge-stars">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} size={13} fill="#FBBC04" stroke="#FBBC04" />
+                    ))}
+                  </span>
+                  <span className="gf-gbadge-count">{CONTRACTOR_INFO.reviewCount} avaliações no Google</span>
+                </span>
+                <span className="gf-gbadge-faces" aria-hidden="true">
+                  {["M", "A", "C", "P"].map((l) => (
+                    <i key={l}>{l}</i>
                   ))}
                 </span>
-                <span>
-                  <strong>{CONTRACTOR_INFO.googleRating}/5</strong> · {CONTRACTOR_INFO.reviewCount} avaliações verificadas no Google
-                </span>
-                <ArrowUpRight size={14} />
-              </Link>
+              </a>
             </div>
 
             <div className="gf-hero-form">
@@ -329,78 +289,126 @@ export default function HomePage() {
           </div>
         </div>
 
+        <a href="#obra-3d" className="gf-scroll-cue" aria-label="Descer para ver mais">
+          <span />
+        </a>
+
         <style>{`
+          .gf-hero { min-height: 100svh; }
+          .gf-hero-wrap { width: 100%; position: relative; z-index: 2; }
+          .gf-hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #0A0A0A; }
+          .gf-hero-poster, .gf-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+          .gf-hero-video { opacity: 0; transition: opacity 1.2s ease; }
+          .gf-hero-video.is-ready { opacity: 1; }
           .gf-hero-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 5rem;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+            gap: clamp(3rem, 6vw, 6rem);
             align-items: center;
-            padding-bottom: 6rem;
+            padding: 2.5rem 0 5.5rem;
           }
           .gf-hero-title {
             color: #ffffff;
-            font-size: clamp(2.75rem, 6vw, 5.5rem);
+            font-size: clamp(2.75rem, 5.6vw, 5.25rem);
             font-weight: 600;
             line-height: 0.98;
             letter-spacing: -0.045em;
-            margin-bottom: 1.75rem;
+            margin-bottom: 1.5rem;
             text-wrap: balance;
           }
           .gf-hero-dot { color: #ffffff; opacity: 0.5; }
-          .gf-hero-services {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.4rem 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-          }
-          .gf-hero-services i { width: 4px; height: 4px; background: rgba(255,255,255,0.5); display: inline-block; transform: rotate(45deg); }
           .gf-hero-lead {
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 1.0625rem;
-            line-height: 1.7;
-            max-width: 540px;
-            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.1875rem;
+            line-height: 1.55;
+            max-width: 480px;
+            margin-bottom: 2.25rem;
           }
-          .gf-hero-lead strong { color: #ffffff; font-weight: 600; }
-          .gf-hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-          .gf-hero-proof {
+          .gf-hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+          .gf-gbadge {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.14);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.8125rem;
+            gap: 0.875rem;
+            padding: 0.8rem 1.1rem 0.8rem 0.9rem;
+            background: rgba(255, 255, 255, 0.96);
+            color: #0A0A0A;
             text-decoration: none;
-            transition: color 0.2s;
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s var(--ease-out);
           }
-          .gf-hero-proof strong { color: #ffffff; font-weight: 600; }
-          .gf-hero-proof:hover { color: #ffffff; }
-          .gf-hero-proof svg:last-child { color: #ffffff; }
+          .gf-gbadge:hover { transform: translateY(-2px); }
+          .gf-gbadge-score { font-size: 1.875rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+          .gf-gbadge-mid { display: flex; flex-direction: column; gap: 0.2rem; }
+          .gf-gbadge-stars { display: flex; gap: 1px; }
+          .gf-gbadge-count { font-size: 0.75rem; color: #3A3A3A; font-weight: 500; white-space: nowrap; }
+          .gf-gbadge-faces { display: flex; padding-left: 0.875rem; border-left: 1px solid #E5E5E3; }
+          .gf-gbadge-faces i {
+            font-style: normal;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0A0A0A;
+            color: #fff;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            border: 2px solid #fff;
+            margin-left: -8px;
+          }
+          .gf-gbadge-faces i:first-child { margin-left: 0; }
+          .gf-gbadge-faces i:nth-child(2) { background: #3A3A3A; }
+          .gf-gbadge-faces i:nth-child(3) { background: #6B6B6B; }
+          .gf-gbadge-faces i:nth-child(4) { background: #262626; }
+          .gf-scroll-cue {
+            position: absolute;
+            left: 50%;
+            bottom: 1.5rem;
+            transform: translateX(-50%);
+            z-index: 3;
+            width: 26px;
+            height: 42px;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+          }
+          .gf-scroll-cue span {
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            width: 3px;
+            height: 8px;
+            margin-left: -1.5px;
+            border-radius: 2px;
+            background: #fff;
+            animation: cue 1.8s ease-in-out infinite;
+          }
+          @keyframes cue { 0% { transform: translateY(0); opacity: 1; } 70% { transform: translateY(14px); opacity: 0; } 100% { opacity: 0; } }
           @media (max-width: 1024px) {
-            .gf-hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+            .gf-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 430px); gap: 2.5rem; }
           }
           @media (max-width: 860px) {
-            .gf-hero-grid { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 3rem; }
-            .gf-hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            .gf-hero-title { font-size: clamp(2.35rem, 10vw, 3.25rem); margin-bottom: 1.25rem; }
-            .gf-hero-services { justify-content: center; font-size: 0.6875rem; margin-bottom: 0; }
-            .gf-hero-lead, .gf-hero-ctas { display: none; }
-            .gf-hero-proof { order: 5; border-top: 0; padding-top: 1.25rem; font-size: 0.75rem; gap: 0.5rem; white-space: nowrap; justify-content: center; }
-            .gf-hero-proof svg:last-child { display: none; }
-            .gf-hero-proof .stars svg { width: 11px; height: 11px; }
-            .gf-hero-proof { font-size: 0.71875rem; }
-            .hero-section-label { margin-bottom: 1.125rem; font-size: 0.625rem; }
+            .gf-hero-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0.5rem 0 2.5rem; justify-items: center; }
+            .gf-hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
+            .gf-hero-title { font-size: clamp(2.35rem, 10.5vw, 3.25rem); margin-bottom: 0.875rem; }
+            .gf-hero-lead { font-size: 0.9375rem; margin: 0 auto 1.25rem; max-width: 330px; color: rgba(255,255,255,0.85); }
+            .gf-hero-ctas { display: none; }
+            .gf-hero-form { width: 100%; max-width: 480px; }
+            .gf-gbadge { gap: 0.6rem; padding: 0.6rem 0.8rem 0.6rem 0.7rem; }
+            .gf-gbadge-score { font-size: 1.5rem; }
+            .gf-gbadge-faces { display: none; }
+            .hero-section-label { margin-bottom: 1rem; font-size: 0.625rem; justify-content: center; }
             .hero-section-label::before { display: none; }
+            .gf-scroll-cue { display: none; }
           }
         `}</style>
       </section>
+
+      {/* ── 7. AVALIAÇÕES GOOGLE ─────────────────────────── */}
+      <GoogleReviews />
+
+      {/* ── OBRA EM 3D (scroll) ─────────────────────────── */}
+      <Build3D />
 
       {/* ── 2. CREDENCIAIS ───────────────────────────────── */}
       <TrustBar />
@@ -438,7 +446,7 @@ export default function HomePage() {
                 Supervisão Direta pelo <span className="text-metal">Empreiteiro Jorge Freitas</span>
               </h2>
               <p className="gf-about-lead">
-                A Freitas Renovações LDA é uma empresa de construção licenciada, sediada em Aveiro. Mais de {CONTRACTOR_INFO.projectsCompleted} obras concluídas assentam no mesmo princípio: quem orçamenta é quem responde pela obra. O Jorge Freitas acompanha pessoalmente cada projeto, do primeiro levantamento à entrega da chave.
+                Quem orçamenta é quem responde pela obra — do primeiro levantamento à entrega da chave.
               </p>
 
               <div className="gf-pillars">
@@ -491,7 +499,7 @@ export default function HomePage() {
               <p className="section-eyebrow">A Empresa em Detalhe</p>
               <h2 className="section-title">Transparência começa nos dados da empresa.</h2>
               <p className="section-subtitle" style={{ marginBottom: "2.5rem" }}>
-                Antes de nos confiar a sua casa, deve poder verificar quem somos. Estes são os nossos dados oficiais — todos públicos e verificáveis.
+                Dados oficiais, públicos e verificáveis.
               </p>
               <dl className="gf-facts">
                 {COMPANY_FACTS.map((f) => (
@@ -543,59 +551,6 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ── 6. PROCESSO (espelha o HowTo do schema) ─────── */}
-      <section className="section-padding" style={{ background: "#ffffff" }}>
-        <div className="section-container">
-          <div className="gf-proc-head" data-reveal>
-            <div>
-              <p className="section-eyebrow">Como Trabalhamos</p>
-              <h2 className="section-title" style={{ marginBottom: 0 }}>Do primeiro contacto à entrega da chave.</h2>
-            </div>
-            <div className="gf-proc-photo photo-slot" data-reveal="image">
-              <Image
-                src={BRAND_IMAGES.process.src}
-                alt={BRAND_IMAGES.process.alt}
-                fill
-                sizes="(max-width: 900px) 100vw, 40vw"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          </div>
-          <ol className="gf-proc">
-            {PROCESS_STEPS.map((step, i) => (
-              <li key={step.name} className="gf-proc-step" data-reveal style={{ ["--d" as string]: `${i * 120}ms` }}>
-                <span className="gf-proc-num font-display">{String(i + 1).padStart(2, "0")}</span>
-                <h3>{step.name.replace(/^\d+\.\s*/, "")}</h3>
-                <p>{step.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <style>{`
-          .gf-proc-head { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
-          .gf-proc-photo { aspect-ratio: 16 / 9; }
-          .gf-proc { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #0A0A0A; }
-          .gf-proc-step { padding: 2rem 2rem 0 0; position: relative; }
-          .gf-proc-step::before { content: ""; position: absolute; top: -4px; left: 0; width: 7px; height: 7px; background: #0A0A0A; }
-          .gf-proc-num { font-size: 3rem; font-weight: 500; color: #E5E5E3; letter-spacing: -0.04em; line-height: 1; }
-          .gf-proc-step h3 { font-size: 1.125rem; font-weight: 600; color: #0A0A0A; margin: 1.25rem 0 0.75rem; letter-spacing: -0.02em; line-height: 1.3; }
-          .gf-proc-step p { color: #5C5C5C; font-size: 0.875rem; line-height: 1.7; }
-          @media (max-width: 900px) {
-            .gf-proc-head { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
-            .gf-proc { grid-template-columns: 1fr 1fr; row-gap: 2.5rem; }
-          }
-          @media (max-width: 560px) {
-            .gf-proc { grid-template-columns: 1fr; border-top: 0; border-left: 1px solid #0A0A0A; row-gap: 0; }
-            .gf-proc-step { padding: 0 0 2.25rem 1.75rem; }
-            .gf-proc-step::before { top: 0.25rem; left: -4px; }
-            .gf-proc-num { font-size: 2.25rem; }
-          }
-        `}</style>
-      </section>
-
-      {/* ── 7. AVALIAÇÕES GOOGLE ─────────────────────────── */}
-      <GoogleReviews />
-
       {/* ── 8. CRÉDITO & FINANCIAMENTO ───────────────────── */}
       <section className="gf-credit on-dark tex-dark">
         <div className="gf-credit-photo photo-slot" data-reveal="image">
@@ -613,7 +568,7 @@ export default function HomePage() {
             Financiamento para a sua obra, <span className="text-metal">sem custos de intermediação.</span>
           </h2>
           <p className="gf-credit-text">
-            Trabalhamos com um <strong>intermediário de crédito parceiro, autorizado pelo Banco de Portugal</strong>, que compara propostas de mais de 10 bancos e apresenta a solução mais vantajosa para financiar a sua remodelação. O serviço é gratuito para o cliente e não o obriga a avançar.
+            Parceiro <strong>autorizado pelo Banco de Portugal</strong> compara mais de 10 bancos por si. Gratuito e sem compromisso.
           </p>
           <ul className="gf-credit-list">
             {[
@@ -662,11 +617,11 @@ export default function HomePage() {
             <div>
               <p className="section-eyebrow">Preços e Condições Transparentes</p>
               <h2 className="section-title" style={{ marginBottom: 0 }}>
-                Quanto Custa Remodelar em Aveiro? Tabela &amp; Respostas Rápidas
+                Quanto Custa Remodelar em Aveiro? Tabela de Preços
               </h2>
             </div>
             <p className="section-subtitle">
-              Valores médios de referência para planeamento de obras no concelho de Aveiro e concelhos limítrofes. Apresentamos sempre orçamento discriminado e fechado sem custos surpresa.
+              Valores médios de referência em Aveiro. O seu orçamento é sempre discriminado e fechado.
             </p>
           </div>
 
@@ -677,7 +632,6 @@ export default function HomePage() {
                   <th>Divisão / Tipologia de Obra</th>
                   <th>Preço Médio Estimado</th>
                   <th>Prazo Médio</th>
-                  <th>O que Inclui</th>
                 </tr>
               </thead>
               <tbody>
@@ -686,22 +640,12 @@ export default function HomePage() {
                     <td className="gf-td-name">{row.name}</td>
                     <td className="gf-td-price">{row.price}</td>
                     <td className="gf-td-time">{row.time}</td>
-                    <td className="gf-td-desc">{row.desc}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
 
-          <div className="gf-aeo">
-            {AEO_CARDS.map((c) => (
-              <div key={c.q} className="gf-aeo-item" data-reveal>
-                <p className="gf-aeo-kicker">{c.kicker}</p>
-                <h3>{c.q}</h3>
-                <p className="gf-aeo-text">{c.a}</p>
-              </div>
-            ))}
-          </div>
         </div>
         <style>{`
           .gf-price-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
@@ -759,7 +703,7 @@ export default function HomePage() {
               </h2>
             </div>
             <p className="section-subtitle">
-              Com sede em Aveiro, executamos obras com rapidez, rigor e garantia aos municípios e praias circundantes.
+              Sede em Aveiro. Obras em todo o concelho e nos municípios vizinhos.
             </p>
           </div>
           <div className="gf-region photo-slot" data-reveal="image">
@@ -780,7 +724,6 @@ export default function HomePage() {
               <Link key={area.slug} href={`/areas-atuacao/${area.slug}`} className="gf-area" data-reveal style={{ ["--d" as string]: `${i * 80}ms` }}>
                 <span className="gf-area-sub">{area.subtitle}</span>
                 <h3>{area.name}</h3>
-                <p>{area.desc}</p>
                 <span className="gf-area-link">
                   Ver obras nesta zona <ArrowUpRight size={14} />
                 </span>
@@ -846,7 +789,7 @@ export default function HomePage() {
           <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Orçamento Gratuito e Sem Compromisso</p>
           <h2 className="gf-final-title" data-reveal>Fale connosco <span className="text-metal">sobre a sua obra.</span></h2>
           <p className="gf-final-text">
-            Envie-nos fotografias e medidas aproximadas. O Jorge Freitas analisa o pedido e responde em até 12 horas com uma primeira estimativa discriminada.
+            Fotos e medidas aproximadas bastam. Resposta em até 12 horas.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <a href="#hero-form" id="final-cta-form" className="btn-primary">

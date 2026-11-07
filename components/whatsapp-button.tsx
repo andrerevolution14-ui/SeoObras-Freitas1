@@ -141,9 +141,9 @@ export function WhatsAppButton() {
 
         /* Mobile Adjustments: sits comfortably above the sticky mobile CTA bar */
         @media (max-width: 768px) {
+          /* No mobile o WhatsApp está na barra inferior — evita sobrepor conteúdo */
           .whatsapp-floating-wrapper {
-            bottom: 74px;
-            right: 14px;
+            display: none !important;
           }
 
           .whatsapp-floating-btn {

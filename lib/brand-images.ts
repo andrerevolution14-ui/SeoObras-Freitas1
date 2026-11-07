@@ -16,6 +16,15 @@ export interface BrandImage {
 }
 
 export const BRAND_IMAGES = {
+  /** Vídeo de fundo do hero — obra real em curso (Coverr, licença gratuita para uso comercial). */
+  heroVideo: {
+    src: "/brand/video/obra-hero.mp4",
+    srcMobile: "/brand/video/obra-hero-mobile.mp4",
+    poster: "/brand/video/obra-hero-poster.webp",
+    posterMobile: "/brand/video/obra-hero-poster-mobile.webp",
+    alt: "Equipa em obra de remodelação interior — demolição de divisórias e preparação de paredes",
+    recommended: "MP4 H.264 sem áudio, 10–15 s em loop; 1280×720 (desktop) e 540×720 (mobile)",
+  },
   /** Fundo do hero da homepage — interior remodelado, luz quente, pessoas. */
   hero: {
     src: "/heroes/familia-cozinha-nova.jpg",
@@ -52,4 +61,4 @@ export const BRAND_IMAGES = {
     alt: "Moliceiros na Ria de Aveiro ao pôr do sol — zona de atuação da Freitas Renovações",
     recommended: "2400×900 (8:3), paisagem de Aveiro",
   },
-} satisfies Record<string, BrandImage>;
+};

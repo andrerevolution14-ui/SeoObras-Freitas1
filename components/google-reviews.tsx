@@ -1,273 +1,266 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Star, ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { GOOGLE_REVIEWS, CONTRACTOR_INFO } from "@/lib/constants";
+import { CLIENTES_FEED_ITEMS } from "@/lib/clientes-data";
+import { GoogleG } from "@/components/google-g";
 
-type GoogleReviewItem = (typeof GOOGLE_REVIEWS)[number];
+interface ReviewCard {
+  id: string;
+  name: string;
+  location: string;
+  rating: number;
+  text: string;
+  full: string;
+  tag: string;
+  image?: string;
+  imageAlt?: string;
+}
 
-function StarRating({ rating, size = 14, color = "#0A0A0A" }: { rating: number; size?: number; color?: string }) {
+function Stars({ n = 5, size = 12 }: { n?: number; size?: number }) {
   return (
-    <div className="stars" style={{ flexShrink: 0 }} aria-label={`${rating} em 5 estrelas`}>
+    <span className="gf-rs-stars" aria-label={`${n} em 5 estrelas`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={size} fill={i < rating ? color : "none"} stroke={i < rating ? color : "#D4D4D2"} />
+        <Star key={i} size={size} fill={i < n ? "#FBBC04" : "none"} stroke={i < n ? "#FBBC04" : "#D4D4D2"} />
       ))}
-    </div>
+    </span>
   );
 }
 
-function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("pt-PT", { month: "long", year: "numeric" });
+function firstSentence(t: string, max = 120) {
+  const m = t.match(/^.*?[.!?](?=\s|$)/);
+  const s = m ? m[0] : t;
+  return s.length > max ? s.slice(0, max - 1).trimEnd() + "…" : s;
 }
 
+/** Faixa de avaliações — mostra rapidamente a quantidade e a qualidade das opiniões. */
 export function GoogleReviews() {
-  const [activeReview, setActiveReview] = useState<GoogleReviewItem | null>(null);
+  const [active, setActive] = useState<ReviewCard | null>(null);
+
+  const cards = useMemo<ReviewCard[]>(() => {
+    const google = GOOGLE_REVIEWS.map((r) => ({
+      id: r.id,
+      name: r.name,
+      location: r.parish,
+      rating: r.rating,
+      text: firstSentence(r.text),
+      full: r.text,
+      tag: r.service,
+    }));
+    const seen = new Set(google.map((g) => g.name));
+    const clientes = CLIENTES_FEED_ITEMS.filter((c) => c.clientName && c.quote?.length && !seen.has(c.clientName)).map((c) => ({
+      id: c.id,
+      name: c.clientName as string,
+      location: c.location,
+      rating: c.rating ?? 5,
+      text: firstSentence(c.quote![0]),
+      full: c.quote!.join(" "),
+      tag: c.headline,
+      image: c.image,
+      imageAlt: c.imageAlt,
+    }));
+    return [...google, ...clientes];
+  }, []);
+
+  const half = Math.ceil(cards.length / 2);
+  const rowA = cards.slice(0, half);
+  const rowB = cards.slice(half);
 
   useEffect(() => {
-    if (!activeReview) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActiveReview(null);
+    if (!active) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActive(null);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [activeReview]);
+  }, [active]);
 
-  return (
-    <section className="section-padding" id="reviews" style={{ background: "#ffffff" }}>
-      <div className="section-container">
-        <div className="gf-rev-head" data-reveal>
-          <div>
-            <p className="section-eyebrow">Avaliações Verificadas</p>
-            <h2 className="section-title" style={{ marginBottom: 0 }}>
-              O que dizem os nossos clientes em Aveiro
-            </h2>
-          </div>
-          <a
-            href={CONTRACTOR_INFO.socialLinks.google}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="gf-rev-score"
-            aria-label="Ver perfil no Google"
+  const renderRow = (row: ReviewCard[], reverse = false, extra = "") => (
+    <div className={`gf-rs-row${reverse ? " is-reverse" : ""} ${extra}`}>
+      <div className="gf-rs-track">
+        {[...row, ...row].map((r, i) => (
+          <button
+            key={`${r.id}-${i}`}
+            type="button"
+            className="gf-rs-card"
+            onClick={() => setActive(r)}
+            aria-label={`Ler avaliação de ${r.name}`}
+            tabIndex={i >= row.length ? -1 : 0}
           >
-            <span className="gf-rev-score-num font-display">{CONTRACTOR_INFO.googleRating}</span>
-            <span>
-              <StarRating rating={5} size={15} />
-              <span className="gf-rev-score-label">
-                {CONTRACTOR_INFO.reviewCount} avaliações reais no Google
-                <ArrowUpRight size={13} />
+            {r.image && (
+              <span className="gf-rs-thumb">
+                <Image src={r.image} alt={r.imageAlt || r.tag} fill sizes="64px" style={{ objectFit: "cover" }} />
+              </span>
+            )}
+            <span className="gf-rs-body">
+              <Stars n={r.rating} />
+              <span className="gf-rs-text">&ldquo;{r.text}&rdquo;</span>
+              <span className="gf-rs-who">
+                <strong>{r.name}</strong> · {r.location}
               </span>
             </span>
-          </a>
-        </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
-        <div className="gf-rev-grid">
-          {GOOGLE_REVIEWS.map((review, i) => (
-            <article
-              key={review.id}
-              onClick={() => setActiveReview(review)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setActiveReview(review);
-                }
-              }}
-              aria-label={`Abrir avaliação de ${review.name}`}
-              className="gf-rev"
-              data-reveal
-              style={{ ["--d" as string]: `${(i % 3) * 90}ms` }}
-            >
-              <div className="gf-rev-top">
-                <StarRating rating={review.rating} size={13} />
-                <span className="gf-rev-service">{review.service}</span>
-              </div>
-              <p className="gf-rev-text">&ldquo;{review.text}&rdquo;</p>
-              <footer className="gf-rev-foot">
-                <span className="gf-rev-initial font-display">{review.name.charAt(0)}</span>
-                <span style={{ minWidth: 0 }}>
-                  <span className="gf-rev-name">{review.name}</span>
-                  <span className="gf-rev-parish">
-                    {review.parish} · {formatDate(review.date)}
-                  </span>
-                </span>
-              </footer>
-            </article>
-          ))}
-        </div>
-
-        <div className="gf-rev-actions">
-          <Link href="/clientes" className="btn-dark">
-            Ver Opiniões e Fotos de Obras Reais
-            <ArrowRight size={16} />
-          </Link>
-          <a href={CONTRACTOR_INFO.socialLinks.google} target="_blank" rel="noopener noreferrer" className="btn-outline-dark">
-            Ver Perfil no Google
-            <ArrowUpRight size={15} />
-          </a>
+  return (
+    <section className="gf-rs" id="reviews" aria-label="Avaliações de clientes">
+      <div className="section-container">
+        <div className="gf-rs-head" data-reveal>
+          <div className="gf-rs-score">
+            <GoogleG size={34} />
+            <span className="gf-rs-num font-display">{CONTRACTOR_INFO.googleRating}</span>
+            <span className="gf-rs-meta">
+              <Stars size={16} />
+              <span>
+                <strong>{CONTRACTOR_INFO.reviewCount} avaliações</strong> verificadas no Google
+              </span>
+            </span>
+          </div>
+          <h2 className="gf-rs-title font-display">
+            O que dizem os nossos clientes em Aveiro
+          </h2>
+          <div className="gf-rs-actions">
+            <a href={CONTRACTOR_INFO.socialLinks.google} target="_blank" rel="noopener noreferrer" className="btn-outline-dark">
+              Ver no Google <ArrowUpRight size={15} />
+            </a>
+            <Link href="/clientes" className="btn-dark">
+              {cards.length}+ testemunhos com fotos <ArrowRight size={15} />
+            </Link>
+          </div>
         </div>
       </div>
 
-      {activeReview && (
-        <div className="gf-rev-modal" onClick={() => setActiveReview(null)} role="dialog" aria-modal="true">
+      <div className="gf-rs-rows">
+        {renderRow(rowA, false, "gf-rs-row-desk")}
+        {renderRow(rowB, true, "gf-rs-row-desk")}
+        {renderRow(cards, false, "gf-rs-row-all")}
+      </div>
+
+      <div className="section-container gf-rs-actions gf-rs-actions-m">
+        <Link href="/clientes" className="btn-dark">
+          Ver {cards.length}+ testemunhos com fotos <ArrowRight size={15} />
+        </Link>
+        <a href={CONTRACTOR_INFO.socialLinks.google} target="_blank" rel="noopener noreferrer" className="link-arrow">
+          Ver as {CONTRACTOR_INFO.reviewCount} avaliações no Google <ArrowUpRight size={14} />
+        </a>
+      </div>
+
+      {active && (
+        <div className="gf-rev-modal" onClick={() => setActive(null)} role="dialog" aria-modal="true" aria-label={`Avaliação de ${active.name}`}>
           <div className="gf-rev-modal-card" onClick={(e) => e.stopPropagation()}>
-            <button className="gf-rev-close" onClick={() => setActiveReview(null)} aria-label="Fechar">
+            <button className="gf-rev-close" onClick={() => setActive(null)} aria-label="Fechar">
               <X size={18} />
             </button>
-            <StarRating rating={activeReview.rating} size={16} />
-            <p className="gf-rev-modal-text font-display">&ldquo;{activeReview.text}&rdquo;</p>
-            <div className="gf-rev-foot" style={{ borderTop: "1px solid #E5E5E3", paddingTop: "1.25rem" }}>
-              <span className="gf-rev-initial font-display">{activeReview.name.charAt(0)}</span>
-              <span>
-                <span className="gf-rev-name">{activeReview.name}</span>
-                <span className="gf-rev-parish">
-                  {activeReview.parish} · {activeReview.service} · {formatDate(activeReview.date)}
-                </span>
-              </span>
-            </div>
-            <Link href="/clientes" onClick={() => setActiveReview(null)} className="link-arrow" style={{ marginTop: "1.5rem" }}>
-              Ver mais obras reais <ArrowRight size={14} />
+            <Stars n={active.rating} size={16} />
+            <p className="gf-rev-modal-tag">{active.tag}</p>
+            <p className="gf-rev-modal-text font-display">&ldquo;{active.full}&rdquo;</p>
+            <p className="gf-rev-modal-who">
+              <strong>{active.name}</strong> · {active.location}
+            </p>
+            <Link href="/clientes" onClick={() => setActive(null)} className="link-arrow" style={{ marginTop: "1.5rem" }}>
+              Ver mais obras e opiniões <ArrowRight size={14} />
             </Link>
           </div>
         </div>
       )}
 
       <style>{`
-        .gf-rev-head {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          gap: 3rem;
-          margin-bottom: 4rem;
-          flex-wrap: wrap;
-        }
-        .gf-rev-head > div { max-width: 640px; }
-        .gf-rev-score {
-          display: flex;
-          align-items: center;
-          gap: 1.25rem;
-          text-decoration: none;
-          padding-left: 2rem;
-          border-left: 1px solid #E5E5E3;
-        }
-        .gf-rev-score-num { font-size: 4.5rem; line-height: 0.9; font-weight: 500; color: #0A0A0A; letter-spacing: -0.05em; }
-        .gf-rev-score-label {
-          display: flex;
-          align-items: center;
-          gap: 0.3rem;
-          margin-top: 0.5rem;
-          font-size: 0.8125rem;
-          color: #5C5C5C;
-        }
-        .gf-rev-grid {
+        .gf-rs { background: #ffffff; padding: 4.5rem 0 4rem; border-bottom: 1px solid #E5E5E3; overflow: hidden; }
+        .gf-rs-head {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 1.5rem;
+          grid-template-columns: auto 1fr auto;
+          align-items: center;
+          gap: 2.5rem;
+          margin-bottom: 2.75rem;
         }
-        .gf-rev {
+        .gf-rs-score { display: flex; align-items: center; gap: 0.875rem; padding-right: 2.5rem; border-right: 1px solid #E5E5E3; }
+        .gf-rs-num { font-size: 3.5rem; font-weight: 600; letter-spacing: -0.05em; line-height: 0.9; color: #0A0A0A; }
+        .gf-rs-meta { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8125rem; color: #525252; }
+        .gf-rs-meta strong { color: #0A0A0A; font-weight: 600; }
+        .gf-rs-stars { display: inline-flex; gap: 1px; }
+        .gf-rs-title { font-size: clamp(1.375rem, 2.2vw, 1.875rem); font-weight: 600; letter-spacing: -0.03em; color: #0A0A0A; line-height: 1.15; margin: 0; max-width: 420px; }
+        .gf-rs-actions { display: flex; gap: 0.625rem; }
+        .gf-rs-actions a { padding: 0.8rem 1.2rem; font-size: 0.8125rem; white-space: nowrap; }
+        .gf-rs-actions-m { display: none; }
+        .gf-rs-rows {
           display: flex;
           flex-direction: column;
-          padding: 2rem;
+          gap: 0.875rem;
+          -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+        }
+        .gf-rs-row { overflow: hidden; }
+        .gf-rs-row-all { display: none; }
+        .gf-rs-track { display: flex; gap: 0.875rem; width: max-content; animation: gf-rs-scroll 70s linear infinite; }
+        .gf-rs-row.is-reverse .gf-rs-track { animation-direction: reverse; animation-duration: 80s; }
+        .gf-rs-rows:hover .gf-rs-track, .gf-rs-rows:focus-within .gf-rs-track { animation-play-state: paused; }
+        @keyframes gf-rs-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .gf-rs-card {
+          display: flex;
+          gap: 0.875rem;
+          align-items: flex-start;
+          width: 340px;
+          padding: 1.1rem 1.2rem;
           background: #F4F4F2;
           border: 1px solid transparent;
+          text-align: left;
           cursor: pointer;
-          transition: background 0.3s ease, border-color 0.3s ease;
-          min-width: 0;
+          font: inherit;
+          color: inherit;
+          transition: background 0.25s ease, border-color 0.25s ease;
         }
-        .gf-rev:hover { background: #ffffff; border-color: #DCDCDA; }
-        .gf-rev:focus-visible { outline: 2px solid #0A0A0A; outline-offset: 2px; }
-        .gf-rev-top { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
-        .gf-rev-service {
-          font-size: 0.625rem;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: #6B6B6B;
-          font-weight: 600;
-          white-space: nowrap;
+        .gf-rs-card:hover { background: #ffffff; border-color: #0A0A0A; }
+        .gf-rs-card:focus-visible { outline: 2px solid #0A0A0A; outline-offset: 2px; }
+        .gf-rs-thumb { position: relative; flex-shrink: 0; width: 64px; height: 64px; overflow: hidden; background: #E5E5E3; }
+        .gf-rs-body { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; }
+        .gf-rs-text {
+          font-size: 0.875rem;
+          line-height: 1.45;
+          color: #1F1F1F;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
           overflow: hidden;
-          text-overflow: ellipsis;
         }
-        .gf-rev-text {
-          color: #0A0A0A;
-          font-size: 1rem;
-          line-height: 1.65;
-          margin-bottom: 2rem;
-          flex: 1;
+        .gf-rs-who { font-size: 0.75rem; color: #6B6B6B; }
+        .gf-rs-who strong { color: #0A0A0A; font-weight: 600; }
+        .gf-rev-modal { position: fixed; inset: 0; z-index: 120; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+        .gf-rev-modal-card { position: relative; background: #fff; max-width: 620px; width: 100%; padding: 3rem 2.5rem 2.5rem; display: flex; flex-direction: column; border-top: 3px solid #0A0A0A; max-height: 90vh; overflow: auto; }
+        .gf-rev-close { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #E5E5E3; background: #fff; cursor: pointer; color: #0A0A0A; }
+        .gf-rev-modal-tag { margin-top: 1rem; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; font-weight: 600; }
+        .gf-rev-modal-text { font-size: 1.25rem; line-height: 1.5; color: #0A0A0A; letter-spacing: -0.015em; margin: 1rem 0 1.5rem; font-weight: 500; }
+        .gf-rev-modal-who { font-size: 0.875rem; color: #6B6B6B; }
+        .gf-rev-modal-who strong { color: #0A0A0A; }
+        @media (prefers-reduced-motion: reduce) {
+          .gf-rs-track { animation: none; }
+          .gf-rs-row { overflow-x: auto; }
         }
-        .gf-rev-foot { display: flex; align-items: center; gap: 0.875rem; }
-        .gf-rev-initial {
-          width: 40px;
-          height: 40px;
-          flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #0A0A0A;
-          color: #ffffff;
-          font-weight: 500;
-          font-size: 1rem;
-        }
-        .gf-rev-name { display: block; font-weight: 600; color: #0A0A0A; font-size: 0.9375rem; }
-        .gf-rev-parish { display: block; color: #6B6B6B; font-size: 0.75rem; margin-top: 0.15rem; }
-        .gf-rev-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 3.5rem; }
-        .gf-rev-modal {
-          position: fixed;
-          inset: 0;
-          z-index: 120;
-          background: rgba(5, 5, 5, 0.85);
-          backdrop-filter: blur(6px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 1rem;
-        }
-        .gf-rev-modal-card {
-          position: relative;
-          background: #ffffff;
-          max-width: 620px;
-          width: 100%;
-          padding: 3rem 2.5rem 2.5rem;
-          display: flex;
-          flex-direction: column;
-          border-top: 3px solid #0A0A0A;
-        }
-        .gf-rev-close {
-          position: absolute;
-          top: 1rem;
-          right: 1rem;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #E5E5E3;
-          background: #fff;
-          cursor: pointer;
-          color: #0A0A0A;
-        }
-        .gf-rev-modal-text { font-size: 1.375rem; line-height: 1.5; color: #0A0A0A; letter-spacing: -0.015em; margin: 1.5rem 0 2rem; font-weight: 500; }
-        @media (max-width: 960px) {
-          .gf-rev-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-          .gf-rev-score { padding-left: 0; border-left: 0; }
+        @media (max-width: 1024px) {
+          .gf-rs-head { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 1.25rem; }
+          .gf-rs-score { border-right: 0; padding-right: 0; }
+          .gf-rs-title { max-width: none; }
         }
         @media (max-width: 640px) {
-          .gf-rev-head { margin-bottom: 2.5rem; gap: 1.5rem; }
-          .gf-rev-score-num { font-size: 3.5rem; }
-          .gf-rev-grid {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 0.75rem;
-            margin: 0 -1.25rem;
-            padding: 0 1.25rem 0.5rem;
-            scrollbar-width: none;
-          }
-          .gf-rev-grid::-webkit-scrollbar { display: none; }
-          .gf-rev { flex: 0 0 84%; scroll-snap-align: start; padding: 1.5rem; }
-          .gf-rev-text { font-size: 0.9375rem; }
-          .gf-rev-actions a { width: 100%; }
+          .gf-rs { padding: 3rem 0 2.75rem; }
+          .gf-rs-num { font-size: 2.75rem; }
+          .gf-rs-title { font-size: 1.25rem; }
+          .gf-rs-head { gap: 0.75rem; }
+          .gf-rs-head .gf-rs-actions { display: none; }
+          .gf-rs-actions-m { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+          .gf-rs-actions-m .btn-dark { width: 100%; }
+          .gf-rs-actions-m .link-arrow { padding: 0 0 0.25rem; font-size: 0.8125rem; }
+          .gf-rs-head { margin-bottom: 1.75rem; }
+          .gf-rs-card { width: 280px; padding: 0.95rem 1rem; }
+          .gf-rs-thumb { width: 52px; height: 52px; }
+          .gf-rs-row-desk { display: none; }
+          .gf-rs-row-all { display: block; }
+          .gf-rs-track { animation-duration: 55s; }
           .gf-rev-modal-card { padding: 2.5rem 1.5rem 1.75rem; }
-          .gf-rev-modal-text { font-size: 1.125rem; }
+          .gf-rev-modal-text { font-size: 1.0625rem; }
         }
       `}</style>
     </section>

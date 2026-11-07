@@ -46,7 +46,7 @@ export function ServiceGrid() {
             </h2>
           </div>
           <p className="section-subtitle">
-            Especialistas em remodelações gerais chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e reabilitação de casas velhas com preços justos.
+            Da casa de banho à moradia completa — uma só equipa, um só responsável.
           </p>
         </div>
 
@@ -67,12 +67,6 @@ export function ServiceGrid() {
                   <span className="gf-svc-icon">{Icon && <Icon size={22} strokeWidth={1.5} />}</span>
                 </div>
                 <h3 className="gf-svc-title">{service.title}</h3>
-                <p className="gf-svc-desc">{service.description}</p>
-                <ul className="gf-svc-feats">
-                  {service.features.slice(0, 3).map((f) => (
-                    <li key={f}>{f}</li>
-                  ))}
-                </ul>
                 <span className="gf-svc-link">
                   {service.emergencyAvailable ? "Atendimento rápido · Ver serviço" : "Ver detalhes do serviço"}
                   <ArrowUpRight size={15} />
@@ -100,7 +94,7 @@ export function ServiceGrid() {
         }
         .gf-svc-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 1px;
           background: #DCDCDA;
           border: 1px solid #DCDCDA;
@@ -129,16 +123,16 @@ export function ServiceGrid() {
         }
         .gf-svc:hover { background: #ffffff; }
         .gf-svc:hover::before { transform: scaleX(1); }
-        .gf-svc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; }
+        .gf-svc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem; }
         .gf-svc-num { font-size: 0.8125rem; color: #8A8A8A; font-weight: 500; letter-spacing: 0.04em; }
         .gf-svc-icon { color: #0A0A0A; }
         .gf-svc-title {
-          font-size: 1.3125rem;
+          font-size: 1.1875rem;
           font-weight: 600;
           color: #0A0A0A;
           letter-spacing: -0.025em;
           line-height: 1.2;
-          margin-bottom: 0.875rem;
+          margin-bottom: 1.5rem;
         }
         .gf-svc-desc { color: #5C5C5C; font-size: 0.875rem; line-height: 1.7; margin-bottom: 1.25rem; }
         .gf-svc-feats { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -167,8 +161,9 @@ export function ServiceGrid() {
           gap: 2rem;
         }
         .gf-svc-cta:hover { background: #0A0A0A; }
-        .gf-svc-cta { grid-column: span 1; }
+        .gf-svc-cta { grid-column: span 2; flex-direction: row; align-items: center; }
         .gf-svc-cta::before { display: none; }
+        .gf-svc-cta .btn-primary { white-space: nowrap; flex-shrink: 0; }
         .gf-svc-cta-title { color: #ffffff; font-size: 1.5rem; font-weight: 500; letter-spacing: -0.025em; line-height: 1.25; }
         @media (max-width: 1024px) {
           .gf-svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

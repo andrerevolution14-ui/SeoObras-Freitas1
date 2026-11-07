@@ -17,7 +17,7 @@ export function RealProjectsGallery() {
           </div>
           <div>
             <p className="section-subtitle" style={{ marginBottom: "1.5rem" }}>
-              Conheça alguns dos trabalhos efetuados pela equipa do Jorge Freitas com preços justos, transparência e elevada qualidade técnica.
+              Obras reais, com local e ano.
             </p>
             <Link href="/projetos" className="link-arrow">
               Ver galeria completa de projetos <ArrowRight size={15} />

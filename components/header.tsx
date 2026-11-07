@@ -79,6 +79,9 @@ export function Header() {
               <Star size={11} fill="#ffffff" stroke="#ffffff" />
               {CONTRACTOR_INFO.googleRating} no Google · {CONTRACTOR_INFO.reviewCount} avaliações
             </a>
+            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="gf-topbar-link" id="header-cta-phone">
+              <Phone size={11} /> {CONTRACTOR_INFO.phoneDisplay}
+            </a>
             <a href={`mailto:${CONTRACTOR_INFO.email}`} className="gf-topbar-link">
               {CONTRACTOR_INFO.email}
             </a>
@@ -88,9 +91,7 @@ export function Header() {
 
       {/* Navegação principal */}
       <div className="section-container gf-nav-row">
-        <a href={`tel:${CONTRACTOR_INFO.phone}`} className="mobile-controls gf-burger gf-mobile-call" aria-label={`Ligar ${CONTRACTOR_INFO.phoneDisplay}`}>
-          <Phone size={18} />
-        </a>
+        <span className="mobile-controls gf-spacer" aria-hidden="true" />
         <div className="gf-logo-slot">
           <BrandLogo tone="light" size="md" />
         </div>
@@ -145,10 +146,6 @@ export function Header() {
         </nav>
 
         <div className="gf-nav-cta hidden-mobile">
-          <a href={`tel:${CONTRACTOR_INFO.phone}`} id="header-cta-phone" className="gf-phone">
-            <Phone size={15} />
-            <span>{CONTRACTOR_INFO.phoneDisplay}</span>
-          </a>
           <Link href="/orcamento" className="btn-primary" style={{ padding: "0.7rem 1.25rem", fontSize: "0.8125rem" }}>
             Pedir Orçamento
           </Link>
@@ -203,10 +200,10 @@ export function Header() {
           </div>
 
           <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-            <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" style={{ width: "100%" }}>
-              <Phone size={16} />
-              Ligar {CONTRACTOR_INFO.phoneDisplay}
-            </a>
+            <Link href="/#hero-form" onClick={() => setIsMobileMenuOpen(false)} className="btn-primary" style={{ width: "100%" }}>
+              Pedir Orçamento Grátis
+              <ArrowRight size={16} />
+            </Link>
             <a
               href={CONTRACTOR_INFO.whatsappUrl}
               target="_blank"
@@ -272,7 +269,7 @@ export function Header() {
         }
         .gf-logo-slot { display: flex; align-items: center; justify-self: start; }
         .gf-nav-cta { justify-self: end; }
-        .gf-mobile-call { display: none; color: #ffffff; text-decoration: none; }
+        .gf-spacer { display: none; width: 44px; height: 44px; }
         .gf-progress {
           position: absolute;
           left: 0;
@@ -413,7 +410,7 @@ export function Header() {
           .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; grid-template-columns: 44px 1fr 44px; gap: 0.75rem; }
           .gf-logo-slot { justify-self: center; }
           .gf-burger { justify-self: end; }
-          .gf-mobile-call { justify-self: start; }
+          .gf-spacer { justify-self: start; border: 0 !important; background: none !important; }
         }
       `}</style>
     </header>
