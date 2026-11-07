@@ -22,6 +22,9 @@ import {
   User,
   AlertTriangle,
   Loader2,
+  Lock,
+  ShieldCheck,
+  Clock,
 } from "lucide-react";
 import { FORM_SERVICES, FORM_PARISHES, URGENCY_OPTIONS, CONTRACTOR_INFO } from "@/lib/constants";
 
@@ -75,6 +78,7 @@ const initialFormData: FormData = {
 };
 
 const TOTAL_STEPS = 4;
+const STEP_LABELS = ["Serviço", "Urgência", "Local", "Contacto"];
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -202,7 +206,12 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
     "Dados para contacto",
   ];
 
-  const progressPercent = ((step - 1) / (TOTAL_STEPS - 1)) * 100;
+  const stepHints = [
+    "Escolha uma opção — demora menos de 1 minuto.",
+    "Ajuda-nos a planear a visita técnica.",
+    "Para enviarmos a pessoa certa à sua obra.",
+    "Último passo. O Jorge Freitas contacta-o pessoalmente.",
+  ];
 
   if (isSubmitted) {
     return (
@@ -271,34 +280,29 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
       }}
     >
       {/* Form Header */}
-      <div
-        className="hero-form-header"
-        style={{
-          background: "#0A0A0A",
-          padding: "1.5rem 1.75rem 1.375rem",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.875rem" }}>
-          <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-            Passo {step} de {TOTAL_STEPS}
+      <div className="hero-form-header gf-form-head">
+        <div className="gf-form-top">
+          <span className="gf-form-live">
+            <i aria-hidden="true" />
+            Orçamento grátis · resposta em até 12h
           </span>
-          <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-            Sem compromisso
+          <span className="gf-form-count">
+            {step}/{TOTAL_STEPS}
           </span>
         </div>
-
-        <div className="progress-bar">
-          <motion.div
-            className="progress-fill"
-            initial={false}
-            animate={{ width: `${progressPercent}%` }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-          />
-        </div>
-
-        <h3 style={{ color: "#ffffff", fontWeight: 500, fontSize: "1.375rem", marginTop: "1.125rem", letterSpacing: "-0.02em" }}>
-          {stepTitles[step - 1]}
-        </h3>
+        <ol className="gf-form-steps" aria-label="Progresso do pedido">
+          {STEP_LABELS.map((label, i) => (
+            <li
+              key={label}
+              className={`gf-form-step${i + 1 < step ? " is-done" : ""}${i + 1 === step ? " is-active" : ""}`}
+            >
+              <span className="gf-form-step-bar" />
+              <span className="gf-form-step-label">{label}</span>
+            </li>
+          ))}
+        </ol>
+        <h3 className="gf-form-title">{stepTitles[step - 1]}</h3>
+        <p className="gf-form-hint">{stepHints[step - 1]}</p>
       </div>
 
       {/* Form Body */}
@@ -323,14 +327,16 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       key={service.slug}
                       type="button"
                       id={`service-btn-${service.slug}`}
+                      className="gf-tile"
                       onClick={() => {
                         setFormData((d) => ({ ...d, service: service.slug }));
+                        window.setTimeout(goNext, 280);
                       }}
                       style={{
                         padding: "0.8rem 0.75rem",
                         border: `1.5px solid ${isSelected ? "#0A0A0A" : "#DCDCDA"}`,
                         borderRadius: "2px",
-                        background: isSelected ? "#F2F2F0" : "#ffffff",
+                        background: isSelected ? "#0A0A0A" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
                         flexDirection: "row",
@@ -345,7 +351,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                     >
                       <span
                         style={{
-                          color: isSelected ? "#0A0A0A" : "#6B6B6B",
+                          color: isSelected ? "#ffffff" : "#0A0A0A",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -358,7 +364,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         style={{
                           fontWeight: 700,
                           fontSize: "0.8rem",
-                          color: "#0A0A0A",
+                          color: isSelected ? "#ffffff" : "#0A0A0A",
                           lineHeight: 1.2,
                           flex: 1,
                           minWidth: 0,
@@ -369,7 +375,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         {service.shortTitle}
                       </span>
                       {isSelected && (
-                        <CheckCircle size={15} style={{ color: "#525252", flexShrink: 0 }} />
+                        <CheckCircle size={15} style={{ color: "#ffffff", flexShrink: 0 }} />
                       )}
                     </button>
                   );
@@ -387,12 +393,16 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                       key={opt.id}
                       type="button"
                       id={`urgency-btn-${opt.id}`}
-                      onClick={() => setFormData((d) => ({ ...d, urgency: opt.id }))}
+                      className="gf-tile"
+                      onClick={() => {
+                        setFormData((d) => ({ ...d, urgency: opt.id }));
+                        window.setTimeout(goNext, 280);
+                      }}
                       style={{
                         padding: "0.875rem 1rem",
                         border: `1.5px solid ${isSelected ? "#0A0A0A" : "#DCDCDA"}`,
                         borderRadius: "2px",
-                        background: isSelected ? "#F2F2F0" : "#ffffff",
+                        background: isSelected ? "#0A0A0A" : "#ffffff",
                         cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
@@ -401,16 +411,16 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                         textAlign: "left",
                       }}
                     >
-                                            <div style={{ flex: 1 }}>
-                        <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#0A0A0A" }}>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontWeight: 600, fontSize: "0.875rem", color: isSelected ? "#ffffff" : "#0A0A0A" }}>
                           {opt.label}
                         </div>
-                        <div style={{ fontSize: "0.75rem", color: "#6B6B6B" }}>
+                        <div style={{ fontSize: "0.75rem", color: isSelected ? "rgba(255,255,255,0.65)" : "#6B6B6B" }}>
                           {opt.description}
                         </div>
                       </div>
                       {isSelected && (
-                        <CheckCircle size={18} style={{ color: "#525252", flexShrink: 0 }} />
+                        <CheckCircle size={18} style={{ color: "#ffffff", flexShrink: 0 }} />
                       )}
                     </button>
                   );
@@ -700,16 +710,14 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
               if (step === 3 && !formData.parish) return;
               goNext();
             }}
-            className="btn-primary"
+            className={`btn-primary${
+              (step === 1 && !formData.service) || (step === 2 && !formData.urgency) || (step === 3 && !formData.parish)
+                ? " btn-disabled"
+                : ""
+            }`}
             style={{
               flex: 1,
               justifyContent: "center",
-              opacity:
-                (step === 1 && !formData.service) ||
-                (step === 2 && !formData.urgency) ||
-                (step === 3 && !formData.parish)
-                  ? 0.5
-                  : 1,
               cursor:
                 (step === 1 && !formData.service) ||
                 (step === 2 && !formData.urgency) ||
@@ -735,21 +743,14 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         )}
       </div>
 
-      <p
-        style={{
-          textAlign: "center",
-          fontSize: "0.725rem",
-          color: "#6B6B6B",
-          paddingBottom: "1rem",
-          paddingLeft: "1.5rem",
-          paddingRight: "1.5rem",
-        }}
-      >
-        Dados protegidos nos termos do RGPD. Consulte a nossa{" "}
-        <a href="/privacidade" style={{ color: "#525252", textDecoration: "underline" }}>
-          Política de Privacidade
-        </a>
-        . Primeira estimativa técnica em até 12 a 24 horas.
+      <div className="gf-form-trust">
+        <span><Lock size={13} /> Dados protegidos (RGPD)</span>
+        <span><ShieldCheck size={13} /> Sem compromisso</span>
+        <span><Clock size={13} /> Resposta até 12h</span>
+      </div>
+      <p className="gf-form-legal">
+        Ao enviar, aceita a nossa{" "}
+        <a href="/privacidade">Política de Privacidade</a>. Os seus dados só são usados para responder ao pedido.
       </p>
     </div>
   );

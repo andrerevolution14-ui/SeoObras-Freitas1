@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Empresa de obras, remodelações e reparações em Aveiro.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0d2855",
-    theme_color: "#0d2855",
+    background_color: "#0A0A0A",
+    theme_color: "#0A0A0A",
     icons: [
       {
         src: "/favicon-48x48.png",

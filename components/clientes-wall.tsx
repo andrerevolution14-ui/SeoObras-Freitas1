@@ -408,7 +408,7 @@ export function ClientesWall() {
             </button>
 
             {lightboxItem.image && (
-              <div style={{ background: "#050505", textAlign: "center", maxHeight: "500px", overflow: "hidden" }}>
+              <div className="on-dark" style={{ background: "#050505", textAlign: "center", maxHeight: "500px", overflow: "hidden" }}>
                 <img
                   src={lightboxItem.image}
                   alt={lightboxItem.imageAlt || lightboxItem.headline}
@@ -786,7 +786,7 @@ export function ClientesWall() {
           position: absolute;
           top: 0.75rem;
           right: 0.75rem;
-          background: rgba(15, 23, 42, 0.75);
+          background: rgba(10, 10, 10, 0.75);
           color: #ffffff;
           border: 1px solid rgba(255,255,255,0.25);
           border-radius: 0.375rem;
@@ -976,7 +976,7 @@ export function ClientesWall() {
           }
           .clientes-filter-dock {
             background: #ffffff;
-            border: 1px solid #dbe2ea;
+            border: 1px solid #E5E5E3;
             box-shadow: 0 2px 10px rgba(10, 10, 10, 0.04);
             padding: 0.25rem;
             gap: 0.28rem;

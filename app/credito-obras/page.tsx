@@ -145,7 +145,7 @@ export default function CreditoObrasPage() {
 
       {/* ── 1. HERO SECTION ───────────────────────────── */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.55) 100%), url('/heroes/casal-chaves-casa.jpg')",
@@ -293,7 +293,7 @@ export default function CreditoObrasPage() {
 
             {/* Extra Card: Segurança Regulamentada */}
             <div
-              style={{
+              className="on-dark" style={{
                 background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
                 borderRadius: "0.75rem",
                 padding: "1.75rem",
@@ -354,7 +354,7 @@ export default function CreditoObrasPage() {
                 step: "02",
                 title: "Simulação sem Compromisso",
                 desc: "O nosso parceiro intermediário de crédito recolhe os dados e simula a melhor mensalidade adaptada ao valor orçamentado da obra.",
-                icon: <FileSpreadsheet size={22} style={{ color: "#38bdf8" }} />,
+                icon: <FileSpreadsheet size={22} style={{ color: "#E5E5E5" }} />,
               },
               {
                 step: "03",
@@ -366,7 +366,7 @@ export default function CreditoObrasPage() {
                 step: "04",
                 title: "Execução da Sua Obra",
                 desc: "Capital disponibilizado na sua conta e a Freitas Renovações LDA arranca os trabalhos cumprindo prazos e com garantia total.",
-                icon: <Home size={22} style={{ color: "#f472b6" }} />,
+                icon: <Home size={22} style={{ color: "#8C8C8C" }} />,
               },
             ].map((st) => (
               <div
@@ -394,7 +394,7 @@ export default function CreditoObrasPage() {
                 </div>
 
                 <div
-                  style={{
+                  className="on-dark" style={{
                     width: "44px",
                     height: "44px",
                     borderRadius: "0.5rem",
@@ -545,7 +545,7 @@ export default function CreditoObrasPage() {
             }}
           >
             <div
-              style={{
+              className="on-dark" style={{
                 display: "grid",
                 gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
                 background: "#0A0A0A",
@@ -693,7 +693,7 @@ export default function CreditoObrasPage() {
       {/* ── 7. FINAL CTA BANNER ────────────────────────────── */}
       <section
         style={{
-          background: "linear-gradient(135deg, #D4D4D4 0%, #6B6B6B 100%)",
+          background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)",
           padding: "4rem 0",
           textAlign: "center",
         }}

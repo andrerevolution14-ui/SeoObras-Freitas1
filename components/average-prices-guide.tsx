@@ -75,7 +75,7 @@ export function AveragePricesGuide() {
                   <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#D4D4D4" }}>
                     Standard / Equilibrada
                   </th>
-                  <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#fbcfe8" }}>
+                  <th style={{ padding: "1rem 1rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#E5E5E3" }}>
                     Alta Gama / Premium
                   </th>
                   <th style={{ padding: "1rem 1.25rem", fontSize: "0.8125rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>
@@ -105,7 +105,7 @@ export function AveragePricesGuide() {
                     <td style={{ padding: "1rem 1rem", fontWeight: 800, color: "#171717", fontSize: "0.875rem" }}>
                       {row.standardRange}
                     </td>
-                    <td style={{ padding: "1rem 1rem", fontWeight: 700, color: "#9333ea", fontSize: "0.875rem" }}>
+                    <td style={{ padding: "1rem 1rem", fontWeight: 700, color: "#525252", fontSize: "0.875rem" }}>
                       {row.premiumRange}
                     </td>
                     <td style={{ padding: "1rem 1.25rem", color: "#525252", fontSize: "0.8125rem", lineHeight: 1.5 }}>
@@ -121,8 +121,8 @@ export function AveragePricesGuide() {
         {/* Nota de Esclarecimento sobre Estimativas vs. Preços Reais Históricos */}
         <div
           style={{
-            background: "#eff6ff",
-            border: "1.5px solid #bfdbfe",
+            background: "#F4F4F2",
+            border: "1.5px solid #DCDCDA",
             borderRadius: "0.5rem",
             padding: "1rem 1.25rem",
             marginBottom: "2rem",
@@ -131,10 +131,10 @@ export function AveragePricesGuide() {
             alignItems: "flex-start",
           }}
         >
-          <AlertCircle size={20} style={{ color: "#2563eb", flexShrink: 0, marginTop: "2px" }} />
-          <div style={{ fontSize: "0.8125rem", color: "#1e3a8a", lineHeight: 1.6 }}>
+          <AlertCircle size={20} style={{ color: "#3A3A3A", flexShrink: 0, marginTop: "2px" }} />
+          <div style={{ fontSize: "0.8125rem", color: "#171717", lineHeight: 1.6 }}>
             <strong>Nota de Transparência Orçamental:</strong> Os valores desta tabela representam <em>estimativas orientativas para novas obras em 2026</em> calculadas por m² de área útil/bruta. Distinguem intervenções parciais de remodelações completas chave na mão. Aos valores acresce IVA à taxa legal em vigor (com possibilidade de taxa reduzida de 6% para reabilitação urbana). Para consultar os <strong>valores finais adjudicados e pagos pelos clientes</strong> em projetos concluídos pela Freitas Renovações, consulte a nossa página de{" "}
-            <Link href="/precos-reais" style={{ color: "#1d4ed8", fontWeight: 700, textDecoration: "underline" }}>
+            <Link href="/precos-reais" style={{ color: "#262626", fontWeight: 700, textDecoration: "underline" }}>
               Preços Reais de Obras
             </Link>
             .

@@ -35,7 +35,7 @@ export function GoogleReviews() {
   return (
     <section className="section-padding" id="reviews" style={{ background: "#ffffff" }}>
       <div className="section-container">
-        <div className="gf-rev-head">
+        <div className="gf-rev-head" data-reveal>
           <div>
             <p className="section-eyebrow">Avaliações Verificadas</p>
             <h2 className="section-title" style={{ marginBottom: 0 }}>
@@ -61,7 +61,7 @@ export function GoogleReviews() {
         </div>
 
         <div className="gf-rev-grid">
-          {GOOGLE_REVIEWS.map((review) => (
+          {GOOGLE_REVIEWS.map((review, i) => (
             <article
               key={review.id}
               onClick={() => setActiveReview(review)}
@@ -75,6 +75,8 @@ export function GoogleReviews() {
               }}
               aria-label={`Abrir avaliação de ${review.name}`}
               className="gf-rev"
+              data-reveal
+              style={{ ["--d" as string]: `${(i % 3) * 90}ms` }}
             >
               <div className="gf-rev-top">
                 <StarRating rating={review.rating} size={13} />

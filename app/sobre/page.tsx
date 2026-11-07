@@ -98,7 +98,7 @@ export default function SobrePage() {
 
       {/* Hero */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.55) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
@@ -131,7 +131,7 @@ export default function SobrePage() {
             <div>
               {/* Card Institucional da Empresa */}
               <div
-                style={{
+                className="on-dark" style={{
                   width: "100%",
                   borderRadius: "0.5rem",
                   padding: "2rem 1.5rem",
@@ -253,7 +253,7 @@ export default function SobrePage() {
       {/* Location / Real Address section */}
       <section
         id="localizacao"
-        className="section-padding"
+        className="on-dark section-padding"
         style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)" }}
       >
         <div className="section-container" style={{ maxWidth: "760px" }}>
@@ -290,7 +290,7 @@ export default function SobrePage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #D4D4D4, #6B6B6B)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
           <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.75rem" }}>
             Pronto para solicitar o seu orçamento?

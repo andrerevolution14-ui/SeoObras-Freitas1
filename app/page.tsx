@@ -283,7 +283,7 @@ export default function HomePage() {
 
         <div className="section-container" style={{ width: "100%", position: "relative", zIndex: 2 }}>
           <div className="gf-hero-grid">
-            <div className="gf-hero-text">
+            <div className="gf-hero-text hero-enter">
               <div className="hero-section-label">Empresa Licenciada · Alvará IMPIC</div>
 
               <h1 className="gf-hero-title">
@@ -346,7 +346,7 @@ export default function HomePage() {
             margin-bottom: 1.75rem;
             text-wrap: balance;
           }
-          .gf-hero-dot { color: #8C8C8C; }
+          .gf-hero-dot { color: #ffffff; opacity: 0.5; }
           .gf-hero-services {
             display: flex;
             flex-wrap: wrap;
@@ -392,7 +392,10 @@ export default function HomePage() {
             .gf-hero-title { font-size: clamp(2.35rem, 10vw, 3.25rem); margin-bottom: 1.25rem; }
             .gf-hero-services { justify-content: center; font-size: 0.6875rem; margin-bottom: 0; }
             .gf-hero-lead, .gf-hero-ctas { display: none; }
-            .gf-hero-proof { order: 5; border-top: 0; padding-top: 1.25rem; font-size: 0.75rem; }
+            .gf-hero-proof { order: 5; border-top: 0; padding-top: 1.25rem; font-size: 0.75rem; gap: 0.5rem; white-space: nowrap; justify-content: center; }
+            .gf-hero-proof svg:last-child { display: none; }
+            .gf-hero-proof .stars svg { width: 11px; height: 11px; }
+            .gf-hero-proof { font-size: 0.71875rem; }
             .hero-section-label { margin-bottom: 1.125rem; font-size: 0.625rem; }
             .hero-section-label::before { display: none; }
           }
@@ -411,28 +414,28 @@ export default function HomePage() {
       <ServiceGrid />
 
       {/* ── 5. QUEM SOMOS — JORGE FREITAS (E-E-A-T) ─────── */}
-      <section className="section-padding gf-about on-dark" style={{ background: "#0A0A0A" }}>
+      <section className="section-padding gf-about on-dark tex-dark" style={{ background: "#0A0A0A" }}>
         <div className="section-container">
           <div className="gf-about-grid">
-            <div className="gf-about-photo photo-slot">
+            <div className="gf-about-photo photo-slot" data-reveal="image">
               <Image
-                src={BRAND_IMAGES.founder.src}
-                alt={BRAND_IMAGES.founder.alt}
+                src={BRAND_IMAGES.team.src}
+                alt={BRAND_IMAGES.team.alt}
                 fill
                 sizes="(max-width: 900px) 100vw, 45vw"
                 quality={85}
-                style={{ objectFit: "cover", objectPosition: "center 25%" }}
+                style={{ objectFit: "cover", objectPosition: "center 40%" }}
               />
               <div className="gf-about-caption">
-                <span className="font-display">{CONTRACTOR_INFO.contractorName}</span>
-                <span>{CONTRACTOR_INFO.jobTitle} · Fundador</span>
+                <span className="font-display">A nossa equipa em obra</span>
+                <span>Direção técnica · {CONTRACTOR_INFO.contractorName}</span>
               </div>
             </div>
 
             <div>
               <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Quem Somos</p>
               <h2 className="section-title" style={{ color: "#ffffff" }}>
-                Supervisão Direta pelo <span style={{ color: "#8C8C8C" }}>Empreiteiro Jorge Freitas</span>
+                Supervisão Direta pelo <span className="text-metal">Empreiteiro Jorge Freitas</span>
               </h2>
               <p className="gf-about-lead">
                 A Freitas Renovações LDA é uma empresa de construção licenciada, sediada em Aveiro. Mais de {CONTRACTOR_INFO.projectsCompleted} obras concluídas assentam no mesmo princípio: quem orçamenta é quem responde pela obra. O Jorge Freitas acompanha pessoalmente cada projeto, do primeiro levantamento à entrega da chave.
@@ -440,7 +443,7 @@ export default function HomePage() {
 
               <div className="gf-pillars">
                 {PILLARS.map((p, i) => (
-                  <div key={p.title} className="gf-pillar">
+                  <div key={p.title} className="gf-pillar" data-reveal style={{ ["--d" as string]: `${i * 90}ms` }}>
                     <span className="gf-pillar-num font-display">{String(i + 1).padStart(2, "0")}</span>
                     <h3>{p.title}</h3>
                     <p>{p.desc}</p>
@@ -492,14 +495,14 @@ export default function HomePage() {
               </p>
               <dl className="gf-facts">
                 {COMPANY_FACTS.map((f) => (
-                  <div key={f.k} className="gf-fact">
+                  <div key={f.k} className="gf-fact" data-reveal="fade">
                     <dt>{f.k}</dt>
                     <dd>{f.v}</dd>
                   </div>
                 ))}
               </dl>
             </div>
-            <div className="gf-commit on-dark">
+            <div className="gf-commit on-dark tex-dark" data-reveal>
               <p className="gf-commit-kicker">Os nossos compromissos</p>
               <h3 className="gf-commit-title font-display">Tudo o que prometemos fica escrito.</h3>
               <ol className="gf-commit-list">
@@ -543,12 +546,12 @@ export default function HomePage() {
       {/* ── 6. PROCESSO (espelha o HowTo do schema) ─────── */}
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
-          <div className="gf-proc-head">
+          <div className="gf-proc-head" data-reveal>
             <div>
               <p className="section-eyebrow">Como Trabalhamos</p>
               <h2 className="section-title" style={{ marginBottom: 0 }}>Do primeiro contacto à entrega da chave.</h2>
             </div>
-            <div className="gf-proc-photo photo-slot">
+            <div className="gf-proc-photo photo-slot" data-reveal="image">
               <Image
                 src={BRAND_IMAGES.process.src}
                 alt={BRAND_IMAGES.process.alt}
@@ -560,7 +563,7 @@ export default function HomePage() {
           </div>
           <ol className="gf-proc">
             {PROCESS_STEPS.map((step, i) => (
-              <li key={step.name} className="gf-proc-step">
+              <li key={step.name} className="gf-proc-step" data-reveal style={{ ["--d" as string]: `${i * 120}ms` }}>
                 <span className="gf-proc-num font-display">{String(i + 1).padStart(2, "0")}</span>
                 <h3>{step.name.replace(/^\d+\.\s*/, "")}</h3>
                 <p>{step.text}</p>
@@ -594,8 +597,8 @@ export default function HomePage() {
       <GoogleReviews />
 
       {/* ── 8. CRÉDITO & FINANCIAMENTO ───────────────────── */}
-      <section className="gf-credit on-dark">
-        <div className="gf-credit-photo photo-slot">
+      <section className="gf-credit on-dark tex-dark">
+        <div className="gf-credit-photo photo-slot" data-reveal="image">
           <Image
             src={BRAND_IMAGES.credit.src}
             alt={BRAND_IMAGES.credit.alt}
@@ -607,7 +610,7 @@ export default function HomePage() {
         <div className="gf-credit-body">
           <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Crédito para Obras · Serviço Gratuito</p>
           <h2 className="section-title" style={{ color: "#ffffff" }}>
-            Financiamento para a sua obra, <span style={{ color: "#8C8C8C" }}>sem custos de intermediação.</span>
+            Financiamento para a sua obra, <span className="text-metal">sem custos de intermediação.</span>
           </h2>
           <p className="gf-credit-text">
             Trabalhamos com um <strong>intermediário de crédito parceiro, autorizado pelo Banco de Portugal</strong>, que compara propostas de mais de 10 bancos e apresenta a solução mais vantajosa para financiar a sua remodelação. O serviço é gratuito para o cliente e não o obriga a avançar.
@@ -655,7 +658,7 @@ export default function HomePage() {
       {/* ── 9. PREÇOS DE REFERÊNCIA + RESPOSTAS (AEO) ────── */}
       <section className="section-padding" style={{ background: "#F4F4F2" }}>
         <div className="section-container">
-          <div className="gf-price-head">
+          <div className="gf-price-head" data-reveal>
             <div>
               <p className="section-eyebrow">Preços e Condições Transparentes</p>
               <h2 className="section-title" style={{ marginBottom: 0 }}>
@@ -667,7 +670,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="gf-table-wrap">
+          <div className="gf-table-wrap" data-reveal>
             <table className="gf-table">
               <thead>
                 <tr>
@@ -692,7 +695,7 @@ export default function HomePage() {
 
           <div className="gf-aeo">
             {AEO_CARDS.map((c) => (
-              <div key={c.q} className="gf-aeo-item">
+              <div key={c.q} className="gf-aeo-item" data-reveal>
                 <p className="gf-aeo-kicker">{c.kicker}</p>
                 <h3>{c.q}</h3>
                 <p className="gf-aeo-text">{c.a}</p>
@@ -748,7 +751,7 @@ export default function HomePage() {
       {/* ── 10. CONCELHOS LIMÍTROFES ─────────────────────── */}
       <section className="section-padding" style={{ background: "#ffffff" }}>
         <div className="section-container">
-          <div className="gf-area-head">
+          <div className="gf-area-head" data-reveal>
             <div>
               <p className="section-eyebrow">Expansão Regional</p>
               <h2 className="section-title" style={{ marginBottom: 0 }}>
@@ -759,9 +762,22 @@ export default function HomePage() {
               Com sede em Aveiro, executamos obras com rapidez, rigor e garantia aos municípios e praias circundantes.
             </p>
           </div>
+          <div className="gf-region photo-slot" data-reveal="image">
+            <Image
+              src={BRAND_IMAGES.region.src}
+              alt={BRAND_IMAGES.region.alt}
+              fill
+              sizes="100vw"
+              style={{ objectFit: "cover", objectPosition: "center 55%" }}
+            />
+            <div className="gf-region-caption">
+              <span className="font-display">Aveiro</span>
+              <span>Sede · Glória e Vera Cruz · Esgueira · Aradas · São Bernardo · Cácia</span>
+            </div>
+          </div>
           <div className="gf-areas">
-            {NEIGHBOR_AREAS.map((area) => (
-              <Link key={area.slug} href={`/areas-atuacao/${area.slug}`} className="gf-area">
+            {NEIGHBOR_AREAS.map((area, i) => (
+              <Link key={area.slug} href={`/areas-atuacao/${area.slug}`} className="gf-area" data-reveal style={{ ["--d" as string]: `${i * 80}ms` }}>
                 <span className="gf-area-sub">{area.subtitle}</span>
                 <h3>{area.name}</h3>
                 <p>{area.desc}</p>
@@ -774,6 +790,12 @@ export default function HomePage() {
         </div>
         <style>{`
           .gf-area-head { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
+          .gf-region { aspect-ratio: 21 / 7; margin-bottom: 0; }
+          .gf-region::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0) 55%); }
+          .gf-region-caption { position: absolute; left: 2.5rem; bottom: 2rem; z-index: 2; display: flex; flex-direction: column; gap: 0.4rem; }
+          .gf-region-caption span:first-child { color: #ffffff; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; }
+          .gf-region-caption span:last-child { color: rgba(255,255,255,0.75); font-size: 0.8125rem; }
+          @media (max-width: 640px) { .gf-region { aspect-ratio: 4 / 3; } .gf-region-caption { left: 1.25rem; bottom: 1.25rem; right: 1.25rem; } }
           .gf-areas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid #E5E5E3; border-bottom: 1px solid #E5E5E3; }
           .gf-area {
             display: flex;
@@ -811,7 +833,7 @@ export default function HomePage() {
       </div>
 
       {/* ── 12. CTA FINAL ────────────────────────────────── */}
-      <section className="gf-final on-dark">
+      <section className="gf-final on-dark tex-dark">
         <Image
           src={BRAND_IMAGES.closing.src}
           alt={BRAND_IMAGES.closing.alt}
@@ -822,7 +844,7 @@ export default function HomePage() {
         <div className="gf-final-overlay" />
         <div className="section-container gf-final-inner">
           <p className="section-eyebrow" style={{ color: "#8C8C8C" }}>Orçamento Gratuito e Sem Compromisso</p>
-          <h2 className="gf-final-title">Fale connosco sobre a sua obra.</h2>
+          <h2 className="gf-final-title" data-reveal>Fale connosco <span className="text-metal">sobre a sua obra.</span></h2>
           <p className="gf-final-text">
             Envie-nos fotografias e medidas aproximadas. O Jorge Freitas analisa o pedido e responde em até 12 horas com uma primeira estimativa discriminada.
           </p>

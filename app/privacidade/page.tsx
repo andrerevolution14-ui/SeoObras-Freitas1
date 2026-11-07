@@ -51,7 +51,7 @@ export default function PrivacidadePage() {
 
       {/* Hero Header */}
       <section
-        style={{
+        className="on-dark" style={{
           background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
           padding: "7.5rem 0 4rem",
           color: "#ffffff",
@@ -214,7 +214,7 @@ export default function PrivacidadePage() {
 
           {/* Contact Box */}
           <div
-            style={{
+            className="on-dark" style={{
               marginTop: "3rem",
               padding: "2rem",
               background: "linear-gradient(135deg, #0A0A0A, #171717)",

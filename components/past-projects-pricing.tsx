@@ -133,7 +133,7 @@ export function PastProjectsPricing() {
               >
                 {/* Image Container with Real SEO Alt Text */}
                 <div
-                  style={{
+                  className="on-dark" style={{
                     position: "relative",
                     height: "230px",
                     width: "100%",
@@ -364,7 +364,7 @@ export function PastProjectsPricing() {
 
         {/* Interactive Comparison Banner */}
         <div
-          style={{
+          className="on-dark" style={{
             marginTop: "3rem",
             background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
             borderRadius: "0.75rem",

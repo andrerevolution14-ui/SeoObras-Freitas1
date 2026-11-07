@@ -163,7 +163,7 @@ export function RenovationPlanner() {
               <div
                 key={step.number}
                 style={{
-                  background: isCompleted ? "#f0fdf4" : "#ffffff",
+                  background: isCompleted ? "#F4F4F2" : "#ffffff",
                   border: isCompleted ? "1.5px solid #86efac" : "1.5px solid #E5E5E3",
                   borderRadius: "0.75rem",
                   padding: "1.5rem",
@@ -304,7 +304,7 @@ export function RenovationPlanner() {
         <div
           style={{
             marginTop: "2.5rem",
-            background: "linear-gradient(135deg, #D4D4D4 0%, #6B6B6B 100%)",
+            background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)",
             borderRadius: "0.75rem",
             padding: "2rem",
             textAlign: "center",

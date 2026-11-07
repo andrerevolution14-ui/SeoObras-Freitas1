@@ -6,8 +6,8 @@ export function VerdemontShowcase() {
   return (
     <section
       id="projeto-destaque-verdemont"
-      style={{
-        background: "linear-gradient(135deg, #051329 0%, #0a2347 50%, #0A0A0A 100%)",
+      className="on-dark" style={{
+        background: "linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)",
         color: "#ffffff",
         position: "relative",
         overflow: "hidden",
@@ -83,7 +83,7 @@ export function VerdemontShowcase() {
                 gap: "0.5rem",
                 fontSize: "1.0625rem",
                 fontWeight: 700,
-                color: "#fef08a",
+                color: "#E5E5E3",
                 marginBottom: "1.25rem",
               }}
             >
@@ -152,7 +152,7 @@ export function VerdemontShowcase() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.625rem",
-                  background: "linear-gradient(135deg, #D4D4D4 0%, #6B6B6B 100%)",
+                  background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)",
                   color: "#0A0A0A",
                   fontWeight: 900,
                   fontSize: "1rem",
@@ -192,7 +192,7 @@ export function VerdemontShowcase() {
           {/* Right Column: Visual Showcase Card */}
           <div>
             <div
-              style={{
+              className="on-dark" style={{
                 position: "relative",
                 borderRadius: "1rem",
                 overflow: "hidden",
@@ -220,7 +220,7 @@ export function VerdemontShowcase() {
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(5, 19, 41, 0.95) 0%, rgba(5, 19, 41, 0.2) 60%, transparent 100%)",
+                  background: "linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.2) 60%, transparent 100%)",
                 }}
               />
 

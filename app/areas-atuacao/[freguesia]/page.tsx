@@ -117,7 +117,7 @@ export default async function ParishPage({ params }: Props) {
 
       {/* Hero */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.58) 100%), url('/heroes/aveiro-barra-costa.jpg')",
@@ -146,7 +146,7 @@ export default async function ParishPage({ params }: Props) {
                   gap: "0.5rem",
                   background: "rgba(128, 128, 128, 0.15)",
                   border: "1px solid rgba(128, 128, 128, 0.3)",
-                  color: "#fef08a",
+                  color: "#E5E5E3",
                   borderRadius: "2rem",
                   padding: "0.35rem 0.875rem",
                   fontSize: "0.75rem",

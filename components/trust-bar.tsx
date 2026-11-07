@@ -12,15 +12,15 @@ const stats: { value: React.ReactNode; suffix?: string; label: string; sub: stri
 /** Faixa institucional de credenciais — logo abaixo do hero. */
 export function TrustBar() {
   return (
-    <div className="trust-bar gf-stats on-dark" aria-label="Credenciais Freitas Renovações">
+    <div className="trust-bar gf-stats on-dark tex-dark" aria-label="Credenciais Freitas Renovações">
       <div className="section-container">
         <dl className="gf-stats-grid">
           {stats.map((s) => (
             <div key={s.label} className="gf-stat">
               <dt className="gf-stat-label">{s.label}</dt>
-              <dd className="gf-stat-value font-display">
+              <dd className="gf-stat-value font-display"><span className="text-metal">
                 {s.value}
-                {s.suffix && <span className="gf-stat-suffix">{s.suffix}</span>}
+                </span>{s.suffix && <span className="gf-stat-suffix">{s.suffix}</span>}
               </dd>
               <dd className="gf-stat-sub">{s.sub}</dd>
             </div>
@@ -29,7 +29,7 @@ export function TrustBar() {
       </div>
 
       <style>{`
-        .gf-stats { background: #0A0A0A; border-top: 0; }
+        .gf-stats { background: #0A0A0A; border-top: 1px solid rgba(255,255,255,0.1); }
         .gf-stats-grid {
           display: grid;
           grid-template-columns: repeat(5, minmax(0, 1fr));

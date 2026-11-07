@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 4rem" }}>
+      <section className="on-dark" style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container" style={{ maxWidth: "840px" }}>
           {/* Breadcrumb */}
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
@@ -185,13 +185,13 @@ export default async function BlogPostPage({ params }: Props) {
             }}
           >
             <Image
-              src="/jorge-freitas.jpg"
-              alt="Empreiteiro Jorge Freitas — Autor e especialista técnico de construção civil e remodelações em Aveiro"
+              src="/icon-192.png"
+              alt="Freitas Renovações — artigo verificado pelo Empreiteiro Jorge Freitas, Aveiro"
               width={70}
               height={70}
               quality={75}
               loading="lazy"
-              style={{ width: "70px", height: "70px", borderRadius: "50%", objectFit: "cover", border: "2px solid #6B6B6B", flexShrink: 0 }}
+              style={{ width: "70px", height: "70px", borderRadius: "2px", objectFit: "cover", flexShrink: 0 }}
             />
             <div>
               <div style={{ fontWeight: 800, color: "#0A0A0A", fontSize: "1.0625rem" }}>
@@ -229,7 +229,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Call to Action Card */}
           <div
-            style={{
+            className="on-dark" style={{
               marginTop: "3rem",
               background: "linear-gradient(135deg, #0A0A0A, #171717)",
               borderRadius: "0.5rem",

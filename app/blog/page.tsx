@@ -80,7 +80,7 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 4rem" }}>
+      <section className="on-dark" style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 4rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
@@ -115,7 +115,7 @@ export default function BlogIndexPage() {
                 }}
               >
                 {/* Image Header */}
-                <div style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
+                <div className="on-dark" style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
                   <img
                     src={post.image}
                     alt={`${post.title} — Artigo de remodelações em Aveiro por Jorge Freitas`}
@@ -186,7 +186,7 @@ export default function BlogIndexPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #D4D4D4, #6B6B6B)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
           <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.75rem" }}>
             Tem dúvidas sobre a sua obra em Aveiro?

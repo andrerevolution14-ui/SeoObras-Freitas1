@@ -109,7 +109,7 @@ export default function PrecosM2Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(precosM2JsonLd) }}
       />
       {/* Hero */}
-      <section style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 3.5rem" }}>
+      <section className="on-dark" style={{ background: "linear-gradient(135deg, #0A0A0A, #171717)", padding: "7.5rem 0 3.5rem" }}>
         <div className="section-container">
           <nav style={{ marginBottom: "1.25rem", display: "flex", gap: "0.5rem", fontSize: "0.8125rem" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>Início</Link>
@@ -209,7 +209,7 @@ export default function PrecosM2Page() {
       </section>
 
       {/* CTA Final */}
-      <section style={{ background: "#0A0A0A", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section className="on-dark" style={{ background: "#0A0A0A", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
           <Shield size={36} style={{ color: "#D4D4D4", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>

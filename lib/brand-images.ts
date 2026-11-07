@@ -5,7 +5,7 @@
 // Para trocar uma imagem (ex.: novas fotos geradas no Higgsfield):
 //   1. Coloque o ficheiro em /public/brand/ (ex.: /public/brand/hero.jpg)
 //   2. Altere apenas o `src` abaixo. Mantenha o `alt` descritivo (SEO).
-// Tamanhos recomendados estão indicados em cada entrada.
+// Regra de marca: fotografias SEMPRE a cores, luz natural/quente.
 // ============================================================
 
 export interface BrandImage {
@@ -16,19 +16,19 @@ export interface BrandImage {
 }
 
 export const BRAND_IMAGES = {
-  /** Fundo do hero da homepage — cinematográfico, tons escuros, interior premium. */
+  /** Fundo do hero da homepage — interior remodelado, luz quente, pessoas. */
   hero: {
-    src: "/hero-bg-v4.jpg",
-    alt: "Cozinha contemporânea remodelada pelo Freitas Renovações em Aveiro",
-    recommended: "2400×1350 (16:9), escura à esquerda para o texto",
+    src: "/heroes/familia-cozinha-nova.jpg",
+    alt: "Família na cozinha e sala em open space remodeladas pela Freitas Renovações em Aveiro",
+    recommended: "2400×1350 (16:9), zona esquerda mais calma para o texto",
   },
-  /** Retrato do fundador — secção "Quem somos". */
-  founder: {
-    src: "/jorge-freitas.jpg",
-    alt: "Jorge Freitas, Empreiteiro Geral e fundador do Freitas Renovações em Aveiro",
-    recommended: "1200×1500 (4:5), retrato em obra",
+  /** Equipa em obra — secção "Quem somos". */
+  team: {
+    src: "/r10.webp",
+    alt: "Equipa da Freitas Renovações a aplicar pavimento numa remodelação em Aveiro",
+    recommended: "1200×1500 (4:5), equipa uniformizada em obra",
   },
-  /** Equipa / reunião com clientes — secção de processo. */
+  /** Reunião com clientes — secção de processo. */
   process: {
     src: "/heroes/empreiteiro-clientes-obra.jpg",
     alt: "Empreiteiro Jorge Freitas a rever o projeto de remodelação com clientes em Aveiro",
@@ -46,10 +46,10 @@ export const BRAND_IMAGES = {
     alt: "Casal na sala acabada de remodelar em Aveiro",
     recommended: "1600×1200 (4:3), lifestyle",
   },
-  /** Faixa de manifesto (imagem larga). */
-  manifesto: {
-    src: "/hero-bg-v3.jpg",
-    alt: "Interior de cozinha e sala em open space remodelado pelo Freitas Renovações",
-    recommended: "2400×1000 (21:9)",
+  /** Identidade local — secção de zonas de atuação. */
+  region: {
+    src: "/heroes/aveiro-ria-moliceiros.jpg",
+    alt: "Moliceiros na Ria de Aveiro ao pôr do sol — zona de atuação da Freitas Renovações",
+    recommended: "2400×900 (8:3), paisagem de Aveiro",
   },
 } satisfies Record<string, BrandImage>;

@@ -8,7 +8,7 @@ export function RealProjectsGallery() {
     <section className="section-padding" id="projetos-realizados" style={{ background: "#ffffff" }}>
       <div className="section-container">
         {/* Cabeçalho */}
-        <div className="gf-proj-head">
+        <div className="gf-proj-head" data-reveal>
           <div>
             <p className="section-eyebrow">Trabalhos Concluídos</p>
             <h2 className="section-title" style={{ marginBottom: 0 }}>
@@ -28,7 +28,7 @@ export function RealProjectsGallery() {
         {/* Grelha editorial */}
         <div className="gf-proj-grid">
           {REAL_PROJECTS.map((project, i) => (
-            <article key={project.id} className="gf-proj">
+            <article key={project.id} className="gf-proj" data-reveal style={{ ["--d" as string]: `${(i % 2) * 120}ms` }}>
               <Link href="/#hero-form" className="gf-proj-media photo-slot" aria-label={`Pedir orçamento para obra idêntica: ${project.title}`}>
                 <Image
                   src={project.image}
@@ -95,10 +95,7 @@ export function RealProjectsGallery() {
           transition: opacity 0.5s ease;
         }
         .gf-proj-media:hover::after { opacity: 1; }
-        @media (hover: hover) {
-          .gf-proj-media img { filter: grayscale(1) contrast(1.05); transition: filter 0.7s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) !important; }
-          .gf-proj-media:hover img { filter: none; }
-        }
+
         .gf-proj-year {
           position: absolute;
           top: 1.25rem;

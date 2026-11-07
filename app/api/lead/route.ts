@@ -83,13 +83,13 @@ export async function POST(request: NextRequest) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin:0;padding:0;background:#f1f5f9;font-family:'Segoe UI',Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:32px 16px;">
+<body style="margin:0;padding:0;background:#F2F2F0;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F2F2F0;padding:32px 16px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
         <!-- Header -->
         <tr>
-          <td style="background:linear-gradient(135deg,#071a3a,#0f2d5e);padding:28px 32px;">
+          <td style="background:linear-gradient(135deg,#0A0A0A,#171717);padding:28px 32px;">
             <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:800;">🏠 Novo Pedido de Orçamento</h1>
             <p style="margin:6px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">Freitas Renovações LDA — ${createdAt}</p>
           </td>
@@ -107,36 +107,36 @@ export async function POST(request: NextRequest) {
           <td style="padding:20px 32px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                <td style="padding:10px 0;border-bottom:1px solid #F2F2F0;">
                   <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Cliente</span>
-                  <div style="color:#0f172a;font-size:16px;font-weight:700;margin-top:4px;">${lead.name}</div>
+                  <div style="color:#111111;font-size:16px;font-weight:700;margin-top:4px;">${lead.name}</div>
                 </td>
               </tr>
               <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                <td style="padding:10px 0;border-bottom:1px solid #F2F2F0;">
                   <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Telefone</span>
                   <div style="margin-top:4px;">
-                    <a href="tel:${lead.phone}" style="color:#0f2d5e;font-size:20px;font-weight:800;text-decoration:none;">${lead.phone}</a>
+                    <a href="tel:${lead.phone}" style="color:#171717;font-size:20px;font-weight:800;text-decoration:none;">${lead.phone}</a>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                <td style="padding:10px 0;border-bottom:1px solid #F2F2F0;">
                   <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Serviço</span>
-                  <div style="color:#0f172a;font-size:15px;font-weight:600;margin-top:4px;">${lead.service}</div>
+                  <div style="color:#111111;font-size:15px;font-weight:600;margin-top:4px;">${lead.service}</div>
                 </td>
               </tr>
               <tr>
-                <td style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+                <td style="padding:10px 0;border-bottom:1px solid #F2F2F0;">
                   <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Localização</span>
-                  <div style="color:#0f172a;font-size:15px;font-weight:600;margin-top:4px;">${lead.parish}</div>
+                  <div style="color:#111111;font-size:15px;font-weight:600;margin-top:4px;">${lead.parish}</div>
                 </td>
               </tr>
               ${lead.description ? `
               <tr>
                 <td style="padding:10px 0;">
                   <span style="color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">Descrição</span>
-                  <div style="color:#334155;font-size:14px;line-height:1.6;margin-top:4px;background:#f8fafc;border-radius:6px;padding:10px 12px;">${lead.description}</div>
+                  <div style="color:#3A3A3A;font-size:14px;line-height:1.6;margin-top:4px;background:#F7F7F5;border-radius:6px;padding:10px 12px;">${lead.description}</div>
                 </td>
               </tr>` : ""}
             </table>
@@ -145,15 +145,15 @@ export async function POST(request: NextRequest) {
         <!-- CTA -->
         <tr>
           <td style="padding:0 32px 28px;">
-            <a href="tel:${lead.phone}" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#071a3a;font-size:15px;font-weight:800;text-decoration:none;padding:14px 28px;border-radius:8px;">
+            <a href="tel:${lead.phone}" style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0A0A0A;font-size:15px;font-weight:800;text-decoration:none;padding:14px 28px;border-radius:8px;">
               📞 Ligar Agora para ${lead.name}
             </a>
           </td>
         </tr>
         <!-- Footer -->
         <tr>
-          <td style="background:#f8fafc;padding:16px 32px;border-top:1px solid #e2e8f0;">
-            <p style="margin:0;color:#94a3b8;font-size:12px;">ID: ${leadId} · Freitas Renovações LDA · freitasrenovacoes.pt</p>
+          <td style="background:#F7F7F5;padding:16px 32px;border-top:1px solid #E5E5E3;">
+            <p style="margin:0;color:#999999;font-size:12px;">ID: ${leadId} · Freitas Renovações LDA · freitasrenovacoes.pt</p>
           </td>
         </tr>
       </table>

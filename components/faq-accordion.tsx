@@ -31,7 +31,7 @@ export function FaqAccordion() {
 
       <div className="section-container">
         <div className="gf-faq">
-          <div className="gf-faq-intro">
+          <div className="gf-faq-intro" data-reveal>
             <p className="section-eyebrow">Perguntas Frequentes</p>
             <h2 className="section-title">Dúvidas sobre obras em Aveiro?</h2>
             <p className="section-subtitle" style={{ marginBottom: "2rem" }}>

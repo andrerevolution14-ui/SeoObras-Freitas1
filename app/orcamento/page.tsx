@@ -79,7 +79,7 @@ export default function OrcamentoPage() {
 
       {/* Hero */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.76) 55%, rgba(23, 23, 23, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
@@ -141,7 +141,7 @@ export default function OrcamentoPage() {
               </h2>
 
               {/* Phone CTA */}
-              <div style={{
+              <div className="on-dark" style={{
                 background: "#0A0A0A", borderRadius: "0.75rem", padding: "1.75rem",
                 marginBottom: "1.25rem", border: "2px solid rgba(128, 128, 128,0.3)",
               }}>

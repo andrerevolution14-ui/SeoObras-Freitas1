@@ -334,7 +334,7 @@ export function CostCalculator({
 
           {/* Results Column */}
           <div
-            style={{
+            className="on-dark" style={{
               background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
               padding: "2rem",
               color: "#ffffff",

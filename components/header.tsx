@@ -88,7 +88,12 @@ export function Header() {
 
       {/* Navegação principal */}
       <div className="section-container gf-nav-row">
-        <BrandLogo tone="light" size="md" />
+        <a href={`tel:${CONTRACTOR_INFO.phone}`} className="mobile-controls gf-burger gf-mobile-call" aria-label={`Ligar ${CONTRACTOR_INFO.phoneDisplay}`}>
+          <Phone size={18} />
+        </a>
+        <div className="gf-logo-slot">
+          <BrandLogo tone="light" size="md" />
+        </div>
 
         <nav className="gf-nav hidden-mobile" aria-label="Navegação principal">
           {NAV_LINKS.map((l) => (
@@ -157,6 +162,8 @@ export function Header() {
           {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
+
+      <span className="gf-progress" aria-hidden="true" />
 
       {/* Menu mobile */}
       {isMobileMenuOpen && (
@@ -256,13 +263,33 @@ export function Header() {
         .gf-topbar-link { color: rgba(255, 255, 255, 0.65); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; transition: color 0.2s; }
         .gf-topbar-link:hover { color: #ffffff; }
         .gf-nav-row {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
           align-items: center;
-          justify-content: space-between;
           height: 80px;
           transition: height 0.35s ease;
           gap: 2rem;
         }
+        .gf-logo-slot { display: flex; align-items: center; justify-self: start; }
+        .gf-nav-cta { justify-self: end; }
+        .gf-mobile-call { display: none; color: #ffffff; text-decoration: none; }
+        .gf-progress {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -1px;
+          height: 2px;
+          background: var(--metal);
+          transform-origin: left;
+          transform: scaleX(0);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        .gf-header.is-solid .gf-progress { opacity: 1; }
+        @supports (animation-timeline: scroll()) {
+          .gf-progress { animation: gf-progress linear both; animation-timeline: scroll(root); }
+        }
+        @keyframes gf-progress { to { transform: scaleX(1); } }
         .gf-header.is-solid .gf-nav-row { height: 70px; }
         .gf-nav { display: flex; align-items: center; gap: 2.25rem; }
         .gf-nav-link {
@@ -383,7 +410,10 @@ export function Header() {
         @media (max-width: 900px) {
           .hidden-mobile { display: none !important; }
           .mobile-controls { display: inline-flex !important; }
-          .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; }
+          .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; grid-template-columns: 44px 1fr 44px; gap: 0.75rem; }
+          .gf-logo-slot { justify-self: center; }
+          .gf-burger { justify-self: end; }
+          .gf-mobile-call { justify-self: start; }
         }
       `}</style>
     </header>

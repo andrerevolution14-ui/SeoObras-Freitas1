@@ -189,10 +189,10 @@ export default function ClientesPage() {
       {/* ── 1. HERO DE ALTA CONFIANÇA COM IMAGEM DE FUNDO REAL ── */}
       <section
         aria-label="O que dizem os nossos clientes — Obras e remodelações reais em Aveiro"
-        style={{
-          backgroundColor: "#050e22",
+        className="on-dark" style={{
+          backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(180deg, rgba(5, 14, 34, 0.90) 0%, rgba(10, 10, 10, 0.85) 55%, rgba(5, 14, 34, 0.92) 100%), url('/heroes/casal-sala-renovada.jpg')",
+            "linear-gradient(180deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.85) 55%, rgba(10, 10, 10, 0.92) 100%), url('/heroes/casal-sala-renovada.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
@@ -312,7 +312,7 @@ export default function ClientesPage() {
 
       {/* ── 4. CTA FINAL ── */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(135deg, rgba(10, 10, 10, 0.88) 0%, rgba(23, 23, 23, 0.78) 100%), url('/heroes/casal-chaves-casa.jpg')",

@@ -90,7 +90,7 @@ export default function PrecosReaisPage() {
       />
       {/* Hero */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.76) 55%, rgba(23, 23, 23, 0.52) 100%), url('/heroes/familia-cozinha-nova.jpg')",
@@ -130,7 +130,7 @@ export default function PrecosReaisPage() {
       <PastProjectsPricing />
 
       {/* CTA Final */}
-      <section style={{ background: "#0A0A0A", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+      <section className="on-dark" style={{ background: "#0A0A0A", padding: "4rem 0", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div className="section-container" style={{ textAlign: "center", maxWidth: "680px" }}>
           <Shield size={36} style={{ color: "#D4D4D4", margin: "0 auto 1rem" }} />
           <h2 style={{ fontSize: "1.75rem", fontWeight: 800, color: "#ffffff", marginBottom: "0.75rem" }}>

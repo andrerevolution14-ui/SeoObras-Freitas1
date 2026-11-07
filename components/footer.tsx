@@ -42,7 +42,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer gf-footer">
+    <footer className="footer gf-footer tex-dark">
       <div className="section-container">
         {/* Bloco de abertura */}
         <div className="gf-foot-hero">

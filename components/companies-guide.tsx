@@ -94,7 +94,7 @@ export function CompaniesGuide() {
                       alignItems: "center",
                       gap: "0.375rem",
                       color: "#166534",
-                      background: "#f0fdf4",
+                      background: "#F4F4F2",
                       padding: "0.35rem 0.65rem",
                       borderRadius: "0.25rem",
                       fontSize: "0.75rem",
@@ -172,7 +172,7 @@ export function CompaniesGuide() {
 
         {/* Action strip */}
         <div
-          style={{
+          className="on-dark" style={{
             marginTop: "3rem",
             background: "#0A0A0A",
             borderRadius: "0.75rem",

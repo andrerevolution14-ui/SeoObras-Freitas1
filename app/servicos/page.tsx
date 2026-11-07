@@ -111,7 +111,7 @@ export default function ServicosPage() {
 
       {/* Hero */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.55) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
@@ -214,7 +214,7 @@ export default function ServicosPage() {
       </section>
 
       {/* Why Us Strip */}
-      <section style={{ background: "#0A0A0A", padding: "3rem 0" }}>
+      <section className="on-dark" style={{ background: "#0A0A0A", padding: "3rem 0" }}>
         <div className="section-container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem", textAlign: "center" }}>
             {[
@@ -233,7 +233,7 @@ export default function ServicosPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #D4D4D4, #6B6B6B)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
           <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.5rem" }}>
             Não sabe qual o serviço que precisa?

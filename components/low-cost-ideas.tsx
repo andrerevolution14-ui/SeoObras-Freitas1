@@ -87,7 +87,7 @@ export function LowCostIdeas() {
                   </span>
                   <span
                     style={{
-                      background: "#dcfce7",
+                      background: "#EDEDEB",
                       color: "#166534",
                       fontSize: "0.75rem",
                       fontWeight: 800,

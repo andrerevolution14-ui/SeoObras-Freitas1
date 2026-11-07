@@ -51,7 +51,7 @@ export default function TermosPage() {
 
       {/* Hero Header */}
       <section
-        style={{
+        className="on-dark" style={{
           background: "linear-gradient(135deg, #0A0A0A 0%, #171717 100%)",
           padding: "7.5rem 0 4rem",
           color: "#ffffff",

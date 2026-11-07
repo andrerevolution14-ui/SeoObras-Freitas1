@@ -23,7 +23,7 @@ const PROJECTS: BeforeAfterProject[] = [
     beforeLabel: "ANTES",
     afterLabel: "DEPOIS",
     beforeBg: "linear-gradient(135deg, #7c6f64 0%, #5c5247 100%)",
-    afterBg: "linear-gradient(135deg, #e8f4f8 0%, #c8e6f0 100%)",
+    afterBg: "linear-gradient(135deg, #F4F4F2 0%, #E5E5E3 100%)",
   },
   {
     id: "p2",
@@ -33,7 +33,7 @@ const PROJECTS: BeforeAfterProject[] = [
     beforeLabel: "ANTES",
     afterLabel: "DEPOIS",
     beforeBg: "linear-gradient(135deg, #8b7355 0%, #6b5a42 100%)",
-    afterBg: "linear-gradient(135deg, #f0f4f0 0%, #d4e8d4 100%)",
+    afterBg: "linear-gradient(135deg, #f0f4f0 0%, #E5E5E3 100%)",
   },
   {
     id: "p3",
@@ -43,7 +43,7 @@ const PROJECTS: BeforeAfterProject[] = [
     beforeLabel: "ANTES",
     afterLabel: "DEPOIS",
     beforeBg: "linear-gradient(135deg, #9e9086 0%, #7d706a 100%)",
-    afterBg: "linear-gradient(135deg, #fefce8 0%, #fde68a 100%)",
+    afterBg: "linear-gradient(135deg, #F7F7F5 0%, #E5E5E3 100%)",
   },
 ];
 
@@ -208,7 +208,7 @@ function SliderCard({ project }: { project: BeforeAfterProject }) {
             bottom: "0.625rem",
             left: "50%",
             transform: "translateX(-50%)",
-            background: "rgba(15, 23, 42, 0.75)",
+            background: "rgba(10, 10, 10, 0.75)",
             color: "#ffffff",
             fontSize: "0.65rem",
             fontWeight: 600,

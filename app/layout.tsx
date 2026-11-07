@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { MobileCtaBar } from "@/components/mobile-cta-bar";
 import { WhatsAppButton } from "@/components/whatsapp-button";
+import { MotionObserver } from "@/components/motion-observer";
 import { CONTRACTOR_INFO, SERVICES, PARISHES } from "@/lib/constants";
 
 // Load Inter via next/font — zero layout shift, self-hosted, no external request
@@ -284,6 +285,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppButton />
         <MobileCtaBar />
+        <MotionObserver />
       </body>
     </html>
   );

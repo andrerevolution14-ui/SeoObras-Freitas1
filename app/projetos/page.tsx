@@ -77,7 +77,7 @@ export default function ProjetosPage() {
       />
       {/* Hero */}
       <section
-        style={{
+        className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
             "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.76) 55%, rgba(23, 23, 23, 0.52) 100%), url('/heroes/casal-sala-renovada.jpg')",
@@ -136,7 +136,7 @@ export default function ProjetosPage() {
                 className="card-hover"
               >
                 {/* Real Image Container with proper Alt Text */}
-                <div style={{ position: "relative", height: "220px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
+                <div className="on-dark" style={{ position: "relative", height: "220px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
                   <img
                     src={item.image}
                     alt={item.altText || `${item.title} em ${item.parish} Aveiro`}
@@ -226,7 +226,7 @@ export default function ProjetosPage() {
       </section>
 
       {/* Final CTA */}
-      <section style={{ background: "linear-gradient(135deg, #D4D4D4, #6B6B6B)", padding: "3.5rem 0", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(115deg, #f7f7f5 0%, #d9d9d7 28%, #fbfbfa 50%, #c9c9c7 74%, #eeeeec 100%)", padding: "3.5rem 0", textAlign: "center" }}>
         <div className="section-container">
           <h2 style={{ fontSize: "1.75rem", fontWeight: 900, color: "#0A0A0A", marginBottom: "0.75rem" }}>
             Quer ver a sua casa em Aveiro transformada com preço justo?
