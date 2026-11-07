@@ -115,7 +115,7 @@ export default async function ServicePage({ params }: Props) {
         className="on-dark" style={{
           backgroundColor: "#0A0A0A",
           backgroundImage:
-            "linear-gradient(105deg, rgba(10, 10, 10, 0.90) 0%, rgba(10, 10, 10, 0.78) 55%, rgba(23, 23, 23, 0.56) 100%), url('/heroes/empreiteiro-clientes-obra.jpg')",
+            `linear-gradient(105deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.7) 55%, rgba(23, 23, 23, 0.35) 100%), url('/brand/servicos/${service.slug}.webp')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "7.5rem 0 4rem",
