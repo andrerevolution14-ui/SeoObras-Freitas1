@@ -25,6 +25,8 @@ interface Piece {
 
 export interface RenoScene {
   setProgress: (p: number) => void;
+  /** Projeta um ponto 3D da cena para coordenadas (px) do elemento anfitrião. */
+  project: (x: number, y: number, z: number) => { x: number; y: number };
   resize: () => void;
   dispose: () => void;
 }
@@ -563,7 +565,12 @@ export function createRenoScene(host: HTMLElement, opts: { mobile: boolean }): R
 
   resize();
 
+  const tmpV = new THREE.Vector3();
   return {
+    project(x: number, y: number, z: number) {
+      tmpV.set(x, y, z).project(camera);
+      return { x: (tmpV.x * 0.5 + 0.5) * (host.clientWidth || 1), y: (-tmpV.y * 0.5 + 0.5) * (host.clientHeight || 1) };
+    },
     setProgress(p: number) {
       if (Math.abs(p - current) < 0.0004) return;
       current = p;
