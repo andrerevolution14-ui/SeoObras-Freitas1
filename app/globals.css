@@ -937,3 +937,6 @@ main > section:first-of-type .btn-secondary:hover {
   box-shadow: none;
 }
 #hero-form .btn-primary.btn-disabled::after { display: none; }
+
+/* Serifa editorial (títulos de destaque) */
+.font-serif { font-family: var(--font-serif), Georgia, "Times New Roman", serif !important; letter-spacing: -0.015em; }

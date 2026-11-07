@@ -10,6 +10,8 @@ import { RealProjectsGallery } from "@/components/real-projects-gallery";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { ServiceMarquee } from "@/components/service-marquee";
 import { Build3D } from "@/components/build-3d";
+import { BeforeAfterScroll } from "@/components/before-after-scroll";
+import { FeaturedQuote } from "@/components/featured-quote";
 import { CONTRACTOR_INFO, FAQ_ITEMS } from "@/lib/constants";
 import { BRAND_IMAGES } from "@/lib/brand-images";
 import { HeroVideo } from "@/components/hero-video";
@@ -244,9 +246,8 @@ export default function HomePage() {
             <div className="gf-hero-text hero-enter">
               <div className="hero-section-label">Empresa Licenciada · Alvará IMPIC</div>
 
-              <h1 className="gf-hero-title">
-                Obras e remodelações <span style={{ whiteSpace: "nowrap" }}>em Aveiro</span>
-                <span className="gf-hero-dot">.</span>
+              <h1 className="gf-hero-title font-serif">
+                Obras e remodelações <em style={{ whiteSpace: "nowrap" }}>em Aveiro.</em>
               </h1>
 
               <p className="gf-hero-lead">
@@ -310,14 +311,14 @@ export default function HomePage() {
           }
           .gf-hero-title {
             color: #ffffff;
-            font-size: clamp(2.75rem, 5.6vw, 5.25rem);
-            font-weight: 600;
-            line-height: 0.98;
-            letter-spacing: -0.045em;
+            font-size: clamp(2.6rem, 5.2vw, 4.9rem);
+            font-weight: 400;
+            line-height: 1.02;
+            letter-spacing: -0.025em;
             margin-bottom: 1.5rem;
             text-wrap: balance;
           }
-          .gf-hero-dot { color: #ffffff; opacity: 0.5; }
+          .gf-hero-title em { font-style: italic; color: #E7CFA9; }
           .gf-hero-lead {
             color: rgba(255, 255, 255, 0.82);
             font-size: 1.1875rem;
@@ -391,7 +392,7 @@ export default function HomePage() {
           @media (max-width: 860px) {
             .gf-hero-grid { grid-template-columns: 1fr; gap: 1.5rem; padding: 0.5rem 0 2.5rem; justify-items: center; }
             .gf-hero-text { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
-            .gf-hero-title { font-size: clamp(2.35rem, 10.5vw, 3.25rem); margin-bottom: 0.875rem; }
+            .gf-hero-title { font-size: clamp(2.2rem, 9.6vw, 3rem); margin-bottom: 0.875rem; }
             .gf-hero-lead { font-size: 0.9375rem; margin: 0 auto 1.25rem; max-width: 330px; color: rgba(255,255,255,0.85); }
             .gf-hero-ctas { display: none; }
             .gf-hero-form { width: 100%; max-width: 480px; }
@@ -419,8 +420,14 @@ export default function HomePage() {
 
       <ServiceMarquee />
 
+      {/* ── ANTES / DEPOIS (scroll) ─────────────────────── */}
+      <BeforeAfterScroll />
+
       {/* ── 4. SERVIÇOS ──────────────────────────────────── */}
       <ServiceGrid />
+
+      {/* ── TESTEMUNHO EM DESTAQUE ──────────────────────── */}
+      <FeaturedQuote />
 
       {/* ── 5. QUEM SOMOS — JORGE FREITAS (E-E-A-T) ─────── */}
       <section className="section-padding gf-about on-dark tex-dark" style={{ background: "#0A0A0A" }}>

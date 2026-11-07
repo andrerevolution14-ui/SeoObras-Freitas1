@@ -227,15 +227,14 @@ export function Header() {
           right: 0;
           z-index: 50;
           background: linear-gradient(180deg, rgba(5, 5, 5, 0.7) 0%, rgba(5, 5, 5, 0) 100%);
-          transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-          border-bottom: 1px solid transparent;
+          transition: background 0.35s ease, box-shadow 0.35s ease;
+          border-bottom: 0;
         }
         .gf-header.is-solid {
           background: rgba(10, 10, 10, 0.97);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
-          border-bottom-color: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+          box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 10px 30px -12px rgba(0, 0, 0, 0.45);
         }
         .gf-topbar {
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);

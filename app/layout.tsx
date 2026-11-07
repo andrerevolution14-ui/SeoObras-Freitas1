@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { Inter, Inter_Tight, Libre_Caslon_Text } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
@@ -15,6 +15,15 @@ const inter = Inter({
   display: "swap",
   variable: "--font-inter",
   preload: true,
+});
+
+// Serifa editorial — títulos de destaque
+const caslon = Libre_Caslon_Text({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 // Display font — títulos de marca (Freitas Renovações)
@@ -227,7 +236,7 @@ const globalJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-PT" className={`${inter.variable} ${interTight.variable}`}>
+    <html lang="pt-PT" className={`${inter.variable} ${interTight.variable} ${caslon.variable}`}>
       <head>
         {/* Geographic meta tags — reinforce local SEO */}
         <meta name="geo.region" content="PT-01" />
