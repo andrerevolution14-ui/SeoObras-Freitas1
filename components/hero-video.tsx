@@ -26,7 +26,20 @@ export function HeroVideo({ src, srcMobile, poster, posterMobile, label }: HeroV
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
     const slow = conn?.saveData || conn?.effectiveType === "2g" || conn?.effectiveType === "slow-2g";
-    if (!reduce && !slow) setEnabled(true);
+    if (reduce || slow) return;
+    // Só começa a descarregar o vídeo depois de a página estar carregada e o browser livre
+    let t = 0;
+    const start = () => {
+      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      if (ric) ric(() => setEnabled(true), { timeout: 2500 });
+      else t = window.setTimeout(() => setEnabled(true), 1200);
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      window.clearTimeout(t);
+    };
   }, []);
 
   useEffect(() => {

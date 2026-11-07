@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
   Droplets,
@@ -80,17 +79,6 @@ const initialFormData: FormData = {
 const TOTAL_STEPS = 4;
 const STEP_LABELS = ["Serviço", "Urgência", "Local", "Contacto"];
 
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 40 : -40,
-    opacity: 0,
-  }),
-  center: { x: 0, opacity: 1 },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 40 : -40,
-    opacity: 0,
-  }),
-};
 
 interface HeroMultiStepFormProps {
   initialService?: string;
@@ -215,10 +203,8 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
 
   if (isSubmitted) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="glass-card on-light"
+      <div
+        className="glass-card on-light gf-pop-in"
         style={{
           borderRadius: "2px",
           padding: "2.5rem 1.75rem",
@@ -265,7 +251,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
           <Phone size={18} />
           Ligar Direto: {CONTRACTOR_INFO.phoneDisplay}
         </a>
-      </motion.div>
+      </div>
     );
   }
 
@@ -307,16 +293,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
 
       {/* Form Body */}
       <div className="hero-form-body" style={{ padding: "1.25rem 1.5rem", minHeight: "260px", position: "relative", overflow: "hidden" }}>
-        <AnimatePresence custom={direction} mode="wait">
-          <motion.div
-            key={step}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          >
+        <div key={step} className={`gf-step-in ${direction > 0 ? "is-fwd" : "is-back"}`}>
             {/* STEP 1: Service selection */}
             {step === 1 && (
               <div className="form-service-grid">
@@ -662,8 +639,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
                 </label>
               </div>
             )}
-          </motion.div>
-        </AnimatePresence>
+        </div>
       </div>
 
       {/* Form Navigation */}

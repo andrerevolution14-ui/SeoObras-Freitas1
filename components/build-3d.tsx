@@ -1,127 +1,125 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import type { RenoScene } from "@/components/reno-scene";
 
 /* ------------------------------------------------------------------
    "Tudo o que a sua remodelação precisa."
-   Casa de banho em corte (WebGL / Three.js), montada peça a peça
-   com o scroll. Um único foco: a etapa atual aparece como etiqueta
-   presa à parte da obra que está a ser feita.
-   Sem WebGL ou com "reduzir movimento": imagem estática do resultado.
+   Casa de banho em corte, renderizada de forma fotorrealista em 8 fases
+   (mesmo ângulo). Com o scroll, cada fase transforma-se na seguinte e uma
+   única etiqueta assinala a parte da obra em curso.
+   - Sem bibliotecas: só imagens WebP + opacity/transform (GPU).
+   - Imagens carregadas só quando a secção se aproxima (a 1.ª logo à vista).
+   - Sem JS / "reduzir movimento": mostra o resultado final.
 ------------------------------------------------------------------- */
 
-const STEPS: { t: string; d: string; at: [number, number, number] }[] = [
-  { t: "Demolição", d: "Sai a casa de banho antiga e o entulho.", at: [0.1, 0.35, 0.35] },
-  { t: "Canalização e eletricidade", d: "Esgotos, água quente e fria, pontos elétricos.", at: [-0.4, 0.95, -0.97] },
-  { t: "Estrutura e isolamento", d: "Perfis metálicos, lã mineral e betonilha.", at: [0.6, 1.7, -0.95] },
-  { t: "Placas e impermeabilização", d: "Placas hidrófugas, teto falso e membrana.", at: [-1.14, 1.5, 0.3] },
-  { t: "Revestimentos", d: "Pavimento e azulejo, peça a peça.", at: [0.35, 0.15, 0.35] },
-  { t: "Loiças e iluminação", d: "Duche, móvel suspenso, espelho LED.", at: [0.3, 1.0, -0.7] },
-];
-const BOUNDS = [0, 0.13, 0.32, 0.48, 0.62, 0.8];
-const DONE_AT = 0.96;
-
-function hasWebGL() {
-  try {
-    const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
-  } catch {
-    return false;
-  }
+interface Phase {
+  t: string;
+  d: string;
+  /** posição do ponto na imagem (%), para a etiqueta */
+  x: number;
+  y: number;
 }
+
+const PHASES: Phase[] = [
+  { t: "Antes da obra", d: "Casa de banho antiga, com loiças e revestimentos gastos.", x: 33, y: 47 },
+  { t: "Demolição", d: "Remoção de azulejos, loiças e entulho, com proteção do prédio.", x: 47, y: 60 },
+  { t: "Divisão em bruto", d: "Paredes e pavimento limpos, prontos para as novas redes.", x: 36, y: 34 },
+  { t: "Canalização, eletricidade e isolamento", d: "Água em multicamada, esgotos, pontos elétricos e lã mineral.", x: 62, y: 36 },
+  { t: "Placas e impermeabilização", d: "Placas hidrófugas, betonilha e membrana estanque no duche.", x: 36, y: 40 },
+  { t: "Assentamento de revestimentos", d: "Azulejo e pavimento de grande formato, nivelados peça a peça.", x: 54, y: 60 },
+  { t: "Revestimentos concluídos", d: "Juntas, nichos com LED e pontos de água prontos.", x: 44, y: 52 },
+  { t: "Loiças, luz e entrega", d: "Duche em vidro, móvel suspenso, espelho LED — limpeza e garantia escrita.", x: 33, y: 50 },
+];
+const N = PHASES.length;
+
+const src = (i: number, mobile: boolean) => `/brand/obra/fase-${i}${mobile ? "-m" : ""}.webp`;
 
 export function Build3D() {
   const ref = useRef<HTMLElement>(null);
-  const hostRef = useRef<HTMLDivElement>(null);
+  const frameRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const stageRef = useRef<HTMLDivElement>(null);
   const tagRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLSpanElement>(null);
-  const sceneRef = useRef<RenoScene | null>(null);
-  const [step, setStep] = useState(5);
-  const [done, setDone] = useState(true);
-  const [mode, setMode] = useState<"poster" | "loading" | "live">("poster");
-  const stepRef = useRef(5);
-  const doneRef = useRef(true);
+  const [phase, setPhase] = useState(N - 1);
+  const [load, setLoad] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const phaseRef = useRef(N - 1);
 
   useEffect(() => {
     const el = ref.current;
-    const host = hostRef.current;
-    if (!el || !host) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !hasWebGL()) return;
-
+    if (!el) return;
+    setMobile(window.matchMedia("(max-width: 900px)").matches);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setLoad(true);
+      return;
+    }
     el.classList.add("is-live");
     let raf = 0;
     let visible = false;
-    let disposed = false;
 
-    const measure = () => {
-      const r = el.getBoundingClientRect();
-      const travel = r.height - window.innerHeight;
-      return travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
-    };
-
-    /** Prende a etiqueta ao ponto 3D da etapa atual (sem re-render do React). */
-    const placeTag = (s: number) => {
-      const tag = tagRef.current;
-      const sc = sceneRef.current;
-      if (!tag || !sc) return;
-      const pt = sc.project(...STEPS[s].at);
-      const W = host.clientWidth, H = host.clientHeight;
+    const place = (i: number) => {
+      const stage = stageRef.current, tag = tagRef.current, dot = dotRef.current;
+      if (!stage || !tag || !dot) return;
+      const W = stage.clientWidth, H = stage.clientHeight;
+      const fr = stage.firstElementChild as HTMLElement; // .b3-frames
+      const fw = fr.clientWidth, fh = fr.clientHeight, fx = fr.offsetLeft, fy = fr.offsetTop;
+      const size = Math.min(fw, fh); // imagem quadrada com object-fit: contain
+      const Z = parseFloat(getComputedStyle(stage).getPropertyValue("--zoom")) || 1;
+      const px = fx + fw / 2 + (PHASES[i].x / 100 - 0.5) * size * Z;
+      const py = fy + fh / 2 + (PHASES[i].y / 100 - 0.5) * size * Z;
+      dot.style.transform = `translate3d(${px - 7}px, ${py - 7}px, 0)`;
       const tw = tag.offsetWidth, th = tag.offsetHeight;
-      // cartão acima-direita do ponto; mantém-se dentro da cena
-      let cx = pt.x + 18, cy = pt.y - th - 22;
-      if (cx + tw > W - 8) cx = pt.x - tw - 18;
-      cx = Math.max(8, Math.min(W - tw - 8, cx));
-      cy = Math.max(8, Math.min(H - th - 8, cy));
-      if (dotRef.current) dotRef.current.style.transform = `translate3d(${pt.x - 6}px, ${pt.y - 6}px, 0)`;
+      const below = window.matchMedia("(max-width: 900px)").matches;
+      let cx = below ? (W - tw) / 2 : PHASES[i].x < 50 ? px + 26 : px - tw - 26;
+      let cy = below ? H - th - 4 : py - th / 2;
+      cx = Math.max(6, Math.min(W - tw - 6, cx));
+      cy = Math.max(6, Math.min(H - th - 6, cy));
       tag.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
     };
 
     const update = () => {
       raf = 0;
-      const p = measure();
+      const r = el.getBoundingClientRect();
+      const travel = r.height - window.innerHeight;
+      const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 1;
+      // posição contínua na sequência (0 → N-1), com pequenas pausas em cada fase
+      const f = p * (N - 1);
+      const base = Math.floor(f);
+      const frac = f - base;
+      const hold = 0.35; // fração de cada segmento em que a fase fica parada
+      const mix = frac < hold ? 0 : (frac - hold) / (1 - hold);
+      const eased = mix * mix * (3 - 2 * mix);
+      frameRefs.current.forEach((img, i) => {
+        if (!img) return;
+        let o = 0;
+        if (i === base) o = 1;
+        else if (i === base + 1) o = eased;
+        if (i < base) o = 1; // fases anteriores ficam por baixo (sem "piscar")
+        img.style.opacity = String(i <= base + 1 ? (i <= base ? 1 : o) : 0);
+      });
       el.style.setProperty("--p", p.toFixed(4));
-      sceneRef.current?.setProgress(p);
-      let s = 0;
-      for (let i = 0; i < BOUNDS.length; i++) if (p >= BOUNDS[i]) s = i;
-      if (s !== stepRef.current) {
-        stepRef.current = s;
-        setStep(s);
+      const cur = Math.min(N - 1, eased > 0.5 ? base + 1 : base);
+      if (cur !== phaseRef.current) {
+        phaseRef.current = cur;
+        setPhase(cur);
       }
-      const d = p >= DONE_AT;
-      if (d !== doneRef.current) {
-        doneRef.current = d;
-        setDone(d);
-      }
-      placeTag(s);
+      place(cur);
     };
     const onScroll = () => {
       if (visible && !raf) raf = requestAnimationFrame(update);
     };
-    const onResize = () => {
-      sceneRef.current?.resize();
-      onScroll();
-    };
 
-    // Carrega o motor 3D só quando a secção está perto (não pesa no primeiro ecrã)
     const loader = new IntersectionObserver(
-      async ([en]) => {
-        if (!en.isIntersecting || sceneRef.current) return;
-        loader.disconnect();
-        setMode("loading");
-        const { createRenoScene } = await import("@/components/reno-scene");
-        if (disposed) return;
-        sceneRef.current = createRenoScene(host, { mobile: window.matchMedia("(max-width: 900px)").matches });
-        sceneRef.current.setProgress(measure());
-        setMode("live");
-        requestAnimationFrame(update);
+      ([en]) => {
+        if (en.isIntersecting) {
+          setLoad(true);
+          loader.disconnect();
+        }
       },
-      { rootMargin: "120% 0px" }
+      { rootMargin: "150% 0px" }
     );
     loader.observe(el);
-
     const io = new IntersectionObserver(
       ([en]) => {
         visible = en.isIntersecting;
@@ -131,24 +129,26 @@ export function Build3D() {
     );
     io.observe(el);
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", onScroll);
     update();
     return () => {
-      disposed = true;
       loader.disconnect();
       io.disconnect();
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
-      sceneRef.current?.dispose();
-      sceneRef.current = null;
     };
   }, []);
 
-  const live = mode === "live";
+  // reposiciona a etiqueta depois de o texto mudar de tamanho
+  useEffect(() => {
+    window.dispatchEvent(new Event("resize"));
+  }, [phase]);
+
+  const done = phase === N - 1;
 
   return (
-    <section ref={ref} id="obra-3d" className="b3" style={{ ["--p" as string]: 1 }} aria-label="Remodelação de uma casa de banho, camada a camada">
+    <section ref={ref} id="obra-3d" className="b3" style={{ ["--p" as string]: 1 }} aria-label="Remodelação de uma casa de banho, fase a fase">
       <div className="b3-sticky">
         <div className="section-container b3-grid">
           <div className="b3-copy">
@@ -156,41 +156,46 @@ export function Build3D() {
             <h2 className="b3-title font-serif">
               Tudo o que a sua remodelação <em>precisa.</em>
             </h2>
-            <p className="b3-lead">Do esgoto ao espelho — uma só equipa, camada a camada.</p>
+            <p className="b3-lead">Do esgoto ao espelho — uma só equipa, um só responsável, fase a fase.</p>
+            <div className="b3-count" aria-hidden="true">
+              <span className="font-serif">{String(phase + 1).padStart(2, "0")}</span>
+              <i>/ {String(N).padStart(2, "0")}</i>
+            </div>
             <a href="#hero-form" className="btn-dark b3-cta">
               Pedir orçamento gratuito <ArrowRight size={16} />
             </a>
           </div>
 
           <div className="b3-scene">
-            <div ref={hostRef} className="b3-canvas" aria-hidden="true" />
-            {!live && (
-              <Image
-                src="/brand/obra-3d-final.webp"
-                alt="Casa de banho remodelada em corte: canalização, isolamento, revestimentos e loiças"
-                fill
-                sizes="(max-width: 900px) 100vw, 60vw"
-                className={`b3-poster${mode === "loading" ? " is-loading" : ""}`}
-              />
-            )}
+            <div ref={stageRef} className="b3-stage">
+              <div className="b3-frames">
+              {PHASES.map((ph, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={i}
+                  ref={(n) => {
+                    frameRefs.current[i] = n;
+                  }}
+                  src={load || i === N - 1 ? src(i, mobile) : undefined}
+                  alt={i === N - 1 ? "Casa de banho remodelada em corte, com canalização, isolamento, revestimentos e loiças" : ""}
+                  aria-hidden={i === N - 1 ? undefined : true}
+                  width={1024}
+                  height={1024}
+                  loading={i === 0 || i === N - 1 ? "eager" : "lazy"}
+                  decoding="async"
+                  className="b3-frame"
+                  style={{ opacity: i === N - 1 ? 1 : 0, zIndex: i + 1 }}
+                />
+              ))}
+              </div>
 
-            {/* Etiqueta única, presa à parte da obra em curso */}
-            <span ref={dotRef} className={`b3-tag-dot${live ? " is-live" : ""}${done ? " is-done" : ""}`} aria-hidden="true" />
-            <div ref={tagRef} className={`b3-tag${live ? " is-live" : ""}${done ? " is-done" : ""}`} aria-live="polite">
-              <div className="b3-tag-card" key={done ? "done" : step}>
-                {done ? (
-                  <>
-                    <span className="b3-tag-n">Obra entregue</span>
-                    <strong className="font-serif">Pronta a usar.</strong>
-                    <em>Limpeza, vistoria e garantia escrita.</em>
-                  </>
-                ) : (
-                  <>
-                    <span className="b3-tag-n">Etapa {step + 1} de {STEPS.length}</span>
-                    <strong className="font-serif">{STEPS[step].t}</strong>
-                    <em>{STEPS[step].d}</em>
-                  </>
-                )}
+              <span ref={dotRef} className={`b3-dot${done ? " is-done" : ""}`} aria-hidden="true" />
+              <div ref={tagRef} className={`b3-tag${done ? " is-done" : ""}`} aria-live="polite">
+                <div className="b3-tag-card" key={phase}>
+                  <span className="b3-tag-n">{done ? "Obra entregue" : `Fase ${phase + 1} de ${N}`}</span>
+                  <strong className="font-serif">{PHASES[phase].t}</strong>
+                  <em>{PHASES[phase].d}</em>
+                </div>
               </div>
             </div>
           </div>
@@ -198,62 +203,69 @@ export function Build3D() {
       </div>
 
       <style>{`
-        .b3 { position: relative; background: radial-gradient(ellipse 80% 70% at 60% 45%, #FBFAF7 0%, #F1EDE6 55%, #E9E4DB 100%); color: #14110F; --p: 1; }
-        .b3.is-live { height: 460vh; }
+        .b3 { position: relative; background: #F4E6CC; color: #14110F; --p: 1; }
+        .b3::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 62% 52%, rgba(255,255,255,0.35), transparent 70%); pointer-events: none; }
+        .b3.is-live { height: 520vh; }
         .b3.is-live .b3-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; overflow: hidden; }
         .b3:not(.is-live) .b3-sticky { padding: 6rem 0; }
-        .b3-grid { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 3rem; align-items: center; width: 100%; padding-top: 70px; }
-        .b3-eyebrow { font-size: 0.6875rem; letter-spacing: 0.24em; text-transform: uppercase; color: #8A8178; font-weight: 600; margin-bottom: 1.25rem; }
-        .b3-title { font-size: clamp(2.25rem, 3.6vw, 3.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.04; margin: 0 0 1.25rem; color: #14110F; }
+        .b3-grid { position: relative; display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); gap: 3rem; align-items: center; width: 100%; padding-top: 70px; }
+        .b3-eyebrow { font-size: 0.6875rem; letter-spacing: 0.24em; text-transform: uppercase; color: #8A7660; font-weight: 600; margin-bottom: 1.25rem; }
+        .b3-title { font-size: clamp(2.25rem, 3.6vw, 3.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.04; margin: 0 0 1.25rem; }
         .b3-title em { font-style: italic; color: #8A6A4A; }
-        .b3-lead { color: #5E564E; font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 320px; }
+        .b3-lead { color: #5E5245; font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 320px; }
+        .b3-count { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 2rem; }
+        .b3-count span { font-size: 3.25rem; line-height: 1; color: #14110F; }
+        .b3-count i { font-style: normal; font-size: 0.875rem; color: #8A7660; letter-spacing: 0.08em; }
 
-        .b3-scene { position: relative; height: min(82vh, 760px); }
-        .b3-canvas { position: absolute; inset: 0; }
-        .b3-poster { object-fit: contain; transition: opacity 0.6s ease; }
-        .b3-poster.is-loading { opacity: 0.5; }
-
-        /* Etiqueta da etapa */
-        .b3-tag { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; will-change: transform; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
-        .b3-tag:not(.is-live) { left: 50%; top: auto; bottom: 1rem; transform: translateX(-50%) !important; }
-        .b3-tag-dot {
-          position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-          width: 12px; height: 12px; border-radius: 50%;
-          background: #14110F; box-shadow: 0 0 0 4px rgba(255,255,255,0.85), 0 0 0 5px rgba(20,17,15,0.15);
-          display: none;
+        .b3-scene { position: relative; display: flex; align-items: center; justify-content: center; height: min(84vh, 780px); }
+        .b3-stage { position: relative; height: 100%; aspect-ratio: 1; max-width: 100%; --zoom: 1.32; }
+        .b3-frames {
+          position: absolute; inset: 0;
+          transform: scale(calc(var(--zoom) * (0.97 + var(--p) * 0.04)));
+          will-change: transform;
+          -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 68%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 52%, transparent 68%);
         }
-        .b3-tag-dot.is-live { display: block; animation: b3-pulse 1.8s ease-out infinite; }
-        .b3-tag-dot.is-done { background: #22c55e; }
-        @keyframes b3-pulse { 0% { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 0 4px rgba(20,17,15,0.35); } 100% { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 0 18px rgba(20,17,15,0); } }
+        .b3-frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity 0.12s linear; will-change: opacity; }
+
+        /* Etiqueta (ponto + cartão) */
+        .b3-dot {
+          position: absolute; left: 0; top: 0; z-index: 20; width: 14px; height: 14px; border-radius: 50%;
+          background: #14110F; box-shadow: 0 0 0 4px rgba(255,255,255,0.9);
+          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+          animation: b3-pulse 1.8s ease-out infinite;
+        }
+        .b3-dot.is-done { background: #22c55e; }
+        @keyframes b3-pulse { 0% { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 0 4px rgba(20,17,15,0.35); } 100% { box-shadow: 0 0 0 4px rgba(255,255,255,0.9), 0 0 0 20px rgba(20,17,15,0); } }
+        .b3-tag { position: absolute; left: 0; top: 0; z-index: 21; pointer-events: none; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .b3:not(.is-live) .b3-tag, .b3:not(.is-live) .b3-dot { display: none; }
         .b3-tag-card {
-          display: flex; flex-direction: column; gap: 0.2rem;
-          width: max-content; max-width: 260px;
-          padding: 0.85rem 1.05rem 0.9rem; border-radius: 12px;
-          background: rgba(255,255,255,0.94); backdrop-filter: blur(8px);
-          border: 1px solid rgba(20,17,15,0.07);
-          box-shadow: 0 20px 44px -18px rgba(60,40,20,0.45);
-          animation: b3-tag-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+          display: flex; flex-direction: column; gap: 0.25rem; width: 250px;
+          padding: 0.9rem 1.05rem 1rem; border-radius: 12px;
+          background: rgba(255,255,255,0.96); border: 1px solid rgba(20,17,15,0.06);
+          box-shadow: 0 22px 46px -18px rgba(70,45,20,0.45);
+          animation: b3-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
         .b3-tag.is-done .b3-tag-card { background: #14110F; color: #fff; border-color: transparent; }
-        @keyframes b3-tag-in { from { opacity: 0; transform: translateY(8px) scale(0.97); } to { opacity: 1; transform: none; } }
-        .b3-tag-n { font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: #A0968C; font-weight: 600; }
+        @keyframes b3-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        .b3-tag-n { font-size: 0.625rem; letter-spacing: 0.18em; text-transform: uppercase; color: #A08C76; font-weight: 600; }
         .b3-tag.is-done .b3-tag-n { color: #86efac; }
         .b3-tag-card strong { font-size: 1.125rem; font-weight: 400; line-height: 1.2; }
-        .b3-tag-card em { font-style: normal; font-size: 0.8125rem; color: #6B635B; line-height: 1.4; }
-        .b3-tag.is-done .b3-tag-card em { color: rgba(255,255,255,0.7); }
+        .b3-tag-card em { font-style: normal; font-size: 0.8125rem; color: #6B5F52; line-height: 1.45; }
+        .b3-tag.is-done .b3-tag-card em { color: rgba(255,255,255,0.72); }
 
         @media (max-width: 900px) {
-          .b3.is-live { height: 420vh; }
-          .b3-grid { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 76px; text-align: center; }
+          .b3.is-live { height: 480vh; }
+          .b3-grid { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 74px; text-align: center; }
           .b3-copy { min-width: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
-          .b3-eyebrow, .b3-lead { display: none; }
-          .b3-title { font-size: 1.75rem; margin-bottom: 0.25rem; }
-          .b3-cta { order: 3; padding: 0.8rem 1.25rem; font-size: 0.875rem; margin-top: 0.5rem; }
-          .b3-copy .b3-cta { display: none; }
-          .b3-scene { height: calc(100svh - 76px - 4.5rem - 70px); min-height: 380px; }
-          .b3-tag-card { max-width: 210px; padding: 0.7rem 0.85rem; text-align: left; }
-          .b3-tag-card strong { font-size: 1rem; }
-          .b3-tag-card em { font-size: 0.75rem; }
+          .b3-eyebrow, .b3-lead, .b3-cta, .b3-count { display: none; }
+          .b3-title { font-size: 1.7rem; margin: 0.5rem 0 0; }
+          .b3-scene { height: calc(100svh - 74px - 4.5rem - 72px - 2.75rem); min-height: 340px; }
+          .b3-stage { width: 100%; height: 100%; aspect-ratio: auto; --zoom: 1.45; }
+          .b3-frames { inset: 0 0 7rem 0; }
+          .b3-tag-card { width: 196px; padding: 0.7rem 0.8rem; text-align: left; }
+          .b3-tag-card strong { font-size: 0.975rem; }
+          .b3-tag-card em { font-size: 0.72rem; }
         }
       `}</style>
     </section>

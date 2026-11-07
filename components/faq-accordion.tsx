@@ -1,13 +1,7 @@
-"use client";
-
-import { useState } from "react";
 import { Plus, ArrowRight } from "lucide-react";
 import { FAQ_ITEMS } from "@/lib/constants";
-import { motion, AnimatePresence } from "framer-motion";
 
 export function FaqAccordion() {
-  const [openId, setOpenId] = useState<string | null>(null);
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -43,43 +37,22 @@ export function FaqAccordion() {
           </div>
 
           <div style={{ borderTop: "1px solid #E5E5E3" }}>
-            {FAQ_ITEMS.map((item, i) => {
-              const isOpen = openId === item.id;
-              return (
-                <div key={item.id} className="accordion-item" style={{ borderColor: isOpen ? "#0A0A0A" : undefined }}>
-                  <button
-                    className="accordion-trigger"
-                    id={`faq-${item.id}`}
-                    onClick={() => setOpenId(isOpen ? null : item.id)}
-                    aria-expanded={isOpen}
-                  >
-                    <span style={{ display: "flex", gap: "1.25rem", paddingRight: "1rem" }}>
-                      <span className="font-display" style={{ color: "#9A9A9A", fontSize: "0.8125rem", fontWeight: 500, paddingTop: "0.2rem", minWidth: "1.5rem" }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span>{item.question}</span>
+            {FAQ_ITEMS.map((item, i) => (
+              <details key={item.id} className="accordion-item gf-faq-item" id={`faq-${item.id}`}>
+                <summary className="accordion-trigger">
+                  <span style={{ display: "flex", gap: "1.25rem", paddingRight: "1rem" }}>
+                    <span className="font-display" style={{ color: "#9A9A9A", fontSize: "0.8125rem", fontWeight: 500, paddingTop: "0.2rem", minWidth: "1.5rem" }}>
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="gf-faq-toggle" data-open={isOpen}>
-                      <Plus size={18} strokeWidth={1.5} />
-                    </span>
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        style={{ overflow: "hidden" }}
-                      >
-                        <div className="accordion-content" style={{ paddingLeft: "2.75rem" }}>{item.answer}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+                    <span>{item.question}</span>
+                  </span>
+                  <span className="gf-faq-toggle" aria-hidden="true">
+                    <Plus size={18} strokeWidth={1.5} />
+                  </span>
+                </summary>
+                <div className="accordion-content gf-faq-answer">{item.answer}</div>
+              </details>
+            ))}
           </div>
         </div>
       </div>
@@ -97,14 +70,20 @@ export function FaqAccordion() {
           color: #0A0A0A;
           transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
         }
-        .gf-faq-toggle[data-open="true"] { transform: rotate(45deg); background: #0A0A0A; border-color: #0A0A0A; color: #ffffff; }
+        .gf-faq-item summary { list-style: none; }
+        .gf-faq-item summary::-webkit-details-marker { display: none; }
+        .gf-faq-item[open] { border-color: #0A0A0A; }
+        .gf-faq-answer { padding-left: 2.75rem; }
+        @media (prefers-reduced-motion: no-preference) { .gf-faq-item[open] .gf-faq-answer { animation: gf-faq-in 0.3s ease-out; } }
+        @keyframes gf-faq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+        .gf-faq-item[open] .gf-faq-toggle { transform: rotate(45deg); background: #0A0A0A; border-color: #0A0A0A; color: #ffffff; }
         @media (max-width: 900px) {
           .gf-faq { grid-template-columns: 1fr; gap: 2.5rem; }
           .gf-faq-intro { position: static; }
         }
         @media (max-width: 640px) {
           .accordion-trigger { font-size: 0.9625rem; padding: 1.25rem 0; }
-          .accordion-content { padding-left: 0 !important; padding-right: 0; }
+          .accordion-content, .gf-faq-answer { padding-left: 0 !important; padding-right: 0; }
         }
       `}</style>
     </section>

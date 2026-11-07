@@ -22,7 +22,7 @@ const caslon = Libre_Caslon_Text({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-serif",
-  weight: ["400", "700"],
+  weight: ["400"],
   style: ["normal", "italic"],
 });
 
@@ -277,15 +277,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-        {/* Google tag (gtag.js) loaded lazily to preserve mobile LCP & speed */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17936797026"
-          strategy="lazyOnload"
-        />
-        <Script id="google-tag-aw-17936797026" strategy="lazyOnload">
+        {/* Google Ads (gtag) — carregado na 1.ª interação ou ao fim de 4 s, para não atrasar o carregamento.
+            Os eventos enviados antes ficam em fila no dataLayer e são processados quando o script chega. */}
+        <Script id="google-tag-aw-17936797026" strategy="afterInteractive">
           {`
             gtag('js', new Date());
             gtag('config', 'AW-17936797026');
+            (function () {
+              var done = false;
+              var evs = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+              function load() {
+                if (done) return; done = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-17936797026';
+                document.head.appendChild(s);
+                evs.forEach(function (e) { window.removeEventListener(e, load); });
+              }
+              evs.forEach(function (e) { window.addEventListener(e, load, { once: true, passive: true }); });
+              if (document.readyState === 'complete') setTimeout(load, 4000);
+              else window.addEventListener('load', function () { setTimeout(load, 4000); });
+            })();
           `}
         </Script>
 

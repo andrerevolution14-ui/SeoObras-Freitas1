@@ -1,6 +1,3 @@
-"use client";
-
-import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Star, ArrowRight, ArrowUpRight, X } from "lucide-react";
@@ -38,9 +35,7 @@ function firstSentence(t: string, max = 120) {
 
 /** Faixa de avaliações — mostra rapidamente a quantidade e a qualidade das opiniões. */
 export function GoogleReviews() {
-  const [active, setActive] = useState<ReviewCard | null>(null);
-
-  const cards = useMemo<ReviewCard[]>(() => {
+  const cards: ReviewCard[] = (() => {
     const google = GOOGLE_REVIEWS.map((r) => ({
       id: r.id,
       name: r.name,
@@ -63,18 +58,11 @@ export function GoogleReviews() {
       imageAlt: c.imageAlt,
     }));
     return [...google, ...clientes];
-  }, []);
+  })();
 
   const half = Math.ceil(cards.length / 2);
   const rowA = cards.slice(0, half);
   const rowB = cards.slice(half);
-
-  useEffect(() => {
-    if (!active) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActive(null);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [active]);
 
   const renderRow = (row: ReviewCard[], reverse = false, extra = "") => (
     <div className={`gf-rs-row${reverse ? " is-reverse" : ""} ${extra}`}>
@@ -84,7 +72,7 @@ export function GoogleReviews() {
             key={`${r.id}-${i}`}
             type="button"
             className="gf-rs-card"
-            onClick={() => setActive(r)}
+            popoverTarget={`rev-${r.id}`}
             aria-label={`Ler avaliação de ${r.name}`}
             tabIndex={i >= row.length ? -1 : 0}
           >
@@ -94,7 +82,7 @@ export function GoogleReviews() {
               </span>
             )}
             <span className="gf-rs-body">
-              <Stars n={r.rating} />
+              <span className="gf-rs-stars-txt" aria-label={`${r.rating} em 5 estrelas`}>{"★".repeat(r.rating)}</span>
               <span className="gf-rs-text">&ldquo;{r.text}&rdquo;</span>
               <span className="gf-rs-who">
                 <strong>{r.name}</strong> · {r.location}
@@ -135,9 +123,8 @@ export function GoogleReviews() {
       </div>
 
       <div className="gf-rs-rows">
-        {renderRow(rowA, false, "gf-rs-row-desk")}
-        {renderRow(rowB, true, "gf-rs-row-desk")}
-        {renderRow(cards, false, "gf-rs-row-all")}
+        {renderRow(rowA)}
+        {renderRow(rowB, true)}
       </div>
 
       <div className="section-container gf-rs-actions gf-rs-actions-m">
@@ -149,24 +136,24 @@ export function GoogleReviews() {
         </a>
       </div>
 
-      {active && (
-        <div className="gf-rev-modal" onClick={() => setActive(null)} role="dialog" aria-modal="true" aria-label={`Avaliação de ${active.name}`}>
-          <div className="gf-rev-modal-card" onClick={(e) => e.stopPropagation()}>
-            <button className="gf-rev-close" onClick={() => setActive(null)} aria-label="Fechar">
+      {cards.map((r) => (
+        <div key={r.id} id={`rev-${r.id}`} popover="auto" className="gf-rev-pop" aria-label={`Avaliação de ${r.name}`}>
+          <div className="gf-rev-modal-card">
+            <button type="button" className="gf-rev-close" popoverTarget={`rev-${r.id}`} popoverTargetAction="hide" aria-label="Fechar">
               <X size={18} />
             </button>
-            <Stars n={active.rating} size={16} />
-            <p className="gf-rev-modal-tag">{active.tag}</p>
-            <p className="gf-rev-modal-text font-display">&ldquo;{active.full}&rdquo;</p>
+            <span className="gf-rs-stars-txt" style={{ fontSize: "1rem" }}>{"★".repeat(r.rating)}</span>
+            <p className="gf-rev-modal-tag">{r.tag}</p>
+            <p className="gf-rev-modal-text font-display">&ldquo;{r.full}&rdquo;</p>
             <p className="gf-rev-modal-who">
-              <strong>{active.name}</strong> · {active.location}
+              <strong>{r.name}</strong> · {r.location}
             </p>
-            <Link href="/clientes" onClick={() => setActive(null)} className="link-arrow" style={{ marginTop: "1.5rem" }}>
+            <Link href="/clientes" className="link-arrow" style={{ marginTop: "1.5rem" }}>
               Ver mais obras e opiniões <ArrowRight size={14} />
             </Link>
           </div>
         </div>
-      )}
+      ))}
 
       <style>{`
         .gf-rs { background: #ffffff; padding: 4.5rem 0 4rem; border-bottom: 1px solid #E5E5E3; overflow: hidden; }
@@ -182,6 +169,7 @@ export function GoogleReviews() {
         .gf-rs-meta { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8125rem; color: #525252; }
         .gf-rs-meta strong { color: #0A0A0A; font-weight: 600; }
         .gf-rs-stars { display: inline-flex; gap: 1px; }
+        .gf-rs-stars-txt { color: #FBBC04; font-size: 0.8125rem; letter-spacing: 0.08em; line-height: 1; }
         .gf-rs-title { font-size: clamp(1.375rem, 2.2vw, 1.875rem); font-weight: 600; letter-spacing: -0.03em; color: #0A0A0A; line-height: 1.15; margin: 0; max-width: 420px; }
         .gf-rs-actions { display: flex; gap: 0.625rem; }
         .gf-rs-actions a { padding: 0.8rem 1.2rem; font-size: 0.8125rem; white-space: nowrap; }
@@ -194,7 +182,6 @@ export function GoogleReviews() {
           mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
         }
         .gf-rs-row { overflow: hidden; }
-        .gf-rs-row-all { display: none; }
         .gf-rs-track { display: flex; gap: 0.875rem; width: max-content; animation: gf-rs-scroll 150s linear infinite; }
         .gf-rs-row.is-reverse .gf-rs-track { animation-direction: reverse; animation-duration: 170s; }
         .gf-rs-rows:hover .gf-rs-track, .gf-rs-rows:focus-within .gf-rs-track { animation-play-state: paused; }
@@ -228,8 +215,9 @@ export function GoogleReviews() {
         }
         .gf-rs-who { font-size: 0.75rem; color: #6B6B6B; }
         .gf-rs-who strong { color: #0A0A0A; font-weight: 600; }
-        .gf-rev-modal { position: fixed; inset: 0; z-index: 120; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 1rem; }
-        .gf-rev-modal-card { position: relative; background: #fff; max-width: 620px; width: 100%; padding: 3rem 2.5rem 2.5rem; display: flex; flex-direction: column; border-top: 3px solid #0A0A0A; max-height: 90vh; overflow: auto; }
+        .gf-rev-pop { border: 0; padding: 0; background: transparent; inset: 0; margin: auto; width: min(620px, calc(100vw - 2rem)); height: fit-content; max-height: 90dvh; overflow: auto; }
+        .gf-rev-pop::backdrop { background: rgba(5, 5, 5, 0.85); }
+        .gf-rev-modal-card { position: relative; background: #fff; max-width: 620px; width: 100%; padding: 3rem 2.5rem 2.5rem; display: flex; flex-direction: column; border-top: 3px solid #0A0A0A; }
         .gf-rev-close { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #E5E5E3; background: #fff; cursor: pointer; color: #0A0A0A; }
         .gf-rev-modal-tag { margin-top: 1rem; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; font-weight: 600; }
         .gf-rev-modal-text { font-size: 1.25rem; line-height: 1.5; color: #0A0A0A; letter-spacing: -0.015em; margin: 1rem 0 1.5rem; font-weight: 500; }
@@ -256,8 +244,7 @@ export function GoogleReviews() {
           .gf-rs-head { margin-bottom: 1.75rem; }
           .gf-rs-card { width: 280px; padding: 0.95rem 1rem; }
           .gf-rs-thumb { width: 52px; height: 52px; }
-          .gf-rs-row-desk { display: none; }
-          .gf-rs-row-all { display: block; }
+          .gf-rs-rows { gap: 0.6rem; }
           .gf-rs-track { animation-duration: 190s; }
           .gf-rev-modal-card { padding: 2.5rem 1.5rem 1.75rem; }
           .gf-rev-modal-text { font-size: 1.0625rem; }
