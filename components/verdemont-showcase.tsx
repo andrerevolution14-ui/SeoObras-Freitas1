@@ -99,7 +99,7 @@ export function VerdemontShowcase() {
                 marginBottom: "1.5rem",
               }}
             >
-              A equipa da <strong>Freitas Renovações LDA</strong> e o Empreiteiro <strong>Jorge Freitas</strong> têm a honra de demonstrar a sua comprovada competência técnica, rigor estrutural e acabamentos de grande escala no prestigiado projeto internacional <strong>Verdemont</strong>. Conheça todos os detalhes do empreendimento em{" "}
+              A equipa da <strong>Freitas Renovações</strong> e o Empreiteiro <strong>Jorge Freitas</strong> têm a honra de demonstrar a sua comprovada competência técnica, rigor estrutural e acabamentos de grande escala no prestigiado projeto internacional <strong>Verdemont</strong>. Conheça todos os detalhes do empreendimento em{" "}
               <a
                 href={VERDEMONT_PROJECT.url}
                 target="_blank"
@@ -204,7 +204,7 @@ export function VerdemontShowcase() {
               <div style={{ position: "relative", width: "100%", height: "440px" }}>
                 <Image
                   src="/verdemont.jpg"
-                  alt="Empreendimento de arquitetura contemporânea Verdemont www.verdemont.eu — Intervenção Freitas Renovações LDA"
+                  alt="Empreendimento de arquitetura contemporânea Verdemont www.verdemont.eu — Intervenção Freitas Renovações"
                   fill
                   sizes="(max-width: 768px) 100vw, 550px"
                   quality={75}

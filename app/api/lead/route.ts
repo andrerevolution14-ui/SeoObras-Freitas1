@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
         <tr>
           <td style="background:linear-gradient(135deg,#0A0A0A,#171717);padding:28px 32px;">
             <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:800;">🏠 Novo Pedido de Orçamento</h1>
-            <p style="margin:6px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">Freitas Renovações LDA — ${createdAt}</p>
+            <p style="margin:6px 0 0;color:rgba(255,255,255,0.7);font-size:14px;">Freitas Renovações — ${createdAt}</p>
           </td>
         </tr>
         <!-- Alert badge -->
@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
         <!-- Footer -->
         <tr>
           <td style="background:#F7F7F5;padding:16px 32px;border-top:1px solid #E5E5E3;">
-            <p style="margin:0;color:#999999;font-size:12px;">ID: ${leadId} · Freitas Renovações LDA · freitasrenovacoes.pt</p>
+            <p style="margin:0;color:#999999;font-size:12px;">ID: ${leadId} · Freitas Renovações · freitasrenovacoes.pt</p>
           </td>
         </tr>
       </table>

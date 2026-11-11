@@ -40,7 +40,7 @@ const verdemontJsonLd = {
     {
       "@type": "ApartmentComplex",
       name: "Projeto Verdemont Aveiro",
-      description: "Empreendimento residencial com reabilitação e acabamentos de vanguarda executados pela Freitas Renovações LDA.",
+      description: "Empreendimento residencial com reabilitação e acabamentos de vanguarda executados pela Freitas Renovações.",
       url: "https://www.grupofreitasrenovacoes.pt/verdemont",
       sameAs: "https://www.verdemont.eu",
       image: "https://www.grupofreitasrenovacoes.pt/verdemont.jpg",
@@ -118,7 +118,7 @@ export default function VerdemontPage() {
             Projeto Verdemont — Reabilitação &amp; Construção de Referência
           </h1>
           <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "1rem", maxWidth: "660px", lineHeight: 1.65 }}>
-            O empreendimento Verdemont exemplifica a capacidade técnica e o padrão de excelência da Freitas Renovações LDA em Aveiro, integrando acabamentos de vanguarda, isolamento térmico e iluminação arquitetural.
+            O empreendimento Verdemont exemplifica a capacidade técnica e o padrão de excelência da Freitas Renovações em Aveiro, integrando acabamentos de vanguarda, isolamento térmico e iluminação arquitetural.
           </p>
 
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.75rem" }}>

@@ -6,7 +6,7 @@ import { CONTRACTOR_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Política de Privacidade (RGPD)",
   description:
-    "Como a Freitas Renovações LDA recolhe, protege e trata os seus dados pessoais, de acordo com o RGPD.",
+    "Como a Freitas Renovações recolhe, protege e trata os seus dados pessoais, de acordo com o RGPD.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/privacidade" },
   robots: { index: true, follow: true },
 };
@@ -16,7 +16,7 @@ const privacidadeJsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      name: "Política de Privacidade — Freitas Renovações LDA",
+      name: "Política de Privacidade — Freitas Renovações",
       url: "https://www.grupofreitasrenovacoes.pt/privacidade",
       description: "Informações sobre tratamento de dados pessoais e direitos dos utilizadores de acordo com o RGPD.",
       inLanguage: "pt-PT",
@@ -107,7 +107,7 @@ export default function PrivacidadePage() {
             Política de Privacidade e Proteção de Dados
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.0625rem", lineHeight: 1.7 }}>
-            A Freitas Renovações LDA assume um compromisso inequívoco com a privacidade e proteção dos dados pessoais dos seus clientes e utilizadores em estrita conformidade com a legislação portuguesa e europeia.
+            A Freitas Renovações assume um compromisso inequívoco com a privacidade e proteção dos dados pessoais dos seus clientes e utilizadores em estrita conformidade com a legislação portuguesa e europeia.
           </p>
           <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8125rem", marginTop: "0.75rem" }}>
             Última atualização: 15 de outubro de 2026
@@ -135,9 +135,10 @@ export default function PrivacidadePage() {
               A entidade responsável pela recolha e tratamento dos dados pessoais através deste website é:
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-              <li><strong>Denominação Social:</strong> {CONTRACTOR_INFO.companyName}</li>
+              <li><strong>Denominação Social:</strong> {CONTRACTOR_INFO.legalName}</li>
+              <li><strong>Marca comercial:</strong> {CONTRACTOR_INFO.companyName}</li>
               <li><strong>Titularidade Técnica:</strong> Jorge Freitas (Empreiteiro Geral)</li>
-              <li><strong>Alvará IMPIC:</strong> N.º 104523 (Obras Particulares)</li>
+              <li><strong>Alvará:</strong> N.º 124371-PAR (Empreiteiro de Obras Particulares)</li>
               <li><strong>Sede:</strong> {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, Portugal</li>
               <li><strong>Email de Contacto RGPD:</strong> <a href={`mailto:${CONTRACTOR_INFO.email}`} style={{ color: "#171717", fontWeight: 600 }}>{CONTRACTOR_INFO.email}</a></li>
               <li><strong>Telefone:</strong> <a href={`tel:${CONTRACTOR_INFO.phone}`} style={{ color: "#171717", fontWeight: 600 }}>{CONTRACTOR_INFO.phoneDisplay}</a></li>
@@ -202,7 +203,7 @@ export default function PrivacidadePage() {
             6. Partilha de Dados com Terceiros
           </h2>
           <p>
-            A Freitas Renovações LDA <strong>não vende, aluga ou comercializa</strong> os seus dados pessoais a terceiros para efeitos de publicidade ou marketing. A partilha restringe-se estritamente a subcontratantes técnicos essenciais (como serviços de alojamento web seguro, gestão de email transacional ou contabilidade certificada), todos vinculados a rigorosos deveres de sigilo e conformidade com o RGPD.
+            A Freitas Renovações <strong>não vende, aluga ou comercializa</strong> os seus dados pessoais a terceiros para efeitos de publicidade ou marketing. A partilha restringe-se estritamente a subcontratantes técnicos essenciais (como serviços de alojamento web seguro, gestão de email transacional ou contabilidade certificada), todos vinculados a rigorosos deveres de sigilo e conformidade com o RGPD.
           </p>
 
           <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0A0A0A", marginTop: "2rem", marginBottom: "0.75rem" }}>

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Freitas Renovações LDA",
+    name: "Freitas Renovações",
     short_name: "Freitas Renovações",
     description: "Empresa de obras, remodelações e reparações em Aveiro.",
     start_url: "/",

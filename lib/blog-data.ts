@@ -33,7 +33,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Na remodelação de cozinha, o investimento médio situa-se entre 4.500€ e 8.500€ para uma configuração completa com móveis termolaminados à medida, bancada em pedra compacta ou granito, backsplash e novas instalações de água e eletricidade para eletrodomésticos. Em conceitos contemporâneos open space com demolição de parede, colocação de viga metálica estrutural de reforço e ilha central de convívio, os orçamentos variam tipicamente entre 8.500€ e 16.000€.",
       "No concelho de Aveiro, existem fatores regionais determinantes que afetam o orçamento: A proximidade à Ria e a salinidade costeira (especialmente sentida nas freguesias ribeirinhas e na orla marítima de Ílhavo, Barra e Costa Nova) exigem a aplicação de primários anti-salitre, tintas anti-fungos de alta resistência à humidade e caixilharia com corte térmico eficiente para erradicar definitivamente problemas de condensação e bolores nos tetos.",
       "Como poupar de forma inteligente na sua obra? Em primeiro lugar, aproveite a taxa reduzida de IVA a 6% para obras de reabilitação e conservação de imóveis habitacionais, o que representa uma poupança imediata de 17% face à taxa normal. Em segundo lugar, mantenha os pontos de esgoto e as prumadas principais na mesma parede para evitar perfurações em lajes. Em terceiro lugar, selecione formatos cerâmicos equilibrados (ex: 60x60 ou 60x120), que oferecem um visual moderno sofisticado sem duplicar as horas de corte e mão de obra de assentamento.",
-      "Exemplo prático de orçamento: Num apartamento T2 com 80 m² em Esgueira que necessite de WC completo novo, renovação integral de cozinha, piso vinílico SPC sobre pavimento existente, pintura geral e novas portas interiores lacadas a branco, o investimento total turnkey situa-se habitualmente entre os 32.000€ e os 42.000€ com IVA incluído, executado num prazo de 6 a 8 semanas com garantia formal de 5 anos pela Freitas Renovações LDA.",
+      "Exemplo prático de orçamento: Num apartamento T2 com 80 m² em Esgueira que necessite de WC completo novo, renovação integral de cozinha, piso vinílico SPC sobre pavimento existente, pintura geral e novas portas interiores lacadas a branco, o investimento total turnkey situa-se habitualmente entre os 32.000€ e os 42.000€ com IVA incluído, executado num prazo de 6 a 8 semanas com garantia formal de 5 anos pela Freitas Renovações.",
       "Para obter um valor rigoroso adaptado ao seu imóvel, recuse orçamentos vagos de valor único. Na Freitas Renovações, o Empreiteiro Jorge Freitas analisa as fotografias e dimensões do seu espaço para apresentar uma estimativa detalhada em menos de 12 a 24 horas, seguida de validação técnica no local para fecho do preço sem custos ocultos.",
     ],
   },
@@ -162,7 +162,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       "Adjudicar uma obra de remodelação requer confiança mútua e formalidade jurídica. Antes de entregar um sinal de pagamento a um empreiteiro em Aveiro, siga estes passos fundamentais:",
       "1. Confirme se a empresa possui Alvará de Construção válido ou título de registo no IMPIC.\n2. Exija a apresentação de Apólice de Seguro de Responsabilidade Civil e Acidentes de Trabalho.\n3. Solicite um orçamento escrito detalhado com preços de materiais e prazos de execução bem definidos.\n4. Consulte avaliações de clientes anteriores no Google Business Profile.",
-      "A Freitas Renovações LDA orgulha-se de cumprir 100% destes critérios com total transparência.",
+      "A Freitas Renovações orgulha-se de cumprir 100% destes critérios com total transparência.",
     ],
   },
   {
@@ -194,7 +194,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       "Ao procurar empresas de renovações em Aveiro, o proprietário depara-se com dezenas de anúncios. No entanto, no setor da construção civil, confiar numa entidade sem registo formal é um dos maiores riscos financeiros que uma família pode correr.",
       "O primeiro passo inegociável é confirmar se a empresa possui Alvará de Construção válido emitido pelo IMPIC. Empresas legalizadas possuem seguro de responsabilidade civil e seguro de acidentes de trabalho para toda a equipa, blindando o cliente contra eventuais acidentes ou danos no prédio.",
-      "Outro aspeto decisivo em Aveiro é o acompanhamento no terreno pelo próprio empreiteiro. Na Freitas Renovações LDA, o Jorge Freitas supervisiona diretamente cada etapa das obras, assegurando que o orçamento acordado é cumprido sem acréscimos indevidos.",
+      "Outro aspeto decisivo em Aveiro é o acompanhamento no terreno pelo próprio empreiteiro. Na Freitas Renovações, o Jorge Freitas supervisiona diretamente cada etapa das obras, assegurando que o orçamento acordado é cumprido sem acréscimos indevidos.",
       "Exija sempre contrato escrito com cronograma estipulado e autos de medição claros. Desconfie de orçamentos com valor único vago que não discriminem marcas de materiais e horas de mão de obra.",
     ],
   },

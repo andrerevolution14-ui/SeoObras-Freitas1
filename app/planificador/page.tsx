@@ -140,7 +140,7 @@ export default function PlanificadorPage() {
             Precisa de apoio para planear e executar a sua obra?
           </h2>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "0.9375rem", marginBottom: "1.75rem", lineHeight: 1.6 }}>
-            A equipa da Freitas Renovações LDA ajuda-o em todas as fases, desde o planeamento e escolha de materiais até à entrega da chave.
+            A equipa da Freitas Renovações ajuda-o em todas as fases, desde o planeamento e escolha de materiais até à entrega da chave.
           </p>
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary">

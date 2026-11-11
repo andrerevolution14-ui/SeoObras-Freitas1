@@ -70,7 +70,7 @@ const servicesJsonLd = {
   "@graph": [
     {
       "@type": "ItemList",
-      name: "Serviços de Obras e Remodelações — Freitas Renovações LDA",
+      name: "Serviços de Obras e Remodelações — Freitas Renovações",
       url: "https://www.grupofreitasrenovacoes.pt/servicos",
       numberOfItems: SERVICES.length,
       itemListElement: SERVICES.map((s, i) => ({

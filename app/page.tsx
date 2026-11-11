@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description:
       "Remodelações de casas, apartamentos, cozinhas e casas de banho em Aveiro. Acompanhamento por Jorge Freitas. Peça um orçamento gratuito.",
     url: "https://www.grupofreitasrenovacoes.pt",
-    siteName: "Freitas Renovações LDA",
+    siteName: "Freitas Renovações",
     type: "website",
     locale: "pt_PT",
     images: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Freitas Renovações LDA — Empresa de Obras e Remodelações em Aveiro",
+        alt: "Freitas Renovações — Empresa de Obras e Remodelações em Aveiro",
         type: "image/jpeg",
       },
     ],
@@ -114,14 +114,15 @@ const homeJsonLd = {
 
 // ── Conteúdos da homepage ────────────────────────────────────
 const PILLARS = [
-  { title: "Licenciada e segurada", desc: "Alvará IMPIC 104523 · Seguro RC ativo" },
+  { title: "Licenciada e segurada", desc: "Alvará 124371-PAR · Seguro RC ativo" },
   { title: "Garantia escrita", desc: "Entregue no fim de cada obra" },
   { title: "Um só responsável", desc: "Do orçamento à entrega da chave" },
   { title: "Orçamento fechado", desc: "Discriminado linha a linha" },
 ];
 
 const COMPANY_FACTS = [
-  { k: "Denominação social", v: CONTRACTOR_INFO.companyName },
+  { k: "Denominação social", v: CONTRACTOR_INFO.legalName },
+  { k: "Marca", v: CONTRACTOR_INFO.companyName },
   { k: "NIPC", v: CONTRACTOR_INFO.nif },
   { k: "Alvará de construção", v: CONTRACTOR_INFO.alvaraNumber.replace("Alvará ", "") },
   { k: "Seguro", v: "Responsabilidade Civil · Fidelidade · 150.000 €" },

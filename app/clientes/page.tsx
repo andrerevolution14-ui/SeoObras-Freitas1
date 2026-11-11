@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description:
       "Obras reais, clientes reais em Aveiro e arredores. Veja fotos de trabalhos concluídos e avaliações sobre acabamentos, cumprimento de prazos e orçamento sem surpresas.",
     url: "https://www.grupofreitasrenovacoes.pt/clientes",
-    siteName: "Freitas Renovações LDA",
+    siteName: "Freitas Renovações",
     type: "website",
     locale: "pt_PT",
     images: [
@@ -100,7 +100,7 @@ const clientesJsonLd = {
       "@id": "https://www.grupofreitasrenovacoes.pt/clientes#galeria-obras-reais",
       name: "Galeria de Obras e Remodelações Reais em Aveiro — Freitas Renovações",
       description:
-        "Fotografias reais de casas de banho, cozinhas, apartamentos e moradias remodeladas pela Freitas Renovações LDA em Aveiro e concelhos vizinhos.",
+        "Fotografias reais de casas de banho, cozinhas, apartamentos e moradias remodeladas pela Freitas Renovações em Aveiro e concelhos vizinhos.",
       image: [
         ...CLIENTES_FEED_ITEMS.filter((item) => item.image).map((item) => ({
           "@type": "ImageObject",

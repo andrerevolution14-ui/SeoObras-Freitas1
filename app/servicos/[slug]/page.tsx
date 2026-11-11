@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: `https://www.grupofreitasrenovacoes.pt/og/servicos/${slug}.jpg`,
           width: 1200,
           height: 630,
-          alt: `${service.title} em Aveiro — Freitas Renovações LDA`,
+          alt: `${service.title} em Aveiro — Freitas Renovações`,
         },
       ],
     },

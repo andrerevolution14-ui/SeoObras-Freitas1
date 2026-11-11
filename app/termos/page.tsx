@@ -6,7 +6,7 @@ import { CONTRACTOR_INFO } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Termos e Condições Gerais de Serviço",
   description:
-    "Termos de utilização do website e de prestação de serviços da Freitas Renovações LDA: orçamentos, garantias e resolução de litígios.",
+    "Termos de utilização do website e de prestação de serviços da Freitas Renovações: orçamentos, garantias e resolução de litígios.",
   alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/termos" },
   robots: { index: true, follow: true },
 };
@@ -16,7 +16,7 @@ const termosJsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      name: "Termos e Condições Gerais — Freitas Renovações LDA",
+      name: "Termos e Condições Gerais — Freitas Renovações",
       url: "https://www.grupofreitasrenovacoes.pt/termos",
       description: "Condições gerais de prestação de serviços de construção civil e remodelações em Aveiro.",
       inLanguage: "pt-PT",
@@ -107,7 +107,7 @@ export default function TermosPage() {
             Termos e Condições Gerais de Serviço
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.0625rem", lineHeight: 1.7 }}>
-            Consulte os termos aplicáveis à utilização deste website e às propostas de empreitada e prestação de serviços de remodelação executadas pela Freitas Renovações LDA em Aveiro.
+            Consulte os termos aplicáveis à utilização deste website e às propostas de empreitada e prestação de serviços de remodelação executadas pela Freitas Renovações em Aveiro.
           </p>
           <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8125rem", marginTop: "0.75rem" }}>
             Última atualização: 15 de outubro de 2026
@@ -122,7 +122,7 @@ export default function TermosPage() {
             1. Identificação da Empresa e Licenciamento
           </h2>
           <p>
-            O website <strong>grupofreitasrenovacoes.pt</strong> é operado pela sociedade <strong>{CONTRACTOR_INFO.companyName}</strong>, com sede na {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, titular de <strong>Alvará de Construção IMPIC N.º 104523</strong> (Empreiteiro de Obras Particulares emitido pelo Instituto dos Mercados Públicos, do Imobiliário e da Construção) e com apólice de Seguro de Responsabilidade Civil em vigor.
+            O website <strong>grupofreitasrenovacoes.pt</strong> é operado pela sociedade <strong>{CONTRACTOR_INFO.legalName}</strong> (marca comercial {CONTRACTOR_INFO.companyName}), NIPC {CONTRACTOR_INFO.nif}, com sede na {CONTRACTOR_INFO.address.postalCode} {CONTRACTOR_INFO.address.city}, titular de <strong>Alvará de Construção IMPIC N.º 124371-PAR</strong> (Empreiteiro de Obras Particulares emitido pelo Instituto dos Mercados Públicos, do Imobiliário e da Construção) e com apólice de Seguro de Responsabilidade Civil em vigor.
           </p>
 
           <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0A0A0A", marginTop: "2rem", marginBottom: "0.75rem" }}>
@@ -153,7 +153,7 @@ export default function TermosPage() {
             4. Garantias Legais de Construção Civil
           </h2>
           <p>
-            Todas as obras executadas pela Freitas Renovações LDA beneficiam das garantias legais previstas no Código Civil português e na legislação da atividade da construção:
+            Todas as obras executadas pela Freitas Renovações beneficiam das garantias legais previstas no Código Civil português e na legislação da atividade da construção:
           </p>
           <ul style={{ paddingLeft: "1.25rem", marginBottom: "1.5rem" }}>
             <li><strong>Elementos estruturais e obras profundas:</strong> Garantia legal de até 5 anos contra defeitos de execução;</li>
@@ -172,7 +172,7 @@ export default function TermosPage() {
             6. Propriedade Intelectual
           </h2>
           <p>
-            Todos os conteúdos textuais, logótipos e registos fotográficos de projetos reais publicados no website pertencem à Freitas Renovações LDA ou são utilizados com autorização. É estritamente proibida a sua reprodução sem consentimento prévio por escrito.
+            Todos os conteúdos textuais, logótipos e registos fotográficos de projetos reais publicados no website pertencem à Freitas Renovações ou são utilizados com autorização. É estritamente proibida a sua reprodução sem consentimento prévio por escrito.
           </p>
 
           <h2 style={{ fontSize: "1.375rem", fontWeight: 800, color: "#0A0A0A", marginTop: "2rem", marginBottom: "0.75rem" }}>

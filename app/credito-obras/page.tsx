@@ -364,7 +364,7 @@ export default function CreditoObrasPage() {
               {
                 step: "04",
                 title: "Execução da Sua Obra",
-                desc: "Capital disponibilizado na sua conta e a Freitas Renovações LDA arranca os trabalhos cumprindo prazos e com garantia total.",
+                desc: "Capital disponibilizado na sua conta e a Freitas Renovações arranca os trabalhos cumprindo prazos e com garantia total.",
                 icon: <Home size={22} style={{ color: "#8C8C8C" }} />,
               },
             ].map((st) => (
@@ -435,7 +435,7 @@ export default function CreditoObrasPage() {
               Que Obras Podem Ser Financiadas com Este Apoio?
             </h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>
-              Qualquer serviço realizado pela equipa da Freitas Renovações LDA pode usufruir de financiamento à medida.
+              Qualquer serviço realizado pela equipa da Freitas Renovações pode usufruir de financiamento à medida.
             </p>
           </div>
 
@@ -656,7 +656,7 @@ export default function CreditoObrasPage() {
               },
               {
                 q: "O crédito pode cobrir tanto a mão de obra como os materiais?",
-                a: "Sim. O financiamento pode cobrir a totalidade do orçamento apresentado pela Freitas Renovações LDA, englobando a mão de obra especializada, materiais de construção, louças sanitárias, azulejos, tintas e gestão de resíduos.",
+                a: "Sim. O financiamento pode cobrir a totalidade do orçamento apresentado pela Freitas Renovações, englobando a mão de obra especializada, materiais de construção, louças sanitárias, azulejos, tintas e gestão de resíduos.",
               },
               {
                 q: "Qual a diferença entre Crédito Pessoal para Obras e Crédito Habitação (Obras)?",

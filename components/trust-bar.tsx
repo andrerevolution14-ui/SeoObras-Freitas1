@@ -4,7 +4,7 @@ import { CountUp } from "@/components/count-up";
 const stats: { value: React.ReactNode; suffix?: string; label: string; sub: string }[] = [
   { value: <CountUp to={CONTRACTOR_INFO.projectsCompleted} suffix="+" />, label: "Obras concluídas", sub: "Aveiro e concelhos vizinhos" },
   { value: <CountUp to={CONTRACTOR_INFO.googleRating} decimals={1} />, suffix: "/5", label: "Avaliação Google", sub: `${CONTRACTOR_INFO.reviewCount} avaliações verificadas` },
-  { value: "IMPIC", label: "Alvará de construção", sub: "N.º 104523 · Obras particulares" },
+  { value: "124371-PAR", label: "Alvará de construção", sub: "Empreiteiro de obras particulares" },
   { value: <CountUp to={150} suffix="k€" />, label: "Seguro de responsabilidade civil", sub: "Apólice ativa · Fidelidade" },
   { value: <CountUp to={12} suffix="h" />, label: "Primeira resposta", sub: "Com orçamento discriminado" },
 ];

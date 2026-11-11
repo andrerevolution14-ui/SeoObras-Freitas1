@@ -59,7 +59,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "De 350€ a 550€/m² (renovação parcial de acabamentos) | 700€ a 1.200€/m² (reabilitação integral chave na mão)",
       duration: "3 a 10 semanas, consoante a área e complexidade",
       directAnswer:
-        "A Freitas Renovações LDA é titular de Alvará IMPIC e liderada pelo Empreiteiro Jorge Freitas. Realizamos obras chave na mão em Aveiro mediante um processo ágil em 2 passos: 1) Envio do pedido com fotografias e dimensões aproximadas (resposta em <12h); 2) Apresentação de proposta discriminada e orçamento detalhado com base nas soluções e materiais escolhidos.",
+        "A Freitas Renovações é titular de Alvará IMPIC e liderada pelo Empreiteiro Jorge Freitas. Realizamos obras chave na mão em Aveiro mediante um processo ágil em 2 passos: 1) Envio do pedido com fotografias e dimensões aproximadas (resposta em <12h); 2) Apresentação de proposta discriminada e orçamento detalhado com base nas soluções e materiais escolhidos.",
       customFaqs: [
         {
           question: "Quanto custa uma remodelação geral em Aveiro por m²?",
@@ -77,7 +77,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "1.800€ a 2.600€ (troca de banheira por duche) | 3.200€ a 5.500€ (remodelação total standard)",
       duration: "3 a 8 dias úteis",
       directAnswer:
-        "A remodelação de casas de banho em Aveiro pela Freitas Renovações LDA contempla desde a conversão de banheira em base de duche plana antiderrapante até à remodelação integral com substituição de prumadas e canalização multicamada sem juntas no piso, impermeabilização bicomponente certificada e cerâmica retificada.",
+        "A remodelação de casas de banho em Aveiro pela Freitas Renovações contempla desde a conversão de banheira em base de duche plana antiderrapante até à remodelação integral com substituição de prumadas e canalização multicamada sem juntas no piso, impermeabilização bicomponente certificada e cerâmica retificada.",
       customFaqs: [
         {
           question: "Quanto custa remodelar uma casa de banho em Aveiro?",
@@ -95,7 +95,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "4.500€ a 7.500€ (renovação funcional standard) | 8.500€ a 16.000€+ (remodelação estrutural / open space com móveis por medida e pedra)",
       duration: "2 a 4 semanas",
       directAnswer:
-        "Na Freitas Renovações LDA distinguimos claramente o âmbito da obra de cozinha: uma renovação funcional (mantendo layout e instalações) situa-se entre 4.500€ e 7.500€; uma intervenção profunda com abertura em open space, vigamento de suporte, móveis termolaminados/lacados por medida e bancadas em quartzo/granito situa-se entre 8.500€ e 16.000€+. O orçamento é apresentado de forma discriminada com base nas fotografias, dimensões e materiais definidos.",
+        "Na Freitas Renovações distinguimos claramente o âmbito da obra de cozinha: uma renovação funcional (mantendo layout e instalações) situa-se entre 4.500€ e 7.500€; uma intervenção profunda com abertura em open space, vigamento de suporte, móveis termolaminados/lacados por medida e bancadas em quartzo/granito situa-se entre 8.500€ e 16.000€+. O orçamento é apresentado de forma discriminada com base nas fotografias, dimensões e materiais definidos.",
       customFaqs: [
         {
           question: "Quanto custa remodelar uma cozinha em Aveiro e o que define o valor?",
@@ -113,7 +113,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "De 18.000€ a 45.000€ consoante tipologia (T1, T2, T3) e estado do imóvel",
       duration: "4 a 8 semanas",
       directAnswer:
-        "A remodelação de apartamentos em Aveiro pela Freitas Renovações LDA é orientada para valorização do património e conforto acústico. Garantimos gestão completa de licenças e avisos ao condomínio, proteção de elevadores e zonas comuns, e horários rigorosos de ruído.",
+        "A remodelação de apartamentos em Aveiro pela Freitas Renovações é orientada para valorização do património e conforto acústico. Garantimos gestão completa de licenças e avisos ao condomínio, proteção de elevadores e zonas comuns, e horários rigorosos de ruído.",
       customFaqs: [
         {
           question: "Quanto custa remodelar um apartamento T2 ou T3 em Aveiro?",
@@ -131,7 +131,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "Entre 400€ e 850€ por m² de área de intervenção",
       duration: "6 a 16 semanas",
       directAnswer:
-        "A remodelação de moradias em Aveiro exige tratamento integrado de coberturas, fachadas com capoto térmico e reorganização interior. A Freitas Renovações LDA oferece experiência comprovada em vivendas unifamiliares em Esgueira, Aradas, São Bernardo e concelhos limítrofes.",
+        "A remodelação de moradias em Aveiro exige tratamento integrado de coberturas, fachadas com capoto térmico e reorganização interior. A Freitas Renovações oferece experiência comprovada em vivendas unifamiliares em Esgueira, Aradas, São Bernardo e concelhos limítrofes.",
       customFaqs: [
         {
           question: "Quanto custa remodelar uma moradia completa em Aveiro?",
@@ -144,7 +144,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "Sob orçamento prévio com diagnóstico estrutural in loco",
       duration: "8 a 20 semanas",
       directAnswer:
-        "A recuperação de casas velhas e edifícios históricos em Aveiro requer respeito pelas alvenarias tradicionais e combate às humidades da ria. A Freitas Renovações LDA reforça lajes de madeira, impermeabiliza fundações e moderniza todas as infraestruturas com apoio a benefícios fiscais à reabilitação.",
+        "A recuperação de casas velhas e edifícios históricos em Aveiro requer respeito pelas alvenarias tradicionais e combate às humidades da ria. A Freitas Renovações reforça lajes de madeira, impermeabiliza fundações e moderniza todas as infraestruturas com apoio a benefícios fiscais à reabilitação.",
       customFaqs: [
         {
           question: "Como funciona a reabilitação de casas antigas em Aveiro?",
@@ -157,7 +157,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "Capoto ETICS: 38€ a 55€/m² | Pintura de fachadas: 14€ a 22€/m² | Pintura interior: 7€ a 13€/m²",
       duration: "1 a 3 semanas",
       directAnswer:
-        "A aplicação de capoto ETICS em Aveiro pela Freitas Renovações LDA custa entre 38€ e 55€/m², permitindo poupanças energéticas imediatas de até 50%. Utilizamos placas de EPS grafitado homologadas e tintas acrílicas/siloxano de alta resistência à humidade e salinidade da Ria de Aveiro.",
+        "A aplicação de capoto ETICS em Aveiro pela Freitas Renovações custa entre 38€ e 55€/m², permitindo poupanças energéticas imediatas de até 50%. Utilizamos placas de EPS grafitado homologadas e tintas acrílicas/siloxano de alta resistência à humidade e salinidade da Ria de Aveiro.",
       customFaqs: [
         {
           question: "Quanto custa aplicar capoto (ETICS) em Aveiro por m²?",
@@ -170,7 +170,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "Lavagem e impermeabilização: 14€ a 26€/m² | Reparações pontuais a partir de 250€",
       duration: "2 a 5 dias úteis",
       directAnswer:
-        "A Freitas Renovações LDA elimina de forma definitiva infiltrações e humidades em telhados e terraços em Aveiro. Aplicamos telas elastoméricas e membranas poliuretânicas contínuas com garantia escrita e resposta rápida em situações de emergência de chuva.",
+        "A Freitas Renovações elimina de forma definitiva infiltrações e humidades em telhados e terraços em Aveiro. Aplicamos telas elastoméricas e membranas poliuretânicas contínuas com garantia escrita e resposta rápida em situações de emergência de chuva.",
       customFaqs: [
         {
           question: "Como resolver infiltrações no telhado em Aveiro?",
@@ -209,7 +209,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "A partir de 65€ para reparações pontuais | De 650€ a 1.250€ para rede completa WC em multicamada",
       duration: "24h a 48h para reparações urgentes | 2 a 4 dias úteis para renovação integral",
       directAnswer:
-        "Serviço profissional de canalizador em Aveiro e concelhos limítrofes pela Freitas Renovações LDA. Deteção precisa de fugas, substituição de tubagens velhas de chumbo/ferro por sistemas multicamada prensada sem emendas no chão e desentupimentos urgentes com resposta em menos de 12 horas.",
+        "Serviço profissional de canalizador em Aveiro e concelhos limítrofes pela Freitas Renovações. Deteção precisa de fugas, substituição de tubagens velhas de chumbo/ferro por sistemas multicamada prensada sem emendas no chão e desentupimentos urgentes com resposta em menos de 12 horas.",
       customFaqs: [
         {
           question: "Quanto custa um canalizador em Aveiro?",
@@ -227,7 +227,7 @@ export function generateServiceSEO(service: Service): PageSEO {
       pricing: "Quadro elétrico novo: 350€ a 750€ | Instalação elétrica completa T2/T3: 1.800€ a 3.800€",
       duration: "1 a 2 dias para modernização de quadros | 1 a 2 semanas para remodelação completa",
       directAnswer:
-        "Instalações elétricas residenciais e comerciais em Aveiro certificadas de acordo com as normas da DGEG e CERTIEL. A Freitas Renovações LDA executa novos quadros elétricos com disjuntores diferenciais de segurança, passagens de cabos anti-fogo, circuitos dedicados para placas de indução e iluminação LED económica.",
+        "Instalações elétricas residenciais e comerciais em Aveiro certificadas de acordo com as normas da DGEG e CERTIEL. A Freitas Renovações executa novos quadros elétricos com disjuntores diferenciais de segurança, passagens de cabos anti-fogo, circuitos dedicados para placas de indução e iluminação LED económica.",
       customFaqs: [
         {
           question: "Quanto custa substituir um quadro elétrico em Aveiro?",
@@ -264,14 +264,14 @@ export function generateServiceSEO(service: Service): PageSEO {
   const specifics = serviceSpecifics[service.slug] || {
     pricing: "Sob orçamento gratuito e transparente",
     duration: "Sob avaliação consoante dimensões do projeto",
-    directAnswer: `A Freitas Renovações LDA presta serviços profissionais de ${service.title.toLowerCase()} em Aveiro e concelhos vizinhos, com alvará IMPIC, supervisão do Empreiteiro Jorge Freitas e resposta em menos de 12 horas.`,
+    directAnswer: `A Freitas Renovações presta serviços profissionais de ${service.title.toLowerCase()} em Aveiro e concelhos vizinhos, com alvará IMPIC, supervisão do Empreiteiro Jorge Freitas e resposta em menos de 12 horas.`,
     customFaqs: [],
   };
 
   const baseFaqs = [
     {
       question: `Quanto custa ${service.title.toLowerCase()} em Aveiro?`,
-      answer: `O custo de ${service.title.toLowerCase()} em Aveiro é discriminado de forma clara no orçamento gratuito da Freitas Renovações LDA: ${specifics.pricing}. Ligue para ${CONTRACTOR_INFO.phoneDisplay} ou envie fotos e medidas para receber a sua proposta sem compromisso.`,
+      answer: `O custo de ${service.title.toLowerCase()} em Aveiro é discriminado de forma clara no orçamento gratuito da Freitas Renovações: ${specifics.pricing}. Ligue para ${CONTRACTOR_INFO.phoneDisplay} ou envie fotos e medidas para receber a sua proposta sem compromisso.`,
     },
     {
       question: `Qual o prazo para ${service.title.toLowerCase()} em Aveiro?`,
@@ -279,7 +279,7 @@ export function generateServiceSEO(service: Service): PageSEO {
     },
     {
       question: `A Freitas Renovações é uma empresa licenciada com alvará para ${service.title.toLowerCase()}?`,
-      answer: `Sim. A Freitas Renovações LDA é titular de Alvará de Construção válido emitido pelo IMPIC e dispõe de seguro de responsabilidade civil obrigatório. Todas as obras têm garantia formal por escrito.`,
+      answer: `Sim. A Freitas Renovações é titular de Alvará de Construção válido emitido pelo IMPIC e dispõe de seguro de responsabilidade civil obrigatório. Todas as obras têm garantia formal por escrito.`,
     },
     {
       question: `A Freitas Renovações faz obras de ${service.title.toLowerCase()} nos concelhos vizinhos de Aveiro?`,
@@ -291,7 +291,7 @@ export function generateServiceSEO(service: Service): PageSEO {
     title: SERVICE_SEO_TITLES[service.slug] ?? `${service.title} em Aveiro`,
     description: `${SERVICE_SEO_TITLES[service.slug] ?? `${service.title} em Aveiro`}. Empresa licenciada IMPIC, orçamento grátis em 12h e garantia escrita. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
     h1: `${service.title} em Aveiro — Qualidade de Execução & Garantia Escrita`,
-    intro: `A Freitas Renovações LDA oferece serviços especializados de ${service.title.toLowerCase()} em Aveiro e concelhos limítrofes. ${service.longDescription} Empresa licenciada IMPIC com mais de 100 obras executadas, garantia contratual e planeamento rigoroso.`,
+    intro: `A Freitas Renovações oferece serviços especializados de ${service.title.toLowerCase()} em Aveiro e concelhos limítrofes. ${service.longDescription} Empresa licenciada IMPIC com mais de 100 obras executadas, garantia contratual e planeamento rigoroso.`,
     directAnswer: specifics.directAnswer,
     pricingGuide: specifics.pricing,
     durationGuide: specifics.duration,
@@ -309,14 +309,14 @@ export function generateParishSEO(parish: Parish, service?: Service): PageSEO {
     title: `${serviceTitle} em ${seoLabel}`,
     description: `${serviceTitle} em ${seoLabel}: casas de banho, cozinhas e obras chave na mão. Alvará IMPIC, orçamento grátis em 12h. ☎ ${CONTRACTOR_INFO.phoneDisplay}.`,
     h1: `${serviceTitle} em ${regionLabel} — Obras com Acompanhamento Direto`,
-    intro: `A Freitas Renovações LDA presta serviços profissionais de ${serviceName} em ${parish.fullName}. ${parish.description}. A nossa equipa, liderada pelo Empreiteiro Jorge Freitas, analisa as suas fotos e medidas para apresentar proposta discriminada e detalhada sem custos ocultos nem complicações.`,
-    directAnswer: `A Freitas Renovações LDA realiza serviços de ${serviceName} em ${parish.name} com alvará IMPIC, resposta rápida, garantia contratual escrita e acompanhamento presencial em todas as fases da obra.`,
+    intro: `A Freitas Renovações presta serviços profissionais de ${serviceName} em ${parish.fullName}. ${parish.description}. A nossa equipa, liderada pelo Empreiteiro Jorge Freitas, analisa as suas fotos e medidas para apresentar proposta discriminada e detalhada sem custos ocultos nem complicações.`,
+    directAnswer: `A Freitas Renovações realiza serviços de ${serviceName} em ${parish.name} com alvará IMPIC, resposta rápida, garantia contratual escrita e acompanhamento presencial em todas as fases da obra.`,
     pricingGuide: "Orçamento discriminado com base nas fotos, medidas enviadas e materiais selecionados",
     durationGuide: "Prazos contratuais acordados e cumpridos com cronograma de execução",
     faq: [
       {
         question: `A Freitas Renovações faz ${serviceName} em ${parish.name}?`,
-        answer: `Sim! A Freitas Renovações LDA tem equipas ativas em ${parish.name} e presta todos os serviços de remodelações gerais, casas de banho, cozinhas, telhados, capoto e pintura com análise rápida de fotos e medidas e proposta transparente.`,
+        answer: `Sim! A Freitas Renovações tem equipas ativas em ${parish.name} e presta todos os serviços de remodelações gerais, casas de banho, cozinhas, telhados, capoto e pintura com análise rápida de fotos e medidas e proposta transparente.`,
       },
       {
         question: `Como solicitar uma avaliação para obras em ${parish.name}?`,
@@ -324,7 +324,7 @@ export function generateParishSEO(parish: Parish, service?: Service): PageSEO {
       },
       {
         question: `A Freitas Renovações é licenciada pelo IMPIC para trabalhar em ${parish.name}?`,
-        answer: `Sim. A Freitas Renovações LDA é titular de Alvará de Construção emitido pelo IMPIC e apólice de seguro de responsabilidade civil ativa, protegendo o imóvel e os proprietários durante toda a obra.`,
+        answer: `Sim. A Freitas Renovações é titular de Alvará de Construção emitido pelo IMPIC e apólice de seguro de responsabilidade civil ativa, protegendo o imóvel e os proprietários durante toda a obra.`,
       },
       {
         question: `Como funciona o orçamento para obras em ${parish.name}?`,

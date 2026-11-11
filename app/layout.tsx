@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   description:
     "Empresa de remodelações e obras gerais em Aveiro e concelhos vizinhos. Chave na mão, casas de banho, cozinhas, apartamentos e moradias. Alvará IMPIC, orçamentos discriminados e acompanhamento direto pelo Empreiteiro Jorge Freitas.",
   authors: [{ name: "Jorge Freitas", url: "https://www.grupofreitasrenovacoes.pt" }],
-  creator: "Freitas Renovações LDA",
-  publisher: "Freitas Renovações LDA",
+  creator: "Freitas Renovações",
+  publisher: "Freitas Renovações",
   formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL("https://www.grupofreitasrenovacoes.pt"),
   category: "construction",
@@ -65,8 +65,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_PT",
-    siteName: "Freitas Renovações LDA",
-    title: "Freitas Renovações LDA | Empresa de Obras & Remodelações em Aveiro",
+    siteName: "Freitas Renovações",
+    title: "Freitas Renovações | Empresa de Obras & Remodelações em Aveiro",
     description:
       "Empresa licenciada de obras, remodelações gerais e chave na mão em Aveiro. ⭐ 4.9/5 Google · +100 obras · Empreiteiro Jorge Freitas · Preços Justos · Orçamento Grátis",
     images: [
@@ -74,14 +74,14 @@ export const metadata: Metadata = {
         url: "https://www.grupofreitasrenovacoes.pt/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Freitas Renovações LDA — Obras e Remodelações em Aveiro",
+        alt: "Freitas Renovações — Obras e Remodelações em Aveiro",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Freitas Renovações LDA | Obras & Remodelações em Aveiro",
+    title: "Freitas Renovações | Obras & Remodelações em Aveiro",
     description: "Empresa licenciada de obras e remodelações em Aveiro. ⭐ 4.9/5 Google · Orçamento gratuito · Preços Justos.",
     images: ["https://www.grupofreitasrenovacoes.pt/og-image.jpg"],
   },
@@ -100,7 +100,9 @@ const globalJsonLd = {
       "@type": "HomeAndConstructionBusiness",
       "@id": "https://www.grupofreitasrenovacoes.pt/#organization",
       name: CONTRACTOR_INFO.companyName,
-      legalName: CONTRACTOR_INFO.companyName,
+      legalName: CONTRACTOR_INFO.legalName,
+      taxID: CONTRACTOR_INFO.nif.replace(/\s/g, ""),
+      vatID: `PT${CONTRACTOR_INFO.nif.replace(/\s/g, "")}`,
       url: CONTRACTOR_INFO.website,
       logo: {
         "@type": "ImageObject",
@@ -233,7 +235,7 @@ const globalJsonLd = {
       "@id": "https://www.grupofreitasrenovacoes.pt/#website",
       url: "https://www.grupofreitasrenovacoes.pt",
       name: CONTRACTOR_INFO.companyName,
-      description: "Empresa de obras e remodelações em Aveiro — Freitas Renovações LDA",
+      description: "Empresa de obras e remodelações em Aveiro — Freitas Renovações",
       inLanguage: "pt-PT",
       publisher: { "@id": "https://www.grupofreitasrenovacoes.pt/#organization" },
     },

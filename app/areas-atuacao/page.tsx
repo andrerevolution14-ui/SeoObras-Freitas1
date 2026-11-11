@@ -37,7 +37,7 @@ const areasJsonLd = {
   "@graph": [
     {
       "@type": "ItemList",
-      name: "Áreas de Atuação — Freitas Renovações LDA em Aveiro e Concelhos Limítrofes",
+      name: "Áreas de Atuação — Freitas Renovações em Aveiro e Concelhos Limítrofes",
       url: "https://www.grupofreitasrenovacoes.pt/areas-atuacao",
       numberOfItems: PARISHES.length,
       itemListElement: PARISHES.map((p, i) => ({
@@ -116,7 +116,7 @@ export default function AreasAtuacaoPage() {
             Obras e Remodelações em Aveiro &amp; Concelhos Vizinhos
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1.0625rem", maxWidth: "640px", lineHeight: 1.65, marginBottom: "1.75rem" }}>
-            A Freitas Renovações LDA atua com equipas dedicadas em todas as freguesias de Aveiro e nos municípios vizinhos de Ílhavo, Águeda, Estarreja, Vagos e na faixa costeira da Barra e Costa Nova.
+            A Freitas Renovações atua com equipas dedicadas em todas as freguesias de Aveiro e nos municípios vizinhos de Ílhavo, Águeda, Estarreja, Vagos e na faixa costeira da Barra e Costa Nova.
           </p>
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <a href={`tel:${CONTRACTOR_INFO.phone}`} className="btn-primary" id="areas-cta-phone">

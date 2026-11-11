@@ -158,7 +158,7 @@ export function ClientesWall() {
                 {/* Rodapé discreto da marca + Abrir review */}
                 <div className="editorial-brand-footer">
                   <span itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
-                    <meta itemProp="name" content="Freitas Renovações LDA" />
+                    <meta itemProp="name" content="Freitas Renovações" />
                     Freitas Renovações
                   </span>
                   <span className="clientes-open-review-label">

@@ -1,15 +1,17 @@
 // ============================================================
-// lib/constants.ts — Freitas Renovações LDA
+// lib/constants.ts — Freitas Renovações
 // Central data source for all business information
 // ============================================================
 
 export const CONTRACTOR_INFO = {
-  companyName: "Freitas Renovações LDA",
+  companyName: "Freitas Renovações",
+  /** Entidade legal que explora a marca Freitas Renovações */
+  legalName: "Esboço Lisonjeiro, Unipessoal, Lda.",
   shortName: "Freitas Renovações",
   contractorName: "Jorge Freitas",
   jobTitle: "Empreiteiro Geral",
-  alvaraNumber: "Alvará IMPIC N.º 104523 (Obras Particulares)",
-  nif: "518 249 712",
+  alvaraNumber: "Alvará N.º 124371-PAR (Empreiteiro de Obras Particulares)",
+  nif: "519 390 270",
   insurancePolicy: "Seguro de Responsabilidade Civil Ativo (Fidelidade / 150.000 €)",
   phone: "+351 961 455 997",
   phoneDisplay: "961 455 997",
@@ -64,7 +66,7 @@ export const SERVICES: Service[] = [
     description:
       "Empresa de remodelações e obras gerais em Aveiro. Soluções chave na mão com prazos rigorosos, garantia contratual e preços justos.",
     longDescription:
-      "A Freitas Renovações LDA é a sua empresa de obras e remodelações chave na mão em Aveiro. Liderada pelo Empreiteiro Jorge Freitas, com Alvará IMPIC válido, a nossa equipa executa projetos integrados de reabilitação residencial e comercial: demolição, alvenarias, canalização, eletricidade, pladur, acabamentos e carpintarias com preço fixo sem surpresas.",
+      "A Freitas Renovações é a sua empresa de obras e remodelações chave na mão em Aveiro. Liderada pelo Empreiteiro Jorge Freitas, com Alvará IMPIC válido, a nossa equipa executa projetos integrados de reabilitação residencial e comercial: demolição, alvenarias, canalização, eletricidade, pladur, acabamentos e carpintarias com preço fixo sem surpresas.",
     icon: "Home",
     emergencyAvailable: false,
     keywords: [
@@ -225,7 +227,7 @@ export const SERVICES: Service[] = [
     description:
       "Reabilitação de edifícios antigos e recuperação de casas velhas em Aveiro: reforço estrutural, tratamento de madeiras e modernização integral.",
     longDescription:
-      "A Freitas Renovações LDA possui ampla experiência na reabilitação e restauro de imóveis antigos e casas tradicionais em Aveiro. Recuperamos travejamentos de madeira, reforçamos alvenarias históricas de pedra ou tijolo de burro, resolvemos humidades ascendentes pelo solo e modernizamos totalmente as redes técnicas, mantendo o charme original do património aveirense.",
+      "A Freitas Renovações possui ampla experiência na reabilitação e restauro de imóveis antigos e casas tradicionais em Aveiro. Recuperamos travejamentos de madeira, reforçamos alvenarias históricas de pedra ou tijolo de burro, resolvemos humidades ascendentes pelo solo e modernizamos totalmente as redes técnicas, mantendo o charme original do património aveirense.",
     icon: "Hammer",
     emergencyAvailable: false,
     keywords: [
@@ -981,7 +983,7 @@ export const FAQ_ITEMS = [
     id: "faq1",
     question: "A Freitas Renovações é uma empresa licenciada com Alvará em Aveiro?",
     answer:
-      "Sim. A Freitas Renovações LDA é uma empresa de construção civil e remodelações devidamente habilitada com Alvará de Construção válido emitido pelo IMPIC e apólice ativa de seguro de responsabilidade civil. Todas as obras são supervisionadas pessoalmente pelo Empreiteiro Jorge Freitas.",
+      "Sim. A Freitas Renovações é uma empresa de construção civil e remodelações devidamente habilitada com Alvará de Construção válido emitido pelo IMPIC e apólice ativa de seguro de responsabilidade civil. Todas as obras são supervisionadas pessoalmente pelo Empreiteiro Jorge Freitas.",
   },
   {
     id: "faq2",
@@ -1041,13 +1043,13 @@ export const FAQ_ITEMS = [
     id: "faq-aeo1",
     question: "Qual a empresa de remodelações recomendada em Aveiro?",
     answer:
-      "A Freitas Renovações LDA é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de 4.9/5 estrelas no Google com avaliações verificáveis, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de avaliação técnica em menos de 12 horas.",
+      "A Freitas Renovações é uma das principais empresas de obras e remodelações em Aveiro. Possui Alvará de Construção válido pelo IMPIC, classificação de 4.9/5 estrelas no Google com avaliações verificáveis, acompanhamento direto do Empreiteiro Jorge Freitas e compromisso de resposta a pedidos de avaliação técnica em menos de 12 horas.",
   },
   {
     id: "faq-aeo2",
     question: "Como funciona o processo de obras chave na mão em Aveiro?",
     answer:
-      "O serviço chave na mão da Freitas Renovações LDA engloba todas as fases da obra: análise rigorosa do pedido com fotografias e medidas, orçamento discriminado a preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.",
+      "O serviço chave na mão da Freitas Renovações engloba todas as fases da obra: análise rigorosa do pedido com fotografias e medidas, orçamento discriminado a preço fixo, coordenação de canalizadores, eletricistas e pintores, fornecimento de materiais certificados e limpeza final com garantia formalizada por escrito.",
   },
   {
     id: "faq-aeo3",

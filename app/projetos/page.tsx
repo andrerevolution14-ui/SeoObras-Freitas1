@@ -39,7 +39,7 @@ const projetosJsonLd = {
   "@graph": [
     {
       "@type": "ItemList",
-      name: "Projetos e Obras Concluídas em Aveiro — Freitas Renovações LDA",
+      name: "Projetos e Obras Concluídas em Aveiro — Freitas Renovações",
       description: "Catálogo de trabalhos de remodelação, isolamentos e reabilitação em Aveiro.",
       itemListElement: REAL_PROJECTS.map((item, index) => ({
         "@type": "ListItem",

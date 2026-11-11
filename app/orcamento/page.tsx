@@ -38,7 +38,7 @@ const orcamentoJsonLd = {
   "@graph": [
     {
       "@type": "ContactPage",
-      name: "Pedido de Orçamento e Calculadora — Freitas Renovações LDA",
+      name: "Pedido de Orçamento e Calculadora — Freitas Renovações",
       url: "https://www.grupofreitasrenovacoes.pt/orcamento",
       description: "Calculadora interativa e formulário de contacto para pedir orçamento gratuito de obras e remodelações em Aveiro",
       mainEntity: {
@@ -117,7 +117,7 @@ export default function OrcamentoPage() {
             {[
               { icon: <CheckCircle size={15} />, text: "Orçamento 100% gratuito" },
               { icon: <Clock size={15} />, text: "Resposta em até 12-24h" },
-              { icon: <Shield size={15} />, text: "Alvará IMPIC N.º 104523" },
+              { icon: <Shield size={15} />, text: "Alvará N.º 124371-PAR" },
               { icon: <Star size={15} />, text: "⭐ 4.9/5 estrelas em Aveiro" },
             ].map((item) => (
               <div key={item.text} style={{ display: "flex", alignItems: "center", gap: "0.375rem", fontSize: "0.8125rem", fontWeight: 600, color: "#3A3A3A" }}>

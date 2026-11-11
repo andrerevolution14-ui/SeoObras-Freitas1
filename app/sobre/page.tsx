@@ -37,9 +37,9 @@ const sobreJsonLd = {
   "@graph": [
     {
       "@type": "AboutPage",
-      name: "Sobre a Freitas Renovações LDA e Empreiteiro Jorge Freitas",
+      name: "Sobre a Freitas Renovações e Empreiteiro Jorge Freitas",
       url: "https://www.grupofreitasrenovacoes.pt/sobre",
-      description: "História, alvarás, competências e equipa técnica da Freitas Renovações LDA em Aveiro.",
+      description: "História, alvarás, competências e equipa técnica da Freitas Renovações em Aveiro.",
     },
     {
       "@type": "Person",
@@ -114,7 +114,7 @@ export default function SobrePage() {
           </nav>
           <p className="section-eyebrow" style={{ color: "#D4D4D4" }}>Quem Somos</p>
           <h1 style={{ fontSize: "clamp(1.875rem, 4vw, 2.75rem)", fontWeight: 900, color: "#ffffff", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
-            A Equipa da Freitas Renovações LDA
+            A Equipa da Freitas Renovações
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", fontSize: "1rem", maxWidth: "560px", lineHeight: 1.65 }}>
             Empresa de construção civil e remodelações em Aveiro, fundada e liderada pelo Empreiteiro Jorge Freitas com forte compromisso na qualidade e em preços justos.
@@ -148,7 +148,7 @@ export default function SobrePage() {
               >
                 <img
                   src="/logo1s.png"
-                  alt="Freitas Renovações LDA — Empreiteiro Aveiro"
+                  alt="Freitas Renovações — Empreiteiro Aveiro"
                   style={{
                     height: "64px",
                     width: "auto",
@@ -157,18 +157,18 @@ export default function SobrePage() {
                   }}
                 />
                 <div>
-                  <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.125rem" }}>Freitas Renovações LDA</div>
+                  <div style={{ color: "#ffffff", fontWeight: 800, fontSize: "1.125rem" }}>Freitas Renovações</div>
                   <div style={{ color: "#D4D4D4", fontSize: "0.8125rem", fontWeight: 700, letterSpacing: "0.05em" }}>EMPREITEIRO EM AVEIRO</div>
                 </div>
                 <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.75)", marginTop: "0.25rem" }}>
-                  Alvará IMPIC N.º 104523 · NIPC 518 249 712
+                  Alvará N.º 124371-PAR · NIPC 519 390 270
                 </div>
               </div>
 
               {/* Credentials */}
               <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
                 {[
-                  { icon: <Shield size={16} />, label: "Alvará", value: "IMPIC N.º 104523" },
+                  { icon: <Shield size={16} />, label: "Alvará", value: "N.º 124371-PAR" },
                   { icon: <CheckCircle size={16} />, label: "Obras Concluídas", value: `+${CONTRACTOR_INFO.projectsCompleted} Obras` },
                   { icon: <Star size={16} />, label: "Classificação", value: `${CONTRACTOR_INFO.googleRating}/5 ⭐ Google` },
                   { icon: <Clock size={16} />, label: "Atendimento", value: "Resposta 12-24h" },
@@ -202,13 +202,13 @@ export default function SobrePage() {
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem", color: "#525252", fontSize: "0.9375rem", lineHeight: 1.7, marginBottom: "1.75rem" }}>
                 <p>
-                  O Jorge Freitas é o empreiteiro responsável pela <strong style={{ color: "#0A0A0A" }}>Freitas Renovações LDA</strong> em Aveiro. A sua dedicação à transparência, rigor na execução e política de <strong style={{ color: "#0A0A0A" }}>preços justos</strong> transformou a empresa numa referência de confiança na região.
+                  O Jorge Freitas é o empreiteiro responsável pela <strong style={{ color: "#0A0A0A" }}>Freitas Renovações</strong> em Aveiro. A sua dedicação à transparência, rigor na execução e política de <strong style={{ color: "#0A0A0A" }}>preços justos</strong> transformou a empresa numa referência de confiança na região.
                 </p>
                 <p>
                   Jorge Freitas acompanha pessoalmente as obras, garantindo que os materiais aplicados cumprem os padrões de exigência e que a comunicação com o cliente é clara do início ao fim.
                 </p>
                 <p>
-                  A <strong style={{ color: "#0A0A0A" }}>Freitas Renovações LDA</strong> é uma empresa devidamente licenciada com Alvará de Construção Válido e seguro de responsabilidade civil para execução de obras de construção e remodelação em Portugal.
+                  A <strong style={{ color: "#0A0A0A" }}>Freitas Renovações</strong> é uma empresa devidamente licenciada com Alvará de Construção Válido e seguro de responsabilidade civil para execução de obras de construção e remodelação em Portugal.
                 </p>
               </div>
 
@@ -262,7 +262,8 @@ export default function SobrePage() {
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
             {[
-              { label: "Empresa", value: CONTRACTOR_INFO.companyName },
+              { label: "Empresa", value: CONTRACTOR_INFO.legalName },
+              { label: "Marca", value: CONTRACTOR_INFO.companyName },
               { label: "Empreiteiro Responsável", value: CONTRACTOR_INFO.contractorName },
               { label: "Morada", value: `${CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal` },
               { label: "Contacto Telefónico", value: CONTRACTOR_INFO.phoneDisplay },

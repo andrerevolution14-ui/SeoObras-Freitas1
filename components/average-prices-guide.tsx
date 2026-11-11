@@ -202,7 +202,7 @@ export function AveragePricesGuide() {
               </h4>
             </div>
             <p style={{ fontSize: "0.8125rem", color: "#6B6B6B", lineHeight: 1.6 }}>
-              Trabalhar com uma empresa licenciada como a Freitas Renovações LDA permite aplicar IVA reduzido a 6% em mão de obra de reabilitação urbana em habitações próprias ou zonas ARU de Aveiro.
+              Trabalhar com uma empresa licenciada como a Freitas Renovações permite aplicar IVA reduzido a 6% em mão de obra de reabilitação urbana em habitações próprias ou zonas ARU de Aveiro.
             </p>
           </div>
         </div>

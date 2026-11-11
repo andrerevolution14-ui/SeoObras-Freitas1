@@ -510,7 +510,7 @@ export const CLIENTES_TRUST_PILLARS = [
   },
   {
     title: "Garantia Escrita até 5 Anos & Alvará IMPIC",
-    desc: "Empresa 100% licenciada (Alvará 104523) com Seguro de Responsabilidade Civil ativo e acompanhamento presencial pelo Empreiteiro Jorge Freitas.",
+    desc: "Empresa 100% licenciada (Alvará 124371-PAR) com Seguro de Responsabilidade Civil ativo e acompanhamento presencial pelo Empreiteiro Jorge Freitas.",
   },
 ];
 

@@ -18,7 +18,7 @@ export function BrandLogo({ tone = "light", size = "md", href = "/" }: BrandLogo
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={tone === "light" ? "/brand/logo-horizontal-white.svg" : "/brand/logo-horizontal-dark.svg"}
-      alt="Freitas Renovações LDA — Empresa de Obras e Remodelações em Aveiro"
+      alt="Freitas Renovações — Empresa de Obras e Remodelações em Aveiro"
       width={Math.round(h * RATIO)}
       height={h}
       className="gf-logo-img"

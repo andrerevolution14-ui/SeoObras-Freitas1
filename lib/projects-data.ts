@@ -641,7 +641,7 @@ export const VERDEMONT_PROJECT = {
   url: "http://www.verdemont.eu",
   headline: "Grande Empreendimento em Destaque — Verdemont",
   tagline: "Construção e Arquitetura de Alto Padrão com Rigor de Engenharia",
-  description: "A equipa da Freitas Renovações LDA e o Empreiteiro Jorge Freitas têm o orgulho de apresentar a sua intervenção e capacidade técnica de grande escala no prestigiado projeto Verdemont (visite www.verdemont.eu). Um desenvolvimento de referência que alia sofisticação arquitetónica, sustentabilidade e excelência construtiva.",
+  description: "A equipa da Freitas Renovações e o Empreiteiro Jorge Freitas têm o orgulho de apresentar a sua intervenção e capacidade técnica de grande escala no prestigiado projeto Verdemont (visite www.verdemont.eu). Um desenvolvimento de referência que alia sofisticação arquitetónica, sustentabilidade e excelência construtiva.",
   highlights: [
     "Execução de acabamentos de alta gama e rigor dimensional",
     "Sistemas avançados de isolamento térmico e acústico de máxima eficiência",
@@ -659,7 +659,7 @@ export const COMPANIES_AVEIRO_CRITERIA = [
     id: "crit-1",
     title: "1. Alvará IMPIC Válido",
     desc: "Exija o número de alvará ou título de registo do Instituto dos Mercados Públicos do Imobiliário e da Construção. Trabalhar com entidades ilegais elimina qualquer proteção jurídica em caso de defeitos de obra.",
-    checkFreitas: "A Freitas Renovações LDA é titular de alvará de construção válido com registo público.",
+    checkFreitas: "A Freitas Renovações é titular de alvará de construção válido com registo público.",
   },
   {
     id: "crit-2",

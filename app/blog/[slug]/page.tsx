@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${post.title} — Freitas Renovações LDA`,
+          alt: `${post.title} — Freitas Renovações`,
         },
       ],
     },

@@ -144,7 +144,7 @@ export function Footer() {
         <div className="gf-foot-legal">
           <div>
             <p style={{ margin: 0, color: "rgba(255,255,255,0.8)" }}>
-              © {currentYear} {CONTRACTOR_INFO.companyName} · {CONTRACTOR_INFO.alvaraNumber} · NIPC {CONTRACTOR_INFO.nif}
+              © {currentYear} {CONTRACTOR_INFO.legalName} — {CONTRACTOR_INFO.companyName} · {CONTRACTOR_INFO.alvaraNumber} · NIPC {CONTRACTOR_INFO.nif}
             </p>
             <p style={{ margin: "0.35rem 0 0", color: "rgba(255,255,255,0.4)" }}>
               {CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal · {CONTRACTOR_INFO.insurancePolicy}

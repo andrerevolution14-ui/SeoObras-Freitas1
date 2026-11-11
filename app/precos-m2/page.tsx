@@ -52,7 +52,7 @@ const precosM2JsonLd = {
           name: "Qual é o preço por m² de remodelação em Aveiro?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "O preço médio por m² de remodelação em Aveiro varia de 350€ a 550€/m² para intervenções parciais e de 650€ a 900€/m² para remodelações chave na mão standard. A Freitas Renovações LDA apresenta propostas detalhadas com preço fechado e alvará IMPIC.",
+            text: "O preço médio por m² de remodelação em Aveiro varia de 350€ a 550€/m² para intervenções parciais e de 650€ a 900€/m² para remodelações chave na mão standard. A Freitas Renovações apresenta propostas detalhadas com preço fechado e alvará IMPIC.",
           },
         },
         {
@@ -76,7 +76,7 @@ const precosM2JsonLd = {
           name: "Como obter um orçamento de obras ou remodelação em Aveiro?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Para obter um orçamento gratuito e sem compromisso para obras em Aveiro, contacte a Freitas Renovações LDA pelo 961 455 997 ou preencha o formulário online. O Empreiteiro Jorge Freitas responde no prazo máximo de 12 horas.",
+            text: "Para obter um orçamento gratuito e sem compromisso para obras em Aveiro, contacte a Freitas Renovações pelo 961 455 997 ou preencha o formulário online. O Empreiteiro Jorge Freitas responde no prazo máximo de 12 horas.",
           },
         },
       ],
