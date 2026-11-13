@@ -4,6 +4,7 @@ import { Star, ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { GOOGLE_REVIEWS, CONTRACTOR_INFO } from "@/lib/constants";
 import { CLIENTES_FEED_ITEMS } from "@/lib/clientes-data";
 import { GoogleG } from "@/components/google-g";
+import { PopoverFallback } from "@/components/popover-fallback";
 
 interface ReviewCard {
   id: string;
@@ -96,6 +97,7 @@ export function GoogleReviews() {
 
   return (
     <section className="gf-rs" id="reviews" aria-label="Avaliações de clientes">
+      <PopoverFallback />
       <div className="section-container">
         <div className="gf-rs-head" data-reveal>
           <div className="gf-rs-score">
@@ -217,6 +219,10 @@ export function GoogleReviews() {
         .gf-rs-who strong { color: #0A0A0A; font-weight: 600; }
         .gf-rev-pop { border: 0; padding: 0; background: transparent; inset: 0; margin: auto; width: min(620px, calc(100vw - 2rem)); height: fit-content; max-height: 90dvh; overflow: auto; }
         .gf-rev-pop::backdrop { background: rgba(5, 5, 5, 0.85); }
+        /* Escondidas por defeito (browsers sem "popover" mostravam-nas todas abertas) */
+        .gf-rev-pop:not(.is-open) { display: none; }
+        .gf-rev-pop:popover-open { display: block; }
+        .gf-rev-pop.is-open { display: block; position: fixed; z-index: 130; box-shadow: 0 0 0 100vmax rgba(5, 5, 5, 0.85); }
         .gf-rev-modal-card { position: relative; background: #fff; max-width: 620px; width: 100%; padding: 3rem 2.5rem 2.5rem; display: flex; flex-direction: column; border-top: 3px solid #0A0A0A; }
         .gf-rev-close { position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #E5E5E3; background: #fff; cursor: pointer; color: #0A0A0A; }
         .gf-rev-modal-tag { margin-top: 1rem; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6B6B6B; font-weight: 600; }
