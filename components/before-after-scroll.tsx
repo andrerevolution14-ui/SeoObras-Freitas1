@@ -111,7 +111,7 @@ export function BeforeAfterScroll() {
         .ba:not(.is-live) .ba-pair-0 { --r: 1; }
         .ba:not(.is-live) .ba-pair-1 { display: none; }
         @media (max-width: 900px) {
-          .ba.is-live { height: 260vh; }
+          .ba.is-live { height: 170vh; }
           .ba-grid { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding-top: 76px; text-align: center; }
           .ba-copy { display: flex; flex-direction: column; align-items: center; }
           .ba-eyebrow, .ba-lead { display: none; }

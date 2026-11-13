@@ -37,7 +37,7 @@ export function FaqAccordion() {
           </div>
 
           <div style={{ borderTop: "1px solid #E5E5E3" }}>
-            {FAQ_ITEMS.map((item, i) => (
+            {FAQ_ITEMS.slice(0, 6).map((item, i) => (
               <details key={item.id} className="accordion-item gf-faq-item" id={`faq-${item.id}`}>
                 <summary className="accordion-trigger">
                   <span style={{ display: "flex", gap: "1.25rem", paddingRight: "1rem" }}>
@@ -53,6 +53,28 @@ export function FaqAccordion() {
                 <div className="accordion-content gf-faq-answer">{item.answer}</div>
               </details>
             ))}
+            <details className="gf-faq-more">
+              <summary className="gf-faq-more-btn">Ver mais {FAQ_ITEMS.length - 6} perguntas</summary>
+              {FAQ_ITEMS.slice(6).map((item, j) => {
+                const i = j + 6;
+                return (
+              <details key={item.id} className="accordion-item gf-faq-item" id={`faq-${item.id}`}>
+                  <summary className="accordion-trigger">
+                    <span style={{ display: "flex", gap: "1.25rem", paddingRight: "1rem" }}>
+                      <span className="font-display" style={{ color: "#9A9A9A", fontSize: "0.8125rem", fontWeight: 500, paddingTop: "0.2rem", minWidth: "1.5rem" }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span>{item.question}</span>
+                    </span>
+                    <span className="gf-faq-toggle" aria-hidden="true">
+                      <Plus size={18} strokeWidth={1.5} />
+                    </span>
+                  </summary>
+                  <div className="accordion-content gf-faq-answer">{item.answer}</div>
+                </details>
+                  );
+              })}
+            </details>
           </div>
         </div>
       </div>
@@ -70,7 +92,10 @@ export function FaqAccordion() {
           color: #0A0A0A;
           transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
         }
-        .gf-faq-item summary { list-style: none; }
+        .gf-faq-item summary, .gf-faq-more > summary { list-style: none; }
+        .gf-faq-more > summary::-webkit-details-marker { display: none; }
+        .gf-faq-more-btn { display: inline-flex; margin-top: 1.25rem; padding: 0.75rem 1.1rem; border: 1px solid #0A0A0A; font-size: 0.875rem; font-weight: 600; cursor: pointer; }
+        .gf-faq-more[open] > .gf-faq-more-btn { display: none; }
         .gf-faq-item summary::-webkit-details-marker { display: none; }
         .gf-faq-item[open] { border-color: #0A0A0A; }
         .gf-faq-answer { padding-left: 2.75rem; }

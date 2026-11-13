@@ -257,7 +257,7 @@ export function Build3D() {
         .b3-tag.is-done .b3-tag-card em { color: rgba(255,255,255,0.72); }
 
         @media (max-width: 900px) {
-          .b3.is-live { height: 480vh; }
+          .b3.is-live { height: 240vh; }
           .b3-grid { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 74px; text-align: center; }
           .b3-copy { min-width: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
           .b3-eyebrow, .b3-lead, .b3-cta, .b3-count { display: none; }
