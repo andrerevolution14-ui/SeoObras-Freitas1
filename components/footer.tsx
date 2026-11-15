@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
 import { BrandLogo } from "@/components/brand-logo";
+import { SocialLinks } from "@/components/social-links";
 
 // Google Business Profile — CID oficial: 0xc11699bc26385889 (13914443692994943113)
 const GOOGLE_MAPS_EMBED =
@@ -65,6 +66,10 @@ export function Footer() {
                 WhatsApp
               </a>
             </div>
+            <p className="gf-foot-small" style={{ marginTop: "1.5rem" }}>Acompanhe as nossas obras</p>
+            <div style={{ marginTop: "0.6rem" }}>
+              <SocialLinks withLabels />
+            </div>
           </div>
         </div>
 
@@ -75,6 +80,8 @@ export function Footer() {
             <ul className="gf-foot-list">
               <li><a href={`tel:${CONTRACTOR_INFO.phone}`} className="footer-link">{CONTRACTOR_INFO.phoneDisplay} ({CONTRACTOR_INFO.phone})</a></li>
               <li><a href={CONTRACTOR_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp: {CONTRACTOR_INFO.phoneDisplay}</a></li>
+              <li><a href={CONTRACTOR_INFO.socialLinks.instagram} target="_blank" rel="noopener noreferrer me" className="footer-link">Instagram: {CONTRACTOR_INFO.socialLinks.instagramHandle}</a></li>
+              <li><a href={CONTRACTOR_INFO.socialLinks.facebook} target="_blank" rel="noopener noreferrer me" className="footer-link">Facebook: Freitas Renovações</a></li>
               <li><a href={`mailto:${CONTRACTOR_INFO.email}`} className="footer-link">{CONTRACTOR_INFO.email}</a></li>
               <li className="footer-link" style={{ lineHeight: 1.6 }}>
                 {CONTRACTOR_INFO.address.postalCode} Aveiro, Portugal

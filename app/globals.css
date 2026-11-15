@@ -1063,3 +1063,14 @@ main > section.section-padding, #faq, .gf-final, .gf-footer {
   .gf-foot-list { flex-direction: row !important; flex-wrap: wrap; gap: 0.35rem 0.9rem !important; }
   .gf-foot-list .footer-link { font-size: 0.8125rem !important; }
 }
+
+/* Redes sociais */
+.gf-social { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.gf-social-link { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.22); color: #fff; text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease; }
+.gf-social-link:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+.gf-social-dark .gf-social-link { border-color: rgba(10,10,10,0.2); color: #0A0A0A; }
+.gf-social-dark .gf-social-link:hover { background: rgba(10,10,10,0.04); border-color: #0A0A0A; }
+.gf-social.has-labels .gf-social-link { height: auto; padding: 0.65rem 0.95rem; justify-content: flex-start; }
+.gf-social-link span { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
+.gf-social-link strong { font-size: 0.8125rem; font-weight: 600; }
+.gf-social-link em { font-style: normal; font-size: 0.6875rem; opacity: 0.6; }

@@ -138,6 +138,13 @@ export function GoogleReviews() {
         </a>
       </div>
 
+      <div className="section-container gf-rs-social">
+        <span>Veja as obras em curso no</span>
+        <a href={CONTRACTOR_INFO.socialLinks.instagram} target="_blank" rel="noopener noreferrer me">Instagram</a>
+        <span>·</span>
+        <a href={CONTRACTOR_INFO.socialLinks.facebook} target="_blank" rel="noopener noreferrer me">Facebook</a>
+      </div>
+
       {cards.map((r) => (
         <div key={r.id} id={`rev-${r.id}`} popover="auto" className="gf-rev-pop" aria-label={`Avaliação de ${r.name}`}>
           <div className="gf-rev-modal-card">
@@ -176,6 +183,8 @@ export function GoogleReviews() {
         .gf-rs-actions { display: flex; gap: 0.625rem; }
         .gf-rs-actions a { padding: 0.8rem 1.2rem; font-size: 0.8125rem; white-space: nowrap; }
         .gf-rs-actions-m { display: none; }
+        .gf-rs-social { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; font-size: 0.8125rem; color: #6B6B6B; }
+        .gf-rs-social a { color: #0A0A0A; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
         .gf-rs-rows {
           display: flex;
           flex-direction: column;

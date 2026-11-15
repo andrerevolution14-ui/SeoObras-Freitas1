@@ -38,7 +38,9 @@ export const CONTRACTOR_INFO = {
   socialLinks: {
     google: "https://www.google.com/maps/search/?api=1&query=Freitas+Renova%C3%A7%C3%B5es+Aveiro",
     googleReview: "https://www.google.com/maps/search/?api=1&query=Freitas+Renova%C3%A7%C3%B5es+Aveiro",
-    facebook: "https://facebook.com/freitasrenovacoes",
+    facebook: "https://www.facebook.com/profile.php?id=61581219930932",
+    instagram: "https://www.instagram.com/freitas_renovacoes/",
+    instagramHandle: "@freitas_renovacoes",
     whatsapp: "https://wa.me/351961455997?text=Ol%C3%A1%20Jorge%20Freitas%2C%20gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20obras%2Fremodela%C3%A7%C3%A3o%20em%20Aveiro.",
   },
 };

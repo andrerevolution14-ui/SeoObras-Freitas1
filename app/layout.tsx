@@ -169,8 +169,9 @@ const globalJsonLd = {
       },
       // Google Business Profile & Redes Oficiais
       sameAs: [
-        CONTRACTOR_INFO.socialLinks.google,
+        "https://maps.google.com/?cid=13914443692994943113",
         CONTRACTOR_INFO.socialLinks.facebook,
+        CONTRACTOR_INFO.socialLinks.instagram,
       ],
       areaServed: PARISHES.map((p) => ({
         "@type": "City",
