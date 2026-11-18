@@ -10,7 +10,7 @@ function harness() {
     canLoad: () => visible,
     onReady: () => ready++,
     image: () => {
-      const image = { decode: async () => {}, onload: null, onerror: null };
+      const image = { decode: async () => {}, removeAttribute() {}, onload: null, onerror: null };
       Object.defineProperty(image, 'src', { set(url) { requests.push({ url, image, done: false }); } });
       return image;
     }
@@ -65,4 +65,22 @@ test('background work pauses and late responses cannot revive a disposed loader'
   await h.drain();
   assert.equal(h.loader.size, 0);
   assert.equal(h.ready(), 0);
+});
+
+test('decoded bitmap memory is released on eviction and disposal', async () => {
+  const previous = globalThis.createImageBitmap;
+  const bitmaps = [];
+  globalThis.createImageBitmap = async () => {
+    const bitmap = { closed: false, close() { this.closed = true; } };
+    bitmaps.push(bitmap); return bitmap;
+  };
+  try {
+    const h = harness();
+    for (const n of [1, 40, 80, 120, 160, 192]) {
+      h.loader.setViews([[0, n]], []); await h.drain();
+      assert.ok(bitmaps.filter(b => !b.closed).length <= ATLAS.limit);
+    }
+    h.loader.dispose();
+    assert.ok(bitmaps.every(b => b.closed));
+  } finally { globalThis.createImageBitmap = previous; }
 });

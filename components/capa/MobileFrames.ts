@@ -2,7 +2,8 @@
 // outrunning one network request per frame while bounding decoded image memory.
 export const ATLAS = { frames: 8, columns: 4, width: 800, height: 450, count: 192, limit: 6 };
 export type View = [room: number, frame: number];
-type Frame = { image: HTMLImageElement; frame: number; x: number; y: number };
+type FrameImage = HTMLImageElement | ImageBitmap;
+type Frame = { image: FrameImage; frame: number; x: number; y: number };
 
 export function createMobileFrames(options: {
   source: (room: number, sheet: number) => string;
@@ -10,14 +11,15 @@ export function createMobileFrames(options: {
   onReady: () => void;
   image?: () => HTMLImageElement;
 }) {
-  const cache = new Map<string, HTMLImageElement>();
+  const cache = new Map<string, FrameImage>();
   const pending = new Set<string>(), failed = new Set<string>();
   let queue: string[] = [], protectedKeys = new Set<string>(), disposed = false;
   const key = (room: number, frame: number) => `${room}:${Math.floor((frame - 1) / ATLAS.frames)}`;
+  const release = (image: FrameImage) => { if ("close" in image) image.close(); };
   const trim = () => {
     for (const k of cache.keys()) {
       if (cache.size <= ATLAS.limit) break;
-      if (!protectedKeys.has(k)) cache.delete(k);
+      if (!protectedKeys.has(k)) { release(cache.get(k)!); cache.delete(k); }
     }
   };
   const pump = () => {
@@ -31,7 +33,14 @@ export function createMobileFrames(options: {
       const done = () => { pending.delete(k); pump(); };
       image.onload = async () => {
         try { await image.decode(); } catch { /* onload still provides a usable image */ }
-        if (!disposed) { cache.set(k, image); trim(); options.onReady(); }
+        let decoded: FrameImage = image;
+        if (typeof createImageBitmap === "function") {
+          try { decoded = await createImageBitmap(image); } catch { /* retain the HTML image fallback */ }
+        }
+        image.onload = null; image.onerror = null;
+        if (decoded !== image) image.removeAttribute("src");
+        if (!disposed) { cache.set(k, decoded); trim(); options.onReady(); }
+        else release(decoded);
         done();
       };
       image.onerror = () => { failed.add(k); done(); };
@@ -74,6 +83,6 @@ export function createMobileFrames(options: {
     },
     resume: pump,
     get size() { return cache.size; },
-    dispose() { disposed = true; queue = []; cache.clear(); }
+    dispose() { disposed = true; queue = []; cache.forEach(release); cache.clear(); }
   };
 }
