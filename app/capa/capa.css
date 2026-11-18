@@ -589,34 +589,38 @@ html:has(.capa-experience){scroll-behavior:auto}
  .capa-experience .project-showcase:not(.is-static) .projects-stage{top:min(0px,calc(100svh - 701px));height:max(100svh,701px);min-height:0}
 }
 
-/* A landscape film needs a landscape window on a phone. Keep the complete
-   room visible, with copy and controls outside the image instead of covering it. */
+/* Portrait masters follow the subject in each shot and fill the phone screen. */
+.capa-experience .scroll-still .still-picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:700px) and (orientation:portrait){
- .capa-experience .scroll-hero,.capa-experience .scroll-still{--hero-media-top:max(82px,calc(70px + (100svh - 650px)*.18));--hero-media-height:56.25vw;background:#171614}
+ .capa-experience .scroll-hero,.capa-experience .scroll-still{background:#171614}
  .capa-experience .scroll-hero .stage{height:100svh;min-height:0;background:#171614}
- .capa-experience .scroll-hero .room{inset:var(--hero-media-top) 0 auto;width:100%;height:var(--hero-media-height);transform:none;mask-image:none;-webkit-mask-image:none}
- .capa-experience .scroll-hero .room .poster{object-fit:contain;object-position:center}
- .capa-experience .scroll-hero .shade,.capa-experience .scroll-hero .spatial-copy-layer{display:none}
- .capa-experience .scroll-hero .scene-captions{inset:calc(var(--hero-media-top) + var(--hero-media-height) + 16px) 0 calc(124px + env(safe-area-inset-bottom,0px))}
- .capa-experience .scroll-hero .scene-copy,.capa-experience .scroll-hero .scene-copy[data-composition]{inset:0;width:100%;height:100%;padding:0 24px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;transform:none}
- .capa-experience .scroll-hero .scene-copy .scene-title,.capa-experience .scroll-hero .scene-copy.opening-copy .scene-title,.capa-experience .scroll-hero .scene-copy[data-composition="mortar"] .scene-title{position:static;width:auto;height:auto;clip-path:none;overflow:visible;white-space:normal;font-size:clamp(34px,10.3vw,46px);line-height:1.04;margin:12px 0 14px;text-shadow:none}
+ .capa-experience .scroll-hero .room{inset:0;width:100%;height:100%;transform:none;mask-image:none;-webkit-mask-image:none}
+ .capa-experience .scroll-hero .room .poster{object-fit:cover;object-position:center}
+ .capa-experience .scroll-hero .spatial-copy-layer{display:none}
+ .capa-experience .scroll-hero .shade,.capa-experience .scroll-hero[data-copy] .shade,.capa-experience .scroll-still .shade{display:block;inset:0;width:100%;height:100%;background:linear-gradient(180deg,#0008,transparent 24%),linear-gradient(0deg,#000b 0%,#0008 22%,transparent 65%)}
+ .capa-experience .scroll-hero .scene-captions{inset:0;color:#fffaf1}
+ .capa-experience .scroll-hero .scene-copy,.capa-experience .scroll-hero .scene-copy[data-composition]{inset:auto 24px calc(139px + env(safe-area-inset-bottom,0px));width:auto;height:auto;padding:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;transform:none;color:#fffaf1}
+ .capa-experience .scroll-hero .scene-copy .scene-title,.capa-experience .scroll-hero .scene-copy.opening-copy .scene-title,.capa-experience .scroll-hero .scene-copy[data-composition="mortar"] .scene-title{position:static;width:auto;height:auto;clip-path:none;overflow:visible;white-space:normal;font-size:clamp(36px,10.3vw,46px);line-height:1.04;margin:12px 0 14px;text-shadow:0 2px 20px #0004}
  .capa-experience .scroll-hero .scene-copy.opening-copy>.eyebrow{display:none!important}
- .capa-experience .scroll-hero .scene-copy>.eyebrow{font-size:8px;letter-spacing:.08em;text-shadow:none}
- .capa-experience .scroll-hero .scene-copy>p:not(.eyebrow){font-size:13px;line-height:1.6;max-width:340px;text-shadow:none}
- .capa-experience .scroll-hero .scene-copy .pill{margin-top:16px;min-height:44px;padding:12px 18px}
- .capa-experience .scroll-hero .journey-concept{inset:calc(var(--hero-media-top) + var(--hero-media-height) - 18px) 12px auto auto;font-size:6px;color:#fff;text-shadow:0 1px 4px #000}
+ .capa-experience .scroll-hero .scene-copy>.eyebrow{font-size:8px;letter-spacing:.09em;color:#f5e9d8;text-shadow:0 1px 8px #0008}
+ .capa-experience .scroll-hero .scene-copy>p:not(.eyebrow){font-size:13px;line-height:1.6;max-width:340px;color:#fff9ef;text-shadow:0 1px 8px #0008}
+ .capa-experience .scroll-hero .scene-copy .pill{margin-top:18px;min-height:44px;padding:12px 18px}
+ .capa-experience .scroll-hero .journey-concept{inset:auto 24px calc(122px + env(safe-area-inset-bottom,0px)) auto;font-size:6px;color:#ffffffb3;text-shadow:0 1px 4px #000}
  .capa-experience .scroll-hero .journey-bottom{inset:auto 24px calc(70px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;gap:16px}
  .capa-experience .scroll-hero .room-nav{display:none}
  .capa-experience .scroll-hero .scroll-cue{max-width:55%;font-size:8px;min-height:44px}
- .capa-experience .scroll-hero .skip{font-size:10px;min-height:44px}
+ .capa-experience .scroll-hero .skip{position:static;font-size:10px;min-height:44px}
  .capa-experience .scroll-hero .journey-progress{inset:auto 24px calc(66px + env(safe-area-inset-bottom,0px))}
  .capa-experience .scroll-still{height:100svh;min-height:580px;color:#fffaf1}
- .capa-experience .scroll-still>img{top:var(--hero-media-top);height:var(--hero-media-height);object-fit:contain;object-position:center}
- .capa-experience .scroll-still .shade{display:none}
- .capa-experience .scroll-still .opening-copy{inset:calc(var(--hero-media-top) + var(--hero-media-height) + 20px) 24px 80px;padding:0;justify-content:center;color:#fffaf1}
- .capa-experience .scroll-still .scene-title{font-size:clamp(34px,10.3vw,46px);color:#fffaf1}
+ .capa-experience .scroll-still .opening-copy{inset:auto 24px calc(110px + env(safe-area-inset-bottom,0px));width:auto;height:auto;padding:0;align-items:flex-start;text-align:left;color:#fffaf1}
+ .capa-experience .scroll-still .scene-title{font-size:clamp(36px,10.3vw,46px);color:#fffaf1}
  .capa-experience .scroll-still .copy-line em{color:#e8d5b8}
- .capa-experience .scroll-still .opening-description{color:#fff9ef}
+ .capa-experience .scroll-still .opening-description,.capa-experience .scroll-still .opening-secondary{color:#fff9ef}
+}
+@media(max-width:700px) and (orientation:portrait) and (max-height:700px){
+ .capa-experience .scroll-hero .scene-copy .scene-title,.capa-experience .scroll-hero .scene-copy.opening-copy .scene-title,.capa-experience .scroll-hero .scene-copy[data-composition="mortar"] .scene-title{font-size:clamp(32px,9.5vw,40px);margin:8px 0 10px}
+ .capa-experience .scroll-hero .scene-copy>p:not(.eyebrow){font-size:12px;line-height:1.5}
+ .capa-experience .scroll-hero .scene-copy .pill{margin-top:12px}
 }
 @media(max-width:1000px) and (max-height:500px) and (orientation:landscape){
  .capa-experience .scroll-hero .room{inset:70px auto 70px 0;width:52%;height:auto;mask-image:none;-webkit-mask-image:none}

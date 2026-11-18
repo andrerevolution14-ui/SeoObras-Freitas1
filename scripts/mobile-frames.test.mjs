@@ -32,8 +32,8 @@ test('one decode supplies all eight adjacent frames without extra requests', asy
     h.loader.setViews([[0, n]], []);
     const frame = h.loader.get(0, n);
     assert.equal(frame.frame, n);
-    assert.equal(frame.x, (n - 9) % 4 * 800);
-    assert.equal(frame.y, Math.floor((n - 9) / 4) * 450);
+    assert.equal(frame.x, (n - 9) % 4 * 540);
+    assert.equal(frame.y, Math.floor((n - 9) / 4) * 960);
   }
   assert.equal(h.requests.length, count);
 });

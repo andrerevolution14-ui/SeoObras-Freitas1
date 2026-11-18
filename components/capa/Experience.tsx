@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- Pre-sized WebP sequence assets use picture sources and bounded canvas caches. */
 "use client";
 import Link from "next/link";
 
@@ -18,6 +17,7 @@ const segment = (v:number,a:number,b:number) => clamp((v-a)/(b-a));
 const stages = ["A sua casa", "A transformação da ilha", "Precisão em cada corte", "A nova ilha", "Uma nova cozinha", "De uma divisão à outra", "Uma nova possibilidade", "A preparação", "Preparar a parede", "Assentar e alinhar", "O último acabamento", "Continuar a descobrir"];
 const sequenceNames=["kitchen","passage","bathroom","ceramic-cut","ceramic-lay"];
 const phoneLayout=()=>window.matchMedia("(max-width:700px), (max-width:1000px) and (max-height:500px) and (orientation:landscape)").matches;
+const portraitLayout=()=>window.matchMedia("(max-width:700px) and (orientation:portrait)").matches;
 const phoneCaptions=[[[0,.065]],[[.065,.12],[.285,.395]],[[.395,.445]],[[.445,.66]],[[.66,.70]],[[.70,.765]],[[.14,.27]],[[.795,.835]],[[.85,.914]],[[.94,.98]],[[.985,1]]];
 const desktopCaptions=[[[0,.05]],[[.065,.11],[.31,.38]],[[.405,.435]],[[.46,.64]],[[.67,.695]],[[.71,.755]],[[.15,.26]],[[.797,.833]],[[.855,.91]],[[.944,.978]],[[.988,1]]];
 // Both craft inserts scrub frame by frame; the wall sequence holds the completed fit before returning to the room.
@@ -91,7 +91,7 @@ function Hero({reduced}:{reduced:boolean}) {
   let camera:CameraProjection|null=null,depthW=0,depthH=0,depthDpr=1,fontReady=false;
   const fontFamily=getComputedStyle(section).getPropertyValue("--hero-serif").trim()||"Georgia,serif";
 
-  let dead=false,raf=0,target=0,w=0,h=0,lastKey="",oldStage=-1,canvasReady=false,sectionTop=0,travel=1,inView=true,mobile=phoneLayout();
+  let dead=false,raf=0,target=0,w=0,h=0,lastKey="",oldStage=-1,canvasReady=false,sectionTop=0,travel=1,inView=true,mobile=phoneLayout(),portrait=portraitLayout();
   const captions=Array.from(captionWrap.current?.querySelectorAll<HTMLElement>(".scene-copy")||[]);
   const captionOpacity=captions.map(()=>-1),captionPhase=captions.map(()=>-1);
   const caches=sequenceNames.map(()=>new Map<number,HTMLImageElement>());
@@ -104,8 +104,8 @@ function Hero({reduced}:{reduced:boolean}) {
   let activated=false;
   let wantedViews:[number,number][]=[[0,1]],wantedKey="",active=0,queue:[number,number][]=[];
   const mobileFrames=createMobileFrames({
-   source:(room,sheet)=>asset(`${media}mobile-frames-v1/${sequenceNames[room]}/${String(sheet).padStart(2,"0")}.webp`),
-   canLoad:()=>activated&&mobile&&inView&&!document.hidden,
+   source:(room,sheet)=>asset(`${media}mobile-portrait-v1/${sequenceNames[room]}/${String(sheet).padStart(2,"0")}.webp`),
+   canLoad:()=>activated&&portrait&&inView&&!document.hidden,
    onReady:()=>{lastKey="";request();}
   });
   // Keep recently decoded frames through quick swipes and reversals. Discarding
@@ -120,7 +120,7 @@ function Hero({reduced}:{reduced:boolean}) {
    }
   };
   const pump=()=>{
-   if(mobile){mobileFrames.resume();return;}
+   if(portrait){mobileFrames.resume();return;}
    while(activated&&active<3&&queue.length&&!dead&&inView&&!document.hidden){
     const [room,num]=queue.shift()!,key=`${room}:${num}`;
     if(caches[room].has(num)||pending.has(key)||failed.has(key))continue;
@@ -130,7 +130,7 @@ function Hero({reduced}:{reduced:boolean}) {
   };
   const around=(views:[number,number][])=>{
    wantedViews=views;
-   if(mobile){mobileFrames.setViews(views,[...anchors].map(key=>key.split(":").map(Number) as View));return;}
+   if(portrait){mobileFrames.setViews(views,[...anchors].map(key=>key.split(":").map(Number) as View));return;}
    queue=[...views];
    for(let d=1;d<=8;d++)for(const [room,index] of views){if(index+d<=counts[room])queue.push([room,index+d]);if(index-d>=1)queue.push([room,index-d]);}
    for(const key of anchors){const [r,n]=key.split(":").map(Number);queue.push([r,n]);}
@@ -144,16 +144,16 @@ function Hero({reduced}:{reduced:boolean}) {
    im.src=asset(`${media}${folders[room]}/${String(num).padStart(3,"0")}.webp`);
   });
   const paint=(room:number,index:number,zoom=1,focalX?:number,focalY=.5,alpha=1,surface=ctx)=>{
-   if(mobile){
+   if(portrait){
     const frame=mobileFrames.get(room,index);if(!frame)return;
-    // The mobile viewport is a 16:9 window: show the complete source frame,
-    // including during transitions, instead of magnifying a narrow crop.
+    // These frames have already been composed for 9:16. Only accommodate
+    // the small difference between the phone screen and the portrait master.
     surface.globalAlpha=alpha;
-    const fit=Math.min(w/ATLAS.width,h/ATLAS.height),fw=ATLAS.width*fit,fh=ATLAS.height*fit;
+    const fit=Math.max(w/ATLAS.width,h/ATLAS.height),fw=ATLAS.width*fit,fh=ATLAS.height*fit;
     if(alpha===1){surface.fillStyle="#171614";surface.fillRect(0,0,w,h);}
     surface.drawImage(frame.image,frame.x,frame.y,ATLAS.width,ATLAS.height,(w-fw)/2,(h-fh)/2,fw,fh);
     surface.globalAlpha=1;
-    if(surface===ctx){cn.dataset.sourceSize=`${ATLAS.width}x${ATLAS.height}`;cn.dataset.profile="mobile-atlas";}
+    if(surface===ctx){cn.dataset.sourceSize=`${ATLAS.width}x${ATLAS.height}`;cn.dataset.profile="portrait-9x16";}
     return frame.frame;
    }
    const cache=caches[room];if(!cache.size)return;
@@ -173,7 +173,7 @@ function Hero({reduced}:{reduced:boolean}) {
    surface.globalAlpha=1;
    return actual;
   };
-  const hasFrame=(room:number,index:number)=>mobile?mobileFrames.has(room,index):caches[room].has(index);
+  const hasFrame=(room:number,index:number)=>portrait?mobileFrames.has(room,index):caches[room].has(index);
   const draw=(room:number,index:number,p:number,blend:ReturnType<typeof wallTransition>)=>{
    const intoCut=p>=.12&&p<.14,fromCut=p>=.27&&p<.285;
    let actual:number|undefined;
@@ -215,7 +215,7 @@ function Hero({reduced}:{reduced:boolean}) {
    if(actual===undefined)return;
    cn.dataset.frame=String(actual);cn.dataset.room=sequenceNames[blend?.layers[0].room??room];
    cn.dataset.nextRoom=blend?sequenceNames[blend.layers[1].room]:"";
-   cn.dataset.cached=String(mobile?mobileFrames.size:caches.reduce((total,cache)=>total+cache.size,0));
+   cn.dataset.cached=String(portrait?mobileFrames.size:caches.reduce((total,cache)=>total+cache.size,0));
    if(!canvasReady){canvasReady=true;setReady(true);if(fontReady&&!mobile)section.dataset.depth="ready";}
   };
   const update=()=>{
@@ -263,8 +263,8 @@ function Hero({reduced}:{reduced:boolean}) {
   const request=()=>{if(!raf&&!dead&&inView&&!document.hidden)raf=requestAnimationFrame(update);};
   const onScroll=()=>{target=clamp((window.scrollY-sectionTop)/travel);if(target>.0001){activated=true;pump();}request();};
   const resize=()=>{
-   const nextMobile=phoneLayout();
-   if(nextMobile!==mobile){mobile=nextMobile;wantedKey="";lastKey="";}
+   const nextMobile=phoneLayout(),nextPortrait=portraitLayout();
+   if(nextMobile!==mobile||nextPortrait!==portrait){mobile=nextMobile;portrait=nextPortrait;wantedKey="";lastKey="";}
    if(mobile)delete section.dataset.depth;else if(canvasReady&&fontReady)section.dataset.depth="ready";
    sectionTop=section.getBoundingClientRect().top+window.scrollY;
    travel=Math.max(1,section.offsetHeight-(section.querySelector<HTMLElement>(".stage")?.offsetHeight||window.innerHeight));
@@ -295,11 +295,11 @@ function Hero({reduced}:{reduced:boolean}) {
   return()=>{dead=true;clearTimeout(warmup);delete section.dataset.depth;pause();intersection.disconnect();sizing.disconnect();window.removeEventListener("scroll",onScroll);window.removeEventListener("resize",resize);document.removeEventListener("visibilitychange",visibility);caches.forEach(cache=>cache.clear());recent.clear();mobileFrames.dispose();};
  },[reduced]);
  const jump=(p:number)=>{if(root.current)window.scrollTo({top:root.current.getBoundingClientRect().top+window.scrollY+(root.current.offsetHeight-(root.current.querySelector<HTMLElement>(".stage")?.offsetHeight||window.innerHeight))*p,behavior:reduced?"instant":"smooth"});};
- if(reduced)return <section className="still-hero scroll-still" id="inicio" data-header="light"><span id="experiencia" className="journey-anchor"/><img src={asset(`${media}kitchen-after.webp`)} width="1672" height="941" fetchPriority="high" alt="Visualização conceptual da cozinha renovada com ilha de travertino"/><div className="shade"/><div className="opening-copy"><p className="eyebrow"><span/> OBRAS E REMODELAÇÕES EM AVEIRO</p><SceneTitle opening lead="Uma nova vida" accent="para a sua casa."/><p className="opening-description">Chave na mão, com orçamento fechado,<br className="desktop"/> prazo em contrato e garantia escrita.</p><Link href="/#hero-form" className="pill cream">Pedir orçamento <ArrowUpRight size={16}/></Link><a className="opening-secondary" href="#remodelacao">Descobrir a remodelação <ArrowDown size={13}/></a></div></section>;
+ if(reduced)return <section className="still-hero scroll-still" id="inicio" data-header="light"><span id="experiencia" className="journey-anchor"/><picture className="still-picture"><source media="(max-width:700px) and (orientation:portrait)" srcSet={asset(`${media}mobile-portrait-v1/after.webp`)}/><img src={asset(`${media}kitchen-after.webp`)} width="1672" height="941" fetchPriority="high" alt="Visualização conceptual da cozinha renovada com ilha de travertino"/></picture><div className="shade"/><div className="opening-copy"><p className="eyebrow"><span/> OBRAS E REMODELAÇÕES EM AVEIRO</p><SceneTitle opening lead="Uma nova vida" accent="para a sua casa."/><p className="opening-description">Chave na mão, com orçamento fechado,<br className="desktop"/> prazo em contrato e garantia escrita.</p><Link href="/#hero-form" className="pill cream">Pedir orçamento <ArrowUpRight size={16}/></Link><a className="opening-secondary" href="#remodelacao">Descobrir a remodelação <ArrowDown size={13}/></a></div></section>;
  return <section ref={root} className="journey scroll-hero" id="inicio" data-header="light" aria-label="Uma viagem pela renovação da sua casa">
   <span id="experiencia" className="journey-anchor"/>
   <div className="stage">
-   <div className="room room-kitchen"><picture><source media="(max-width:700px), (max-width:1000px) and (max-height:500px) and (orientation:landscape)" srcSet={asset(`${media}mobile-frames-v1/poster.webp`)}/><img className="poster" src={asset(`${media}kitchen-before.webp`)} width="1672" height="941" alt="Visualização de uma cozinha antes da remodelação em Aveiro" fetchPriority="high" decoding="async"/></picture><canvas ref={canvas} aria-label="Percurso pela mesma casa: cozinha, passagem, remodelação da casa de banho e destaques do corte e assentamento da cerâmica, controlados pelo scroll" style={{opacity:ready?1:0}}/></div>
+   <div className="room room-kitchen"><picture><source media="(max-width:700px) and (orientation:portrait)" srcSet={asset(`${media}mobile-portrait-v1/poster.webp`)}/><source media="(max-width:700px), (max-width:1000px) and (max-height:500px) and (orientation:landscape)" srcSet={asset(`${media}mobile-frames-v1/poster.webp`)}/><img className="poster" src={asset(`${media}kitchen-before.webp`)} width="1672" height="941" alt="Visualização de uma cozinha antes da remodelação em Aveiro" fetchPriority="high" decoding="async"/></picture><canvas ref={canvas} aria-label="Percurso pela mesma casa: cozinha, passagem, remodelação da casa de banho e destaques do corte e assentamento da cerâmica, controlados pelo scroll" style={{opacity:ready?1:0}}/></div>
    <div className="shade"/>
    <canvas ref={spatial} className="spatial-copy-layer" aria-hidden="true"/>
    <div className="scene-captions" ref={captionWrap}>

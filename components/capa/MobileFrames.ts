@@ -1,6 +1,6 @@
 // Eight adjacent frames share one download and decode. This keeps a swipe from
 // outrunning one network request per frame while bounding decoded image memory.
-export const ATLAS = { frames: 8, columns: 4, width: 800, height: 450, count: 192, limit: 6 };
+export const ATLAS = { frames: 8, columns: 4, width: 540, height: 960, count: 192, limit: 6 };
 export type View = [room: number, frame: number];
 type FrameImage = HTMLImageElement | ImageBitmap;
 type Frame = { image: FrameImage; frame: number; x: number; y: number };
