@@ -1,4 +1,4 @@
-import { fitTitle } from "@/lib/seo-data";
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -20,38 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return {};
 
-  const imageUrl = post.image.startsWith("http")
-    ? post.image
-    : `https://www.grupofreitasrenovacoes.pt${post.image}`;
-
-  return {
-    title: fitTitle(post.title),
-    description: post.metaDescription,
-    alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/blog/${slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.metaDescription,
-      url: `https://www.grupofreitasrenovacoes.pt/blog/${slug}`,
-      type: "article",
-      locale: "pt_PT",
-      publishedTime: post.date,
-      authors: [post.author],
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: `${post.title} — Freitas Renovações`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.metaDescription,
-      images: [imageUrl],
-    },
-  };
+  return pageMetadata({title:post.title,description:post.metaDescription,path:`/blog/${slug}`,image:"/og/blog.jpg",article:true});
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -158,7 +127,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="section-container" style={{ maxWidth: "840px" }}>
           {/* Main Image */}
           <div style={{ borderRadius: "0.5rem", overflow: "hidden", marginBottom: "2.5rem", border: "1.5px solid #E5E5E3", maxHeight: "400px" }}>
-            <img
+            <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" width={1200} height={800}
               src={post.image}
               alt={`${post.title} — Guia de obras e remodelações em Aveiro por Jorge Freitas`}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}

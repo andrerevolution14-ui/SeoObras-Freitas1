@@ -1,3 +1,4 @@
+import "./companies-guide.css";
 import Link from "next/link";
 import { ShieldCheck, CheckCircle, ArrowRight, Phone, Building2, PiggyBank, Sparkles } from "lucide-react";
 import { COMPANIES_AVEIRO_CRITERIA, MONEY_SAVING_TIPS } from "@/lib/projects-data";
@@ -215,14 +216,7 @@ export function CompaniesGuide() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          .companies-two-col {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

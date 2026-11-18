@@ -1,38 +1,16 @@
-import type { Metadata } from "next";
+import Image from "next/image";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ArrowRight, MapPin, Calendar, CheckCircle, Euro, Maximize2 } from "lucide-react";
 import { REAL_PROJECTS, CONTRACTOR_INFO } from "@/lib/constants";
 import { PastProjectsPricing } from "@/components/past-projects-pricing";
 import { VerdemontShowcase } from "@/components/verdemont-showcase";
 
-export const metadata: Metadata = {
-  title: "Obras Realizadas em Aveiro e Casos Reais",
-  description:
-    "Portfólio com obras executadas e custos de referência em Aveiro (casas de banho, cozinhas, apartamentos e moradias). Fichas técnicas e soluções aplicadas.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/projetos" },
-  openGraph: {
-    title: "Obras Realizadas em Aveiro e Casos Reais | Freitas Renovações",
-    description:
-      "Portfólio com obras concluídas em Aveiro. Fotografias reais, âmbito dos trabalhos e soluções técnicas aplicadas.",
-    url: "https://www.grupofreitasrenovacoes.pt/projetos",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/projetos.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Projetos de Obras Realizadas em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Obras Realizadas em Aveiro | Freitas Renovações",
-    description: "Conheça o portfólio de remodelações e obras em Aveiro com casos reais.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/projetos.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Obras Realizadas em Aveiro",
+ description: "Portfólio com obras executadas e custos de referência em Aveiro (casas de banho, cozinhas, apartamentos e moradias). Fichas técnicas e soluções aplicadas.",
+ path: "/projetos", image: "/og/projetos.jpg",
+});
 
 const projetosJsonLd = {
   "@context": "https://schema.org",
@@ -137,7 +115,7 @@ export default function ProjetosPage() {
               >
                 {/* Real Image Container with proper Alt Text */}
                 <div className="on-dark" style={{ position: "relative", height: "220px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
-                  <img
+                  <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" width={1200} height={800}
                     src={item.image}
                     alt={item.altText || `${item.title} em ${item.parish} Aveiro`}
                     style={{
@@ -203,7 +181,7 @@ export default function ProjetosPage() {
 
                   <div style={{ marginTop: "1.25rem", paddingTop: "0.875rem", borderTop: "1px solid #F2F2F0" }}>
                     <Link
-                      href="/#calculadora-orcamento"
+                      href="/orcamento#calculadora-orcamento"
                       style={{
                         display: "inline-flex",
                         alignItems: "center",

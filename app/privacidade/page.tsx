@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ShieldCheck, Lock, FileText, CheckCircle, Phone, Mail, MapPin } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Política de Privacidade (RGPD)",
-  description:
-    "Como a Freitas Renovações recolhe, protege e trata os seus dados pessoais, de acordo com o RGPD.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/privacidade" },
-  robots: { index: true, follow: true },
-};
+export const metadata = pageMetadata({
+ title: "Privacidade | Freitas Renovações",
+ description: "Como a Freitas Renovações recolhe, protege e trata os seus dados pessoais, de acordo com o RGPD.",
+ path: "/privacidade", image: "/og-image.jpg",
+});
 
 const privacidadeJsonLd = {
   "@context": "https://schema.org",

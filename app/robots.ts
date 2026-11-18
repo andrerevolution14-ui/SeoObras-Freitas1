@@ -4,9 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*",
+        userAgent: ["*", "GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"],
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/admin/", "/obrigado", "/obrigada"],
       },
     ],
     sitemap: "https://www.grupofreitasrenovacoes.pt/sitemap.xml",

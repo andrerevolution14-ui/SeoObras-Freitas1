@@ -1,10 +1,11 @@
+import Image from "next/image";
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, Phone, ArrowRight, CheckCircle, Clock, Shield, Sparkles, Calendar, Euro } from "lucide-react";
 import { PARISHES, SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 import { generateParishSEO } from "@/lib/seo-data";
-import { fitTitle } from "@/lib/seo-data";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 import { PAST_DETAILED_PROJECTS } from "@/lib/projects-data";
 
@@ -24,32 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const seo = generateParishSEO(parish);
   const locationLabel = parish.isNeighboringCounty ? `Concelho de ${parish.name}` : `${parish.name}, Aveiro`;
 
-  return {
-    title: fitTitle(seo.title),
-    description: seo.description,
-    alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}` },
-    openGraph: {
-      title: `${seo.title} | Freitas Renovações`,
-      description: seo.description,
-      url: `https://www.grupofreitasrenovacoes.pt/areas-atuacao/${freguesia}`,
-      type: "website",
-      locale: "pt_PT",
-      images: [
-        {
-          url: `https://www.grupofreitasrenovacoes.pt/og/areas/${freguesia}.jpg`,
-          width: 1200,
-          height: 630,
-          alt: `Obras e Remodelações em ${locationLabel} — Freitas Renovações`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${seo.title} | Freitas Renovações`,
-      description: seo.description,
-      images: [`https://www.grupofreitasrenovacoes.pt/og/areas/${freguesia}.jpg`],
-    },
-  };
+  return pageMetadata({title:seo.title,description:seo.description,path:`/areas-atuacao/${freguesia}`,image:`/og/areas/${freguesia}.jpg`});
 }
 
 export default async function ParishPage({ params }: Props) {
@@ -302,7 +278,7 @@ export default async function ParishPage({ params }: Props) {
                 }}
               >
                 <div style={{ position: "relative", height: "200px" }}>
-                  <img
+                  <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" width={1200} height={800}
                     src={proj.image}
                     alt={proj.altText}
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}

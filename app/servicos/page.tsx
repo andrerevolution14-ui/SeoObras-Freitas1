@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -20,34 +20,11 @@ import {
 } from "lucide-react";
 import { SERVICES, CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Serviços de Obras e Remodelações em Aveiro",
-  description:
-    "Remodelações em Aveiro: chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC e orçamento grátis em 12h.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/servicos" },
-  openGraph: {
-    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações",
-    description:
-      "Remodelações gerais chave na mão, casas de banho, cozinhas, moradias, capoto e telhados em Aveiro. Processo ágil em 2 passos e proposta detalhada.",
-    url: "https://www.grupofreitasrenovacoes.pt/servicos",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/servicos.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Serviços de Obras e Remodelações em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Serviços de Obras e Remodelações em Aveiro | Freitas Renovações",
-    description: "Remodelações chave na mão, casas de banho, cozinhas e moradias em Aveiro. Resposta em <12h.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/servicos.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Serviços de Remodelação em Aveiro",
+ description: "Remodelações em Aveiro: chave na mão, casas de banho, cozinhas, apartamentos, moradias, capoto e telhados. Alvará IMPIC e orçamento grátis em 12h.",
+ path: "/servicos", image: "/og/servicos.jpg",
+});
 
 const iconMap: Record<string, React.ReactNode> = {
   Home: <Home size={24} />,

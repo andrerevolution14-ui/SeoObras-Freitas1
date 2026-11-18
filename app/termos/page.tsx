@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { FileText, Shield, CheckCircle, Phone, Scale, Award } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Termos e Condições Gerais de Serviço",
-  description:
-    "Termos de utilização do website e de prestação de serviços da Freitas Renovações: orçamentos, garantias e resolução de litígios.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/termos" },
-  robots: { index: true, follow: true },
-};
+export const metadata = pageMetadata({
+ title: "Termos e Condições | Freitas Renovações",
+ description: "Termos de utilização do website e de prestação de serviços da Freitas Renovações: orçamentos, garantias e resolução de litígios.",
+ path: "/termos", image: "/og-image.jpg",
+});
 
 const termosJsonLd = {
   "@context": "https://schema.org",

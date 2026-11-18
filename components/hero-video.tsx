@@ -25,21 +25,17 @@ export function HeroVideo({ src, srcMobile, poster, posterMobile, label }: HeroV
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    const slow = conn?.saveData || conn?.effectiveType === "2g" || conn?.effectiveType === "slow-2g";
-    if (reduce || slow) return;
-    // Só começa a descarregar o vídeo depois de a página estar carregada e o browser livre
-    let t = 0;
-    const start = () => {
-      const ric = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
-      if (ric) ric(() => setEnabled(true), { timeout: 2500 });
-      else t = window.setTimeout(() => setEnabled(true), 1200);
-    };
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
-    return () => {
-      window.removeEventListener("load", start);
-      window.clearTimeout(t);
-    };
+    if (reduce || conn?.saveData || ["slow-2g", "2g"].includes(conn?.effectiveType || "")) return;
+    const hero = document.querySelector(".gf-hero-media");
+    if (!hero) return;
+    let visible=false,interacted=false;
+    const activate=()=>{if(visible&&interacted)setEnabled(true);};
+    const onInteraction=()=>{interacted=true;activate();};
+    const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;activate();},{threshold:0.05});
+    observer.observe(hero);
+    const events=["pointerdown","keydown","touchstart","scroll"];
+    events.forEach(event=>window.addEventListener(event,onInteraction,{passive:true,once:true}));
+    return ()=>{observer.disconnect();events.forEach(event=>window.removeEventListener(event,onInteraction));};
   }, []);
 
   useEffect(() => {
@@ -48,12 +44,13 @@ export function HeroVideo({ src, srcMobile, poster, posterMobile, label }: HeroV
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     v.src = isMobile ? srcMobile : src;
     v.load();
+    let inView=true;
     const play = () => v.play().catch(() => {});
     play();
 
-    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? play() : v.pause()), { threshold: 0.05 });
+    const io = new IntersectionObserver(([e]) => { inView=e.isIntersecting; if(inView&&!document.hidden)play();else v.pause(); }, { threshold: 0.05 });
     io.observe(v);
-    const onVis = () => (document.hidden ? v.pause() : play());
+    const onVis = () => (document.hidden || !inView ? v.pause() : play());
     document.addEventListener("visibilitychange", onVis);
     return () => {
       io.disconnect();
@@ -66,7 +63,7 @@ export function HeroVideo({ src, srcMobile, poster, posterMobile, label }: HeroV
       <picture>
         <source media="(max-width: 768px)" srcSet={posterMobile} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={poster} alt={label} className="gf-hero-poster" fetchPriority="high" decoding="async" />
+        <img src={poster} alt={label} className="gf-hero-poster" width="1920" height="1080" fetchPriority="high" decoding="async" />
       </picture>
       {enabled && (
         <video
@@ -75,8 +72,8 @@ export function HeroVideo({ src, srcMobile, poster, posterMobile, label }: HeroV
           muted
           loop
           playsInline
-          autoPlay
-          preload="auto"
+          preload="metadata"
+          poster={poster}
           onCanPlay={() => setReady(true)}
         />
       )}

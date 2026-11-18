@@ -1,4 +1,6 @@
 "use client";
+import "./renovation-planner.css";
+
 
 import { useState } from "react";
 import Link from "next/link";
@@ -319,7 +321,7 @@ export function RenovationPlanner() {
           </p>
           <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
             <Link
-              href="/#calculadora-orcamento"
+              href="/orcamento#calculadora-orcamento"
               className="btn-primary"
               style={{ background: "#0A0A0A", color: "#ffffff", boxShadow: "0 4px 15px rgba(0,0,0,0.2)" }}
             >
@@ -338,14 +340,7 @@ export function RenovationPlanner() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .planner-step-card {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

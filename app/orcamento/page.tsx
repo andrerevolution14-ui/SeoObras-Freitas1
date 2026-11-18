@@ -1,37 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Phone, MessageCircle, ArrowRight, CheckCircle, Clock, Shield, Star } from "lucide-react";
 import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
 import { CostCalculator } from "@/components/cost-calculator";
 
-export const metadata: Metadata = {
-  title: "Orçamento de Obras em Aveiro — Grátis",
-  description:
-    "Peça orçamento grátis para obras e remodelações em Aveiro. Resposta em menos de 12 horas e proposta discriminada, sem compromisso.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/orcamento" },
-  openGraph: {
-    title: "Orçamento de Obras em Aveiro — Grátis | Freitas Renovações",
-    description:
-      "Simulador de obras e proposta técnica detalhada sem custos ocultos. Resposta em menos de 12h.",
-    url: "https://www.grupofreitasrenovacoes.pt/orcamento",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/orcamento.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Pedir Avaliação de Obras em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Orçamento de Obras em Aveiro — Grátis | Freitas Renovações",
-    description: "Simule na calculadora ou solicite proposta técnica com resposta em <12h.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/orcamento.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Orçamento de Obras em Aveiro",
+ description: "Peça orçamento grátis para obras e remodelações em Aveiro. Resposta em menos de 12 horas e proposta discriminada, sem compromisso.",
+ path: "/orcamento", image: "/og/orcamento.jpg",
+});
 
 const orcamentoJsonLd = {
   "@context": "https://schema.org",
@@ -203,8 +180,7 @@ export default function OrcamentoPage() {
 
               {/* Back to home form */}
               <div style={{ marginTop: "1.25rem", textAlign: "center" }}>
-                <Link
-                  href="/#hero-form"
+                <Link href="/#hero-form"
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.375rem",
                     color: "#6B6B6B", fontSize: "0.8125rem", textDecoration: "none",

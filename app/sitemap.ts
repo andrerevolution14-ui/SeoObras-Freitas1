@@ -4,10 +4,11 @@ import { BLOG_POSTS } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.grupofreitasrenovacoes.pt";
-  const baseUpdate = new Date("2026-11-07T00:00:00Z");
+  const baseUpdate = new Date("2026-11-18T00:00:00Z");
   const img = (...paths: string[]) => paths.map((p) => `${baseUrl}${p}`);
 
   const staticPages: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/capa`, lastModified: new Date("2026-11-18"), images: img("/og/capa.jpg") },
     {
       url: baseUrl,
       lastModified: baseUpdate,
@@ -58,5 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(`${b.date}T10:00:00Z`),
   }));
 
-  return [...staticPages, ...servicePages, ...parishPages, ...blogPages];
+  // All public routes received metadata updates on this date.
+  return [...staticPages, ...servicePages, ...parishPages, ...blogPages].map(page => ({ ...page, lastModified: baseUpdate }));
 }

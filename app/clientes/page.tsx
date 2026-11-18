@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import {
   Star,
@@ -15,44 +15,11 @@ import { ClientesWall } from "@/components/clientes-wall";
 import { CLIENTES_FEED_ITEMS, CLIENTES_TRUST_PILLARS } from "@/lib/clientes-data";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Clientes e Avaliações Reais em Aveiro",
-  description:
-    "Opiniões e fotos reais de obras concluídas em Aveiro: casas de banho, cozinhas, apartamentos e moradias. 4.9★ no Google com 48 avaliações verificadas.",
-  alternates: {
-    canonical: "https://www.grupofreitasrenovacoes.pt/clientes",
-  },
-  openGraph: {
-    title: "O que dizem os nossos clientes | Obras Reais em Aveiro — Freitas Renovações",
-    description:
-      "Obras reais, clientes reais em Aveiro e arredores. Veja fotos de trabalhos concluídos e avaliações sobre acabamentos, cumprimento de prazos e orçamento sem surpresas.",
-    url: "https://www.grupofreitasrenovacoes.pt/clientes",
-    siteName: "Freitas Renovações",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/clientes/wc-madeira-espelho-led.jpg",
-        width: 1200,
-        height: 900,
-        alt: "Casa de banho remodelada em Aveiro com revestimento madeira e espelho LED — Freitas Renovações",
-      },
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/clientes.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Avaliações de Clientes e Obras Reais em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Clientes & Obras Reais em Aveiro | Freitas Renovações",
-    description:
-      "O que dizem os nossos clientes em Aveiro e arredores: fotos reais de remodelações e opiniões verificadas.",
-    images: ["https://www.grupofreitasrenovacoes.pt/clientes/wc-madeira-espelho-led.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Clientes e Avaliações em Aveiro",
+ description: "Opiniões e fotos reais de obras concluídas em Aveiro: casas de banho, cozinhas, apartamentos e moradias. 4.9★ no Google com 48 avaliações verificadas.",
+ path: "/clientes", image: "/og/clientes.jpg",
+});
 
 const clientesJsonLd = {
   "@context": "https://schema.org",

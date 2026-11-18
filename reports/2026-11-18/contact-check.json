@@ -1,0 +1,17 @@
+{
+  "localOnly": true,
+  "results": [
+    {
+      "status": 400,
+      "success": false,
+      "telegramSent": null
+    },
+    {
+      "status": 200,
+      "success": true,
+      "telegramSent": false
+    }
+  ],
+  "deliveryVerified": false,
+  "reason": "No Telegram/Resend credentials in the local environment"
+}

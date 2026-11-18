@@ -138,7 +138,7 @@ export function RoiValuation() {
         {/* Action Link */}
         <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
           <Link
-            href="/#calculadora-orcamento"
+            href="/orcamento#calculadora-orcamento"
             className="btn-primary"
             style={{ display: "inline-flex" }}
           >

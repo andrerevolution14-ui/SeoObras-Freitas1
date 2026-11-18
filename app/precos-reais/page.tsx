@@ -1,37 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { PastProjectsPricing } from "@/components/past-projects-pricing";
 import { Calculator, ArrowRight, Phone, Shield } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Preços Reais de Obras em Aveiro",
-  description:
-    "Obras concluídas em Aveiro com custos reais discriminados e prazos: casas de banho, cozinhas e apartamentos. Compare antes de pedir orçamento.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/precos-reais" },
-  openGraph: {
-    title: "Preços Reais de Obras em Aveiro | Freitas Renovações",
-    description:
-      "Exemplos de remodelações entregues em Aveiro com preços reais discriminados e prazos cumpridos. Transparência garantida.",
-    url: "https://www.grupofreitasrenovacoes.pt/precos-reais",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/precos-reais.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Obras Realizadas com Preços Reais em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Preços Reais de Obras em Aveiro | Freitas Renovações",
-    description: "Casos de estudo reais de obras em Aveiro com custos transparentes.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/precos-reais.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Preços Reais de Obras em Aveiro",
+ description: "Obras concluídas em Aveiro com custos reais discriminados e prazos: casas de banho, cozinhas e apartamentos. Compare antes de pedir orçamento.",
+ path: "/precos-reais", image: "/og/precos-reais.jpg",
+});
 
 const precosReaisJsonLd = {
   "@context": "https://schema.org",

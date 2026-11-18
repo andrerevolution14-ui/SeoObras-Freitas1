@@ -1,36 +1,14 @@
-import type { Metadata } from "next";
+import Image from "next/image";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { Calendar, Clock, User, ArrowRight, BookOpen } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/blog-data";
 
-export const metadata: Metadata = {
-  title: "Blog de Obras e Remodelações em Aveiro",
-  description:
-    "Artigos técnicos, guias de preços de referência, legislação e recomendações práticas sobre obras, remodelações e manutenção de habitações em Aveiro.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/blog" },
-  openGraph: {
-    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações",
-    description:
-      "Artigos técnicos, guias de preços, conselhos de manutenção e legislação sobre obras em Aveiro por Jorge Freitas.",
-    url: "https://www.grupofreitasrenovacoes.pt/blog",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/blog.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Blog de Obras e Remodelações em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog & Guia de Obras em Aveiro | Freitas Renovações",
-    description: "Guias práticos de remodelação, preços e dicas de obras em Aveiro.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/blog.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Guias de Obras em Aveiro",
+ description: "Artigos técnicos, guias de preços de referência, legislação e recomendações práticas sobre obras, remodelações e manutenção de habitações em Aveiro.",
+ path: "/blog", image: "/og/blog.jpg",
+});
 
 const blogJsonLd = {
   "@context": "https://schema.org",
@@ -116,7 +94,7 @@ export default function BlogIndexPage() {
               >
                 {/* Image Header */}
                 <div className="on-dark" style={{ position: "relative", height: "190px", width: "100%", overflow: "hidden", background: "#0A0A0A" }}>
-                  <img
+                  <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" width={1200} height={800}
                     src={post.image}
                     alt={`${post.title} — Artigo de remodelações em Aveiro por Jorge Freitas`}
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}

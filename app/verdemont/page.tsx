@@ -1,38 +1,15 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { VerdemontShowcase } from "@/components/verdemont-showcase";
 import { ExternalLink, ArrowRight, Phone, ShieldCheck, Building2, MapPin } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 import { VERDEMONT_PROJECT } from "@/lib/projects-data";
 
-export const metadata: Metadata = {
-  title: "Projeto Verdemont — Empreendimento em Aveiro",
-  description:
-    "Conheça o projeto Verdemont em Aveiro. Fachadas de alta eficiência, varandas com iluminação arquitetural e reabilitação de referência pela Freitas Renovações.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/verdemont" },
-  openGraph: {
-    title: "Projeto Verdemont Aveiro — Reabilitação de Referência | Freitas Renovações",
-    description:
-      "Fachadas de vanguarda, eficiência energética e iluminação arquitetural no empreendimento Verdemont em Aveiro.",
-    url: "https://www.grupofreitasrenovacoes.pt/verdemont",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/verdemont.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Projeto Verdemont em Aveiro — Empreendimento Residencial Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Projeto Verdemont Aveiro | Freitas Renovações",
-    description: "Reabilitação e construção de excelência no projeto Verdemont em Aveiro.",
-    images: ["https://www.grupofreitasrenovacoes.pt/verdemont.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Projeto Verdemont em Aveiro",
+ description: "Conheça o projeto Verdemont em Aveiro. Fachadas de alta eficiência, varandas com iluminação arquitetural e reabilitação de referência pela Freitas Renovações.",
+ path: "/verdemont", image: "/og-image.jpg",
+});
 
 const verdemontJsonLd = {
   "@context": "https://schema.org",

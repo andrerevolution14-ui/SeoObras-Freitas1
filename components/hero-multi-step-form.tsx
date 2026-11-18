@@ -115,7 +115,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
     if (!formData.name.trim()) newErrors.name = "Nome obrigatório";
     if (!formData.phone.trim() || formData.phone.length < 9) newErrors.phone = "Telefone inválido (mínimo 9 dígitos)";
     if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors as any);
+      setErrors(newErrors);
       return;
     }
 
@@ -227,9 +227,9 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
         >
           <CheckCircle size={30} color="#ffffff" strokeWidth={1.5} />
         </div>
-        <h3 style={{ color: "#0A0A0A", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
+        <h2 style={{ color: "#0A0A0A", fontWeight: 800, fontSize: "1.375rem", marginBottom: "0.5rem" }}>
           Pedido Recebido com Sucesso!
-        </h3>
+        </h2>
         <p style={{ color: "#525252", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "1.25rem" }}>
           Obrigado, <strong>{submittedCustomer.name || "estimado cliente"}</strong>! O Jorge Freitas recebeu a sua solicitação diretamente no Telegram e entrará em contacto para o número{" "}
           <strong>{submittedCustomer.phone}</strong>.
@@ -287,7 +287,7 @@ export function HeroMultiStepForm({ initialService = "", initialParish = "" }: H
             </li>
           ))}
         </ol>
-        <h3 className="gf-form-title">{stepTitles[step - 1]}</h3>
+        <h2 className="gf-form-title">{stepTitles[step - 1]}</h2>
         <p className="gf-form-hint">{stepHints[step - 1]}</p>
       </div>
 

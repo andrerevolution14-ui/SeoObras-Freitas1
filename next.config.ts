@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Deliver critical styles with the first response for mobile first visits.
+  experimental: { inlineCss: true },
   // Optimize images served from external sources
   images: {
     formats: ["image/avif", "image/webp"],
@@ -38,6 +40,9 @@ const nextConfig: NextConfig = {
   // Security headers — improve Google trust score
   async headers() {
     return [
+      ...["/api/:path*", "/admin/:path*", "/obrigado/:path*", "/obrigada/:path*"].map(source => ({
+        source, headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      })),
       {
         source: "/(.*)",
         headers: [
@@ -55,9 +60,10 @@ const nextConfig: NextConfig = {
         // Cache static assets aggressively
         source: "/(.*)\\.(jpg|jpeg|png|webp|avif|svg|ico|woff|woff2)",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
         ],
       },
+      {source: "/capa-media/:path*", headers: [{key:"Cache-Control",value:"public, max-age=31536000, immutable"}]},
     ];
   },
 };

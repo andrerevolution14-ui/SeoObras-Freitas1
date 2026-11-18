@@ -12,7 +12,7 @@ const BRAND_SUFFIX = " | Freitas Renovações";
  * usa o modelo com a marca; caso contrário, devolve o título sozinho (sem ser cortado no Google).
  */
 export function fitTitle(t: string): string | { absolute: string } {
-  return t.length + BRAND_SUFFIX.length <= 62 ? t : { absolute: t };
+  return t.length + BRAND_SUFFIX.length <= 60 ? t : { absolute: t };
 }
 
 /** Títulos SEO curtos por serviço (palavra-chave primeiro). */
@@ -279,7 +279,7 @@ export function generateServiceSEO(service: Service): PageSEO {
     },
     {
       question: `A Freitas Renovações é uma empresa licenciada com alvará para ${service.title.toLowerCase()}?`,
-      answer: `Sim. A Freitas Renovações é titular de Alvará de Construção válido emitido pelo IMPIC e dispõe de seguro de responsabilidade civil obrigatório. Todas as obras têm garantia formal por escrito.`,
+      answer: `Sim. A Freitas Renovações é titular de Alvará de Construção 124371-PAR emitido pelo IMPIC e dispõe de seguro de responsabilidade civil obrigatório. Todas as obras têm garantia formal por escrito.`,
     },
     {
       question: `A Freitas Renovações faz obras de ${service.title.toLowerCase()} nos concelhos vizinhos de Aveiro?`,

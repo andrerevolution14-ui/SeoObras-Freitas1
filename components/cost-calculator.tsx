@@ -1,4 +1,6 @@
 "use client";
+import "./cost-calculator.css";
+
 
 import { useState, useId } from "react";
 import Link from "next/link";
@@ -554,13 +556,7 @@ export function CostCalculator({
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          .calculator-main-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

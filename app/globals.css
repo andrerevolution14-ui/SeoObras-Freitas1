@@ -931,7 +931,7 @@ main > section:first-of-type .btn-secondary:hover {
 .gf-form-head::after { content: ""; position: absolute; inset: 0; z-index: -1; background-image: var(--noise); opacity: 0.04; pointer-events: none; }
 #hero-form .btn-primary.btn-disabled {
   background: #F2F2F0 !important;
-  color: #9A9A9A !important;
+  color: #666 !important;
   border-color: #E5E5E3 !important;
   box-shadow: none;
 }
@@ -1074,3 +1074,8 @@ main > section.section-padding, #faq, .gf-final, .gf-footer {
 .gf-social-link span { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
 .gf-social-link strong { font-size: 0.8125rem; font-weight: 600; }
 .gf-social-link em { font-style: normal; font-size: 0.6875rem; opacity: 0.6; }
+
+/* Keep the primary content immediately visible: entrance effects must not delay LCP. */
+.hero-enter > .gf-hero-title { animation:none; opacity:1; transform:none; }
+.gf-form-legal { color:#666 !important; }
+.btn-disabled { color:#666 !important; }

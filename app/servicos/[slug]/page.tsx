@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -5,7 +6,6 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle, Phone, MapPin, Shield, Clock, Euro, Sparkles } from "lucide-react";
 import { SERVICES, PARISHES, CONTRACTOR_INFO } from "@/lib/constants";
 import { generateServiceSEO } from "@/lib/seo-data";
-import { fitTitle } from "@/lib/seo-data";
 import { HeroMultiStepForm } from "@/components/hero-multi-step-form";
 
 interface Props {
@@ -22,32 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return {};
 
   const seo = generateServiceSEO(service);
-  return {
-    title: fitTitle(seo.title),
-    description: seo.description,
-    alternates: { canonical: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}` },
-    openGraph: {
-      title: `${seo.title} | Freitas Renovações`,
-      description: seo.description,
-      url: `https://www.grupofreitasrenovacoes.pt/servicos/${slug}`,
-      type: "website",
-      locale: "pt_PT",
-      images: [
-        {
-          url: `https://www.grupofreitasrenovacoes.pt/og/servicos/${slug}.jpg`,
-          width: 1200,
-          height: 630,
-          alt: `${service.title} em Aveiro — Freitas Renovações`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: seo.title,
-      description: seo.description,
-      images: [`https://www.grupofreitasrenovacoes.pt/og/servicos/${slug}.jpg`],
-    },
-  };
+  return pageMetadata({title:seo.title,description:seo.description,path:`/servicos/${slug}`,image:`/og/servicos/${slug}.jpg`});
 }
 
 export default async function ServicePage({ params }: Props) {

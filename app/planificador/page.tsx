@@ -1,37 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { RenovationPlanner } from "@/components/renovation-planner";
 import { Calculator, ArrowRight, Phone, Shield } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Planificador de Remodelação: Passo a Passo",
-  description:
-    "Guia interativo para planear a remodelação da casa de banho, cozinha ou casa completa em Aveiro — da demolição aos acabamentos, sem derrapagens.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/planificador" },
-  openGraph: {
-    title: "Planificador de Renovação em Aveiro — Passos Essenciais | Freitas Renovações",
-    description:
-      "Guia interativo para planear a sua obra em Aveiro sem erros nem custos escondidos. Dicas de materiais, prazos e custos.",
-    url: "https://www.grupofreitasrenovacoes.pt/planificador",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/planificador.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Planificador de Renovação em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Planificador de Renovação em Aveiro | Freitas Renovações",
-    description: "Guia passo a passo para planear a renovação da sua habitação em Aveiro sem derrapagens.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/planificador.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Planear uma Remodelação em Aveiro",
+ description: "Guia interativo para planear a remodelação da casa de banho, cozinha ou casa completa em Aveiro — da demolição aos acabamentos, sem derrapagens.",
+ path: "/planificador", image: "/og/planificador.jpg",
+});
 
 const planificadorJsonLd = {
   "@context": "https://schema.org",

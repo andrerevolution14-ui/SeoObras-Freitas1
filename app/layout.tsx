@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, Libre_Caslon_Text } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -32,7 +32,10 @@ const interTight = Inter_Tight({
   display: "swap",
   variable: "--font-display",
   weight: ["500", "600", "700"],
+  preload: true,
 });
+
+export const viewport: Viewport = { themeColor: "#0A0A0A", width: "device-width", initialScale: 1 };
 
 export const metadata: Metadata = {
   title: {
@@ -101,6 +104,7 @@ const globalJsonLd = {
       "@id": "https://www.grupofreitasrenovacoes.pt/#organization",
       name: CONTRACTOR_INFO.companyName,
       legalName: CONTRACTOR_INFO.legalName,
+      identifier: { "@type": "PropertyValue", propertyID: "Alvará IMPIC", value: "124371-PAR" },
       taxID: CONTRACTOR_INFO.nif.replace(/\s/g, ""),
       vatID: `PT${CONTRACTOR_INFO.nif.replace(/\s/g, "")}`,
       url: CONTRACTOR_INFO.website,

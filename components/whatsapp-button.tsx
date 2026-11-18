@@ -1,4 +1,6 @@
 "use client";
+import "./whatsapp-button.css";
+
 
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
@@ -6,7 +8,7 @@ export function WhatsAppButton() {
   const handleClick = () => {
     // Track in Google Analytics / Google Ads if gtag is loaded
     if (typeof window !== "undefined") {
-      const win = window as unknown as { gtag?: (...args: any[]) => void };
+      const win = window as unknown as { gtag?: (...args: unknown[]) => void };
       if (typeof win.gtag === "function") {
         win.gtag("event", "whatsapp_click", {
           event_category: "Contact",
@@ -57,106 +59,7 @@ export function WhatsAppButton() {
         </a>
       </aside>
 
-      <style>{`
-        .whatsapp-floating-wrapper {
-          position: fixed;
-          bottom: 24px;
-          right: 24px;
-          z-index: 95;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          user-select: none;
-        }
 
-        /* Floating Button Main */
-        .whatsapp-floating-btn {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 58px;
-          height: 58px;
-          background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-          border-radius: 50%;
-          box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
-          cursor: pointer;
-          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-          text-decoration: none;
-          -webkit-tap-highlight-color: transparent;
-        }
-
-        .whatsapp-floating-btn:hover {
-          transform: scale(1.08);
-          box-shadow: 0 8px 26px rgba(37, 211, 102, 0.55), 0 3px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .whatsapp-floating-btn:active {
-          transform: scale(0.96);
-        }
-
-        .whatsapp-icon {
-          width: 32px;
-          height: 32px;
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
-        }
-
-        /* Radar Pulse Animation */
-        .whatsapp-pulse-ring {
-          position: absolute;
-          inset: -3px;
-          border-radius: 50%;
-          border: 2px solid #25D366;
-          animation: whatsapp-pulse 2.4s cubic-bezier(0.25, 0, 0, 1) infinite;
-          pointer-events: none;
-        }
-
-        @keyframes whatsapp-pulse {
-          0% {
-            transform: scale(1);
-            opacity: 0.8;
-          }
-          70% {
-            transform: scale(1.35);
-            opacity: 0;
-          }
-          100% {
-            transform: scale(1.35);
-            opacity: 0;
-          }
-        }
-
-        /* Online Green Badge */
-        .whatsapp-online-badge {
-          position: absolute;
-          top: 2px;
-          right: 2px;
-          width: 14px;
-          height: 14px;
-          border-radius: 50%;
-          background: #22c55e;
-          border: 2.5px solid #ffffff;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-
-        /* Mobile Adjustments: sits comfortably above the sticky mobile CTA bar */
-        @media (max-width: 768px) {
-          /* No mobile o WhatsApp está na barra inferior — evita sobrepor conteúdo */
-          .whatsapp-floating-wrapper {
-            display: none !important;
-          }
-
-          .whatsapp-floating-btn {
-            width: 54px;
-            height: 54px;
-          }
-
-          .whatsapp-icon {
-            width: 29px;
-            height: 29px;
-          }
-        }
-      `}</style>
     </>
   );
 }

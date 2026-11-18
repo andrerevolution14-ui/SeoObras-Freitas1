@@ -13,7 +13,7 @@ function escapeHtml(text: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    let rawBody: any = {};
+    let rawBody: Record<string, unknown> = {};
     const contentType = request.headers.get("content-type") || "";
 
     if (contentType.includes("application/json")) {

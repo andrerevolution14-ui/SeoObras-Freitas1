@@ -1,3 +1,4 @@
+import "./footer.css";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { CONTRACTOR_INFO, SERVICES } from "@/lib/constants";
@@ -10,6 +11,7 @@ const GOOGLE_MAPS_EMBED =
 const GOOGLE_MAPS_LINK = "https://maps.google.com/?cid=13914443692994943113";
 
 const GUIDE_LINKS = [
+  { href: "/capa", label: "A Empresa" },
   { href: "/clientes", label: "Clientes & Obras Reais (Aveiro)" },
   { href: "/orcamento", label: "Calculadora de Orçamento" },
   { href: "/credito-obras", label: "Crédito para Obras (100% Grátis)" },
@@ -59,7 +61,7 @@ export function Footer() {
             </a>
             <span className="gf-foot-small">Chamada para a rede móvel nacional · {CONTRACTOR_INFO.phone}</span>
             <div style={{ display: "flex", gap: "0.625rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
-              <Link href="/orcamento" className="btn-primary">
+              <Link href="/#hero-form" className="btn-primary">
                 Pedir Orçamento <ArrowRight size={16} />
               </Link>
               <a href={CONTRACTOR_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary">
@@ -76,7 +78,7 @@ export function Footer() {
         {/* Colunas */}
         <div className="gf-foot-cols">
           <div>
-            <h4 className="gf-foot-h">Contactos</h4>
+            <h2 className="gf-foot-h">Contactos</h2>
             <ul className="gf-foot-list">
               <li><a href={`tel:${CONTRACTOR_INFO.phone}`} className="footer-link">{CONTRACTOR_INFO.phoneDisplay} ({CONTRACTOR_INFO.phone})</a></li>
               <li><a href={CONTRACTOR_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp: {CONTRACTOR_INFO.phoneDisplay}</a></li>
@@ -107,7 +109,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="gf-foot-h">Serviços em Aveiro</h4>
+            <h2 className="gf-foot-h">Serviços em Aveiro</h2>
             <ul className="gf-foot-list">
               {SERVICES.map((service) => (
                 <li key={service.slug}>
@@ -120,7 +122,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="gf-foot-h">Informações &amp; Guias</h4>
+            <h2 className="gf-foot-h">Informações &amp; Guias</h2>
             <ul className="gf-foot-list">
               {GUIDE_LINKS.map((link) => (
                 <li key={link.href}>
@@ -136,7 +138,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="gf-foot-h">Áreas de Atuação</h4>
+            <h2 className="gf-foot-h">Áreas de Atuação</h2>
             <ul className="gf-foot-list">
               {AREA_LINKS.map((link) => (
                 <li key={link.href}>
@@ -164,86 +166,7 @@ export function Footer() {
         </div>
       </div>
 
-      <style>{`
-        .gf-footer { padding-top: 5.5rem; }
-        .gf-foot-hero {
-          display: grid;
-          grid-template-columns: 1.3fr 1fr;
-          gap: 4rem;
-          padding-bottom: 4.5rem;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .gf-foot-claim {
-          margin-top: 2.25rem;
-          color: #ffffff;
-          font-size: clamp(1.5rem, 2.5vw, 2.125rem);
-          line-height: 1.25;
-          letter-spacing: -0.03em;
-          font-weight: 500;
-          max-width: 620px;
-        }
-        .gf-foot-contact { display: flex; flex-direction: column; justify-content: flex-end; }
-        .gf-foot-phone {
-          color: #ffffff;
-          text-decoration: none;
-          font-size: clamp(2.25rem, 4vw, 3.5rem);
-          font-weight: 500;
-          letter-spacing: -0.04em;
-          line-height: 1;
-          font-variant-numeric: tabular-nums;
-          transition: color 0.2s;
-        }
-        .gf-foot-phone:hover { color: #B5B5B5; }
-        .gf-foot-small { margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); }
-        .gf-foot-cols {
-          display: grid;
-          grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
-          gap: 3rem;
-          padding: 4rem 0;
-        }
-        .gf-foot-h {
-          color: #8C8C8C;
-          font-size: 0.6875rem;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          font-weight: 600;
-          margin-bottom: 1.5rem;
-          font-family: var(--font-inter), sans-serif;
-        }
-        .gf-foot-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.7rem; }
-        .gf-foot-rating {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          margin-top: 1.5rem;
-          color: #ffffff;
-          font-size: 0.8125rem;
-          font-weight: 500;
-          text-decoration: none;
-          padding: 0.55rem 0.875rem;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        .gf-foot-map { margin-top: 1rem; height: 150px; border: 1px solid rgba(255, 255, 255, 0.1); background: #171717; }
-        .gf-foot-legal {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1.75rem 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-          font-size: 0.75rem;
-        }
-        @media (max-width: 1024px) {
-          .gf-foot-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        @media (max-width: 768px) {
-          .gf-footer { padding-top: 3.5rem; }
-          .gf-foot-hero { grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: 3rem; }
-          .gf-foot-cols { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; padding: 3rem 0; }
-          .gf-foot-cols > div:first-child { grid-column: span 2; }
-        }
-      `}</style>
+
     </footer>
   );
 }

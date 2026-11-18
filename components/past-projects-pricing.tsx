@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -141,7 +142,7 @@ export function PastProjectsPricing() {
                     background: "#0A0A0A",
                   }}
                 >
-                  <img
+                  <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px" width={1200} height={800}
                     src={project.image}
                     alt={project.altText}
                     loading="lazy"

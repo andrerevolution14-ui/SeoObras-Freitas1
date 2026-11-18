@@ -997,7 +997,7 @@ export const FAQ_ITEMS = [
     id: "faq3",
     question: "Quanto custa remodelar uma casa de banho completa em Aveiro?",
     answer:
-      "A remodelação completa de uma casa de banho em Aveiro situa-se habitualmente entre 2.800€ e 4.800€. O valor engloba demolição, canalização multicamada sem juntas, impermeabilização bicomponente, cerâmica retificada, colocação de base de duche plana antiderrapante, resguardo em vidro temperado e louças sanitárias.",
+      "A remodelação completa de uma casa de banho em Aveiro situa-se habitualmente entre 3.200€ e 5.500€. O valor engloba demolição, canalização multicamada sem juntas, impermeabilização bicomponente, cerâmica retificada, colocação de base de duche plana antiderrapante, resguardo em vidro temperado e louças sanitárias.",
   },
   {
     id: "faq4",

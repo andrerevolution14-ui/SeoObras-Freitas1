@@ -1,0 +1,6 @@
+@media (max-width: 900px) {
+          .companies-two-col {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+        }

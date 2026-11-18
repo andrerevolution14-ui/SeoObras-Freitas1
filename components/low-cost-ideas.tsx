@@ -152,7 +152,7 @@ export function LowCostIdeas() {
             Tem um orçamento fixo e quer saber o que é possível fazer com o máximo aproveitamento?
           </p>
           <Link
-            href="/#calculadora-orcamento"
+            href="/orcamento#calculadora-orcamento"
             style={{
               color: "#171717",
               fontWeight: 800,

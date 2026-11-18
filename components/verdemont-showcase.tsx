@@ -1,3 +1,5 @@
+import "./verdemont-showcase.css";
+import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Award, CheckCircle, ArrowRight, ShieldCheck, Building } from "lucide-react";
 import { VERDEMONT_PROJECT, PAST_DETAILED_PROJECTS } from "@/lib/projects-data";
@@ -167,8 +169,8 @@ export function VerdemontShowcase() {
                 <ExternalLink size={17} />
               </a>
 
-              <a
-                href="/#calculadora-orcamento"
+              <Link
+                href="/orcamento#calculadora-orcamento"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -185,7 +187,7 @@ export function VerdemontShowcase() {
               >
                 <span>Pedir Obra do Mesmo Nível</span>
                 <ArrowRight size={15} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -276,14 +278,7 @@ export function VerdemontShowcase() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 900px) {
-          .verdemont-grid {
-            grid-template-columns: 1fr !important;
-            gap: 2.5rem !important;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

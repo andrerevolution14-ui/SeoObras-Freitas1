@@ -1,4 +1,6 @@
 "use client";
+import "./header.css";
+
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -26,6 +28,7 @@ const TOOLS_MENU_ITEMS = [
 ];
 
 const NAV_LINKS = [
+  { href: "/capa", label: "A Empresa" },
   { href: "/servicos", label: "Serviços" },
   { href: "/projetos", label: "Projetos" },
   { href: "/clientes", label: "Clientes" },
@@ -149,7 +152,7 @@ export function Header() {
         </nav>
 
         <div className="gf-nav-cta hidden-mobile">
-          <Link href="/orcamento" className="btn-primary" style={{ padding: "0.7rem 1.25rem", fontSize: "0.8125rem" }}>
+          <Link href="/#hero-form" className="btn-primary" style={{ padding: "0.7rem 1.25rem", fontSize: "0.8125rem" }}>
             Pedir Orçamento
           </Link>
         </div>
@@ -171,6 +174,7 @@ export function Header() {
           <nav style={{ display: "flex", flexDirection: "column" }}>
             {[
               { href: "/", label: "Início" },
+              { href: "/capa", label: "A Empresa" },
               { href: "/servicos", label: "Serviços" },
               { href: "/projetos", label: "Projetos" },
               { href: "/clientes", label: "Clientes & Obras Reais" },
@@ -226,199 +230,7 @@ export function Header() {
         </div>
       )}
 
-      <style>{`
-        .gf-header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 50;
-          background: linear-gradient(180deg, rgba(5, 5, 5, 0.7) 0%, rgba(5, 5, 5, 0) 100%);
-          transition: background 0.35s ease, box-shadow 0.35s ease;
-          border-bottom: 0;
-        }
-        .gf-header.is-solid {
-          background: rgba(10, 10, 10, 0.97);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08), 0 10px 30px -12px rgba(0, 0, 0, 0.45);
-        }
-        .gf-topbar {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          font-size: 0.6875rem;
-          letter-spacing: 0.04em;
-          color: rgba(255, 255, 255, 0.55);
-          overflow: hidden;
-          max-height: 40px;
-          transition: max-height 0.35s ease, opacity 0.3s ease;
-        }
-        .gf-header.is-solid .gf-topbar { max-height: 0; opacity: 0; border-bottom-color: transparent; }
-        .gf-topbar-inner {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          height: 36px;
-          gap: 1rem;
-        }
-        .gf-topbar-left, .gf-topbar-right { display: flex; align-items: center; gap: 0.875rem; white-space: nowrap; }
-        .gf-dot { width: 3px; height: 3px; background: rgba(255,255,255,0.35); border-radius: 50%; }
-        .gf-topbar-link { color: rgba(255, 255, 255, 0.65); text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; transition: color 0.2s; }
-        .gf-topbar-link:hover { color: #ffffff; }
-        .gf-nav-row {
-          display: grid;
-          grid-template-columns: 1fr auto 1fr;
-          align-items: center;
-          height: 80px;
-          transition: height 0.35s ease;
-          gap: 2rem;
-        }
-        .gf-logo-slot { display: flex; align-items: center; justify-self: start; transform: translateY(4px); }
-        .gf-nav-cta { justify-self: end; }
-        .gf-spacer { display: none; width: 44px; height: 44px; }
-        .gf-progress {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: -1px;
-          height: 2px;
-          background: var(--metal);
-          transform-origin: left;
-          transform: scaleX(0);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        .gf-header.is-solid .gf-progress { opacity: 1; }
-        @supports (animation-timeline: scroll()) {
-          .gf-progress { animation: gf-progress linear both; animation-timeline: scroll(root); }
-        }
-        @keyframes gf-progress { to { transform: scaleX(1); } }
-        .gf-header.is-solid .gf-nav-row { height: 70px; }
-        .gf-nav { display: flex; align-items: center; gap: 2.25rem; }
-        .gf-nav-link {
-          position: relative;
-          color: rgba(255, 255, 255, 0.85);
-          text-decoration: none;
-          font-size: 0.875rem;
-          font-weight: 500;
-          letter-spacing: 0.01em;
-          padding: 0.5rem 0;
-          transition: color 0.2s ease;
-        }
-        .gf-nav-link::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          height: 1px;
-          background: #ffffff;
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .gf-nav-link:hover { color: #ffffff; }
-        .gf-nav-link:hover::after { transform: scaleX(1); }
-        .gf-nav-button { display: inline-flex; align-items: center; gap: 0.35rem; background: none; border: 0; cursor: pointer; font-family: inherit; }
-        .gf-dropdown {
-          position: absolute;
-          top: 100%;
-          left: -1.5rem;
-          width: 340px;
-          background: #0A0A0A;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-top: 2px solid #ffffff;
-          box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
-          padding: 0.5rem;
-          margin-top: 0.75rem;
-          animation: gfDrop 0.22s ease;
-        }
-        .gf-dropdown::before { content: ""; position: absolute; top: -16px; left: 0; right: 0; height: 16px; }
-        .gf-dropdown-link {
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-          padding: 0.9rem 1rem;
-          text-decoration: none;
-          transition: background 0.2s ease;
-        }
-        .gf-dropdown-link:hover { background: rgba(255, 255, 255, 0.05); }
-        .gf-dropdown-title { display: flex; justify-content: space-between; align-items: center; color: #ffffff; font-weight: 600; font-size: 0.875rem; }
-        .gf-dropdown-title svg { color: #8C8C8C; }
-        .gf-dropdown-desc { color: rgba(255, 255, 255, 0.5); font-size: 0.75rem; line-height: 1.45; }
-        @keyframes gfDrop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-        .gf-nav-cta { display: flex; align-items: center; gap: 1.5rem; }
-        .gf-phone {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: #ffffff;
-          font-weight: 600;
-          font-size: 0.9375rem;
-          letter-spacing: 0.02em;
-          text-decoration: none;
-          font-variant-numeric: tabular-nums;
-        }
-        .gf-phone svg { color: #8C8C8C; }
-        .gf-burger {
-          display: none;
-          background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          color: #ffffff;
-          width: 44px;
-          height: 44px;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-        }
-        .gf-mobile-menu {
-          background: #0A0A0A;
-          border-top: 1px solid rgba(255, 255, 255, 0.08);
-          padding: 1rem 1.25rem 2rem;
-          height: calc(100dvh - 70px);
-          overflow-y: auto;
-        }
-        .gf-mobile-link {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1.05rem 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-          color: #ffffff;
-          text-decoration: none;
-          font-size: 1.375rem;
-          font-weight: 500;
-          letter-spacing: -0.02em;
-          font-family: var(--font-display), sans-serif;
-        }
-        .gf-mobile-link svg { color: #8C8C8C; }
-        .gf-mobile-label {
-          margin: 2rem 0 0.5rem;
-          font-size: 0.6875rem;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #8C8C8C;
-          font-weight: 600;
-        }
-        .gf-mobile-sublink {
-          padding: 0.65rem 0;
-          color: rgba(255, 255, 255, 0.75);
-          text-decoration: none;
-          font-size: 0.9375rem;
-        }
-        @media (max-width: 1100px) {
-          .gf-nav { gap: 1.5rem; }
-          .gf-phone { display: none; }
-        }
-        @media (max-width: 900px) {
-          .hidden-mobile { display: none !important; }
-          .mobile-controls { display: inline-flex !important; }
-          .gf-nav-row, .gf-header.is-solid .gf-nav-row { height: 70px; grid-template-columns: 1fr 44px; gap: 0.75rem; }
-          .gf-logo-slot { justify-self: start; transform: translateY(3px); }
-          .gf-logo-slot .gf-logo-img { height: 34px !important; }
-          .gf-burger { justify-self: end; }
-          .gf-spacer { justify-self: start; border: 0 !important; background: none !important; }
-        }
-      `}</style>
+
     </header>
   );
 }

@@ -1,37 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { AveragePricesGuide } from "@/components/average-prices-guide";
 import { Calculator, CheckCircle, Phone, ArrowRight, Shield, Sparkles, HelpCircle } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Preço por m² de Remodelação em Aveiro (2026)",
-  description:
-    "Descubra quanto custa remodelar uma casa em Aveiro. Tabela de custos médios de referência por m² para casas de banho, cozinhas, apartamentos, moradias e capoto.",
-  alternates: { canonical: "https://www.grupofreitasrenovacoes.pt/precos-m2" },
-  openGraph: {
-    title: "Preço por m² de Remodelação em Aveiro (2026) | Freitas Renovações",
-    description:
-      "Tabela atualizada de preços de remodelação por m² em Aveiro: casas de banho, cozinhas, capoto, moradias e pinturas. Respostas diretas e sem custos ocultos.",
-    url: "https://www.grupofreitasrenovacoes.pt/precos-m2",
-    type: "website",
-    locale: "pt_PT",
-    images: [
-      {
-        url: "https://www.grupofreitasrenovacoes.pt/og/precos-m2.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Tabela de Preços Médios por m2 em Aveiro — Freitas Renovações",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Preço m2 Remodelação Aveiro — Guia 2026 | Freitas Renovações",
-    description: "Consulte custos reais de remodelação por m² em Aveiro com preços honestos.",
-    images: ["https://www.grupofreitasrenovacoes.pt/og/precos-m2.jpg"],
-  },
-};
+export const metadata = pageMetadata({
+ title: "Preços por m² de Remodelação em Aveiro",
+ description: "Descubra quanto custa remodelar uma casa em Aveiro. Tabela de custos médios de referência por m² para casas de banho, cozinhas, apartamentos, moradias e capoto.",
+ path: "/precos-m2", image: "/og/precos-m2.jpg",
+});
 
 const precosM2JsonLd = {
   "@context": "https://schema.org",

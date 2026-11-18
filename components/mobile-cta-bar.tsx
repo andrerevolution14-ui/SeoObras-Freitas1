@@ -1,4 +1,6 @@
 "use client";
+import "./mobile-cta-bar.css";
+
 
 import { MessageSquare } from "lucide-react";
 import { CONTRACTOR_INFO } from "@/lib/constants";
@@ -90,15 +92,7 @@ export function MobileCtaBar() {
         </button>
       </div>
 
-      <style>{`
-        @media (min-width: 769px) {
-          .mobile-cta-bar { display: none !important; }
-          .mobile-cta-spacer { display: none !important; }
-        }
-        @media (max-width: 768px) {
-          .mobile-cta-spacer { display: block !important; }
-        }
-      `}</style>
+
     </>
   );
 }
