@@ -33,10 +33,10 @@ export default function BathroomCutaway({asset,reduced}:{asset:(path:string)=>st
   const request=()=>{if(!raf&&!dead&&visible&&!document.hidden)raf=requestAnimationFrame(update);};
   const resume=()=>{manual=false;request();};
   const keyScroll=(event:KeyboardEvent)=>{if((event.target as HTMLElement)?.closest('input,select,textarea,button'))return;if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(event.key))resume();};
-  const resize=()=>{top=el.getBoundingClientRect().top+window.scrollY;travel=Math.max(0,el.offsetHeight-frame.offsetHeight);request();};
+  const resize=()=>{top=el.getBoundingClientRect().top+window.scrollY-Math.min(0,parseFloat(getComputedStyle(frame).top)||0);travel=Math.max(0,el.offsetHeight-frame.offsetHeight);request();};
   selectPhase.current=(n:number)=>{manual=true;lastY=window.scrollY;apply(n);};
   const visibility=()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();};
-  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)request();else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:"100px"});observer.observe(el);
+  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)resize();else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:"100px"});observer.observe(el);
   const sizing=new ResizeObserver(resize);sizing.observe(el);sizing.observe(frame);
   apply(chosen);resize();window.addEventListener("scroll",request,{passive:true});window.addEventListener("wheel",resume,{passive:true});window.addEventListener("touchmove",resume,{passive:true});window.addEventListener("keydown",keyScroll);window.addEventListener("resize",resize);document.addEventListener("visibilitychange",visibility);
   return()=>{dead=true;cancelAnimationFrame(raf);observer.disconnect();sizing.disconnect();window.removeEventListener("scroll",request);window.removeEventListener("wheel",resume);window.removeEventListener("touchmove",resume);window.removeEventListener("keydown",keyScroll);window.removeEventListener("resize",resize);document.removeEventListener("visibilitychange",visibility);selectPhase.current=()=>{};};

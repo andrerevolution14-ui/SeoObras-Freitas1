@@ -504,7 +504,7 @@ export default function HomePage() {
           <p className="section-eyebrow">A Empresa</p>
           <h2 id="conheca-freitas-title" className="section-title">Conheça a Freitas</h2>
           <p className="section-subtitle">Da primeira ideia ao último acabamento. Descubra como damos uma nova vida a cozinhas, casas de banho e interiores em Aveiro.</p>
-          <Link href="/capa" className="btn-primary" style={{marginTop:24}}>Conhecer a Freitas <ArrowUpRight size={17}/></Link>
+          <Link href="/capa#inicio" className="btn-primary" style={{marginTop:24}}>Conhecer a Freitas <ArrowUpRight size={17}/></Link>
         </div>
       </section>
 

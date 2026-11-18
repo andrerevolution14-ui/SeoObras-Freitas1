@@ -90,7 +90,7 @@ function Hero({reduced}:{reduced:boolean}) {
   let camera:CameraProjection|null=null,depthW=0,depthH=0,depthDpr=1,fontReady=false;
   const fontFamily=getComputedStyle(section).getPropertyValue("--hero-serif").trim()||"Georgia,serif";
 
-  let dead=false,raf=0,target=0,position=0,w=0,h=0,lastKey="",oldStage=-1,canvasReady=false,lastTime=0,sectionTop=0,travel=1,inView=true,mobile=phoneLayout();
+  let dead=false,raf=0,target=0,w=0,h=0,lastKey="",oldStage=-1,canvasReady=false,sectionTop=0,travel=1,inView=true,mobile=phoneLayout();
   const captions=Array.from(captionWrap.current?.querySelectorAll<HTMLElement>(".scene-copy")||[]);
   const captionOpacity=captions.map(()=>-1),captionPhase=captions.map(()=>-1);
   const caches=sequenceNames.map(()=>new Map<number,HTMLImageElement>());
@@ -98,10 +98,21 @@ function Hero({reduced}:{reduced:boolean}) {
   const folders=sequenceNames.map(name=>name+"-hd");
   const counts=[192,192,192,192,192];
   const pending=new Set<string>(),failed=new Set<string>(),anchors=new Set<string>();
+  const recent=new Map<string,number>();let access=0;
   const anchorsAt=(p:number)=>p<.14?["0:60","3:1"]:p<.285?["3:192","0:72"]:p<.445?["0:192","1:1"]:p<.68?["1:192","2:1"]:p<.795?["2:64","4:1","4:16"]:p<.855?["4:96","4:97","4:120"]:p<.94?["4:192","2:65"]:["2:192"];
   let activated=false;
   let wantedViews:[number,number][]=[[0,1]],wantedKey="",active=0,queue:[number,number][]=[];
-  const retain=(room:number,num:number)=>anchors.has(`${room}:${num}`)||wantedViews.some(([r,n])=>room===r&&Math.abs(num-n)<=4);
+  // Keep recently decoded frames through quick swipes and reversals. Discarding
+  // an in-flight result just because the scroll moved starves the renderer.
+  const trim=()=>{
+   const limit=mobile?32:48;
+   for(const [key] of [...recent].sort((a,b)=>a[1]-b[1])){
+    if(recent.size<=limit)break;
+    const [room,num]=key.split(":").map(Number);
+    if(anchors.has(key)||wantedViews.some(([r,n])=>r===room&&n===num))continue;
+    caches[room].delete(num);recent.delete(key);
+   }
+  };
   const pump=()=>{
    while(activated&&active<3&&queue.length&&!dead&&inView&&!document.hidden){
     const [room,num]=queue.shift()!,key=`${room}:${num}`;
@@ -112,21 +123,24 @@ function Hero({reduced}:{reduced:boolean}) {
   };
   const around=(views:[number,number][])=>{
    wantedViews=views;
-   caches.forEach((cache,r)=>cache.forEach((_,n)=>{if(!retain(r,n))cache.delete(n);}));
    queue=[...views];
+   for(let d=1;d<=8;d++)for(const [room,index] of views){if(index+d<=counts[room])queue.push([room,index+d]);if(index-d>=1)queue.push([room,index-d]);}
    for(const key of anchors){const [r,n]=key.split(":").map(Number);queue.push([r,n]);}
-   for(let d=1;d<=4;d++)for(const [room,index] of views){if(index+d<=counts[room])queue.push([room,index+d]);if(index-d>=1)queue.push([room,index-d]);}
+   trim();
    pump();
   };
   const load=(room:number,num:number)=>new Promise<void>(resolve=>{
    const im=new Image();im.decoding="async";
-   im.onload=async()=>{try{await im.decode();}catch{}if(!dead&&retain(room,num)){caches[room].set(num,im);lastKey="";request();}resolve();};
+   im.onload=async()=>{try{await im.decode();}catch{}if(!dead){caches[room].set(num,im);recent.set(`${room}:${num}`,++access);trim();lastKey="";request();}resolve();};
    im.onerror=()=>{failed.add(`${room}:${num}`);resolve();};
    im.src=asset(`${media}${folders[room]}/${String(num).padStart(3,"0")}.webp`);
   });
   const paint=(room:number,index:number,zoom=1,focalX?:number,focalY=.5,alpha=1,surface=ctx)=>{
    const cache=caches[room];if(!cache.size)return;
    const actual=cache.has(index)?index:[...cache.keys()].reduce((a,b)=>Math.abs(a-index)<Math.abs(b-index)?a:b);
+   // Hold the current image instead of flashing an unrelated anchor frame.
+   if(Math.abs(actual-index)>8)return;
+   recent.set(`${room}:${actual}`,++access);
    const im=cache.get(actual)!;
    if(surface===ctx){cn.dataset.sourceSize=`${im.naturalWidth}x${im.naturalHeight}`;cn.dataset.profile="hd";}
    const ratio=Math.max(w/im.naturalWidth,h/im.naturalHeight)*zoom;
@@ -183,12 +197,11 @@ function Hero({reduced}:{reduced:boolean}) {
    cn.dataset.cached=String(caches.reduce((total,cache)=>total+cache.size,0));
    if(!canvasReady){canvasReady=true;setReady(true);if(fontReady)section.dataset.depth="ready";}
   };
-  const update=(now:number)=>{
+  const update=()=>{
    raf=0;
-   const elapsed=lastTime?Math.min(now-lastTime,40):1000/60;lastTime=now;
-   position+=(target-position)*(1-Math.exp(-elapsed/125));
-   if(Math.abs(target-position)<.00008)position=target;
-   const p=position;section.dataset.progress=p.toFixed(4);
+   // Native scrolling already supplies inertia. A second easing loop makes the
+   // picture and copy lag behind the finger, especially after navigation.
+   const p=target;section.dataset.progress=p.toFixed(4);
    const shot=journeyShots.find(shot=>p<shot.end)!;
    const room=shot.room;
    const index=shot.first+Math.round(segment(p,shot.from,shot.to)*(shot.last-shot.first));
@@ -225,7 +238,6 @@ function Hero({reduced}:{reduced:boolean}) {
    });
    const current=[.022,.14,.285,.395,.445,.66,.70,.765,.845,.94,.985,1.01].findIndex(end=>p<end);
    if(current!==oldStage){setStage(current);oldStage=current;}
-   if(position!==target)request();else lastTime=0;
   };
   const request=()=>{if(!raf&&!dead&&inView&&!document.hidden)raf=requestAnimationFrame(update);};
   const onScroll=()=>{target=clamp((window.scrollY-sectionTop)/travel);if(target>.0001){activated=true;pump();}request();};
@@ -245,19 +257,21 @@ function Hero({reduced}:{reduced:boolean}) {
    }
    onScroll();
   };
-  const pause=()=>{cancelAnimationFrame(raf);raf=0;lastTime=0;};
+  const pause=()=>{cancelAnimationFrame(raf);raf=0;};
   const visibility=()=>{if(document.hidden)pause();else{onScroll();pump();}};
   // Canvas text must use the same loaded roman and italic faces as the HTML captions.
-  const enableDepth=()=>{if(!dead&&depthContext){fontReady=true;if(canvasReady)section.dataset.depth="ready";lastKey="";request();}};
+  const enableDepth=()=>{if(!dead&&depthContext){fontReady=true;if(canvasReady)section.dataset.depth="ready";lastKey="";resize();}};
   void document.fonts.ready.then(enableDepth,enableDepth);
   resize();
-  const intersection=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;if(inView){onScroll();pump();}else pause();},{rootMargin:"120px 0px"});intersection.observe(section);
-  const sizing=new ResizeObserver(resize);sizing.observe(cn);
+  const intersection=new IntersectionObserver(([entry])=>{inView=entry.isIntersecting;if(inView){resize();pump();}else pause();},{rootMargin:"120px 0px"});intersection.observe(section);
+  const sizing=new ResizeObserver(resize);sizing.observe(cn);sizing.observe(section);
+  // Warm a small bounded window after the poster paints, before the first swipe.
+  const warmup=window.setTimeout(()=>{activated=true;wantedKey="";request();pump();},180);
   window.addEventListener("scroll",onScroll,{passive:true});window.addEventListener("resize",resize);
   document.addEventListener("visibilitychange",visibility);
-  return()=>{dead=true;delete section.dataset.depth;pause();intersection.disconnect();sizing.disconnect();window.removeEventListener("scroll",onScroll);window.removeEventListener("resize",resize);document.removeEventListener("visibilitychange",visibility);caches.forEach(cache=>cache.clear());};
+  return()=>{dead=true;clearTimeout(warmup);delete section.dataset.depth;pause();intersection.disconnect();sizing.disconnect();window.removeEventListener("scroll",onScroll);window.removeEventListener("resize",resize);document.removeEventListener("visibilitychange",visibility);caches.forEach(cache=>cache.clear());recent.clear();};
  },[reduced]);
- const jump=(p:number)=>{if(root.current)window.scrollTo({top:root.current.offsetTop+(root.current.offsetHeight-(root.current.querySelector<HTMLElement>(".stage")?.offsetHeight||window.innerHeight))*p,behavior:reduced?"auto":"smooth"});};
+ const jump=(p:number)=>{if(root.current)window.scrollTo({top:root.current.getBoundingClientRect().top+window.scrollY+(root.current.offsetHeight-(root.current.querySelector<HTMLElement>(".stage")?.offsetHeight||window.innerHeight))*p,behavior:reduced?"instant":"smooth"});};
  if(reduced)return <section className="still-hero scroll-still" id="inicio" data-header="light"><span id="experiencia" className="journey-anchor"/><img src={asset(`${media}kitchen-after.webp`)} width="1672" height="941" fetchPriority="high" alt="Visualização conceptual da cozinha renovada com ilha de travertino"/><div className="shade"/><div className="opening-copy"><p className="eyebrow"><span/> OBRAS E REMODELAÇÕES EM AVEIRO</p><SceneTitle opening lead="Uma nova vida" accent="para a sua casa."/><p className="opening-description">Chave na mão, com orçamento fechado,<br className="desktop"/> prazo em contrato e garantia escrita.</p><Link href="/#hero-form" className="pill cream">Pedir orçamento <ArrowUpRight size={16}/></Link><a className="opening-secondary" href="#remodelacao">Descobrir a remodelação <ArrowDown size={13}/></a></div></section>;
  return <section ref={root} className="journey scroll-hero" id="inicio" data-header="light" aria-label="Uma viagem pela renovação da sua casa">
   <span id="experiencia" className="journey-anchor"/>

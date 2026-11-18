@@ -571,3 +571,20 @@
 .capa-experience .projects-stage{scroll-margin-top:80px}
 @media(max-width:768px){.capa-experience .journey-chapters{bottom:100px}.capa-experience .journey-concept{bottom:79px}.capa-experience .opening-copy{padding-bottom:160px}.capa-experience .journey-progress{bottom:66px}}
 @media(prefers-reduced-motion:reduce){.capa-experience .scroll-hero{height:100svh}}
+
+/* Route entry and scrubbing must not inherit the home page's smooth scroll. */
+html:has(.capa-experience){scroll-behavior:auto}
+.capa-experience{overflow-anchor:none}
+/* Phone browser controls may change the height media query while scrolling.
+   Keep the same pinned layout; a tall panel pins at its lower edge on short screens. */
+@media(max-width:700px) and (orientation:portrait){
+ .capa-experience .bath-build:not(.is-reduced){height:380svh}
+ .capa-experience .bath-build:not(.is-reduced) .bath-build-stage{position:sticky;top:min(0px,calc(100svh - 850px));height:max(100svh,850px);min-height:0}
+ .capa-experience .bath-build-inner{padding-top:calc(var(--mobile-header) + 22px);padding-bottom:74px;gap:10px}
+ .capa-experience .build-model{height:clamp(200px,30svh,270px)}
+ .capa-experience .build-phase-card{min-height:140px}
+ .capa-experience .kitchen-reveal:not(.is-reduced){height:170svh}
+ .capa-experience .kitchen-reveal:not(.is-reduced) .kitchen-reveal-stage{position:sticky;top:min(0px,calc(100svh - 700px));height:max(100svh,700px);min-height:0}
+ .capa-experience .kitchen-reveal-content{min-height:0;padding-top:calc(var(--mobile-header) + 30px);padding-bottom:74px;gap:26px}
+ .capa-experience .project-showcase:not(.is-static) .projects-stage{top:min(0px,calc(100svh - 701px));height:max(100svh,701px);min-height:0}
+}

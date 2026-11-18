@@ -11,7 +11,7 @@ const GOOGLE_MAPS_EMBED =
 const GOOGLE_MAPS_LINK = "https://maps.google.com/?cid=13914443692994943113";
 
 const GUIDE_LINKS = [
-  { href: "/capa", label: "A Empresa" },
+  { href: "/capa#inicio", label: "A Empresa" },
   { href: "/clientes", label: "Clientes & Obras Reais (Aveiro)" },
   { href: "/orcamento", label: "Calculadora de Orçamento" },
   { href: "/credito-obras", label: "Crédito para Obras (100% Grátis)" },

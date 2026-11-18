@@ -249,7 +249,7 @@ const globalJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-PT" className={`${inter.variable} ${interTight.variable} ${caslon.variable}`}>
+    <html lang="pt-PT" data-scroll-behavior="smooth" className={`${inter.variable} ${interTight.variable} ${caslon.variable}`}>
       <head>
         {/* Geographic meta tags — reinforce local SEO */}
         <meta name="geo.region" content="PT-01" />

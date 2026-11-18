@@ -20,9 +20,9 @@ export default function KitchenReveal({asset,reduced}:{asset:(path:string)=>stri
   const folder=compact?"kitchen-assembly-handset":"kitchen-assembly";
   cn.width=compact?640:1280;cn.height=compact?360:720;
   let top=0,travel=1,sectionHeight=1,viewportHeight=1,visible=false,raf=0,dead=false;
-  let position=reduced?1:0,target=position,manual:number|null=null,previousY=window.scrollY,lastTime=0,lastValue=-1,lastView="",wanted=1,painted=0,active=0;
+  let position=reduced?1:0,target=position,manual:number|null=null,previousY=window.scrollY,lastValue=-1,lastView="",wanted=1,painted=0,active=0;
   const cache=new Map<number,HTMLImageElement>(),pending=new Set<number>(),failed=new Set<number>();let queue:number[]=[];
-  const retain=(n:number)=>n===1||n===FRAME_COUNT||Math.abs(n-wanted)<=10;
+  const trim=()=>{for(const n of cache.keys()){if(cache.size<=32)break;if(n!==wanted&&n!==painted)cache.delete(n);}};
   const paint=()=>{
    if(dead||reduced||!visible||document.hidden||!cache.size)return;
    const closest=cache.has(wanted)?wanted:[...cache.keys()].reduce((a,b)=>Math.abs(a-wanted)<Math.abs(b-wanted)?a:b);
@@ -36,7 +36,7 @@ export default function KitchenReveal({asset,reduced}:{asset:(path:string)=>stri
     const n=queue.shift()!;if(cache.has(n)||pending.has(n)||failed.has(n))continue;
     active++;pending.add(n);const im=new Image();im.decoding="async";
     const done=()=>{active--;pending.delete(n);pump();};
-    im.onload=async()=>{try{await im.decode();}catch{}if(!dead&&retain(n)){cache.set(n,im);paint();}done();};
+    im.onload=async()=>{try{await im.decode();}catch{}if(!dead){cache.set(n,im);trim();paint();}done();};
     im.onerror=()=>{failed.add(n);done();};
     im.src=asset(`/media/${folder}/${String(n).padStart(3,"0")}.webp`);
    }
@@ -44,7 +44,6 @@ export default function KitchenReveal({asset,reduced}:{asset:(path:string)=>stri
   const requestFrame=(n:number)=>{
    if(reduced)return;
    wanted=n;el.dataset.wantedFrame=String(n);
-   cache.forEach((_,key)=>{if(!retain(key))cache.delete(key);});
    queue=[n];for(let d=1;d<=8;d++){if(n+d<=FRAME_COUNT)queue.push(n+d);if(n-d>=1)queue.push(n-d);}
    queue.push(1,FRAME_COUNT);pump();paint();
   };
@@ -61,22 +60,20 @@ export default function KitchenReveal({asset,reduced}:{asset:(path:string)=>stri
    if(travel>8)return ease((window.scrollY-top)/travel/.9);
    return ease((window.scrollY-top+viewportHeight*.66)/(sectionHeight*.55));
   };
-  const update=(now:number)=>{
-   raf=0;const dt=lastTime?Math.min(40,now-lastTime):16.7;lastTime=now;
-   position+=(target-position)*(1-Math.exp(-dt/95));if(Math.abs(target-position)<.001)position=target;
-   apply(position);if(position!==target)request();else lastTime=0;
+  const update=()=>{
+   raf=0;position=target;apply(position);
   };
   const request=()=>{if(!dead&&!raf&&visible&&!document.hidden)raf=requestAnimationFrame(update);};
   const scroll=()=>{
    if(Math.abs(window.scrollY-previousY)>2){manual=null;previousY=window.scrollY;}
    target=manual??read();if(reduced){position=target;apply(target);}else request();
   };
-  const resize=()=>{top=el.getBoundingClientRect().top+window.scrollY;sectionHeight=el.offsetHeight;viewportHeight=window.innerHeight;travel=Math.max(0,sectionHeight-frame.offsetHeight);scroll();};
+  const resize=()=>{top=el.getBoundingClientRect().top+window.scrollY-Math.min(0,parseFloat(getComputedStyle(frame).top)||0);sectionHeight=el.offsetHeight;viewportHeight=window.innerHeight;travel=Math.max(0,sectionHeight-frame.offsetHeight);scroll();};
   controller.current=(value:number)=>{
    manual=clamp(value);target=manual;position=target;previousY=window.scrollY;apply(target);
   };
-  const visibility=()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;lastTime=0;}else{scroll();pump();paint();}};
-  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible){scroll();requestFrame(wanted);}else{cancelAnimationFrame(raf);raf=0;lastTime=0;}},{rootMargin:"250px"});observer.observe(el);
+  const visibility=()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{resize();pump();paint();}};
+  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible){resize();requestFrame(wanted);}else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:"500px"});observer.observe(el);
   const sizing=new ResizeObserver(resize);sizing.observe(el);sizing.observe(frame);
   el.dataset.framesReady="false";resize();apply(position);
   window.addEventListener("scroll",scroll,{passive:true});window.addEventListener("resize",resize);document.addEventListener("visibilitychange",visibility);

@@ -28,7 +28,7 @@ const TOOLS_MENU_ITEMS = [
 ];
 
 const NAV_LINKS = [
-  { href: "/capa", label: "A Empresa" },
+  { href: "/capa#inicio", label: "A Empresa" },
   { href: "/servicos", label: "Serviços" },
   { href: "/projetos", label: "Projetos" },
   { href: "/clientes", label: "Clientes" },
@@ -174,7 +174,7 @@ export function Header() {
           <nav style={{ display: "flex", flexDirection: "column" }}>
             {[
               { href: "/", label: "Início" },
-              { href: "/capa", label: "A Empresa" },
+              { href: "/capa#inicio", label: "A Empresa" },
               { href: "/servicos", label: "Serviços" },
               { href: "/projetos", label: "Projetos" },
               { href: "/clientes", label: "Clientes & Obras Reais" },

@@ -15,10 +15,10 @@ export default function ProjectShowcase({asset,reduced}:{asset:(path:string)=>st
  const dialog=useRef<HTMLDialogElement>(null);
  useEffect(()=>{if(evidence!==null&&!dialog.current?.open)dialog.current?.showModal();},[evidence]);
  const staticMode=reduced||short;
- useEffect(()=>{const query=window.matchMedia("(max-height:700px)");const update=()=>setShort(query.matches);update();query.addEventListener("change",update);return()=>query.removeEventListener("change",update);},[]);
+ useEffect(()=>{const query=window.matchMedia("(max-height:700px) and (orientation:landscape)");const update=()=>setShort(query.matches);update();query.addEventListener("change",update);return()=>query.removeEventListener("change",update);},[]);
  useEffect(()=>{
   const el=journey.current,frame=stage.current;if(!el||!frame)return;
-  let top=0,travel=0,raf=0,visible=false,dead=false,current=0,target=0,selected=0,lastTime=0;
+  let top=0,travel=0,raf=0,visible=false,dead=false,current=0,target=0,selected=0;
   const render=(position:number)=>{
    el.style.setProperty("--project-position",String(position));
    frame.querySelectorAll<HTMLElement>(".project-panel").forEach((panel,i)=>panel.style.setProperty("--panel-distance",String(Math.min(1,Math.abs(position-i)))));
@@ -31,19 +31,16 @@ export default function ProjectShowcase({asset,reduced}:{asset:(path:string)=>st
    const index=Math.min(3,Math.floor(step));
    target=index+((index===3)?0:ease((step-index-.54)/.46));
   };
-  const tick=(time:number)=>{
+  const tick=()=>{
    raf=0;if(dead||!visible||document.hidden||staticMode)return;
-   const dt=Math.min(50,lastTime?time-lastTime:16.67);lastTime=time;
-   current+=(target-current)*(1-Math.exp(-dt/95));
-   if(Math.abs(current-target)<.001)current=target;
-   render(current);if(current!==target)raf=requestAnimationFrame(tick);
+   current=target;render(current);
   };
   const request=()=>{if(!raf&&!dead&&visible&&!document.hidden&&!staticMode)raf=requestAnimationFrame(tick);};
   const onScroll=()=>{read();request();};
-  const resize=()=>{top=el.getBoundingClientRect().top+window.scrollY;travel=Math.max(0,el.offsetHeight-frame.offsetHeight);read();request();};
-  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible){read();current=target;render(current);request();}else{cancelAnimationFrame(raf);raf=0;lastTime=0;}},{rootMargin:"100px"});
+  const resize=()=>{top=el.getBoundingClientRect().top+window.scrollY-Math.min(0,parseFloat(getComputedStyle(frame).top)||0);travel=Math.max(0,el.offsetHeight-frame.offsetHeight);read();request();};
+  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible){resize();current=target;render(current);}else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:"100px"});
   observer.observe(el);const sizing=new ResizeObserver(resize);sizing.observe(el);sizing.observe(frame);
-  const visibility=()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{lastTime=0;onScroll();}};
+  const visibility=()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else resize();};
   select.current=(index:number)=>{if(!staticMode){window.scrollTo({top:top+travel*(index+.22)/4,behavior:"smooth"});}};
   current=0;render(0);setActive(0);resize();
   window.addEventListener("scroll",onScroll,{passive:true});window.addEventListener("resize",resize);document.addEventListener("visibilitychange",visibility);
