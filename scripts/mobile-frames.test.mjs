@@ -54,6 +54,30 @@ test('rapid forward/reverse seeks keep the requested frame and bound decoded mem
   assert.equal(h.loader.get(3, 100), undefined);
 });
 
+test('continuous scrolling decodes each sheet once instead of thrashing the bounded cache', async () => {
+  const h = harness();
+  for (let n = 1; n <= 192; n++) {
+    h.loader.setViews([[0, n]], [[0, 60], [3, 1]]);
+    await h.drain();
+    assert.equal(h.loader.get(0, n).frame, n);
+    assert.ok(h.loader.size <= ATLAS.limit);
+  }
+  const urls = h.requests.map(r => r.url);
+  assert.equal(urls.length, new Set(urls).size);
+  assert.equal(urls.length, 25);
+});
+
+test('two-scene transitions do not repeatedly decode more sheets than the cache can retain', async () => {
+  const h = harness();
+  for (let i = 0; i < 30; i++) {
+    h.loader.setViews([[2, 56], [4, 8]], [[2, 64], [4, 1], [4, 16]]);
+    await h.drain();
+    assert.ok(h.loader.has(2, 56));
+    assert.ok(h.loader.has(4, 8));
+  }
+  assert.ok(h.requests.length <= ATLAS.limit);
+});
+
 test('background work pauses and late responses cannot revive a disposed loader', async () => {
   const h = harness();
   h.setVisible(false);

@@ -13,13 +13,14 @@ export function createMobileFrames(options: {
 }) {
   const cache = new Map<string, FrameImage>();
   const pending = new Set<string>(), failed = new Set<string>();
-  let queue: string[] = [], protectedKeys = new Set<string>(), disposed = false;
+  let queue: string[] = [], wantedKeys = new Set<string>(), disposed = false;
+  let previous: View | undefined, direction = 1;
   const key = (room: number, frame: number) => `${room}:${Math.floor((frame - 1) / ATLAS.frames)}`;
   const release = (image: FrameImage) => { if ("close" in image) image.close(); };
   const trim = () => {
     for (const k of cache.keys()) {
       if (cache.size <= ATLAS.limit) break;
-      if (!protectedKeys.has(k)) { release(cache.get(k)!); cache.delete(k); }
+      if (!wantedKeys.has(k)) { release(cache.get(k)!); cache.delete(k); }
     }
   };
   const pump = () => {
@@ -39,7 +40,9 @@ export function createMobileFrames(options: {
         }
         image.onload = null; image.onerror = null;
         if (decoded !== image) image.removeAttribute("src");
-        if (!disposed) { cache.set(k, decoded); trim(); options.onReady(); }
+        // A swipe can change the window while a request is in flight. A late
+        // sheet must not evict the neighbors needed by the current gesture.
+        if (!disposed && wantedKeys.has(k)) { cache.set(k, decoded); trim(); options.onReady(); }
         else release(decoded);
         done();
       };
@@ -49,20 +52,24 @@ export function createMobileFrames(options: {
   };
   return {
     setViews(views: View[], anchors: View[]) {
-      protectedKeys = new Set([...views, ...anchors].map(([r, n]) => key(r, n)));
-      const next = views.map(([r, n]) => key(r, n));
-      // Prioritize the adjacent sheet, then scene boundaries, then a second
-      // sheet in either direction. A reversal can use already decoded frames.
+      const first = views[0];
+      if (first && previous?.[0] === first[0] && previous[1] !== first[1]) direction = Math.sign(first[1] - previous[1]);
+      if (first) previous = first;
+      const next = [...views, ...anchors].map(([r, n]) => key(r, n));
+      // Keep scene boundaries ready, then look ahead in the gesture's direction.
       const neighbors = (distance: number) => {
-        for (const [room, frame] of views) for (const delta of [distance, -distance]) {
+        for (const delta of [distance * direction, -distance * direction]) for (const [room, frame] of views) {
           const n = frame + delta * ATLAS.frames;
           if (n >= 1 && n <= ATLAS.count) next.push(key(room, n));
         }
       };
       neighbors(1);
-      next.push(...anchors.map(([r, n]) => key(r, n)));
       neighbors(2);
-      queue = [...new Set(next)]; trim(); pump();
+      // The prefetch window must fit in decoded memory. A larger queue used to
+      // evict its own prefetched sheets and decode them again on every frame.
+      queue = [...new Set(next)].slice(0, ATLAS.limit);
+      wantedKeys = new Set(queue);
+      trim(); pump();
     },
     has(room: number, frame: number) { return cache.has(key(room, frame)); },
     get(room: number, requested: number): Frame | undefined {
