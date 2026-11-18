@@ -8,6 +8,7 @@ import KitchenReveal from "./KitchenReveal";
 import ProjectShowcase from "./ProjectShowcase";
 import {drawSpatialCopy, type CameraProjection} from "./SpatialCopy";
 import {ATLAS, createMobileFrames, type View} from "./MobileFrames";
+import {advanceMobileProgress} from "./MobileMotion";
 
 const media = "/capa-media/4083ece1d08f/";
 const asset=(path:string):string => path.replace(/^\/media\//,"/capa-media/4083ece1d08f/");
@@ -93,6 +94,7 @@ function Hero({reduced}:{reduced:boolean}) {
   const fontFamily=getComputedStyle(section).getPropertyValue("--hero-serif").trim()||"Georgia,serif";
 
   let dead=false,raf=0,target=0,w=0,h=0,lastKey="",oldStage=-1,canvasReady=false,sectionTop=0,travel=1,inView=true,mobile=phoneLayout(),portrait=portraitLayout();
+  let rendered=0,lastTick=0,snapMotion=true;
   const captions=Array.from(captionWrap.current?.querySelectorAll<HTMLElement>(".scene-copy")||[]);
   const captionOpacity=captions.map(()=>-1),captionPhase=captions.map(()=>-1);
   const caches=sequenceNames.map(()=>new Map<number,HTMLImageElement>());
@@ -219,11 +221,14 @@ function Hero({reduced}:{reduced:boolean}) {
    cn.dataset.cached=String(portrait?mobileFrames.size:caches.reduce((total,cache)=>total+cache.size,0));
    if(!canvasReady){canvasReady=true;setReady(true);if(fontReady&&!mobile)section.dataset.depth="ready";}
   };
-  const update=()=>{
+  const update=(now:number)=>{
    raf=0;
-   // Native scrolling already supplies inertia. A second easing loop makes the
-   // picture and copy lag behind the finger, especially after navigation.
-   const p=target;section.dataset.progress=p.toFixed(4);
+   // The page follows the finger natively. Only the portrait film and its copy
+   // share this short damped playhead, without a long catch-up after a swipe.
+   const elapsed=lastTick&&now-lastTick<80?now-lastTick:1000/60;
+   rendered=portrait&&!snapMotion&&canvasReady?advanceMobileProgress(rendered,target,elapsed):target;
+   lastTick=now;snapMotion=false;
+   const p=rendered;section.dataset.progress=p.toFixed(4);
    const shot=journeyShots.find(shot=>p<shot.end)!;
    const room=shot.room;
    const index=shot.first+Math.round(segment(p,shot.from,shot.to)*(shot.last-shot.first));
@@ -260,12 +265,13 @@ function Hero({reduced}:{reduced:boolean}) {
    });
    const current=[.022,.14,.285,.395,.445,.66,.70,.765,.845,.94,.985,1.01].findIndex(end=>p<end);
    if(current!==oldStage){setStage(current);oldStage=current;}
+   if(portrait&&rendered!==target)request();
   };
   const request=()=>{if(!raf&&!dead&&inView&&!document.hidden)raf=requestAnimationFrame(update);};
   const onScroll=()=>{target=clamp((window.scrollY-sectionTop)/travel);if(target>.0001){activated=true;pump();}request();};
   const resize=()=>{
    const nextMobile=phoneLayout(),nextPortrait=portraitLayout();
-   if(nextMobile!==mobile||nextPortrait!==portrait){mobile=nextMobile;portrait=nextPortrait;wantedKey="";lastKey="";}
+   if(nextMobile!==mobile||nextPortrait!==portrait){mobile=nextMobile;portrait=nextPortrait;wantedKey="";lastKey="";snapMotion=true;}
    if(mobile)delete section.dataset.depth;else if(canvasReady&&fontReady)section.dataset.depth="ready";
    sectionTop=section.getBoundingClientRect().top+window.scrollY;
    travel=Math.max(1,section.offsetHeight-(section.querySelector<HTMLElement>(".stage")?.offsetHeight||window.innerHeight));
@@ -281,7 +287,7 @@ function Hero({reduced}:{reduced:boolean}) {
    }
    onScroll();
   };
-  const pause=()=>{cancelAnimationFrame(raf);raf=0;};
+  const pause=()=>{cancelAnimationFrame(raf);raf=0;snapMotion=true;lastTick=0;};
   const visibility=()=>{if(document.hidden)pause();else{onScroll();pump();}};
   // Canvas text must use the same loaded roman and italic faces as the HTML captions.
   const enableDepth=()=>{if(!dead&&depthContext){fontReady=true;if(canvasReady&&!mobile)section.dataset.depth="ready";lastKey="";resize();}};
