@@ -630,3 +630,59 @@ html:has(.capa-experience){scroll-behavior:auto}
  .capa-experience .scroll-hero .scene-copy .scene-title{position:static;width:auto;height:auto;clip-path:none;overflow:visible;white-space:normal}
  .capa-experience .scroll-hero .journey-bottom{bottom:66px}
 }
+
+/* Native films: playback follows time, while scrolling remains ordinary page navigation. */
+.capa-experience .film-hero{position:relative;isolation:isolate;overflow:hidden;height:100svh;min-height:620px;background:#181913;color:#fff9ec}
+.capa-experience .film-poster,.capa-experience .ambient-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.capa-experience .film-poster img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.capa-experience .ambient-film{transition:opacity .3s ease}
+.capa-experience .film-shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(16,18,15,.58),rgba(16,18,15,.15) 66%,rgba(16,18,15,.06)),linear-gradient(180deg,rgba(16,18,15,.28),transparent 30%,rgba(16,18,15,.2) 70%,rgba(16,18,15,.56))}
+.capa-experience .film-hero-copy{position:absolute;left:6.5%;right:6.5%;bottom:128px;z-index:2;max-width:870px}
+.capa-experience .film-hero-copy .eyebrow{font-size:10px;letter-spacing:.2em;line-height:1.7;margin:0 0 24px;color:#eee7d9}
+.capa-experience .film-hero h1{font-family:var(--serif);font-size:clamp(66px,6.9vw,112px);font-weight:400;letter-spacing:-.045em;line-height:.98;margin:0;color:#fff9ec;text-shadow:0 2px 28px #0002}
+.capa-experience .film-hero h1 span,.capa-experience .film-hero h1 em{display:block}
+.capa-experience .film-hero h1 em{font-weight:400;color:#e4d6b9}
+.capa-experience .film-description{font-size:14px;line-height:1.8;color:#f4eee2;margin:25px 0 26px}
+.capa-experience .film-hero-copy .pill{min-height:50px}
+.capa-experience .film-discover{position:absolute;z-index:3;left:6.5%;bottom:28px;display:inline-flex;align-items:center;gap:12px;min-height:44px;font-size:10px;letter-spacing:.04em;color:#f6efdf}
+.capa-experience .film-discover svg{width:34px;height:34px;padding:9px;border:1px solid #fff5;border-radius:50%}
+.capa-experience .film-concept{position:absolute;z-index:2;right:calc(6.5% + 62px);bottom:47px;font-size:7px;letter-spacing:.16em;color:#e8dfcdbf}
+.capa-experience .film-toggle{position:absolute;z-index:5;right:16px;bottom:16px;display:grid;place-items:center;width:44px;height:44px;border:1px solid #fff7;border-radius:50%;background:#171b18a6;color:#fff9ec;cursor:pointer;transition:background .2s}
+.capa-experience .film-toggle:hover{background:#171b18e6}
+.capa-experience .film-toggle:focus-visible,.capa-experience .film-discover:focus-visible{outline:2px solid #fff9ec;outline-offset:4px}
+.capa-experience .film-hero>.film-toggle{right:6.5%;bottom:28px}
+.capa-experience .kitchen-reveal.kitchen-reveal--film{height:auto;--kitchen-reveal:1}
+.capa-experience .kitchen-reveal.kitchen-reveal--film .kitchen-reveal-stage{position:relative;top:auto;height:auto;min-height:0}
+.capa-experience .kitchen-reveal.kitchen-reveal--film .kitchen-reveal-content{min-height:720px;height:auto;padding-top:120px;padding-bottom:110px}
+.capa-experience .kitchen-reveal--film .kitchen-portal figcaption{margin-top:24px}
+.capa-experience .kitchen-reveal--film .kitchen-portal-window .ambient-film{object-fit:contain}
+@media(max-width:700px){
+ .capa-experience .film-hero{min-height:600px}
+ .capa-experience .film-shade{background:linear-gradient(180deg,rgba(15,17,14,.35),transparent 24%,rgba(15,17,14,.12) 38%,rgba(15,17,14,.62) 75%,rgba(15,17,14,.7))}
+ .capa-experience .film-hero-copy{left:24px;right:24px;bottom:calc(156px + env(safe-area-inset-bottom));max-width:none}
+ .capa-experience .film-hero-copy .eyebrow{font-size:8px;letter-spacing:.13em;margin-bottom:18px}
+ .capa-experience .film-hero h1{font-size:clamp(39px,11.4vw,72px);line-height:1.03;letter-spacing:-.045em}
+ .capa-experience .film-description{font-size:12px;line-height:1.7;margin:20px 0}
+ .capa-experience .film-hero-copy .pill{min-height:46px;font-size:12px;padding:0 22px;gap:24px}
+ .capa-experience .film-discover{left:24px;bottom:calc(78px + env(safe-area-inset-bottom));font-size:9px;gap:9px}
+ .capa-experience .film-hero>.film-toggle{right:24px;bottom:calc(78px + env(safe-area-inset-bottom))}
+ .capa-experience .film-concept{left:24px;right:auto;bottom:calc(60px + env(safe-area-inset-bottom));font-size:6px;letter-spacing:.12em}
+ .capa-experience .kitchen-reveal.kitchen-reveal--film .kitchen-reveal-content{min-height:0;padding-top:85px;padding-bottom:85px;gap:34px}
+ .capa-experience .kitchen-reveal--film .kitchen-portal figcaption{margin-top:22px}
+ .capa-experience .kitchen-reveal--film .film-toggle{right:10px;bottom:10px}
+}
+@media(max-width:700px) and (max-height:700px){
+ .capa-experience .film-hero{min-height:560px}
+ .capa-experience .film-hero-copy{bottom:calc(142px + env(safe-area-inset-bottom))}
+ .capa-experience .film-hero-copy .eyebrow{margin-bottom:12px;font-size:7px}
+ .capa-experience .film-hero h1{font-size:clamp(36px,10.5vw,60px)}
+ .capa-experience .film-description{margin:15px 0;font-size:11px}
+}
+@media(max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .capa-experience .film-hero{min-height:530px}
+ .capa-experience .film-hero-copy{bottom:100px}
+ .capa-experience .film-hero h1{font-size:62px}
+ .capa-experience .film-hero-copy .eyebrow{margin-bottom:16px}
+ .capa-experience .film-description{margin:18px 0}
+}
+@media(prefers-reduced-motion:reduce){.capa-experience .ambient-film{transition:none}}
