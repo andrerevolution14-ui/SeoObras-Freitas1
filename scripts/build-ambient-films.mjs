@@ -5,7 +5,7 @@ import {resolve, join} from 'node:path';
 const ffmpeg = process.env.FFMPEG_PATH;
 const source = process.env.FILM_SOURCE_DIR;
 if (!ffmpeg || !source) throw new Error('Set FFMPEG_PATH and FILM_SOURCE_DIR (the outputs folder)');
-const output = resolve('public/capa-media/4083ece1d08f/films-v1');
+const output = resolve('public/capa-media/4083ece1d08f/films-v2');
 await mkdir(output, {recursive: true});
 
 const sources = {
@@ -30,8 +30,9 @@ for (const [format, paths] of Object.entries(sources)) {
     duration += edit[i][2] - .4;
     label = `mix${i}`;
   }
+  // Hold the completed room at the end; the intro plays once instead of looping.
   duration += .8;
-  filters.push(`[${label}]tpad=stop_mode=clone:stop_duration=0.8,fade=t=in:st=0:d=0.25,fade=t=out:st=${(duration - .35).toFixed(3)}:d=0.35,format=yuv420p[out]`);
+  filters.push(`[${label}]tpad=stop_mode=clone:stop_duration=0.8,fade=t=in:st=0:d=0.25,format=yuv420p[out]`);
   const file = join(output, `hero-${format}.mp4`);
   execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-y', '-filter_complex_threads', '1', ...inputs,
     '-filter_complex', filters.join(';'), '-map', '[out]', '-an', '-c:v', 'libx264', '-threads', '2',
@@ -39,7 +40,7 @@ for (const [format, paths] of Object.entries(sources)) {
     '-profile:v', 'high', '-level', '3.1', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', file], {stdio: 'inherit'});
   console.log(`${format}: ${duration.toFixed(1)}s, ${((await stat(file)).size / 1024 / 1024).toFixed(2)} MiB`);
 }
-const assembly = join(output, 'kitchen-assembly.mp4');
+const assembly = resolve('public/capa-media/4083ece1d08f/films-v1/kitchen-assembly.mp4');
 execFileSync(ffmpeg, ['-hide_banner', '-loglevel', 'error', '-y', '-i', resolve(source, 'cozinha-montagem-flow/03-montagem-cozinha.mp4'),
   '-an', '-vf', 'fps=24,scale=1280:720,setsar=1', '-c:v', 'libx264', '-threads', '2', '-preset', 'medium', '-crf', '24',
   '-pix_fmt', 'yuv420p', '-movflags', '+faststart', assembly], {stdio: 'inherit'});
