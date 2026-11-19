@@ -2,9 +2,10 @@
 
 import {useEffect, useRef, useState} from "react";
 import {ArrowDown, Pause, Play} from "lucide-react";
+import {filmCopyAt} from "./FilmCopy";
 import {createHeroPlayback, holdHeroPage, type HeroPhase} from "./HeroPlayback";
 
-export default function IntroFilm({desktop, mobile}: {desktop:string; mobile:string}) {
+export default function IntroFilm({desktop, mobile, onChapterChange}: {desktop:string; mobile:string; onChapterChange:(chapter:number)=>void}) {
  const video = useRef<HTMLVideoElement>(null);
  const playback = useRef<ReturnType<typeof createHeroPlayback> | null>(null);
  const [phase, setPhase] = useState<HeroPhase>("idle"), [ready, setReady] = useState(false);
@@ -13,10 +14,16 @@ export default function IntroFilm({desktop, mobile}: {desktop:string; mobile:str
   if (!el || !hero) return;
   const portrait = window.matchMedia("(max-width:700px) and (orientation:portrait)");
   let visible = false, touchY: number | null = null, watchdog: ReturnType<typeof setTimeout> | undefined;
+  let lastChapter = -1;
+  const syncCopy = () => {
+   const next = filmCopyAt(el.currentTime);
+   // Only update React at chapter boundaries; playback remains entirely native.
+   if(next !== lastChapter) { lastChapter = next; onChapterChange(next); }
+  };
   const clearWatchdog = () => { clearTimeout(watchdog); watchdog = undefined; };
   const attach = () => {
    const src = portrait.matches ? mobile : desktop;
-   if (el.getAttribute("src") !== src) { el.src = src; el.load(); }
+   if (el.getAttribute("src") !== src) { setReady(false); el.src = src; el.load(); }
   };
   const controller = createHeroPlayback({
    play: () => { attach(); el.muted = true; return el.play(); },
@@ -50,10 +57,10 @@ export default function IntroFilm({desktop, mobile}: {desktop:string; mobile:str
    if (event.target instanceof Element && event.target.closest("a[href]") && ["starting","playing","paused"].includes(controller.phase)) controller.skip();
   };
   const visibility = () => { if (document.hidden) controller.suspend(); else if (visible) controller.resume(); };
-  const playing = () => { clearWatchdog(); setReady(true); };
+  const playing = () => { clearWatchdog(); setReady(true); syncCopy(); };
   const waiting = () => { if (["starting","playing"].includes(controller.phase)) armWatchdog(); };
   const error = () => controller.fail();
-  const ended = () => controller.finish();
+  const ended = () => { syncCopy(); controller.finish(); };
   const orientation = () => { if (visible && ["idle","complete","released"].includes(controller.phase)) attach(); };
   const observer = new IntersectionObserver(([entry]) => {
    visible = entry.isIntersecting;
@@ -67,6 +74,7 @@ export default function IntroFilm({desktop, mobile}: {desktop:string; mobile:str
   window.addEventListener("keydown",key); document.addEventListener("click",link,true);
   document.addEventListener("visibilitychange",visibility); portrait.addEventListener("change",orientation);
   el.addEventListener("playing",playing); el.addEventListener("waiting",waiting); el.addEventListener("stalled",waiting);
+  el.addEventListener("timeupdate",syncCopy); el.addEventListener("loadedmetadata",syncCopy); el.addEventListener("seeked",syncCopy);
   el.addEventListener("ended",ended); el.addEventListener("error",error);
   return () => {
    clearWatchdog(); observer.disconnect(); controller.dispose(); playback.current = null;
@@ -74,10 +82,11 @@ export default function IntroFilm({desktop, mobile}: {desktop:string; mobile:str
    window.removeEventListener("keydown",key); document.removeEventListener("click",link,true);
    document.removeEventListener("visibilitychange",visibility); portrait.removeEventListener("change",orientation);
    el.removeEventListener("playing",playing); el.removeEventListener("waiting",waiting); el.removeEventListener("stalled",waiting);
+   el.removeEventListener("timeupdate",syncCopy); el.removeEventListener("loadedmetadata",syncCopy); el.removeEventListener("seeked",syncCopy);
    el.removeEventListener("ended",ended); el.removeEventListener("error",error);
    el.pause(); el.removeAttribute("src"); el.load();
   };
- }, [desktop,mobile]);
+ }, [desktop,mobile,onChapterChange]);
  const running = phase === "playing" || phase === "starting";
  const toggle = () => { if (running) playback.current?.pause(); else playback.current?.start(); };
  const continuePage = () => {
